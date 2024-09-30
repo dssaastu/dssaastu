@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Location - Social Science Department</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1A252F;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .navbar-toggler {
+            display: none;
+            background-color: #1A252F;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .navbar-menu {
+            display: flex;
+            flex-direction: row;
+        }
+        .navbar-menu.collapsed {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+        .navbar-menu.show {
+            display: flex;
+        }
+        .navbar-menu a {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .banner {
+            background: url('banner.jpg') no-repeat center center/cover;
+            height: 400px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .banner h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .content {
+            width: 80%;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-menu.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="banner">
+        <h2>Find Us on the Map</h2>
+    </div>
+    
+    <div class="content">
+        <h2>Our Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.126721375664!2d38.80717857524003!3d8.885170657675472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b82a7e392203f%3A0xb05f440eacc98f9f!2sAddis%20Ababa%20Science%20and%20Technology%20University!5e0!3m2!1sen!2set!4v1638480547308!5m2!1sen!2set" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="map.html">Sitemap</a> |
+           
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            var menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

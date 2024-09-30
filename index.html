@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Science Department - AASTU</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Prevent scrollbars */
+        }
+        .header {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1A252F;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .navbar-toggler {
+            display: none;
+            background-color: #1A252F;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .navbar-menu {
+            display: flex;
+            flex-direction: row;
+        }
+        .navbar-menu.collapsed {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+        .navbar-menu.show {
+            display: flex;
+        }
+        .navbar-menu a {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .banner {
+            background: url('banner.jpg') no-repeat center center/cover;
+            height: 400px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .banner h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .fade-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Behind other content */
+            overflow: hidden;
+            pointer-events: none; /* Prevent interaction */
+        }
+        .fade-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: fadeInOut 20s infinite;
+        }
+        .fade-image:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .fade-image:nth-child(2) {
+            animation-delay: 4s;
+        }
+        .fade-image:nth-child(3) {
+            animation-delay: 8s;
+        }
+        .fade-image:nth-child(4) {
+            animation-delay: 12s;
+        }
+        .fade-image:nth-child(5) {
+            animation-delay: 16s;
+        }
+        @keyframes fadeInOut {
+            0%, 20%, 100% { opacity: 0; }
+            10%, 15% { opacity: 1; }
+        }
+        .content {
+            width: 80%;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1; /* Above background */
+        }
+        .content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        .content p {
+            line-height: 1.6;
+            color: #555;
+            font-size: 1rem;
+            text-align: justify;
+        }
+        .cta-button {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta-button a {
+            background-color: #2C3E50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+        .cta-button a:hover {
+            background-color: #1A252F;
+        }
+        .footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-menu.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="banner">
+        <h2>Welcome to the Social Science Department</h2>
+    </div>
+
+    <div class="fade-container">
+        <img src="fade1.jpg" alt="Fading Image 1" class="fade-image">
+        <img src="fade2.jpg" alt="Fading Image 2" class="fade-image">
+        <img src="fade3.jpg" alt="Fading Image 3" class="fade-image">
+        <img src="fade4.jpg" alt="Fading Image 4" class="fade-image">
+        <img src="fade5.jpg" alt="Fading Image 5" class="fade-image">
+    </div>
+    
+    <div class="content">
+        <h2>Empowering Minds for the Future</h2>
+        <p>
+            Welcome to the Social Science Department at AASTU. Our department is dedicated to providing a comprehensive education that fosters critical thinking, cultural understanding, and the development of skills essential for success in today's global society. We offer a range of courses that cater to diverse interests, from philosophy and psychology to sociology and political science.
+        </p>
+        <p>
+            Our faculty members are committed to excellence in teaching and research, ensuring that our students are well-equipped to meet the challenges of the modern world. Whether you're a prospective student, current student, or alumni, we're here to support you in your academic journey.
+        </p>
+        <p>
+            Explore our courses, learn about our faculty, and discover the opportunities that await you in the Social Science Department. Join us in advancing knowledge and shaping the future.
+        </p>
+        <div class="cta-button">
+            <a href="courses.html">Explore Our Courses</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="map.html">Sitemap</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            var menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

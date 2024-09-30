@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Social Science Department</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header, .footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1, .footer p {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1A252F;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .navbar-toggler {
+            display: none;
+            background-color: #1A252F;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .navbar-menu {
+            display: flex;
+            flex-direction: row;
+        }
+        .navbar-menu.collapsed {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+        .navbar-menu.show {
+            display: flex;
+        }
+        .navbar-menu a {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .container h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .contact-info div i {
+            font-size: 1.5rem;
+            color: #2C3E50;
+        }
+        .contact-info div p {
+            font-size: 1rem;
+            margin: 0;
+            color: #666;
+        }
+        .contact-info div h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #2C3E50;
+        }
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-menu.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Get in Touch</h2>
+        <div class="contact-info">
+            <div>
+                <i class="fas fa-user"></i>
+                <div>
+                    <h3>Department Head</h3>
+                    <p>Dr. Teshome Abera</p>
+                </div>
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:teshome.abera@aastu.edu.et">teshome.abera@aastu.edu.et</a></p>
+                </div>
+            </div>
+            <div>
+                <i class="fas fa-phone"></i>
+                <div>
+                    <h3>Phone</h3>
+                    <p>0911698564</p>
+                </div>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h3>Address</h3>
+                    <p>Addis Ababa, Akaki Kality, Wereda 09</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="map.html">Sitemap</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            var menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

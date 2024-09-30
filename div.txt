@@ -1,0 +1,7 @@
+<div class="slide">
+                    <div class="slide-content">
+                        Slide 1 Content<br><br>
+                        Content goes here.
+                    </div>
+                    <div class="slide-number">1 / 48</div>
+                </div>

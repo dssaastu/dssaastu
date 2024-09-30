@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Science Department - Staff Profiles</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header, .footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1, .footer p {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .header p {
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1A252F;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        .navbar-toggler {
+            display: none;
+            background-color: #1A252F;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .navbar-menu {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .navbar-menu.collapsed {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .navbar-menu.show {
+            display: flex;
+        }
+
+        .navbar-menu a {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .staff-profiles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .staff-profiles h2 {
+            font-size: 2em;
+            color: #000;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #0044cc;
+        }
+
+        .profile-card h2 {
+            font-size: 1.6em;
+            color: #0044cc;
+            margin: 15px 0 10px;
+        }
+
+        .profile-card p {
+            font-size: 1em;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .profile-contact {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-contact a {
+            color: #0044cc;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .profile-contact a:hover {
+            color: #003399;
+        }
+
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-menu.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <section class="staff-profiles">
+        <h2>Staff</h2>
+        <div class="profile-card">
+            <img src="professor1.jpg" alt="Professor 1" class="profile-picture">
+            <h2>Mrs. Sophia Kifle</h2>
+            <p><strong>Specialization:</strong> Federal Studies</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0911144142</p>
+                <a href="mailto:sophia.kifle@aastu.edu.et">sophia.kifle@aastu.edu.et</a>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <img src="professor2.jpg" alt="Professor 2" class="profile-picture">
+            <h2>Mr. Solomon Gebre</h2>
+            <p><strong>Specialization:</strong> Peace and Security</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0911761359</p>
+                <a href="mailto:solomon.gebre@aastu.edu.et">solomon.gebre@aastu.edu.et</a>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <img src="professor3.jpg" alt="Professor 3" class="profile-picture">
+            <h2>Dr. Biruk Shewadeg</h2>
+            <p><strong>Specialization:</strong> African Studies</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0913714459</p>
+                <a href="mailto:biruk.shewadeg@aastu.edu.et">biruk.shewadeg@aastu.edu.et</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <img src="professor4.jpg" alt="Professor 4" class="profile-picture">
+            <h2>Dr. Manaye Zegeye</h2>
+            <p><strong>Specialization:</strong> Federal Studies</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0912351728</p>
+                <a href="mailto:manaye.zegeye@aastu.edu.et">manaye.zegeye@aastu.edu.et</a>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <img src="professor5.jpg" alt="Professor 5" class="profile-picture">
+            <h2>Dr. Shumye Getu</h2>
+            <p><strong>Specialization:</strong> Philosophy</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0913966539</p>
+                <a href="mailto:shumye.getu@aastu.edu.et">shumye.getu@aastu.edu.et</a>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <img src="professor6.jpg" alt="Professor 6" class="profile-picture">
+            <h2>Mr. Mohammed Zeinu</h2>
+            <p><strong>Specialization:</strong> Philosophy</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0910517214</p>
+                <a href="mailto:mohammed.zeinu@aastu.edu.et">mohammed.zeinu@aastu.edu.et</a>
+            </div>
+        </div>
+        
+        <div class="profile-card">
+            <img src="professor7.jpg" alt="Professor 7" class="profile-picture">
+            <h2>Dr. Teshome Abera</h2>
+            <p><strong>Specialization:</strong> Philosophy</p>
+            <div class="profile-contact">
+                <p><strong>Phone:</strong> 0911698564</p>
+                <a href="mailto:teshome.abera@aastu.edu.et">teshome.abera@aastu.edu.et</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="map.html">Sitemap</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            var menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

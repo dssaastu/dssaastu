@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Social Science Department</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1A252F;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .navbar-toggler {
+            display: none;
+            background-color: #1A252F;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .navbar-menu {
+            display: flex;
+            flex-direction: row;
+        }
+        .navbar-menu.collapsed {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+        .navbar-menu.show {
+            display: flex;
+        }
+        .navbar-menu a {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .content {
+            width: 80%;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        .content p, .content ul {
+            line-height: 1.6;
+            color: #555;
+            font-size: 1rem;
+            text-align: justify;
+        }
+        .content ul {
+            padding-left: 20px;
+        }
+        .footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-menu.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+	    <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h2>Terms of Service</h2>
+        <p>
+            By using the Social Science Department's online courses, you agree to the following terms and conditions:
+        </p>
+        <ul>
+            <li>All course materials are for personal use only. Redistribution or commercial use is prohibited without prior consent.</li>
+            <li>We reserve the right to modify or terminate courses without notice.</li>
+            <li>We are not liable for any damages resulting from the use of our website or course content.</li>
+            <li>By enrolling in our courses, you agree to abide by the rules and regulations set forth by the Social Science Department.</li>
+        </ul>
+        <p>
+            Please review these terms regularly as they are subject to change. Your continued use of our services constitutes your acceptance of any updates to these terms.
+        </p>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="map.html">Sitemap</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            var menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

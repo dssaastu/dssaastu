@@ -1,0 +1,1 @@
+<img src="chap5logo.jpg" alt="Description of Image" width="500" height="300">

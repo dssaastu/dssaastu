@@ -1,0 +1,20 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+    ??????????????????
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+rel=0 ------> in the link is not part of the link but has to be with the link to preent related adds
+<iframe 
+
+
+?????  -------> this should be replaced with embed link from youtube 

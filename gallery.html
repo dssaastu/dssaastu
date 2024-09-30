@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Science Department Courses</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header, .footer {
+            background-color: #2C3E50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1, .footer p {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .header p {
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #1A252F;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .navbar-toggler {
+            display: none;
+            background-color: #1A252F;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .navbar-menu {
+            display: flex;
+            flex-direction: row;
+        }
+        .navbar-menu.collapsed {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+        .navbar-menu.show {
+            display: flex;
+        }
+        .navbar-menu a {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .container h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .course-item {
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+            max-width: 300px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .course-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 4px solid #e0e0e0;
+            transition: transform 0.3s;
+        }
+        .course-item:hover img {
+            transform: scale(1.05);
+        }
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .course-item a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .course-item a:focus, .course-item a:hover {
+            outline: none;
+        }
+        .footer p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay-content {
+            position: relative;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .overlay-content img {
+            max-width: 90vw;
+            max-height: 80vh;
+        }
+
+        .overlay-content p {
+            margin: 10px 0;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+            user-select: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-menu.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item" data-description=" research and innovation cetnter under construction " data-image="gallery1.jpg">
+                <img src="gallery1.jpg" alt="Image 1">
+            </div>
+            <div class="gallery-item" data-description="Dstudents attending seminar , during tea break reading brochures">
+                <img src="gallery2.jpg" alt="Image 2">
+            </div>
+            <div class="gallery-item" data-description="AASTU meeting hall, red carpet" data-image="gallery3.jpg">
+                <img src="gallery3.jpg" alt="Image 3">
+            </div>
+            <div class="gallery-item" data-description="digital library, students taking training " data-image="gallery4.jpg">
+                <img src="gallery4.jpg" alt="Image 4">
+            </div>
+            <div class="gallery-item" data-description="green area AASTU" data-image="gallery5.jpg">
+                <img src="gallery5.jpg" alt="Image 5">
+            </div>
+            <div class="gallery-item" data-description="Staff planting tree" data-image="gallery6.jpg">
+                <img src="gallery6.jpg" alt="Image 6">
+            </div>
+	   <div class="gallery-item" data-description="corridors inside AASTU" data-image="gallery7.jpg">
+                <img src="gallery7.jpg" alt="Image 6">
+            </div>
+	   
+	   <div class="gallery-item" data-description="postgraduare students during graduation" data-image="gallery8.jpg">
+                <img src="gallery8.jpg" alt="Image 6">
+            </div>
+	   <div class="gallery-item" data-description="new research and innovation center under construction" data-image="gallery9.jpg">
+                <img src="gallery9.jpg" alt="Image 6">
+            </div>
+            <!-- Add more gallery items as needed -->
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <span class="arrow left" onclick="changeImage(-1)">&#10094;</span>
+            <img id="overlay-image" src="" alt="Overlay Image">
+            <p id="overlay-description"></p>
+            <span class="arrow right" onclick="changeImage(1)">&#10095;</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="map.html">Sitemap</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            document.getElementById('navbar-menu').classList.toggle('show');
+        });
+
+        var galleryItems = document.querySelectorAll('.gallery-item');
+        var overlay = document.getElementById('overlay');
+        var overlayImage = document.getElementById('overlay-image');
+        var overlayDescription = document.getElementById('overlay-description');
+        var currentIndex = 0;
+
+        galleryItems.forEach(function(item, index) {
+            item.addEventListener('click', function() {
+                overlayImage.src = item.querySelector('img').src;
+                overlayDescription.textContent = item.getAttribute('data-description');
+                overlay.style.display = 'flex';
+                currentIndex = index;
+            });
+        });
+
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        });
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = galleryItems.length - 1;
+            if (currentIndex >= galleryItems.length) currentIndex = 0;
+            overlayImage.src = galleryItems[currentIndex].querySelector('img').src;
+            overlayDescription.textContent = galleryItems[currentIndex].getAttribute('data-description');
+        }
+    </script>
+</body>
+</html>
