@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCED 1011 Chapter 3 Questions</title>
+    <title>MCIE 1012 Chapter 3 Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,19 +36,33 @@
             background: #ddd;
             cursor: pointer;
             transition: background 0.3s;
+            text-align: left; /* Align button text left */
         }
         .options button:hover {
             background: #ccc;
         }
-        .correct {
-            color: green;
+        /* Ensure buttons don't stay colored after clicking another */
+        .options button.answered {
+            pointer-events: none; /* Disable further clicks */
+            opacity: 0.7;
+        }
+        .options button.correct-choice {
+            background-color: #90ee90; /* Light green for correct */
+            color: black;
+        }
+        .options button.wrong-choice {
+            background-color: #ffcccb; /* Light red for incorrect */
+            color: black;
+        }
+        .feedback { /* Renamed from correct/wrong for clarity */
             font-weight: bold;
             margin-left: 10px;
         }
-        .wrong {
+        .feedback.correct {
+            color: green;
+        }
+        .feedback.wrong {
             color: red;
-            font-weight: bold;
-            margin-left: 10px;
         }
         .short-answer-section {
             margin-top: 40px;
@@ -416,13 +430,19 @@
 
     function loadQuiz() {
         const quizDiv = document.getElementById("quiz");
-        quizDiv.innerHTML = "";
+        quizDiv.innerHTML = ""; // Clear previous content if any
 
         questions.forEach((q, index) => {
+            // Create container for question and its options
+            const questionBlock = document.createElement("div");
+            questionBlock.style.marginBottom = "20px"; // Add space between questions
+
+            // Create question text element
             const questionElement = document.createElement("div");
             questionElement.classList.add("question");
             questionElement.innerText = `${index + 1}. ${q.question}`;
 
+            // Create options container
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
 
@@ -430,24 +450,51 @@
                 const button = document.createElement("button");
                 button.innerText = choice;
                 button.onclick = function() {
+                    // Remove previous feedback spans if any
+                    this.querySelectorAll('.feedback').forEach(span => span.remove());
+
+                    // Disable all buttons in this group and mark as answered
+                    const allButtonsInGroup = optionsDiv.querySelectorAll('button');
+                    allButtonsInGroup.forEach(btn => {
+                        btn.classList.add('answered');
+                        // Reset background/color in case of re-click (though disabled)
+                        btn.classList.remove('correct-choice', 'wrong-choice');
+                        btn.style.color = ''; // Reset direct style color if any
+                        btn.style.fontWeight = '';
+                    });
+
+                    // Create feedback span
+                    const feedbackSpan = document.createElement('span');
+                    feedbackSpan.classList.add('feedback');
+
                     if (choice === q.answer) {
-                        button.style.color = "green";
-                        button.innerHTML += '<span class="correct"> Correct</span>';
+                        this.classList.add('correct-choice'); // Use class for styling
+                        feedbackSpan.classList.add('correct');
+                        feedbackSpan.innerText = 'Correct';
                     } else {
-                        button.style.color = "red";
-                        button.innerHTML += '<span class="wrong"> Wrong</span>';
+                        this.classList.add('wrong-choice'); // Use class for styling
+                        feedbackSpan.classList.add('wrong');
+                        feedbackSpan.innerText = 'Wrong';
+
+                        // Highlight the correct answer as well
+                        allButtonsInGroup.forEach(btn => {
+                            if (btn.innerText === q.answer) {
+                                btn.classList.add('correct-choice');
+                            }
+                        });
                     }
-                    // Disable all buttons for this question after selection
-                    const buttons = optionsDiv.getElementsByTagName("button");
-                    for (let btn of buttons) {
-                        btn.disabled = true;
-                    }
+                    // Append feedback span to the clicked button
+                    this.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
 
-            quizDiv.appendChild(questionElement);
-            quizDiv.appendChild(optionsDiv);
+            // Append question and options to the question block
+            questionBlock.appendChild(questionElement);
+            questionBlock.appendChild(optionsDiv);
+
+            // Append the whole block to the main quiz container
+            quizDiv.appendChild(questionBlock);
         });
     }
 
@@ -487,6 +534,7 @@
         });
     }
 
+    // Load the quiz and short answers when the page loads
     loadQuiz();
     loadShortAnswers();
 </script>
