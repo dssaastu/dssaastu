@@ -8,11 +8,52 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-        h1, h2 {
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h2 {
             text-align: center;
         }
         .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .options button:hover {
+            background: #ccc;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .wrong {
+            color: red;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .short-answer-section {
+            margin-top: 40px;
+        }
+        .short-answer {
             margin-bottom: 20px;
         }
         .answer {
@@ -20,429 +61,430 @@
             color: green;
             margin-top: 10px;
         }
-        button {
+        .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 5px 10px;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s;
         }
-        button:hover {
+        .toggle-btn:hover {
             background-color: #45a049;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Moral and Citizenship Education (MCIE 1012) - Chapter 1 Questions</h1>
 
-    <h2>Multiple Choice Questions</h2>
-    <div class="question">
-        <p>1. What is the primary focus of civic education?</p>
-        <ul>
-            <li>A) Teaching professional skills for the job market</li>
-            <li>B) Studying the rights and responsibilities of citizens</li>
-            <li>C) Promoting cultural diversity in schools</li>
-            <li>D) Encouraging economic development</li>
-        </ul>
-        <button onclick="toggleAnswer('answer1')">View Answer</button>
-        <div id="answer1" class="answer">B) Studying the rights and responsibilities of citizens</div>
+<div class="quiz-container">
+    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 1 Quiz</h2>
+    <div id="quiz"></div>
+
+    <div class="short-answer-section">
+        <h2>Short Answer Questions</h2>
+        <div id="short-answers"></div>
     </div>
+</div>
 
-    <div class="question">
-        <p>2. Who argued that citizens should be educated to suit the constitution of a state?</p>
-        <ul>
-            <li>A) John Stuart Mill</li>
-            <li>B) Socrates</li>
-            <li>C) Aristotle</li>
-            <li>D) Patrick</li>
-        </ul>
-        <button onclick="toggleAnswer('answer2')">View Answer</button>
-        <div id="answer2" class="answer">C) Aristotle</div>
-    </div>
-
-    <div class="question">
-        <p>3. How does John Stuart Mill describe the relationship between a society and its citizens?</p>
-        <ul>
-            <li>A) A society progresses when it isolates its citizens</li>
-            <li>B) A peaceful society depends on developing good citizens</li>
-            <li>C) Citizens should focus only on personal gain</li>
-            <li>D) Society thrives without moral education</li>
-        </ul>
-        <button onclick="toggleAnswer('answer3')">View Answer</button>
-        <div id="answer3" class="answer">B) A peaceful society depends on developing good citizens</div>
-    </div>
-
-    <div class="question">
-        <p>4. Which of the following is NOT a term used to describe civic education across different countries?</p>
-        <ul>
-            <li>A) Right Education (South Africa)</li>
-            <li>B) Citizenship Education (USA and Germany)</li>
-            <li>C) Ethics and Law (Ethiopia)</li>
-            <li>D) Citizenship and Character Education (Singapore)</li>
-        </ul>
-        <button onclick="toggleAnswer('answer4')">View Answer</button>
-        <div id="answer4" class="answer">C) Ethics and Law (Ethiopia)</div>
-    </div>
-
-    <div class="question">
-        <p>5. What does Patrick (1986) define civic education as?</p>
-        <ul>
-            <li>A) Knowledge of economic systems</li>
-            <li>B) Knowledge of constitutions, principles, values, and their application</li>
-            <li>C) Training in ethical decision-making</li>
-            <li>D) Development of interpersonal skills</li>
-        </ul>
-        <button onclick="toggleAnswer('answer5')">View Answer</button>
-        <div id="answer5" class="answer">B) Knowledge of constitutions, principles, values, and their application</div>
-    </div>
-
-    <div class="question">
-        <p>6. What is civic education primarily a way of learning for, per UNDP (2004)?</p>
-        <ul>
-            <li>A) Effective participation in democratic and development processes</li>
-            <li>B) Acquiring technical skills for employment</li>
-            <li>C) Understanding cultural traditions</li>
-            <li>D) Promoting religious values</li>
-        </ul>
-        <button onclick="toggleAnswer('answer6')">View Answer</button>
-        <div id="answer6" class="answer">A) Effective participation in democratic and development processes</div>
-    </div>
-
-    <div class="question">
-        <p>7. What distinguishes a maximal concept of civic education from a minimal one?</p>
-        <ul>
-            <li>A) It focuses only on classroom teaching</li>
-            <li>B) It includes knowledge, values, and skills for active participation</li>
-            <li>C) It emphasizes teacher-led instruction</li>
-            <li>D) It avoids interactive teaching methods</li>
-        </ul>
-        <button onclick="toggleAnswer('answer7')">View Answer</button>
-        <div id="answer7" class="answer">B) It includes knowledge, values, and skills for active participation</div>
-    </div>
-
-    <div class="question">
-        <p>8. What is ethics described as?</p>
-        <ul>
-            <li>A) A set of laws enforced by the state</li>
-            <li>B) A branch of philosophy understanding moral beliefs and actions</li>
-            <li>C) A practical guide to citizenship</li>
-            <li>D) A study of political systems</li>
-        </ul>
-        <button onclick="toggleAnswer('answer8')">View Answer</button>
-        <div id="answer8" class="answer">B) A branch of philosophy understanding moral beliefs and actions</div>
-    </div>
-
-    <div class="question">
-        <p>9. How is ethics differentiated from morality?</p>
-        <ul>
-            <li>A) Ethics is the study of moral conduct, while morality is the conduct itself</li>
-            <li>B) Ethics is about personal beliefs, while morality is about laws</li>
-            <li>C) Ethics applies to individuals, while morality applies to groups</li>
-            <li>D) Ethics is less important than morality in education</li>
-        </ul>
-        <button onclick="toggleAnswer('answer9')">View Answer</button>
-        <div id="answer9" class="answer">A) Ethics is the study of moral conduct, while morality is the conduct itself</div>
-    </div>
-
-    <div class="question">
-        <p>10. What type of questions does ethics primarily address?</p>
-        <ul>
-            <li>A) What people would do in a situation</li>
-            <li>B) What people ought to do in a situation</li>
-            <li>C) How people feel about laws</li>
-            <li>D) Why people break rules</li>
-        </ul>
-        <button onclick="toggleAnswer('answer10')">View Answer</button>
-        <div id="answer10" class="answer">B) What people ought to do in a situation</div>
-    </div>
-
-    <div class="question">
-        <p>11. What is the significance of discussing morality, per Socrates?</p>
-        <ul>
-            <li>A) It is a small matter of personal choice</li>
-            <li>B) It determines how we ought to live</li>
-            <li>C) It is irrelevant to daily life</li>
-            <li>D) It only applies to legal systems</li>
-        </ul>
-        <button onclick="toggleAnswer('answer11')">View Answer</button>
-        <div id="answer11" class="answer">B) It determines how we ought to live</div>
-    </div>
-
-    <div class="question">
-        <p>12. What is morality defined as?</p>
-        <ul>
-            <li>A) A set of laws enforced by the government</li>
-            <li>B) A code of conduct guiding human actions as right or wrong</li>
-            <li>C) A philosophical theory about ethics</li>
-            <li>D) A professional code for businesses</li>
-        </ul>
-        <button onclick="toggleAnswer('answer12')">View Answer</button>
-        <div id="answer12" class="answer">B) A code of conduct guiding human actions as right or wrong</div>
-    </div>
-
-    <div class="question">
-        <p>13. Why might morality be ambiguous in a multicultural society like Ethiopia?</p>
-        <ul>
-            <li>A) Due to uniform cultural values</li>
-            <li>B) Because of diverse ethnic groups defining it differently</li>
-            <li>C) Because it is enforced by a single law</li>
-            <li>D) Due to a lack of education</li>
-        </ul>
-        <button onclick="toggleAnswer('answer13')">View Answer</button>
-        <div id="answer13" class="answer">B) Because of diverse ethnic groups defining it differently</div>
-    </div>
-
-    <div class="question">
-        <p>14. What is one key difference between ethics and law?</p>
-        <ul>
-            <li>A) Ethics is always illegal, while law is ethical</li>
-            <li>B) Some illegal actions may not be unethical, and vice versa</li>
-            <li>C) Laws are broader than ethics</li>
-            <li>D) Ethics is enforced by the government, unlike law</li>
-        </ul>
-        <button onclick="toggleAnswer('answer14')">View Answer</button>
-        <div id="answer14" class="answer">B) Some illegal actions may not be unethical, and vice versa</div>
-    </div>
-
-    <div class="question">
-        <p>15. Which of the following is an example of an unethical but legal action?</p>
-        <ul>
-            <li>A) Speeding to save a life</li>
-            <li>B) Lying under oath</li>
-            <li>C) Lying in a casual conversation</li>
-            <li>D) Stealing to feed a family</li>
-        </ul>
-        <button onclick="toggleAnswer('answer15')">View Answer</button>
-        <div id="answer15" class="answer">C) Lying in a casual conversation</div>
-    </div>
-
-    <div class="question">
-        <p>16. What is the main goal of moral and civic education in Ethiopian higher education?</p>
-        <ul>
-            <li>A) To teach students technical skills</li>
-            <li>B) To educate students about democratic culture and ethical values</li>
-            <li>C) To enforce religious principles</li>
-            <li>D) To promote economic competition</li>
-        </ul>
-        <button onclick="toggleAnswer('answer16')">View Answer</button>
-        <div id="answer16" class="answer">B) To educate students about democratic culture and ethical values</div>
-    </div>
-
-    <div class="question">
-        <p>17. Why is a balanced understanding of rights and duties important?</p>
-        <ul>
-            <li>A) It ensures citizens focus only on their rights</li>
-            <li>B) It helps create a society where rights and responsibilities coexist</li>
-            <li>C) It eliminates the need for laws</li>
-            <li>D) It prioritizes duties over rights</li>
-        </ul>
-        <button onclick="toggleAnswer('answer17')">View Answer</button>
-        <div id="answer17" class="answer">B) It helps create a society where rights and responsibilities coexist</div>
-    </div>
-
-    <div class="question">
-        <p>18. What does "one’s right implies the other’s duty" mean, per Sastry et al. (2011)?</p>
-        <ul>
-            <li>A) Rights exist without corresponding duties</li>
-            <li>B) Every right imposes a duty on others to respect it</li>
-            <li>C) Duties are more important than rights</li>
-            <li>D) Rights only apply to the state</li>
-        </ul>
-        <button onclick="toggleAnswer('answer18')">View Answer</button>
-        <div id="answer18" class="answer">B) Every right imposes a duty on others to respect it</div>
-    </div>
-
-    <div class="question">
-        <p>19. What is a participant political culture, as defined by Almond and Verba (1963)?</p>
-        <ul>
-            <li>A) Citizens are passive and detached from the political system</li>
-            <li>B) Citizens are highly engaged and active in the political process</li>
-            <li>C) Citizens focus only on family advantages</li>
-            <li>D) Citizens reject democratic principles</li>
-        </ul>
-        <button onclick="toggleAnswer('answer19')">View Answer</button>
-        <div id="answer19" class="answer">B) Citizens are highly engaged and active in the political process</div>
-    </div>
-
-    <div class="question">
-        <p>20. Which political culture is most compatible with democratic structures?</p>
-        <ul>
-            <li>A) Parochial culture</li>
-            <li>B) Subject culture</li>
-            <li>C) Participant culture</li>
-            <li>D) Authoritarian culture</li>
-        </ul>
-        <button onclick="toggleAnswer('answer20')">View Answer</button>
-        <div id="answer20" class="answer">C) Participant culture</div>
-    </div>
-
-    <div class="question">
-        <p>21. What is a key challenge to democratization?</p>
-        <ul>
-            <li>A) Lack of technological advancement</li>
-            <li>B) Citizens prioritizing individual interests over social norms</li>
-            <li>C) Excessive government control</li>
-            <li>D) Over-participation in voting</li>
-        </ul>
-        <button onclick="toggleAnswer('answer21')">View Answer</button>
-        <div id="answer21" class="answer">B) Citizens prioritizing individual interests over social norms</div>
-    </div>
-
-    <div class="question">
-        <p>22. What does active citizenship include beyond political participation?</p>
-        <ul>
-            <li>A) Economic investments</li>
-            <li>B) Socio-cultural and environmental activities</li>
-            <li>C) Religious practices</li>
-            <li>D) Legal reforms</li>
-        </ul>
-        <button onclick="toggleAnswer('answer22')">View Answer</button>
-        <div id="answer22" class="answer">B) Socio-cultural and environmental activities</div>
-    </div>
-
-    <div class="question">
-        <p>23. Why is relevant knowledge alone insufficient for citizens?</p>
-        <ul>
-            <li>A) It must be paired with skills and positive attitudes</li>
-            <li>B) It is outdated in modern society</li>
-            <li>C) It conflicts with ethical principles</li>
-            <li>D) It only benefits the state</li>
-        </ul>
-        <button onclick="toggleAnswer('answer23')">View Answer</button>
-        <div id="answer23" class="answer">A) It must be paired with skills and positive attitudes</div>
-    </div>
-
-    <div class="question">
-        <p>24. What social ill does civic education aim to address among youth?</p>
-        <ul>
-            <li>A) Economic inequality</li>
-            <li>B) Political apathy and anti-social behavior</li>
-            <li>C) Lack of technical skills</li>
-            <li>D) Cultural assimilation</li>
-        </ul>
-        <button onclick="toggleAnswer('answer24')">View Answer</button>
-        <div id="answer24" class="answer">B) Political apathy and anti-social behavior</div>
-    </div>
-
-    <div class="question">
-        <p>25. How does civics and ethics foster intercultural societies?</p>
-        <ul>
-            <li>A) By enforcing uniform cultural practices</li>
-            <li>B) By promoting dialogue and interdependence among cultures</li>
-            <li>C) By ignoring cultural diversity</li>
-            <li>D) By prioritizing one culture over others</li>
-        </ul>
-        <button onclick="toggleAnswer('answer25')">View Answer</button>
-        <div id="answer25" class="answer">B) By promoting dialogue and interdependence among cultures</div>
-    </div>
-
-    <div class="question">
-        <p>26. What is a key focus of civics and ethics in promoting inclusiveness?</p>
-        <ul>
-            <li>A) Empowering only women in politics</li>
-            <li>B) Recognizing gender differences while ensuring equity</li>
-            <li>C) Excluding private sphere concerns</li>
-            <li>D) Focusing solely on public policy</li>
-        </ul>
-        <button onclick="toggleAnswer('answer26')">View Answer</button>
-        <div id="answer26" class="answer">B) Recognizing gender differences while ensuring equity</div>
-    </div>
-
-    <div class="question">
-        <p>27. How can civics and ethics contribute to peace-building?</p>
-        <ul>
-            <li>A) By encouraging militarization</li>
-            <li>B) By developing competencies for conflict resolution and dialogue</li>
-            <li>C) By ignoring global conflicts</li>
-            <li>D) By promoting isolationism</li>
-        </ul>
-        <button onclick="toggleAnswer('answer27')">View Answer</button>
-        <div id="answer27" class="answer">B) By developing competencies for conflict resolution and dialogue</div>
-    </div>
-
-    <div class="question">
-        <p>28. Which core value does moral and civic education seek to promote in students?</p>
-        <ul>
-            <li>A) Competition</li>
-            <li>B) Respect for diversity</li>
-            <li>C) Individualism</li>
-            <li>D) Obedience to authority</li>
-        </ul>
-        <button onclick="toggleAnswer('answer28')">View Answer</button>
-        <div id="answer28" class="answer">B) Respect for diversity</div>
-    </div>
-
-    <div class="question">
-        <p>29. What does Aristotle mean by “Educating the mind without educating the heart is no education at all”?</p>
-        <ul>
-            <li>A) Education should focus only on intellectual growth</li>
-            <li>B) Moral education is essential alongside intellectual development</li>
-            <li>C) Emotions are irrelevant to learning</li>
-            <li>D) Technical skills outweigh ethical values</li>
-        </ul>
-        <button onclick="toggleAnswer('answer29')">View Answer</button>
-        <div id="answer29" class="answer">B) Moral education is essential alongside intellectual development</div>
-    </div>
-
-    <div class="question">
-        <p>30. What is the ultimate aim of teaching civics and ethics?</p>
-        <ul>
-            <li>A) Producing economically successful citizens</li>
-            <li>B) Creating competent, responsible citizens with high moral standards</li>
-            <li>C) Enforcing strict legal compliance</li>
-            <li>D) Promoting uniform cultural values</li>
-        </ul>
-        <button onclick="toggleAnswer('answer30')">View Answer</button>
-        <div id="answer30" class="answer">B) Creating competent, responsible citizens with high moral standards</div>
-    </div>
-
-    <h2>Short Answer Questions</h2>
-    <div class="question">
-        <p>1. Define civic education in your own words.</p>
-        <button onclick="toggleAnswer('answerSA1')">View Answer</button>
-        <div id="answerSA1" class="answer">Civic education is the process of teaching individuals about their rights and responsibilities as citizens, aiming to prepare them for active participation in a democratic society while fostering values like tolerance and respect.</div>
-    </div>
-
-    <div class="question">
-        <p>2. Explain one key difference between ethics and law.</p>
-        <button onclick="toggleAnswer('answerSA2')">View Answer</button>
-        <div id="answerSA2" class="answer">One key difference is that ethics focuses on what one ought to do based on moral principles, while law is a formal system enforced by the state; an action can be legal but unethical (e.g., lying casually) or illegal but ethical (e.g., speeding to save a life).</div>
-    </div>
-
-    <div class="question">
-        <p>3. Why is moral and civic education important in a multicultural society like Ethiopia?</p>
-        <button onclick="toggleAnswer('answerSA3')">View Answer</button>
-        <div id="answerSA3" class="answer">It promotes shared moral values and democratic principles, fostering harmony and integrity among diverse ethnic groups with differing cultural perspectives on morality.</div>
-    </div>
-
-    <div class="question">
-        <p>4. What is the significance of a participant political culture for democracy?</p>
-        <button onclick="toggleAnswer('answerSA4')">View Answer</button>
-        <div id="answerSA4" class="answer">A participant political culture encourages active citizen engagement in the political process, strengthening democracy by ensuring accountability and informed participation beyond just voting.</div>
-    </div>
-
-    <div class="question">
-        <p>5. How does civics and ethics education address youth social ills?</p>
-        <button onclick="toggleAnswer('answerSA5')">View Answer</button>
-        <div id="answerSA5" class="answer">It addresses youth social ills like political apathy and anti-social behavior by instilling relevant knowledge, skills, and positive attitudes, encouraging active citizenship and responsibility.</div>
-    </div>
-
-    <script>
-        function toggleAnswer(id) {
-            var answer = document.getElementById(id);
-            if (answer.style.display === "block") {
-                answer.style.display = "none";
-            } else {
-                answer.style.display = "block";
-            }
+<script>
+    const questions = [
+        { 
+            question: "What is the primary focus of civic education?", 
+            choices: [
+                "Teaching professional skills for the job market", 
+                "Studying the rights and responsibilities of citizens", 
+                "Promoting cultural diversity in schools", 
+                "Encouraging economic development"
+            ], 
+            answer: "Studying the rights and responsibilities of citizens"
+        },
+        { 
+            question: "Who argued that citizens should be educated to suit the constitution of a state?", 
+            choices: ["John Stuart Mill", "Socrates", "Aristotle", "Patrick"], 
+            answer: "Aristotle"
+        },
+        { 
+            question: "How does John Stuart Mill describe the relationship between a society and its citizens?", 
+            choices: [
+                "A society progresses when it isolates its citizens", 
+                "A peaceful society depends on developing good citizens", 
+                "Citizens should focus only on personal gain", 
+                "Society thrives without moral education"
+            ], 
+            answer: "A peaceful society depends on developing good citizens"
+        },
+        { 
+            question: "Which of the following is NOT a term used to describe civic education across different countries?", 
+            choices: [
+                "Right Education (South Africa)", 
+                "Citizenship Education (USA and Germany)", 
+                "Ethics and Law (Ethiopia)", 
+                "Citizenship and Character Education (Singapore)"
+            ], 
+            answer: "Ethics and Law (Ethiopia)"
+        },
+        { 
+            question: "What does Patrick (1986) define civic education as?", 
+            choices: [
+                "Knowledge of economic systems", 
+                "Knowledge of constitutions, principles, values, and their application", 
+                "Training in ethical decision-making", 
+                "Development of interpersonal skills"
+            ], 
+            answer: "Knowledge of constitutions, principles, values, and their application"
+        },
+        { 
+            question: "What is civic education primarily a way of learning for, per UNDP (2004)?", 
+            choices: [
+                "Effective participation in democratic and development processes", 
+                "Acquiring technical skills for employment", 
+                "Understanding cultural traditions", 
+                "Promoting religious values"
+            ], 
+            answer: "Effective participation in democratic and development processes"
+        },
+        { 
+            question: "What distinguishes a maximal concept of civic education from a minimal one?", 
+            choices: [
+                "It focuses only on classroom teaching", 
+                "It includes knowledge, values, and skills for active participation", 
+                "It emphasizes teacher-led instruction", 
+                "It avoids interactive teaching methods"
+            ], 
+            answer: "It includes knowledge, values, and skills for active participation"
+        },
+        { 
+            question: "What is ethics described as?", 
+            choices: [
+                "A set of laws enforced by the state", 
+                "A branch of philosophy understanding moral beliefs and actions", 
+                "A practical guide to citizenship", 
+                "A study of political systems"
+            ], 
+            answer: "A branch of philosophy understanding moral beliefs and actions"
+        },
+        { 
+            question: "How is ethics differentiated from morality?", 
+            choices: [
+                "Ethics is the study of moral conduct, while morality is the conduct itself", 
+                "Ethics is about personal beliefs, while morality is about laws", 
+                "Ethics applies to individuals, while morality applies to groups", 
+                "Ethics is less important than morality in education"
+            ], 
+            answer: "Ethics is the study of moral conduct, while morality is the conduct itself"
+        },
+        { 
+            question: "What type of questions does ethics primarily address?", 
+            choices: [
+                "What people would do in a situation", 
+                "What people ought to do in a situation", 
+                "How people feel about laws", 
+                "Why people break rules"
+            ], 
+            answer: "What people ought to do in a situation"
+        },
+        { 
+            question: "What is the significance of discussing morality, per Socrates?", 
+            choices: [
+                "It is a small matter of personal choice", 
+                "It determines how we ought to live", 
+                "It is irrelevant to daily life", 
+                "It only applies to legal systems"
+            ], 
+            answer: "It determines how we ought to live"
+        },
+        { 
+            question: "What is morality defined as?", 
+            choices: [
+                "A set of laws enforced by the government", 
+                "A code of conduct guiding human actions as right or wrong", 
+                "A philosophical theory about ethics", 
+                "A professional code for businesses"
+            ], 
+            answer: "A code of conduct guiding human actions as right or wrong"
+        },
+        { 
+            question: "Why might morality be ambiguous in a multicultural society like Ethiopia?", 
+            choices: [
+                "Due to uniform cultural values", 
+                "Because of diverse ethnic groups defining it differently", 
+                "Because it is enforced by a single law", 
+                "Due to a lack of education"
+            ], 
+            answer: "Because of diverse ethnic groups defining it differently"
+        },
+        { 
+            question: "What is one key difference between ethics and law?", 
+            choices: [
+                "Ethics is always illegal, while law is ethical", 
+                "Some illegal actions may not be unethical, and vice versa", 
+                "Laws are broader than ethics", 
+                "Ethics is enforced by the government, unlike law"
+            ], 
+            answer: "Some illegal actions may not be unethical, and vice versa"
+        },
+        { 
+            question: "Which of the following is an example of an unethical but legal action?", 
+            choices: [
+                "Speeding to save a life", 
+                "Lying under oath", 
+                "Lying in a casual conversation", 
+                "Stealing to feed a family"
+            ], 
+            answer: "Lying in a casual conversation"
+        },
+        { 
+            question: "What is the main goal of moral and civic education in Ethiopian higher education?", 
+            choices: [
+                "To teach students technical skills", 
+                "To educate students about democratic culture and ethical values", 
+                "To enforce religious principles", 
+                "To promote economic competition"
+            ], 
+            answer: "To educate students about democratic culture and ethical values"
+        },
+        { 
+            question: "Why is a balanced understanding of rights and duties important?", 
+            choices: [
+                "It ensures citizens focus only on their rights", 
+                "It helps create a society where rights and responsibilities coexist", 
+                "It eliminates the need for laws", 
+                "It prioritizes duties over rights"
+            ], 
+            answer: "It helps create a society where rights and responsibilities coexist"
+        },
+        { 
+            question: "What does 'one’s right implies the other’s duty' mean, per Sastry et al. (2011)?", 
+            choices: [
+                "Rights exist without corresponding duties", 
+                "Every right imposes a duty on others to respect it", 
+                "Duties are more important than rights", 
+                "Rights only apply to the state"
+            ], 
+            answer: "Every right imposes a duty on others to respect it"
+        },
+        { 
+            question: "What is a participant political culture, as defined by Almond and Verba (1963)?", 
+            choices: [
+                "Citizens are passive and detached from the political system", 
+                "Citizens are highly engaged and active in the political process", 
+                "Citizens focus only on family advantages", 
+                "Citizens reject democratic principles"
+            ], 
+            answer: "Citizens are highly engaged and active in the political process"
+        },
+        { 
+            question: "Which political culture is most compatible with democratic structures?", 
+            choices: [
+                "Parochial culture", 
+                "Subject culture", 
+                "Participant culture", 
+                "Authoritarian culture"
+            ], 
+            answer: "Participant culture"
+        },
+        { 
+            question: "What is a key challenge to democratization?", 
+            choices: [
+                "Lack of technological advancement", 
+                "Citizens prioritizing individual interests over social norms", 
+                "Excessive government control", 
+                "Over-participation in voting"
+            ], 
+            answer: "Citizens prioritizing individual interests over social norms"
+        },
+        { 
+            question: "What does active citizenship include beyond political participation?", 
+            choices: [
+                "Economic investments", 
+                "Socio-cultural and environmental activities", 
+                "Religious practices", 
+                "Legal reforms"
+            ], 
+            answer: "Socio-cultural and environmental activities"
+        },
+        { 
+            question: "Why is relevant knowledge alone insufficient for citizens?", 
+            choices: [
+                "It must be paired with skills and positive attitudes", 
+                "It is outdated in modern society", 
+                "It conflicts with ethical principles", 
+                "It only benefits the state"
+            ], 
+            answer: "It must be paired with skills and positive attitudes"
+        },
+        { 
+            question: "What social ill does civic education aim to address among youth?", 
+            choices: [
+                "Economic inequality", 
+                "Political apathy and anti-social behavior", 
+                "Lack of technical skills", 
+                "Cultural assimilation"
+            ], 
+            answer: "Political apathy and anti-social behavior"
+        },
+        { 
+            question: "How does civics and ethics foster intercultural societies?", 
+            choices: [
+                "By enforcing uniform cultural practices", 
+                "By promoting dialogue and interdependence among cultures", 
+                "By ignoring cultural diversity", 
+                "By prioritizing one culture over others"
+            ], 
+            answer: "By promoting dialogue and interdependence among cultures"
+        },
+        { 
+            question: "What is a key focus of civics and ethics in promoting inclusiveness?", 
+            choices: [
+                "Empowering only women in politics", 
+                "Recognizing gender differences while ensuring equity", 
+                "Excluding private sphere concerns", 
+                "Focusing solely on public policy"
+            ], 
+            answer: "Recognizing gender differences while ensuring equity"
+        },
+        { 
+            question: "How can civics and ethics contribute to peace-building?", 
+            choices: [
+                "By encouraging militarization", 
+                "By developing competencies for conflict resolution and dialogue", 
+                "By ignoring global conflicts", 
+                "By promoting isolationism"
+            ], 
+            answer: "By developing competencies for conflict resolution and dialogue"
+        },
+        { 
+            question: "Which core value does moral and civic education seek to promote in students?", 
+            choices: [
+                "Competition", 
+                "Respect for diversity", 
+                "Individualism", 
+                "Obedience to authority"
+            ], 
+            answer: "Respect for diversity"
+        },
+        { 
+            question: "What does Aristotle mean by 'Educating the mind without educating the heart is no education at all'?", 
+            choices: [
+                "Education should focus only on intellectual growth", 
+                "Moral education is essential alongside intellectual development", 
+                "Emotions are irrelevant to learning", 
+                "Technical skills outweigh ethical values"
+            ], 
+            answer: "Moral education is essential alongside intellectual development"
+        },
+        { 
+            question: "What is the ultimate aim of teaching civics and ethics?", 
+            choices: [
+                "Producing economically successful citizens", 
+                "Creating competent, responsible citizens with high moral standards", 
+                "Enforcing strict legal compliance", 
+                "Promoting uniform cultural values"
+            ], 
+            answer: "Creating competent, responsible citizens with high moral standards"
         }
-    </script>
+    ];
+
+    const shortAnswerQuestions = [
+        { 
+            question: "Define civic education in your own words.", 
+            answer: "Civic education is the process of teaching individuals about their rights and responsibilities as citizens, aiming to prepare them for active participation in a democratic society while fostering values like tolerance and respect."
+        },
+        { 
+            question: "Explain one key difference between ethics and law.", 
+            answer: "One key difference is that ethics focuses on what one ought to do based on moral principles, while law is a formal system enforced by the state; an action can be legal but unethical (e.g., lying casually) or illegal but ethical (e.g., speeding to save a life)."
+        },
+        { 
+            question: "Why is moral and civic education important in a multicultural society like Ethiopia?", 
+            answer: "It promotes shared moral values and democratic principles, fostering harmony and integrity among diverse ethnic groups with differing cultural perspectives on morality."
+        },
+        { 
+            question: "What is the significance of a participant political culture for democracy?", 
+            answer: "A participant political culture encourages active citizen engagement in the political process, strengthening democracy by ensuring accountability and informed participation beyond just voting."
+        },
+        { 
+            question: "How does civics and ethics education address youth social ills?", 
+            answer: "It addresses youth social ills like political apathy and anti-social behavior by instilling relevant knowledge, skills, and positive attitudes, encouraging active citizenship and responsibility."
+        }
+    ];
+
+    function loadQuiz() {
+        const quizDiv = document.getElementById("quiz");
+        quizDiv.innerHTML = "";
+
+        questions.forEach((q, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.classList.add("question");
+            questionElement.innerText = `${index + 1}. ${q.question}`;
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            q.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.innerText = choice;
+                button.onclick = function() {
+                    if (choice === q.answer) {
+                        button.style.color = "green";
+                        button.innerHTML += '<span class="correct"> Correct</span>';
+                    } else {
+                        button.style.color = "red";
+                        button.innerHTML += '<span class="wrong"> Wrong</span>';
+                    }
+                    // Disable all buttons for this question after selection
+                    const buttons = optionsDiv.getElementsByTagName("button");
+                    for (let btn of buttons) {
+                        btn.disabled = true;
+                    }
+                };
+                optionsDiv.appendChild(button);
+            });
+
+            quizDiv.appendChild(questionElement);
+            quizDiv.appendChild(optionsDiv);
+        });
+    }
+
+    function loadShortAnswers() {
+        const shortAnswerDiv = document.getElementById("short-answers");
+        shortAnswerDiv.innerHTML = "";
+
+        shortAnswerQuestions.forEach((sa, index) => {
+            const saElement = document.createElement("div");
+            saElement.classList.add("short-answer");
+
+            const questionP = document.createElement("p");
+            questionP.innerText = `${index + 1}. ${sa.question}`;
+            saElement.appendChild(questionP);
+
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.innerText = "View Answer";
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.innerText = sa.answer;
+            saElement.appendChild(answerDiv);
+
+            shortAnswerDiv.appendChild(saElement);
+        });
+    }
+
+    loadQuiz();
+    loadShortAnswers();
+</script>
+
 </body>
 </html>
