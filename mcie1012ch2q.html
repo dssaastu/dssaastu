@@ -8,11 +8,52 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-        h1, h2 {
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h2 {
             text-align: center;
         }
         .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .options button:hover {
+            background: #ccc;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .wrong {
+            color: red;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .short-answer-section {
+            margin-top: 40px;
+        }
+        .short-answer {
             margin-bottom: 20px;
         }
         .answer {
@@ -20,669 +61,575 @@
             color: green;
             margin-top: 10px;
         }
-        button {
+        .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 5px 10px;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background 0.3s;
         }
-        button:hover {
+        .toggle-btn:hover {
             background-color: #45a049;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Moral and Citizenship Education (MCED 1011) - Chapter 2 Questions</h1>
 
-    <h2>Multiple Choice Questions</h2>
-    <div class="question">
-        <p>1. What is the primary focus of normative ethics?</p>
-        <ul>
-            <li>A) Defining the meaning of moral terms</li>
-            <li>B) Studying the nature of moral judgments</li>
-            <li>C) Providing guidelines for what people should do</li>
-            <li>D) Analyzing psychological aspects of morality</li>
-        </ul>
-        <button onclick="toggleAnswer('answer1')">View Answer</button>
-        <div id="answer1" class="answer">C) Providing guidelines for what people should do</div>
+<div class="quiz-container">
+    <h2>Moral and Citizenship Education (MCED 1011) - Chapter 2 Quiz</h2>
+    <div id="quiz"></div>
+
+    <div class="short-answer-section">
+        <h2>Short Answer Questions</h2>
+        <div id="short-answers"></div>
     </div>
+</div>
 
-    <div class="question">
-        <p>2. Which category of ethics focuses on the consequences of actions?</p>
-        <ul>
-            <li>A) Deontological ethics</li>
-            <li>B) Teleological ethics</li>
-            <li>C) Virtue ethics</li>
-            <li>D) Meta-ethics</li>
-        </ul>
-        <button onclick="toggleAnswer('answer2')">View Answer</button>
-        <div id="answer2" class="answer">B) Teleological ethics</div>
-    </div>
-
-    <div class="question">
-        <p>3. What does utilitarianism primarily emphasize?</p>
-        <ul>
-            <li>A) Duty and rules</li>
-            <li>B) Character traits</li>
-            <li>C) Greatest happiness for the greatest number</li>
-            <li>D) Divine commands</li>
-        </ul>
-        <button onclick="toggleAnswer('answer3')">View Answer</button>
-        <div id="answer3" class="answer">C) Greatest happiness for the greatest number</div>
-    </div>
-
-    <div class="question">
-        <p>4. Who is a key proponent of classical utilitarianism?</p>
-        <ul>
-            <li>A) Immanuel Kant</li>
-            <li>B) Jeremy Bentham</li>
-            <li>C) Aristotle</li>
-            <li>D) John Rawls</li>
-        </ul>
-        <button onclick="toggleAnswer('answer4')">View Answer</button>
-        <div id="answer4" class="answer">B) Jeremy Bentham</div>
-    </div>
-
-    <div class="question">
-        <p>5. How does John Stuart Mill modify Bentham’s utilitarianism?</p>
-        <ul>
-            <li>A) By focusing on duty over happiness</li>
-            <li>B) By emphasizing quality of pleasure over quantity</li>
-            <li>C) By rejecting consequences as a moral basis</li>
-            <li>D) By prioritizing individual rights</li>
-        </ul>
-        <button onclick="toggleAnswer('answer5')">View Answer</button>
-        <div id="answer5" class="answer">B) By emphasizing quality of pleasure over quantity</div>
-    </div>
-
-    <div class="question">
-        <p>6. What is a key feature of act-utilitarianism?</p>
-        <ul>
-            <li>A) Following strict moral rules</li>
-            <li>B) Judging each action by its consequences</li>
-            <li>C) Focusing on character development</li>
-            <li>D) Adhering to divine laws</li>
-        </ul>
-        <button onclick="toggleAnswer('answer6')">View Answer</button>
-        <div id="answer6" class="answer">B) Judging each action by its consequences</div>
-    </div>
-
-    <div class="question">
-        <p>7. What does rule-utilitarianism prioritize?</p>
-        <ul>
-            <li>A) Individual actions</li>
-            <li>B) General rules that maximize happiness</li>
-            <li>C) Personal virtues</li>
-            <li>D) Absolute duties</li>
-        </ul>
-        <button onclick="toggleAnswer('answer7')">View Answer</button>
-        <div id="answer7" class="answer">B) General rules that maximize happiness</div>
-    </div>
-
-    <div class="question">
-        <p>8. What is a common criticism of utilitarianism?</p>
-        <ul>
-            <li>A) It ignores consequences</li>
-            <li>B) It may justify harming minorities for the majority</li>
-            <li>C) It focuses too much on duty</li>
-            <li>D) It rejects happiness as a goal</li>
-        </ul>
-        <button onclick="toggleAnswer('answer8')">View Answer</button>
-        <div id="answer8" class="answer">B) It may justify harming minorities for the majority</div>
-    </div>
-
-    <div class="question">
-        <p>9. Which theory is considered non-consequentialist?</p>
-        <ul>
-            <li>A) Utilitarianism</li>
-            <li>B) Deontological ethics</li>
-            <li>C) Virtue ethics</li>
-            <li>D) Ethical egoism</li>
-        </ul>
-        <button onclick="toggleAnswer('answer9')">View Answer</button>
-        <div id="answer9" class="answer">B) Deontological ethics</div>
-    </div>
-
-    <div class="question">
-        <p>10. What is the basis of deontological ethics?</p>
-        <ul>
-            <li>A) Outcomes of actions</li>
-            <li>B) Duty and moral rules</li>
-            <li>C) Personal happiness</li>
-            <li>D) Social contracts</li>
-        </ul>
-        <button onclick="toggleAnswer('answer10')">View Answer</button>
-        <div id="answer10" class="answer">B) Duty and moral rules</div>
-    </div>
-
-    <div class="question">
-        <p>11. Who developed the categorical imperative?</p>
-        <ul>
-            <li>A) Jeremy Bentham</li>
-            <li>B) Immanuel Kant</li>
-            <li>C) John Stuart Mill</li>
-            <li>D) Aristotle</li>
-        </ul>
-        <button onclick="toggleAnswer('answer11')">View Answer</button>
-        <div id="answer11" class="answer">B) Immanuel Kant</div>
-    </div>
-
-    <div class="question">
-        <p>12. What does Kant’s categorical imperative state?</p>
-        <ul>
-            <li>A) Maximize happiness for all</li>
-            <li>B) Act only according to rules you can universalize</li>
-            <li>C) Pursue personal virtue</li>
-            <li>D) Follow divine commands</li>
-        </ul>
-        <button onclick="toggleAnswer('answer12')">View Answer</button>
-        <div id="answer12" class="answer">B) Act only according to rules you can universalize</div>
-    </div>
-
-    <div class="question">
-        <p>13. What is a key principle of Kantian ethics?</p>
-        <ul>
-            <li>A) Ends justify the means</li>
-            <li>B) Treat people as ends, not means</li>
-            <li>C) Happiness is the ultimate goal</li>
-            <li>D) Rules are flexible</li>
-        </ul>
-        <button onclick="toggleAnswer('answer13')">View Answer</button>
-        <div id="answer13" class="answer">B) Treat people as ends, not means</div>
-    </div>
-
-    <div class="question">
-        <p>14. What does the divine command theory assert?</p>
-        <ul>
-            <li>A) Morality comes from human reason</li>
-            <li>B) Morality is based on God’s will</li>
-            <li>C) Morality depends on consequences</li>
-            <li>D) Morality is about personal virtues</li>
-        </ul>
-        <button onclick="toggleAnswer('answer14')">View Answer</button>
-        <div id="answer14" class="answer">B) Morality is based on God’s will</div>
-    </div>
-
-    <div class="question">
-        <p>15. What is a criticism of the divine command theory?</p>
-        <ul>
-            <li>A) It ignores divine will</li>
-            <li>B) It raises the question of whether God’s commands are arbitrary</li>
-            <li>C) It focuses too much on happiness</li>
-            <li>D) It rejects moral duties</li>
-        </ul>
-        <button onclick="toggleAnswer('answer15')">View Answer</button>
-        <div id="answer15" class="answer">B) It raises the question of whether God’s commands are arbitrary</div>
-    </div>
-
-    <div class="question">
-        <p>16. What does rights theory emphasize?</p>
-        <ul>
-            <li>A) Consequences of actions</li>
-            <li>B) Inherent rights of individuals</li>
-            <li>C) Virtue development</li>
-            <li>D) Social utility</li>
-        </ul>
-        <button onclick="toggleAnswer('answer16')">View Answer</button>
-        <div id="answer16" class="answer">B) Inherent rights of individuals</div>
-    </div>
-
-    <div class="question">
-        <p>17. What are Ross’s prima facie duties?</p>
-        <ul>
-            <li>A) Absolute rules to follow</li>
-            <li>B) Conditional duties that can conflict</li>
-            <li>C) Duties based on happiness</li>
-            <li>D) Duties derived from virtues</li>
-        </ul>
-        <button onclick="toggleAnswer('answer17')">View Answer</button>
-        <div id="answer17" class="answer">B) Conditional duties that can conflict</div>
-    </div>
-
-    <div class="question">
-        <p>18. What is the focus of virtue ethics?</p>
-        <ul>
-            <li>A) Rules and duties</li>
-            <li>B) Consequences of actions</li>
-            <li>C) Character and moral virtues</li>
-            <li>D) Divine commandments</li>
-        </ul>
-        <button onclick="toggleAnswer('answer18')">View Answer</button>
-        <div id="answer18" class="answer">C) Character and moral virtues</div>
-    </div>
-
-    <div class="question">
-        <p>19. Who is a foundational figure in virtue ethics?</p>
-        <ul>
-            <li>A) Kant</li>
-            <li>B) Bentham</li>
-            <li>C) Aristotle</li>
-            <li>D) Mill</li>
-        </ul>
-        <button onclick="toggleAnswer('answer19')">View Answer</button>
-        <div id="answer19" class="answer">C) Aristotle</div>
-    </div>
-
-    <div class="question">
-        <p>20. What is Aristotle’s concept of the "golden mean"?</p>
-        <ul>
-            <li>A) Maximizing pleasure</li>
-            <li>B) Balancing virtues between extremes</li>
-            <li>C) Following strict rules</li>
-            <li>D) Obeying divine laws</li>
-        </ul>
-        <button onclick="toggleAnswer('answer20')">View Answer</button>
-        <div id="answer20" class="answer">B) Balancing virtues between extremes</div>
-    </div>
-
-    <div class="question">
-        <p>21. What does eudaimonia mean in Aristotle’s ethics?</p>
-        <ul>
-            <li>A) Wealth</li>
-            <li>B) Happiness or flourishing</li>
-            <li>C) Duty fulfillment</li>
-            <li>D) Social harmony</li>
-        </ul>
-        <button onclick="toggleAnswer('answer21')">View Answer</button>
-        <div id="answer21" class="answer">B) Happiness or flourishing</div>
-    </div>
-
-    <div class="question">
-        <p>22. What is a criticism of virtue ethics?</p>
-        <ul>
-            <li>A) It ignores character</li>
-            <li>B) It lacks clear action guidance</li>
-            <li>C) It focuses too much on rules</li>
-            <li>D) It prioritizes consequences</li>
-        </ul>
-        <button onclick="toggleAnswer('answer22')">View Answer</button>
-        <div id="answer22" class="answer">B) It lacks clear action guidance</div>
-    </div>
-
-    <div class="question">
-        <p>23. What does meta-ethics study?</p>
-        <ul>
-            <li>A) How to act morally</li>
-            <li>B) The nature and meaning of moral judgments</li>
-            <li>C) Consequences of actions</li>
-            <li>D) Character traits</li>
-        </ul>
-        <button onclick="toggleAnswer('answer23')">View Answer</button>
-        <div id="answer23" class="answer">B) The nature and meaning of moral judgments</div>
-    </div>
-
-    <div class="question">
-        <p>24. What does cognitivism in meta-ethics assert?</p>
-        <ul>
-            <li>A) Moral statements are meaningless</li>
-            <li>B) Moral statements express beliefs that can be true or false</li>
-            <li>C) Morality is purely emotional</li>
-            <li>D) Morality is subjective</li>
-        </ul>
-        <button onclick="toggleAnswer('answer24')">View Answer</button>
-        <div id="answer24" class="answer">B) Moral statements express beliefs that can be true or false</div>
-    </div>
-
-    <div class="question">
-        <p>25. What is non-cognitivism in meta-ethics?</p>
-        <ul>
-            <li>A) Moral statements are factual</li>
-            <li>B) Moral statements express emotions, not truths</li>
-            <li>C) Morality is universal</li>
-            <li>D) Morality is based on reason</li>
-        </ul>
-        <button onclick="toggleAnswer('answer25')">View Answer</button>
-        <div id="answer25" class="answer">B) Moral statements express emotions, not truths</div>
-    </div>
-
-    <div class="question">
-        <p>26. What does moral realism claim?</p>
-        <ul>
-            <li>A) Moral truths are subjective</li>
-            <li>B) Moral facts exist independently of human thought</li>
-            <li>C) Morality is an illusion</li>
-            <li>D) Moral judgments are emotional</li>
-        </ul>
-        <button onclick="toggleAnswer('answer26')">View Answer</button>
-        <div id="answer26" class="answer">B) Moral facts exist independently of human thought</div>
-    </div>
-
-    <div class="question">
-        <p>27. What is Mackie’s error theory?</p>
-        <ul>
-            <li>A) Moral facts exist universally</li>
-            <li>B) Moral judgments claim objective truth but are false</li>
-            <li>C) Morality is based on divine will</li>
-            <li>D) Moral statements are subjective</li>
-        </ul>
-        <button onclick="toggleAnswer('answer27')">View Answer</button>
-        <div id="answer27" class="answer">B) Moral judgments claim objective truth but are false</div>
-    </div>
-
-    <div class="question">
-        <p>28. What does ethical egoism advocate?</p>
-        <ul>
-            <li>A) Acting for the common good</li>
-            <li>B) Pursuing one’s own self-interest</li>
-            <li>C) Following universal rules</li>
-            <li>D) Developing virtues</li>
-        </ul>
-        <button onclick="toggleAnswer('answer28')">View Answer</button>
-        <div id="answer28" class="answer">B) Pursuing one’s own self-interest</div>
-    </div>
-
-    <div class="question">
-        <p>29. What is a key criticism of ethical egoism?</p>
-        <ul>
-            <li>A) It ignores self-interest</li>
-            <li>B) It may conflict with social cooperation</li>
-            <li>C) It focuses too much on duty</li>
-            <li>D) It rejects consequences</li>
-        </ul>
-        <button onclick="toggleAnswer('answer29')">View Answer</button>
-        <div id="answer29" class="answer">B) It may conflict with social cooperation</div>
-    </div>
-
-    <div class="question">
-        <p>30. What does altruism emphasize?</p>
-        <ul>
-            <li>A) Self-interest</li>
-            <li>B) Concern for others’ well-being</li>
-            <li>C) Strict rule-following</li>
-            <li>D) Personal virtues</li>
-        </ul>
-        <button onclick="toggleAnswer('answer30')">View Answer</button>
-        <div id="answer30" class="answer">B) Concern for others’ well-being</div>
-    </div>
-
-    <div class="question">
-        <p>31. What is the focus of teleological ethics?</p>
-        <ul>
-            <li>A) Duty</li>
-            <li>B) Consequences</li>
-            <li>C) Character</li>
-            <li>D) Divine will</li>
-        </ul>
-        <button onclick="toggleAnswer('answer31')">View Answer</button>
-        <div id="answer31" class="answer">B) Consequences</div>
-    </div>
-
-    <div class="question">
-        <p>32. What does hedonism consider the highest good?</p>
-        <ul>
-            <li>A) Duty</li>
-            <li>B) Pleasure</li>
-            <li>C) Virtue</li>
-            <li>D) Justice</li>
-        </ul>
-        <button onclick="toggleAnswer('answer32')">View Answer</button>
-        <div id="answer32" class="answer">B) Pleasure</div>
-    </div>
-
-    <div class="question">
-        <p>33. What is a strength of deontological ethics?</p>
-        <ul>
-            <li>A) It focuses on outcomes</li>
-            <li>B) It provides clear moral rules</li>
-            <li>C) It emphasizes happiness</li>
-            <li>D) It prioritizes virtues</li>
-        </ul>
-        <button onclick="toggleAnswer('answer33')">View Answer</button>
-        <div id="answer33" class="answer">B) It provides clear moral rules</div>
-    </div>
-
-    <div class="question">
-        <p>34. What is a limitation of Kantian ethics?</p>
-        <ul>
-            <li>A) It ignores duty</li>
-            <li>B) It may lead to rigid rule-following</li>
-            <li>C) It focuses on pleasure</li>
-            <li>D) It rejects universal principles</li>
-        </ul>
-        <button onclick="toggleAnswer('answer34')">View Answer</button>
-        <div id="answer34" class="answer">B) It may lead to rigid rule-following</div>
-    </div>
-
-    <div class="question">
-        <p>35. What does moral relativism assert?</p>
-        <ul>
-            <li>A) Moral truths are universal</li>
-            <li>B) Morality varies by culture or individual</li>
-            <li>C) Morality is objective</li>
-            <li>D) Morality is divine</li>
-        </ul>
-        <button onclick="toggleAnswer('answer35')">View Answer</button>
-        <div id="answer35" class="answer">B) Morality varies by culture or individual</div>
-    </div>
-
-    <div class="question">
-        <p>36. What is a criticism of moral relativism?</p>
-        <ul>
-            <li>A) It promotes universal standards</li>
-            <li>B) It struggles to judge harmful practices</li>
-            <li>C) It focuses on consequences</li>
-            <li>D) It emphasizes duty</li>
-        </ul>
-        <button onclick="toggleAnswer('answer36')">View Answer</button>
-        <div id="answer36" class="answer">B) It struggles to judge harmful practices</div>
-    </div>
-
-    <div class="question">
-        <p>37. What does moral absolutism claim?</p>
-        <ul>
-            <li>A) Morality is relative</li>
-            <li>B) Certain moral principles are universally true</li>
-            <li>C) Morality depends on outcomes</li>
-            <li>D) Morality is subjective</li>
-        </ul>
-        <button onclick="toggleAnswer('answer37')">View Answer</button>
-        <div id="answer37" class="answer">B) Certain moral principles are universally true</div>
-    </div>
-
-    <div class="question">
-        <p>38. What is the social contract theory?</p>
-        <ul>
-            <li>A) Morality comes from divine commands</li>
-            <li>B) Morality arises from mutual agreements</li>
-            <li>C) Morality is about personal virtues</li>
-            <li>D) Morality focuses on happiness</li>
-        </ul>
-        <button onclick="toggleAnswer('answer38')">View Answer</button>
-        <div id="answer38" class="answer">B) Morality arises from mutual agreements</div>
-    </div>
-
-    <div class="question">
-        <p>39. Who is a key thinker in social contract theory?</p>
-        <ul>
-            <li>A) Aristotle</li>
-            <li>B) Thomas Hobbes</li>
-            <li>C) Jeremy Bentham</li>
-            <li>D) Immanuel Kant</li>
-        </ul>
-        <button onclick="toggleAnswer('answer39')">View Answer</button>
-        <div id="answer39" class="answer">B) Thomas Hobbes</div>
-    </div>
-
-    <div class="question">
-        <p>40. What does Hobbes believe about human nature?</p>
-        <ul>
-            <li>A) Naturally altruistic</li>
-            <li>B) Naturally selfish and brutal</li>
-            <li>C) Naturally virtuous</li>
-            <li>D) Naturally rational</li>
-        </ul>
-        <button onclick="toggleAnswer('answer40')">View Answer</button>
-        <div id="answer40" class="answer">B) Naturally selfish and brutal</div>
-    </div>
-
-    <div class="question">
-        <p>41. What is John Rawls’ "veil of ignorance"?</p>
-        <ul>
-            <li>A) A tool for maximizing happiness</li>
-            <li>B) A thought experiment for fair principles</li>
-            <li>C) A rule for duty-based ethics</li>
-            <li>D) A virtue-based concept</li>
-        </ul>
-        <button onclick="toggleAnswer('answer41')">View Answer</button>
-        <div id="answer41" class="answer">B) A thought experiment for fair principles</div>
-    </div>
-
-    <div class="question">
-        <p>42. What does ethical pluralism suggest?</p>
-        <ul>
-            <li>A) One moral theory is correct</li>
-            <li>B) Multiple moral principles can coexist</li>
-            <li>C) Morality is subjective</li>
-            <li>D) Morality is divine</li>
-        </ul>
-        <button onclick="toggleAnswer('answer42')">View Answer</button>
-        <div id="answer42" class="answer">B) Multiple moral principles can coexist</div>
-    </div>
-
-    <div class="question">
-        <p>43. What is a strength of ethical pluralism?</p>
-        <ul>
-            <li>A) It simplifies moral decisions</li>
-            <li>B) It accommodates diverse perspectives</li>
-            <li>C) It rejects all theories</li>
-            <li>D) It focuses on one principle</li>
-        </ul>
-        <button onclick="toggleAnswer('answer43')">View Answer</button>
-        <div id="answer43" class="answer">B) It accommodates diverse perspectives</div>
-    </div>
-
-    <div class="question">
-        <p>44. What does emotivism claim about moral statements?</p>
-        <ul>
-            <li>A) They are objective truths</li>
-            <li>B) They express feelings or attitudes</li>
-            <li>C) They are universal laws</li>
-            <li>D) They are based on reason</li>
-        </ul>
-        <button onclick="toggleAnswer('answer44')">View Answer</button>
-        <div id="answer44" class="answer">B) They express feelings or attitudes</div>
-    </div>
-
-    <div class="question">
-        <p>45. What is a limitation of emotivism?</p>
-        <ul>
-            <li>A) It overemphasizes reason</li>
-            <li>B) It struggles to resolve moral disagreements</li>
-            <li>C) It focuses on duty</li>
-            <li>D) It rejects emotions</li>
-        </ul>
-        <button onclick="toggleAnswer('answer45')">View Answer</button>
-        <div id="answer45" class="answer">B) It struggles to resolve moral disagreements</div>
-    </div>
-
-    <div class="question">
-        <p>46. What does prescriptivism in meta-ethics propose?</p>
-        <ul>
-            <li>A) Moral statements are descriptive</li>
-            <li>B) Moral statements are commands or prescriptions</li>
-            <li>C) Morality is objective</li>
-            <li>D) Morality is emotional</li>
-        </ul>
-        <button onclick="toggleAnswer('answer46')">View Answer</button>
-        <div id="answer46" class="answer">B) Moral statements are commands or prescriptions</div>
-    </div>
-
-    <div class="question">
-        <p>47. What is a key idea in natural law theory?</p>
-        <ul>
-            <li>A) Morality is human-made</li>
-            <li>B) Morality aligns with natural order</li>
-            <li>C) Morality is relative</li>
-            <li>D) Morality is about pleasure</li>
-        </ul>
-        <button onclick="toggleAnswer('answer47')">View Answer</button>
-        <div id="answer47" class="answer">B) Morality aligns with natural order</div>
-    </div>
-
-    <div class="question">
-        <p>48. Who is associated with natural law theory?</p>
-        <ul>
-            <li>A) Thomas Aquinas</li>
-            <li>B) John Stuart Mill</li>
-            <li>C) Immanuel Kant</li>
-            <li>D) Jeremy Bentham</li>
-        </ul>
-        <button onclick="toggleAnswer('answer48')">View Answer</button>
-        <div id="answer48" class="answer">A) Thomas Aquinas</div>
-    </div>
-
-    <div class="question">
-        <p>49. What does care ethics emphasize?</p>
-        <ul>
-            <li>A) Rules and duties</li>
-            <li>B) Relationships and empathy</li>
-            <li>C) Consequences</li>
-            <li>D) Universal laws</li>
-        </ul>
-        <button onclick="toggleAnswer('answer49')">View Answer</button>
-        <div id="answer49" class="answer">B) Relationships and empathy</div>
-    </div>
-
-    <div class="question">
-        <p>50. What is a criticism of care ethics?</p>
-        <ul>
-            <li>A) It ignores relationships</li>
-            <li>B) It may lack impartiality</li>
-            <li>C) It focuses on rules</li>
-            <li>D) It rejects empathy</li>
-        </ul>
-        <button onclick="toggleAnswer('answer50')">View Answer</button>
-        <div id="answer50" class="answer">B) It may lack impartiality</div>
-    </div>
-
-    <h2>Short Answer Questions</h2>
-    <div class="question">
-        <p>1. Explain the difference between teleological and deontological ethics.</p>
-        <button onclick="toggleAnswer('answerSA1')">View Answer</button>
-        <div id="answerSA1" class="answer">Teleological ethics judges morality by the consequences of actions, aiming for outcomes like happiness, while deontological ethics focuses on duty and rules, judging actions by their adherence to moral principles regardless of outcomes.</div>
-    </div>
-
-    <div class="question">
-        <p>2. How does virtue ethics differ from utilitarianism?</p>
-        <button onclick="toggleAnswer('answerSA2')">View Answer</button>
-        <div id="answerSA2" class="answer">Virtue ethics emphasizes developing moral character and virtues for a good life, whereas utilitarianism focuses on maximizing happiness through the consequences of actions, prioritizing outcomes over personal traits.</div>
-    </div>
-
-    <div class="question">
-        <p>3. What is the main idea behind Kant’s categorical imperative?</p>
-        <button onclick="toggleAnswer('answerSA3')">View Answer</button>
-        <div id="answerSA3" class="answer">The main idea is to act only according to rules that could be universally applied, treating people as ends in themselves, not as means to an end, based on reason and duty.</div>
-    </div>
-
-    <div class="question">
-        <p>4. Why might utilitarianism be seen as controversial?</p>
-        <button onclick="toggleAnswer('answerSA4')">View Answer</button>
-        <div id="answerSA4" class="answer">It can be controversial because it may justify actions that harm minorities or individuals if they benefit the majority, raising concerns about fairness and justice.</div>
-    </div>
-
-    <div class="question">
-        <p>5. What is the role of the "golden mean" in Aristotle’s ethics?</p>
-        <button onclick="toggleAnswer('answerSA5')">View Answer</button>
-        <div id="answerSA5" class="answer">The "golden mean" is the idea of finding a balanced middle ground between extremes of excess and deficiency in virtues, like courage between recklessness and cowardice, to achieve moral excellence.</div>
-    </div>
-
-    <script>
-        function toggleAnswer(id) {
-            var answer = document.getElementById(id);
-            if (answer.style.display === "block") {
-                answer.style.display = "none";
-            } else {
-                answer.style.display = "block";
-            }
+<script>
+    const questions = [
+        { 
+            question: "What is the primary focus of normative ethics?", 
+            choices: [
+                "Defining the meaning of moral terms", 
+                "Studying the nature of moral judgments", 
+                "Providing guidelines for what people should do", 
+                "Analyzing psychological aspects of morality"
+            ], 
+            answer: "Providing guidelines for what people should do"
+        },
+        { 
+            question: "Which category of ethics focuses on the consequences of actions?", 
+            choices: ["Deontological ethics", "Teleological ethics", "Virtue ethics", "Meta-ethics"], 
+            answer: "Teleological ethics"
+        },
+        { 
+            question: "What does utilitarianism primarily emphasize?", 
+            choices: ["Duty and rules", "Character traits", "Greatest happiness for the greatest number", "Divine commands"], 
+            answer: "Greatest happiness for the greatest number"
+        },
+        { 
+            question: "Who is a key proponent of classical utilitarianism?", 
+            choices: ["Immanuel Kant", "Jeremy Bentham", "Aristotle", "John Rawls"], 
+            answer: "Jeremy Bentham"
+        },
+        { 
+            question: "How does John Stuart Mill modify Bentham’s utilitarianism?", 
+            choices: [
+                "By focusing on duty over happiness", 
+                "By emphasizing quality of pleasure over quantity", 
+                "By rejecting consequences as a moral basis", 
+                "By prioritizing individual rights"
+            ], 
+            answer: "By emphasizing quality of pleasure over quantity"
+        },
+        { 
+            question: "What is a key feature of act-utilitarianism?", 
+            choices: [
+                "Following strict moral rules", 
+                "Judging each action by its consequences", 
+                "Focusing on character development", 
+                "Adhering to divine laws"
+            ], 
+            answer: "Judging each action by its consequences"
+        },
+        { 
+            question: "What does rule-utilitarianism prioritize?", 
+            choices: [
+                "Individual actions", 
+                "General rules that maximize happiness", 
+                "Personal virtues", 
+                "Absolute duties"
+            ], 
+            answer: "General rules that maximize happiness"
+        },
+        { 
+            question: "What is a common criticism of utilitarianism?", 
+            choices: [
+                "It ignores consequences", 
+                "It may justify harming minorities for the majority", 
+                "It focuses too much on duty", 
+                "It rejects happiness as a goal"
+            ], 
+            answer: "It may justify harming minorities for the majority"
+        },
+        { 
+            question: "Which theory is considered non-consequentialist?", 
+            choices: ["Utilitarianism", "Deontological ethics", "Virtue ethics", "Ethical egoism"], 
+            answer: "Deontological ethics"
+        },
+        { 
+            question: "What is the basis of deontological ethics?", 
+            choices: ["Outcomes of actions", "Duty and moral rules", "Personal happiness", "Social contracts"], 
+            answer: "Duty and moral rules"
+        },
+        { 
+            question: "Who developed the categorical imperative?", 
+            choices: ["Jeremy Bentham", "Immanuel Kant", "John Stuart Mill", "Aristotle"], 
+            answer: "Immanuel Kant"
+        },
+        { 
+            question: "What does Kant’s categorical imperative state?", 
+            choices: [
+                "Maximize happiness for all", 
+                "Act only according to rules you can universalize", 
+                "Pursue personal virtue", 
+                "Follow divine commands"
+            ], 
+            answer: "Act only according to rules you can universalize"
+        },
+        { 
+            question: "What is a key principle of Kantian ethics?", 
+            choices: [
+                "Ends justify the means", 
+                "Treat people as ends, not means", 
+                "Happiness is the ultimate goal", 
+                "Rules are flexible"
+            ], 
+            answer: "Treat people as ends, not means"
+        },
+        { 
+            question: "What does the divine command theory assert?", 
+            choices: [
+                "Morality comes from human reason", 
+                "Morality is based on God’s will", 
+                "Morality depends on consequences", 
+                "Morality is about personal virtues"
+            ], 
+            answer: "Morality is based on God’s will"
+        },
+        { 
+            question: "What is a criticism of the divine command theory?", 
+            choices: [
+                "It ignores divine will", 
+                "It raises the question of whether God’s commands are arbitrary", 
+                "It focuses too much on happiness", 
+                "It rejects moral duties"
+            ], 
+            answer: "It raises the question of whether God’s commands are arbitrary"
+        },
+        { 
+            question: "What does rights theory emphasize?", 
+            choices: [
+                "Consequences of actions", 
+                "Inherent rights of individuals", 
+                "Virtue development", 
+                "Social utility"
+            ], 
+            answer: "Inherent rights of individuals"
+        },
+        { 
+            question: "What are Ross’s prima facie duties?", 
+            choices: [
+                "Absolute rules to follow", 
+                "Conditional duties that can conflict", 
+                "Duties based on happiness", 
+                "Duties derived from virtues"
+            ], 
+            answer: "Conditional duties that can conflict"
+        },
+        { 
+            question: "What is the focus of virtue ethics?", 
+            choices: [
+                "Rules and duties", 
+                "Consequences of actions", 
+                "Character and moral virtues", 
+                "Divine commandments"
+            ], 
+            answer: "Character and moral virtues"
+        },
+        { 
+            question: "Who is a foundational figure in virtue ethics?", 
+            choices: ["Kant", "Bentham", "Aristotle", "Mill"], 
+            answer: "Aristotle"
+        },
+        { 
+            question: "What is Aristotle’s concept of the 'golden mean'?", 
+            choices: [
+                "Maximizing pleasure", 
+                "Balancing virtues between extremes", 
+                "Following strict rules", 
+                "Obeying divine laws"
+            ], 
+            answer: "Balancing virtues between extremes"
+        },
+        { 
+            question: "What does eudaimonia mean in Aristotle’s ethics?", 
+            choices: ["Wealth", "Happiness or flourishing", "Duty fulfillment", "Social harmony"], 
+            answer: "Happiness or flourishing"
+        },
+        { 
+            question: "What is a criticism of virtue ethics?", 
+            choices: [
+                "It ignores character", 
+                "It lacks clear action guidance", 
+                "It focuses too much on rules", 
+                "It prioritizes consequences"
+            ], 
+            answer: "It lacks clear action guidance"
+        },
+        { 
+            question: "What does meta-ethics study?", 
+            choices: [
+                "How to act morally", 
+                "The nature and meaning of moral judgments", 
+                "Consequences of actions", 
+                "Character traits"
+            ], 
+            answer: "The nature and meaning of moral judgments"
+        },
+        { 
+            question: "What does cognitivism in meta-ethics assert?", 
+            choices: [
+                "Moral statements are meaningless", 
+                "Moral statements express beliefs that can be true or false", 
+                "Morality is purely emotional", 
+                "Morality is subjective"
+            ], 
+            answer: "Moral statements express beliefs that can be true or false"
+        },
+        { 
+            question: "What is non-cognitivism in meta-ethics?", 
+            choices: [
+                "Moral statements are factual", 
+                "Moral statements express emotions, not truths", 
+                "Morality is universal", 
+                "Morality is based on reason"
+            ], 
+            answer: "Moral statements express emotions, not truths"
+        },
+        { 
+            question: "What does moral realism claim?", 
+            choices: [
+                "Moral truths are subjective", 
+                "Moral facts exist independently of human thought", 
+                "Morality is an illusion", 
+                "Moral judgments are emotional"
+            ], 
+            answer: "Moral facts exist independently of human thought"
+        },
+        { 
+            question: "What is Mackie’s error theory?", 
+            choices: [
+                "Moral facts exist universally", 
+                "Moral judgments claim objective truth but are false", 
+                "Morality is based on divine will", 
+                "Moral statements are subjective"
+            ], 
+            answer: "Moral judgments claim objective truth but are false"
+        },
+        { 
+            question: "What does ethical egoism advocate?", 
+            choices: [
+                "Acting for the common good", 
+                "Pursuing one’s own self-interest", 
+                "Following universal rules", 
+                "Developing virtues"
+            ], 
+            answer: "Pursuing one’s own self-interest"
+        },
+        { 
+            question: "What is a key criticism of ethical egoism?", 
+            choices: [
+                "It ignores self-interest", 
+                "It may conflict with social cooperation", 
+                "It focuses too much on duty", 
+                "It rejects consequences"
+            ], 
+            answer: "It may conflict with social cooperation"
+        },
+        { 
+            question: "What does altruism emphasize?", 
+            choices: [
+                "Self-interest", 
+                "Concern for others’ well-being", 
+                "Strict rule-following", 
+                "Personal virtues"
+            ], 
+            answer: "Concern for others’ well-being"
+        },
+        { 
+            question: "What is the focus of teleological ethics?", 
+            choices: ["Duty", "Consequences", "Character", "Divine will"], 
+            answer: "Consequences"
+        },
+        { 
+            question: "What does hedonism consider the highest good?", 
+            choices: ["Duty", "Pleasure", "Virtue", "Justice"], 
+            answer: "Pleasure"
+        },
+        { 
+            question: "What is a strength of deontological ethics?", 
+            choices: [
+                "It focuses on outcomes", 
+                "It provides clear moral rules", 
+                "It emphasizes happiness", 
+                "It prioritizes virtues"
+            ], 
+            answer: "It provides clear moral rules"
+        },
+        { 
+            question: "What is a limitation of Kantian ethics?", 
+            choices: [
+                "It ignores duty", 
+                "It may lead to rigid rule-following", 
+                "It focuses on pleasure", 
+                "It rejects universal principles"
+            ], 
+            answer: "It may lead to rigid rule-following"
+        },
+        { 
+            question: "What does moral relativism assert?", 
+            choices: [
+                "Moral truths are universal", 
+                "Morality varies by culture or individual", 
+                "Morality is objective", 
+                "Morality is divine"
+            ], 
+            answer: "Morality varies by culture or individual"
+        },
+        { 
+            question: "What is a criticism of moral relativism?", 
+            choices: [
+                "It promotes universal standards", 
+                "It struggles to judge harmful practices", 
+                "It focuses on consequences", 
+                "It emphasizes duty"
+            ], 
+            answer: "It struggles to judge harmful practices"
+        },
+        { 
+            question: "What does moral absolutism claim?", 
+            choices: [
+                "Morality is relative", 
+                "Certain moral principles are universally true", 
+                "Morality depends on outcomes", 
+                "Morality is subjective"
+            ], 
+            answer: "Certain moral principles are universally true"
+        },
+        { 
+            question: "What is the social contract theory?", 
+            choices: [
+                "Morality comes from divine commands", 
+                "Morality arises from mutual agreements", 
+                "Morality is about personal virtues", 
+                "Morality focuses on happiness"
+            ], 
+            answer: "Morality arises from mutual agreements"
+        },
+        { 
+            question: "Who is a key thinker in social contract theory?", 
+            choices: ["Aristotle", "Thomas Hobbes", "Jeremy Bentham", "Immanuel Kant"], 
+            answer: "Thomas Hobbes"
+        },
+        { 
+            question: "What does Hobbes believe about human nature?", 
+            choices: [
+                "Naturally altruistic", 
+                "Naturally selfish and brutal", 
+                "Naturally virtuous", 
+                "Naturally rational"
+            ], 
+            answer: "Naturally selfish and brutal"
+        },
+        { 
+            question: "What is John Rawls’ 'veil of ignorance'?", 
+            choices: [
+                "A tool for maximizing happiness", 
+                "A thought experiment for fair principles", 
+                "A rule for duty-based ethics", 
+                "A virtue-based concept"
+            ], 
+            answer: "A thought experiment for fair principles"
+        },
+        { 
+            question: "What does ethical pluralism suggest?", 
+            choices: [
+                "One moral theory is correct", 
+                "Multiple moral principles can coexist", 
+                "Morality is subjective", 
+                "Morality is divine"
+            ], 
+            answer: "Multiple moral principles can coexist"
+        },
+        { 
+            question: "What is a strength of ethical pluralism?", 
+            choices: [
+                "It simplifies moral decisions", 
+                "It accommodates diverse perspectives", 
+                "It rejects all theories", 
+                "It focuses on one principle"
+            ], 
+            answer: "It accommodates diverse perspectives"
+        },
+        { 
+            question: "What does emotivism claim about moral statements?", 
+            choices: [
+                "They are objective truths", 
+                "They express feelings or attitudes", 
+                "They are universal laws", 
+                "They are based on reason"
+            ], 
+            answer: "They express feelings or attitudes"
+        },
+        { 
+            question: "What is a limitation of emotivism?", 
+            choices: [
+                "It overemphasizes reason", 
+                "It struggles to resolve moral disagreements", 
+                "It focuses on duty", 
+                "It rejects emotions"
+            ], 
+            answer: "It struggles to resolve moral disagreements"
+        },
+        { 
+            question: "What does prescriptivism in meta-ethics propose?", 
+            choices: [
+                "Moral statements are descriptive", 
+                "Moral statements are commands or prescriptions", 
+                "Morality is objective", 
+                "Morality is emotional"
+            ], 
+            answer: "Moral statements are commands or prescriptions"
+        },
+        { 
+            question: "What is a key idea in natural law theory?", 
+            choices: [
+                "Morality is human-made", 
+                "Morality aligns with natural order", 
+                "Morality is relative", 
+                "Morality is about pleasure"
+            ], 
+            answer: "Morality aligns with natural order"
+        },
+        { 
+            question: "Who is associated with natural law theory?", 
+            choices: ["Thomas Aquinas", "John Stuart Mill", "Immanuel Kant", "Jeremy Bentham"], 
+            answer: "Thomas Aquinas"
+        },
+        { 
+            question: "What does care ethics emphasize?", 
+            choices: [
+                "Rules and duties", 
+                "Relationships and empathy", 
+                "Consequences", 
+                "Universal laws"
+            ], 
+            answer: "Relationships and empathy"
+        },
+        { 
+            question: "What is a criticism of care ethics?", 
+            choices: [
+                "It ignores relationships", 
+                "It may lack impartiality", 
+                "It focuses on rules", 
+                "It rejects empathy"
+            ], 
+            answer: "It may lack impartiality"
         }
-    </script>
+    ];
+
+    const shortAnswerQuestions = [
+        { 
+            question: "Explain the difference between teleological and deontological ethics.", 
+            answer: "Teleological ethics judges morality by the consequences of actions, aiming for outcomes like happiness, while deontological ethics focuses on duty and rules, judging actions by their adherence to moral principles regardless of outcomes."
+        },
+        { 
+            question: "How does virtue ethics differ from utilitarianism?", 
+            answer: "Virtue ethics emphasizes developing moral character and virtues for a good life, whereas utilitarianism focuses on maximizing happiness through the consequences of actions, prioritizing outcomes over personal traits."
+        },
+        { 
+            question: "What is the main idea behind Kant’s categorical imperative?", 
+            answer: "The main idea is to act only according to rules that could be universally applied, treating people as ends in themselves, not as means to an end, based on reason and duty."
+        },
+        { 
+            question: "Why might utilitarianism be seen as controversial?", 
+            answer: "It can be controversial because it may justify actions that harm minorities or individuals if they benefit the majority, raising concerns about fairness and justice."
+        },
+        { 
+            question: "What is the role of the 'golden mean' in Aristotle’s ethics?", 
+            answer: "The 'golden mean' is the idea of finding a balanced middle ground between extremes of excess and deficiency in virtues, like courage between recklessness and cowardice, to achieve moral excellence."
+        }
+    ];
+
+    function loadQuiz() {
+        const quizDiv = document.getElementById("quiz");
+        quizDiv.innerHTML = "";
+
+        questions.forEach((q, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.classList.add("question");
+            questionElement.innerText = `${index + 1}. ${q.question}`;
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            q.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.innerText = choice;
+                button.onclick = function() {
+                    if (choice === q.answer) {
+                        button.style.color = "green";
+                        button.innerHTML += '<span class="correct"> Correct</span>';
+                    } else {
+                        button.style.color = "red";
+                        button.innerHTML += '<span class="wrong"> Wrong</span>';
+                    }
+                    // Disable all buttons for this question after selection
+                    const buttons = optionsDiv.getElementsByTagName("button");
+                    for (let btn of buttons) {
+                        btn.disabled = true;
+                    }
+                };
+                optionsDiv.appendChild(button);
+            });
+
+            quizDiv.appendChild(questionElement);
+            quizDiv.appendChild(optionsDiv);
+        });
+    }
+
+    function loadShortAnswers() {
+        const shortAnswerDiv = document.getElementById("short-answers");
+        shortAnswerDiv.innerHTML = "";
+
+        shortAnswerQuestions.forEach((sa, index) => {
+            const saElement = document.createElement("div");
+            saElement.classList.add("short-answer");
+
+            const questionP = document.createElement("p");
+            questionP.innerText = `${index + 1}. ${sa.question}`;
+            saElement.appendChild(questionP);
+
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.innerText = "View Answer";
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.innerText = sa.answer;
+            saElement.appendChild(answerDiv);
+
+            shortAnswerDiv.appendChild(saElement);
+        });
+    }
+
+    loadQuiz();
+    loadShortAnswers();
+</script>
+
 </body>
 </html>
