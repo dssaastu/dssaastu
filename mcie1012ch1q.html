@@ -41,7 +41,6 @@
         .options button:hover {
             background: #ccc;
         }
-        /* Ensure buttons don't stay colored after clicking another */
         .options button.answered {
             pointer-events: none; /* Disable further clicks */
             opacity: 0.7;
@@ -54,7 +53,7 @@
             background-color: #ffcccb; /* Light red for incorrect */
             color: black;
         }
-        .feedback { /* Renamed from correct/wrong for clarity */
+        .feedback {
             font-weight: bold;
             margin-left: 10px;
         }
@@ -267,8 +266,8 @@
             question: "Why is a balanced understanding of rights and duties important?", 
             choices: [
                 "It ensures citizens focus only on their rights", 
+                "It helps create a society where rights and responsibilities coexist", // Index 1
                 "It eliminates the need for laws", 
-                "It helps create a society where rights and responsibilities coexist", // Index 2
                 "It prioritizes duties over rights"
             ], 
             answer: "It helps create a society where rights and responsibilities coexist"
@@ -307,8 +306,8 @@
             question: "What is a key challenge to democratization?", 
             choices: [
                 "Lack of technological advancement", 
+                "Citizens prioritizing individual interests over social norms", // Index 1
                 "Excessive government control", 
-                "Citizens prioritizing individual interests over social norms", // Index 2
                 "Over-participation in voting"
             ], 
             answer: "Citizens prioritizing individual interests over social norms"
@@ -317,8 +316,8 @@
             question: "What does active citizenship include beyond political participation?", 
             choices: [
                 "Economic investments", 
+                "Socio-cultural and environmental activities", // Index 1
                 "Religious practices", 
-                "Socio-cultural and environmental activities", // Index 2
                 "Legal reforms"
             ], 
             answer: "Socio-cultural and environmental activities"
@@ -337,8 +336,8 @@
             question: "What social ill does civic education aim to address among youth?", 
             choices: [
                 "Economic inequality", 
+                "Political apathy and anti-social behavior", // Index 1
                 "Lack of technical skills", 
-                "Political apathy and anti-social behavior", // Index 2
                 "Cultural assimilation"
             ], 
             answer: "Political apathy and anti-social behavior"
@@ -357,8 +356,8 @@
             question: "What is a key focus of civics and ethics in promoting inclusiveness?", 
             choices: [
                 "Empowering only women in politics", 
+                "Recognizing gender differences while ensuring equity", // Index 1
                 "Focusing solely on public policy",
-                "Recognizing gender differences while ensuring equity", // Index 2
                 "Excluding private sphere concerns"
             ], 
             answer: "Recognizing gender differences while ensuring equity"
@@ -367,8 +366,8 @@
             question: "How can civics and ethics contribute to peace-building?", 
             choices: [
                 "By encouraging militarization", 
+                "By developing competencies for conflict resolution and dialogue", // Index 1
                 "By ignoring global conflicts", 
-                "By developing competencies for conflict resolution and dialogue", // Index 2
                 "By promoting isolationism"
             ], 
             answer: "By developing competencies for conflict resolution and dialogue"
@@ -377,8 +376,8 @@
             question: "Which core value does moral and civic education seek to promote in students?", 
             choices: [
                 "Competition", 
+                "Respect for diversity", // Index 1
                 "Individualism", 
-                "Respect for diversity", // Index 2
                 "Obedience to authority"
             ], 
             answer: "Respect for diversity"
@@ -397,8 +396,8 @@
             question: "What is the ultimate aim of teaching civics and ethics?", 
             choices: [
                 "Producing economically successful citizens", 
+                "Creating competent, responsible citizens with high moral standards", // Index 1
                 "Enforcing strict legal compliance", 
-                "Creating competent, responsible citizens with high moral standards", // Index 2
                 "Promoting uniform cultural values"
             ], 
             answer: "Creating competent, responsible citizens with high moral standards"
@@ -433,16 +432,13 @@
         quizDiv.innerHTML = ""; // Clear previous content if any
 
         questions.forEach((q, index) => {
-            // Create container for question and its options
             const questionBlock = document.createElement("div");
-            questionBlock.style.marginBottom = "20px"; // Add space between questions
+            questionBlock.style.marginBottom = "20px";
 
-            // Create question text element
             const questionElement = document.createElement("div");
             questionElement.classList.add("question");
             questionElement.innerText = `${index + 1}. ${q.question}`;
 
-            // Create options container
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
 
@@ -450,50 +446,40 @@
                 const button = document.createElement("button");
                 button.innerText = choice;
                 button.onclick = function() {
-                    // Remove previous feedback spans if any
                     this.querySelectorAll('.feedback').forEach(span => span.remove());
 
-                    // Disable all buttons in this group and mark as answered
                     const allButtonsInGroup = optionsDiv.querySelectorAll('button');
                     allButtonsInGroup.forEach(btn => {
                         btn.classList.add('answered');
-                        // Reset background/color in case of re-click (though disabled)
                         btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.style.color = ''; // Reset direct style color if any
+                        btn.style.color = '';
                         btn.style.fontWeight = '';
                     });
 
-                    // Create feedback span
                     const feedbackSpan = document.createElement('span');
                     feedbackSpan.classList.add('feedback');
 
                     if (choice === q.answer) {
-                        this.classList.add('correct-choice'); // Use class for styling
+                        this.classList.add('correct-choice');
                         feedbackSpan.classList.add('correct');
                         feedbackSpan.innerText = 'Correct';
                     } else {
-                        this.classList.add('wrong-choice'); // Use class for styling
+                        this.classList.add('wrong-choice');
                         feedbackSpan.classList.add('wrong');
                         feedbackSpan.innerText = 'Wrong';
-
-                        // Highlight the correct answer as well
                         allButtonsInGroup.forEach(btn => {
                             if (btn.innerText === q.answer) {
                                 btn.classList.add('correct-choice');
                             }
                         });
                     }
-                    // Append feedback span to the clicked button
                     this.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
 
-            // Append question and options to the question block
             questionBlock.appendChild(questionElement);
             questionBlock.appendChild(optionsDiv);
-
-            // Append the whole block to the main quiz container
             quizDiv.appendChild(questionBlock);
         });
     }
@@ -534,7 +520,6 @@
         });
     }
 
-    // Load the quiz and short answers when the page loads
     loadQuiz();
     loadShortAnswers();
 </script>
