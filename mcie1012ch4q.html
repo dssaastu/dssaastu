@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCIE 1011 Chapter 4 practice questions</title>
+    <title>MCIE 1011 Chapter 4 Practice Questions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             background-color: #f4f4f4;
         }
         .quiz-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             background: white;
             padding: 20px;
@@ -21,10 +21,12 @@
         }
         h2 {
             text-align: center;
+            color: #333;
         }
         .question {
             font-weight: bold;
             margin-bottom: 10px;
+            color: #2c3e50;
         }
         .options button {
             display: block;
@@ -73,6 +75,9 @@
             display: none;
             color: green;
             margin-top: 10px;
+            padding: 10px;
+            background-color: #f0fff0;
+            border-radius: 5px;
         }
         .toggle-btn {
             background-color: #4CAF50;
@@ -102,13 +107,13 @@
 
 <script>
     const questions = [
-   {
+        {
             question: "Which of the following is NOT considered an essential attribute of a state?",
             choices: ["Defined territory", "Permanent population", "Effective government", "Homogeneous culture"],
             answer: "Homogeneous culture"
         },
         {
-            question: "The belief that the state acts as an 'umpire' or 'referee' in society is characteristic of which theory?",
+            question: "Which theory views the state as an 'umpire' or 'referee' in society?",
             choices: ["Marxism", "Pluralism", "Leviathan State", "Patriarchal State"],
             answer: "Pluralism"
         },
@@ -118,7 +123,7 @@
             answer: "State self-aggrandizement"
         },
         {
-            question: "Which theory views the state as essentially an instrument of male power?",
+            question: "Which theory views the state as an instrument of male power?",
             choices: ["Pluralism", "Marxism", "Patriarchal State", "Leviathan State"],
             answer: "Patriarchal State"
         },
@@ -143,82 +148,122 @@
             answer: "Comprehensive state control"
         },
         {
-            question: "Which approach to studying the state focuses on how it functions in international politics?",
+            question: "Which approach to studying the state focuses on its role in international politics?",
             choices: ["Idealist", "Functionalist", "Organizational", "International"],
             answer: "International"
         },
         {
-            question: "What is the best term that describe an area that has been taken over by force by another state?",
-            choices: ["Pluralist State", "Totalitarian States", "Collectivized States", "Religious States"],
-            answer: "Collectivized States"
+            question: "Which term best describes an area that has been forcibly taken over by another state?",
+            choices: ["Pluralist State", "Totalitarian State", "Collectivized State", "Religious State"],
+            answer: "Collectivized State"
         },
-          {
+        {
             question: "What is the primary function of government, in its broadest sense?",
             choices: ["Wealth redistribution", "Maintaining ordered rule", "Promoting specific ideologies", "Ensuring total equality"],
             answer: "Maintaining ordered rule"
         },
         {
-            question: "What two attributes are essential for government to be stable and effective?",
+            question: "Which two attributes are essential for a government to be stable and effective?",
             choices: ["Wealth and power", "Military strength and popularity", "Authority and legitimacy", "Size and resources"],
             answer: "Authority and legitimacy"
         },
         {
-            question: "Legitimacy, in politics, refers to:",
+            question: "In politics, what does legitimacy refer to?",
             choices: ["The amount of military power a government holds", "The legal standing of a government", "Popular acceptance of a governing regime", "The economic output of a nation"],
             answer: "Popular acceptance of a governing regime"
         },
         {
             question: "What are the typical purposes of government?",
-            choices: ["Just to protect its own sovereignty and enrich the rulers", "To give rights to individual and provide a platform to abuse them", "Self-preservation, regulating resources, managing conflicts, fulfilling aspirations, and protecting rights", "To manage conflicts between parties"],
+            choices: [
+                "Protecting its own sovereignty and enriching the rulers",
+                "Granting rights to individuals and providing a platform to abuse them",
+                "Self-preservation, regulating resources, managing conflicts, fulfilling aspirations, and protecting rights",
+                "Managing conflicts between parties only"
+            ],
             answer: "Self-preservation, regulating resources, managing conflicts, fulfilling aspirations, and protecting rights"
         },
         {
-            question: "What is meant by Citizenship?",
-            choices: ["Someone who has no freedom and right", "An individual being a permanent resident at another country", "An individual legally recognized as a member of a particular political community", "An individual whom its parents belong to"],
+            question: "What is meant by citizenship?",
+            choices: [
+                "Someone who has no freedom or rights",
+                "An individual who is a permanent resident of another country",
+                "An individual legally recognized as a member of a particular political community",
+                "An individual whose parents belong to a state"
+            ],
             answer: "An individual legally recognized as a member of a particular political community"
         },
-         {
-            question: "How did theorists divide citizenship?",
-            choices: ["Divided in to different theories", "Liberal, communitarian, republican and multicultural", "The different kind of political party", "An economic and politics"],
-            answer: "Liberal, communitarian, republican and multicultural"
-        },
-         {
-            question: "Citizenship in liberal thought emphasizes:",
-            choices: ["What people feel to do when doing the right action", "Individual liberty and rights", "The value to be tolerant and be tolerant to something that can give them tolerance", "Individual do what they love but in the right way"],
-            answer: "Individual liberty and rights"
-        },
-         {
-            question: "Citizenship in communitarian thought emphasizes:",
-            choices: ["Individual freedom", "Community belonging and shared values", "Rights", "The same kind of right"],
-            answer: "Community belonging and shared values"
-        },
-         {
-            question: "Citizenship in Republican thoughts emphasizes:",
-            choices: ["The freedom of the human right", "Emphasis in politics", "Civic participation and the common good", "Being good at speaking and writing"],
-            answer: "Civic participation and the common good"
-        },
-         {
-            question: "What does Citizenship in Multicultural thoughts emphasizes:",
-            choices: ["Recognizes that each one can bring there culture", "Recognizes diversity and group rights", "The capacity of doing new thing and make new generation", "The action to do what good that someone is looking for"],
-            answer: "Recognizes diversity and group rights"
-        },
-         {
-            question: "What is Modes/Ways of Acquiring and Loosing Citizenship?",
-            choices: ["Being to have a big family and having more connections", "Citizenship by birth and by naturalization", "Being the only one who is good at speaking and good for writing", "To be a good teacher and a bad teacher"],
-            answer: "Citizenship by birth and by naturalization"
-        },
-         {
-            question: " What is Statelessness?",
-            choices: ["The condition of having citizenship of any country and with no government from which to ask protection", "To be in love with different one's", "To have a government and to be the best in it", "When having a mother and a father"],
-            answer: "The condition of having citizenship of any country and with no government from which to ask protection"
+        {
+            question: "How do theorists categorize citizenship?",
+            choices: [
+                "Into different theories",
+                "Liberal, communitarian, republican, and multicultural",
+                "By different kinds of political parties",
+                "Economic and political"
+            ],
+            answer: "Liberal, communitarian, republican, and multicultural"
         },
         {
-            question: "Which political theory emphasizes the importance of civic virtue and participation in public life?",
+            question: "What does citizenship in liberal thought emphasize?",
+            choices: [
+                "What people feel compelled to do when acting rightly",
+                "Individual liberty and rights",
+                "Tolerance as a value that fosters mutual tolerance",
+                "Individuals doing what they love in a lawful manner"
+            ],
+            answer: "Individual liberty and rights"
+        },
+        {
+            question: "What does citizenship in communitarian thought emphasize?",
+            choices: ["Individual freedom", "Community belonging and shared values", "Rights", "Uniform rights"],
+            answer: "Community belonging and shared values"
+        },
+        {
+            question: "What does citizenship in republican thought emphasize?",
+            choices: [
+                "Freedom of human rights",
+                "Emphasis on politics",
+                "Civic participation and the common good",
+                "Proficiency in speaking and writing"
+            ],
+            answer: "Civic participation and the common good"
+        },
+        {
+            question: "What does citizenship in multicultural thought emphasize?",
+            choices: [
+                "Recognition that each person can bring their own culture",
+                "Recognition of diversity and group rights",
+                "The capacity to innovate and create a new generation",
+                "Actions that promote observable good"
+            ],
+            answer: "Recognition of diversity and group rights"
+        },
+        {
+            question: "What are the primary modes of acquiring and losing citizenship?",
+            choices: [
+                "Having a large family and extensive connections",
+                "Citizenship by birth and by naturalization",
+                "Excelling in speaking and writing",
+                "Being a good or bad teacher"
+            ],
+            answer: "Citizenship by birth and by naturalization"
+        },
+        {
+            question: "What is statelessness?",
+            choices: [
+                "The condition of lacking citizenship in any country and having no government to seek protection from",
+                "Being in love with multiple people",
+                "Having a government and excelling within it",
+                "Having both a mother and a father"
+            ],
+            answer: "The condition of lacking citizenship in any country and having no government to seek protection from"
+        },
+        {
+            question: "Which political theory emphasizes civic virtue and participation in public life?",
             choices: ["Liberalism", "Communitarianism", "Republicanism", "Multiculturalism"],
             answer: "Republicanism"
         },
         {
-            question: "Which type of citizenship theory is most likely to advocate for group-specific rights to address historical inequalities?",
+            question: "Which citizenship theory is most likely to advocate for group-specific rights to address historical inequalities?",
             choices: ["Liberalism", "Communitarianism", "Republicanism", "Multiculturalism"],
             answer: "Multiculturalism"
         },
@@ -227,123 +272,198 @@
             choices: ["Citizenship by blood", "Citizenship by marriage", "Citizenship by birth in a territory", "Citizenship by naturalization"],
             answer: "Citizenship by birth in a territory"
         },
-       {
+        {
             question: "What does 'Jus Sanguinis' refer to?",
             choices: ["Citizenship by naturalization", "Citizenship by birth in a territory", "Citizenship by blood", "Citizenship by marriage"],
             answer: "Citizenship by blood"
         },
         {
             question: "Which of the following is NOT a common ground for denationalization?",
-            choices: ["Treason", "Having dual citizenship", "Having committed war crime", "Having an outstanding amount of taxes"],
-            answer: "Having an outstanding amount of taxes"
+            choices: ["Treason", "Having dual citizenship", "Committing a war crime", "Having an outstanding tax debt"],
+            answer: "Having an outstanding tax debt"
         },
         {
-            question: "What is Dual Citizenship?",
-            choices: ["The condition of having citizenship of two nations", "The government should be organized as political or individual organization", "People have low cognitive, affective, and evaluative", "The State being a nucleus organ needs to take care of the social and legal interests"],
-            answer: "The condition of having citizenship of two nations"
+            question: "What is dual citizenship?",
+            choices: [
+                "The condition of having citizenship in two nations",
+                "A government organized as a political or individual entity",
+                "Low cognitive, affective, and evaluative capacity in people",
+                "The state as a nucleus caring for social and legal interests"
+            ],
+            answer: "The condition of having citizenship in two nations"
         },
         {
-            question: "Which philosopher is best known for advocating for the protection of natural rights and the limited state?",
+            question: "Which philosopher is best known for advocating the protection of natural rights and a limited state?",
             choices: ["Thomas Hobbes", "John Locke", "Jean-Jacques Rousseau", "Karl Marx"],
             answer: "John Locke"
         },
         {
             question: "In the context of defining the state, what does the 'organizational view' emphasize?",
-            choices: ["Ethical community underpinned by mutual sympathy", "The maintenance of social order", "The apparatus of government", "The state as a unit of international politics"],
+            choices: [
+                "An ethical community underpinned by mutual sympathy",
+                "The maintenance of social order",
+                "The apparatus of government",
+                "The state as a unit in international politics"
+            ],
             answer: "The apparatus of government"
         },
-         {
-            question: "What does a Collectivized State refers to?",
-            choices: ["The State being a nucleus organ needs to take care of the social and legal interests of all its individuals", "The attempt to achieve a systematic understanding of the nature of morality and what it requires of us", "That the citizen is under its direction or authority", "bringing the entirety of economic life under State control"],
-            answer: "bringing the entirety of economic life under State control"
+        {
+            question: "What does a collectivized state refer to?",
+            choices: [
+                "A state that prioritizes social and legal interests of all individuals",
+                "An attempt to systematically understand morality",
+                "A state where citizens are under its authority",
+                "Bringing the entirety of economic life under state control"
+            ],
+            answer: "Bringing the entirety of economic life under state control"
         },
         {
-            question: "A  parochial cultures, what is the role of citizens in the political sphere of their countries?",
-            choices: ["A low cognitive, affective, and evaluative", "Being in power with the political situation", "Citizen can't get the political power in their State", "Citizens of a State should always be educated to suit the constitution of a State"],
-            answer: "A low cognitive, affective, and evaluative"
+            question: "In parochial cultures, what is the role of citizens in the political sphere of their countries?",
+            choices: [
+                "Low cognitive, affective, and evaluative orientation",
+                "Being in power within the political situation",
+                "Inability to gain political power in their state",
+                "Citizens educated to suit the state’s constitution"
+            ],
+            answer: "Low cognitive, affective, and evaluative orientation"
         },
-         {
-            question: "In subject cultures, there is high cognitive, affective, and evaluative orientation towards:",
-            choices: ["The input objects", "The society", "Political system and policy outputs", "The individuals"],
+        {
+            question: "In subject cultures, there is a high cognitive, affective, and evaluative orientation toward:",
+            choices: ["Input objects", "Society", "Political system and policy outputs", "Individuals"],
             answer: "Political system and policy outputs"
         },
         {
-            question: "The necessity of delivering the course emanates from one of the following is:",
-            choices: ["We need a fuller, richer and yet more subtle understanding and practice of citizenship", "We need a better life", "The right of human being", "Having more information and communication technology"],
-            answer: "We need a fuller, richer and yet more subtle understanding and practice of citizenship"
+            question: "The necessity of delivering this course stems from which of the following?",
+            choices: [
+                "The need for a fuller, richer, and more subtle understanding and practice of citizenship",
+                "The need for a better life",
+                "The rights of human beings",
+                "Advancements in information and communication technology"
+            ],
+            answer: "The need for a fuller, richer, and more subtle understanding and practice of citizenship"
         },
         {
-            question: "From Sastry et al. (2011) presented four issues to look into the interplay between rights and duties. What does 'one's right implies the other's duty' means?",
-            choices: ["Government has a duty to help protect human being in their State", "Everyone has right for speaking and right for telling their fellings", "Every right of an individual automatically imposes a duty on others", "State being a nucleus organ needs to take care of the social and legal interests of all its individuals"],
-            answer: "Every right of an individual automatically imposes a duty on others"
-        },
-         {
-            question: "What action is to be taken with someone that try to misuse the rights and affect the rights of others?",
-            choices: ["The Government has a duty to take appropriate legal action to prevent such acts", "They are under the Government duty and the individual cant do anything", "It's about their freedom", "Every right of an individual automatically imposes a duty on others"],
-            answer: "The Government has a duty to take appropriate legal action to prevent such acts"
+            question: "According to Sastry et al. (2011), what does 'one's right implies the other's duty' mean?",
+            choices: [
+                "The government has a duty to protect human beings in its state",
+                "Everyone has the right to speak and express their feelings",
+                "Every right of an individual imposes a duty on others",
+                "The state must care for the social and legal interests of all individuals"
+            ],
+            answer: "Every right of an individual imposes a duty on others"
         },
         {
-            question: "Which of the following is not a necessary requirement to be a legal citizen?",
+            question: "What action should be taken against someone who misuses their rights and affects the rights of others?",
+            choices: [
+                "The government has a duty to take appropriate legal action to prevent such acts",
+                "They are under government duty, and individuals can do nothing",
+                "It’s about their freedom",
+                "Every right imposes a duty on others"
+            ],
+            answer: "The government has a duty to take appropriate legal action to prevent such acts"
+        },
+        {
+            question: "Which of the following is NOT a necessary requirement to be a legal citizen?",
             choices: ["Permanent population", "Sovereignty", "Recognition by the international community", "Territorial unit"],
             answer: "Recognition by the international community"
         },
         {
-            question: "The term ‘state' has been used to refer to a bewildering range of things which of the following is one of them:",
-            choices: ["Philosophical idea", "An instrument of coercion", "A territorial unit", "All of the above"],
+            question: "The term 'state' has been used to refer to a range of concepts. Which of the following is one of them?",
+            choices: ["A philosophical idea", "An instrument of coercion", "A territorial unit", "All of the above"],
             answer: "All of the above"
         },
-         {
-            question: "According to International Encyclopedia of the Social Sciences (1961) what is  political culture?",
-            choices: ["It is the norms of conduct both of and between the various political actors operating in society", "The set of attitudes, beliefs, and sentiments which give order and meaning to a political process", "The norms of conduct both of and between the various political actors", "The society need more member and everyone must think about everyone and their family"],
-            answer: "The set of attitudes, beliefs, and sentiments which give order and meaning to a political process"
+        {
+            question: "According to the International Encyclopedia of the Social Sciences (1961), what is political culture?",
+            choices: [
+                "Norms of conduct between political actors in society",
+                "The set of attitudes, beliefs, and sentiments that give order and meaning to a political process",
+                "Norms of conduct among political actors",
+                "The need for society to have more members who think about everyone"
+            ],
+            answer: "The set of attitudes, beliefs, and sentiments that give order and meaning to a political process"
         },
         {
-            question: "What does the term government means in social studies?",
-            choices: ["It's just all about money", "It is all about who comes with power", "It's all about politics and who is smarter", "To rule or control others"],
+            question: "In social studies, what does the term 'government' mean?",
+            choices: [
+                "It’s all about money",
+                "It’s about who comes to power",
+                "It’s about politics and who is smarter",
+                "To rule or control others"
+            ],
             answer: "To rule or control others"
         },
         {
-            question: "Authority in politics implies:",
-            choices: ["The ability to compel obedience", "What one ought to do in a particular instance", "It means that the person is power full", "To lesson harm or evil and do good"],
+            question: "In politics, what does authority imply?",
+            choices: [
+                "The ability to compel obedience",
+                "What one ought to do in a particular instance",
+                "That a person is powerful",
+                "To lessen harm or evil and do good"
+            ],
             answer: "The ability to compel obedience"
         },
-         {
-            question: "Which of these elements must an ideal society need and wants for sure?",
-            choices: ["Wants the human right", "Needs the peace", "Need human to be together as unity", "Need cannot be secured by coercion"],
-            answer: "Need cannot be secured by coercion"
+        {
+            question: "Which element must an ideal society absolutely need?",
+            choices: [
+                "The desire for human rights",
+                "The need for peace",
+                "The need for human unity",
+                "Needs that cannot be secured by coercion"
+            ],
+            answer: "Needs that cannot be secured by coercion"
         },
-          {
-            question: "What does one should exercise his rights for?",
-            choices: ["The promotion of social good", "Having more respect by society", "To be popular more", "To lesson harm or evil and do good"],
+        {
+            question: "For what purpose should one exercise their rights?",
+            choices: [
+                "The promotion of social good",
+                "Gaining more respect from society",
+                "Becoming more popular",
+                "To lessen harm or evil and do good"
+            ],
             answer: "The promotion of social good"
         },
         {
-            question: "What is the meaning of politics, according to the International Encyclopedia of the Social Sciences (1961)?",
-            choices: ["Economic growth", "Social relationships", "Distribution of resources", "Set of attitudes, beliefs and sentiments"],
-            answer: "Set of attitudes, beliefs and sentiments"
-        },
-         {
-            question: "What are the four issues to look into the interplay between rights and duties?",
-            choices: ["One's right implies the other's duty, one's right implies one's duty to recognize similar rights of others, third, one should exercise his rights for the promotion of social good, and fourth, the State being a nucleus organ needs to take care of the social and legal interests of all its individuals", "One should care about family first, every human is social animal and they can't be apart, one should be honest and loyal, and one should care for their country", "Everyone should have the freedom to do, to speak and to feel and say what they need to, one is what they get as their parents tell them, every action had a positive and negative results, and the family is the corner stone", "One's right means that they can't get punished, what goes around comes around, freedom is power and one should be happy about who they are"],
-            answer: "One's right implies the other's duty, one's right implies one's duty to recognize similar rights of others, third, one should exercise his rights for the promotion of social good, and fourth, the State being a nucleus organ needs to take care of the social and legal interests of all its individuals"
-        },
-         {
-            question: "What are the types of political cultures Almond and Verba (1963) construct:",
-            choices: ["Family, village, and state", "Economic, politics and humanity", "Parochial cultures, subject cultures, and participant cultures", "Rights, freedom, and responsibility"],
-            answer: "Parochial cultures, subject cultures, and participant cultures"
+            question: "According to the International Encyclopedia of the Social Sciences (1961), what is the meaning of politics?",
+            choices: [
+                "Economic growth",
+                "Social relationships",
+                "Distribution of resources",
+                "A set of attitudes, beliefs, and sentiments"
+            ],
+            answer: "A set of attitudes, beliefs, and sentiments"
         },
         {
-            question: "What is the other name given to the Social Democratic States?",
+            question: "What are the four issues Sastry et al. (2011) identify regarding the interplay between rights and duties?",
+            choices: [
+                "One’s right implies the other’s duty, one’s right implies a duty to recognize others’ similar rights, one should exercise rights for social good, and the state must care for social and legal interests",
+                "Care for family first, humans as social animals, honesty and loyalty, and care for the country",
+                "Freedom to act, speak, and feel, identity from parents, actions with consequences, and family as a cornerstone",
+                "Rights without punishment, karma, freedom as power, and self-acceptance"
+            ],
+            answer: "One’s right implies the other’s duty, one’s right implies a duty to recognize others’ similar rights, one should exercise rights for social good, and the state must care for social and legal interests"
+        },
+        {
+            question: "What types of political cultures did Almond and Verba (1963) construct?",
+            choices: [
+                "Family, village, and state",
+                "Economic, political, and humanitarian",
+                "Parochial, subject, and participant cultures",
+                "Rights, freedom, and responsibility"
+            ],
+            answer: "Parochial, subject, and participant cultures"
+        },
+        {
+            question: "What is another name for Social Democratic States?",
             choices: ["Minimal", "Welfare", "Capitalist", "Patriarchal"],
             answer: "Welfare"
         },
-         {
-            question: "When one has no contact at all with any state, we say that he is :",
-            choices: ["Statefull", "Full of power", "Citizen", "Stateless"],
+        {
+            question: "When one has no affiliation with any state, they are said to be:",
+            choices: ["Stateful", "Full of power", "A citizen", "Stateless"],
             answer: "Stateless"
         },
-         {
-            question: "A state has the following basic elements but one:",
+        {
+            question: "A state has all of the following basic elements except one. Which is it?",
             choices: ["Recognition", "Government", "Population", "A sea"],
             answer: "A sea"
         },
@@ -353,68 +473,108 @@
             answer: "The government"
         },
         {
-            question: "Which one is correct about the State:",
-            choices: ["It cannot be established without the consent of the people", "It is always secular", "It is always democratic", "Its primary goal is to become an economic giant"],
+            question: "Which statement is correct about the state?",
+            choices: [
+                "It cannot be established without the consent of the people",
+                "It is always secular",
+                "It is always democratic",
+                "Its primary goal is to become an economic giant"
+            ],
             answer: "It cannot be established without the consent of the people"
         },
-         {
-            question: "One of the following is the characteristics of collectivism.",
-            choices: ["Freedom", "Private Ownership", "Equality", "Market competition"],
+        {
+            question: "Which of the following is a characteristic of collectivism?",
+            choices: ["Freedom", "Private ownership", "Equality", "Market competition"],
             answer: "Equality"
         },
         {
-            question: "According to pluralists view the state:",
-            choices: ["Cannot be seen apart from the economy", "Is a neutral arbiter between competing groups", "Is biased towards capitalism", "Is ruled by landlords"],
+            question: "According to the pluralist view, the state:",
+            choices: [
+                "Cannot be seen apart from the economy",
+                "Is a neutral arbiter between competing groups",
+                "Is biased toward capitalism",
+                "Is ruled by landlords"
+            ],
             answer: "Is a neutral arbiter between competing groups"
         },
         {
-            question: "Which theory upholds an ethical community underpinned by mutual sympathy ‘universal altruism'.",
+            question: "Which theory upholds an ethical community underpinned by mutual sympathy and 'universal altruism'?",
             choices: ["International Approach", "Functional Approach", "Idealist Approach", "Organizational Approach"],
             answer: "Idealist Approach"
         },
         {
-            question: "In the four elements of the State, which one says “ the state should be free from foreign control of any kind”.",
+            question: "In the four elements of the state, which one states that 'the state should be free from foreign control of any kind'?",
             choices: ["Defined Territory", "Sovereignty", "Population", "Government"],
             answer: "Sovereignty"
         },
         {
-            question: "Almond and Verba (1963) construct three political cultures and one of it says In parochial cultures citizens have low cognitive, affective, and evaluative orientation which one of them?",
-            choices: ["Knowing everything about the political system", "Getting high education about political education", "Orientation regarding the political systems", "High cognitive, affective, and evaluative orientation to the political system"],
-            answer: "Orientation regarding the political systems"
+            question: "According to Almond and Verba (1963), in parochial cultures, citizens have a low cognitive, affective, and evaluative orientation toward what?",
+            choices: [
+                "Knowing everything about the political system",
+                "Gaining a high education in political matters",
+                "The political system",
+                "High cognitive, affective, and evaluative orientation to the political system"
+            ],
+            answer: "The political system"
         },
-         {
-            question: "What is the meaning of power in politics?",
-            choices: ["Having the legal and physical power", "The ability to compel obedience", "Government is a leadership or the administration of a state", "Having the political power and to be leader"],
+        {
+            question: "In politics, what does power mean?",
+            choices: [
+                "Having legal and physical power",
+                "The ability to compel obedience",
+                "Government as leadership or administration of a state",
+                "Having political power and being a leader"
+            ],
             answer: "The ability to compel obedience"
         },
         {
-            question: "According to Locke, The responsibilities of individual citizens (usually seen as) is:",
-            choices: ["Building the county", "Maintaining domestic order", "The realm of civil society", "Caring for the Government"],
+            question: "According to John Locke, what are the responsibilities of individual citizens usually seen as?",
+            choices: [
+                "Building the country",
+                "Maintaining domestic order",
+                "The realm of civil society",
+                "Caring for the government"
+            ],
             answer: "The realm of civil society"
         },
-         {
-            question: "What is the meaning of sovereignty as we see the four elements of state?",
-            choices: ["Highest power of the state that distinguishes it from all other associations of human beings", "Something has to be in peace and to make peace for everyone", "Is what human has to get and have, human right", "About family and the love of human"],
-            answer: "Highest power of the state that distinguishes it from all other associations of human beings"
+        {
+            question: "In the context of the four elements of the state, what does sovereignty mean?",
+            choices: [
+                "The highest power of the state that distinguishes it from all other human associations",
+                "Something that must be peaceful and promote peace for everyone",
+                "A human right that people must obtain",
+                "Family and the love of humanity"
+            ],
+            answer: "The highest power of the state that distinguishes it from all other human associations"
         },
         {
-            question: "Which type of state has two types, duties of the soul and duties of the body?",
-            choices: ["Moral State", "Theology State", "Parochial State", "Ethical State"],
+            question: "Which type of state distinguishes between duties of the soul and duties of the body?",
+            choices: ["Moral State", "Theological State", "Parochial State", "Ethical State"],
             answer: "Ethical State"
         },
         {
-            question: "From which factors the size of a state's territory cannot be fixed?",
-            choices: ["Territorial make up", "Make up of all things", "In the form of islands", "Ethic"],
-            answer: "Territorial make up"
+            question: "From which factor can the size of a state’s territory not be fixed?",
+            choices: ["Territorial makeup", "Makeup of all things", "Form of islands", "Ethnicity"],
+            answer: "Territorial makeup"
         },
-         {
-            question: "The essence of totalitarianism is:",
-            choices: ["The construction of an all-embracing state", "About human and animal", "To see more and to act more", "Everything about political action and the social studies"],
+        {
+            question: "What is the essence of totalitarianism?",
+            choices: [
+                "The construction of an all-embracing state",
+                "Concern for humans and animals",
+                "Seeing and acting more",
+                "Everything about political action and social studies"
+            ],
             answer: "The construction of an all-embracing state"
         },
-         {
-            question: "According to one view, called the divine command theory (DCT) what does ethical principles simply are?",
-            choices: ["The code of conduct one follows while ethics is the study of moral conduct", "Constituting the fundamental law that can get better leader", "The study of the code that one follows", "Commands of God"],
+        {
+            question: "According to the divine command theory (DCT), what are ethical principles?",
+            choices: [
+                "The code of conduct one follows while ethics studies moral conduct",
+                "Fundamental laws that produce better leaders",
+                "The study of the code one follows",
+                "Commands of God"
+            ],
             answer: "Commands of God"
         }
     ];
@@ -422,43 +582,43 @@
     const shortAnswerQuestions = [
         {
             question: "Explain the difference between a state and a government.",
-            answer: "The state is a political entity with defined territory, population, and sovereignty, while the government is the apparatus through which the state is ruled. The government administers and enforces the laws of the state."
+            answer: "A state is a political entity with a defined territory, population, sovereignty, and government, representing the broader concept of a political community. The government, however, is the specific system or group of people that exercises authority and enforces laws within the state."
         },
         {
             question: "What are the main characteristics of a 'Leviathan state,' and how does it differ from a 'minimal state'?",
-            answer: "A Leviathan state is a self-serving entity focused on expansion and control, whereas a minimal state is limited to protecting individual rights and enforcing contracts."
+            answer: "A Leviathan state, as described by Thomas Hobbes, is characterized by a strong, centralized authority that prioritizes state power and control over individual freedoms to maintain order and security. It differs from a minimal state, which limits its role to protecting individual rights, enforcing contracts, and maintaining basic order, avoiding extensive intervention in social or economic life."
         },
         {
-            question: "Explain what rights does a  state has?",
-            answer: "A State gives freedom and protection for someone in its territory but as side effect, the state has to take people by force to fight their country."
+            question: "What rights does a state have?",
+            answer: "A state has the sovereign right to govern its territory, enforce laws, maintain order, and protect its citizens. This includes the authority to collect taxes, defend against external threats, and regulate internal affairs, though it may also require citizens to fulfill duties like military service in times of need."
         },
         {
             question: "What is the main difference between authority and legitimacy in the context of government?",
-            answer: "Authority is the power to compel obedience, while legitimacy is the right to exercise that power, based on the governed's acceptance."
+            answer: "Authority refers to the power or right to give orders and enforce obedience, often backed by law or force. Legitimacy, however, is the perception that this power is justified and accepted by the governed, typically derived from consent, tradition, or legal recognition."
         },
         {
-            question: "Differentiate Unitary Constitution with Federal Constitution.",
-            answer: "In Unitary constitution, state power is concentrated in the hands of the central government. On the other hand, in federal constitution state power is divides power among the different units of a state administration."
+            question: "Differentiate between a unitary constitution and a federal constitution.",
+            answer: "A unitary constitution centralizes power in a single national government, with regional or local units deriving authority from the center (e.g., France). A federal constitution divides power between a central government and semi-autonomous regional governments, each with defined powers (e.g., the United States)."
         },
         {
             question: "Describe the core idea behind the concept of social citizenship, and give an example of a social right.",
-            answer: "Social citizenship emphasizes the right to a basic standard of living and social welfare.  An example is the right to education."
+            answer: "Social citizenship, as developed by T.H. Marshall, emphasizes rights to economic welfare and social inclusion, ensuring a minimum standard of living. An example of a social right is the right to free public education, which supports equal opportunity and societal participation."
         },
         {
-            question: "Distinguish between a nation and state?",
-            answer: "A nation is a people, linked by similar things like culture, religion, shared history, and etc, while a state is is an organized political entity that has sovereignty."
-        },
-          {
-            question: "What does citizenship mean in a liberal democracy, what does citizenship entail for citizens?",
-            answer: "In a liberal democracy, citizenship typically entails civil rights, political rights, and social rights, including the right to vote, freedom of speech, and the right to education."
-        },
-          {
-            question: "What are the criteria in which, to be legal citizen, to have a State can be identified or known?",
-            answer: "You must live there more than 4 to 5 years, to not have any legal issue and to follow the land law"
+            question: "Distinguish between a nation and a state.",
+            answer: "A nation is a group of people united by shared culture, history, language, or identity (e.g., the Kurdish nation). A state is a political entity with sovereignty over a defined territory, population, and government (e.g., Canada). A nation-state combines both, like Japan."
         },
         {
-            question: "What do you get from being the members or citizens in society?",
-            answer: "The code of ethics for the teaching profession, a more general term referring to the character of individuals and community. In other words, Morality is used to"
+            question: "What does citizenship mean in a liberal democracy, and what does it entail for citizens?",
+            answer: "In a liberal democracy, citizenship means legal membership in a state with guaranteed rights and responsibilities. It entails civil rights (e.g., freedom of speech), political rights (e.g., voting), and social rights (e.g., access to healthcare), alongside duties like obeying laws and paying taxes."
+        },
+        {
+            question: "What criteria must be met to be recognized as a legal citizen of a state?",
+            answer: "Criteria vary by country but typically include being born in the territory (jus soli), having parents who are citizens (jus sanguinis), or undergoing naturalization, which often requires residency (e.g., 5-10 years), legal compliance, and sometimes language proficiency or an oath of allegiance."
+        },
+        {
+            question: "What benefits do individuals gain from being members or citizens of a society?",
+            answer: "Citizens gain rights such as protection under the law, access to public services (e.g., education, healthcare), and participation in governance (e.g., voting). They also benefit from a sense of identity, community, and mutual support, balanced by responsibilities like contributing to societal welfare."
         }
     ];
 
@@ -481,35 +641,32 @@
                 const button = document.createElement("button");
                 button.innerText = choice;
                 button.onclick = function() {
-                    this.querySelectorAll('.feedback').forEach(span => span.remove());
-
-                    const allButtonsInGroup = optionsDiv.querySelectorAll('button');
-                    allButtonsInGroup.forEach(btn => {
-                        btn.classList.add('answered');
-                        btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.style.color = '';
-                        btn.style.fontWeight = '';
+                    const allButtons = optionsDiv.querySelectorAll("button");
+                    allButtons.forEach(btn => {
+                        btn.classList.add("answered");
+                        btn.classList.remove("correct-choice", "wrong-choice");
+                        const existingFeedback = btn.querySelector(".feedback");
+                        if (existingFeedback) existingFeedback.remove();
                     });
 
-                    const feedbackSpan = document.createElement('span');
-                    feedbackSpan.classList.add('feedback');
+                    const feedbackSpan = document.createElement("span");
+                    feedbackSpan.classList.add("feedback");
 
                     if (choice === q.answer) {
-                        this.classList.add('correct-choice');
-                        feedbackSpan.classList.add('correct');
-                        feedbackSpan.innerText = 'Correct';
+                        button.classList.add("correct-choice");
+                        feedbackSpan.classList.add("correct");
+                        feedbackSpan.innerText = "Correct";
                     } else {
-                        this.classList.add('wrong-choice');
-                        feedbackSpan.classList.add('wrong');
-                        feedbackSpan.innerText = 'Wrong';
-
-                        allButtonsInGroup.forEach(btn => {
+                        button.classList.add("wrong-choice");
+                        feedbackSpan.classList.add("wrong");
+                        feedbackSpan.innerText = "Wrong";
+                        allButtons.forEach(btn => {
                             if (btn.innerText === q.answer) {
-                                btn.classList.add('correct-choice');
+                                btn.classList.add("correct-choice");
                             }
                         });
                     }
-                    this.appendChild(feedbackSpan);
+                    button.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
