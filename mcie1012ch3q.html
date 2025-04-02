@@ -36,25 +36,24 @@
             background: #ddd;
             cursor: pointer;
             transition: background 0.3s;
-            text-align: left; /* Align button text left */
+            text-align: left;
         }
         .options button:hover {
             background: #ccc;
         }
-        /* Ensure buttons don't stay colored after clicking another */
         .options button.answered {
-            pointer-events: none; /* Disable further clicks */
+            pointer-events: none;
             opacity: 0.7;
         }
         .options button.correct-choice {
-            background-color: #90ee90; /* Light green for correct */
+            background-color: #90ee90;
             color: black;
         }
         .options button.wrong-choice {
-            background-color: #ffcccb; /* Light red for incorrect */
+            background-color: #ffcccb;
             color: black;
         }
-        .feedback { /* Renamed from correct/wrong for clarity */
+        .feedback {
             font-weight: bold;
             margin-left: 10px;
         }
@@ -106,8 +105,8 @@
         { 
             question: "What is the primary focus of ethical decision-making and moral judgments?", 
             choices: [
+                "Making ethical choices and evaluating actions",
                 "Defining civic education", 
-                "Making ethical choices and evaluating actions", 
                 "Understanding state structures", 
                 "Theories of citizenship"
             ], 
@@ -117,7 +116,7 @@
             question: "Ethical decision-making involves:", 
             choices: [
                 "Following societal norms without question", 
-                "Making choices based on ethical principles and reasoning", 
+                "Making choices based on ethical principles and reasoning",
                 "Ignoring personal values", 
                 "Acting solely on legal obligations"
             ], 
@@ -128,7 +127,7 @@
             choices: [
                 "Moral intuitions", 
                 "Critical reasoning", 
-                "Economic analysis", 
+                "Economic analysis",
                 "Ethical principles"
             ], 
             answer: "Economic analysis"
@@ -137,9 +136,9 @@
             question: "Moral intuitions are:", 
             choices: [
                 "Deliberate and calculated decisions", 
-                "Immediate, gut-level responses to ethical situations", 
                 "Laws enforced by the state", 
-                "Theories of ethical behavior"
+                "Theories of ethical behavior",
+                "Immediate, gut-level responses to ethical situations"
             ], 
             answer: "Immediate, gut-level responses to ethical situations"
         },
@@ -147,7 +146,7 @@
             question: "What role does critical reasoning play in ethical decision-making?", 
             choices: [
                 "Eliminates the need for ethical principles", 
-                "Helps evaluate and refine moral intuitions", 
+                "Helps evaluate and refine moral intuitions",
                 "Focuses only on legal consequences", 
                 "Replaces personal values"
             ], 
@@ -156,7 +155,7 @@
         { 
             question: "Rationalization in ethical decision-making refers to:", 
             choices: [
-                "Justifying actions after they are taken", 
+                "Justifying actions after they are taken",
                 "Planning actions in advance", 
                 "Ignoring ethical dilemmas", 
                 "Following religious doctrines"
@@ -167,9 +166,9 @@
             question: "Which type of reasoning involves drawing general conclusions from specific examples?", 
             choices: [
                 "Deductive reasoning", 
-                "Inductive reasoning", 
                 "Intuitive reasoning", 
-                "Legal reasoning"
+                "Legal reasoning",
+                "Inductive reasoning"
             ], 
             answer: "Inductive reasoning"
         },
@@ -177,9 +176,9 @@
             question: "Ethics and religious faith:", 
             choices: [
                 "Are always in conflict", 
-                "Can intersect but are distinct", 
                 "Are identical in purpose", 
-                "Should never influence each other"
+                "Should never influence each other",
+                "Can intersect but are distinct"
             ], 
             answer: "Can intersect but are distinct"
         },
@@ -187,7 +186,7 @@
             question: "Testing moral arguments involves:", 
             choices: [
                 "Accepting them without scrutiny", 
-                "Evaluating their logic and consistency", 
+                "Evaluating their logic and consistency",
                 "Relying solely on emotions", 
                 "Following societal trends"
             ], 
@@ -197,7 +196,7 @@
             question: "The 'Thinking Ethically' framework emphasizes:", 
             choices: [
                 "A single approach to all ethical dilemmas", 
-                "Multiple approaches like fairness, rights, and common good", 
+                "Multiple approaches like fairness, rights, and common good",
                 "Ignoring consequences of actions", 
                 "Following only legal guidelines"
             ], 
@@ -207,7 +206,7 @@
             question: "The Fairness and Justice Approach focuses on:", 
             choices: [
                 "Maximizing benefits for the majority", 
-                "Treating individuals equitably", 
+                "Treating individuals equitably",
                 "Protecting individual rights above all", 
                 "Promoting collective welfare"
             ], 
@@ -217,7 +216,7 @@
             question: "The Common Good Approach prioritizes:", 
             choices: [
                 "Individual rights over community needs", 
-                "Benefits to society as a whole", 
+                "Benefits to society as a whole",
                 "Personal gain", 
                 "Strict adherence to laws"
             ], 
@@ -227,9 +226,9 @@
             question: "The Rights Approach is based on:", 
             choices: [
                 "Achieving the greatest good for the greatest number", 
-                "Respecting inherent human entitlements", 
                 "Following societal customs", 
-                "Economic outcomes"
+                "Economic outcomes",
+                "Respecting inherent human entitlements"
             ], 
             answer: "Respecting inherent human entitlements"
         },
@@ -237,8 +236,8 @@
             question: "To whom or what does morality apply?", 
             choices: [
                 "Only individuals", 
-                "Individuals, society, nature, and religion", 
                 "Only legal systems", 
+                "Individuals, society, nature, and religion",
                 "Only religious institutions"
             ], 
             answer: "Individuals, society, nature, and religion"
@@ -247,8 +246,8 @@
             question: "Religious morality is primarily concerned with:", 
             choices: [
                 "Secular laws", 
-                "Divine commands or spiritual beliefs", 
                 "Economic benefits", 
+                "Divine commands or spiritual beliefs",
                 "Social contracts"
             ], 
             answer: "Divine commands or spiritual beliefs"
@@ -256,7 +255,7 @@
         { 
             question: "Morality and nature refer to:", 
             choices: [
-                "Ethical obligations toward the environment", 
+                "Ethical obligations toward the environment",
                 "Ignoring natural laws", 
                 "Economic exploitation of resources", 
                 "Legal regulations only"
@@ -267,8 +266,8 @@
             question: "Individual morality focuses on:", 
             choices: [
                 "Collective societal norms", 
-                "Personal ethical choices and actions", 
                 "Government policies", 
+                "Personal ethical choices and actions",
                 "Religious doctrines"
             ], 
             answer: "Personal ethical choices and actions"
@@ -277,8 +276,8 @@
             question: "Social morality involves:", 
             choices: [
                 "Personal beliefs only", 
-                "Shared values within a community", 
                 "Ignoring societal impacts", 
+                "Shared values within a community",
                 "Economic considerations alone"
             ], 
             answer: "Shared values within a community"
@@ -287,8 +286,8 @@
             question: "Who is considered morally responsible for an action?", 
             choices: [
                 "Only the government", 
-                "Individuals or entities capable of intentional action", 
                 "Society as a whole", 
+                "Individuals or entities capable of intentional action",
                 "Religious leaders only"
             ], 
             answer: "Individuals or entities capable of intentional action"
@@ -296,7 +295,7 @@
         { 
             question: "Moral judgments are:", 
             choices: [
-                "Evaluations of actions based on ethical standards", 
+                "Evaluations of actions based on ethical standards",
                 "Legal rulings", 
                 "Emotional reactions without reasoning", 
                 "Economic decisions"
@@ -306,7 +305,7 @@
         { 
             question: "What makes an action moral?", 
             choices: [
-                "Its alignment with ethical principles or intentions", 
+                "Its alignment with ethical principles or intentions",
                 "Its legality alone", 
                 "Its popularity", 
                 "Its economic benefit"
@@ -316,7 +315,7 @@
         { 
             question: "The Argument from Enlightened Self-Interest suggests humans should be moral because:", 
             choices: [
-                "It benefits them personally in the long run", 
+                "It benefits them personally in the long run",
                 "It is required by law", 
                 "It avoids punishment", 
                 "It follows tradition"
@@ -326,7 +325,7 @@
         { 
             question: "The Argument from Tradition and Law posits that morality is valuable because:", 
             choices: [
-                "It reflects historical norms and legal systems", 
+                "It reflects historical norms and legal systems",
                 "It maximizes happiness", 
                 "It is a personal choice", 
                 "It ignores societal needs"
@@ -336,7 +335,7 @@
         { 
             question: "Common Human Needs as a reason for morality emphasize:", 
             choices: [
-                "Universal requirements like safety and belonging", 
+                "Universal requirements like safety and belonging",
                 "Individual desires only", 
                 "Legal obligations", 
                 "Religious mandates"
@@ -348,7 +347,7 @@
             choices: [
                 "Rights Approach", 
                 "Fairness and Justice Approach", 
-                "Common Good Approach", 
+                "Common Good Approach",
                 "All of the above"
             ], 
             answer: "Common Good Approach"
@@ -357,9 +356,9 @@
             question: "Ethical decisions should involve:", 
             choices: [
                 "Only emotional responses", 
-                "A balance of intuition and reasoning", 
                 "Strict adherence to tradition", 
-                "Ignoring personal values"
+                "Ignoring personal values",
+                "A balance of intuition and reasoning"
             ], 
             answer: "A balance of intuition and reasoning"
         },
@@ -367,8 +366,8 @@
             question: "Who bears moral responsibility in a group decision?", 
             choices: [
                 "Only the leader", 
-                "All members capable of influencing the outcome", 
                 "No one", 
+                "All members capable of influencing the outcome",
                 "The legal system"
             ], 
             answer: "All members capable of influencing the outcome"
@@ -377,9 +376,9 @@
             question: "Morality applies to:", 
             choices: [
                 "Only human actions", 
-                "Actions affecting humans, nature, and society", 
                 "Only legal matters", 
-                "Only religious contexts"
+                "Only religious contexts",
+                "Actions affecting humans, nature, and society"
             ], 
             answer: "Actions affecting humans, nature, and society"
         },
@@ -387,8 +386,8 @@
             question: "Why should humans be moral?", 
             choices: [
                 "To avoid legal consequences", 
-                "For self-interest, tradition, and shared needs", 
                 "Only for religious salvation", 
+                "For self-interest, tradition, and shared needs",
                 "To follow societal trends"
             ], 
             answer: "For self-interest, tradition, and shared needs"
@@ -397,9 +396,9 @@
             question: "The framework for moral decision-making is designed to:", 
             choices: [
                 "Provide a rigid set of rules", 
-                "Offer flexible approaches to ethical dilemmas", 
                 "Focus solely on legal outcomes", 
-                "Ignore societal impacts"
+                "Ignore societal impacts",
+                "Offer flexible approaches to ethical dilemmas"
             ], 
             answer: "Offer flexible approaches to ethical dilemmas"
         }
@@ -430,19 +429,16 @@
 
     function loadQuiz() {
         const quizDiv = document.getElementById("quiz");
-        quizDiv.innerHTML = ""; // Clear previous content if any
+        quizDiv.innerHTML = "";
 
         questions.forEach((q, index) => {
-            // Create container for question and its options
             const questionBlock = document.createElement("div");
-            questionBlock.style.marginBottom = "20px"; // Add space between questions
+            questionBlock.style.marginBottom = "20px";
 
-            // Create question text element
             const questionElement = document.createElement("div");
             questionElement.classList.add("question");
             questionElement.innerText = `${index + 1}. ${q.question}`;
 
-            // Create options container
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
 
@@ -450,50 +446,41 @@
                 const button = document.createElement("button");
                 button.innerText = choice;
                 button.onclick = function() {
-                    // Remove previous feedback spans if any
                     this.querySelectorAll('.feedback').forEach(span => span.remove());
 
-                    // Disable all buttons in this group and mark as answered
                     const allButtonsInGroup = optionsDiv.querySelectorAll('button');
                     allButtonsInGroup.forEach(btn => {
                         btn.classList.add('answered');
-                        // Reset background/color in case of re-click (though disabled)
                         btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.style.color = ''; // Reset direct style color if any
+                        btn.style.color = '';
                         btn.style.fontWeight = '';
                     });
 
-                    // Create feedback span
                     const feedbackSpan = document.createElement('span');
                     feedbackSpan.classList.add('feedback');
 
                     if (choice === q.answer) {
-                        this.classList.add('correct-choice'); // Use class for styling
+                        this.classList.add('correct-choice');
                         feedbackSpan.classList.add('correct');
                         feedbackSpan.innerText = 'Correct';
                     } else {
-                        this.classList.add('wrong-choice'); // Use class for styling
+                        this.classList.add('wrong-choice');
                         feedbackSpan.classList.add('wrong');
                         feedbackSpan.innerText = 'Wrong';
 
-                        // Highlight the correct answer as well
                         allButtonsInGroup.forEach(btn => {
                             if (btn.innerText === q.answer) {
                                 btn.classList.add('correct-choice');
                             }
                         });
                     }
-                    // Append feedback span to the clicked button
                     this.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
 
-            // Append question and options to the question block
             questionBlock.appendChild(questionElement);
             questionBlock.appendChild(optionsDiv);
-
-            // Append the whole block to the main quiz container
             quizDiv.appendChild(questionBlock);
         });
     }
@@ -534,7 +521,6 @@
         });
     }
 
-    // Load the quiz and short answers when the page loads
     loadQuiz();
     loadShortAnswers();
 </script>
