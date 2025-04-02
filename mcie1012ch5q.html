@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCED 1011 Chapter 5 Practice Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: left;
+        }
+        .options button:hover {
+            background: #ccc;
+        }
+        .options button.answered {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .options button.correct-choice {
+            background-color: #90ee90;
+            color: black;
+        }
+        .options button.wrong-choice {
+            background-color: #ffcccb;
+            color: black;
+        }
+        .feedback {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .feedback.correct {
+            color: green;
+        }
+        .feedback.wrong {
+            color: red;
+        }
+        .short-answer-section {
+            margin-top: 40px;
+        }
+        .short-answer {
+            margin-bottom: 20px;
+        }
+        .answer {
+            display: none;
+            color: green;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0fff0;
+            border-radius: 5px;
+        }
+        .toggle-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>Moral and Citizenship Education (MCED 1011) - Chapter 5 Practice Questions</h2>
+    <div id="quiz"></div>
+
+    <div class="short-answer-section">
+        <h2>Short Answer Questions</h2>
+        <div id="short-answers"></div>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            question: "What is the primary purpose of a constitution?",
+            choices: ["To establish a monarchy", "To limit governmental power and protect citizens' rights", "To centralize power in the executive branch", "To abolish all laws"],
+            answer: "To limit governmental power and protect citizens' rights"
+        },
+        {
+            question: "Which of the following is NOT a peculiar feature of a constitution?",
+            choices: ["Supremacy", "Flexibility", "Written form", "Temporary nature"],
+            answer: "Temporary nature"
+        },
+        {
+            question: "How are constitutions classified based on their form?",
+            choices: ["Written and unwritten", "Federal and unitary", "Democratic and authoritarian", "Rigid and flexible"],
+            answer: "Written and unwritten"
+        },
+        {
+            question: "What does constitutionalism emphasize?",
+            choices: ["Unlimited governmental power", "The rule of law and limited government", "The supremacy of the military", "The abolition of human rights"],
+            answer: "The rule of law and limited government"
+        },
+        {
+            question: "Which of the following is a major function of a constitution?",
+            choices: ["To promote dictatorship", "To define the structure and powers of government", "To eliminate elections", "To favor one political party"],
+            answer: "To define the structure and powers of government"
+        },
+        {
+            question: "When was Ethiopia’s first written constitution enacted?",
+            choices: ["1955", "1931", "1987", "1995"],
+            answer: "1931"
+        },
+        {
+            question: "Which Ethiopian constitution introduced a Marxist-Leninist framework?",
+            choices: ["1931 Constitution", "1955 Revised Constitution", "1987 PDRE Constitution", "1995 FDRE Constitution"],
+            answer: "1987 PDRE Constitution"
+        },
+        {
+            question: "The 1995 FDRE Constitution is notable for:",
+            choices: ["Establishing a monarchy", "Recognizing human rights and federalism", "Abolishing elections", "Centralizing power"],
+            answer: "Recognizing human rights and federalism"
+        },
+        {
+            question: "What was a key feature of Ethiopia’s traditional constitution before 1931?",
+            choices: ["Written laws", "Customary and unwritten practices", "A parliamentary system", "A federal structure"],
+            answer: "Customary and unwritten practices"
+        },
+        {
+            question: "Which constitution marked Ethiopia’s transition to a federal democratic republic?",
+            choices: ["1931 Constitution", "1955 Revised Constitution", "1987 PDRE Constitution", "1995 FDRE Constitution"],
+            answer: "1995 FDRE Constitution"
+        },
+        {
+            question: "How is democracy primarily defined?",
+            choices: ["Rule by a single leader", "Government by the people, either directly or through representatives", "A system with no elections", "Rule by the military"],
+            answer: "Government by the people, either directly or through representatives"
+        },
+        {
+            question: "Which of the following is NOT a value or principle of democracy?",
+            choices: ["Equality", "Rule of law", "Authoritarianism", "Accountability"],
+            answer: "Authoritarianism"
+        },
+        {
+            question: "What does democratization refer to?",
+            choices: ["The establishment of a monarchy", "The transition from nondemocratic to democratic regimes", "The elimination of political parties", "The centralization of power"],
+            answer: "The transition from nondemocratic to democratic regimes"
+        },
+        {
+            question: "Which actor is considered central to modern democracy?",
+            choices: ["Political parties", "Monarchs", "Military forces", "Religious leaders"],
+            answer: "Political parties"
+        },
+        {
+            question: "What role does the media play in democratization?",
+            choices: ["Suppressing public opinion", "Acting as a watchdog and informing citizens", "Eliminating political parties", "Supporting authoritarian regimes"],
+            answer: "Acting as a watchdog and informing citizens"
+        },
+        {
+            question: "Civil society is vital for democracy because it:",
+            choices: ["Limits state power and promotes accountability", "Centralizes authority", "Prevents elections", "Supports military rule"],
+            answer: "Limits state power and promotes accountability"
+        },
+        {
+            question: "Which of the following is a key element of democratization?",
+            choices: ["Consolidation of authoritarian rule", "Installation of a democratic regime", "Elimination of civil society", "Suppression of human rights"],
+            answer: "Installation of a democratic regime"
+        },
+        {
+            question: "What is the primary function of political parties in a democracy?",
+            choices: ["To suppress opposition", "To bridge society and government", "To abolish elections", "To centralize power"],
+            answer: "To bridge society and government"
+        },
+        {
+            question: "Which principle ensures that elections are conducted periodically?",
+            choices: ["Free and fair elections", "Majority rule", "Separation of powers", "Rule of law"],
+            answer: "Free and fair elections"
+        },
+        {
+            question: "What is a characteristic of a participant political culture?",
+            choices: ["Low citizen engagement", "High cognitive and active participation in politics", "Passive acceptance of authority", "Rejection of democracy"],
+            answer: "High cognitive and active participation in politics"
+        },
+        {
+            question: "Human rights are defined as:",
+            choices: ["Privileges granted by governments", "Entitlements inherent to all humans by virtue of being human", "Rights exclusive to certain groups", "Temporary benefits"],
+            answer: "Entitlements inherent to all humans by virtue of being human"
+        },
+        {
+            question: "Which principle of human rights states that they cannot be taken away?",
+            choices: ["Universality", "Inalienability", "Indivisibility", "Interdependence"],
+            answer: "Inalienability"
+        },
+        {
+            question: "The UDHR states that human rights apply:",
+            choices: ["Only to citizens of democratic countries", "Without distinction of race, color, sex, or other status", "Only to adults", "Based on economic status"],
+            answer: "Without distinction of race, color, sex, or other status"
+        },
+        {
+            question: "What is the primary duty bearer for human rights?",
+            choices: ["Individuals", "The state", "Private corporations", "Religious institutions"],
+            answer: "The state"
+        },
+        {
+            question: "Which of the following is an example of a civil right?",
+            choices: ["Right to education", "Right to a fair trial", "Right to development", "Right to health"],
+            answer: "Right to a fair trial"
+        },
+        {
+            question: "Economic and social rights are often described as:",
+            choices: ["Negative rights", "Immediately realizable", "Positive rights requiring progressive implementation", "Non-justiciable"],
+            answer: "Positive rights requiring progressive implementation"
+        },
+        {
+            question: "Third-generation rights are also known as:",
+            choices: ["Solidarity rights", "Civil rights", "Political rights", "Individual rights"],
+            answer: "Solidarity rights"
+        },
+        {
+            question: "Which right is considered a third-generation right?",
+            choices: ["Right to life", "Right to peace", "Right to free speech", "Right to privacy"],
+            answer: "Right to peace"
+        },
+        {
+            question: "What does the principle of interdependence of human rights imply?",
+            choices: ["Rights can be enjoyed independently", "The fulfillment of one right depends on others", "Some rights are more important than others", "Rights are optional"],
+            answer: "The fulfillment of one right depends on others"
+        },
+        {
+            question: "Which of the following is a non-derogable right under the ICCPR?",
+            choices: ["Freedom of assembly", "Freedom from torture", "Right to education", "Right to work"],
+            answer: "Freedom from torture"
+        },
+        {
+            question: "Under the FDRE Constitution, which right is non-derogable?",
+            choices: ["Right to property", "Right to equality (Article 25)", "Right to education", "Right to free movement"],
+            answer: "Right to equality (Article 25)"
+        },
+        {
+            question: "What is the purpose of derogation in human rights?",
+            choices: ["To permanently suspend rights", "To temporarily suspend rights during emergencies", "To grant new rights", "To limit state power"],
+            answer: "To temporarily suspend rights during emergencies"
+        },
+        {
+            question: "Limitations on human rights must be:",
+            choices: ["Arbitrary", "Based on legality, necessity, and proportionality", "Permanent", "Unregulated"],
+            answer: "Based on legality, necessity, and proportionality"
+        },
+        {
+            question: "Which international document is considered the foundation of modern human rights?",
+            choices: ["UN Charter", "Universal Declaration of Human Rights (UDHR)", "ICCPR", "CEDAW"],
+            answer: "Universal Declaration of Human Rights (UDHR)"
+        },
+        {
+            question: "The International Bill of Human Rights includes:",
+            choices: ["UDHR, ICCPR, and ICESCR", "UN Charter and UDHR", "ICCPR and CEDAW", "UDHR and CRC"],
+            answer: "UDHR, ICCPR, and ICESCR"
+        },
+        {
+            question: "Which UN organ is specifically dedicated to human rights?",
+            choices: ["Security Council", "Office of the High Commissioner for Human Rights (OHCHR)", "General Assembly", "International Criminal Court"],
+            answer: "Office of the High Commissioner for Human Rights (OHCHR)"
+        },
+        {
+            question: "Ethiopia is a signatory to which regional human rights charter?",
+            choices: ["European Convention on Human Rights", "African Charter on Human and Peoples’ Rights", "American Convention on Human Rights", "ASEAN Human Rights Declaration"],
+            answer: "African Charter on Human and Peoples’ Rights"
+        },
+        {
+            question: "What is the role of regional human rights systems?",
+            choices: ["To replace international systems", "To enforce human rights with regional context", "To abolish national laws", "To centralize global authority"],
+            answer: "To enforce human rights with regional context"
+        },
+        {
+            question: "The Ethiopian Human Rights Commission (EHRC) is established to:",
+            choices: ["Promote and protect human rights", "Enforce military rule", "Limit constitutional rights", "Abolish elections"],
+            answer: "Promote and protect human rights"
+        },
+        {
+            question: "Which article of the FDRE Constitution emphasizes the supremacy of international human rights instruments?",
+            choices: ["Article 9", "Article 13", "Article 25", "Article 39"],
+            answer: "Article 13"
+        },
+        {
+            question: "What is a key feature of civil and political rights?",
+            choices: ["They require progressive realization", "They are immediately realizable", "They focus on economic development", "They are collective rights"],
+            answer: "They are immediately realizable"
+        },
+        {
+            question: "The right to development is classified as:",
+            choices: ["A first-generation right", "A second-generation right", "A third-generation right", "A non-human right"],
+            answer: "A third-generation right"
+        },
+        {
+            question: "Which of the following is a duty of citizens related to human rights?",
+            choices: ["Ignoring the rights of others", "Exercising rights with regard for others’ rights", "Abolishing human rights", "Limiting state power"],
+            answer: "Exercising rights with regard for others’ rights"
+        },
+        {
+            question: "What is the purpose of the separation of powers in a democracy?",
+            choices: ["To concentrate power in one branch", "To promote accountability and prevent corruption", "To eliminate judicial oversight", "To favor the executive branch"],
+            answer: "To promote accountability and prevent corruption"
+        },
+        {
+            question: "Which of the following is a condition for declaring a state of emergency under the FDRE Constitution?",
+            choices: ["Economic growth", "External invasion", "Political party disputes", "Media censorship"],
+            answer: "External invasion"
+        },
+        {
+            question: "The media’s role as a 'civic forum' refers to:",
+            choices: ["Suppressing public debate", "Providing a platform for public discussion", "Limiting information access", "Supporting authoritarianism"],
+            answer: "Providing a platform for public discussion"
+        },
+        {
+            question: "What does the principle of 'majority rule, minority right' ensure?",
+            choices: ["Minority groups are excluded", "Majority governs while minority rights are protected", "Only the majority has rights", "Minority rules over the majority"],
+            answer: "Majority governs while minority rights are protected"
+        },
+        {
+            question: "Which human rights category includes the right to health?",
+            choices: ["Civil and political rights", "Economic and social rights", "Solidarity rights", "Individual rights"],
+            answer: "Economic and social rights"
+        },
+        {
+            question: "The FDRE Constitution dedicates which chapter to human rights?",
+            choices: ["Chapter 1", "Chapter 3", "Chapter 5", "Chapter 11"],
+            answer: "Chapter 3"
+        },
+        {
+            question: "What is a key challenge to the justiciability of economic and social rights?",
+            choices: ["They are immediately enforceable", "They depend on state resources and capacity", "They are non-derogable", "They are universally rejected"],
+            answer: "They depend on state resources and capacity"
+        }
+    ];
+
+    const shortAnswerQuestions = [
+        {
+            question: "Define 'constitutionalism' and explain how it differs from a constitution.",
+            answer: "Constitutionalism refers to the principle that government power should be limited by a constitution and adhere to the rule of law, ensuring accountability and protection of rights. A constitution is the document or set of rules that outlines the structure and powers of government, while constitutionalism is the broader concept of governance under those rules."
+        },
+        {
+            question: "What are the major purposes of a constitution?",
+            answer: "The major purposes include defining the structure and powers of government, limiting governmental authority, protecting citizens’ rights, and providing a framework for governance and legal order."
+        },
+        {
+            question: "Describe the key features of the 1995 FDRE Constitution.",
+            answer: "The 1995 FDRE Constitution establishes a federal democratic republic, recognizes human rights and freedoms, promotes equality among nations and nationalities, and integrates international human rights standards into Ethiopian law."
+        },
+        {
+            question: "What is meant by 'democratization,' and what are its three main elements?",
+            answer: "Democratization is the process of transitioning from a nondemocratic to a democratic regime. Its three main elements are the removal of an authoritarian regime, the installation of a democratic regime, and the consolidation of democracy for long-term sustainability."
+        },
+        {
+            question: "Explain the role of civil society in supporting democracy in Ethiopia.",
+            answer: "Civil society limits state power, monitors human rights, educates citizens about their rights and responsibilities, promotes tolerance, and enhances political responsiveness, thereby supporting democratic development and consolidation."
+        },
+        {
+            question: "What are human rights, and why are they considered universal?",
+            answer: "Human rights are entitlements inherent to all humans by virtue of being human, aimed at ensuring dignity and a worth-living life. They are universal because they apply equally to everyone, everywhere, regardless of race, sex, or other distinctions, as stated in the UDHR."
+        },
+        {
+            question: "Differentiate between civil and political rights and economic and social rights.",
+            answer: "Civil and political rights (e.g., right to life, free speech) are immediately realizable, negative rights focused on protection from interference. Economic and social rights (e.g., right to education, health) are positive rights requiring progressive realization based on state resources."
+        },
+        {
+            question: "What is the significance of the principle of inalienability in human rights?",
+            answer: "Inalienability means human rights cannot be taken away or surrendered, as they are essential to human dignity and existence, ensuring that individuals retain these rights under all circumstances."
+        },
+        {
+            question: "Under what conditions can human rights be limited or derogated in Ethiopia under the FDRE Constitution?",
+            answer: "Human rights can be limited for reasons like national security, public health, or protecting others’ rights, based on legality and proportionality. Derogation is allowed during a state of emergency (e.g., external invasion, natural disaster) under Article 93, except for non-derogable rights."
+        },
+        {
+            question: "How does the FDRE Constitution integrate international human rights standards?",
+            answer: "Article 13 of the FDRE Constitution mandates that human rights provisions be interpreted in conformity with the UDHR, international covenants, and treaties ratified by Ethiopia, while Article 9/4 makes ratified international agreements part of domestic law."
+        }
+    ];
+
+    function loadQuiz() {
+        const quizDiv = document.getElementById("quiz");
+        quizDiv.innerHTML = "";
+
+        questions.forEach((q, index) => {
+            const questionBlock = document.createElement("div");
+            questionBlock.style.marginBottom = "20px";
+
+            const questionElement = document.createElement("div");
+            questionElement.classList.add("question");
+            questionElement.innerText = `${index + 1}. ${q.question}`;
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            q.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.innerText = choice;
+                button.onclick = function() {
+                    const allButtons = optionsDiv.querySelectorAll("button");
+                    allButtons.forEach(btn => {
+                        btn.classList.add("answered");
+                        btn.classList.remove("correct-choice", "wrong-choice");
+                        const existingFeedback = btn.querySelector(".feedback");
+                        if (existingFeedback) existingFeedback.remove();
+                    });
+
+                    const feedbackSpan = document.createElement("span");
+                    feedbackSpan.classList.add("feedback");
+
+                    if (choice === q.answer) {
+                        button.classList.add("correct-choice");
+                        feedbackSpan.classList.add("correct");
+                        feedbackSpan.innerText = "Correct";
+                    } else {
+                        button.classList.add("wrong-choice");
+                        feedbackSpan.classList.add("wrong");
+                        feedbackSpan.innerText = "Wrong";
+                        allButtons.forEach(btn => {
+                            if (btn.innerText === q.answer) {
+                                btn.classList.add("correct-choice");
+                            }
+                        });
+                    }
+                    button.appendChild(feedbackSpan);
+                };
+                optionsDiv.appendChild(button);
+            });
+
+            questionBlock.appendChild(questionElement);
+            questionBlock.appendChild(optionsDiv);
+            quizDiv.appendChild(questionBlock);
+        });
+    }
+
+    function loadShortAnswers() {
+        const shortAnswerDiv = document.getElementById("short-answers");
+        shortAnswerDiv.innerHTML = "";
+
+        shortAnswerQuestions.forEach((sa, index) => {
+            const saElement = document.createElement("div");
+            saElement.classList.add("short-answer");
+
+            const questionP = document.createElement("p");
+            questionP.innerText = `${index + 1}. ${sa.question}`;
+            saElement.appendChild(questionP);
+
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.innerText = "View Answer";
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.innerText = sa.answer;
+            saElement.appendChild(answerDiv);
+
+            shortAnswerDiv.appendChild(saElement);
+        });
+    }
+
+    loadQuiz();
+    loadShortAnswers();
+</script>
+
+</body>
+</html>
