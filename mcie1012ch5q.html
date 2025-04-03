@@ -78,7 +78,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        .submit-btn, .close-btn {
+        .submit-btn, .close-btn, .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -88,7 +88,7 @@
             transition: background 0.3s;
             margin-top: 10px;
         }
-        .submit-btn:hover, .close-btn:hover {
+        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
             background-color: #45a049;
         }
         .results {
@@ -107,6 +107,11 @@
             display: block;
             margin: 20px auto 0;
         }
+        .answer {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -122,7 +127,6 @@
         <button type="submit" class="submit-btn">Grade My Answers</button>
     </form>
     <div id="results" class="results"></div>
-   
 </div>
 
 <script>
@@ -382,43 +386,53 @@
     const shortAnswerQuestions = [
         {
             question: "Define 'constitutionalism' and explain how it differs from a constitution.",
-            keywords: ['constitutionalism', 'constitution', 'rule of law', 'limited', 'government', 'power']
+            keywords: ['constitutionalism', 'constitution', 'rule of law', 'limited', 'government', 'power'],
+            modelAnswer: "Constitutionalism refers to the principle of limited government under the rule of law, ensuring power is restrained, while a constitution is the document or set of rules defining government structure and powers."
         },
         {
             question: "What are the major purposes of a constitution?",
-            keywords: ['structure', 'powers', 'government', 'limit', 'rights', 'governance']
+            keywords: ['structure', 'powers', 'government', 'limit', 'rights', 'governance'],
+            modelAnswer: "A constitution defines the structure and powers of government, limits its authority, protects citizens' rights, and provides a framework for governance."
         },
         {
             question: "Describe the key features of the 1995 FDRE Constitution.",
-            keywords: ['federal', 'democratic', 'human rights', 'equality', 'nationalities', 'international']
+            keywords: ['federal', 'democratic', 'human rights', 'equality', 'nationalities', 'international'],
+            modelAnswer: "The 1995 FDRE Constitution establishes a federal democratic system, recognizes human rights, ensures equality among nationalities, and integrates international human rights standards."
         },
         {
             question: "What is meant by 'democratization,' and what are its three main elements?",
-            keywords: ['democratization', 'transition', 'authoritarian', 'democratic', 'installation', 'consolidation']
+            keywords: ['democratization', 'transition', 'authoritarian', 'democratic', 'installation', 'consolidation'],
+            modelAnswer: "Democratization is the transition from authoritarian to democratic regimes; its three main elements are transition (breaking from authoritarianism), installation (establishing democratic institutions), and consolidation (strengthening democracy)."
         },
         {
             question: "Explain the role of civil society in supporting democracy in Ethiopia.",
-            keywords: ['civil society', 'democracy', 'limit', 'state', 'accountability', 'rights']
+            keywords: ['civil society', 'democracy', 'limit', 'state', 'accountability', 'rights'],
+            modelAnswer: "Civil society in Ethiopia supports democracy by limiting state power, promoting accountability, advocating for rights, and fostering citizen participation."
         },
         {
             question: "What are human rights, and why are they considered universal?",
-            keywords: ['human rights', 'entitlements', 'human', 'dignity', 'universal', 'equal']
+            keywords: ['human rights', 'entitlements', 'human', 'dignity', 'universal', 'equal'],
+            modelAnswer: "Human rights are entitlements inherent to all humans by virtue of their dignity; they are universal because they apply equally to everyone, regardless of status or location."
         },
         {
             question: "Differentiate between civil and political rights and economic and social rights.",
-            keywords: ['civil', 'political', 'economic', 'social', 'immediate', 'progressive']
+            keywords: ['civil', 'political', 'economic', 'social', 'immediate', 'progressive'],
+            modelAnswer: "Civil and political rights (e.g., free speech) are immediate and protect individual freedoms, while economic and social rights (e.g., education) are progressive, requiring state resources for realization."
         },
         {
             question: "What is the significance of the principle of inalienability in human rights?",
-            keywords: ['inalienability', 'human rights', 'cannot', 'taken', 'dignity', 'essential']
+            keywords: ['inalienability', 'human rights', 'cannot', 'taken', 'dignity', 'essential'],
+            modelAnswer: "Inalienability means human rights cannot be taken away, as they are essential to human dignity and inherent to all individuals."
         },
         {
             question: "Under what conditions can human rights be limited or derogated in Ethiopia under the FDRE Constitution?",
-            keywords: ['limited', 'derogated', 'emergency', 'security', 'proportionality', 'non-derogable']
+            keywords: ['limited', 'derogated', 'emergency', 'security', 'proportionality', 'non-derogable'],
+            modelAnswer: "Under the FDRE Constitution, rights can be limited or derogated during emergencies (e.g., war, security threats), but only with necessity and proportionality, while non-derogable rights (e.g., equality) remain protected."
         },
         {
             question: "How does the FDRE Constitution integrate international human rights standards?",
-            keywords: ['FDRE', 'international', 'Article 13', 'UDHR', 'treaties', 'domestic']
+            keywords: ['FDRE', 'international', 'Article 13', 'UDHR', 'treaties', 'domestic'],
+            modelAnswer: "The FDRE Constitution integrates international standards via Article 13, aligning domestic laws with treaties like the UDHR and ensuring their supremacy in interpretation."
         }
     ];
 
@@ -498,6 +512,29 @@
             answerTextarea.placeholder = "Type your answer here...";
             saElement.appendChild(answerTextarea);
 
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.id = `toggle${index}`;
+            toggleButton.innerText = "View Correct Answer";
+            toggleButton.style.display = "none"; // Hidden until graded
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Correct Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Correct Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.id = `modelAnswer${index}`;
+            answerDiv.innerText = sa.modelAnswer;
+            saElement.appendChild(answerDiv);
+
             shortAnswerDiv.appendChild(saElement);
         });
     }
@@ -537,6 +574,10 @@
             score = Math.min(score, maxScorePerQuestion); // Cap at 1
             totalScore += score;
             resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+
+            // Show "View Correct Answer" button after grading
+            const toggleButton = document.getElementById(`toggle${index}`);
+            toggleButton.style.display = "inline-block";
         });
 
         const percentageScore = Math.round((totalScore / totalQuestions) * 100);
