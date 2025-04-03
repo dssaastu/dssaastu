@@ -71,25 +71,41 @@
         .short-answer {
             margin-bottom: 20px;
         }
-        .answer {
-            display: none;
-            color: green;
-            margin-top: 10px;
+        textarea {
+            width: 100%;
             padding: 10px;
-            background-color: #f0fff0;
+            margin-top: 5px;
             border-radius: 5px;
+            border: 1px solid #ddd;
         }
-        .toggle-btn {
+        .submit-btn, .close-btn {
             background-color: #4CAF50;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: 10px;
         }
-        .toggle-btn:hover {
+        .submit-btn:hover, .close-btn:hover {
             background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
         }
     </style>
 </head>
@@ -97,12 +113,16 @@
 
 <div class="quiz-container">
     <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 4 Practice Questions</h2>
-    <div id="quiz"></div>
-
-    <div class="short-answer-section">
-        <h2>Short Answer Questions</h2>
-        <div id="short-answers"></div>
-    </div>
+    <form id="quizForm">
+        <div id="quiz"></div>
+        <div class="short-answer-section">
+            <h2>Short Answer Questions</h2>
+            <div id="short-answers"></div>
+        </div>
+        <button type="submit" class="submit-btn">Grade My Answers</button>
+    </form>
+    <div id="results" class="results"></div>
+    <button class="close-btn" onclick="window.close()">Close This Page</button>
 </div>
 
 <script>
@@ -386,7 +406,7 @@
             question: "In social studies, what does the term 'government' mean?",
             choices: [
                 "It’s all about money",
-                "It’s about who comes to power",
+                "It’s about who comes.Opening to power",
                 "It’s about politics and who is smarter",
                 "To rule or control others"
             ],
@@ -582,43 +602,43 @@
     const shortAnswerQuestions = [
         {
             question: "Explain the difference between a state and a government.",
-            answer: "A state is a political entity with a defined territory, population, sovereignty, and government, representing the broader concept of a political community. The government, however, is the specific system or group of people that exercises authority and enforces laws within the state."
+            keywords: ['state', 'government', 'political', 'territory', 'authority', 'enforce']
         },
         {
             question: "What are the main characteristics of a 'Leviathan state,' and how does it differ from a 'minimal state'?",
-            answer: "A Leviathan state, as described by Thomas Hobbes, is characterized by a strong, centralized authority that prioritizes state power and control over individual freedoms to maintain order and security. It differs from a minimal state, which limits its role to protecting individual rights, enforcing contracts, and maintaining basic order, avoiding extensive intervention in social or economic life."
+            keywords: ['Leviathan', 'minimal', 'centralized', 'control', 'protection', 'intervention']
         },
         {
             question: "What rights does a state have?",
-            answer: "A state has the sovereign right to govern its territory, enforce laws, maintain order, and protect its citizens. This includes the authority to collect taxes, defend against external threats, and regulate internal affairs, though it may also require citizens to fulfill duties like military service in times of need."
+            keywords: ['sovereign', 'govern', 'laws', 'protect', 'taxes', 'authority']
         },
         {
             question: "What is the main difference between authority and legitimacy in the context of government?",
-            answer: "Authority refers to the power or right to give orders and enforce obedience, often backed by law or force. Legitimacy, however, is the perception that this power is justified and accepted by the governed, typically derived from consent, tradition, or legal recognition."
+            keywords: ['authority', 'legitimacy', 'power', 'obedience', 'acceptance', 'consent']
         },
         {
             question: "Differentiate between a unitary constitution and a federal constitution.",
-            answer: "A unitary constitution centralizes power in a single national government, with regional or local units deriving authority from the center (e.g., France). A federal constitution divides power between a central government and semi-autonomous regional governments, each with defined powers (e.g., the United States)."
+            keywords: ['unitary', 'federal', 'centralized', 'divided', 'power', 'regional']
         },
         {
             question: "Describe the core idea behind the concept of social citizenship, and give an example of a social right.",
-            answer: "Social citizenship, as developed by T.H. Marshall, emphasizes rights to economic welfare and social inclusion, ensuring a minimum standard of living. An example of a social right is the right to free public education, which supports equal opportunity and societal participation."
+            keywords: ['social', 'citizenship', 'welfare', 'inclusion', 'education', 'healthcare']
         },
         {
             question: "Distinguish between a nation and a state.",
-            answer: "A nation is a group of people united by shared culture, history, language, or identity (e.g., the Kurdish nation). A state is a political entity with sovereignty over a defined territory, population, and government (e.g., Canada). A nation-state combines both, like Japan."
+            keywords: ['nation', 'state', 'culture', 'identity', 'sovereignty', 'territory']
         },
         {
             question: "What does citizenship mean in a liberal democracy, and what does it entail for citizens?",
-            answer: "In a liberal democracy, citizenship means legal membership in a state with guaranteed rights and responsibilities. It entails civil rights (e.g., freedom of speech), political rights (e.g., voting), and social rights (e.g., access to healthcare), alongside duties like obeying laws and paying taxes."
+            keywords: ['citizenship', 'liberal', 'democracy', 'rights', 'responsibilities', 'voting']
         },
         {
             question: "What criteria must be met to be recognized as a legal citizen of a state?",
-            answer: "Criteria vary by country but typically include being born in the territory (jus soli), having parents who are citizens (jus sanguinis), or undergoing naturalization, which often requires residency (e.g., 5-10 years), legal compliance, and sometimes language proficiency or an oath of allegiance."
+            keywords: ['birth', 'naturalization', 'residency', 'jus soli', 'jus sanguinis', 'allegiance']
         },
         {
             question: "What benefits do individuals gain from being members or citizens of a society?",
-            answer: "Citizens gain rights such as protection under the law, access to public services (e.g., education, healthcare), and participation in governance (e.g., voting). They also benefit from a sense of identity, community, and mutual support, balanced by responsibilities like contributing to societal welfare."
+            keywords: ['rights', 'protection', 'services', 'identity', 'community', 'participation']
         }
     ];
 
@@ -639,7 +659,10 @@
 
             q.choices.forEach(choice => {
                 const button = document.createElement("button");
+                button.type = "button"; // Prevent form submission
                 button.innerText = choice;
+                button.dataset.index = index; // Store question index
+                button.dataset.choice = choice; // Store selected choice
                 button.onclick = function() {
                     const allButtons = optionsDiv.querySelectorAll("button");
                     allButtons.forEach(btn => {
@@ -689,28 +712,66 @@
             questionP.innerText = `${index + 1}. ${sa.question}`;
             saElement.appendChild(questionP);
 
-            const toggleButton = document.createElement("button");
-            toggleButton.classList.add("toggle-btn");
-            toggleButton.innerText = "View Answer";
-            toggleButton.onclick = function() {
-                const answerDiv = saElement.querySelector(".answer");
-                if (answerDiv.style.display === "block") {
-                    answerDiv.style.display = "none";
-                    toggleButton.innerText = "View Answer";
-                } else {
-                    answerDiv.style.display = "block";
-                    toggleButton.innerText = "Hide Answer";
-                }
-            };
-            saElement.appendChild(toggleButton);
-
-            const answerDiv = document.createElement("div");
-            answerDiv.classList.add("answer");
-            answerDiv.innerText = sa.answer;
-            saElement.appendChild(answerDiv);
+            const answerTextarea = document.createElement("textarea");
+            answerTextarea.id = `answer${index}`;
+            answerTextarea.rows = 4;
+            answerTextarea.placeholder = "Type your answer here...";
+            saElement.appendChild(answerTextarea);
 
             shortAnswerDiv.appendChild(saElement);
         });
+    }
+
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let totalScore = 0;
+        const maxScorePerQuestion = 100;
+        const totalQuestions = questions.length + shortAnswerQuestions.length;
+        const resultsDiv = document.getElementById('results');
+        let resultsHTML = "<h3>Your Results</h3>";
+
+        // Grade MCQs
+        questions.forEach((q, index) => {
+            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
+            let score = 0;
+            if (selectedButton && selectedButton.dataset.choice === q.answer) {
+                score = maxScorePerQuestion;
+            }
+            totalScore += score;
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/100</p>`;
+        });
+
+        // Grade Short Answers
+        shortAnswerQuestions.forEach((sa, index) => {
+            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+            let score = 0;
+            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
+
+            sa.keywords.forEach(keyword => {
+                if (answer.includes(keyword)) {
+                    score += pointsPerKeyword;
+                }
+            });
+
+            score = Math.min(score, maxScorePerQuestion); // Cap at 100
+            totalScore += score;
+            resultsHTML += `<p>Short Answer ${index + 1} Score: ${Math.round(score)}/100</p>`;
+        });
+
+        const overallScore = Math.round(totalScore / totalQuestions);
+        resultsHTML += `<p><strong>Total Score: ${totalScore}/${totalQuestions * maxScorePerQuestion} (Average: ${overallScore}/100)</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(overallScore)}</p>`;
+
+        resultsDiv.innerHTML = resultsHTML;
+        resultsDiv.style.display = "block";
+    });
+
+    function getFeedback(score) {
+        if (score >= 80) return "Excellent! You’ve demonstrated a strong understanding.";
+        if (score >= 60) return "Good effort! Include more key concepts for a higher score.";
+        if (score >= 40) return "Fair attempt. Review the material and try again.";
+        return "Needs improvement. Focus on including key terms and ideas.";
     }
 
     loadQuiz();
