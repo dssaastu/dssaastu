@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mcie1012 Chapter 5 Practice Questions</title>
+    <title>MCIE 1012 Chapter 5 Practice Questions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,38 +71,58 @@
         .short-answer {
             margin-bottom: 20px;
         }
-        .answer {
-            display: none;
-            color: green;
-            margin-top: 10px;
+        textarea {
+            width: 100%;
             padding: 10px;
-            background-color: #f0fff0;
+            margin-top: 5px;
             border-radius: 5px;
+            border: 1px solid #ddd;
         }
-        .toggle-btn {
+        .submit-btn, .close-btn {
             background-color: #4CAF50;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: 10px;
         }
-        .toggle-btn:hover {
+        .submit-btn:hover, .close-btn:hover {
             background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
         }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <h2>Moral and Citizenship Education (MCIE101) - Chapter 5 Practice Questions</h2>
-    <div id="quiz"></div>
-
-    <div class="short-answer-section">
-        <h2>Short Answer Questions</h2>
-        <div id="short-answers"></div>
-    </div>
+    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 5 Practice Questions</h2>
+    <form id="quizForm">
+        <div id="quiz"></div>
+        <div class="short-answer-section">
+            <h2>Short Answer Questions</h2>
+            <div id="short-answers"></div>
+        </div>
+        <button type="submit" class="submit-btn">Grade My Answers</button>
+    </form>
+    <div id="results" class="results"></div>
+    <button class="close-btn" onclick="window.close()">Close This Page</button>
 </div>
 
 <script>
@@ -362,43 +382,43 @@
     const shortAnswerQuestions = [
         {
             question: "Define 'constitutionalism' and explain how it differs from a constitution.",
-            answer: "Constitutionalism refers to the principle that government power should be limited by a constitution and adhere to the rule of law, ensuring accountability and protection of rights. A constitution is the document or set of rules that outlines the structure and powers of government, while constitutionalism is the broader concept of governance under those rules."
+            keywords: ['constitutionalism', 'constitution', 'rule of law', 'limited', 'government', 'power']
         },
         {
             question: "What are the major purposes of a constitution?",
-            answer: "The major purposes include defining the structure and powers of government, limiting governmental authority, protecting citizens’ rights, and providing a framework for governance and legal order."
+            keywords: ['structure', 'powers', 'government', 'limit', 'rights', 'governance']
         },
         {
             question: "Describe the key features of the 1995 FDRE Constitution.",
-            answer: "The 1995 FDRE Constitution establishes a federal democratic republic, recognizes human rights and freedoms, promotes equality among nations and nationalities, and integrates international human rights standards into Ethiopian law."
+            keywords: ['federal', 'democratic', 'human rights', 'equality', 'nationalities', 'international']
         },
         {
             question: "What is meant by 'democratization,' and what are its three main elements?",
-            answer: "Democratization is the process of transitioning from a nondemocratic to a democratic regime. Its three main elements are the removal of an authoritarian regime, the installation of a democratic regime, and the consolidation of democracy for long-term sustainability."
+            keywords: ['democratization', 'transition', 'authoritarian', 'democratic', 'installation', 'consolidation']
         },
         {
             question: "Explain the role of civil society in supporting democracy in Ethiopia.",
-            answer: "Civil society limits state power, monitors human rights, educates citizens about their rights and responsibilities, promotes tolerance, and enhances political responsiveness, thereby supporting democratic development and consolidation."
+            keywords: ['civil society', 'democracy', 'limit', 'state', 'accountability', 'rights']
         },
         {
             question: "What are human rights, and why are they considered universal?",
-            answer: "Human rights are entitlements inherent to all humans by virtue of being human, aimed at ensuring dignity and a worth-living life. They are universal because they apply equally to everyone, everywhere, regardless of race, sex, or other distinctions, as stated in the UDHR."
+            keywords: ['human rights', 'entitlements', 'human', 'dignity', 'universal', 'equal']
         },
         {
             question: "Differentiate between civil and political rights and economic and social rights.",
-            answer: "Civil and political rights (e.g., right to life, free speech) are immediately realizable, negative rights focused on protection from interference. Economic and social rights (e.g., right to education, health) are positive rights requiring progressive realization based on state resources."
+            keywords: ['civil', 'political', 'economic', 'social', 'immediate', 'progressive']
         },
         {
             question: "What is the significance of the principle of inalienability in human rights?",
-            answer: "Inalienability means human rights cannot be taken away or surrendered, as they are essential to human dignity and existence, ensuring that individuals retain these rights under all circumstances."
+            keywords: ['inalienability', 'human rights', 'cannot', 'taken', 'dignity', 'essential']
         },
         {
             question: "Under what conditions can human rights be limited or derogated in Ethiopia under the FDRE Constitution?",
-            answer: "Human rights can be limited for reasons like national security, public health, or protecting others’ rights, based on legality and proportionality. Derogation is allowed during a state of emergency (e.g., external invasion, natural disaster) under Article 93, except for non-derogable rights."
+            keywords: ['limited', 'derogated', 'emergency', 'security', 'proportionality', 'non-derogable']
         },
         {
             question: "How does the FDRE Constitution integrate international human rights standards?",
-            answer: "Article 13 of the FDRE Constitution mandates that human rights provisions be interpreted in conformity with the UDHR, international covenants, and treaties ratified by Ethiopia, while Article 9/4 makes ratified international agreements part of domestic law."
+            keywords: ['FDRE', 'international', 'Article 13', 'UDHR', 'treaties', 'domestic']
         }
     ];
 
@@ -419,7 +439,10 @@
 
             q.choices.forEach(choice => {
                 const button = document.createElement("button");
+                button.type = "button"; // Prevent form submission
                 button.innerText = choice;
+                button.dataset.index = index; // Store question index
+                button.dataset.choice = choice; // Store selected choice
                 button.onclick = function() {
                     const allButtons = optionsDiv.querySelectorAll("button");
                     allButtons.forEach(btn => {
@@ -469,28 +492,66 @@
             questionP.innerText = `${index + 1}. ${sa.question}`;
             saElement.appendChild(questionP);
 
-            const toggleButton = document.createElement("button");
-            toggleButton.classList.add("toggle-btn");
-            toggleButton.innerText = "View Answer";
-            toggleButton.onclick = function() {
-                const answerDiv = saElement.querySelector(".answer");
-                if (answerDiv.style.display === "block") {
-                    answerDiv.style.display = "none";
-                    toggleButton.innerText = "View Answer";
-                } else {
-                    answerDiv.style.display = "block";
-                    toggleButton.innerText = "Hide Answer";
-                }
-            };
-            saElement.appendChild(toggleButton);
-
-            const answerDiv = document.createElement("div");
-            answerDiv.classList.add("answer");
-            answerDiv.innerText = sa.answer;
-            saElement.appendChild(answerDiv);
+            const answerTextarea = document.createElement("textarea");
+            answerTextarea.id = `answer${index}`;
+            answerTextarea.rows = 4;
+            answerTextarea.placeholder = "Type your answer here...";
+            saElement.appendChild(answerTextarea);
 
             shortAnswerDiv.appendChild(saElement);
         });
+    }
+
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let totalScore = 0;
+        const maxScorePerQuestion = 100;
+        const totalQuestions = questions.length + shortAnswerQuestions.length;
+        const resultsDiv = document.getElementById('results');
+        let resultsHTML = "<h3>Your Results</h3>";
+
+        // Grade MCQs
+        questions.forEach((q, index) => {
+            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
+            let score = 0;
+            if (selectedButton && selectedButton.dataset.choice === q.answer) {
+                score = maxScorePerQuestion;
+            }
+            totalScore += score;
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/100</p>`;
+        });
+
+        // Grade Short Answers
+        shortAnswerQuestions.forEach((sa, index) => {
+            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+            let score = 0;
+            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
+
+            sa.keywords.forEach(keyword => {
+                if (answer.includes(keyword)) {
+                    score += pointsPerKeyword;
+                }
+            });
+
+            score = Math.min(score, maxScorePerQuestion); // Cap at 100
+            totalScore += score;
+            resultsHTML += `<p>Short Answer ${index + 1} Score: ${Math.round(score)}/100</p>`;
+        });
+
+        const overallScore = Math.round(totalScore / totalQuestions);
+        resultsHTML += `<p><strong>Total Score: ${totalScore}/${totalQuestions * maxScorePerQuestion} (Average: ${overallScore}/100)</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(overallScore)}</p>`;
+
+        resultsDiv.innerHTML = resultsHTML;
+        resultsDiv.style.display = "block";
+    });
+
+    function getFeedback(score) {
+        if (score >= 80) return "Excellent! You’ve demonstrated a strong understanding.";
+        if (score >= 60) return "Good effort! Include more key concepts for a higher score.";
+        if (score >= 40) return "Fair attempt. Review the material and try again.";
+        return "Needs improvement. Focus on including key terms and ideas.";
     }
 
     loadQuiz();
