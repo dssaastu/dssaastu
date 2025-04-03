@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCIE 1012 Chapter 3 practice questions</title>
+    <title>MCIE 1012 Chapter 3 Practice Questions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,35 +69,56 @@
         .short-answer {
             margin-bottom: 20px;
         }
-        .answer {
-            display: none;
-            color: green;
-            margin-top: 10px;
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
-        .toggle-btn {
+        .submit-btn, .close-btn {
             background-color: #4CAF50;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: 10px;
         }
-        .toggle-btn:hover {
+        .submit-btn:hover, .close-btn:hover {
             background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
         }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 3  practice questions</h2>
-    <div id="quiz"></div>
-
-    <div class="short-answer-section">
-        <h2>Short Answer Questions</h2>
-        <div id="short-answers"></div>
-    </div>
+    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 3 Practice Questions</h2>
+    <form id="quizForm">
+        <div id="quiz"></div>
+        <div class="short-answer-section">
+            <h2>Short Answer Questions</h2>
+            <div id="short-answers"></div>
+        </div>
+        <button type="submit" class="submit-btn">Grade My Answers</button>
+    </form>
+    <div id="results" class="results"></div>
+    <button class="close-btn" onclick="window.close()">Close This Page</button>
 </div>
 
 <script>
@@ -201,229 +222,29 @@
                 "Following only legal guidelines"
             ], 
             answer: "Multiple approaches like fairness, rights, and common good"
-        },
-        { 
-            question: "The Fairness and Justice Approach focuses on:", 
-            choices: [
-                "Maximizing benefits for the majority", 
-                "Treating individuals equitably",
-                "Protecting individual rights above all", 
-                "Promoting collective welfare"
-            ], 
-            answer: "Treating individuals equitably"
-        },
-        { 
-            question: "The Common Good Approach prioritizes:", 
-            choices: [
-                "Individual rights over community needs", 
-                "Benefits to society as a whole",
-                "Personal gain", 
-                "Strict adherence to laws"
-            ], 
-            answer: "Benefits to society as a whole"
-        },
-        { 
-            question: "The Rights Approach is based on:", 
-            choices: [
-                "Achieving the greatest good for the greatest number", 
-                "Following societal customs", 
-                "Economic outcomes",
-                "Respecting inherent human entitlements"
-            ], 
-            answer: "Respecting inherent human entitlements"
-        },
-        { 
-            question: "To whom or what does morality apply?", 
-            choices: [
-                "Only individuals", 
-                "Only legal systems", 
-                "Individuals, society, nature, and religion",
-                "Only religious institutions"
-            ], 
-            answer: "Individuals, society, nature, and religion"
-        },
-        { 
-            question: "Religious morality is primarily concerned with:", 
-            choices: [
-                "Secular laws", 
-                "Economic benefits", 
-                "Divine commands or spiritual beliefs",
-                "Social contracts"
-            ], 
-            answer: "Divine commands or spiritual beliefs"
-        },
-        { 
-            question: "Morality and nature refer to:", 
-            choices: [
-                "Ethical obligations toward the environment",
-                "Ignoring natural laws", 
-                "Economic exploitation of resources", 
-                "Legal regulations only"
-            ], 
-            answer: "Ethical obligations toward the environment"
-        },
-        { 
-            question: "Individual morality focuses on:", 
-            choices: [
-                "Collective societal norms", 
-                "Government policies", 
-                "Personal ethical choices and actions",
-                "Religious doctrines"
-            ], 
-            answer: "Personal ethical choices and actions"
-        },
-        { 
-            question: "Social morality involves:", 
-            choices: [
-                "Personal beliefs only", 
-                "Ignoring societal impacts", 
-                "Shared values within a community",
-                "Economic considerations alone"
-            ], 
-            answer: "Shared values within a community"
-        },
-        { 
-            question: "Who is considered morally responsible for an action?", 
-            choices: [
-                "Only the government", 
-                "Society as a whole", 
-                "Individuals or entities capable of intentional action",
-                "Religious leaders only"
-            ], 
-            answer: "Individuals or entities capable of intentional action"
-        },
-        { 
-            question: "Moral judgments are:", 
-            choices: [
-                "Evaluations of actions based on ethical standards",
-                "Legal rulings", 
-                "Emotional reactions without reasoning", 
-                "Economic decisions"
-            ], 
-            answer: "Evaluations of actions based on ethical standards"
-        },
-        { 
-            question: "What makes an action moral?", 
-            choices: [
-                "Its alignment with ethical principles or intentions",
-                "Its legality alone", 
-                "Its popularity", 
-                "Its economic benefit"
-            ], 
-            answer: "Its alignment with ethical principles or intentions"
-        },
-        { 
-            question: "The Argument from Enlightened Self-Interest suggests humans should be moral because:", 
-            choices: [
-                "It benefits them personally in the long run",
-                "It is required by law", 
-                "It avoids punishment", 
-                "It follows tradition"
-            ], 
-            answer: "It benefits them personally in the long run"
-        },
-        { 
-            question: "The Argument from Tradition and Law posits that morality is valuable because:", 
-            choices: [
-                "It reflects historical norms and legal systems",
-                "It maximizes happiness", 
-                "It is a personal choice", 
-                "It ignores societal needs"
-            ], 
-            answer: "It reflects historical norms and legal systems"
-        },
-        { 
-            question: "Common Human Needs as a reason for morality emphasize:", 
-            choices: [
-                "Universal requirements like safety and belonging",
-                "Individual desires only", 
-                "Legal obligations", 
-                "Religious mandates"
-            ], 
-            answer: "Universal requirements like safety and belonging"
-        },
-        { 
-            question: "Which approach to ethical decision-making considers consequences?", 
-            choices: [
-                "Rights Approach", 
-                "Fairness and Justice Approach", 
-                "Common Good Approach",
-                "All of the above"
-            ], 
-            answer: "Common Good Approach"
-        },
-        { 
-            question: "Ethical decisions should involve:", 
-            choices: [
-                "Only emotional responses", 
-                "Strict adherence to tradition", 
-                "Ignoring personal values",
-                "A balance of intuition and reasoning"
-            ], 
-            answer: "A balance of intuition and reasoning"
-        },
-        { 
-            question: "Who bears moral responsibility in a group decision?", 
-            choices: [
-                "Only the leader", 
-                "No one", 
-                "All members capable of influencing the outcome",
-                "The legal system"
-            ], 
-            answer: "All members capable of influencing the outcome"
-        },
-        { 
-            question: "Morality applies to:", 
-            choices: [
-                "Only human actions", 
-                "Only legal matters", 
-                "Only religious contexts",
-                "Actions affecting humans, nature, and society"
-            ], 
-            answer: "Actions affecting humans, nature, and society"
-        },
-        { 
-            question: "Why should humans be moral?", 
-            choices: [
-                "To avoid legal consequences", 
-                "Only for religious salvation", 
-                "For self-interest, tradition, and shared needs",
-                "To follow societal trends"
-            ], 
-            answer: "For self-interest, tradition, and shared needs"
-        },
-        { 
-            question: "The framework for moral decision-making is designed to:", 
-            choices: [
-                "Provide a rigid set of rules", 
-                "Focus solely on legal outcomes", 
-                "Ignore societal impacts",
-                "Offer flexible approaches to ethical dilemmas"
-            ], 
-            answer: "Offer flexible approaches to ethical dilemmas"
         }
     ];
 
     const shortAnswerQuestions = [
         { 
             question: "What is the role of moral intuitions in ethical decision-making?", 
-            answer: "Moral intuitions provide immediate, instinctive responses to ethical situations, serving as a starting point that can be refined through critical reasoning."
+            keywords: ['moral', 'intuitions', 'immediate', 'instinctive', 'reasoning', 'ethical']
         },
         { 
             question: "How does the Fairness and Justice Approach differ from the Common Good Approach in ethical decision-making?", 
-            answer: "The Fairness and Justice Approach focuses on treating individuals equitably, while the Common Good Approach prioritizes the welfare of the entire community over individual concerns."
+            keywords: ['fairness', 'justice', 'equitably', 'common', 'good', 'community']
         },
         { 
             question: "Explain the Argument from Enlightened Self-Interest as a reason for being moral.", 
-            answer: "This argument suggests that humans should be moral because ethical behavior ultimately benefits them personally, such as through improved relationships or long-term well-being."
+            keywords: ['self-interest', 'moral', 'benefits', 'personal', 'ethical', 'long-term']
         },
         { 
             question: "What are the four areas to which morality applies?", 
-            answer: "Morality applies to religious morality, morality and nature, individual morality, and social morality."
+            keywords: ['religious', 'nature', 'individual', 'social', 'morality', 'areas']
         },
         { 
             question: "Why is critical reasoning important in testing moral arguments?", 
-            answer: "Critical reasoning is essential to evaluate the logic, consistency, and validity of moral arguments, ensuring they are not based solely on emotion or flawed assumptions."
+            keywords: ['critical', 'reasoning', 'moral', 'arguments', 'logic', 'consistency']
         }
     ];
 
@@ -444,37 +265,36 @@
 
             q.choices.forEach(choice => {
                 const button = document.createElement("button");
+                button.type = "button"; // Prevent form submission
                 button.innerText = choice;
+                button.dataset.index = index; // Store question index
+                button.dataset.choice = choice; // Store selected choice
                 button.onclick = function() {
-                    this.querySelectorAll('.feedback').forEach(span => span.remove());
-
                     const allButtonsInGroup = optionsDiv.querySelectorAll('button');
                     allButtonsInGroup.forEach(btn => {
                         btn.classList.add('answered');
                         btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.style.color = '';
-                        btn.style.fontWeight = '';
+                        btn.querySelectorAll('.feedback').forEach(span => span.remove());
                     });
 
                     const feedbackSpan = document.createElement('span');
                     feedbackSpan.classList.add('feedback');
 
                     if (choice === q.answer) {
-                        this.classList.add('correct-choice');
+                        button.classList.add('correct-choice');
                         feedbackSpan.classList.add('correct');
                         feedbackSpan.innerText = 'Correct';
                     } else {
-                        this.classList.add('wrong-choice');
+                        button.classList.add('wrong-choice');
                         feedbackSpan.classList.add('wrong');
                         feedbackSpan.innerText = 'Wrong';
-
                         allButtonsInGroup.forEach(btn => {
                             if (btn.innerText === q.answer) {
                                 btn.classList.add('correct-choice');
                             }
                         });
                     }
-                    this.appendChild(feedbackSpan);
+                    button.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
@@ -497,28 +317,66 @@
             questionP.innerText = `${index + 1}. ${sa.question}`;
             saElement.appendChild(questionP);
 
-            const toggleButton = document.createElement("button");
-            toggleButton.classList.add("toggle-btn");
-            toggleButton.innerText = "View Answer";
-            toggleButton.onclick = function() {
-                const answerDiv = saElement.querySelector(".answer");
-                if (answerDiv.style.display === "block") {
-                    answerDiv.style.display = "none";
-                    toggleButton.innerText = "View Answer";
-                } else {
-                    answerDiv.style.display = "block";
-                    toggleButton.innerText = "Hide Answer";
-                }
-            };
-            saElement.appendChild(toggleButton);
-
-            const answerDiv = document.createElement("div");
-            answerDiv.classList.add("answer");
-            answerDiv.innerText = sa.answer;
-            saElement.appendChild(answerDiv);
+            const answerTextarea = document.createElement("textarea");
+            answerTextarea.id = `answer${index}`;
+            answerTextarea.rows = 4;
+            answerTextarea.placeholder = "Type your answer here...";
+            saElement.appendChild(answerTextarea);
 
             shortAnswerDiv.appendChild(saElement);
         });
+    }
+
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let totalScore = 0;
+        const maxScorePerQuestion = 100;
+        const totalQuestions = questions.length + shortAnswerQuestions.length;
+        const resultsDiv = document.getElementById('results');
+        let resultsHTML = "<h3>Your Results</h3>";
+
+        // Grade MCQs
+        questions.forEach((q, index) => {
+            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
+            let score = 0;
+            if (selectedButton && selectedButton.dataset.choice === q.answer) {
+                score = maxScorePerQuestion;
+            }
+            totalScore += score;
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/100</p>`;
+        });
+
+        // Grade Short Answers
+        shortAnswerQuestions.forEach((sa, index) => {
+            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+            let score = 0;
+            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
+
+            sa.keywords.forEach(keyword => {
+                if (answer.includes(keyword)) {
+                    score += pointsPerKeyword;
+                }
+            });
+
+            score = Math.min(score, maxScorePerQuestion); // Cap at 100
+            totalScore += score;
+            resultsHTML += `<p>Short Answer ${index + 1} Score: ${Math.round(score)}/100</p>`;
+        });
+
+        const overallScore = Math.round(totalScore / totalQuestions);
+        resultsHTML += `<p><strong>Total Score: ${totalScore}/${totalQuestions * maxScorePerQuestion} (Average: ${overallScore}/100)</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(overallScore)}</p>`;
+
+        resultsDiv.innerHTML = resultsHTML;
+        resultsDiv.style.display = "block";
+    });
+
+    function getFeedback(score) {
+        if (score >= 80) return "Excellent! You’ve demonstrated a strong understanding.";
+        if (score >= 60) return "Good effort! Include more key concepts for a higher score.";
+        if (score >= 40) return "Fair attempt. Review the material and try again.";
+        return "Needs improvement. Focus on including key terms and ideas.";
     }
 
     loadQuiz();
