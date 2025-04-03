@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCIE 1012 Chapter 2  practice questions</title>
+    <title>MCIE 1012 Chapter 2 Practice Questions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,25 +36,24 @@
             background: #ddd;
             cursor: pointer;
             transition: background 0.3s;
-            text-align: left; /* Align button text left */
+            text-align: left;
         }
         .options button:hover {
             background: #ccc;
         }
-        /* Ensure buttons don't stay colored after clicking another */
         .options button.answered {
-            pointer-events: none; /* Disable further clicks */
+            pointer-events: none;
             opacity: 0.7;
         }
         .options button.correct-choice {
-            background-color: #90ee90; /* Light green for correct */
+            background-color: #90ee90;
             color: black;
         }
         .options button.wrong-choice {
-            background-color: #ffcccb; /* Light red for incorrect */
+            background-color: #ffcccb;
             color: black;
         }
-        .feedback { /* Renamed from correct/wrong for clarity */
+        .feedback {
             font-weight: bold;
             margin-left: 10px;
         }
@@ -70,35 +69,62 @@
         .short-answer {
             margin-bottom: 20px;
         }
-        .answer {
-            display: none;
-            color: green;
-            margin-top: 10px;
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
-        .toggle-btn {
+        .submit-btn, .close-btn, .toggle-btn {
             background-color: #4CAF50;
             color: white;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
+            margin-top: 10px;
         }
-        .toggle-btn:hover {
+        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
             background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
+        }
+        .answer {
+            display: none;
+            color: green;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 2  practice questions</h2>
-    <div id="quiz"></div>
+    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 2 Practice Questions</h2>
+    <form id="quizForm">
+        <div id="quiz"></div>
 
-    <div class="short-answer-section">
-        <h2>Short Answer Questions</h2>
-        <div id="short-answers"></div>
-    </div>
+        <div class="short-answer-section">
+            <h2>Short Answer Questions</h2>
+            <div id="short-answers"></div>
+        </div>
+        <button type="submit" class="submit-btn">Grade My Answers</button>
+    </form>
+    <div id="results" class="results"></div>
+    <button class="close-btn" onclick="window.close()">Close This Page</button>
 </div>
 
 <script>
@@ -548,92 +574,87 @@
     const shortAnswerQuestions = [
         { 
             question: "Explain the difference between teleological and deontological ethics.", 
-            answer: "Teleological ethics judges morality by the consequences of actions, aiming for outcomes like happiness, while deontological ethics focuses on duty and rules, judging actions by their adherence to moral principles regardless of outcomes."
+            keywords: ['teleological', 'deontological', 'consequences', 'duty', 'outcomes', 'rules'],
+            modelAnswer: "Teleological ethics judges morality by the consequences of actions, aiming for outcomes like happiness, while deontological ethics focuses on duty and rules, judging actions by their adherence to moral principles regardless of outcomes."
         },
         { 
             question: "How does virtue ethics differ from utilitarianism?", 
-            answer: "Virtue ethics emphasizes developing moral character and virtues for a good life, whereas utilitarianism focuses on maximizing happiness through the consequences of actions, prioritizing outcomes over personal traits."
+            keywords: ['virtue', 'utilitarianism', 'character', 'consequences', 'happiness', 'traits'],
+            modelAnswer: "Virtue ethics emphasizes developing moral character and virtues for a good life, whereas utilitarianism focuses on maximizing happiness through the consequences of actions, prioritizing outcomes over personal traits."
         },
         { 
             question: "What is the main idea behind Kant’s categorical imperative?", 
-            answer: "The main idea is to act only according to rules that could be universally applied, treating people as ends in themselves, not as means to an end, based on reason and duty."
+            keywords: ['Kant', 'categorical', 'imperative', 'universal', 'duty', 'ends'],
+            modelAnswer: "The main idea is to act only according to rules that could be universally applied, treating people as ends in themselves, not as means to an end, based on reason and duty."
         },
         { 
             question: "Why might utilitarianism be seen as controversial?", 
-            answer: "It can be controversial because it may justify actions that harm minorities or individuals if they benefit the majority, raising concerns about fairness and justice."
+            keywords: ['utilitarianism', 'controversial', 'happiness', 'majority', 'fairness', 'justice'],
+            modelAnswer: "It can be controversial because it may justify actions that harm minorities or individuals if they benefit the majority, raising concerns about fairness and justice."
         },
         { 
             question: "What is the role of the 'golden mean' in Aristotle’s ethics?", 
-            answer: "The 'golden mean' is the idea of finding a balanced middle ground between extremes of excess and deficiency in virtues, like courage between recklessness and cowardice, to achieve moral excellence."
+            keywords: ['golden', 'mean', 'Aristotle', 'virtues', 'balance', 'extremes'],
+            modelAnswer: "The 'golden mean' is the idea of finding a balanced middle ground between extremes of excess and deficiency in virtues, like courage between recklessness and cowardice, to achieve moral excellence."
         }
     ];
 
     function loadQuiz() {
         const quizDiv = document.getElementById("quiz");
-        quizDiv.innerHTML = ""; // Clear previous content if any
+        quizDiv.innerHTML = "";
 
         questions.forEach((q, index) => {
-            // Create container for question and its options
             const questionBlock = document.createElement("div");
-            questionBlock.style.marginBottom = "20px"; // Add space between questions
+            questionBlock.style.marginBottom = "20px";
 
-            // Create question text element
             const questionElement = document.createElement("div");
             questionElement.classList.add("question");
             questionElement.innerText = `${index + 1}. ${q.question}`;
+            questionBlock.appendChild(questionElement);
 
-            // Create options container
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
 
             q.choices.forEach(choice => {
                 const button = document.createElement("button");
+                button.type = "button"; // Prevent form submission
                 button.innerText = choice;
+                button.dataset.index = index;
+                button.dataset.choice = choice;
                 button.onclick = function() {
-                    // Remove previous feedback spans if any
                     this.querySelectorAll('.feedback').forEach(span => span.remove());
 
-                    // Disable all buttons in this group and mark as answered
                     const allButtonsInGroup = optionsDiv.querySelectorAll('button');
                     allButtonsInGroup.forEach(btn => {
                         btn.classList.add('answered');
-                        // Reset background/color in case of re-click (though disabled)
                         btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.style.color = ''; // Reset direct style color if any
+                        btn.style.color = '';
                         btn.style.fontWeight = '';
                     });
 
-                    // Create feedback span
                     const feedbackSpan = document.createElement('span');
                     feedbackSpan.classList.add('feedback');
 
                     if (choice === q.answer) {
-                        this.classList.add('correct-choice'); // Use class for styling
+                        this.classList.add('correct-choice');
                         feedbackSpan.classList.add('correct');
                         feedbackSpan.innerText = 'Correct';
                     } else {
-                        this.classList.add('wrong-choice'); // Use class for styling
+                        this.classList.add('wrong-choice');
                         feedbackSpan.classList.add('wrong');
                         feedbackSpan.innerText = 'Wrong';
-
-                        // Highlight the correct answer as well
                         allButtonsInGroup.forEach(btn => {
                             if (btn.innerText === q.answer) {
                                 btn.classList.add('correct-choice');
                             }
                         });
                     }
-                    // Append feedback span to the clicked button
                     this.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
 
-            // Append question and options to the question block
-            questionBlock.appendChild(questionElement);
             questionBlock.appendChild(optionsDiv);
-
-            // Append the whole block to the main quiz container
             quizDiv.appendChild(questionBlock);
         });
     }
@@ -650,9 +671,17 @@
             questionP.innerText = `${index + 1}. ${sa.question}`;
             saElement.appendChild(questionP);
 
+            const answerTextarea = document.createElement("textarea");
+            answerTextarea.id = `answer${index}`;
+            answerTextarea.rows = 4;
+            answerTextarea.placeholder = "Type your answer here...";
+            saElement.appendChild(answerTextarea);
+
             const toggleButton = document.createElement("button");
             toggleButton.classList.add("toggle-btn");
+            toggleButton.id = `toggle${index}`;
             toggleButton.innerText = "View Answer";
+            toggleButton.style.display = "none"; // Hidden until graded
             toggleButton.onclick = function() {
                 const answerDiv = saElement.querySelector(".answer");
                 if (answerDiv.style.display === "block") {
@@ -667,14 +696,70 @@
 
             const answerDiv = document.createElement("div");
             answerDiv.classList.add("answer");
-            answerDiv.innerText = sa.answer;
+            answerDiv.id = `modelAnswer${index}`;
+            answerDiv.innerText = sa.modelAnswer;
             saElement.appendChild(answerDiv);
 
             shortAnswerDiv.appendChild(saElement);
         });
     }
 
-    // Load the quiz and short answers when the page loads
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let totalScore = 0;
+        const maxScorePerQuestion = 1;
+        const totalQuestions = questions.length + shortAnswerQuestions.length;
+        const resultsDiv = document.getElementById('results');
+        let resultsHTML = "<h3>Your Results</h3>";
+
+        // Grade MCQs
+        questions.forEach((q, index) => {
+            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
+            let score = 0;
+            if (selectedButton && selectedButton.dataset.choice === q.answer) {
+                score = maxScorePerQuestion;
+            }
+            totalScore += score;
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/1</p>`;
+        });
+
+        // Grade Short Answers
+        shortAnswerQuestions.forEach((sa, index) => {
+            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+            let score = 0;
+            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
+
+            sa.keywords.forEach(keyword => {
+                if (answer.includes(keyword)) {
+                    score += pointsPerKeyword;
+                }
+            });
+
+            score = Math.min(score, maxScorePerQuestion); // Cap at 1
+            totalScore += score;
+            resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+
+            // Show "View Answer" button after grading
+            const toggleButton = document.getElementById(`toggle${index}`);
+            toggleButton.style.display = "inline-block";
+        });
+
+        const overallScore = (totalScore / totalQuestions).toFixed(2);
+        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions} (Average: ${overallScore}/1)</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(overallScore)}</p>`;
+
+        resultsDiv.innerHTML = resultsHTML;
+        resultsDiv.style.display = "block";
+    });
+
+    function getFeedback(score) {
+        if (score >= 0.8) return "Excellent! You’ve demonstrated a strong understanding.";
+        if (score >= 0.6) return "Good effort! Include more key concepts for a higher score.";
+        if (score >= 0.4) return "Fair attempt. Review the material and try again.";
+        return "Needs improvement. Focus on including key terms and ideas.";
+    }
+
     loadQuiz();
     loadShortAnswers();
 </script>
