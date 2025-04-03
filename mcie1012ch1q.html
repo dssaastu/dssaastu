@@ -605,11 +605,11 @@
             toggleButton.style.display = "inline-block";
         });
 
-        // Calculate average as a percentage out of 100
-        const percentageScore = ((totalScore / totalQuestions) * 100).toFixed(2);
-        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions}</strong></p>`;
-        resultsHTML += `<p><strong>Average Score: ${percentageScore}%</strong></p>`;
-        resultsHTML += `<p>Feedback: ${getFeedback(percentageScore / 100)}</p>`;
+        // Display average as totalScore out of 35
+        const averageScore = totalScore.toFixed(2);
+        resultsHTML += `<p><strong>Total Score: ${averageScore}/${totalQuestions}</strong></p>`;
+        resultsHTML += `<p><strong>Average Score: ${averageScore}/35</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(totalScore / totalQuestions)}</p>`;
 
         resultsDiv.innerHTML = resultsHTML;
         resultsDiv.style.display = "block";
