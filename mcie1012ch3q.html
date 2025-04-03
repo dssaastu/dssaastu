@@ -76,7 +76,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        .submit-btn, .close-btn {
+        .submit-btn, .close-btn, .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -86,7 +86,7 @@
             transition: background 0.3s;
             margin-top: 10px;
         }
-        .submit-btn:hover, .close-btn:hover {
+        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
             background-color: #45a049;
         }
         .results {
@@ -105,6 +105,11 @@
             display: block;
             margin: 20px auto 0;
         }
+        .answer {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -120,7 +125,6 @@
         <button type="submit" class="submit-btn">Grade My Answers</button>
     </form>
     <div id="results" class="results"></div>
-    
 </div>
 
 <script>
@@ -430,23 +434,28 @@
     const shortAnswerQuestions = [
         { 
             question: "What is the role of moral intuitions in ethical decision-making?", 
-            keywords: ['moral intuitions', 'immediate', 'instinctive', 'ethical', 'reasoning', 'starting']
+            keywords: ['moral intuitions', 'immediate', 'instinctive', 'ethical', 'reasoning', 'starting'],
+            modelAnswer: "Moral intuitions serve as immediate, instinctive responses that provide a starting point for ethical decision-making, which can then be refined through reasoning."
         },
         { 
             question: "How does the Fairness and Justice Approach differ from the Common Good Approach in ethical decision-making?", 
-            keywords: ['fairness', 'justice', 'equitably', 'common good', 'community', 'welfare']
+            keywords: ['fairness', 'justice', 'equitably', 'common good', 'community', 'welfare'],
+            modelAnswer: "The Fairness and Justice Approach focuses on treating individuals equitably, ensuring impartiality, while the Common Good Approach prioritizes the welfare and benefits of the entire community over individual equity."
         },
         { 
             question: "Explain the Argument from Enlightened Self-Interest as a reason for being moral.", 
-            keywords: ['self-interest', 'moral', 'benefits', 'personal', 'long-term', 'relationships']
+            keywords: ['self-interest', 'moral', 'benefits', 'personal', 'long-term', 'relationships'],
+            modelAnswer: "The Argument from Enlightened Self-Interest suggests that being moral benefits individuals personally in the long run, such as through improved relationships and societal trust, rather than just immediate gains."
         },
         { 
             question: "What are the four areas to which morality applies?", 
-            keywords: ['religious', 'nature', 'individual', 'social', 'morality', 'areas']
+            keywords: ['religious', 'nature', 'individual', 'social', 'morality', 'areas'],
+            modelAnswer: "Morality applies to four areas: individual (personal choices), social (community values), nature (environmental ethics), and religious (spiritual beliefs or divine commands)."
         },
         { 
             question: "Why is critical reasoning important in testing moral arguments?", 
-            keywords: ['critical reasoning', 'moral arguments', 'logic', 'consistency', 'validity', 'evaluate']
+            keywords: ['critical reasoning', 'moral arguments', 'logic', 'consistency', 'validity', 'evaluate'],
+            modelAnswer: "Critical reasoning is important in testing moral arguments because it evaluates their logic, consistency, and validity, ensuring they are sound and not based solely on emotions or assumptions."
         }
     ];
 
@@ -526,6 +535,29 @@
             answerTextarea.placeholder = "Type your answer here...";
             saElement.appendChild(answerTextarea);
 
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.id = `toggle${index}`;
+            toggleButton.innerText = "View Correct Answer";
+            toggleButton.style.display = "none"; // Hidden until graded
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Correct Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Correct Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.id = `modelAnswer${index}`;
+            answerDiv.innerText = sa.modelAnswer;
+            saElement.appendChild(answerDiv);
+
             shortAnswerDiv.appendChild(saElement);
         });
     }
@@ -565,6 +597,10 @@
             score = Math.min(score, maxScorePerQuestion); // Cap at 1
             totalScore += score;
             resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+
+            // Show "View Correct Answer" button after grading
+            const toggleButton = document.getElementById(`toggle${index}`);
+            toggleButton.style.display = "inline-block";
         });
 
         const percentageScore = Math.round((totalScore / totalQuestions) * 100);
