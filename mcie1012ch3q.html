@@ -95,6 +95,8 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             display: none;
+            max-height: 300px;
+            overflow-y: auto;
         }
         .results p {
             margin: 5px 0;
@@ -222,21 +224,221 @@
                 "Following only legal guidelines"
             ], 
             answer: "Multiple approaches like fairness, rights, and common good"
+        },
+        { 
+            question: "The Fairness and Justice Approach focuses on:", 
+            choices: [
+                "Maximizing benefits for the majority", 
+                "Treating individuals equitably",
+                "Protecting individual rights above all", 
+                "Promoting collective welfare"
+            ], 
+            answer: "Treating individuals equitably"
+        },
+        { 
+            question: "The Common Good Approach prioritizes:", 
+            choices: [
+                "Individual rights over community needs", 
+                "Benefits to society as a whole",
+                "Personal gain", 
+                "Strict adherence to laws"
+            ], 
+            answer: "Benefits to society as a whole"
+        },
+        { 
+            question: "The Rights Approach is based on:", 
+            choices: [
+                "Achieving the greatest good for the greatest number", 
+                "Following societal customs", 
+                "Economic outcomes",
+                "Respecting inherent human entitlements"
+            ], 
+            answer: "Respecting inherent human entitlements"
+        },
+        { 
+            question: "To whom or what does morality apply?", 
+            choices: [
+                "Only individuals", 
+                "Only legal systems", 
+                "Individuals, society, nature, and religion",
+                "Only religious institutions"
+            ], 
+            answer: "Individuals, society, nature, and religion"
+        },
+        { 
+            question: "Religious morality is primarily concerned with:", 
+            choices: [
+                "Secular laws", 
+                "Economic benefits", 
+                "Divine commands or spiritual beliefs",
+                "Social contracts"
+            ], 
+            answer: "Divine commands or spiritual beliefs"
+        },
+        { 
+            question: "Morality and nature refer to:", 
+            choices: [
+                "Ethical obligations toward the environment",
+                "Ignoring natural laws", 
+                "Economic exploitation of resources", 
+                "Legal regulations only"
+            ], 
+            answer: "Ethical obligations toward the environment"
+        },
+        { 
+            question: "Individual morality focuses on:", 
+            choices: [
+                "Collective societal norms", 
+                "Government policies", 
+                "Personal ethical choices and actions",
+                "Religious doctrines"
+            ], 
+            answer: "Personal ethical choices and actions"
+        },
+        { 
+            question: "Social morality involves:", 
+            choices: [
+                "Personal beliefs only", 
+                "Ignoring societal impacts", 
+                "Shared values within a community",
+                "Economic considerations alone"
+            ], 
+            answer: "Shared values within a community"
+        },
+        { 
+            question: "Who is considered morally responsible for an action?", 
+            choices: [
+                "Only the government", 
+                "Society as a whole", 
+                "Individuals or entities capable of intentional action",
+                "Religious leaders only"
+            ], 
+            answer: "Individuals or entities capable of intentional action"
+        },
+        { 
+            question: "Moral judgments are:", 
+            choices: [
+                "Evaluations of actions based on ethical standards",
+                "Legal rulings", 
+                "Emotional reactions without reasoning", 
+                "Economic decisions"
+            ], 
+            answer: "Evaluations of actions based on ethical standards"
+        },
+        { 
+            question: "What makes an action moral?", 
+            choices: [
+                "Its alignment with ethical principles or intentions",
+                "Its legality alone", 
+                "Its popularity", 
+                "Its economic benefit"
+            ], 
+            answer: "Its alignment with ethical principles or intentions"
+        },
+        { 
+            question: "The Argument from Enlightened Self-Interest suggests humans should be moral because:", 
+            choices: [
+                "It benefits them personally in the long run",
+                "It is required by law", 
+                "It avoids punishment", 
+                "It follows tradition"
+            ], 
+            answer: "It benefits them personally in the long run"
+        },
+        { 
+            question: "The Argument from Tradition and Law posits that morality is valuable because:", 
+            choices: [
+                "It reflects historical norms and legal systems",
+                "It maximizes happiness", 
+                "It is a personal choice", 
+                "It ignores societal needs"
+            ], 
+            answer: "It reflects historical norms and legal systems"
+        },
+        { 
+            question: "Common Human Needs as a reason for morality emphasize:", 
+            choices: [
+                "Universal requirements like safety and belonging",
+                "Individual desires only", 
+                "Legal obligations", 
+                "Religious mandates"
+            ], 
+            answer: "Universal requirements like safety and belonging"
+        },
+        { 
+            question: "Which approach to ethical decision-making considers consequences?", 
+            choices: [
+                "Rights Approach", 
+                "Fairness and Justice Approach", 
+                "Common Good Approach",
+                "All of the above"
+            ], 
+            answer: "Common Good Approach"
+        },
+        { 
+            question: "Ethical decisions should involve:", 
+            choices: [
+                "Only emotional responses", 
+                "Strict adherence to tradition", 
+                "Ignoring personal values",
+                "A balance of intuition and reasoning"
+            ], 
+            answer: "A balance of intuition and reasoning"
+        },
+        { 
+            question: "Who bears moral responsibility in a group decision?", 
+            choices: [
+                "Only the leader", 
+                "No one", 
+                "All members capable of influencing the outcome",
+                "The legal system"
+            ], 
+            answer: "All members capable of influencing the outcome"
+        },
+        { 
+            question: "Morality applies to:", 
+            choices: [
+                "Only human actions", 
+                "Only legal matters", 
+                "Only religious contexts",
+                "Actions affecting humans, nature, and society"
+            ], 
+            answer: "Actions affecting humans, nature, and society"
+        },
+        { 
+            question: "Why should humans be moral?", 
+            choices: [
+                "To avoid legal consequences", 
+                "Only for religious salvation", 
+                "For self-interest, tradition, and shared needs",
+                "To follow societal trends"
+            ], 
+            answer: "For self-interest, tradition, and shared needs"
+        },
+        { 
+            question: "The framework for moral decision-making is designed to:", 
+            choices: [
+                "Provide a rigid set of rules", 
+                "Focus solely on legal outcomes", 
+                "Ignore societal impacts",
+                "Offer flexible approaches to ethical dilemmas"
+            ], 
+            answer: "Offer flexible approaches to ethical dilemmas"
         }
     ];
 
     const shortAnswerQuestions = [
         { 
             question: "What is the role of moral intuitions in ethical decision-making?", 
-            keywords: ['moral', 'intuitions', 'immediate', 'instinctive', 'reasoning', 'ethical']
+            keywords: ['moral intuitions', 'immediate', 'instinctive', 'ethical', 'reasoning', 'starting']
         },
         { 
             question: "How does the Fairness and Justice Approach differ from the Common Good Approach in ethical decision-making?", 
-            keywords: ['fairness', 'justice', 'equitably', 'common', 'good', 'community']
+            keywords: ['fairness', 'justice', 'equitably', 'common good', 'community', 'welfare']
         },
         { 
             question: "Explain the Argument from Enlightened Self-Interest as a reason for being moral.", 
-            keywords: ['self-interest', 'moral', 'benefits', 'personal', 'ethical', 'long-term']
+            keywords: ['self-interest', 'moral', 'benefits', 'personal', 'long-term', 'relationships']
         },
         { 
             question: "What are the four areas to which morality applies?", 
@@ -244,7 +446,7 @@
         },
         { 
             question: "Why is critical reasoning important in testing moral arguments?", 
-            keywords: ['critical', 'reasoning', 'moral', 'arguments', 'logic', 'consistency']
+            keywords: ['critical reasoning', 'moral arguments', 'logic', 'consistency', 'validity', 'evaluate']
         }
     ];
 
@@ -270,27 +472,28 @@
                 button.dataset.index = index; // Store question index
                 button.dataset.choice = choice; // Store selected choice
                 button.onclick = function() {
-                    const allButtonsInGroup = optionsDiv.querySelectorAll('button');
-                    allButtonsInGroup.forEach(btn => {
-                        btn.classList.add('answered');
-                        btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.querySelectorAll('.feedback').forEach(span => span.remove());
+                    const allButtons = optionsDiv.querySelectorAll("button");
+                    allButtons.forEach(btn => {
+                        btn.classList.add("answered");
+                        btn.classList.remove("correct-choice", "wrong-choice");
+                        const existingFeedback = btn.querySelector(".feedback");
+                        if (existingFeedback) existingFeedback.remove();
                     });
 
-                    const feedbackSpan = document.createElement('span');
-                    feedbackSpan.classList.add('feedback');
+                    const feedbackSpan = document.createElement("span");
+                    feedbackSpan.classList.add("feedback");
 
                     if (choice === q.answer) {
-                        button.classList.add('correct-choice');
-                        feedbackSpan.classList.add('correct');
-                        feedbackSpan.innerText = 'Correct';
+                        button.classList.add("correct-choice");
+                        feedbackSpan.classList.add("correct");
+                        feedbackSpan.innerText = "Correct";
                     } else {
-                        button.classList.add('wrong-choice');
-                        feedbackSpan.classList.add('wrong');
-                        feedbackSpan.innerText = 'Wrong';
-                        allButtonsInGroup.forEach(btn => {
+                        button.classList.add("wrong-choice");
+                        feedbackSpan.classList.add("wrong");
+                        feedbackSpan.innerText = "Wrong";
+                        allButtons.forEach(btn => {
                             if (btn.innerText === q.answer) {
-                                btn.classList.add('correct-choice');
+                                btn.classList.add("correct-choice");
                             }
                         });
                     }
