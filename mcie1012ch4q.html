@@ -726,7 +726,7 @@
         event.preventDefault();
 
         let totalScore = 0;
-        const maxScorePerQuestion = 100;
+        const maxScorePerQuestion = 1;
         const totalQuestions = questions.length + shortAnswerQuestions.length;
         const resultsDiv = document.getElementById('results');
         let resultsHTML = "<h3>Your Results</h3>";
@@ -739,7 +739,7 @@
                 score = maxScorePerQuestion;
             }
             totalScore += score;
-            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/100</p>`;
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/1</p>`;
         });
 
         // Grade Short Answers
@@ -754,14 +754,14 @@
                 }
             });
 
-            score = Math.min(score, maxScorePerQuestion); // Cap at 100
+            score = Math.min(score, maxScorePerQuestion); // Cap at 1
             totalScore += score;
-            resultsHTML += `<p>Short Answer ${index + 1} Score: ${Math.round(score)}/100</p>`;
+            resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
         });
 
-        const overallScore = Math.round(totalScore / totalQuestions);
-        resultsHTML += `<p><strong>Total Score: ${totalScore}/${totalQuestions * maxScorePerQuestion} (Average: ${overallScore}/100)</strong></p>`;
-        resultsHTML += `<p>Feedback: ${getFeedback(overallScore)}</p>`;
+        const percentageScore = Math.round((totalScore / totalQuestions) * 100);
+        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions} (Percentage: ${percentageScore}%)</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(percentageScore)}</p>`;
 
         resultsDiv.innerHTML = resultsHTML;
         resultsDiv.style.display = "block";
