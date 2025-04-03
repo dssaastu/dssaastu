@@ -445,7 +445,7 @@
         { 
             question: "Why is moral and civic education important in a multicultural society like Ethiopia?", 
             keywords: ['moral', 'civic', 'multicultural', 'Ethiopia', 'harmony', 'diversity'],
-            modelAnswer: "It promotes shared moral values and democratic principles, fostering harmony and integrity among diverse ethnic groups with differing cultural perspectives on morality."
+            modelAnswer: "It promotes shared moral values and democratic principles, fostering harmony and integrity among diverse ethnic groups with differing    differing cultural perspectives on morality."
         },
         { 
             question: "What is the significance of a participant political culture for democracy?", 
@@ -605,10 +605,10 @@
             toggleButton.style.display = "inline-block";
         });
 
-        // Display average as totalScore out of 35
-        const averageScore = totalScore.toFixed(2);
-        resultsHTML += `<p><strong>Total Score: ${averageScore}/${totalQuestions}</strong></p>`;
-        resultsHTML += `<p><strong>Average Score: ${averageScore}/35</strong></p>`;
+        // Calculate average as a percentage out of 100
+        const averageScore = ((totalScore / totalQuestions) * 100).toFixed(2);
+        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions}</strong></p>`;
+        resultsHTML += `<p><strong>Average Score: ${averageScore}/100</strong></p>`;
         resultsHTML += `<p>Feedback: ${getFeedback(totalScore / totalQuestions)}</p>`;
 
         resultsDiv.innerHTML = resultsHTML;
