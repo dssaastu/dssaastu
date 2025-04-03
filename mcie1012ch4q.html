@@ -78,7 +78,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        .submit-btn, .close-btn {
+        .submit-btn, .close-btn, .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -88,7 +88,7 @@
             transition: background 0.3s;
             margin-top: 10px;
         }
-        .submit-btn:hover, .close-btn:hover {
+        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
             background-color: #45a049;
         }
         .results {
@@ -107,6 +107,11 @@
             display: block;
             margin: 20px auto 0;
         }
+        .answer {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -122,7 +127,6 @@
         <button type="submit" class="submit-btn">Grade My Answers</button>
     </form>
     <div id="results" class="results"></div>
-   
 </div>
 
 <script>
@@ -602,43 +606,53 @@
     const shortAnswerQuestions = [
         {
             question: "Explain the difference between a state and a government.",
-            keywords: ['state', 'government', 'political', 'territory', 'authority', 'enforce']
+            keywords: ['state', 'government', 'political', 'territory', 'authority', 'enforce'],
+            modelAnswer: "A state is a political entity with sovereignty over a defined territory and population, while a government is the authority that enforces laws and manages the state’s affairs."
         },
         {
             question: "What are the main characteristics of a 'Leviathan state,' and how does it differ from a 'minimal state'?",
-            keywords: ['Leviathan', 'minimal', 'centralized', 'control', 'protection', 'intervention']
+            keywords: ['Leviathan', 'minimal', 'centralized', 'control', 'protection', 'intervention'],
+            modelAnswer: "A Leviathan state is characterized by centralized control and extensive intervention in society, aiming for state self-aggrandizement, whereas a minimal state focuses only on protection and enforcement, with limited intervention."
         },
         {
             question: "What rights does a state have?",
-            keywords: ['sovereign', 'govern', 'laws', 'protect', 'taxes', 'authority']
+            keywords: ['sovereign', 'govern', 'laws', 'protect', 'taxes', 'authority'],
+            modelAnswer: "A state has sovereign rights to govern its territory, enact laws, protect its citizens, collect taxes, and exercise authority over its population."
         },
         {
             question: "What is the main difference between authority and legitimacy in the context of government?",
-            keywords: ['authority', 'legitimacy', 'power', 'obedience', 'acceptance', 'consent']
+            keywords: ['authority', 'legitimacy', 'power', 'obedience', 'acceptance', 'consent'],
+            modelAnswer: "Authority is the power to compel obedience, while legitimacy is the popular acceptance or consent that justifies that power."
         },
         {
             question: "Differentiate between a unitary constitution and a federal constitution.",
-            keywords: ['unitary', 'federal', 'centralized', 'divided', 'power', 'regional']
+            keywords: ['unitary', 'federal', 'centralized', 'divided', 'power', 'regional'],
+            modelAnswer: "A unitary constitution centralizes power in a single national government, while a federal constitution divides power between a central authority and regional governments."
         },
         {
             question: "Describe the core idea behind the concept of social citizenship, and give an example of a social right.",
-            keywords: ['social', 'citizenship', 'welfare', 'inclusion', 'education', 'healthcare']
+            keywords: ['social', 'citizenship', 'welfare', 'inclusion', 'education', 'healthcare'],
+            modelAnswer: "Social citizenship emphasizes welfare and inclusion, ensuring access to social services; an example of a social right is the right to education or healthcare."
         },
         {
             question: "Distinguish between a nation and a state.",
-            keywords: ['nation', 'state', 'culture', 'identity', 'sovereignty', 'territory']
+            keywords: ['nation', 'state', 'culture', 'identity', 'sovereignty', 'territory'],
+            modelAnswer: "A nation is a group with shared culture and identity, while a state is a sovereign political entity with defined territory and government."
         },
         {
             question: "What does citizenship mean in a liberal democracy, and what does it entail for citizens?",
-            keywords: ['citizenship', 'liberal', 'democracy', 'rights', 'responsibilities', 'voting']
+            keywords: ['citizenship', 'liberal', 'democracy', 'rights', 'responsibilities', 'voting'],
+            modelAnswer: "In a liberal democracy, citizenship means having individual rights and responsibilities, entailing freedoms like voting and duties like obeying laws."
         },
         {
             question: "What criteria must be met to be recognized as a legal citizen of a state?",
-            keywords: ['birth', 'naturalization', 'residency', 'jus soli', 'jus sanguinis', 'allegiance']
+            keywords: ['birth', 'naturalization', 'residency', 'jus soli', 'jus sanguinis', 'allegiance'],
+            modelAnswer: "Criteria include citizenship by birth (jus soli or jus sanguinis), naturalization through residency and legal processes, and pledging allegiance to the state."
         },
         {
             question: "What benefits do individuals gain from being members or citizens of a society?",
-            keywords: ['rights', 'protection', 'services', 'identity', 'community', 'participation']
+            keywords: ['rights', 'protection', 'services', 'identity', 'community', 'participation'],
+            modelAnswer: "Citizens gain rights, protection, access to services, a sense of identity, community belonging, and opportunities for participation in governance."
         }
     ];
 
@@ -718,6 +732,29 @@
             answerTextarea.placeholder = "Type your answer here...";
             saElement.appendChild(answerTextarea);
 
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.id = `toggle${index}`;
+            toggleButton.innerText = "View Correct Answer";
+            toggleButton.style.display = "none"; // Hidden until graded
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Correct Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Correct Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.id = `modelAnswer${index}`;
+            answerDiv.innerText = sa.modelAnswer;
+            saElement.appendChild(answerDiv);
+
             shortAnswerDiv.appendChild(saElement);
         });
     }
@@ -757,6 +794,10 @@
             score = Math.min(score, maxScorePerQuestion); // Cap at 1
             totalScore += score;
             resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+
+            // Show "View Correct Answer" button after grading
+            const toggleButton = document.getElementById(`toggle${index}`);
+            toggleButton.style.display = "inline-block";
         });
 
         const percentageScore = Math.round((totalScore / totalQuestions) * 100);
