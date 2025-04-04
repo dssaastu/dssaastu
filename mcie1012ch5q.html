@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
+
         .quiz-container {
             max-width: 800px;
             margin: auto;
@@ -19,15 +21,18 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px gray;
         }
+
         h2 {
             text-align: center;
             color: #333;
         }
+
         .question {
             font-weight: bold;
             margin-bottom: 10px;
             color: #2c3e50;
         }
+
         .options button {
             display: block;
             width: 100%;
@@ -40,37 +45,47 @@
             transition: background 0.3s;
             text-align: left;
         }
+
         .options button:hover {
             background: #ccc;
         }
+
         .options button.answered {
             pointer-events: none;
             opacity: 0.7;
         }
+
         .options button.correct-choice {
             background-color: #90ee90;
             color: black;
         }
+
         .options button.wrong-choice {
             background-color: #ffcccb;
             color: black;
         }
+
         .feedback {
             font-weight: bold;
             margin-left: 10px;
         }
+
         .feedback.correct {
             color: green;
         }
+
         .feedback.wrong {
             color: red;
         }
+
         .short-answer-section {
             margin-top: 40px;
         }
+
         .short-answer {
             margin-bottom: 20px;
         }
+
         textarea {
             width: 100%;
             padding: 10px;
@@ -78,7 +93,10 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        .submit-btn, .close-btn, .toggle-btn {
+
+        .submit-btn,
+        .close-btn,
+        .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -88,9 +106,13 @@
             transition: background 0.3s;
             margin-top: 10px;
         }
-        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
+
+        .submit-btn:hover,
+        .close-btn:hover,
+        .toggle-btn:hover {
             background-color: #45a049;
         }
+
         .results {
             margin-top: 20px;
             padding: 10px;
@@ -100,13 +122,16 @@
             max-height: 300px;
             overflow-y: auto;
         }
+
         .results p {
             margin: 5px 0;
         }
+
         .close-btn {
             display: block;
             margin: 20px auto 0;
         }
+
         .answer {
             display: none;
             color: green;
@@ -114,24 +139,24 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="quiz-container">
-    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 5 Practice Questions</h2>
-    <form id="quizForm">
-        <div id="quiz"></div>
-        <div class="short-answer-section">
-            <h2>Short Answer Questions</h2>
-            <div id="short-answers"></div>
-        </div>
-        <button type="submit" class="submit-btn">Grade My Answers</button>
-    </form>
-    <div id="results" class="results"></div>
-</div>
+    <div class="quiz-container">
+        <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 5 Practice Questions</h2>
+        <form id="quizForm">
+            <div id="quiz"></div>
+            <div class="short-answer-section">
+                <h2>Short Answer Questions</h2>
+                <div id="short-answers"></div>
+            </div>
+            <button type="submit" class="submit-btn">Grade My Answers</button>
+        </form>
+        <div id="results" class="results"></div>
+    </div>
 
-<script>
-    const questions = [
-        {
+    <script>
+        const questions = [{
             question: "What is the primary purpose of a constitution?",
             choices: ["To establish a monarchy", "To limit governmental power and protect citizens' rights", "To centralize power in the executive branch", "To abolish all laws"],
             answer: "To limit governmental power and protect citizens' rights"
@@ -436,168 +461,180 @@
         }
     ];
 
-    function loadQuiz() {
-        const quizDiv = document.getElementById("quiz");
-        quizDiv.innerHTML = "";
+        let mcqScores = {}; // Store MCQ scores as they're answered
 
-        questions.forEach((q, index) => {
-            const questionBlock = document.createElement("div");
-            questionBlock.style.marginBottom = "20px";
+        function loadQuiz() {
+            const quizDiv = document.getElementById("quiz");
+            quizDiv.innerHTML = "";
 
-            const questionElement = document.createElement("div");
-            questionElement.classList.add("question");
-            questionElement.innerText = `${index + 1}. ${q.question}`;
+            questions.forEach((q, index) => {
+                const questionBlock = document.createElement("div");
+                questionBlock.style.marginBottom = "20px";
 
-            const optionsDiv = document.createElement("div");
-            optionsDiv.classList.add("options");
+                const questionElement = document.createElement("div");
+                questionElement.classList.add("question");
+                questionElement.innerText = `${index + 1}. ${q.question}`;
+                questionBlock.appendChild(questionElement);
 
-            q.choices.forEach(choice => {
-                const button = document.createElement("button");
-                button.type = "button"; // Prevent form submission
-                button.innerText = choice;
-                button.dataset.index = index; // Store question index
-                button.dataset.choice = choice; // Store selected choice
-                button.onclick = function() {
-                    const allButtons = optionsDiv.querySelectorAll("button");
-                    allButtons.forEach(btn => {
-                        btn.classList.add("answered");
-                        btn.classList.remove("correct-choice", "wrong-choice");
-                        const existingFeedback = btn.querySelector(".feedback");
-                        if (existingFeedback) existingFeedback.remove();
-                    });
+                const optionsDiv = document.createElement("div");
+                optionsDiv.classList.add("options");
 
-                    const feedbackSpan = document.createElement("span");
-                    feedbackSpan.classList.add("feedback");
+                // Initialize score to 0 for this question
+                mcqScores[index] = 0;
 
-                    if (choice === q.answer) {
-                        button.classList.add("correct-choice");
-                        feedbackSpan.classList.add("correct");
-                        feedbackSpan.innerText = "Correct";
-                    } else {
-                        button.classList.add("wrong-choice");
-                        feedbackSpan.classList.add("wrong");
-                        feedbackSpan.innerText = "Wrong";
+                q.choices.forEach(choice => {
+                    const button = document.createElement("button");
+                    button.type = "button"; // Prevent form submission
+                    button.innerText = choice;
+                    button.dataset.index = index; // Store question index
+                    button.dataset.choice = choice; // Store selected choice
+                    button.onclick = function () {
+                        // Remove existing feedback and styling from all buttons
+                        const allButtons = optionsDiv.querySelectorAll("button");
                         allButtons.forEach(btn => {
-                            if (btn.innerText === q.answer) {
-                                btn.classList.add("correct-choice");
+                            btn.classList.remove("correct-choice", "wrong-choice", "answered");
+                            const existingFeedback = btn.querySelector(".feedback");
+                            if (existingFeedback) {
+                                existingFeedback.remove();
                             }
                         });
+
+                        const feedbackSpan = document.createElement("span");
+                        feedbackSpan.classList.add("feedback");
+
+                        if (choice === q.answer) {
+                            this.classList.add("correct-choice");
+                            feedbackSpan.classList.add("correct");
+                            feedbackSpan.innerText = "Correct";
+                            mcqScores[index] = 1; // Award score immediately when correct
+                        } else {
+                            this.classList.add("wrong-choice");
+                            feedbackSpan.classList.add("wrong");
+                            feedbackSpan.innerText = "Wrong";
+                            mcqScores[index] = 0; // Set score to 0 if wrong
+                            // Highlight correct answer
+                            allButtons.forEach(btn => {
+                                if (btn.innerText === q.answer) {
+                                    btn.classList.add("correct-choice");
+                                }
+                            });
+                        }
+                        this.appendChild(feedbackSpan);
+
+                        //Disable all buttons in the group
+                        allButtons.forEach(btn => {
+                            btn.classList.add("answered");
+                        });
+                    };
+                    optionsDiv.appendChild(button);
+                });
+
+                questionBlock.appendChild(questionElement);
+                questionBlock.appendChild(optionsDiv);
+                quizDiv.appendChild(questionBlock);
+            });
+        }
+
+        function loadShortAnswers() {
+            const shortAnswerDiv = document.getElementById("short-answers");
+            shortAnswerDiv.innerHTML = "";
+
+            shortAnswerQuestions.forEach((sa, index) => {
+                const saElement = document.createElement("div");
+                saElement.classList.add("short-answer");
+
+                const questionP = document.createElement("p");
+                questionP.innerText = `${index + 1}. ${sa.question}`;
+                saElement.appendChild(questionP);
+
+                const answerTextarea = document.createElement("textarea");
+                answerTextarea.id = `answer${index}`;
+                answerTextarea.rows = 4;
+                answerTextarea.placeholder = "Type your answer here...";
+                saElement.appendChild(answerTextarea);
+
+                const toggleButton = document.createElement("button");
+                toggleButton.classList.add("toggle-btn");
+                toggleButton.id = `toggle${index}`;
+                toggleButton.innerText = "View Correct Answer";
+                toggleButton.style.display = "none"; // Hidden until graded
+                toggleButton.onclick = function () {
+                    const answerDiv = saElement.querySelector(".answer");
+                    if (answerDiv.style.display === "block") {
+                        answerDiv.style.display = "none";
+                        toggleButton.innerText = "View Correct Answer";
+                    } else {
+                        answerDiv.style.display = "block";
+                        toggleButton.innerText = "Hide Correct Answer";
                     }
-                    button.appendChild(feedbackSpan);
                 };
-                optionsDiv.appendChild(button);
+                saElement.appendChild(toggleButton);
+
+                const answerDiv = document.createElement("div");
+                answerDiv.classList.add("answer");
+                answerDiv.id = `modelAnswer${index}`;
+                answerDiv.innerText = sa.modelAnswer;
+                saElement.appendChild(answerDiv);
+
+                shortAnswerDiv.appendChild(saElement);
+            });
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let totalScore = 0;
+            const maxScorePerQuestion = 1;
+            const totalQuestions = questions.length + shortAnswerQuestions.length;
+            const resultsDiv = document.getElementById('results');
+            let resultsHTML = "<h3>Your Results</h3>";
+
+            // Grade MCQs
+            questions.forEach((q, index) => {
+                totalScore += mcqScores[index]; // Add the pre-calculated score
+                resultsHTML += `<p>MCQ ${index + 1} Score: ${mcqScores[index]}/1</p>`;
             });
 
-            questionBlock.appendChild(questionElement);
-            questionBlock.appendChild(optionsDiv);
-            quizDiv.appendChild(questionBlock);
-        });
-    }
+            // Grade Short Answers
+            shortAnswerQuestions.forEach((sa, index) => {
+                const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+                let score = 0;
+                const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
 
-    function loadShortAnswers() {
-        const shortAnswerDiv = document.getElementById("short-answers");
-        shortAnswerDiv.innerHTML = "";
+                sa.keywords.forEach(keyword => {
+                    if (answer.includes(keyword)) {
+                        score += pointsPerKeyword;
+                    }
+                });
 
-        shortAnswerQuestions.forEach((sa, index) => {
-            const saElement = document.createElement("div");
-            saElement.classList.add("short-answer");
+                score = Math.min(score, maxScorePerQuestion); // Cap at 1
+                totalScore += score;
+                resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
 
-            const questionP = document.createElement("p");
-            questionP.innerText = `${index + 1}. ${sa.question}`;
-            saElement.appendChild(questionP);
-
-            const answerTextarea = document.createElement("textarea");
-            answerTextarea.id = `answer${index}`;
-            answerTextarea.rows = 4;
-            answerTextarea.placeholder = "Type your answer here...";
-            saElement.appendChild(answerTextarea);
-
-            const toggleButton = document.createElement("button");
-            toggleButton.classList.add("toggle-btn");
-            toggleButton.id = `toggle${index}`;
-            toggleButton.innerText = "View Correct Answer";
-            toggleButton.style.display = "none"; // Hidden until graded
-            toggleButton.onclick = function() {
-                const answerDiv = saElement.querySelector(".answer");
-                if (answerDiv.style.display === "block") {
-                    answerDiv.style.display = "none";
-                    toggleButton.innerText = "View Correct Answer";
-                } else {
-                    answerDiv.style.display = "block";
-                    toggleButton.innerText = "Hide Correct Answer";
-                }
-            };
-            saElement.appendChild(toggleButton);
-
-            const answerDiv = document.createElement("div");
-            answerDiv.classList.add("answer");
-            answerDiv.id = `modelAnswer${index}`;
-            answerDiv.innerText = sa.modelAnswer;
-            saElement.appendChild(answerDiv);
-
-            shortAnswerDiv.appendChild(saElement);
-        });
-    }
-
-    document.getElementById('quizForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        let totalScore = 0;
-        const maxScorePerQuestion = 1;
-        const totalQuestions = questions.length + shortAnswerQuestions.length;
-        const resultsDiv = document.getElementById('results');
-        let resultsHTML = "<h3>Your Results</h3>";
-
-        // Grade MCQs
-        questions.forEach((q, index) => {
-            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
-            let score = 0;
-            if (selectedButton && selectedButton.dataset.choice === q.answer) {
-                score = maxScorePerQuestion;
-            }
-            totalScore += score;
-            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/1</p>`;
-        });
-
-        // Grade Short Answers
-        shortAnswerQuestions.forEach((sa, index) => {
-            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
-            let score = 0;
-            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
-
-            sa.keywords.forEach(keyword => {
-                if (answer.includes(keyword)) {
-                    score += pointsPerKeyword;
-                }
+                // Show "View Correct Answer" button after grading
+                const toggleButton = document.getElementById(`toggle${index}`);
+                toggleButton.style.display = "inline-block";
             });
 
-            score = Math.min(score, maxScorePerQuestion); // Cap at 1
-            totalScore += score;
-            resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+            const percentageScore = Math.round((totalScore / totalQuestions) * 100);
+            resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions} (Percentage: ${percentageScore}%)</strong></p>`;
+            resultsHTML += `<p>Feedback: ${getFeedback(percentageScore)}</p>`;
 
-            // Show "View Correct Answer" button after grading
-            const toggleButton = document.getElementById(`toggle${index}`);
-            toggleButton.style.display = "inline-block";
+            resultsDiv.innerHTML = resultsHTML;
+            resultsDiv.style.display = "block";
         });
 
-        const percentageScore = Math.round((totalScore / totalQuestions) * 100);
-        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions} (Percentage: ${percentageScore}%)</strong></p>`;
-        resultsHTML += `<p>Feedback: ${getFeedback(percentageScore)}</p>`;
+        function getFeedback(score) {
+            if (score >= 80) return "Excellent! You’ve demonstrated a strong understanding.";
+            if (score >= 60) return "Good effort! Include more key concepts for a higher score.";
+            if (score >= 40) return "Fair attempt. Review the material and try again.";
+            return "Needs improvement. Focus on including key terms and ideas.";
+        }
 
-        resultsDiv.innerHTML = resultsHTML;
-        resultsDiv.style.display = "block";
-    });
-
-    function getFeedback(score) {
-        if (score >= 80) return "Excellent! You’ve demonstrated a strong understanding.";
-        if (score >= 60) return "Good effort! Include more key concepts for a higher score.";
-        if (score >= 40) return "Fair attempt. Review the material and try again.";
-        return "Needs improvement. Focus on including key terms and ideas.";
-    }
-
-    loadQuiz();
-    loadShortAnswers();
-</script>
+        loadQuiz();
+        loadShortAnswers();
+    </script>
 
 </body>
+
 </html>
