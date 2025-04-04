@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale: 1.0">
     <title>MCIE 1012 Chapter 2 Practice Questions</title>
     <style>
         body {
@@ -11,6 +11,7 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
+
         .quiz-container {
             max-width: 600px;
             margin: auto;
@@ -19,13 +20,16 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px gray;
         }
+
         h2 {
             text-align: center;
         }
+
         .question {
             font-weight: bold;
             margin-bottom: 10px;
         }
+
         .options button {
             display: block;
             width: 100%;
@@ -38,37 +42,47 @@
             transition: background 0.3s;
             text-align: left;
         }
+
         .options button:hover {
             background: #ccc;
         }
+
         .options button.answered {
             pointer-events: none;
             opacity: 0.7;
         }
+
         .options button.correct-choice {
             background-color: #90ee90;
             color: black;
         }
+
         .options button.wrong-choice {
             background-color: #ffcccb;
             color: black;
         }
+
         .feedback {
             font-weight: bold;
             margin-left: 10px;
         }
+
         .feedback.correct {
             color: green;
         }
+
         .feedback.wrong {
             color: red;
         }
+
         .short-answer-section {
             margin-top: 40px;
         }
+
         .short-answer {
             margin-bottom: 20px;
         }
+
         textarea {
             width: 100%;
             padding: 10px;
@@ -76,7 +90,10 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
-        .submit-btn, .close-btn, .toggle-btn {
+
+        .submit-btn,
+        .close-btn,
+        .toggle-btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -86,9 +103,13 @@
             transition: background 0.3s;
             margin-top: 10px;
         }
-        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
+
+        .submit-btn:hover,
+        .close-btn:hover,
+        .toggle-btn:hover {
             background-color: #45a049;
         }
+
         .results {
             margin-top: 20px;
             padding: 10px;
@@ -96,13 +117,16 @@
             border-radius: 5px;
             display: none;
         }
+
         .results p {
             margin: 5px 0;
         }
+
         .close-btn {
             display: block;
             margin: 20px auto 0;
         }
+
         .answer {
             display: none;
             color: green;
@@ -110,661 +134,662 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="quiz-container">
-    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 2 Practice Questions</h2>
-    <form id="quizForm">
-        <div id="quiz"></div>
+    <div class="quiz-container">
+        <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 2 Practice Questions</h2>
+        <form id="quizForm">
+            <div id="quiz"></div>
 
-        <div class="short-answer-section">
-            <h2>Short Answer Questions</h2>
-            <div id="short-answers"></div>
-        </div>
-        <button type="submit" class="submit-btn">Grade My Answers</button>
-    </form>
-    <div id="results" class="results"></div>
-    
-</div>
+            <div class="short-answer-section">
+                <h2>Short Answer Questions</h2>
+                <div id="short-answers"></div>
+            </div>
+            <button type="submit" class="submit-btn">Grade My Answers</button>
+        </form>
+        <div id="results" class="results"></div>
 
-<script>
-    const questions = [
-        { 
-            question: "What is the primary focus of normative ethics?", 
+    </div>
+
+    <script>
+        const questions = [{
+            question: "What is the primary focus of normative ethics?",
             choices: [
-                "Defining the meaning of moral terms", 
-                "Studying the nature of moral judgments", 
-                "Providing guidelines for what people should do", 
+                "Defining the meaning of moral terms",
+                "Studying the nature of moral judgments",
+                "Providing guidelines for what people should do",
                 "Analyzing psychological aspects of morality"
-            ], 
+            ],
             answer: "Providing guidelines for what people should do"
         },
-        { 
-            question: "Which category of ethics focuses on the consequences of actions?", 
-            choices: ["Deontological ethics", "Teleological ethics", "Virtue ethics", "Meta-ethics"], 
+        {
+            question: "Which category of ethics focuses on the consequences of actions?",
+            choices: ["Deontological ethics", "Teleological ethics", "Virtue ethics", "Meta-ethics"],
             answer: "Teleological ethics"
         },
-        { 
-            question: "What does utilitarianism primarily emphasize?", 
-            choices: ["Duty and rules", "Character traits", "Greatest happiness for the greatest number", "Divine commands"], 
+        {
+            question: "What does utilitarianism primarily emphasize?",
+            choices: ["Duty and rules", "Character traits", "Greatest happiness for the greatest number", "Divine commands"],
             answer: "Greatest happiness for the greatest number"
         },
-        { 
-            question: "Who is a key proponent of classical utilitarianism?", 
-            choices: ["Immanuel Kant", "Jeremy Bentham", "Aristotle", "John Rawls"], 
+        {
+            question: "Who is a key proponent of classical utilitarianism?",
+            choices: ["Immanuel Kant", "Jeremy Bentham", "Aristotle", "John Rawls"],
             answer: "Jeremy Bentham"
         },
-        { 
-            question: "How does John Stuart Mill modify Bentham’s utilitarianism?", 
+        {
+            question: "How does John Stuart Mill modify Bentham’s utilitarianism?",
             choices: [
-                "By focusing on duty over happiness", 
-                "By emphasizing quality of pleasure over quantity", 
-                "By rejecting consequences as a moral basis", 
+                "By focusing on duty over happiness",
+                "By emphasizing quality of pleasure over quantity",
+                "By rejecting consequences as a moral basis",
                 "By prioritizing individual rights"
-            ], 
+            ],
             answer: "By emphasizing quality of pleasure over quantity"
         },
-        { 
-            question: "What is a key feature of act-utilitarianism?", 
+        {
+            question: "What is a key feature of act-utilitarianism?",
             choices: [
-                "Following strict moral rules", 
-                "Judging each action by its consequences", 
-                "Focusing on character development", 
+                "Following strict moral rules",
+                "Judging each action by its consequences",
+                "Focusing on character development",
                 "Adhering to divine laws"
-            ], 
+            ],
             answer: "Judging each action by its consequences"
         },
-        { 
-            question: "What does rule-utilitarianism prioritize?", 
+        {
+            question: "What does rule-utilitarianism prioritize?",
             choices: [
-                "Individual actions", 
-                "General rules that maximize happiness", 
-                "Personal virtues", 
+                "Individual actions",
+                "General rules that maximize happiness",
+                "Personal virtues",
                 "Absolute duties"
-            ], 
+            ],
             answer: "General rules that maximize happiness"
         },
-        { 
-            question: "What is a common criticism of utilitarianism?", 
+        {
+            question: "What is a common criticism of utilitarianism?",
             choices: [
-                "It ignores consequences", 
-                "It may justify harming minorities for the majority", 
-                "It focuses too much on duty", 
+                "It ignores consequences",
+                "It may justify harming minorities for the majority",
+                "It focuses too much on duty",
                 "It rejects happiness as a goal"
-            ], 
+            ],
             answer: "It may justify harming minorities for the majority"
         },
-        { 
-            question: "Which theory is considered non-consequentialist?", 
-            choices: ["Utilitarianism", "Deontological ethics", "Virtue ethics", "Ethical egoism"], 
+        {
+            question: "Which theory is considered non-consequentialist?",
+            choices: ["Utilitarianism", "Deontological ethics", "Virtue ethics", "Ethical egoism"],
             answer: "Deontological ethics"
         },
-        { 
-            question: "What is the basis of deontological ethics?", 
-            choices: ["Outcomes of actions", "Duty and moral rules", "Personal happiness", "Social contracts"], 
+        {
+            question: "What is the basis of deontological ethics?",
+            choices: ["Outcomes of actions", "Duty and moral rules", "Personal happiness", "Social contracts"],
             answer: "Duty and moral rules"
         },
-        { 
-            question: "Who developed the categorical imperative?", 
-            choices: ["Jeremy Bentham", "Immanuel Kant", "John Stuart Mill", "Aristotle"], 
+        {
+            question: "Who developed the categorical imperative?",
+            choices: ["Jeremy Bentham", "Immanuel Kant", "John Stuart Mill", "Aristotle"],
             answer: "Immanuel Kant"
         },
-        { 
-            question: "What does Kant’s categorical imperative state?", 
+        {
+            question: "What does Kant’s categorical imperative state?",
             choices: [
-                "Maximize happiness for all", 
-                "Act only according to rules you can universalize", 
-                "Pursue personal virtue", 
+                "Maximize happiness for all",
+                "Act only according to rules you can universalize",
+                "Pursue personal virtue",
                 "Follow divine commands"
-            ], 
+            ],
             answer: "Act only according to rules you can universalize"
         },
-        { 
-            question: "What is a key principle of Kantian ethics?", 
+        {
+            question: "What is a key principle of Kantian ethics?",
             choices: [
-                "Ends justify the means", 
-                "Treat people as ends, not means", 
-                "Happiness is the ultimate goal", 
+                "Ends justify the means",
+                "Treat people as ends, not means",
+                "Happiness is the ultimate goal",
                 "Rules are flexible"
-            ], 
+            ],
             answer: "Treat people as ends, not means"
         },
-        { 
-            question: "What does the divine command theory assert?", 
+        {
+            question: "What does the divine command theory assert?",
             choices: [
-                "Morality comes from human reason", 
-                "Morality is based on God’s will", 
-                "Morality depends on consequences", 
+                "Morality comes from human reason",
+                "Morality is based on God’s will",
+                "Morality depends on consequences",
                 "Morality is about personal virtues"
-            ], 
+            ],
             answer: "Morality is based on God’s will"
         },
-        { 
-            question: "What is a criticism of the divine command theory?", 
+        {
+            question: "What is a criticism of the divine command theory?",
             choices: [
-                "It ignores divine will", 
-                "It raises the question of whether God’s commands are arbitrary", 
-                "It focuses too much on happiness", 
+                "It ignores divine will",
+                "It raises the question of whether God’s commands are arbitrary",
+                "It focuses too much on happiness",
                 "It rejects moral duties"
-            ], 
+            ],
             answer: "It raises the question of whether God’s commands are arbitrary"
         },
-        { 
-            question: "What does rights theory emphasize?", 
+        {
+            question: "What does rights theory emphasize?",
             choices: [
-                "Consequences of actions", 
-                "Inherent rights of individuals", 
-                "Virtue development", 
+                "Consequences of actions",
+                "Inherent rights of individuals",
+                "Virtue development",
                 "Social utility"
-            ], 
+            ],
             answer: "Inherent rights of individuals"
         },
-        { 
-            question: "What are Ross’s prima facie duties?", 
+        {
+            question: "What are Ross’s prima facie duties?",
             choices: [
-                "Absolute rules to follow", 
-                "Conditional duties that can conflict", 
-                "Duties based on happiness", 
+                "Absolute rules to follow",
+                "Conditional duties that can conflict",
+                "Duties based on happiness",
                 "Duties derived from virtues"
-            ], 
+            ],
             answer: "Conditional duties that can conflict"
         },
-        { 
-            question: "What is the focus of virtue ethics?", 
+        {
+            question: "What is the focus of virtue ethics?",
             choices: [
-                "Rules and duties", 
-                "Consequences of actions", 
-                "Character and moral virtues", 
+                "Rules and duties",
+                "Consequences of actions",
+                "Character and moral virtues",
                 "Divine commandments"
-            ], 
+            ],
             answer: "Character and moral virtues"
         },
-        { 
-            question: "Who is a foundational figure in virtue ethics?", 
-            choices: ["Kant", "Bentham", "Aristotle", "Mill"], 
+        {
+            question: "Who is a foundational figure in virtue ethics?",
+            choices: ["Kant", "Bentham", "Aristotle", "Mill"],
             answer: "Aristotle"
         },
-        { 
-            question: "What is Aristotle’s concept of the 'golden mean'?", 
+        {
+            question: "What is Aristotle’s concept of the 'golden mean'?",
             choices: [
-                "Maximizing pleasure", 
-                "Balancing virtues between extremes", 
-                "Following strict rules", 
+                "Maximizing pleasure",
+                "Balancing virtues between extremes",
+                "Following strict rules",
                 "Obeying divine laws"
-            ], 
+            ],
             answer: "Balancing virtues between extremes"
         },
-        { 
-            question: "What does eudaimonia mean in Aristotle’s ethics?", 
-            choices: ["Wealth", "Happiness or flourishing", "Duty fulfillment", "Social harmony"], 
+        {
+            question: "What does eudaimonia mean in Aristotle’s ethics?",
+            choices: ["Wealth", "Happiness or flourishing", "Duty fulfillment", "Social harmony"],
             answer: "Happiness or flourishing"
         },
-        { 
-            question: "What is a criticism of virtue ethics?", 
+        {
+            question: "What is a criticism of virtue ethics?",
             choices: [
-                "It ignores character", 
-                "It lacks clear action guidance", 
-                "It focuses too much on rules", 
+                "It ignores character",
+                "It lacks clear action guidance",
+                "It focuses too much on rules",
                 "It prioritizes consequences"
-            ], 
+            ],
             answer: "It lacks clear action guidance"
         },
-        { 
-            question: "What does meta-ethics study?", 
+        {
+            question: "What does meta-ethics study?",
             choices: [
-                "How to act morally", 
-                "The nature and meaning of moral judgments", 
-                "Consequences of actions", 
+                "How to act morally",
+                "The nature and meaning of moral judgments",
+                "Consequences of actions",
                 "Character traits"
-            ], 
+            ],
             answer: "The nature and meaning of moral judgments"
         },
-        { 
-            question: "What does cognitivism in meta-ethics assert?", 
+        {
+            question: "What does cognitivism in meta-ethics assert?",
             choices: [
-                "Moral statements are meaningless", 
-                "Moral statements express beliefs that can be true or false", 
-                "Morality is purely emotional", 
+                "Moral statements are meaningless",
+                "Moral statements express beliefs that can be true or false",
+                "Morality is purely emotional",
                 "Morality is subjective"
-            ], 
+            ],
             answer: "Moral statements express beliefs that can be true or false"
         },
-        { 
-            question: "What is non-cognitivism in meta-ethics?", 
+        {
+            question: "What is non-cognitivism in meta-ethics?",
             choices: [
-                "Moral statements are factual", 
-                "Moral statements express emotions, not truths", 
-                "Morality is universal", 
+                "Moral statements are factual",
+                "Moral statements express emotions, not truths",
+                "Morality is universal",
                 "Morality is based on reason"
-            ], 
+            ],
             answer: "Moral statements express emotions, not truths"
         },
-        { 
-            question: "What does moral realism claim?", 
+        {
+            question: "What does moral realism claim?",
             choices: [
-                "Moral truths are subjective", 
-                "Moral facts exist independently of human thought", 
-                "Morality is an illusion", 
+                "Moral truths are subjective",
+                "Moral facts exist independently of human thought",
+                "Morality is an illusion",
                 "Moral judgments are emotional"
-            ], 
+            ],
             answer: "Moral facts exist independently of human thought"
         },
-        { 
-            question: "What is Mackie’s error theory?", 
+        {
+            question: "What is Mackie’s error theory?",
             choices: [
-                "Moral facts exist universally", 
-                "Moral judgments claim objective truth but are false", 
-                "Morality is based on divine will", 
+                "Moral facts exist universally",
+                "Moral judgments claim objective truth but are false",
+                "Morality is based on divine will",
                 "Moral statements are subjective"
-            ], 
+            ],
             answer: "Moral judgments claim objective truth but are false"
         },
-        { 
-            question: "What does ethical egoism advocate?", 
+        {
+            question: "What does ethical egoism advocate?",
             choices: [
-                "Acting for the common good", 
-                "Pursuing one’s own self-interest", 
-                "Following universal rules", 
+                "Acting for the common good",
+                "Pursuing one’s own self-interest",
+                "Following universal rules",
                 "Developing virtues"
-            ], 
+            ],
             answer: "Pursuing one’s own self-interest"
         },
-        { 
-            question: "What is a key criticism of ethical egoism?", 
+        {
+            question: "What is a key criticism of ethical egoism?",
             choices: [
-                "It ignores self-interest", 
-                "It may conflict with social cooperation", 
-                "It focuses too much on duty", 
+                "It ignores self-interest",
+                "It may conflict with social cooperation",
+                "It focuses too much on duty",
                 "It rejects consequences"
-            ], 
+            ],
             answer: "It may conflict with social cooperation"
         },
-        { 
-            question: "What does altruism emphasize?", 
+        {
+            question: "What does altruism emphasize?",
             choices: [
-                "Self-interest", 
-                "Concern for others’ well-being", 
-                "Strict rule-following", 
+                "Self-interest",
+                "Concern for others’ well-being",
+                "Strict rule-following",
                 "Personal virtues"
-            ], 
+            ],
             answer: "Concern for others’ well-being"
         },
-        { 
-            question: "What is the focus of teleological ethics?", 
-            choices: ["Duty", "Consequences", "Character", "Divine will"], 
+        {
+            question: "What is the focus of teleological ethics?",
+            choices: ["Duty", "Consequences", "Character", "Divine will"],
             answer: "Consequences"
         },
-        { 
-            question: "What does hedonism consider the highest good?", 
-            choices: ["Duty", "Pleasure", "Virtue", "Justice"], 
+        {
+            question: "What does hedonism consider the highest good?",
+            choices: ["Duty", "Pleasure", "Virtue", "Justice"],
             answer: "Pleasure"
         },
-        { 
-            question: "What is a strength of deontological ethics?", 
+        {
+            question: "What is a strength of deontological ethics?",
             choices: [
-                "It focuses on outcomes", 
-                "It provides clear moral rules", 
-                "It emphasizes happiness", 
+                "It focuses on outcomes",
+                "It provides clear moral rules",
+                "It emphasizes happiness",
                 "It prioritizes virtues"
-            ], 
+            ],
             answer: "It provides clear moral rules"
         },
-        { 
-            question: "What is a limitation of Kantian ethics?", 
+        {
+            question: "What is a limitation of Kantian ethics?",
             choices: [
-                "It ignores duty", 
-                "It may lead to rigid rule-following", 
-                "It focuses on pleasure", 
+                "It ignores duty",
+                "It may lead to rigid rule-following",
+                "It focuses on pleasure",
                 "It rejects universal principles"
-            ], 
+            ],
             answer: "It may lead to rigid rule-following"
         },
-        { 
-            question: "What does moral relativism assert?", 
+        {
+            question: "What does moral relativism assert?",
             choices: [
-                "Moral truths are universal", 
-                "Morality varies by culture or individual", 
-                "Morality is objective", 
+                "Moral truths are universal",
+                "Morality varies by culture or individual",
+                "Morality is objective",
                 "Morality is divine"
-            ], 
+            ],
             answer: "Morality varies by culture or individual"
         },
-        { 
-            question: "What is a criticism of moral relativism?", 
+        {
+            question: "What is a criticism of moral relativism?",
             choices: [
-                "It promotes universal standards", 
-                "It struggles to judge harmful practices", 
-                "It focuses on consequences", 
+                "It promotes universal standards",
+                "It struggles to judge harmful practices",
+                "It focuses on consequences",
                 "It emphasizes duty"
-            ], 
+            ],
             answer: "It struggles to judge harmful practices"
         },
-        { 
-            question: "What does moral absolutism claim?", 
+        {
+            question: "What does moral absolutism claim?",
             choices: [
-                "Morality is relative", 
-                "Certain moral principles are universally true", 
-                "Morality depends on outcomes", 
+                "Morality is relative",
+                "Certain moral principles are universally true",
+                "Morality depends on outcomes",
                 "Morality is subjective"
-            ], 
+            ],
             answer: "Certain moral principles are universally true"
         },
-        { 
-            question: "What is the social contract theory?", 
+        {
+            question: "What is the social contract theory?",
             choices: [
-                "Morality comes from divine commands", 
-                "Morality arises from mutual agreements", 
-                "Morality is about personal virtues", 
+                "Morality comes from divine commands",
+                "Morality arises from mutual agreements",
+                "Morality is about personal virtues",
                 "Morality focuses on happiness"
-            ], 
+            ],
             answer: "Morality arises from mutual agreements"
         },
-        { 
-            question: "Who is a key thinker in social contract theory?", 
-            choices: ["Aristotle", "Thomas Hobbes", "Jeremy Bentham", "Immanuel Kant"], 
+        {
+            question: "Who is a key thinker in social contract theory?",
+            choices: ["Aristotle", "Thomas Hobbes", "Jeremy Bentham", "Immanuel Kant"],
             answer: "Thomas Hobbes"
         },
-        { 
-            question: "What does Hobbes believe about human nature?", 
+        {
+            question: "What does Hobbes believe about human nature?",
             choices: [
-                "Naturally altruistic", 
-                "Naturally selfish and brutal", 
-                "Naturally virtuous", 
+                "Naturally altruistic",
+                "Naturally selfish and brutal",
+                "Naturally virtuous",
                 "Naturally rational"
-            ], 
+            ],
             answer: "Naturally selfish and brutal"
         },
-        { 
-            question: "What is John Rawls’ 'veil of ignorance'?", 
+        {
+            question: "What is John Rawls’ 'veil of ignorance'?",
             choices: [
-                "A tool for maximizing happiness", 
-                "A thought experiment for fair principles", 
-                "A rule for duty-based ethics", 
+                "A tool for maximizing happiness",
+                "A thought experiment for fair principles",
+                "A rule for duty-based ethics",
                 "A virtue-based concept"
-            ], 
+            ],
             answer: "A thought experiment for fair principles"
         },
-        { 
-            question: "What does ethical pluralism suggest?", 
+        {
+            question: "What does ethical pluralism suggest?",
             choices: [
-                "One moral theory is correct", 
-                "Multiple moral principles can coexist", 
-                "Morality is subjective", 
+                "One moral theory is correct",
+                "Multiple moral principles can coexist",
+                "Morality is subjective",
                 "Morality is divine"
-            ], 
+            ],
             answer: "Multiple moral principles can coexist"
         },
-        { 
-            question: "What is a strength of ethical pluralism?", 
+        {
+            question: "What is a strength of ethical pluralism?",
             choices: [
-                "It simplifies moral decisions", 
-                "It accommodates diverse perspectives", 
-                "It rejects all theories", 
+                "It simplifies moral decisions",
+                "It accommodates diverse perspectives",
+                "It rejects all theories",
                 "It focuses on one principle"
-            ], 
+            ],
             answer: "It accommodates diverse perspectives"
         },
-        { 
-            question: "What does emotivism claim about moral statements?", 
+        {
+            question: "What does emotivism claim about moral statements?",
             choices: [
-                "They are objective truths", 
-                "They express feelings or attitudes", 
-                "They are universal laws", 
+                "They are objective truths",
+                "They express feelings or attitudes",
+                "They are universal laws",
                 "They are based on reason"
-            ], 
+            ],
             answer: "They express feelings or attitudes"
         },
-        { 
-            question: "What is a limitation of emotivism?", 
+        {
+            question: "What is a limitation of emotivism?",
             choices: [
-                "It overemphasizes reason", 
-                "It struggles to resolve moral disagreements", 
-                "It focuses on duty", 
+                "It overemphasizes reason",
+                "It struggles to resolve moral disagreements",
+                "It focuses on duty",
                 "It rejects emotions"
-            ], 
+            ],
             answer: "It struggles to resolve moral disagreements"
         },
-        { 
-            question: "What does prescriptivism in meta-ethics propose?", 
+        {
+            question: "What does prescriptivism in meta-ethics propose?",
             choices: [
-                "Moral statements are descriptive", 
-                "Moral statements are commands or prescriptions", 
-                "Morality is objective", 
+                "Moral statements are descriptive",
+                "Moral statements are commands or prescriptions",
+                "Morality is objective",
                 "Morality is emotional"
-            ], 
+            ],
             answer: "Moral statements are commands or prescriptions"
         },
-        { 
-            question: "What is a key idea in natural law theory?", 
+        {
+            question: "What is a key idea in natural law theory?",
             choices: [
-                "Morality is human-made", 
-                "Morality aligns with natural order", 
-                "Morality is relative", 
+                "Morality is human-made",
+                "Morality aligns with natural order",
+                "Morality is relative",
                 "Morality is about pleasure"
-            ], 
+            ],
             answer: "Morality aligns with natural order"
         },
-        { 
-            question: "Who is associated with natural law theory?", 
-            choices: ["Thomas Aquinas", "John Stuart Mill", "Immanuel Kant", "Jeremy Bentham"], 
+        {
+            question: "Who is associated with natural law theory?",
+            choices: ["Thomas Aquinas", "John Stuart Mill", "Immanuel Kant", "Jeremy Bentham"],
             answer: "Thomas Aquinas"
         },
-        { 
-            question: "What does care ethics emphasize?", 
+        {
+            question: "What does care ethics emphasize?",
             choices: [
-                "Rules and duties", 
-                "Relationships and empathy", 
-                "Consequences", 
+                "Rules and duties",
+                "Relationships and empathy",
+                "Consequences",
                 "Universal laws"
-            ], 
+            ],
             answer: "Relationships and empathy"
         },
-        { 
-            question: "What is a criticism of care ethics?", 
+        {
+            question: "What is a criticism of care ethics?",
             choices: [
-                "It ignores relationships", 
-                "It may lack impartiality", 
-                "It focuses on rules", 
+                "It ignores relationships",
+                "It may lack impartiality",
+                "It focuses on rules",
                 "It rejects empathy"
-            ], 
+            ],
             answer: "It may lack impartiality"
         }
-    ];
+        ];
 
-    const shortAnswerQuestions = [
-        { 
-            question: "Explain the difference between teleological and deontological ethics.", 
+        const shortAnswerQuestions = [{
+            question: "Explain the difference between teleological and deontological ethics.",
             keywords: ['teleological', 'deontological', 'consequences', 'duty', 'outcomes', 'rules'],
             modelAnswer: "Teleological ethics judges morality by the consequences of actions, aiming for outcomes like happiness, while deontological ethics focuses on duty and rules, judging actions by their adherence to moral principles regardless of outcomes."
         },
-        { 
-            question: "How does virtue ethics differ from utilitarianism?", 
+        {
+            question: "How does virtue ethics differ from utilitarianism?",
             keywords: ['virtue', 'utilitarianism', 'character', 'consequences', 'happiness', 'traits'],
             modelAnswer: "Virtue ethics emphasizes developing moral character and virtues for a good life, whereas utilitarianism focuses on maximizing happiness through the consequences of actions, prioritizing outcomes over personal traits."
         },
-        { 
-            question: "What is the main idea behind Kant’s categorical imperative?", 
+        {
+            question: "What is the main idea behind Kant’s categorical imperative?",
             keywords: ['Kant', 'categorical', 'imperative', 'universal', 'duty', 'ends'],
             modelAnswer: "The main idea is to act only according to rules that could be universally applied, treating people as ends in themselves, not as means to an end, based on reason and duty."
         },
-        { 
-            question: "Why might utilitarianism be seen as controversial?", 
+        {
+            question: "Why might utilitarianism be seen as controversial?",
             keywords: ['utilitarianism', 'controversial', 'happiness', 'majority', 'fairness', 'justice'],
             modelAnswer: "It can be controversial because it may justify actions that harm minorities or individuals if they benefit the majority, raising concerns about fairness and justice."
         },
-        { 
-            question: "What is the role of the 'golden mean' in Aristotle’s ethics?", 
+        {
+            question: "What is the role of the 'golden mean' in Aristotle’s ethics?",
             keywords: ['golden', 'mean', 'Aristotle', 'virtues', 'balance', 'extremes'],
             modelAnswer: "The 'golden mean' is the idea of finding a balanced middle ground between extremes of excess and deficiency in virtues, like courage between recklessness and cowardice, to achieve moral excellence."
         }
-    ];
+        ];
 
-    function loadQuiz() {
-        const quizDiv = document.getElementById("quiz");
-        quizDiv.innerHTML = "";
+        let mcqScores = {}; // Store MCQ scores as they're answered
 
-        questions.forEach((q, index) => {
-            const questionBlock = document.createElement("div");
-            questionBlock.style.marginBottom = "20px";
+        function loadQuiz() {
+            const quizDiv = document.getElementById("quiz");
+            quizDiv.innerHTML = "";
 
-            const questionElement = document.createElement("div");
-            questionElement.classList.add("question");
-            questionElement.innerText = `${index + 1}. ${q.question}`;
-            questionBlock.appendChild(questionElement);
+            questions.forEach((q, index) => {
+                const questionBlock = document.createElement("div");
+                questionBlock.style.marginBottom = "20px";
 
-            const optionsDiv = document.createElement("div");
-            optionsDiv.classList.add("options");
+                const questionElement = document.createElement("div");
+                questionElement.classList.add("question");
+                questionElement.innerText = `${index + 1}. ${q.question}`;
+                questionBlock.appendChild(questionElement);
 
-            q.choices.forEach(choice => {
-                const button = document.createElement("button");
-                button.type = "button"; // Prevent form submission
-                button.innerText = choice;
-                button.dataset.index = index;
-                button.dataset.choice = choice;
-                button.onclick = function() {
-                    this.querySelectorAll('.feedback').forEach(span => span.remove());
+                const optionsDiv = document.createElement("div");
+                optionsDiv.classList.add("options");
 
-                    const allButtonsInGroup = optionsDiv.querySelectorAll('button');
-                    allButtonsInGroup.forEach(btn => {
-                        btn.classList.add('answered');
-                        btn.classList.remove('correct-choice', 'wrong-choice');
-                        btn.style.color = '';
-                        btn.style.fontWeight = '';
-                    });
+                // Initialize score to 0 for this question
+                mcqScores[index] = 0;
 
-                    const feedbackSpan = document.createElement('span');
-                    feedbackSpan.classList.add('feedback');
+                q.choices.forEach(choice => {
+                    const button = document.createElement("button");
+                    button.type = "button"; // Prevent form submission
+                    button.innerText = choice;
+                    button.dataset.index = index;
+                    button.dataset.choice = choice;
+                    button.onclick = function () {
+                        this.querySelectorAll('.feedback').forEach(span => span.remove());
 
-                    if (choice === q.answer) {
-                        this.classList.add('correct-choice');
-                        feedbackSpan.classList.add('correct');
-                        feedbackSpan.innerText = 'Correct';
-                    } else {
-                        this.classList.add('wrong-choice');
-                        feedbackSpan.classList.add('wrong');
-                        feedbackSpan.innerText = 'Wrong';
+                        const allButtonsInGroup = optionsDiv.querySelectorAll('button');
                         allButtonsInGroup.forEach(btn => {
-                            if (btn.innerText === q.answer) {
-                                btn.classList.add('correct-choice');
-                            }
+                            btn.classList.add('answered');
+                            btn.classList.remove('correct-choice', 'wrong-choice');
+                            btn.style.color = '';
+                            btn.style.fontWeight = '';
                         });
+
+                        const feedbackSpan = document.createElement('span');
+                        feedbackSpan.classList.add('feedback');
+
+                        if (choice === q.answer) {
+                            this.classList.add('correct-choice');
+                            feedbackSpan.classList.add('correct');
+                            feedbackSpan.innerText = 'Correct';
+                            mcqScores[index] = 1; // Award score immediately when correct
+                        } else {
+                            this.classList.add('wrong-choice');
+                            feedbackSpan.classList.add('wrong');
+                            feedbackSpan.innerText = 'Wrong';
+                            allButtonsInGroup.forEach(btn => {
+                                if (btn.innerText === q.answer) {
+                                    btn.classList.add('correct-choice');
+                                }
+                            });
+                        }
+                        this.appendChild(feedbackSpan);
+                    };
+                    optionsDiv.appendChild(button);
+                });
+
+                questionBlock.appendChild(optionsDiv);
+                quizDiv.appendChild(questionBlock);
+            });
+        }
+
+        function loadShortAnswers() {
+            const shortAnswerDiv = document.getElementById("short-answers");
+            shortAnswerDiv.innerHTML = "";
+
+            shortAnswerQuestions.forEach((sa, index) => {
+                const saElement = document.createElement("div");
+                saElement.classList.add("short-answer");
+
+                const questionP = document.createElement("p");
+                questionP.innerText = `${index + 1}. ${sa.question}`;
+                saElement.appendChild(questionP);
+
+                const answerTextarea = document.createElement("textarea");
+                answerTextarea.id = `answer${index}`;
+                answerTextarea.rows = 4;
+                answerTextarea.placeholder = "Type your answer here...";
+                saElement.appendChild(answerTextarea);
+
+                const toggleButton = document.createElement("button");
+                toggleButton.classList.add("toggle-btn");
+                toggleButton.id = `toggle${index}`;
+                toggleButton.innerText = "View Answer";
+                toggleButton.style.display = "none"; // Hidden until graded
+                toggleButton.onclick = function () {
+                    const answerDiv = saElement.querySelector(".answer");
+                    if (answerDiv.style.display === "block") {
+                        answerDiv.style.display = "none";
+                        toggleButton.innerText = "View Answer";
+                    } else {
+                        answerDiv.style.display = "block";
+                        toggleButton.innerText = "Hide Answer";
                     }
-                    this.appendChild(feedbackSpan);
                 };
-                optionsDiv.appendChild(button);
+                saElement.appendChild(toggleButton);
+
+                const answerDiv = document.createElement("div");
+                answerDiv.classList.add("answer");
+                answerDiv.id = `modelAnswer${index}`;
+                answerDiv.innerText = sa.modelAnswer;
+                saElement.appendChild(answerDiv);
+
+                shortAnswerDiv.appendChild(saElement);
+            });
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let totalScore = 0;
+            const maxScorePerQuestion = 1;
+            const totalQuestions = questions.length + shortAnswerQuestions.length;
+            const resultsDiv = document.getElementById('results');
+            let resultsHTML = "<h3>Your Results</h3>";
+
+            // Grade MCQs
+            questions.forEach((q, index) => {
+                totalScore += mcqScores[index]; // Add the pre-calculated score
+                resultsHTML += `<p>MCQ ${index + 1} Score: ${mcqScores[index]}/1</p>`;
             });
 
-            questionBlock.appendChild(optionsDiv);
-            quizDiv.appendChild(questionBlock);
-        });
-    }
+            // Grade Short Answers
+            shortAnswerQuestions.forEach((sa, index) => {
+                const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+                let score = 0;
+                const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
 
-    function loadShortAnswers() {
-        const shortAnswerDiv = document.getElementById("short-answers");
-        shortAnswerDiv.innerHTML = "";
+                sa.keywords.forEach(keyword => {
+                    if (answer.includes(keyword)) {
+                        score += pointsPerKeyword;
+                    }
+                });
 
-        shortAnswerQuestions.forEach((sa, index) => {
-            const saElement = document.createElement("div");
-            saElement.classList.add("short-answer");
+                score = Math.min(score, maxScorePerQuestion); // Cap at 1
+                totalScore += score;
+                resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
 
-            const questionP = document.createElement("p");
-            questionP.innerText = `${index + 1}. ${sa.question}`;
-            saElement.appendChild(questionP);
-
-            const answerTextarea = document.createElement("textarea");
-            answerTextarea.id = `answer${index}`;
-            answerTextarea.rows = 4;
-            answerTextarea.placeholder = "Type your answer here...";
-            saElement.appendChild(answerTextarea);
-
-            const toggleButton = document.createElement("button");
-            toggleButton.classList.add("toggle-btn");
-            toggleButton.id = `toggle${index}`;
-            toggleButton.innerText = "View Answer";
-            toggleButton.style.display = "none"; // Hidden until graded
-            toggleButton.onclick = function() {
-                const answerDiv = saElement.querySelector(".answer");
-                if (answerDiv.style.display === "block") {
-                    answerDiv.style.display = "none";
-                    toggleButton.innerText = "View Answer";
-                } else {
-                    answerDiv.style.display = "block";
-                    toggleButton.innerText = "Hide Answer";
-                }
-            };
-            saElement.appendChild(toggleButton);
-
-            const answerDiv = document.createElement("div");
-            answerDiv.classList.add("answer");
-            answerDiv.id = `modelAnswer${index}`;
-            answerDiv.innerText = sa.modelAnswer;
-            saElement.appendChild(answerDiv);
-
-            shortAnswerDiv.appendChild(saElement);
-        });
-    }
-
-    document.getElementById('quizForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        let totalScore = 0;
-        const maxScorePerQuestion = 1;
-        const totalQuestions = questions.length + shortAnswerQuestions.length;
-        const resultsDiv = document.getElementById('results');
-        let resultsHTML = "<h3>Your Results</h3>";
-
-        // Grade MCQs
-        questions.forEach((q, index) => {
-            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
-            let score = 0;
-            if (selectedButton && selectedButton.dataset.choice === q.answer) {
-                score = maxScorePerQuestion;
-            }
-            totalScore += score;
-            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/1</p>`;
-        });
-
-        // Grade Short Answers
-        shortAnswerQuestions.forEach((sa, index) => {
-            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
-            let score = 0;
-            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
-
-            sa.keywords.forEach(keyword => {
-                if (answer.includes(keyword)) {
-                    score += pointsPerKeyword;
-                }
+                // Show "View Answer" button after grading
+                const toggleButton = document.getElementById(`toggle${index}`);
+                toggleButton.style.display = "inline-block";
             });
 
-            score = Math.min(score, maxScorePerQuestion); // Cap at 1
-            totalScore += score;
-            resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+            // Calculate average as a percentage out of 100
+            const averageScore = ((totalScore / totalQuestions) * 100).toFixed(2);
+            resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions}</strong></p>`;
+            resultsHTML += `<p><strong>Average Score: ${averageScore}/100</strong></p>`;
+            resultsHTML += `<p>Feedback: ${getFeedback(totalScore / totalQuestions)}</p>`;
 
-            // Show "View Answer" button after grading
-            const toggleButton = document.getElementById(`toggle${index}`);
-            toggleButton.style.display = "inline-block";
+            resultsDiv.innerHTML = resultsHTML;
+            resultsDiv.style.display = "block";
         });
 
-        // Calculate average as a percentage out of 100
-        const averageScore = ((totalScore / totalQuestions) * 100).toFixed(2);
-        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions}</strong></p>`;
-        resultsHTML += `<p><strong>Average Score: ${averageScore}/100</strong></p>`;
-        resultsHTML += `<p>Feedback: ${getFeedback(totalScore / totalQuestions)}</p>`;
+        function getFeedback(score) {
+            if (score >= 0.8) return "Excellent! You’ve demonstrated a strong understanding.";
+            if (score >= 0.6) return "Good effort! Include more key concepts for a higher score.";
+            if (score >= 0.4) return "Fair attempt. Review the material and try again.";
+            return "Needs improvement. Focus on including key terms and ideas.";
+        }
 
-        resultsDiv.innerHTML = resultsHTML;
-        resultsDiv.style.display = "block";
-    });
-
-    function getFeedback(score) {
-        if (score >= 0.8) return "Excellent! You’ve demonstrated a strong understanding.";
-        if (score >= 0.6) return "Good effort! Include more key concepts for a higher score.";
-        if (score >= 0.4) return "Fair attempt. Review the material and try again.";
-        return "Needs improvement. Focus on including key terms and ideas.";
-    }
-
-    loadQuiz();
-    loadShortAnswers();
-</script>
+        loadQuiz();
+        loadShortAnswers();
+    </script>
 
 </body>
+
 </html>
