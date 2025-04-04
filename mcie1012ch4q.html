@@ -656,6 +656,8 @@
         }
     ];
 
+    let mcqScores = {}; // Store MCQ scores as they're answered
+
     function loadQuiz() {
         const quizDiv = document.getElementById("quiz");
         quizDiv.innerHTML = "";
@@ -667,48 +669,58 @@
             const questionElement = document.createElement("div");
             questionElement.classList.add("question");
             questionElement.innerText = `${index + 1}. ${q.question}`;
+            questionBlock.appendChild(questionElement);
 
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
+
+            // Initialize score to 0 for this question
+            mcqScores[index] = 0;
 
             q.choices.forEach(choice => {
                 const button = document.createElement("button");
                 button.type = "button"; // Prevent form submission
                 button.innerText = choice;
-                button.dataset.index = index; // Store question index
-                button.dataset.choice = choice; // Store selected choice
+                button.dataset.index = index;
+                button.dataset.choice = choice;
                 button.onclick = function() {
-                    const allButtons = optionsDiv.querySelectorAll("button");
-                    allButtons.forEach(btn => {
-                        btn.classList.add("answered");
-                        btn.classList.remove("correct-choice", "wrong-choice");
-                        const existingFeedback = btn.querySelector(".feedback");
-                        if (existingFeedback) existingFeedback.remove();
+                    // Remove previous feedback
+                    this.querySelectorAll('.feedback').forEach(span => span.remove());
+
+                    // Disable all buttons in the group and remove previous styling
+                    const allButtonsInGroup = optionsDiv.querySelectorAll('button');
+                    allButtonsInGroup.forEach(btn => {
+                        btn.classList.add('answered');
+                        btn.classList.remove('correct-choice', 'wrong-choice');
+                        btn.style.color = '';
+                        btn.style.fontWeight = '';
                     });
 
-                    const feedbackSpan = document.createElement("span");
-                    feedbackSpan.classList.add("feedback");
+                    const feedbackSpan = document.createElement('span');
+                    feedbackSpan.classList.add('feedback');
 
                     if (choice === q.answer) {
-                        button.classList.add("correct-choice");
-                        feedbackSpan.classList.add("correct");
-                        feedbackSpan.innerText = "Correct";
+                        this.classList.add('correct-choice');
+                        feedbackSpan.classList.add('correct');
+                        feedbackSpan.innerText = 'Correct';
+                        mcqScores[index] = 1; // Award score immediately when correct
                     } else {
-                        button.classList.add("wrong-choice");
-                        feedbackSpan.classList.add("wrong");
-                        feedbackSpan.innerText = "Wrong";
-                        allButtons.forEach(btn => {
+                        this.classList.add('wrong-choice');
+                        feedbackSpan.classList.add('wrong');
+                        feedbackSpan.innerText = 'Wrong';
+                        mcqScores[index] = 0; // Ensure score is 0 if wrong
+                        // Highlight the correct answer
+                        allButtonsInGroup.forEach(btn => {
                             if (btn.innerText === q.answer) {
-                                btn.classList.add("correct-choice");
+                                btn.classList.add('correct-choice');
                             }
                         });
                     }
-                    button.appendChild(feedbackSpan);
+                    this.appendChild(feedbackSpan);
                 };
                 optionsDiv.appendChild(button);
             });
 
-            questionBlock.appendChild(questionElement);
             questionBlock.appendChild(optionsDiv);
             quizDiv.appendChild(questionBlock);
         });
@@ -770,13 +782,8 @@
 
         // Grade MCQs
         questions.forEach((q, index) => {
-            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
-            let score = 0;
-            if (selectedButton && selectedButton.dataset.choice === q.answer) {
-                score = maxScorePerQuestion;
-            }
-            totalScore += score;
-            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/1</p>`;
+            totalScore += mcqScores[index]; // Add the pre-calculated score
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${mcqScores[index]}/1</p>`;
         });
 
         // Grade Short Answers
@@ -800,18 +807,20 @@
             toggleButton.style.display = "inline-block";
         });
 
-        const percentageScore = Math.round((totalScore / totalQuestions) * 100);
-        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions} (Percentage: ${percentageScore}%)</strong></p>`;
-        resultsHTML += `<p>Feedback: ${getFeedback(percentageScore)}</p>`;
+        // Calculate average as a percentage out of 100
+        const averageScore = ((totalScore / totalQuestions) * 100).toFixed(2);
+        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions}</strong></p>`;
+        resultsHTML += `<p><strong>Average Score: ${averageScore}/100</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(totalScore / totalQuestions)}</p>`;
 
         resultsDiv.innerHTML = resultsHTML;
         resultsDiv.style.display = "block";
     });
 
     function getFeedback(score) {
-        if (score >= 80) return "Excellent! You’ve demonstrated a strong understanding.";
-        if (score >= 60) return "Good effort! Include more key concepts for a higher score.";
-        if (score >= 40) return "Fair attempt. Review the material and try again.";
+        if (score >= 0.8) return "Excellent! You’ve demonstrated a strong understanding.";
+        if (score >= 0.6) return "Good effort! Include more key concepts for a higher score.";
+        if (score >= 0.4) return "Fair attempt. Review the material and try again.";
         return "Needs improvement. Focus on including key terms and ideas.";
     }
 
