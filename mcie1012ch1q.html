@@ -459,6 +459,8 @@
         }
     ];
 
+    let mcqScores = {}; // Store MCQ scores as they're answered
+
     function loadQuiz() {
         const quizDiv = document.getElementById("quiz");
         quizDiv.innerHTML = "";
@@ -475,6 +477,9 @@
             const optionsDiv = document.createElement("div");
             optionsDiv.classList.add("options");
 
+            // Initialize score to 0 for this question
+            mcqScores[index] = 0;
+
             q.choices.forEach(choice => {
                 const button = document.createElement("button");
                 button.type = "button"; // Prevent form submission
@@ -482,8 +487,10 @@
                 button.dataset.index = index;
                 button.dataset.choice = choice;
                 button.onclick = function() {
+                    // Remove previous feedback
                     this.querySelectorAll('.feedback').forEach(span => span.remove());
 
+                    // Disable all buttons in the group and remove previous styling
                     const allButtonsInGroup = optionsDiv.querySelectorAll('button');
                     allButtonsInGroup.forEach(btn => {
                         btn.classList.add('answered');
@@ -499,10 +506,13 @@
                         this.classList.add('correct-choice');
                         feedbackSpan.classList.add('correct');
                         feedbackSpan.innerText = 'Correct';
+                        mcqScores[index] = 1; // Award score immediately when correct
                     } else {
                         this.classList.add('wrong-choice');
                         feedbackSpan.classList.add('wrong');
                         feedbackSpan.innerText = 'Wrong';
+                        mcqScores[index] = 0; // Ensure score is 0 if wrong
+                        // Highlight the correct answer
                         allButtonsInGroup.forEach(btn => {
                             if (btn.innerText === q.answer) {
                                 btn.classList.add('correct-choice');
@@ -575,13 +585,8 @@
 
         // Grade MCQs
         questions.forEach((q, index) => {
-            const selectedButton = document.querySelector(`#quiz div:nth-child(${index + 1}) .options button.answered`);
-            let score = 0;
-            if (selectedButton && selectedButton.dataset.choice === q.answer) {
-                score = maxScorePerQuestion;
-            }
-            totalScore += score;
-            resultsHTML += `<p>MCQ ${index + 1} Score: ${score}/1</p>`;
+            totalScore += mcqScores[index]; // Add the pre-calculated score
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${mcqScores[index]}/1</p>`;
         });
 
         // Grade Short Answers
