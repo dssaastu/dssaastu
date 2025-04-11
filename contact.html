@@ -127,6 +127,14 @@
         .form-group button:hover {
             background-color: #1A252F;
         }
+        /* Success Message Styles */
+        .success-message {
+            display: none;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #2C3E50;
+            margin: 20px 0;
+        }
         #form-status {
             margin-top: 10px;
             text-align: center;
@@ -191,7 +199,7 @@
     </div>
     
     <div class="container">
-        <div class="contact-form">
+        <div class="contact-form" id="contact-form-container">
             <h3>Send Us a Message</h3>
             <form id="contact-form" action="https://formspree.io/f/myyrankg" method="POST">
                 <div class="form-group">
@@ -216,6 +224,9 @@
             </form>
             <div id="form-status"></div>
         </div>
+        <div class="success-message" id="success-message">
+            Message Sent, Thank You!
+        </div>
     </div>
     
     <div class="footer">
@@ -234,8 +245,10 @@
             menu.classList.toggle('show');
         });
 
-        // Form submission with feedback
+        // Form submission with success message
         const form = document.getElementById('contact-form');
+        const formContainer = document.getElementById('contact-form-container');
+        const successMessage = document.getElementById('success-message');
         const status = document.getElementById('form-status');
 
         form.addEventListener('submit', async (event) => {
@@ -253,8 +266,8 @@
                 });
 
                 if (response.ok) {
-                    status.textContent = 'Thank you! Your message has been sent.';
-                    form.reset(); // Clear the form
+                    formContainer.style.display = 'none'; // Hide the form and heading
+                    successMessage.style.display = 'block'; // Show success message
                 } else {
                     status.textContent = 'Oops! Something went wrong. Please try again.';
                 }
