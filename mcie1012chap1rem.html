@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- IMPORTANT: Make sure your text editor saves this file with UTF-8 Encoding! -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moral and Citizenship Education Quiz</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"] { width: 100%; padding: 8px; box-sizing: border-box; }
+        input[type="radio"] { margin-right: 5px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; margin-right: 10px; border-radius: 5px; }
+        button:hover { background-color: #0056b3; }
+        .hidden { display: none; }
+        #error-message, #password-error, #login-error { color: red; font-size: 1.2em; text-align: center; }
+        #success-message { color: green; font-size: 1.2em; text-align: center; }
+        #results, #review-section, #submission-copy { margin-top: 20px; text-align: left; border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #f9f9f9;}
+        #password-section, #login-section { text-align: center; max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;}
+        #password-section input[type="password"], #login-section input[type="text"], #login-section input[type="password"] { width: calc(100% - 18px); }
+        .question-result { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        #download-pdf, #download-response { margin-top: 10px; }
+        #score { font-weight: bold; text-align: center; color: green; font-size: 1.4em; margin-top: 20px; }
+        #review-section h2, #submission-copy h2, #results h1 { margin-bottom: 15px; text-align: center; color: #007bff;}
+        #review-section button, #submission-copy button, #password-section button, #login-section button, #results button { margin-top: 15px; }
+        .choices p { margin: 2px 0 2px 20px; }
+    </style>
+</head>
+<body>
+    <div id="login-section">
+        <h1>Login to Access Quiz</h1>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Enter password" required>
+        </div>
+        <button onclick="checkLogin()">Login</button>
+        <p id="login-error" class="hidden">Incorrect username or password. Please try again.</p>
+    </div>
+
+    <div id="quiz-form" class="hidden">
+        <h1>Moral and Citizenship Education Quiz</h1>
+        <form id="mcie-quiz" method="POST">
+            <!-- Student Information -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="id_number">ID Number:</label>
+                <input type="text" id="id_number" name="id_number" required>
+            </div>
+            <div class="form-group">
+                <label for="section">Section:</label>
+                <input type="text" id="section" name="section" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <!-- MCIE Multiple-Choice Questions -->
+            <div class="form-group">
+                <label>1. What is the primary focus of civic education?</label>
+                <input type="radio" name="q1" value="A" required> A) Studying the rights and responsibilities of citizens<br>
+                <input type="radio" name="q1" value="B"> B) Teaching professional skills for the job market<br>
+                <input type="radio" name="q1" value="C"> C) Promoting cultural diversity in schools<br>
+                <input type="radio" name="q1" value="D"> D) Encouraging economic development
+            </div>
+            <div class="form-group">
+                <label>2. Who argued that citizens should be educated to suit the constitution of a state?</label>
+                <input type="radio" name="q2" value="A" required> A) John Stuart Mill<br>
+                <input type="radio" name="q2" value="B"> B) Socrates<br>
+                <input type="radio" name="q2" value="C"> C) Aristotle<br>
+                <input type="radio" name="q2" value="D"> D) Patrick
+            </div>
+            <div class="form-group">
+                <label>3. How does John Stuart Mill describe the relationship between a society and its citizens?</label>
+                <input type="radio" name="q3" value="A" required> A) A society progresses when it isolates its citizens<br>
+                <input type="radio" name="q3" value="B"> B) Citizens should focus only on personal gain<br>
+                <input type="radio" name="q3" value="C"> C) Society thrives without moral education<br>
+                <input type="radio" name="q3" value="D"> D) A peaceful society depends on developing good citizens
+            </div>
+            <div class="form-group">
+                <label>4. Which of the following is NOT a term used to describe civic education across different countries?</label>
+                <input type="radio" name="q4" value="A" required> A) Right Education (South Africa)<br>
+                <input type="radio" name="q4" value="B"> B) Citizenship Education (USA and Germany)<br>
+                <input type="radio" name="q4" value="C"> C) Ethics and Law (Ethiopia)<br>
+                <input type="radio" name="q4" value="D"> D) Citizenship and Character Education (Singapore)
+            </div>
+            <div class="form-group">
+                <label>5. What does Patrick (1986) define civic education as?</label>
+                <input type="radio" name="q5" value="A" required> A) Knowledge of constitutions, principles, values, and their application<br>
+                <input type="radio" name="q5" value="B"> B) Knowledge of economic systems<br>
+                <input type="radio" name="q5" value="C"> C) Training in ethical decision-making<br>
+                <input type="radio" name="q5" value="D"> D) Development of interpersonal skills
+            </div>
+            <div class="form-group">
+                <label>6. What is civic education primarily a way of learning for, per UNDP (2004)?</label>
+                <input type="radio" name="q6" value="A" required> A) Effective participation in democratic and development processes<br>
+                <input type="radio" name="q6" value="B"> B) Acquiring technical skills for employment<br>
+                <input type="radio" name="q6" value="C"> C) Understanding cultural traditions<br>
+                <input type="radio" name="q6" value="D"> D) Promoting religious values
+            </div>
+            <div class="form-group">
+                <label>7. What distinguishes a maximal concept of civic education from a minimal one?</label>
+                <input type="radio" name="q7" value="A" required> A) It includes knowledge, values, and skills for active participation<br>
+                <input type="radio" name="q7" value="B"> B) It focuses only on classroom teaching<br>
+                <input type="radio" name="q7" value="C"> C) It avoids interactive teaching methods<br>
+                <input type="radio" name="q7" value="D"> D) It emphasizes teacher-led instruction
+            </div>
+            <div class="form-group">
+                <label>8. What is ethics described as?</label>
+                <input type="radio" name="q8" value="A" required> A) A set of laws enforced by the state<br>
+                <input type="radio" name="q8" value="B"> B) A practical guide to citizenship<br>
+                <input type="radio" name="q8" value="C"> C) A study of political systems<br>
+                <input type="radio" name="q8" value="D"> D) A branch of philosophy understanding moral beliefs and actions
+            </div>
+            <div class="form-group">
+                <label>9. How is ethics differentiated from morality?</label>
+                <input type="radio" name="q9" value="A" required> A) Ethics is the study of moral conduct, while morality is the conduct itself<br>
+                <input type="radio" name="q9" value="B"> B) Ethics is about personal beliefs, while morality is about laws<br>
+                <input type="radio" name="q9" value="C"> C) Ethics applies to individuals, while morality applies to groups<br>
+                <input type="radio" name="q9" value="D"> D) Ethics is less important than morality in education
+            </div>
+            <div class="form-group">
+                <label>10. What type of questions does ethics primarily address?</label>
+                <input type="radio" name="q10" value="A" required> A) What people would do in a situation<br>
+                <input type="radio" name="q10" value="B"> B) How people feel about laws<br>
+                <input type="radio" name="q10" value="C"> C) Why people break rules<br>
+                <input type="radio" name="q10" value="D"> D) What people ought to do in a situation
+            </div>
+            <div class="form-group">
+                <label>11. What is the significance of discussing morality, per Socrates?</label>
+                <input type="radio" name="q11" value="A" required> A) It is a small matter of personal choice<br>
+                <input type="radio" name="q11" value="B"> B) It is irrelevant to daily life<br>
+                <input type="radio" name="q11" value="C"> C) It only applies to legal systems<br>
+                <input type="radio" name="q11" value="D"> D) It determines how we ought to live
+            </div>
+            <div class="form-group">
+                <label>12. What is morality defined as?</label>
+                <input type="radio" name="q12" value="A" required> A) A set of laws enforced by the government<br>
+                <input type="radio" name="q12" value="B"> B) A code of conduct guiding human actions as right or wrong<br>
+                <input type="radio" name="q12" value="C"> C) A philosophical theory about ethics<br>
+                <input type="radio" name="q12" value="D"> D) A professional code for businesses
+            </div>
+            <div class="form-group">
+                <label>13. Why might morality be ambiguous in a multicultural society like Ethiopia?</label>
+                <input type="radio" name="q13" value="A" required> A) Because of diverse ethnic groups defining it differently<br>
+                <input type="radio" name="q13" value="B"> B) Due to uniform cultural values<br>
+                <input type="radio" name="q13" value="C"> C) Due to a lack of education<br>
+                <input type="radio" name="q13" value="D"> D) Because it is enforced by a single law
+            </div>
+             <div class="form-group">
+                <label>14. What is one key difference between ethics and law?</label>
+                <input type="radio" name="q14" value="A" required> A) Ethics is always illegal, while law is ethical<br>
+                <input type="radio" name="q14" value="B"> B) Some illegal actions may not be unethical, and vice versa<br>
+                <input type="radio" name="q14" value="C"> C) Laws are broader than ethics<br>
+                <input type="radio" name="q14" value="D"> D) Ethics is enforced by the government, unlike law
+            </div>
+            <div class="form-group">
+                <label>15. Which of the following is an example of an unethical but legal action?</label>
+                <input type="radio" name="q15" value="A" required> A) Speeding to save a life<br>
+                <input type="radio" name="q15" value="B"> B) Lying under oath<br>
+                <input type="radio" name="q15" value="C"> C) Lying in a casual conversation<br>
+                <input type="radio" name="q15" value="D"> D) Stealing to feed a family
+            </div>
+            <div class="form-group">
+                <label>16. What is the main goal of moral and civic education in Ethiopian higher education?</label>
+                <input type="radio" name="q16" value="A" required> A) To teach students technical skills<br>
+                <input type="radio" name="q16" value="B"> B) To enforce religious principles<br>
+                <input type="radio" name="q16" value="C"> C) To promote economic competition<br>
+                <input type="radio" name="q16" value="D"> D) To educate students about democratic culture and ethical values
+            </div>
+            <div class="form-group">
+                <label>17. Why is a balanced understanding of rights and duties important?</label>
+                <input type="radio" name="q17" value="A" required> A) It ensures citizens focus only on their rights<br>
+                <input type="radio" name="q17" value="B"> B) It helps create a society where rights and responsibilities coexist<br>
+                <input type="radio" name="q17" value="C"> C) It eliminates the need for laws<br>
+                <input type="radio" name="q17" value="D"> D) It prioritizes duties over rights
+            </div>
+            <div class="form-group">
+                <!-- Corrected Q18 Label using standard quotes -->
+                <label>18. What does 'one's right implies the other's duty' mean, per Sastry et al. (2011)?</label>
+                <input type="radio" name="q18" value="A" required> A) Rights exist without corresponding duties<br>
+                <input type="radio" name="q18" value="B"> B) Duties are more important than rights<br>
+                <input type="radio" name="q18" value="C"> C) Every right imposes a duty on others to respect it<br>
+                <input type="radio" name="q18" value="D"> D) Rights only apply to the state
+            </div>
+            <div class="form-group">
+                <label>19. What is a participant political culture, as defined by Almond and Verba (1963)?</label>
+                <input type="radio" name="q19" value="A" required> A) Citizens are passive and detached from the political system<br>
+                <input type="radio" name="q19" value="B"> B) Citizens focus only on family advantages<br>
+                <input type="radio" name="q19" value="C"> C) Citizens reject democratic principles<br>
+                <input type="radio" name="q19" value="D"> D) Citizens are highly engaged and active in the political process
+            </div>
+            <div class="form-group">
+                <label>20. Which political culture is most compatible with democratic structures?</label>
+                <input type="radio" name="q20" value="A" required> A) Parochial culture<br>
+                <input type="radio" name="q20" value="B"> B) Subject culture<br>
+                <input type="radio" name="q20" value="C"> C) Participant culture<br>
+                <input type="radio" name="q20" value="D"> D) Authoritarian culture
+            </div>
+             <div class="form-group">
+                <label>21. What is a key challenge to democratization?</label>
+                <input type="radio" name="q21" value="A" required> A) Lack of technological advancement<br>
+                <input type="radio" name="q21" value="B"> B) Citizens prioritizing individual interests over social norms<br>
+                <input type="radio" name="q21" value="C"> C) Excessive government control<br>
+                <input type="radio" name="q21" value="D"> D) Over-participation in voting
+            </div>
+            <div class="form-group">
+                <label>22. What does active citizenship include beyond political participation?</label>
+                <input type="radio" name="q22" value="A" required> A) Economic investments<br>
+                <input type="radio" name="q22" value="B"> B) Socio-cultural and environmental activities<br>
+                <input type="radio" name="q22" value="C"> C) Religious practices<br>
+                <input type="radio" name="q22" value="D"> D) Legal reforms
+            </div>
+            <div class="form-group">
+                <label>23. Why is relevant knowledge alone insufficient for citizens?</label>
+                <input type="radio" name="q23" value="A" required> A) It must be paired with skills and positive attitudes<br>
+                <input type="radio" name="q23" value="B"> B) It is outdated in modern society<br>
+                <input type="radio" name="q23" value="C"> C) It conflicts with ethical principles<br>
+                <input type="radio" name="q23" value="D"> D) It only benefits the state
+            </div>
+            <div class="form-group">
+                <label>24. What social ill does civic education aim to address among youth?</label>
+                <input type="radio" name="q24" value="A" required> A) Economic inequality<br>
+                <input type="radio" name="q24" value="B"> B) Political apathy and anti-social behavior<br>
+                <input type="radio" name="q24" value="C"> C) Lack of technical skills<br>
+                <input type="radio" name="q24" value="D"> D) Cultural assimilation
+            </div>
+            <div class="form-group">
+                <label>25. How does civics and ethics foster intercultural societies?</label>
+                <input type="radio" name="q25" value="A" required> A) By enforcing uniform cultural practices<br>
+                <input type="radio" name="q25" value="B"> B) By ignoring cultural diversity<br>
+                <input type="radio" name="q25" value="C"> C) By promoting dialogue and interdependence among cultures<br>
+                <input type="radio" name="q25" value="D"> D) By prioritizing one culture over others
+            </div>
+            <div class="form-group">
+                <label>26. What is a key focus of civics and ethics in promoting inclusiveness?</label>
+                <input type="radio" name="q26" value="A" required> A) Empowering only women in politics<br>
+                <input type="radio" name="q26" value="B"> B) Recognizing gender differences while ensuring equity<br>
+                <input type="radio" name="q26" value="C"> C) Focusing solely on public policy<br>
+                <input type="radio" name="q26" value="D"> D) Excluding private sphere concerns
+            </div>
+             <div class="form-group">
+                <label>27. How can civics and ethics contribute to peace-building?</label>
+                <input type="radio" name="q27" value="A" required> A) By encouraging militarization<br>
+                <input type="radio" name="q27" value="B"> B) By developing competencies for conflict resolution and dialogue<br>
+                <input type="radio" name="q27" value="C"> C) By ignoring global conflicts<br>
+                <input type="radio" name="q27" value="D"> D) By promoting isolationism
+            </div>
+            <div class="form-group">
+                <label>28. Which core value does moral and civic education seek to promote in students?</label>
+                <input type="radio" name="q28" value="A" required> A) Competition<br>
+                <input type="radio" name="q28" value="B"> B) Respect for diversity<br>
+                <input type="radio" name="q28" value="C"> C) Individualism<br>
+                <input type="radio" name="q28" value="D"> D) Obedience to authority
+            </div>
+            <div class="form-group">
+                <label>29. What does Aristotle mean by 'Educating the mind without educating the heart is no education at all'?</label>
+                <input type="radio" name="q29" value="A" required> A) Education should focus only on intellectual growth<br>
+                <input type="radio" name="q29" value="B"> B) Emotions are irrelevant to learning<br>
+                <input type="radio" name="q29" value="C"> C) Moral education is essential alongside intellectual development<br>
+                <input type="radio" name="q29" value="D"> D) Technical skills outweigh ethical values
+            </div>
+            <div class="form-group">
+                <label>30. What is the ultimate aim of teaching civics and ethics?</label>
+                <input type="radio" name="q30" value="A" required> A) Producing economically successful citizens<br>
+                <input type="radio" name="q30" value="B"> B) Creating competent, responsible citizens with high moral standards<br>
+                <input type="radio" name="q30" value="C"> C) Enforcing strict legal compliance<br>
+                <input type="radio" name="q30" value="D"> D) Promoting uniform cultural values
+            </div>
+
+            <button type="button" onclick="showReview()">Submit</button>
+        </form>
+        <div id="error-message" class="hidden">
+            <p>Something went wrong. Please try again.</p>
+        </div>
+    </div>
+
+    <div id="review-section" class="hidden">
+        <h2>Review Your Answers</h2>
+        <div id="review-content"></div>
+        <button onclick="editForm()">Edit</button>
+        <button onclick="downloadResponse()" id="download-response">Download My Response</button>
+        <button onclick="confirmSubmission()">Confirm Submission</button>
+    </div>
+
+    <div id="submission-copy" class="hidden">
+        <h2>Your Submitted Answers</h2>
+        <div id="submission-content"></div>
+        <button onclick="proceedToPassword()">Proceed</button>
+    </div>
+
+    <div id="password-section" class="hidden">
+        <h1 id="success-message">Your response has been submitted</h1>
+        <p>You can view your result (score) by entering the password.</p>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="password-error" class="hidden">Incorrect password. Please try again.</p>
+    </div>
+
+    <div id="results" class="hidden">
+        <h1>Quiz Results</h1>
+        <p id="student-info"></p>
+        <div id="answers"></div>
+        <p id="score"></p>
+        <button id="download-pdf" onclick="downloadPDF()">Download Results PDF</button>
+    </div>
+
+    <script>
+        let quizData = null;
+        let formData = null;
+        const { jsPDF } = window.jspdf;
+        const TOTAL_QUESTIONS = 30; // Define total number of questions
+
+        // Valid login credentials
+        const validCredentials = [
+            { username: 'section19', password: '123' },
+            { username: 'section20', password: '123' },
+            { username: 'muzemuza', password: 'moh' },
+            { username: 'section21', password: '123' }
+            // Add more valid credentials as needed
+        ];
+
+        // Structure holding question texts and choices
+        // Corrected Q18 text using standard single quotes, escaped for JS
+        const allQuestionsData = {
+            q1: { text: 'What is the primary focus of civic education?', choices: { A: 'Studying the rights and responsibilities of citizens', B: 'Teaching professional skills for the job market', C: 'Promoting cultural diversity in schools', D: 'Encouraging economic development' } },
+            q2: { text: 'Who argued that citizens should be educated to suit the constitution of a state?', choices: { A: 'John Stuart Mill', B: 'Socrates', C: 'Aristotle', D: 'Patrick' } },
+            q3: { text: 'How does John Stuart Mill describe the relationship between a society and its citizens?', choices: { A: 'A society progresses when it isolates its citizens', B: 'Citizens should focus only on personal gain', C: 'Society thrives without moral education', D: 'A peaceful society depends on developing good citizens' } },
+            q4: { text: 'Which of the following is NOT a term used to describe civic education across different countries?', choices: { A: 'Right Education (South Africa)', B: 'Citizenship Education (USA and Germany)', C: 'Ethics and Law (Ethiopia)', D: 'Citizenship and Character Education (Singapore)' } },
+            q5: { text: 'What does Patrick (1986) define civic education as?', choices: { A: 'Knowledge of constitutions, principles, values, and their application', B: 'Knowledge of economic systems', C: 'Training in ethical decision-making', D: 'Development of interpersonal skills' } },
+            q6: { text: 'What is civic education primarily a way of learning for, per UNDP (2004)?', choices: { A: 'Effective participation in democratic and development processes', B: 'Acquiring technical skills for employment', C: 'Understanding cultural traditions', D: 'Promoting religious values' } },
+            q7: { text: 'What distinguishes a maximal concept of civic education from a minimal one?', choices: { A: 'It includes knowledge, values, and skills for active participation', B: 'It focuses only on classroom teaching', C: 'It avoids interactive teaching methods', D: 'It emphasizes teacher-led instruction' } },
+            q8: { text: 'What is ethics described as?', choices: { A: 'A set of laws enforced by the state', B: 'A practical guide to citizenship', C: 'A study of political systems', D: 'A branch of philosophy understanding moral beliefs and actions' } },
+            q9: { text: 'How is ethics differentiated from morality?', choices: { A: 'Ethics is the study of moral conduct, while morality is the conduct itself', B: 'Ethics is about personal beliefs, while morality is about laws', C: 'Ethics applies to individuals, while morality applies to groups', D: 'Ethics is less important than morality in education' } },
+            q10: { text: 'What type of questions does ethics primarily address?', choices: { A: 'What people would do in a situation', B: 'How people feel about laws', C: 'Why people break rules', D: 'What people ought to do in a situation' } },
+            q11: { text: 'What is the significance of discussing morality, per Socrates?', choices: { A: 'It is a small matter of personal choice', B: 'It is irrelevant to daily life', C: 'It only applies to legal systems', D: 'It determines how we ought to live' } },
+            q12: { text: 'What is morality defined as?', choices: { A: 'A set of laws enforced by the government', B: 'A code of conduct guiding human actions as right or wrong', C: 'A philosophical theory about ethics', D: 'A professional code for businesses' } },
+            q13: { text: 'Why might morality be ambiguous in a multicultural society like Ethiopia?', choices: { A: 'Because of diverse ethnic groups defining it differently', B: 'Due to uniform cultural values', C: 'Due to a lack of education', D: 'Because it is enforced by a single law' } },
+            q14: { text: 'What is one key difference between ethics and law?', choices: { A: 'Ethics is always illegal, while law is ethical', B: 'Some illegal actions may not be unethical, and vice versa', C: 'Laws are broader than ethics', D: 'Ethics is enforced by the government, unlike law' } },
+            q15: { text: 'Which of the following is an example of an unethical but legal action?', choices: { A: 'Speeding to save a life', B: 'Lying under oath', C: 'Lying in a casual conversation', D: 'Stealing to feed a family' } },
+            q16: { text: 'What is the main goal of moral and civic education in Ethiopian higher education?', choices: { A: 'To teach students technical skills', B: 'To enforce religious principles', C: 'To promote economic competition', D: 'To educate students about democratic culture and ethical values' } },
+            q17: { text: 'Why is a balanced understanding of rights and duties important?', choices: { A: 'It ensures citizens focus only on their rights', B: 'It helps create a society where rights and responsibilities coexist', C: 'It eliminates the need for laws', D: 'It prioritizes duties over rights' } },
+            q18: { text: 'What does \'one\\\'s right implies the other\\\'s duty\' mean, per Sastry et al. (2011)?', choices: { A: 'Rights exist without corresponding duties', B: 'Duties are more important than rights', C: 'Every right imposes a duty on others to respect it', D: 'Rights only apply to the state' } },
+            q19: { text: 'What is a participant political culture, as defined by Almond and Verba (1963)?', choices: { A: 'Citizens are passive and detached from the political system', B: 'Citizens focus only on family advantages', C: 'Citizens reject democratic principles', D: 'Citizens are highly engaged and active in the political process' } },
+            q20: { text: 'Which political culture is most compatible with democratic structures?', choices: { A: 'Parochial culture', B: 'Subject culture', C: 'Participant culture', D: 'Authoritarian culture' } },
+            q21: { text: 'What is a key challenge to democratization?', choices: { A: 'Lack of technological advancement', B: 'Citizens prioritizing individual interests over social norms', C: 'Excessive government control', D: 'Over-participation in voting' } },
+            q22: { text: 'What does active citizenship include beyond political participation?', choices: { A: 'Economic investments', B: 'Socio-cultural and environmental activities', C: 'Religious practices', D: 'Legal reforms' } },
+            q23: { text: 'Why is relevant knowledge alone insufficient for citizens?', choices: { A: 'It must be paired with skills and positive attitudes', B: 'It is outdated in modern society', C: 'It conflicts with ethical principles', D: 'It only benefits the state' } },
+            q24: { text: 'What social ill does civic education aim to address among youth?', choices: { A: 'Economic inequality', B: 'Political apathy and anti-social behavior', C: 'Lack of technical skills', D: 'Cultural assimilation' } },
+            q25: { text: 'How does civics and ethics foster intercultural societies?', choices: { A: 'By enforcing uniform cultural practices', B: 'By ignoring cultural diversity', C: 'By promoting dialogue and interdependence among cultures', D: 'By prioritizing one culture over others' } },
+            q26: { text: 'What is a key focus of civics and ethics in promoting inclusiveness?', choices: { A: 'Empowering only women in politics', B: 'Recognizing gender differences while ensuring equity', C: 'Focusing solely on public policy', D: 'Excluding private sphere concerns' } },
+            q27: { text: 'How can civics and ethics contribute to peace-building?', choices: { A: 'By encouraging militarization', B: 'By developing competencies for conflict resolution and dialogue', C: 'By ignoring global conflicts', D: 'By promoting isolationism' } },
+            q28: { text: 'Which core value does moral and civic education seek to promote in students?', choices: { A: 'Competition', B: 'Respect for diversity', C: 'Individualism', D: 'Obedience to authority' } },
+            q29: { text: 'What does Aristotle mean by \'Educating the mind without educating the heart is no education at all\'?', choices: { A: 'Education should focus only on intellectual growth', B: 'Emotions are irrelevant to learning', C: 'Moral education is essential alongside intellectual development', D: 'Technical skills outweigh ethical values' } },
+            q30: { text: 'What is the ultimate aim of teaching civics and ethics?', choices: { A: 'Producing economically successful citizens', B: 'Creating competent, responsible citizens with high moral standards', C: 'Enforcing strict legal compliance', D: 'Promoting uniform cultural values' } }
+        };
+
+        // Correct answers mapped to letters
+        const correctAnswersMap = {
+            q1: 'A', q2: 'C', q3: 'D', q4: 'C', q5: 'A',
+            q6: 'A', q7: 'A', q8: 'D', q9: 'A', q10: 'D',
+            q11: 'D', q12: 'B', q13: 'A', q14: 'B', q15: 'C',
+            q16: 'D', q17: 'B', q18: 'C', q19: 'D', q20: 'C',
+            q21: 'B', q22: 'B', q23: 'A', q24: 'B', q25: 'C',
+            q26: 'B', q27: 'B', q28: 'B', q29: 'C', q30: 'B'
+        };
+
+        function checkLogin() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            const errorMessage = document.getElementById('login-error');
+            const loginSection = document.getElementById('login-section');
+            const quizForm = document.getElementById('quiz-form');
+
+            const isValid = validCredentials.some(cred =>
+                cred.username === username && cred.password === password
+            );
+
+            if (isValid) {
+                errorMessage.classList.add('hidden');
+                loginSection.classList.add('hidden');
+                quizForm.classList.remove('hidden');
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
+        }
+
+        function showReview() {
+            const form = document.getElementById('mcie-quiz');
+            formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+             // Check if all questions are answered
+             let allAnswered = true;
+             for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                 if (!data[`q${i}`]) {
+                     allAnswered = false;
+                     break;
+                 }
+             }
+
+             if (!data.name || !data.id_number || !data.section || !data.email || !data.phone || !allAnswered) {
+                 alert('Please fill in all personal information and answer all questions before submitting.');
+                 return; // Stop the function if validation fails
+             }
+
+
+            // Store quiz data temporarily
+            quizData = {
+                name: data.name,
+                id_number: data.id_number,
+                section: data.section,
+                email: data.email,
+                phone: data.phone,
+                answers: {},
+                questions: allQuestionsData // Use the predefined structure
+            };
+
+            // Populate answers dynamically
+            let reviewHTML = `
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>ID Number:</strong> ${data.id_number}</p>
+                <p><strong>Section:</strong> ${data.section}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone Number:</strong> ${data.phone}</p>
+                <hr>
+                <h3>Your Answers:</h3>
+            `;
+
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                const qKey = `q${i}`;
+                const userAnswer = data[qKey];
+                quizData.answers[qKey] = userAnswer; // Store answer
+                const questionInfo = allQuestionsData[qKey];
+                const answerText = questionInfo.choices[userAnswer] || 'Not Answered';
+                // Display text directly - standard quotes don't need special handling like entities did
+                reviewHTML += `<p><strong>Question ${i}:</strong> ${questionInfo.text}<br>Your answer: ${userAnswer}) ${answerText}</p>`;
+            }
+
+            // Display review content
+            const reviewContent = document.getElementById('review-content');
+            reviewContent.innerHTML = reviewHTML;
+
+            // Show review section
+            document.getElementById('quiz-form').classList.add('hidden');
+            document.getElementById('review-section').classList.remove('hidden');
+        }
+
+        function editForm() {
+            document.getElementById('review-section').classList.add('hidden');
+            document.getElementById('quiz-form').classList.remove('hidden');
+        }
+
+        // // Helper function to decode HTML entities (kept in case needed for other chars, but not for the fixed quotes)
+        // function decodeHtmlEntities(text) {
+        //     const textArea = document.createElement('textarea');
+        //     textArea.innerHTML = text;
+        //     return textArea.value;
+        // }
+
+
+        function downloadResponse() {
+            if (!quizData) return;
+
+            const doc = new jsPDF();
+            let y = 10;
+            const pageHeight = doc.internal.pageSize.height;
+            const margin = 10;
+
+            doc.setFontSize(16);
+            doc.text('MCIE Quiz Response', margin, y);
+            y += 10;
+
+            doc.setFontSize(12);
+            doc.text(`Name: ${quizData.name}`, margin, y); y += 7;
+            doc.text(`ID: ${quizData.id_number}`, margin, y); y += 7;
+            doc.text(`Section: ${quizData.section}`, margin, y); y += 7;
+            doc.text(`Email: ${quizData.email}`, margin, y); y += 7;
+            doc.text(`Phone: ${quizData.phone}`, margin, y); y += 10;
+
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                 if (y > pageHeight - margin * 2) { // Check space for question + answer
+                    doc.addPage();
+                    y = margin;
+                }
+                const qKey = `q${i}`;
+                const question = quizData.questions[qKey];
+                const userAnswer = quizData.answers[qKey];
+                const answerText = question.choices[userAnswer] || 'Not Answered';
+
+                // No need to decode standard quotes for jsPDF
+                const questionText = question.text;
+
+                const questionLines = doc.splitTextToSize(`Question ${i}: ${questionText}`, doc.internal.pageSize.width - margin * 2);
+                doc.text(questionLines, margin, y);
+                y += (questionLines.length * 5) + 2; // Adjust spacing based on lines
+
+                 if (y > pageHeight - margin) { doc.addPage(); y = margin; }
+                doc.text(`Your answer: ${userAnswer}) ${answerText}`, margin, y);
+                y += 10;
+            }
+
+            doc.save(`quiz_response_${quizData.id_number}.pdf`);
+        }
+
+        async function confirmSubmission() {
+            if (confirm('Are you sure you want to submit your answers?')) {
+                if (!quizData || !formData) {
+                     console.error("Quiz data or form data is missing.");
+                     alert("Error: Cannot submit. Please try filling the form again.");
+                     editForm(); // Go back to edit
+                     return;
+                }
+
+                const data = Object.fromEntries(formData); // Use the stored formData
+
+                // Calculate score
+                let score = 0;
+                for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                    const qKey = `q${i}`;
+                    if (data[qKey] === correctAnswersMap[qKey]) {
+                        score++;
+                    }
+                }
+
+                // Update quizData with score
+                quizData.score = score;
+
+                // Prepare data for Formspree (include all details)
+                const submissionData = {
+                    ...data, // Includes name, id, section, email, phone, q1..q30
+                    score: score, // Add score if you want to send it
+                    totalQuestions: TOTAL_QUESTIONS,
+                    submittedAt: new Date().toISOString()
+                };
+
+                try {
+                    // Show "Submitting..." message or spinner here if desired
+
+                    const response = await fetch('https://formspree.io/f/myzeoejq', { // Use your Formspree endpoint
+                        method: 'POST',
+                        body: JSON.stringify(submissionData),
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Show submission copy
+                        const submissionContent = document.getElementById('submission-content');
+                         let submissionHTML = `
+                            <p><strong>Name:</strong> ${quizData.name}</p>
+                            <p><strong>ID Number:</strong> ${quizData.id_number}</p>
+                            <p><strong>Section:</strong> ${quizData.section}</p>
+                            <p><strong>Email:</strong> ${quizData.email}</p>
+                            <p><strong>Phone Number:</strong> ${quizData.phone}</p>
+                            <hr>
+                            <h3>Submitted Answers:</h3>
+                        `;
+                         for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                             const qKey = `q${i}`;
+                             const questionInfo = quizData.questions[qKey];
+                             const userAnswer = quizData.answers[qKey];
+                             const answerText = questionInfo.choices[userAnswer] || 'Not Answered';
+                             // Display text directly
+                             submissionHTML += `<p><strong>Question ${i}:</strong> ${questionInfo.text}<br>Your answer: ${userAnswer}) ${answerText}</p>`;
+                         }
+                        submissionContent.innerHTML = submissionHTML;
+
+
+                        document.getElementById('review-section').classList.add('hidden');
+                        document.getElementById('submission-copy').classList.remove('hidden');
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Formspree error:', errorData);
+                        document.getElementById('error-message').innerHTML = `<p>Submission failed: ${errorData.error || 'Please try again.'}</p>`;
+                        document.getElementById('error-message').classList.remove('hidden');
+                        document.getElementById('review-section').classList.add('hidden');
+                        // Optionally go back to edit or review:
+                        // document.getElementById('quiz-form').classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    document.getElementById('error-message').innerHTML = `<p>An network error occurred during submission. Please check your connection and try again.</p>`;
+                    document.getElementById('error-message').classList.remove('hidden');
+                    document.getElementById('review-section').classList.add('hidden');
+                    // Optionally go back to edit or review:
+                    // document.getElementById('quiz-form').classList.remove('hidden');
+                } finally {
+                     // Hide "Submitting..." message or spinner here
+                }
+            }
+        }
+
+        function proceedToPassword() {
+            document.getElementById('submission-copy').classList.add('hidden');
+            document.getElementById('password-section').classList.remove('hidden');
+        }
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const correctPassword = 'password'; // Keep the simple password
+            const errorMessage = document.getElementById('password-error');
+            const passwordSection = document.getElementById('password-section');
+            const results = document.getElementById('results');
+
+            if (passwordInput === correctPassword) {
+                errorMessage.classList.add('hidden');
+                passwordSection.classList.add('hidden');
+                results.classList.remove('hidden');
+                displayResults();
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
+        }
+
+        function displayResults() {
+            if (!quizData) {
+                document.getElementById('results').innerHTML = '<p>Error: No quiz data found. Please complete the quiz first.</p>';
+                return;
+            }
+
+             // Combine correct answer letter with full text for display
+             const displayCorrectAnswers = {};
+             for(let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                 const qKey = `q${i}`;
+                 const correctLetter = correctAnswersMap[qKey];
+                 const correctText = allQuestionsData[qKey].choices[correctLetter];
+                 // Standard quotes don't need decoding
+                 displayCorrectAnswers[qKey] = `${correctLetter} (${correctText})`;
+             }
+
+
+            document.getElementById('student-info').innerHTML = `<strong>Name:</strong> ${quizData.name}<br><strong>ID:</strong> ${quizData.id_number}<br><strong>Section:</strong> ${quizData.section}<br><strong>Email:</strong> ${quizData.email}<br><strong>Phone:</strong> ${quizData.phone}`;
+
+            const answersDiv = document.getElementById('answers');
+            let answersHTML = '<h3>Detailed Results:</h3>';
+
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                 const qKey = `q${i}`;
+                 const question = quizData.questions[qKey];
+                 const userAnswer = quizData.answers[qKey];
+                 const userAnswerText = question.choices[userAnswer] || 'Not Answered';
+                 const isCorrect = userAnswer === correctAnswersMap[qKey];
+
+                 // Display text directly
+                 answersHTML += `
+                    <div class="question-result">
+                        <p><strong>Question ${i}:</strong> ${question.text}</p>
+                        <div class="choices">
+                            <p>A) ${question.choices.A}</p>
+                            <p>B) ${question.choices.B}</p>
+                            <p>C) ${question.choices.C}</p>
+                            <p>D) ${question.choices.D}</p>
+                        </div>
+                        <p>Your answer: ${userAnswer}) ${userAnswerText} ${isCorrect ? '<span style="color:green; font-weight:bold;">(Correct)</span>' : '<span style="color:red; font-weight:bold;">(Incorrect)</span>'}</p>
+                        <p>Correct answer: ${displayCorrectAnswers[qKey]}</p>
+                    </div>
+                `;
+            }
+            answersDiv.innerHTML = answersHTML;
+
+
+            document.getElementById('score').textContent = `Final Score: ${quizData.score} / ${TOTAL_QUESTIONS}`;
+        }
+
+        function downloadPDF() {
+            if (!quizData) return;
+
+            const doc = new jsPDF();
+            let y = 10;
+            const pageHeight = doc.internal.pageSize.height;
+            const margin = 10;
+
+             // Combine correct answer letter with full text for display
+             const displayCorrectAnswers = {};
+             for(let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                 const qKey = `q${i}`;
+                 const correctLetter = correctAnswersMap[qKey];
+                 const correctText = allQuestionsData[qKey].choices[correctLetter];
+                 // No decoding needed for standard quotes
+                 displayCorrectAnswers[qKey] = `${correctLetter} (${correctText})`;
+             }
+
+            doc.setFontSize(16);
+            doc.text('MCIE Quiz Results', doc.internal.pageSize.width / 2, y, { align: 'center' });
+            y += 10;
+
+            doc.setFontSize(12);
+            doc.text(`Name: ${quizData.name}`, margin, y); y += 7;
+            doc.text(`ID: ${quizData.id_number}`, margin, y); y += 7;
+            doc.text(`Section: ${quizData.section}`, margin, y); y += 7;
+            doc.text(`Email: ${quizData.email}`, margin, y); y += 7;
+            doc.text(`Phone: ${quizData.phone}`, margin, y); y += 10;
+
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Final Score: ${quizData.score} / ${TOTAL_QUESTIONS}`, doc.internal.pageSize.width / 2, y, { align: 'center' });
+            y += 10;
+            doc.setFont('helvetica', 'normal');
+
+
+            for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+                 if (y > pageHeight - margin * 4) { // Check space needed for question block
+                    doc.addPage();
+                    y = margin;
+                }
+
+                const qKey = `q${i}`;
+                const question = quizData.questions[qKey];
+                const userAnswer = quizData.answers[qKey];
+                const userAnswerText = question.choices[userAnswer] || 'Not Answered';
+                const isCorrect = userAnswer === correctAnswersMap[qKey];
+
+                // No decoding needed for standard quotes
+                const questionText = question.text;
+
+                doc.setFont('helvetica', 'bold');
+                const questionLines = doc.splitTextToSize(`Question ${i}: ${questionText}`, doc.internal.pageSize.width - margin * 2);
+                doc.text(questionLines, margin, y);
+                y += (questionLines.length * 5) + 2; // Adjust spacing
+                doc.setFont('helvetica', 'normal');
+
+                if (y > pageHeight - margin * 3) { doc.addPage(); y = margin; } // Check space for choices/answers
+
+                doc.text(`Choices:`, margin, y); y += 5;
+                doc.text(`  A) ${question.choices.A}`, margin, y); y += 5; // Assuming choices don't have special chars
+                doc.text(`  B) ${question.choices.B}`, margin, y); y += 5;
+                doc.text(`  C) ${question.choices.C}`, margin, y); y += 5;
+                doc.text(`  D) ${question.choices.D}`, margin, y); y += 7;
+
+                doc.text(`Your answer: ${userAnswer}) ${userAnswerText} ${isCorrect ? '(Correct)' : '(Incorrect)'}`, margin, y); y += 7;
+                doc.text(`Correct answer: ${displayCorrectAnswers[qKey]}`, margin, y); y += 10; // Add more space between questions
+            }
+
+            // Add score again at the end if needed, especially if it spans pages
+            if (y > pageHeight - margin) { doc.addPage(); y = margin; }
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.text(`Final Score: ${quizData.score} / ${TOTAL_QUESTIONS}`, doc.internal.pageSize.width / 2, y, { align: 'center' });
+
+            doc.save(`quiz_results_${quizData.id_number}.pdf`);
+        }
+    </script>
+</body>
+</html>
