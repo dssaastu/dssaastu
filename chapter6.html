@@ -95,18 +95,19 @@
             justify-content: center;
             align-items: center;
             margin: 1rem 0;
+            flex-direction: column; /* Stack label and image */
         }
         .venn-image {
             max-width: 80%; /* Adjusted size */
             height: auto;
             border: 1px solid #eee; /* Added subtle border */
-            margin: 0 10px; /* Spacing for side-by-side diagrams */
+            margin: 5px 10px 0 10px; /* Spacing for side-by-side diagrams & below label */
         }
         /* Adjust layout for side-by-side Venn diagrams */
         .venn-comparison {
             display: flex;
             justify-content: space-around;
-            align-items: center;
+            align-items: flex-start; /* Align tops */
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
         .venn-comparison .venn-diagram {
@@ -515,7 +516,9 @@
                    <p class="text-gray-600 mb-4">
                      Having defined standard-form categorical propositions, we now explore ways to represent their logical content visually using diagrams and to understand the necessary logical relationships between them. <strong>Venn diagrams</strong>, developed by John Venn, use overlapping circles to represent the classes denoted by the terms and illustrate the information conveyed by the proposition. The <strong>Square of Opposition</strong> is a traditional diagram illustrating logical relationships (like contradiction) between the four standard forms.
                    </p>
-                    <p class="text-gray-600">This section focuses on constructing Venn diagrams for categorical propositions and understanding the <strong>Modern Square of Opposition</strong>, which reflects the interpretation of categorical propositions adopted in modern logic (often called the Boolean interpretation).</p>
+                    <p class="text-gray-600">
+                      This section focuses on constructing Venn diagrams for categorical propositions and understanding the <strong>Modern Square of Opposition</strong>, which reflects the interpretation of categorical propositions adopted in modern logic (often called the Boolean interpretation).
+                    </p>
                  </div>
 
                  <!-- Slide 25: Section Objectives -->
@@ -565,16 +568,16 @@
                    <p class="font-semibold text-gray-700 mb-2">1. A Proposition: All S are P</p>
                     <p class="text-sm text-gray-600 mb-1">Meaning: Every member of S is in P. Thus, the part of S *outside* P must be empty.</p>
                     <div class="venn-diagram">
-                      <img src="https://i.imgur.com/4y3Wb9I.png" alt="Venn Diagram for A Proposition (All S are P)" class="venn-image">
-                      <!-- Replaced placeholder with actual image URL -->
+                      <!-- Original placeholder restored -->
+                      <img src="venn_A.png" alt="Venn Diagram for A Proposition (All S are P)" class="venn-image">
                     </div>
                    <p class="text-gray-600 mb-4 text-center text-sm">Shade the area of S that is outside P.</p>
 
                    <p class="font-semibold text-gray-700 mb-2 mt-6">2. E Proposition: No S are P</p>
                     <p class="text-sm text-gray-600 mb-1">Meaning: No member of S is in P. Thus, the area where S and P *overlap* must be empty.</p>
                     <div class="venn-diagram">
-                      <img src="https://i.imgur.com/gQW7j3t.png" alt="Venn Diagram for E Proposition (No S are P)" class="venn-image">
-                       <!-- Replaced placeholder with actual image URL -->
+                      <!-- Original placeholder restored -->
+                      <img src="venn_E.png" alt="Venn Diagram for E Proposition (No S are P)" class="venn-image">
                     </div>
                     <p class="text-gray-600 text-center text-sm">Shade the area of overlap between S and P.</p>
                  </div>
@@ -585,16 +588,16 @@
                    <p class="font-semibold text-gray-700 mb-2">3. I Proposition: Some S are P</p>
                     <p class="text-sm text-gray-600 mb-1">Meaning: At least one member of S is also a member of P. Thus, the overlap area is *not* empty.</p>
                     <div class="venn-diagram">
-                      <img src="https://i.imgur.com/d8X3vY0.png" alt="Venn Diagram for I Proposition (Some S are P)" class="venn-image">
-                       <!-- Replaced placeholder with actual image URL -->
+                       <!-- Original placeholder restored -->
+                       <img src="venn_I.png" alt="Venn Diagram for I Proposition (Some S are P)" class="venn-image">
                     </div>
                     <p class="text-gray-600 mb-4 text-center text-sm">Place an X in the area of overlap between S and P.</p>
 
                    <p class="font-semibold text-gray-700 mb-2 mt-6">4. O Proposition: Some S are not P</p>
                     <p class="text-sm text-gray-600 mb-1">Meaning: At least one member of S is *not* a member of P. Thus, the part of S *outside* P is *not* empty.</p>
                     <div class="venn-diagram">
-                      <img src="https://i.imgur.com/k7a4Z8f.png" alt="Venn Diagram for O Proposition (Some S are not P)" class="venn-image">
-                       <!-- Replaced placeholder with actual image URL -->
+                       <!-- Original placeholder restored -->
+                       <img src="venn_O.png" alt="Venn Diagram for O Proposition (Some S are not P)" class="venn-image">
                     </div>
                     <p class="text-gray-600 text-center text-sm">Place an X in the area of S that is outside P.</p>
                  </div>
@@ -617,8 +620,8 @@
                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Modern Square of Opposition Diagram</h2>
                      <p class="text-gray-600 mb-4">The diagram visually represents the relationship between corresponding A, E, I, and O propositions with the same subject and predicate terms:</p>
                      <div class="venn-diagram">
-                        <img src="https://i.imgur.com/3s5aN4C.png" alt="Modern Square of Opposition Diagram" class="venn-image" style="max-width: 400px;">
-                        <!-- Placeholder updated -->
+                        <!-- Original placeholder restored -->
+                        <img src="modern_square.png" alt="Modern Square of Opposition Diagram" class="venn-image" style="max-width: 400px;">
                      </div>
                      <p class="text-gray-600 mt-4">The diagonal lines indicate the <strong>contradictory</strong> relationship:</p>
                      <ul class="list-disc pl-8 text-gray-600 space-y-1">
@@ -669,8 +672,8 @@
                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Traditional Square of Opposition Diagram</h2>
                      <p class="text-gray-600 mb-4">Assuming existential import for universal propositions, the traditional square illustrates four relationships:</p>
                       <div class="venn-diagram">
-                        <img src="https://i.imgur.com/c2aZJ4e.png" alt="Traditional Square of Opposition Diagram" class="venn-image" style="max-width: 450px;">
-                        <!-- Placeholder updated -->
+                         <!-- Original placeholder restored -->
+                         <img src="traditional_square.png" alt="Traditional Square of Opposition Diagram" class="venn-image" style="max-width: 450px;">
                       </div>
                       <p class="text-gray-600 mt-4">The relationships are Contradictory (diagonals), Contrary (top), Subcontrary (bottom), and Subalternation (sides).</p>
                    </div>
@@ -807,13 +810,13 @@
                            <div class="venn-comparison">
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Premise: Some T are not M (O)</p>
-                                 <img src="https://i.imgur.com/k7a4Z8f.png" alt="Venn Diagram for O Proposition" class="venn-image">
-                                 <!-- Changed placeholder -->
+                                 <!-- Original placeholder restored -->
+                                 <img src="venn_O_T.png" alt="Venn Diagram Some T are not M" class="venn-image">
                                </div>
                                 <div class="venn-diagram">
                                   <p class="font-semibold text-sm mb-1">Conclusion: False(All T are M) (O)</p>
-                                  <img src="https://i.imgur.com/k7a4Z8f.png" alt="Venn Diagram for False A / O Proposition" class="venn-image">
-                                   <!-- Changed placeholder -->
+                                   <!-- Original placeholder restored -->
+                                  <img src="venn_A_false_T.png" alt="Venn Diagram It is false that all T are M" class="venn-image">
                                 </div>
                             </div>
                            <p class="text-gray-600 mt-4">Both premise and conclusion are represented by placing an X in the part of the T circle outside the M circle. Since the information in the conclusion diagram (an X in that region) is identical to the information in the premise diagram, the inference is <strong>valid</strong>.</p>
@@ -831,13 +834,13 @@
                            <div class="venn-comparison">
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Premise: All C are H (A)</p>
-                                 <img src="https://i.imgur.com/4y3Wb9I.png" alt="Venn Diagram for A Proposition" class="venn-image">
-                                 <!-- Changed placeholder -->
+                                 <!-- Original placeholder restored -->
+                                 <img src="venn_A.png" alt="Venn Diagram for A Proposition" class="venn-image">
                                </div>
                                 <div class="venn-diagram">
                                   <p class="font-semibold text-sm mb-1">Conclusion: Some C are H (I)</p>
-                                  <img src="https://i.imgur.com/d8X3vY0.png" alt="Venn Diagram for I Proposition" class="venn-image">
-                                   <!-- Changed placeholder -->
+                                  <!-- Original placeholder restored -->
+                                  <img src="venn_I.png" alt="Venn Diagram for I Proposition" class="venn-image">
                                 </div>
                             </div>
                            <p class="text-gray-600 mt-4">The premise diagram (shaded left part of C) does *not* contain the information in the conclusion diagram (an X in the overlap). The premise makes no claim about existence, while the conclusion does. Therefore, from the Boolean standpoint, this inference is <strong>invalid</strong>.</p>
@@ -850,7 +853,9 @@
                             <p class="text-gray-600 mb-4">
                               Arguments that commit the existential fallacy from the Boolean standpoint *can* be valid from the Aristotelian standpoint, *if* we make the required assumption that the subject term denotes existing things. Such arguments are termed <strong>conditionally valid</strong>—valid on the condition of existence.
                             </p>
-                             <p class="text-gray-600 mb-4">Inferences based on the traditional square relationships of contrary, subcontrary, and subalternation are often conditionally valid. They are valid only if the relevant classes (subject terms of A/E) are assumed to have members.</p>
+                             <p class="text-gray-600 mb-4">
+                               Inferences based on the traditional square relationships of contrary, subcontrary, and subalternation are often conditionally valid. They are valid only if the relevant classes (subject terms of A/E) are assumed to have members.
+                             </p>
                             <p class="text-gray-600">Examples of forms that commit the existential fallacy (invalid Booleanly, conditionally valid Aristotelianly):</p>
                             <ul class="list-disc pl-6 text-gray-600 space-y-1 text-sm">
                                <li>All A are B. Therefore, Some A are B. (Subalternation)</li>
@@ -900,24 +905,26 @@
                             <div class="venn-comparison">
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Given A: All S are P</p>
-                                 <img src="https://i.imgur.com/4y3Wb9I.png" alt="Given A" class="venn-image">
+                                 <!-- Original placeholder restored -->
+                                 <img src="venn_A.png" alt="Given A" class="venn-image">
                                </div>
                                 <div class="venn-diagram">
                                   <p class="font-semibold text-sm mb-1">Converse: All P are S</p>
-                                  <img src="https://i.imgur.com/r8zHq6L.png" alt="Converse A" class="venn-image">
-                                  <!-- Updated URL for Converse A -->
+                                   <!-- Original placeholder restored -->
+                                  <img src="venn_A_conv.png" alt="Converse A" class="venn-image">
                                 </div>
                             </div>
                             <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. A and its converse are *not* logically equivalent.</p>
                             <div class="venn-comparison mt-4">
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Given E: No S are P</p>
-                                 <img src="https://i.imgur.com/gQW7j3t.png" alt="Given E" class="venn-image">
+                                  <!-- Original placeholder restored -->
+                                 <img src="venn_E.png" alt="Given E" class="venn-image">
                                </div>
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Converse: No P are S</p>
-                                 <img src="https://i.imgur.com/gQW7j3t.png" alt="Converse E" class="venn-image">
-                                 <!-- E and its converse have the same diagram -->
+                                  <!-- Original placeholder restored -->
+                                 <img src="venn_E_conv.png" alt="Converse E" class="venn-image">
                                </div>
                             </div>
                             <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. E and its converse *are* logically equivalent.</p>
@@ -929,24 +936,26 @@
                             <div class="venn-comparison">
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Given I: Some S are P</p>
-                                 <img src="https://i.imgur.com/d8X3vY0.png" alt="Given I" class="venn-image">
+                                  <!-- Original placeholder restored -->
+                                 <img src="venn_I.png" alt="Given I" class="venn-image">
                                </div>
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Converse: Some P are S</p>
-                                 <img src="https://i.imgur.com/d8X3vY0.png" alt="Converse I" class="venn-image">
-                                 <!-- I and its converse have the same diagram -->
+                                  <!-- Original placeholder restored -->
+                                 <img src="venn_I_conv.png" alt="Converse I" class="venn-image">
                                </div>
                             </div>
                             <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. I and its converse *are* logically equivalent.</p>
                             <div class="venn-comparison mt-4">
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Given O: Some S are not P</p>
-                                 <img src="https://i.imgur.com/k7a4Z8f.png" alt="Given O" class="venn-image">
+                                  <!-- Original placeholder restored -->
+                                 <img src="venn_O.png" alt="Given O" class="venn-image">
                                </div>
                                <div class="venn-diagram">
                                  <p class="font-semibold text-sm mb-1">Converse: Some P are not S</p>
-                                 <img src="https://i.imgur.com/j1sXzUq.png" alt="Converse O" class="venn-image">
-                                  <!-- Updated URL for Converse O -->
+                                  <!-- Original placeholder restored -->
+                                  <img src="venn_O_conv.png" alt="Converse O" class="venn-image">
                                </div>
                             </div>
                             <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. O and its converse are *not* logically equivalent.</p>
@@ -1036,23 +1045,25 @@
                                  <div class="venn-comparison">
                                     <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Given A: All S are P</p>
-                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Given A" class="venn-image">
+                                       <!-- Original placeholder restored -->
+                                       <img src="venn_A.png" alt="Given A" class="venn-image">
                                      </div>
                                      <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Obverse: No S are non-P</p>
-                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Obverse A" class="venn-image">
-                                       <!-- Obverse of A is equivalent to A -->
+                                       <!-- Original placeholder restored -->
+                                       <img src="venn_A_obverse.png" alt="Obverse A" class="venn-image">
                                      </div>
                                  </div>
                                  <div class="venn-comparison mt-4">
                                      <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Given E: No S are P</p>
-                                       <img src="https://i.imgur.com/gQW7j3t.png" alt="Given E" class="venn-image">
+                                        <!-- Original placeholder restored -->
+                                       <img src="venn_E.png" alt="Given E" class="venn-image">
                                      </div>
                                      <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Obverse: All S are non-P</p>
-                                       <img src="https://i.imgur.com/gQW7j3t.png" alt="Obverse E" class="venn-image">
-                                        <!-- Obverse of E is equivalent to E -->
+                                        <!-- Original placeholder restored -->
+                                        <img src="venn_E_obverse.png" alt="Obverse E" class="venn-image">
                                      </div>
                                  </div>
                              </div>
@@ -1063,23 +1074,25 @@
                                 <div class="venn-comparison">
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Given I: Some S are P</p>
-                                     <img src="https://i.imgur.com/d8X3vY0.png" alt="Given I" class="venn-image">
+                                     <!-- Original placeholder restored -->
+                                     <img src="venn_I.png" alt="Given I" class="venn-image">
                                    </div>
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Obverse: Some S are not non-P</p>
-                                     <img src="https://i.imgur.com/d8X3vY0.png" alt="Obverse I" class="venn-image">
-                                      <!-- Obverse of I is equivalent to I -->
+                                      <!-- Original placeholder restored -->
+                                      <img src="venn_I_obverse.png" alt="Obverse I" class="venn-image">
                                    </div>
                                 </div>
                                 <div class="venn-comparison mt-4">
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Given O: Some S are not P</p>
-                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Given O" class="venn-image">
+                                     <!-- Original placeholder restored -->
+                                     <img src="venn_O.png" alt="Given O" class="venn-image">
                                    </div>
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Obverse: Some S are non-P</p>
-                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Obverse O" class="venn-image">
-                                      <!-- Obverse of O is equivalent to O -->
+                                      <!-- Original placeholder restored -->
+                                      <img src="venn_O_obverse.png" alt="Obverse O" class="venn-image">
                                    </div>
                                 </div>
                              </div>
@@ -1128,6 +1141,7 @@
                                 </table>
                              </div>
 
+
                               <!-- Slide 65: Venn Diagrams for Contraposition (A & E) -->
                               <div class="slide">
                                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Contraposition (A & E)</h2>
@@ -1135,24 +1149,26 @@
                                   <div class="venn-comparison">
                                      <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Given A: All S are P</p>
-                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Given A" class="venn-image">
+                                        <!-- Original placeholder restored -->
+                                       <img src="venn_A.png" alt="Given A" class="venn-image">
                                      </div>
                                      <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Contrapositive: All non-P are non-S</p>
-                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Contrapositive A" class="venn-image">
-                                       <!-- Contrapositive of A is equivalent to A -->
+                                        <!-- Original placeholder restored -->
+                                        <img src="venn_A_contra.png" alt="Contrapositive A" class="venn-image">
                                      </div>
                                   </div>
                                   <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. A and its contrapositive *are* logically equivalent.</p>
                                   <div class="venn-comparison mt-4">
                                       <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Given E: No S are P</p>
-                                       <img src="https://i.imgur.com/gQW7j3t.png" alt="Given E" class="venn-image">
+                                        <!-- Original placeholder restored -->
+                                       <img src="venn_E.png" alt="Given E" class="venn-image">
                                      </div>
                                      <div class="venn-diagram">
                                        <p class="font-semibold text-sm mb-1">Contrapositive: No non-P are non-S</p>
-                                       <img src="https://i.imgur.com/nQx7t6U.png" alt="Contrapositive E" class="venn-image">
-                                       <!-- Updated URL for Contra E -->
+                                        <!-- Original placeholder restored -->
+                                        <img src="venn_E_contra.png" alt="Contrapositive E" class="venn-image">
                                      </div>
                                   </div>
                                   <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. E and its contrapositive are *not* logically equivalent.</p>
@@ -1164,24 +1180,26 @@
                                 <div class="venn-comparison">
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Given I: Some S are P</p>
-                                     <img src="https://i.imgur.com/d8X3vY0.png" alt="Given I" class="venn-image">
+                                     <!-- Original placeholder restored -->
+                                     <img src="venn_I.png" alt="Given I" class="venn-image">
                                    </div>
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Contrapositive: Some non-P are non-S</p>
-                                     <img src="https://i.imgur.com/Bw1hT8q.png" alt="Contrapositive I" class="venn-image">
-                                     <!-- Updated URL for Contra I -->
+                                     <!-- Original placeholder restored -->
+                                     <img src="venn_I_contra.png" alt="Contrapositive I" class="venn-image">
                                    </div>
                                 </div>
                                 <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. I and its contrapositive are *not* logically equivalent.</p>
                                 <div class="venn-comparison mt-4">
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Given O: Some S are not P</p>
-                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Given O" class="venn-image">
+                                     <!-- Original placeholder restored -->
+                                     <img src="venn_O.png" alt="Given O" class="venn-image">
                                    </div>
                                    <div class="venn-diagram">
                                      <p class="font-semibold text-sm mb-1">Contrapositive: Some non-P are not non-S</p>
-                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Contrapositive O" class="venn-image">
-                                     <!-- Contrapositive of O is equivalent to O -->
+                                     <!-- Original placeholder restored -->
+                                     <img src="venn_O_contra.png" alt="Contrapositive O" class="venn-image">
                                    </div>
                                 </div>
                                 <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. O and its contrapositive *are* logically equivalent.</p>
@@ -1222,6 +1240,7 @@
                                   <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 space-y-1">
                                     <p>No dogs are cats. (True) → Therefore, no non-cats are non-dogs. (False - e.g., a bird is a non-cat but not a non-dog).</p>
                                     <p>Some animals are non-cats (e.g., dogs). (True) → Therefore, some cats are non-animals. (False - all cats are animals).</p>
+                                    <!-- Corrected examples slightly -->
                                   </div>
                                  <p class="text-gray-600 mt-4">Both Illicit Conversion and Illicit Contraposition are formal fallacies, detectable by examining the argument's form.</p>
                                </div>
@@ -1230,11 +1249,14 @@
                                <div class="slide">
                                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary</h2>
                                  <p class="text-gray-600 mb-4">
-                                   A categorical proposition relates two classes (categories) denoted by the subject (S) and predicate (P) terms, asserting that all or part of S is included in or excluded from P. There are four standard forms (A, E, I, O), each with specific Quality (affirmative/negative), Quantity (universal/particular), and Distribution pattern for S and P terms.
+                                   A categorical proposition relates two classes (subject S and predicate P), asserting full or partial inclusion or exclusion. The four standard forms (A, E, I, O) have specific Quality (affirmative/negative), Quantity (universal/particular), and term Distribution patterns. Venn diagrams visualize these forms (shading=empty, X=not empty).
                                  </p>
-                                 <p class="text-gray-600">
-                                   Venn diagrams visually represent these propositions using overlapping circles, shading for empty areas (universals), and an 'X' for non-empty areas (particulars). The Modern Square of Opposition, based on the Boolean interpretation (no existential import assumed for universals), shows the contradictory relationship (opposite truth values) between A/O and E/I pairs. The Traditional Square, assuming existential import for universals, adds contrary (A/E: not both true), subcontrary (I/O: not both false), and subalternation (truth flows down, falsity up) relationships. Immediate inferences (one premise, one conclusion) can be tested for validity using these squares or Venn diagrams. Arguments invalid solely due to moving from a universal premise to a particular conclusion commit the Existential Fallacy under the Boolean interpretation but may be conditionally valid under the Aristotelian view. Logical operations—Conversion (switch S/P), Obversion (change quality, complement P), and Contraposition (switch S/P, complement both)—yield new propositions whose logical equivalence to the original determines the validity of corresponding immediate inferences. Conversion is valid for E/I; Obversion is valid for A/E/I/O; Contraposition is valid for A/O. Invalid operations commit formal fallacies (Illicit Conversion/Contraposition).
+                                 <p class="text-gray-600 mb-4">
+                                   The Modern Square of Opposition shows the contradictory relationship (A/O, E/I always opposite truth values). The Traditional Square adds contrary (A/E not both true), subcontrary (I/O not both false), and subalternation (truth down, falsity up) relationships, assuming existential import for A/E propositions. These squares and Venn diagrams test immediate inferences. Arguments invalid solely due to lacking existential import commit the Existential Fallacy (Boolean view).
                                  </p>
+                                  <p class="text-gray-600">
+                                    Logical operations transform propositions: Conversion (switch S/P; valid for E/I), Obversion (change quality, complement P; valid for A/E/I/O), Contraposition (switch S/P, complement both; valid for A/O). Invalid operations result in formal fallacies (Illicit Conversion/Contraposition).
+                                  </p>
                                </div>
 
                                 <!-- Slide 70: Self-Check Exercises -->
@@ -1291,10 +1313,9 @@
                                        <li>Some popular television programs are not intellectually stimulating entertainments. (O)</li>
                                        <li>All physicians whose licenses have been revoked are physicians ineligible to practice. (A)</li>
                                      </ol>
-                                     <!-- Added Contraposition exercise V -->
                                 </div>
 
-                                <!-- Slide 118: References -->
+                                <!-- Slide 118 / Adjusted Slide 73: References -->
                                 <div class="slide">
                                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
                                    <!-- Consolidated and standardized references -->
@@ -1321,7 +1342,7 @@
         <!-- Navigation Arrows -->
         <div class="flex justify-between mt-4">
           <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
-          <span id="slideCounter" class="text-gray-600 self-center">1 / 72</span> <!-- Adjusted slide count -->
+          <span id="slideCounter" class="text-gray-600 self-center">1 / 73</span> <!-- Adjusted slide count -->
           <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
         </div>
       </div>
