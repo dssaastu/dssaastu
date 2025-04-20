@@ -1,933 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHAPTER ONE - DEFINING PHILOSOPHY</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent body from scrolling */
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 24px;
-            box-sizing: border-box;
-        }
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        .slider-container {
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 80px); /* Adjust for header and footer */
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        .slider {
-            position: relative;
-            flex: 1;
-            overflow: hidden; /* Hide horizontal scrollbars */
-            box-sizing: border-box;
-        }
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-            height: 100%;
-        }
-        .slide {
-            flex: 0 0 100%; /* Each slide takes up 100% width of the slider */
-            height: 100%;
-            box-sizing: border-box;
-            background: #f4f4f4; /* Light background color for slides */
-            display: flex;
-            align-items: center; /* Center content vertically */
-            justify-content: center; /* Center content horizontally */
-            position: relative;
-            overflow-y: auto; /* Allow vertical scrolling */
-        }
-        .slide-content {
-            border: 2px solid #ccc; /* Border around the content area */
-            padding: 20px; /* Space between the border and the content */
-            margin: 0 40px; /* Extra margin to indent the content from the sides */
-            box-sizing: border-box;
-            background: white; /* Content area background color */
-            max-width: calc(100% - 80px); /* Ensure content does not overflow horizontally */
-            max-height: 100%; /* Ensure content does not overflow vertically */
-            overflow-y: auto; /* Allow vertical scrolling within the content */
-        }
-        .navigation {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-        .arrow {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 24px;
-        }
-        .slide-number {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            color: #333;
-            background: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCED 1011 - Chapter 1: Logic and Philosophy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .slide { display: none; }
+    .slide.active { display: block; }
+    /* Styling for activity boxes */
+    .activity-box {
+        background-color: #eff6ff; /* blue-50 */
+        padding: 0.75rem; /* p-3 */
+        border-radius: 0.375rem; /* rounded */
+        border: 1px solid #bfdbfe; /* blue-200 */
+        margin-bottom: 1rem; /* mb-4 */
+        margin-top: 1rem; /* mt-4 */
+    }
+     /* Specific styling for bullet points (like merits/demerits, questions) */
+     .arrow-list li::before, .star-list li::before {
+         margin-right: 0.5em;
+     }
+     .arrow-list li::before {
+         content: '➢ '; /* Using a right arrow symbol */
+     }
+     .star-list li::before {
+         content: '❖ '; /* Using a star symbol */
+     }
+     .arrow-list, .star-list {
+         list-style-type: none;
+         padding-left: 1rem; /* Adjust as needed */
+     }
+      /* Styling for blockquotes (like the Bertrand Russell quote) */
+     blockquote {
+         border-left: 4px solid #d1d5db; /* gray-300 */
+         padding-left: 1rem; /* pl-4 */
+         font-style: italic;
+         color: #4b5563; /* gray-700 */
+         margin-bottom: 1rem;
+         margin-top: 1rem;
+     }
 
-
-
-    </style>
+    /* Ensure long reference lines wrap */
+    .ref-item { word-break: break-word; margin-bottom: 0.5rem; }
+  </style>
 </head>
-<body>
-    <div class="header">
-       CHAPTER ONE - DEFINING PHILOSOPHY
-    </div>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-4 max-w-4xl">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">PHIL1009 - Chapter One</h1>
 
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slides">
-                
-    
+    <!-- Slides Container -->
+    <div id="slides" class="relative bg-white rounded-lg shadow-lg p-6 min-h-[450px]">
 
+      <!-- Slide 1: Title and Overview -->
+      <div class="slide active">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CHAPTER ONE<br>LOGIC AND PHILOSOPHY</h2>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Chapter Overview</h3>
+        <p class="text-gray-600 mb-4">
+          Logic is often treated simultaneously as a field of study and as an instrument. As a field of study, it is a branch of philosophy that deals with the study of arguments and the principles and methods of right reasoning. As an instrument, it is something, which we can use to formulate our own rational arguments and critically evaluate the soundness of others' arguments. Before logic itself has become a field of study, philosophers have been using it as a basic tool to investigate issues that won their philosophical attention, such as, reality, knowledge, value, etc.
+        </p>
+         <p class="text-gray-600">
+           Philosophy is the study of general and fundamental problems concerning matters such as existence, knowledge, truth, beauty, law, justice, validity, mind, and language. It is a rational and critical enterprise that tries to answer fundamental questions through an intensive application of reason- an application that draws on analysis, comparison, and evaluation. It involves reason, rational criticism, examination, and analysis. In this chapter, we will learn the fundamental nature, concepts, features and areas of philosophy. Furthermore, we will discuss why it is so important to learn philosophy.
+         </p>
+      </div>
 
-<div class="slide">
-                    <div class="slide-content">
-                       <img src="ch1logo.jpg" alt="Description of Image" width="500" height="300">
-                    </div>
-                    
-                </div>
-
-
-
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Chapter Outline</h2>
-<ul>
-    <li>EARLIEST PHILOSOPHERS</li>
-    <li>MEANING OF PHILOSOPHY</li>
-    <li>NATURE OF PHILOSOPHY</li>
-    <li>BRANCHES OF PHILOSOPHY</li>
-    <li>RELEVANCE OF PHILOSOPHY</li>
-</ul>
-
-                    </div>
-                    <div class="slide-number">1 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>THE EARLIEST PHILOSOPHERS</h2>
-<p>The best way to define philosophy is to look into presocratics (earliest philosophers).</p>
-
-<h3>Objectives:</h3>
-<ul>
-    <li>To understand the historical context and cultural factors that influenced the development of philosophical thought.</li>
-    <li>To explore the contributions and ideas of the earliest philosophers.</li>
-    <li>To examine the key philosophical questions and inquiries posed by these early thinkers.</li>
-    <li>To analyze the impact of early philosophical ideas on subsequent philosophical traditions.</li>
-</ul>
-
-                    </div>
-                    <div class="slide-number">2 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Studying the Earliest Pre-Socratic Philosophers</h2>
-<p>Studying the earliest Pre-Socratic philosophers holds great significance in understanding the origins and development of philosophy. These thinkers, who lived in ancient Greece between the 6th and 5th centuries BCE, laid the groundwork for philosophical inquiry by asking fundamental questions about the nature of the universe, existence, and the human condition. Exploring their ideas provides valuable insights into the historical context and cultural factors that shaped philosophical perspectives.</p>
-
-<p>The Pre-Socratic philosophers emerged during a transformative period in ancient Greek civilization. It was a time of intellectual awakening, marked by the decline of mythological explanations and the rise of rational inquiry. The city-states, such as Miletus, Ephesus, and Elea, served as centers of intellectual activity where thinkers engaged in philosophical discourse and challenged traditional beliefs.</p>
-
-<p>Cultural factors played a significant role in shaping the ideas of the Pre-Socratic philosophers. Greek society valued reason, observation, and the pursuit of knowledge. These thinkers sought to understand the natural world and human existence through critical thinking and logical analysis. They were influenced by the burgeoning fields of mathematics, astronomy, and natural sciences, which provided them with tools to explore the fundamental principles underlying reality.</p>
-
-                    </div>
-                    <div class="slide-number">3 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Influences on the Pre-Socratics</h2>
-<p>The Pre-Socratics were influenced by the prevailing religious and philosophical traditions of their time. For instance, the cosmological ideas of Thales, Anaximander, and Anaximenes were influenced by the mythological and theological accounts of the origin and nature of the cosmos. They sought to provide rational explanations for natural phenomena, moving away from supernatural and divine explanations.</p>
-
-<p>The philosophical ideas of the Pre-Socratics were also influenced by the concept of <em>logos</em>, which refers to the underlying order or principle that governs the universe. Heraclitus, for example, considered <em>logos</em> as the fundamental principle of change and flux in the world.</p>
-
-                    </div>
-                    <div class="slide-number">4 / 29</div>
-                </div>
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Pre-Socratic Philosophers Grouped by Philosophical Schools</h2>
-
-<ol>
-    <li><strong>Milesian School:</strong>
-        <ul>
-            <li>Thales of Miletus</li>
-            <li>Anaximander of Miletus</li>
-            <li>Anaximenes of Miletus</li>
+      <!-- Slide 2: Chapter Objectives -->
+      <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Objectives</h2>
+        <p class="text-gray-600 mb-2">Dear learners, after the successful completion of this chapter, you will be able to:</p>
+        <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+          <li>Understand the meaning, nature and features of philosophy;</li>
+          <li>Recognize the major fields of philosophy; and</li>
+          <li>Understand why it is so important to learn logic and philosophy.</li>
         </ul>
-    </li>
-    <li><strong>Heraclitean School:</strong>
-        <ul>
-            <li>Heraclitus of Ephesus</li>
-        </ul>
-    </li>
-    <li><strong>Eleatic School:</strong>
-        <ul>
-            <li>Parmenides of Elea</li>
-            <li>Zeno of Elea</li>
-            <li>Melissus of Samos</li>
-            <li>Xenophanes</li>
-        </ul>
-    </li>
-    <li><strong>Pluralist School:</strong>
-        <ul>
-            <li>Empedocles of Acragas</li>
-            <li>Anaxagoras of Clazomenae</li>
-        </ul>
-    </li>
-    <li><strong>Atomist School:</strong>
-        <ul>
-            <li>Leucippus</li>
-            <li>Democritus of Abdera</li>
-        </ul>
-    </li>
-    <li><strong>Pythagorean School:</strong>
-        <ul>
-            <li>Pythagoras of Samos</li>
-        </ul>
-    </li>
-    <li><strong>Sophistic School:</strong>
-        <ul>
-            <li>Protagoras of Abdera</li>
-            <li>Gorgias of Leontini</li>
-        </ul>
-    </li>
-</ol>
-
-                    </div>
-                    <div class="slide-number">5 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>The Milesian School</h2>
-<p>The Milesian School was an ancient Greek philosophical school that originated in the city of Miletus, located in present-day Turkey. It is considered the first recorded philosophical school in history and is named after the city of its origin.</p>
-
-<h3>Common Features of the Milesian School</h3>
-<p>The Milesian School shared common features among its philosophers:</p>
-<ol>
-    <li><strong>Monism:</strong> The Milesian philosophers proposed that there is a single, fundamental substance or element that constitutes the basis of all things in the universe. Thales believed it to be water, Anaximander proposed the concept of the "apeiron," and Anaximenes argued for air as the primary substance.</li>
-<li><strong>Naturalistic Explanation:</strong> The philosophers of the Milesian School sought to provide naturalistic explanations for the phenomena observed in the world. They aimed to understand the underlying principles and origins of the natural world without resorting to supernatural or mythological explanations.</li>
-    <li><strong>Rational Inquiry:</strong> The Milesian philosophers emphasized the importance of reason and rational inquiry in understanding the world. They sought to provide logical and coherent explanations for natural phenomena, relying on observation and logical deduction rather than divine or mystical revelations.</li>
-    <li><strong>Materialism:</strong> The Milesians focused on material explanations for the nature of reality. They believed that the fundamental substance they identified as the basis of the universe was material in nature rather than immaterial or spiritual.</li>
-    <li><strong>Natural Laws:</strong> The Milesian philosophers believed in the existence of natural laws that governed the behavior and transformations of the fundamental substance. They sought to uncover these laws and understand how they governed the workings of the natural world.</li>
-    <li><strong>Influence on Later Philosophical Traditions:</strong> The ideas and approaches of the Milesian School had a significant impact on the development of philosophy. Their emphasis on naturalistic explanations and rational inquiry set the stage for subsequent philosophical traditions and scientific investigations.</li>
-</ol>
-
-                    </div>
-                    <div class="slide-number">6 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Thales</h2>
-<p>Thales of Miletus was a pre-Socratic philosopher and one of the key figures of the Milesian School. He is considered the founder of Western philosophy and science. Thales lived in the 6th century BCE and was known for his contributions to various fields, including mathematics, astronomy, and philosophy.</p>
-
-<h3>Key Aspects of Thales' Philosophy and Contributions:</h3>
-<ol>
-    <li><strong>Fundamental Substance:</strong> Thales proposed that the fundamental substance of the universe, the underlying element from which everything is derived, is water. He believed that water was the source and essence of all things. This idea marked a shift from mythological explanations of the natural world to a more rational and materialistic approach.</li>
-    <li><strong>Cosmology:</strong> Thales speculated about the nature and structure of the cosmos. He believed that the Earth was a flat disc floating on water, and that celestial bodies, such as the sun, moon, and stars, were also floating discs.</li>
-    <li><strong>Predictions and Explanations:</strong> Thales was known for making accurate predictions and providing explanations for natural phenomena. For example, he correctly predicted a solar eclipse in 585 BCE, which was seen as a remarkable demonstration of his scientific and astronomical knowledge.</li>
-    <li><strong>Mathematical Contributions:</strong> Thales introduced geometric principles to Greek mathematics. He is attributed with the theorem that states that a triangle inscribed in a semicircle is a right triangle, known as Thales' theorem. His mathematical insights laid the foundation for later developments in geometry.</li>
-    <li><strong>Practical Achievements:</strong> Thales applied his knowledge of science and mathematics to practical matters. He used his understanding of geometry to measure the height of pyramids and the distance of ships from the shore. He also advised on matters of irrigation and engineering.</li>
-</ol>
-<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe 
-        src="https://www.youtube.com/embed/huiO-y7f00Y?start=3&rel=0" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen 
-        style="width: 60%; height: 93%; margin: 0; padding: 0;">
-    </iframe>
-</div>
-<!-- 
- -->
-
-                    </div>
-                    <div class="slide-number">7 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Anaximander</h2>
-<p>Anaximander was an ancient Greek philosopher who was a prominent member of the Milesian School. He lived in the 6th century BCE and was a student of Thales, the founder of the school. Anaximander made significant contributions to cosmology, geography, biology, and metaphysics.</p>
-
-<h3>Key Aspects of Anaximander's Philosophy and Contributions:</h3>
-<ol>
-    <li><strong>The Concept of the Apeiron:</strong> Anaximander introduced the concept of the "apeiron," which can be translated as the "boundless" or the "infinite." He proposed that the fundamental substance of the universe is not a specific element like Thales' water but an undifferentiated and indeterminate substance, which he called the apeiron. According to Anaximander, the apeiron encompasses all things and is the source and driving force behind the generation and destruction of the cosmos.</li>
-    <li><strong>Cosmology and the Origin of the Universe:</strong> Anaximander speculated on the origin and structure of the universe. He proposed that the universe emerged from the apeiron through a process of separation and differentiation. From the apeiron, opposites such as hot and cold, wet and dry, and earth and air arose, leading to the formation of the cosmos.</li>
-    <li><strong>Geography and Cartography:</strong> Anaximander is credited with creating one of the earliest known maps of the world. His map depicted the known lands of the time, including the Mediterranean region, and was based on a cylindrical projection. This map marked a significant advancement in the understanding of geography and cartography.</li>
-    <li><strong>Biological Evolution:</strong> Anaximander speculated on the origins and development of life. He proposed that humans and other animals originally arose from more primitive forms of life, suggesting a form of biological evolution. He also hypothesized that humans initially emerged in a different type of environment and gradually adapted to their current conditions.</li>
-    <li><strong>Metaphysics and Ethics:</strong> Anaximander delved into metaphysical and ethical questions. He considered the concept of justice and believed in the idea of balancing opposites to maintain harmony. He also explored the nature of the soul and its relationship to the physical body.</li>
-</ol>
-
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe 
-        src="https://www.youtube.com/embed/bVbMtO6CWFE?start=84&rel=0" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen 
-        style="width: 60%; height: 93%; margin: 0; padding: 0;">
-    </iframe>
-</div>
-
- -->
-
-                    </div>
-                    <div class="slide-number">8 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Anaximenes</h2>
-<p>Anaximenes was an ancient Greek philosopher who belonged to the Milesian School. He lived in the 6th century BCE, succeeding Anaximander as a prominent figure in the school. Anaximenes made significant contributions to cosmology, metaphysics, and natural philosophy.</p>
-
-<h3>Key Aspects of Anaximenes' Philosophy and Contributions:</h3>
-<ol>
-    <li><strong>Air as the Fundamental Substance:</strong> Anaximenes proposed that the fundamental substance of the universe is air. He believed that air is the primary element from which all things arise and to which they return. According to Anaximenes, through processes of condensation and rarefaction, air can transform into other elements and give rise to the diversity of phenomena observed in the world.</li>
-    <li><strong>Cosmology and Natural Phenomena:</strong> Anaximenes developed a cosmological model based on the properties of air. He suggested that the Earth was a flat disk, similar to Thales' and Anaximander's views, and that celestial bodies were fiery wheels of air. He explained natural phenomena such as earthquakes, lightning, and the formation of clouds as variations in the density and motion of air.</li>
-    <li><strong>Unity and Multiplicity:</strong> Anaximenes proposed that all things are composed of air, but their differences arise from variations in the density and quality of air. He believed that the processes of condensation and rarefaction explain the transformation of air into different substances. This idea emphasized a unity underlying the diversity of the world.</li>
-    <li><strong>Motion and Change:</strong> Anaximenes considered motion and change as fundamental aspects of the cosmos. He believed that air is in a constant state of motion, continuously transforming and giving rise to different phenomena. He also suggested that the motion of celestial bodies influenced the affairs of humans.</li>
-    <li><strong>Ethical and Psychological Considerations:</strong> Anaximenes explored the relationship between the physical and the spiritual. He argued that as air is the life-giving force, it is also responsible for the animation of living beings and the soul. He believed that maintaining harmony and balance in the breath (air) within the body leads to physical and psychological well-being.</li>
-</ol>
-
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/g9A5L2xmKU8?si=OpYTJ6_NzOIWQ58qrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
- -->
-
-                    </div>
-                    <div class="slide-number">9 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>The Heraclitean School</h2>
-<p>The Heraclitean School, also known as the School of Heraclitus, refers to the followers and proponents of the philosophy of Heraclitus who lived during the 6th and 5th centuries BCE. Heraclitus is best known for his belief in the constant flux and change of the universe. He famously stated that "everything flows" and emphasized the idea of perpetual change as the fundamental nature of reality. The followers of Heraclitus, often referred to as Heracliteans, embraced and expanded upon this concept.</p>
-
-<h3>Key Aspects of the Philosophy Associated with the Heraclitean School:</h3>
-<ol>
-    <li><strong>Flux and Change:</strong> The Heracliteans emphasized the idea that the universe is in a constant state of change. They believed that change is not only a characteristic of the physical world but also extends to human existence, society, and knowledge. They saw change as an inherent and essential aspect of reality.</li>
-    <li><strong>Primordial Stuff, or Arche:</strong> Heraclitus proposed that there is an eternal and unchanging principle underlying the ever-changing world. Fire is a symbolic representation of arche for Heraclitus.</li>
-    <li><strong>Unity of Opposites:</strong> The Heracliteans embraced the idea of the unity of opposites, which Heraclitus himself proposed. They believed that opposites are interconnected and depend on each other for their existence. They saw a dynamic interplay between opposing forces and considered contradictions and tensions as integral to the functioning of the world.</li>
-    <li><strong>Logos:</strong> Heraclitus introduced the concept of the "logos" to explain the underlying order and rationality in the universe. The Heracliteans further developed this concept, understanding the logos as a divine principle or cosmic law that governs the dynamic processes of change and maintains harmony amidst the flux.</li>
-    <li><strong>Epistemology:</strong> The Heracliteans had a distinctive epistemological stance. They believed that knowledge is not static but is acquired through an active engagement with the world and through the recognition of patterns and relationships in the flux of reality. They emphasized the importance of intuition, perception, and the ability to grasp the underlying unity amidst diversity.</li>
-    <li><strong>Influence on Later Philosophies:</strong> The ideas of the Heraclitean School had a significant influence on subsequent philosophical traditions. The emphasis on change, the unity of opposites, and the role of the logos can be seen in later philosophies such as Stoicism and Hegelian dialectics.</li>
-</ol>
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/M9CLktqAj9U?si=RZQrXdmVxr6Mkg7qrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-   
-</div>
-
- -->
-
-
-                    </div>
-                    <div class="slide-number">10 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>The Eleatic School</h2>
-<p>The Eleatic School refers to a group of ancient Greek philosophers who were associated with the town of Elea in southern Italy during the 5th and 6th centuries BCE. The Eleatic philosophers are known for their metaphysical and ontological inquiries, particularly in relation to the nature of reality and the concept of being. The Eleatic School is primarily associated with three philosophers: Parmenides, Zeno of Elea, and Melissus. Although they had individual contributions, they shared some common philosophical perspectives.</p>
-
-<h3>Key Aspects of the Eleatic School:</h3>
-<ol>
-    <li><strong>Monism:</strong> The Eleatics embraced a monistic view of reality, asserting that there is a single, unchanging, and indivisible substance that constitutes the ultimate nature of existence. This substance is often referred to as "Being" or "the One." They argued that multiplicity and change are illusory and that true reality is timeless and unchanging.</li>
-    <li><strong>Parmenides' Doctrine of Being:</strong> Parmenides, the founder of the Eleatic School, presented a metaphysical system centered around the concept of Being. He argued that Being is eternal, immutable, and indivisible, and that it is the only genuine reality. Parmenides rejected the notion of becoming, change, and plurality as mere appearances or illusions.</li>
-    <li><strong>Zeno's Paradoxes:</strong> Zeno of Elea, a disciple of Parmenides, is famous for formulating paradoxes that challenge the possibility of motion and change. His paradoxes, such as the Achilles and the Tortoise Paradoxes, aimed to demonstrate the logical difficulties and contradictions that arise when attempting to reconcile the concept of motion with Parmenidean principles.</li>
-    <li><strong>Melissus' Infinite Being:</strong> Melissus, another disciple of Parmenides, further developed the Eleatic philosophy by introducing the concept of infinite Being. He argued that Being is infinite, eternal, and indivisible, and that it cannot be contained or limited by anything else. Melissus defended the unity and unchanging nature of Being against the concept of multiplicity and change.</li>
-    <li><strong>Influence on Philosophy:</strong> The Eleatic School had a profound influence on subsequent philosophical traditions. Their emphasis on the primacy of Being, the denial of change and plurality, and the use of logical reasoning had a significant impact on the development of metaphysics and ontology in Western philosophy. Their paradoxes, particularly Zeno's, also stimulated philosophical reflections on the nature of space, time, and motion.</li>
-</ol>
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/MbDW1836TXg?si=WP7RGNQG3qCLm9nKrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/szUsitFuF9c?si=qSorrmt1aBMF7YAk" title="YouTube video playerrel0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>ss
-<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/TKiKdJ3Z7-Y?si=krACqW0CKBP6sfV8rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
- -->
-
-
-                    </div>
-                    <div class="slide-number">11 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>The Pluralist School</h2>
-<p>The Pluralist School held the view that the fundamental nature of reality consists of multiple distinct and independent substances. Unlike the monistic views of philosophers like Parmenides from the Eleatic School, the Pluralists believed in the existence of a diverse and varied world composed of different elements or principles. There were several philosophers associated with the Pluralist School, but the most notable representatives were Anaxagoras, Empedocles, and the Atomists (Leucippus and Democritus).</p>
-
-<h3>Key Aspects of the Pluralist School:</h3>
-<ol>
-    <li><strong>Anaxagoras:</strong> Anaxagoras is often considered one of the earliest philosophers associated with the Pluralist School. He proposed that the fundamental nature of reality consists of an infinite number of small particles called "seeds" or "homoiomeries." According to Anaxagoras, these seeds combine and separate to form all the different objects and substances in the world. He also introduced the concept of Nous, or Mind, as the ordering principle that sets the seeds in motion and governs the processes of formation and change.</li>
-    <li><strong>Empedocles:</strong> Empedocles expanded upon the ideas of Anaxagoras and introduced the concept of four basic elements: earth, air, fire, and water. He believed that these elements were eternal and unchangeable, and all things in the world were composed of different combinations of these elements. Empedocles also proposed the idea of love (philia) and strife (neikos) as the driving forces behind the mixing and separation of the elements.</li>
-    <li><strong>Atomists:</strong> Leucippus and Democritus, known as the Atomists, developed a sophisticated atomic theory as part of the Pluralist School. They proposed that the fundamental constituents of reality are indivisible and indestructible particles called atoms. These atoms are infinite in number and differ in size, shape, and arrangement. According to the Atomists, all objects and phenomena in the world are the result of the motion and combination of these atoms.</li>
-    <li><strong>Rejection of Changelessness:</strong> Unlike the Eleatic philosophers who emphasized the immutability of reality, the Pluralists acknowledged the existence of change and transformation. They believed that the world is in a perpetual state of flux, with objects and substances constantly undergoing processes of combination, separation, and change.</li>
-</ol>
-
-<!--<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/4V62XmEvCTo?si=AIHMuth3qUIEgVLlrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/QDNZFkLrR7U?si=7uQql_FmC5YnWViXrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-
-<div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QWP9ewCL2IE?si=RMT5ceu1RApU9b0Lrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
- -->
-
-
-                    </div>
-                    <div class="slide-number">12 / 29</div>
-                </div>
-<div class="slide">
-                    <div class="slide-content">
-                       <h2>The Pythagorean School</h2>
-<p>The Pythagorean School is associated with the teachings of Pythagoras, an ancient Greek philosopher and mathematician who lived in the 6th century BCE. The Pythagorean School had a significant influence on ancient Greek thought and made lasting contributions to various fields, including mathematics, philosophy, and spirituality.</p>
-
-<h3>Key Aspects of the Pythagorean School:</h3>
-<ol>
-    <li><strong>Pythagorean Theorem:</strong> The Pythagorean School is most famous for the discovery and proof of the Pythagorean theorem, which states that in a right-angled triangle, the square of the length of the hypotenuse is equal to the sum of the squares of the lengths of the other two sides. This theorem has far-reaching applications in mathematics and is foundational to geometry.</li>
-    <li><strong>Numerology and Mathematics:</strong> The Pythagoreans believed in the fundamental role of numbers in the structure of the universe. They saw numbers as the key to understanding reality and believed that all things could be described and explained through numerical relationships. They explored mathematical concepts and relationships, viewing them as expressions of the harmony and order in the cosmos.</li>
-    <li><strong>Metaphysics and Cosmology:</strong> The Pythagoreans extended their mathematical insights into metaphysical and cosmological speculations. They believed in the existence of a harmonious and mathematically ordered universe. They posited the idea of the "Music of the Spheres," the notion that the celestial bodies produce harmonious sounds as they move in their orbits, reflecting the mathematical relationships governing their motions.</li>
-    <li><strong>Ethical and Spiritual Teachings:</strong> The Pythagoreans emphasized the pursuit of ethical and spiritual development as integral to their philosophical system. They believed in the transmigration of souls, the idea that the soul undergoes a series of reincarnations, and that the goal of life is to purify the soul and achieve union with the divine. They advocated for virtues such as temperance, justice, and wisdom.</li>
-    <li><strong>Influence on Philosophy:</strong> The Pythagorean School had a profound influence on subsequent philosophical traditions. They laid the foundation for the study of mathematics as an abstract discipline and influenced the development of Plato's philosophy, particularly his views on the role of mathematics in understanding the nature of reality. The Pythagoreans' emphasis on the soul, ethics, and the pursuit of wisdom also contributed to the development of ancient ethical philosophy.</li>
-</ol>
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/GccABwBCPGE?si=CUf4uJygOvkQA5mjrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
- -->
-
-                    </div>
-                    <div class="slide-number">13 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Sophistic School</h2>
-<p>The Sophistic School refers to a group of ancient Greek thinkers known as the Sophists, who were active during the 5th century BCE. The Sophistic movement emerged in response to the changing social and political landscape of ancient Greece and had a significant impact on philosophy, rhetoric, and education at the time. It includes figures such as Protagoras and Gorgias.</p>
-
-<h3>Key Aspects of the Sophistic School:</h3>
-<ol>
-    <li><strong>Rhetoric and Persuasion:</strong> The Sophists were skilled in the art of rhetoric, which involved persuasive speaking and argumentation. They believed that effective communication and persuasion were essential skills for success in public and political life. The Sophists taught methods of persuasion, including techniques for constructing persuasive arguments and presenting them effectively.</li>
-    <li><strong>Relativism and Skepticism:</strong> The Sophists questioned the existence of absolute truth and emphasized the subjective nature of knowledge and perception. They argued that truth is relative to individuals or societies and that there are no universal or objective standards. This relativistic stance led to skepticism about the possibility of discovering ultimate truths and contributed to a more critical and questioning approach to knowledge.</li>
-    <li><strong>Protagoras and Humanism:</strong> Protagoras, one of the prominent Sophists, is known for his statement that "man is the measure of all things." This humanistic perspective emphasized the importance of human beings and their experiences as the basis for understanding the world. Protagoras believed that knowledge and truth are shaped by human perspectives and that individuals have the power to interpret and give meaning to their experiences.</li>
-    <li><strong>Education and Sophistic Curriculum:</strong> The Sophists offered education and training in various subjects, including rhetoric, public speaking, ethics, and politics. They were known for their practical and pragmatic approach to education, focusing on skills that were useful for success in public life. Their curriculum emphasized the art of persuasion, critical thinking, and the development of effective communication skills.</li>
-    <li><strong>Criticism and Reputation:</strong> The Sophistic movement faced criticism from other philosophers, notably Plato and Aristotle, who accused them of moral relativism, manipulation of language, and intellectual dishonesty. The negative reputation associated with the Sophists, perpetuated by these criticisms, has influenced the way they are often portrayed in history.</li>
-</ol>
-
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/2BkhnoQHxhs?si=YkZpXx9BqFr_httZrel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div> -->
-
-
-
-                    </div>
-                    <div class="slide-number">14 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>2. Meaning of Philosophy:</h2>
-
-<h3>Objectives:</h3>
-<ul>
-    <li>To define the term <strong>"philosophy"</strong> and explore its etymology and origins.</li>
-    <li>To examine various definitions and interpretations of philosophy from different philosophical traditions.</li>
-    <li>To reflect on the evolving nature of philosophy and its relationship to other disciplines.</li>
-</ul>
-
-                    </div>
-                    <div class="slide-number">15 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Defining Philosophy: Etymology and Origin</h2>
-
-<p>The word <strong>"philosophy"</strong> has its origins in ancient Greek. It is derived from the Greek word <em>"philosophia"</em>, which combines two terms: <strong>"philos"</strong> meaning <em>"love"</em> or <em>"friendship"</em>, and <strong>"sophia"</strong> meaning <em>"wisdom"</em> or <em>"knowledge"</em>. Therefore, the literal translation of philosophy is often understood as <strong>"the love of wisdom"</strong> or <strong>"the pursuit of wisdom"</strong>.</p>
-
-<p>The term <strong>"philosophy"</strong> was first used by the ancient Greek thinker Pythagoras in the 6th century BCE. However, the discipline of philosophy as an organized field of study emerged in ancient Greece around the 5th century BCE with the pre-Socratic philosophers such as Thales, Anaximander, and Heraclitus.</p>
-
-<p>These early philosophers sought to understand the fundamental nature of reality, the nature of knowledge, and the principles underlying the natural world. They posed questions about the nature of existence, the origins of the universe, and the nature of human knowledge and perception. Their inquiries laid the foundation for the development of various branches of philosophy, such as metaphysics, epistemology, ethics, and logic.</p>
-
-<p>Throughout history, philosophy has evolved and branched out into different schools of thought and traditions, including ancient Greek philosophy, medieval philosophy, and modern philosophy. It has also encompassed a wide range of topics, including ethics, metaphysics, epistemology, logic, aesthetics, social and political philosophy, and the philosophy of mind, among others.</p>
-
-<p>Philosophy continues to be a vibrant and dynamic discipline, exploring fundamental questions about the nature of reality, the limits of human knowledge, the nature of morality, and the foundations of rational thinking. It is an ongoing intellectual endeavor that seeks to critically examine and analyze various beliefs, concepts, and theories to gain a deeper understanding of the world and our place in it.</p>
-
-                    </div>
-                    <div class="slide-number">16 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Various Definitions and Interpretations: Western Philosophical Traditions</h2>
-
-<p>Western philosophical traditions have offered various definitions and interpretations of philosophy throughout history. Here are some key perspectives:</p>
-
-<h3>Love of Wisdom</h3>
-<p>This definition, rooted in the etymology of the word <strong>"philosophy"</strong>, emphasizes the pursuit of wisdom and knowledge. It suggests that philosophy involves a deep curiosity and love for understanding fundamental truths about the world and human existence.</p>
-
-<h3>Rational Inquiry</h3>
-<p>Philosophy is often seen as a discipline that employs rational and critical thinking to investigate questions about reality, knowledge, ethics, and other areas of human inquiry. It involves the use of logic, reasoning, argumentation, and analysis to explore these topics.</p>
-
-<h3>Systematic Study of Fundamental Questions</h3>
-<p>Philosophy is concerned with addressing fundamental questions that underlie various areas of human knowledge and experience. These questions include the nature of reality, the existence of God, the nature of knowledge and truth, the foundations of morality, the mind-body problem, and the nature of beauty, among others.</p>
-
-<h3>Metaphysical Speculation</h3>
-<p>Some philosophical traditions place a strong emphasis on metaphysics, which deals with fundamental questions about the nature of reality. Metaphysical inquiry explores concepts such as the nature of existence, the relationship between mind and matter, the nature of causality, and the existence of free will.</p>
-
-<h3>Ethical Inquiry</h3>
-<p>Ethics is a central branch of philosophy that examines questions of morality, values, and human conduct. Philosophical ethical inquiry explores different ethical theories, such as consequentialism, deontology, and virtue ethics, and seeks to understand the nature of right and wrong, good and evil, and the foundations of ethical decision-making.</p>
-
-<h3>Critical Analysis of Concepts and Beliefs</h3>
-<p>Philosophy involves critically examining and analyzing concepts, beliefs, and arguments. It aims to clarify and evaluate the meaning, coherence, and validity of ideas and theories. This critical analysis helps to refine our understanding and identify potential inconsistencies or weaknesses in our thinking.</p>
-
-<h3>Dialogue and Discourse</h3>
-<p>Philosophy often thrives through dialogue and discourse. Philosophers engage in debates and discussions, presenting and challenging ideas, and engaging with the views of others. This exchange of ideas helps to refine arguments, deepen understanding, and contribute to the growth of knowledge.</p>
-
-                    </div>
-                    <div class="slide-number">17 / 29</div>
-                </div>
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Various Definitions and Interpretations: Eastern Philosophical Traditions</h2>
-
-<p>Eastern philosophical traditions offer distinct definitions and interpretations of philosophy. Here are some key perspectives from major Eastern philosophical traditions:</p>
-
-<h3>Hindu Philosophy</h3>
-<p>In Hindu philosophy, the term <strong>"philosophy"</strong> is often referred to as <strong>"Darshana"</strong>, which means "seeing" or "perceiving." It encompasses several schools of thought, such as Vedanta, Yoga, Nyaya, and Samkhya, among others. Hindu philosophy seeks to explore the nature of reality, the self, and the ultimate truth (Brahman) through contemplation, meditation, and self-realization.</p>
-
-<h3>Buddhist Philosophy</h3>
-<p>Buddhism emphasizes the understanding of suffering and the search for liberation from it. Buddhist philosophy involves the exploration of the nature of existence, the causes of suffering (<strong>dukkha</strong>), and the path to enlightenment (<strong>nirvana</strong>). It emphasizes meditation, mindfulness, and the development of wisdom and compassion.</p>
-
-<h3>Confucian Philosophy</h3>
-<p>Confucianism focuses on ethical and social values, emphasizing the cultivation of virtues and the pursuit of moral excellence. Confucian philosophy seeks to establish a harmonious society through the cultivation of virtues such as benevolence, righteousness, and filial piety. It emphasizes the importance of social relationships and the proper conduct of individuals within the community.</p>
-
-<h3>Taoist Philosophy</h3>
-<p>Taoism centers on the concept of the <strong>"Tao"</strong>, which can be understood as the underlying principle or way of nature. Taoist philosophy encourages individuals to live in harmony with the natural flow of things and emphasizes spontaneity, simplicity, and non-action (<strong>wú-wéi</strong>). It explores the nature of existence, the balance of opposites, and the pursuit of a balanced and fulfilling life.</p>
-
-<h3>Zen Philosophy</h3>
-<p>Zen, derived from the Chinese word <strong>"Chan"</strong>, is a school of Mahayana Buddhism that places a strong emphasis on direct experience and meditation. Zen philosophy seeks to go beyond conceptual thinking and intellectual understanding to achieve direct insight into the nature of reality. It emphasizes mindfulness, meditation, and the practice of being fully present in the moment.</p>
-
-<h3>Jain Philosophy</h3>
-<p>Jainism is an ancient Indian philosophy that emphasizes non-violence (<strong>ahimsa</strong>), truthfulness, non-attachment, and the liberation of the soul from the cycle of birth and death. Jain philosophy explores the nature of the soul, karma, and the path to spiritual liberation through ethical living, meditation, and ascetic practices.</p>
-
-                    </div>
-                    <div class="slide-number">18 / 29</div>
-                </div>
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>The Evolving Nature of Philosophy</h2>
-<p>Philosophy is a discipline that has evolved over time and continues to adapt to new challenges and developments. Here are some key aspects that reflect the evolving nature of philosophy:</p>
-
-<h3>Expansion of Subject Matter</h3>
-<p>Philosophy has expanded its subject matter beyond traditional areas such as metaphysics, epistemology, and ethics. It now encompasses a wide range of sub-disciplines and specialized fields, including philosophy of science, philosophy of mind, philosophy of language, environmental philosophy, and philosophy of technology, among others. This expansion reflects the recognition of new areas of inquiry and the interdisciplinary nature of philosophical investigation.</p>
-
-<h3>Integration of Interdisciplinary Approaches</h3>
-<p>Philosophy has increasingly embraced interdisciplinary approaches, engaging with other fields such as psychology, neuroscience, linguistics, sociology, and anthropology. This integration allows philosophy to draw on empirical research, scientific methodologies, and insights from other disciplines to enrich its philosophical analysis and understanding.</p>
-
-<h3>Engagement with Social and Political Issues</h3>
-<p>Philosophy has become more engaged with social and political issues, addressing questions of justice, equality, human rights, and social ethics. Philosophers contribute to public debates on topics such as climate change, discrimination, technology ethics, and social justice, applying philosophical tools and ethical frameworks to analyze and propose solutions to these complex issues.</p>
-
-<h3>Reevaluation of Traditions and Perspectives</h3>
-<p>Philosophical traditions and perspectives are constantly reevaluated and critiqued, leading to new insights and alternative viewpoints. Philosophers critically examine foundational assumptions and challenge established theories and concepts, nurturing intellectual growth and the evolution of philosophical ideas. This process helps to refine and develop philosophical theories and approaches.</p>
-
-<h3>Integration of Global Perspectives</h3>
-<p>There is an increasing recognition and incorporation of global perspectives in philosophy, moving beyond the traditionally Western-centric approach. Non-Western philosophical traditions, such as Confucianism, Buddhism, and African philosophy, are receiving more attention and recognition, enriching the global philosophical discourse and promoting a more inclusive and diverse understanding of philosophical ideas.</p>
-
-<h3>Engaging with Emerging Technologies</h3>
-<p>Philosophy is grappling with the ethical, social, and philosophical implications of emerging technologies such as artificial intelligence, genetic engineering, and virtual reality. Philosophers are exploring questions related to privacy, autonomy, responsibility, and the impact of these technologies on society, contributing to the ethical and policy debates surrounding their development and use.</p>
-
-<h3>Dialogue and Collaboration</h3>
-<p>Philosophy increasingly emphasizes dialogue and collaboration among philosophers, as well as with scholars from other disciplines and the general public. Philosophical debates are conducted through conferences, seminars, and online platforms, cultivating an exchange of ideas and perspectives. This collaborative approach helps to refine arguments, challenge assumptions, and promote a more robust and inclusive philosophical discourse.</p>
-
-                    </div>
-                    <div class="slide-number">19 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h1>3. Nature of Philosophy</h1>
-<h2>Objectives:</h2>
-<ul>
-    <li>To explore the fundamental nature and characteristics of philosophy as a discipline.</li>
-    <li>To discuss the methods and approaches used in philosophical inquiry.</li>
-    <li>To examine the role of reason, critical thinking, and logical argumentation in philosophy.</li>
-    <li>To consider the relationship between philosophy and empirical sciences.</li>
-</ul>
-
-                    </div>
-                    <div class="slide-number">20 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                       <h2>The Role of Reason in Philosophical Inquiry</h2>
-<p>Reason plays a central role in philosophical inquiry. It is the faculty of rational thinking and logical analysis that allows philosophers to critically examine concepts, arguments, and beliefs.</p>
-
-<h3>Key Ways in Which Reason is Involved in Philosophical Inquiry:</h3>
-<ul>
-    <li><strong>Logical Analysis:</strong> Reason enables philosophers to engage in logical analysis, identifying and evaluating the structure of arguments. They use deductive and inductive reasoning to assess the validity and soundness of arguments, identifying logical fallacies and inconsistencies.</li>
-    <li><strong>Clarity and Coherence:</strong> Reason helps philosophers to achieve clarity and coherence in their thinking and communication. They strive to express ideas and concepts in a precise and logically consistent manner, avoiding ambiguity and confusion.</li>
-    <li><strong>Problem Solving:</strong> Reason is employed in philosophical inquiry to identify and analyze problems. Philosophers use logical reasoning and critical thinking to break down complex issues into manageable parts, identifying underlying assumptions and exploring potential solutions.</li>
-    <li><strong>Rational Evaluation:</strong> Reason allows philosophers to evaluate competing theories and perspectives. They critically assess evidence, arguments, and counterarguments, weighing their strengths and weaknesses to arrive at well-supported conclusions.</li>
-    <li><strong>Conceptual Analysis:</strong> Reason is used to engage in conceptual analysis, examining the meanings and logical relationships of concepts. Philosophers employ reason to clarify terms, disentangle complex ideas, and uncover hidden assumptions, enabling a deeper understanding of philosophical problems.</li>
-    <li><strong>Thought Experiments:</strong> Reason helps philosophers to construct and evaluate thought experiments, hypothetical scenarios designed to explore philosophical questions. Through reasoned analysis, they examine the implications of these thought experiments, shedding light on the nature of reality, ethics, and other philosophical domains.</li>
-    <li><strong>Rational Justification:</strong> Reason plays a crucial role in providing rational justification for beliefs, theories, and claims. Philosophers seek to provide logical and coherent arguments to support their positions, appealing to reason as a basis for accepting or rejecting propositions.</li>
-    <li><strong>Meta-level Reflection:</strong> Reason is employed in meta-level reflection, where philosophers critically evaluate the methods, assumptions, and limitations of philosophical inquiry itself. They engage in self-reflection, examining the role of reason in their own thinking and assessing the rationality of philosophical approaches.</li>
-</ul>
-
-                    </div>
-                    <div class="slide-number">21 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                       <h2>Distinctions between Philosophy and the Empirical Sciences</h2>
-<p>While philosophy and the empirical sciences both engage in the pursuit of knowledge and understanding, there are several key distinctions between the two.</p>
-
-<h3>Key Distinctions:</h3>
-<ul>
-    <li><strong>Methodology:</strong> The empirical sciences rely on the scientific method, which involves systematic observation, experimentation, and data collection to test hypotheses and generate empirical evidence. Philosophy, on the other hand, employs methods such as logical analysis, conceptual clarification, and rational argumentation to investigate fundamental questions and explore concepts and arguments.</li>
-    <li><strong>Subject Matter:</strong> The empirical sciences focus on studying the natural world and its phenomena. They seek to explain and predict observable phenomena through empirical evidence. Philosophy, on the other hand, addresses a broader range of questions that may not be directly testable through empirical methods. It examines concepts such as consciousness, morality, free will, and the nature of reality itself.</li>
-    <li><strong>Scope of Inquiry:</strong> The empirical sciences often have a narrower scope, focusing on specific domains or disciplines, such as physics, biology, or psychology. Philosophy, in contrast, takes a more comprehensive approach, addressing overarching questions and exploring the foundations and principles that underlie various fields of inquiry.</li>
-    <li><strong>Verifiability and Falsifiability:</strong> Empirical sciences aim to produce verifiable and falsifiable claims through empirical observations and experiments. Scientific theories are tested against empirical evidence and subject to revision or rejection based on new data. Philosophy, on the other hand, deals with questions that may not be subject to direct empirical verification or falsification. It often relies on logical reasoning and conceptual analysis to evaluate arguments and claims.</li>
-    <li><strong>Normative vs. Descriptive:</strong> While empirical sciences primarily focus on descriptive questions, seeking to explain how things are or work in the natural world, philosophy also engages in normative inquiries. It explores questions of ethics, morality, and value, seeking to understand how things ought to be or what is morally right or wrong.</li>
-    <li><strong>Historical Tradition:</strong> Philosophy has a rich historical tradition, with influential thinkers shaping the development of ideas over centuries. It often engages in dialogue with past philosophers, building upon and responding to their ideas. The empirical sciences, while also influenced by historical developments, tend to be more focused on contemporary research and discoveries.</li>
-</ul>
-
-                    </div>
-                    <div class="slide-number">22 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>4. BRANCHES OF PHILOSOPHY:</h2>
-    <h3>Objectives:</h3>
-    <ul>
-        <li>To introduce and describe the main branches or fields of philosophy, such as metaphysics, epistemology, ethics, logic, aesthetics, and political philosophy.</li>
-        <li>To provide a brief overview of each branch, including its central questions and areas of inquiry.</li>
-        <li>To highlight the interconnections and overlaps between different branches of philosophy.</li>
-        <li>To discuss the significance and relevance of each branch in understanding the human condition and the world we live in.</li>
-    </ul>
-                    </div>
-                    <div class="slide-number">23 / 29</div>
-                </div>
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Branches of Philosophy: Concerns and Questions</h2>
-    
-    <h3>1. Metaphysics:</h3>
-    <p><strong>Concerns:</strong> The nature of reality, existence, and the ultimate nature of things.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is the nature of reality?</li>
-        <li>What is the relationship between mind and body?</li>
-        <li>Does free will exist?</li>
-        <li>Is there a God?</li>
-    </ul>
-    
-    <h3>2. Epistemology:</h3>
-    <p><strong>Concerns:</strong> The nature of knowledge, belief, and justification.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is knowledge, and how is it acquired?</li>
-        <li>What is the nature of truth?</li>
-        <li>How do we differentiate between justified belief and opinion?</li>
-        <li>Are there limits to what we can know?</li>
-    </ul>
-    
-    <h3>3. Ethics:</h3>
-    <p><strong>Concerns:</strong> Morality, values, and how we ought to live.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is the nature of morality?</li>
-        <li>How do we determine what is morally right or wrong?</li>
-        <li>Are moral values objective or subjective?</li>
-        <li>What is the relationship between ethics and individual freedom?</li>
-    </ul>
-    
-    <h3>4. Logic:</h3>
-    <p><strong>Concerns:</strong> Principles of valid reasoning and sound argumentation.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What makes an argument valid?</li>
-        <li>What are the rules of logical reasoning?</li>
-        <li>How can we evaluate the validity and coherence of arguments?</li>
-    </ul>
-    
-    <h3>5. Aesthetics:</h3>
-    <p><strong>Concerns:</strong> Beauty, art, and aesthetic experiences.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is art?</li>
-        <li>What makes something beautiful?</li>
-        <li>How do we evaluate and interpret artistic works?</li>
-        <li>What is the relationship between aesthetics and ethics?</li>
-    </ul>
-    
-    <h3>6. Political Philosophy:</h3>
-    <p><strong>Concerns:</strong> Governance, power, and social organization.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is the ideal form of government?</li>
-        <li>What are the rights and responsibilities of individuals within a society?</li>
-        <li>How should resources be distributed in a just society?</li>
-        <li>What is the nature and extent of political authority?</li>
-    </ul>
-    
-    <h3>7. Philosophy of Mind:</h3>
-    <p><strong>Concerns:</strong> The nature of consciousness, mental states, and the mind-body relationship.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is consciousness, and how does it arise?</li>
-        <li>What is the relationship between the mind and the brain?</li>
-        <li>Can machines or computers possess consciousness?</li>
-        <li>Are mental states reducible to physical states?</li>
-    </ul>
-    
-    <h3>8. Philosophy of Science:</h3>
-    <p><strong>Concerns:</strong> The nature, methods, and limits of scientific inquiry.</p>
-    <p><strong>Questions:</strong></p>
-    <ul>
-        <li>What is scientific knowledge, and how is it different from other forms of knowledge?</li>
-        <li>What is the scientific method?</li>
-        <li>How do scientific theories develop and evolve?</li>
-        <li>What are the philosophical implications of scientific discoveries?</li>
-    </ul>
-                    </div>
-                    <div class="slide-number">24 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h1>5. Relevance of Philosophy</h1>
-    
-    <h3>Objectives</h3>
-    <ul>
-        <li>To explore the practical and applied implications of philosophical thinking in various aspects of life.</li>
-        <li>To discuss how philosophy can contribute to personal growth, self-reflection, and ethical decision-making.</li>
-        <li>To examine the role of philosophy in shaping and critiquing social, political, and cultural systems.</li>
-        <li>To reflect on the enduring relevance of philosophical ideas and concepts in contemporary society.</li>
-    </ul>
-                    </div>
-                    <div class="slide-number">25 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                       <h2>Philosophy in Everyday Life – Personal Growth</h2>
-    <p>Philosophy is often seen as an abstract and lofty discipline, but its ideas and principles can actually be applied to our everyday lives in meaningful ways. Here are a few ways in which philosophy can be relevant to daily life:</p>
-    
-    <h3>Developing Critical Thinking</h3>
-    <p>Philosophy encourages us to think critically and question our assumptions. By engaging with philosophical ideas, we can learn to analyze arguments, evaluate evidence, and make informed decisions. This skill is valuable in various aspects of life, such as problem-solving, decision-making, and even engaging in debates or discussions.</p>
-    
-    <h3>Examining Personal Values and Ethics</h3>
-    <p>Philosophy helps us reflect on our values, beliefs, and ethical principles. It encourages us to ask questions about what is right or wrong, what constitutes a good life, and how to live ethically. By engaging with ethical theories and considering different perspectives, we can develop a clearer understanding of our own values and make more informed ethical choices.</p>
-    
-    <h3>Cultivating Self-Awareness</h3>
-    <p>Philosophical inquiry often involves introspection and self-reflection. By contemplating philosophical questions, such as the nature of existence, the meaning of life, or the nature of knowledge, we can gain a deeper understanding of ourselves and our place in the world. This self-awareness can lead to personal growth and a greater sense of purpose.</p>
-    
-    <h3>Finding Meaning and Purpose</h3>
-    <p>Philosophy explores questions about the meaning and purpose of life. Engaging with philosophical ideas can help us reflect on our own lives and find personal meaning and purpose. Whether it's through existentialism, Stoicism, or other philosophical traditions, we can draw insights that guide us in living a more fulfilling and meaningful life.</p>
-    
-    <h3>Navigating Moral Dilemmas</h3>
-    <p>Life often presents us with complex moral dilemmas where there are no clear-cut answers. Philosophy equips us with tools to analyze and navigate these dilemmas. Ethical theories, such as utilitarianism, deontology, or virtue ethics, provide frameworks for evaluating different courses of action and considering their moral implications.</p>
-    
-    <h3>Appreciating Diverse Perspectives</h3>
-    <p>Philosophy exposes us to a wide range of ideas and perspectives from different cultures and time periods. This exposure can cultivate open-mindedness and tolerance, enabling us to appreciate diverse viewpoints and engage in respectful dialogue with others.</p>
-
-                    </div>
-                    <div class="slide-number">26 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Philosophy and Social Systems</h2>
-    <p>Philosophy plays a significant role in shaping social, political, and cultural systems:</p>
-    
-    <h3>Examining the Role of Philosophy</h3>
-    <p>Philosophy provides a framework for analyzing and understanding the underlying principles and values that shape social systems. It encourages critical examination of the philosophical assumptions that underpin political ideologies, legal systems, economic structures, and cultural norms. By exploring the philosophical foundations of these systems, we can gain insight into their strengths, limitations, and potential for improvement.</p>
-    
-    <h3>Critiquing Existing Systems</h3>
-    <p>Philosophical analysis allows for a critical examination of existing social systems. Philosophers often engage in rigorous critique, questioning the assumptions, biases, and injustices inherent in prevailing social, political, and cultural structures. By applying philosophical tools and perspectives, we can identify and challenge oppressive systems, inequalities, and ethical shortcomings, paving the way for social progress and change.</p>
-    
-    <h3>Considering Alternative Philosophical Frameworks</h3>
-    <p>Philosophy offers alternative frameworks for envisioning and building just and equitable societies. Different philosophical traditions, such as liberalism, socialism, feminism, communitarianism, or environmentalism, propose distinct principles and values that can inform alternative social systems. By exploring these frameworks, we can imagine alternative ways of organizing society that prioritize justice, equality, and human flourishing.</p>
-    
-    <h3>Ethical Considerations</h3>
-    <p>Philosophy provides a foundation for ethical reflection in social systems. Ethical theories and principles, such as consequentialism, deontology, or virtue ethics, offer guidance for determining what is morally right or wrong in social contexts. By applying ethical analysis, we can evaluate social systems in terms of their impact on individual well-being, distributive justice, human rights, and the common good.</p>
-    
-    <h3>Social Contract Theory</h3>
-    <p>Philosophical ideas, such as social contract theory, examine the relationship between individuals and the state. Social contract theorists, like Thomas Hobbes, John Locke, or Jean-Jacques Rousseau, explore the legitimacy of political authority and the rights and responsibilities of citizens. These ideas help shape our understanding of the social contract and the obligations and limits of government power.</p>
-    
-    <h3>Cultural Critique</h3>
-    <p>Philosophy also engages in cultural critique, examining the beliefs, values, and norms that shape societies. Philosophers explore questions of identity, power, and representation, challenging dominant cultural narratives and promoting inclusivity and diversity. Through cultural critique, philosophy contributes to broader social discussions on issues such as race, gender, sexuality, and colonialism.</p>
-
-                    </div>
-                    <div class="slide-number">27 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                       <h2>References</h2>
-    <ul>
-        <li>Baird, F. E., & Kaufmann, W. (2008). <i>From Plato to Derrida</i>. Pearson.</li>
-        <li>Russell, B. (2004). <i>A History of Western Philosophy</i>. Routledge.</li>
-        <li>Solomon, R. C., & Higgins, K. M. (2016). <i>The Big Questions: A Short Introduction to Philosophy</i>. Cengage Learning.</li>
-        <li>Aristotle. (2009). <i>Nicomachean Ethics</i>. Oxford University Press.</li>
-        <li>Descartes, R. (2008). <i>Meditations on First Philosophy</i>. Oxford University Press.</li>
-        <li>Kant, I. (1998). <i>Critique of Pure Reason</i>. Cambridge University Press.</li>
-        <li>Nietzsche, F. (2008). <i>Thus Spoke Zarathustra</i>. Penguin Classics.</li>
-        <li>Popper, K. (2002). <i>The Logic of Scientific Discovery</i>. Routledge.</li>
-        <li>Rawls, J. (1999). <i>A Theory of Justice</i>. Harvard University Press.</li>
-    </ul>
-                    </div>
-                    <div class="slide-number">28 / 29</div>
-                </div>
-
-<div class="slide">
-                    <div class="slide-content">
-                        <h2>Websites for Understanding Philosophy</h2>
-    <ul>
-        <li><a href="https://plato.stanford.edu" target="_blank">Stanford Encyclopedia of Philosophy</a>: An authoritative online encyclopedia that covers a wide range of philosophical topics, including historical context, key philosophers, philosophical questions, and more.</li>
-        <li><a href="https://iep.utm.edu" target="_blank">Internet Encyclopedia of Philosophy</a>: Another comprehensive online resource that offers articles on various philosophical topics, including historical context, major thinkers, and philosophical inquiries.</li>
-        
-        <li><a href="https://youtube.com/crashcourse" target="_blank">Ancient Philosophy: Crash Course Philosophy</a>: A YouTube series that provides engaging and informative videos on ancient philosophy, including the ideas and contributions of early philosophers.</li>
-        <li><a href="https://philosophytalk.org" target="_blank">Philosophy Talk</a>: A radio show and podcast that explores various philosophical topics, including the relationship between philosophy and other disciplines, the role of reason and critical thinking, and the practical implications of philosophical thinking.</li>
-        <li><a href="https://philosophynow.org" target="_blank">Philosophy Now</a>: A magazine and online platform that covers a wide range of philosophical topics, including discussions on ethics, social and political philosophy, and the relevance of philosophy in contemporary society.</li>
-        
-    </ul>
-                    </div>
-                    <div class="slide-number">29 / 29</div>
-                </div>
-
-
-
-
-
-
-
-
+      </div>
+
+       <!-- Slide 3: Meaning and Nature of Philosophy Overview -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">1: Meaning and Nature of Philosophy</h2>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview</h3>
+        <p class="text-gray-600 mb-4">
+          Because of its universal nature, it is difficult to define philosophy in terms of a specific subject matter. However, we can define it etymologically as ‘love of wisdom’. Thus, as a pursuit of wisdom, philosophy refers to the development of critical habits, the continuous search for truth, and the questioning of the apparent. In this , students will be introduced with the fundamental meaning, nature, and concepts of philosophy.
+        </p>
+         <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+         <p class="text-gray-600 mb-2">After the accomplishment of this , you will be able to:</p>
+         <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+           <li>Recognize the basic concepts of philosophy.</li>
+           <li>Understand the meaning and nature of philosophy.</li>
+         </ul>
+       </div>
+
+        <!-- Slide 4: Meaning and Nature of Philosophy -->
+        <div class="slide">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Meaning and Nature of Philosophy</h2>
+            <div class="activity-box">
+                <p class="font-semibold text-gray-700">Activity # 1:</p>
+                <p class="italic text-gray-600">Dear learners, do you have a prior awareness of philosophy? If so, how do you understand philosophy?</p>
             </div>
-            <div class="navigation">
-                <button class="arrow" id="prev">&#10094;</button>
-                <button class="arrow" id="next">&#10095;</button>
-            </div>
+            <p class="text-gray-600 mb-4">
+                Dear learners, it is important to note first that giving a clear-cut definition of philosophy is difficult. It may be easy to define other disciplines, such as, chemistry, physics, geography, etc in terms of a subject matter, for they have their own specific subject matters to primarily deal with. However, it is difficult to do the same with philosophy, because philosophy has no a specific subject matter to primarily deal with. Philosophy deals primarily with issues. What contents philosophy has are not the specific subject matters, but issues, which are universal in nature. However, this should not lead us into thinking that philosophy is incomprehensible. It is only to say that whenever you want to understand philosophy, it is better to read different thoughts of philosophers, consciously see its salient features by yourself, participate in it, and do it.
+            </p>
+             <p class="text-gray-600">
+               Philosophy is not as elusive as it is often thought to be. Nor is it remote from our various problems. It is unanimously agreed that the best way to learn and understand philosophy is to <strong>philosophize</strong>; i.e., to be confronted with philosophical questions, to use philosophical language, to become acquainted with differing philosophical positions and maneuvers, to read the philosophers themselves, and to grapple with the issues for oneself.
+             </p>
         </div>
+
+        <!-- Slide 5: Meaning and Nature of Philosophy (Continued) -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Meaning and Nature of Philosophy (Continued)</h2>
+          <p class="text-gray-600 mb-4">
+            Socrates once stated that <em>“Wonder is the feeling of a philosopher, and philosophy begins in wonder.”</em> It is true that most of us may not have a clear knowledge about the history, nature, language, and issues of philosophy. But, we all think and reflect in our own way about issues that matter us most. We all have touched and moved by the feelings of wonder from which all philosophy derives. Thus, we all participate, more or less, in philosophical issues, even though thinking alone cannot make us philosophers.
+          </p>
+           <p class="text-gray-600 mb-4">
+             If, however, you still want to find its clear-cut definition, it is better to refer to the etymology of the word itself, instead of trying to associate it with a certain specific subject matter. Etymologically, the word "philosophy" comes from two Greek words: "philos" and "sophia", which mean "love" and "wisdom", respectively. Thus, the literal definition of philosophy is "love of wisdom".
+           </p>
+           <p class="text-gray-600">
+             The ancient Greek thinker Pythagoras was the first to use the word "philosopher" to call a person who clearly shows a marked curiosity in the things he experiences. Anyone who raises questions, such as Does God exists? What is reality? What is the ultimate source of Being? What is knowledge? What does it mean to know? How do we come to know? What is value?, and the like, is really showing a curiosity that can be described as a vital concern for becoming wise about the phenomena of the world and the human experiences. Therefore, seeking wisdom is among the various essences of philosophy that it has got from its etymological definition. Nevertheless, this is not sufficient by itself to understand philosophy, for not all wisdoms are philosophy.
+           </p>
+        </div>
+
+        <!-- Slide 6: Wisdom and Questioning -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy: Wisdom and Questioning</h2>
+           <div class="activity-box">
+               <p class="font-semibold text-gray-700">Activity # 2:</p>
+               <p class="italic text-gray-600">Dear learners, what do you think is the wisdom that philosophers seek?</p>
+           </div>
+           <p class="text-gray-600 mb-4">
+             The wisdom that philosophers seek is not the wisdom of the expertise or technical skills of professionals. Someone may be encyclopedic, and thus seemingly intelligent, but he may actually be foolish when it comes to understanding the meaning and significance of what he knows. According to Socrates, wisdom consists of a critical habit and eternal vigilance about all things and a reverence for truth, whatever its form, and wherever its place. Based on the Socratic understanding of wisdom, philosophy, as a pursuit of wisdom, is, thus, the development of critical habits, the continuous search for truth, and the questioning of the apparent.
+           </p>
+            <div class="activity-box">
+                <p class="font-semibold text-gray-700">Activity # 3:</p>
+                <p class="italic text-gray-600">Dear learners, what do you think does it mean to question the apparent? Does it mean to deny the fact or the practical reality?</p>
+            </div>
+             <p class="text-gray-600">
+               To interrogate the obvious means to deal creatively with the phenomenal world, to go beyond the common understanding, and to speculate about things that other people accept with no doubt.
+             </p>
+        </div>
+
+        <!-- Slide 7: Questioning and Criticism -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy: Questioning and Criticism</h2>
+          <p class="text-gray-600 mb-4">
+            But, questioning/criticism is not the final end of philosophy, though raising the right question is often taken not only as the beginning and direction of philosophy but also as its essence. Raising the right question is an art that includes the ability to foresee what is not readily obvious and to imagine different possibilities and alternatives of approaching the apparent. When we ultimately wonder about the existing world, and thus raise different questions about its order, each question moves us from the phenomenal facts to a profound speculation.
+          </p>
+          <p class="text-gray-600">
+            The philosophical enterprise, as Vincent Barry stated, is <em>"an active imaginative process of formulating proper questions and resolving them by rigorous, persistent analysis"</em>.
+          </p>
+        </div>
+
+        <!-- Slide 8: Philosophy as Rational and Critical -->
+        <div class="slide">
+           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy as Rational and Critical</h2>
+            <p class="text-gray-600 mb-4">
+              Therefore, philosophy is a rational and critical enterprise that tries to formulate and answer fundamental questions through an intensive application of reason- an application that draws on analysis, comparison, and evaluation. It involves reason, rational criticism, examination, and analysis. Accordingly, we can say that Philosophy has a <strong>constructive side</strong>, for it attempts to formulate rationally defensible answers to certain fundamental questions concerning the nature of reality, the nature of value, and the nature of knowledge and truth.
+            </p>
+             <p class="text-gray-600">
+               At the same time, its <strong>critical side</strong> is manifested when it deals with giving a rational critic, analysis, clarification, and evaluation of answers given to basic metaphysical, epistemological, and axiological questions.
+             </p>
+        </div>
+
+         <!-- Slide 9: Philosophy as Activity -->
+         <div class="slide">
+           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy as an Activity</h2>
+           <p class="text-gray-600 mb-4">
+             The other thing, which is worthy of noting, is that <strong>philosophy is an activity</strong>. It is not something that can be easily mastered or learned in schools. A philosopher is a great philosopher, not because he mastered philosophy, but because he did it. It is not his theory, but his extraordinary ability to critically think, to conceptualize, to analyze, to compare, to evaluate, and to understand- i.e., to <strong>philosophize</strong>- that makes him so.
+           </p>
+            <p class="text-gray-600">
+              Of course, the product of philosophizing is philosophy as a product. However, what makes someone a great philosopher is not the produced philosophy, but his/her outstanding ability to philosophize.
+            </p>
+         </div>
+
+        <!-- Slide 10: Basic Features of Philosophy Overview -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">2: Basic Features of Philosophy</h2>
+          <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview</h3>
+          <p class="text-gray-600 mb-4">
+            As an academic discipline, philosophy has its own salient features that distinguishes it from other academic disciplines, be it natural, social and humanistic disciplines. In this , students will be introduced with the generally fundamental features of philosophy.
+          </p>
+           <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+           <p class="text-gray-600 mb-2">After the accomplishment of this , you will be able to:</p>
+           <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+             <li>Recognize and understand the fundamental features of philosophy that makes it a unique academic discipline.</li>
+           </ul>
+        </div>
+
+        <!-- Slide 11: Basic Features of Philosophy -->
+        <div class="slide">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy</h2>
+             <div class="activity-box">
+                 <p class="font-semibold text-gray-700">Activity # 1:</p>
+                 <p class="italic text-gray-600">Dear learners, list the possible features of philosophy you could think of based on our previous (1) and discuss about them with the student(s) beside you.</p>
+             </div>
+            <p class="text-gray-600 mb-4">Dear learners, the general features of philosophy can be summarized as follows:</p>
+            <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+              <li>
+                <strong>Philosophy is a set of views or beliefs about life and the universe</strong>, which are often held uncritically.
+                <p class="text-gray-600 mt-1">We refer to this meaning as the informal sense of philosophy or “having” a philosophy. Usually when a person says “my philosophy is,” he or she is referring to an informal personal attitude to whatever topic is being discussed.</p>
+              </li>
+              <li>
+                <strong>Philosophy is a process of reflecting on and criticizing our most deeply held conceptions and beliefs.</strong>
+                <p class="text-gray-600 mt-1">This is the formal sense of “doing” philosophy. These two senses of philosophy- “having” and “doing”- cannot be treated entirely independent of each other, if we did not have a philosophy in the formal, personal sense, then we could not *do* a philosophy in the critical, reflective sense. However, having a philosophy is not sufficient for doing philosophy. A genuine philosophical attitude is searching and critical; it is open-minded and tolerant- willing to look at all sides of an issue without prejudice.</p>
+              </li>
+            </ol>
+        </div>
+
+        <!-- Slide 12: Basic Features of Philosophy (Continued) -->
+        <div class="slide">
+           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
+            <p class="text-gray-600 mb-4">
+              To philosophize is not merely to read and know philosophy; there are skills of argumentation to be mastered, techniques of analysis to be employed, and a body of material to be appropriated such that we become able to think philosophically.
+            </p>
+            <p class="text-gray-600 mb-4">
+              To philosophize also means to <strong>generalize</strong>. Philosophers are reflective and critical. They take a second look at the material presented by common sense. They attempt to think through a variety of life’s problems and to face all the facts impartially. The accumulation of knowledge does not by itself lead to understanding, because it does not necessarily teach the mind to make a critical evaluation of facts that entail consistent and coherent judgment.
+            </p>
+            <p class="text-gray-600">
+              Critical evaluations often differ. Philosophers, theologians, scientists, and others disagree, first because they view things from different points of view and with different assumptions. Their personal experiences, cultural backgrounds, and training may vary widely. This is especially true of people living at different times and in different places. A second reason philosophers disagree is that they live in a changing universe. People change, society changes, and nature changes. Some people are responsive and sensitive to change; others cling to tradition and the status quo, to systems that were formulated some time ago and that were declared to be authoritative and final. A third reason philosophers disagree is that they deal with an area of human experience in which the evidence is not complete. Different people may interpret the evidence we do have in various ways. Despite these disagreements, however, philosophers continue to probe, examine, and evaluate the material with the hope of presenting consistent principles by which we can live.
+            </p>
+        </div>
+
+         <!-- Slide 13: Basic Features of Philosophy (Continued) -->
+         <div class="slide">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
+             <p class="text-gray-600 mb-4">
+               <span class="font-semibold">3) Philosophy is a rational attempt to look at the world as a whole.</span>
+                Philosophy seeks to combine the conclusions of the various sciences and human experience into some kind of consistent worldview. Philosophers wish to see life, not with the specialized slant of the scientist or the businessperson or the artist, but with the overall view of someone cognizant of life as a totality. Although there are difficulties and dangers in setting forth any worldview, there also are dangers in confining attention to fragments of human experience. Philosophy attempts to give a view of the whole, a life and a worldview, and to integrate the knowledge of the sciences with that of other disciplines to achieve a consistent whole. Philosophy, according to this view, attempts to bring the results of human inquiry- religious, historical, and scientific into some meaningful interpretation that provides knowledge and insight for our lives.
+             </p>
+              <p class="text-gray-600">
+                <span class="font-semibold">4) Philosophy is the logical analysis of language and the clarification of the meaning of words and concepts.</span>
+                 Certainly, this is one function of philosophy. In fact, nearly all philosophers have used methods of analysis and have sought to clarify the meaning of terms and the use of language. Some philosophers see this as the main task of philosophy, and a few claim this is the only legitimate function of philosophy. Such persons consider philosophy a specialized field serving the sciences and aiding in the clarification of language rather than a broad field reflecting on all of life’s experiences. This outlook has gained considerable support during the twentieth century. It would limit what we call knowledge to statements about observable facts and their interrelations i.e., to the business of the various sciences. Not all linguistic analysts, however, define knowledge so narrowly. Although they do reject and try to “clean up” many non-scientific assertions, many of them think that we can have knowledge of ethical principles and the like, although this knowledge is also experientially derived. Those who take the narrower view neglect, when they do not deny, all generalized worldviews and life views, as well as traditional moral philosophy and theology. From this narrower point of view, the aim of philosophy is to expose confusion and nonsense and to clarify the meaning and use of terms in science and everyday affairs.
+              </p>
+         </div>
+
+          <!-- Slide 14: Basic Features of Philosophy (Continued) -->
+          <div class="slide">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
+            <p class="text-gray-600">
+              <span class="font-semibold">5) Philosophy is a group of perennial problems that interest people and for which philosophers always have sought answers.</span>
+               Philosophy presses its inquiry into the deepest problems of human existence. Some of the philosophical questions raised in the past have been answered in a manner satisfactory to the majority of philosophers. Many questions, however, have been answered only tentatively, and many problems remain unsolved. What are philosophical questions? The question “Did Ram make a false statement on his income tax return?” is merely a question of fact. However, the questions “What is truth?” and “What is the distinction between right and wrong?” have philosophical importance. Sometimes we think seriously about fundamental life issues: What is life and why am I here? Why is there anything at all? What is the place of life in this great universe? Is the universe friendly or unfriendly? Do things operate by chance or through sheer mechanism, or is there some plan, purpose, or intelligence at the heart of things? Is my life controlled by outside forces, or do I have a determining or even a partial degree of control? Why do people struggle and strive for their rights, for justice, for better things in the future? What do concepts like “right” and “justice” means, and what are the marks of a good society? Often men and women have been asked to sacrifice their lives, if need be, for certain values and ideals. What are the genuine values of life and how can it attained? Is there really a fundamental distinction between right and wrong, or is it just a matter of one’s own opinions? What is beauty? Should religion count in a person’s life? Is it intellectually valid to believe in God? Is there a possibility of a “life after death?” Is there any way we can get an answer to these and many related questions? Where does knowledge come from, and can we have any assurances that anything is true?
+            </p>
+          </div>
+
+           <!-- Slide 15: Basic Features of Philosophy (Continued) -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
+             <p class="text-gray-600">
+               The above questions are all philosophical. The attempt to seek answers or solutions to them has given rise to theories and systems of thought, such as idealism, realism, pragmatism, analytic philosophy, existentialism, phenomenology, and process philosophy. Philosophy also means the various theories or systems of thought developed by the great philosophers, such as Socrates, Plato, Aristotle, Augustine, Aquinas, Descartes, Spinoza, Locke, Berkeley, Kant, Hegel, Nietzsche, Royce, James, Dewey, Whitehead, and others. Without these people and their thoughts, philosophy would not have the rich content it has today. Even though we may be unconscious of the fact, we are constantly influenced by ideas that have come down to us in the traditions of society.
+             </p>
+           </div>
+
+        <!-- Slide 16: Core Fields of Philosophy Overview -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Core Fields of Philosophy</h2>
+          <h3 class="text-xl font-semibold mb-2 text-gray-700">3: Metaphysics and Epistemology</h3>
+          <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview</h3>
+          <p class="text-gray-600 mb-4">
+            Dear learners, we have said earlier that philosophy is a rational and critical enterprise that tries to formulate and answer fundamental questions through an intensive application of reason- an application that draws on analysis, comparison, and evaluation. It deals with the most basic issues faced by human beings. The content of philosophy is better seen as asking the right questions rather than providing the correct answers. It even can be said that philosophy is the study of questions, the "right" questions. By "right" he meant questions that are meaningful and relevant- the kind of questions people really want answered and that will make a difference in how they live and work.
+          </p>
+           <p class="text-gray-600">
+             Philosophy has different primary and secondary branches. This course deals only with the primary ones, namely Metaphysics, Epistemology, Axiology, and Logic. Metaphysics is the most important fields of philosophy that deal with the studies of ultimate reality and human knowledge, respectively. In this , we will discuss the first two major fields, Metaphysics and Epistemology, and we will deal with the remaining two fields, Axiology and Logic, in the next (4).
+           </p>
+        </div>
+
+        <!-- Slide 17: Core Fields of Philosophy Objectives -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Core Fields of Philosophy Objectives</h2>
+           <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+           <p class="text-gray-600 mb-2">After a successful completion of this , you will be able to:</p>
+           <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+             <li>Understand the fundamental concern and issues that metaphysics and epistemology primarily deal with.</li>
+             <li>Identify the major subsets or aspects of metaphysical questions.</li>
+             <li>Recognize the fundamental philosophical, i.e., epistemological, debates concerning the sources of human knowledge.</li>
+           </ul>
+        </div>
+
+        <!-- Slide 18: Metaphysics -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.1 Metaphysics</h2>
+           <div class="activity-box">
+               <p class="font-semibold text-gray-700">Activity # 1:</p>
+               <p class="italic text-gray-600">Dear learners, what do you think is metaphysics? List any question that you might think is a metaphysical question. Show your question to student(s) beside you, and discuss about your questions together.</p>
+           </div>
+           <p class="text-gray-600 mb-4">
+             <strong>Metaphysics</strong> is the branch of philosophy that studies the ultimate nature of reality or existence. It deal with issues of reality, God, freedom, soul/immortality, the mind-body problem, form and substance relationship, cause and effect relationship, and other related issues. Metaphysicians seek an irreducible foundation of reality or ‘first principles’ from which absolute knowledge or truth can be induced and deduced. The term metaphysics is derived from the Greek words <em>“meta”</em> meaning “beyond”, “upon” or “after”) and <em>physika</em>, means (“physics”). Literally, it refers ‘those things after the physics.’ Aristotle’s writings on ‘first philosophy’ came after his treatise on physics, therefore, Aristotle’s editor, Andronicus of Rhodes, named them metaphysics.
+           </p>
+        </div>
+
+        <!-- Slide 19: Metaphysics Questions -->
+        <div class="slide">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysics Questions</h2>
+           <p class="text-gray-600 mb-4">Here are some of the questions that Metaphysics primarily deals with:</p>
+           <ul class="star-list pl-6 text-gray-600 space-y-1">
+             <li>What is reality?</li>
+             <li>What is the ultimately real?</li>
+             <li>What is the nature of the ultimate reality?</li>
+             <li>Is it one thing or is it many different things?</li>
+             <li>Can reality be grasped by the senses, or it is transcendent?</li>
+             <li>What makes reality different from a mere appearance?</li>
+             <li>What is mind, and what is its relation to the body?</li>
+             <li>Is there a cause and effect relationship between reality and appearance?</li>
+             <li>Does God exist, and if so, can we prove it?</li>
+             <li>Are human actions free, or predetermined by a supernatural force?</li>
+             <li>What is human being? A thinking mind? A perishable body? Or a combination of both?</li>
+             <li>What is time?</li>
+             <li>What is the meaning of life?</li>
+           </ul>
+        </div>
+
+         <!-- Slide 20: Metaphysics - Reality Example -->
+         <div class="slide">
+           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysics - Reality Example</h2>
+            <p class="text-gray-600 mb-4">
+              At first, questions like, ‘What is real?’ seem too simple to bother asking. But consider George Knight’s example about the existence of a floor and one will see that the question has far reaching implications: What is exactly the nature of the floor upon which you stand? It may seem to have a rather straightforward existence. It is obviously flat, solid, and smooth; it has a particular color; it is composed of an identifiable material, such as wood or concrete; and it supports your weight.
+            </p>
+             <p class="text-gray-600 mb-4">
+               Suppose, however, that a physicist enters the room and questioned about the reality of the floor. She will reply that the floor is made of molecules; that molecules consist of atoms, electrons, protons, and neutrons; and these, finally, of electric energy alone. A third position is offered by a passing chemist. To him the floor is a hotbed of hydrocarbons associated in a particular way and subject to certain kinds of environmental influences, such as heat, cold, wetness, dryness, and oxidation.
+             </p>
+              <p class="text-gray-600 mb-4">
+                It is evident that the question of reality is not as simplistic as it appears. If the reality of a common floor is confusing, what about the larger problems that presents themselves as humankind searches for the ultimate reality of the universe?
+              </p>
+              <p class="text-gray-600">
+                Metaphysical questions are the most basic to ask because they provide the foundation upon which all subsequent inquiry is based. Metaphysical questions may be divided into four subsets or aspects.
+              </p>
+         </div>
+
+         <!-- Slide 21: Metaphysical Aspects -->
+         <div class="slide">
+           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysical Aspects</h2>
+           <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+             <li>
+               <strong>Cosmological Aspect:</strong> Cosmology consists in the study of theories about the origin, nature, and development of the universe as an orderly system. Questions such as these populate the realm of cosmology: “How did the universe originate and develop? Did it come about by accident or design? Does its existence have any purpose?”
+             </li>
+             <li>
+               <strong>Theological Aspect:</strong> Theology is that part of religious theory that deals with conceptions of and about God. “Is there a God? If so, is there one or more than one? What are the attributes of God? If God is both all good and all powerful, why does evil exist? If God exists, what is His relationship to human beings and the ‘real’ world of everyday life?”
+             </li>
+             <li>
+               <strong>Anthropological Aspect:</strong> Anthropology deals with the study of human beings and asks questions like the following: What is the relation between mind and body? Is mind more fundamental than body, with body depending on mind, or vice versa? What is humanity’s moral status? Are people born good, evil, or morally neutral? To what extent are individuals free? Do they have free will, or are their thoughts and actions determined by their environment, inheritance, or a divine being? Does each person have a soul? If so, what is it? People have obviously adopted different positions on these questions, and those positions influence their political, social, religious, and educational ideals and practices.
+             </li>
+           </ol>
+         </div>
+
+          <!-- Slide 22: Metaphysical Aspects (Continued) & Epistemology Intro -->
+          <div class="slide">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysical Aspects (Cont.) & Epistemology Intro</h2>
+            <ol start="4" class="list-decimal pl-6 text-gray-600 space-y-4">
+             <li>
+               <strong>Ontological Aspect:</strong> Ontology is the study of the nature of existence, or what it means for anything to exist. Several questions are central to ontology: “Is basic reality found in matter or physical energy (the world we can sense), or is it found in spirit or spiritual energy? Is it composed of one element (e.g., matter or spirit), or two (e.g., matter and spirit), or many?” “Is reality orderly and lawful in itself, or is it merely orderable by the human mind? Is it fixed and stable, or is change its central feature? Is this reality friendly, unfriendly, or neutral toward humanity?”
+             </li>
+            </ol>
+            <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">3.2 Epistemology</h3>
+            <p class="text-gray-600 mb-4">
+              <strong>Epistemology</strong> is the other field of philosophy that studies about the nature, scope, meaning, and possibility of knowledge. It deals with issues of knowledge, opinion, truth, falsity, reason, experience, and faith.
+            </p>
+             <p class="text-gray-600">
+               Etymologically, the word epistemology has been derived from the Greek words <em>episteme</em>, meaning “knowledge, understanding”, and <em>logos</em>, meaning “study of”. In other words, we can say that Epistemology is the study of the nature, source, and validity of knowledge. It seeks to answer of the basic questions as “What is true?” and “How do we know?” Thus, epistemology covers two areas: the <strong>content of thought</strong> and <strong>thought itself</strong>. The study of epistemology deals with issues related to the dependability of knowledge and the validity of the sources through which we gain information.
+             </p>
+          </div>
+
+           <!-- Slide 23: Epistemology Questions -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology Questions</h2>
+             <div class="activity-box">
+                 <p class="font-semibold text-gray-700">Activity # 2:</p>
+                 <p class="italic text-gray-600">Dear learners, what do you think is epistemology? List any question that you might think is an epistemological question. Show your question to student(s) beside you, and discuss about your questions together.</p>
+             </div>
+             <p class="text-gray-600 mb-4">The following are among the questions/issues with which Epistemology deals:</p>
+              <ul class="star-list pl-6 text-gray-600 space-y-1">
+                <li>What is knowledge?</li>
+                <li>What does it mean to know?</li>
+                <li>What makes knowledge different from belief or opinion?</li>
+                <li>What is truth, and how can we know a statement is true?</li>
+                <li>Can reason really help us to know phenomenal things without being informed by sense experiences?</li>
+                <li>Can our sense experience really help us to know things beyond our perception without the assistance of our reasoning ability?</li>
+                <li>What is the relationship and difference between faith and reason?</li>
+                <li>What is the source of knowledge? Experience? Reason? Or both?</li>
+                <li>How can we be sure that what we perceive through our senses is correct?</li>
+              </ul>
+           </div>
+
+           <!-- Slide 24: Epistemology - Skepticism & Agnosticism -->
+           <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Skepticism & Agnosticism</h2>
+               <p class="text-gray-600 mb-4">
+                 Epistemology seeks answers to a number of fundamental issues. One is whether reality can even be known. <strong>Skepticism</strong> in its narrow sense is the position claiming that people cannot acquire reliable knowledge and that any search for truth is in vain. That thought was well expressed by Gorgias, the Greek Sophist who asserted that nothing exists, and that if it did, we could not know it. A full-blown skepticism would make intelligent action impossible.
+               </p>
+                <p class="text-gray-600 mb-4">
+                  A term closely related to skepticism is <strong>agnosticism</strong>. Agnosticism is a profession of ignorance in reference to the existence or nonexistence of God.
+                </p>
+                <p class="text-gray-600 mb-4">
+                  Most people claim that reality can be known. However, once they have taken that position, they must decide through what sources reality may be known, and must have some concept of how to judge the validity of their knowledge. A second issue foundational to epistemology is whether all truth is relative, or whether some truths are absolute. Is all truth subject to change? Is it possible that what is true today may be false tomorrow? If the answer is “Yes” to the previous questions, such truths are relative. If, however, there is Absolute Truth, such Truth is eternally and universally true irrespective of time or place. Closely related to the issue of the relativity and absoluteness of truth are the questions of whether knowledge is subjective or objective, and whether there is truth that is independent of human experience.
+                </p>
+           </div>
+
+           <!-- Slide 25: Epistemology - Sources of Human Knowledge: Empiricism -->
+           <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Sources of Knowledge: Empiricism</h2>
+              <p class="text-gray-600 mb-4">
+                A major aspect of epistemology relates to the sources of human knowledge. If one accepts the fact that there is truth and even Truth in the universe, how can human beings comprehend such truths? How do they become human knowledge? Central to most people’s answer to that question is <strong>empiricism</strong> (knowledge obtained through the senses). Empirical knowledge appears to be built into the very nature of human experience. Thus, when individuals walk out of doors on a spring day and see the beauty of the landscape, hear the song of a bird, feel the warm rays of the sun, and smell the fragrance of the blossoms, they “know” that it is spring. Sensory knowing for humans is immediate and universal, and in many ways forms the basis of much of human knowledge.
+              </p>
+               <p class="text-gray-600">
+                 The existence of sensory data cannot be denied. Most people accept it uncritically as representing “reality.” The danger of naively embracing this approach is that data obtained from the human senses have been demonstrated to be both incomplete and undependable. (For example, most people have been confronted with the contradiction of seeing a stick that looks bent when partially submerged in water but appears to be straight when examined in the air.) Fatigue, frustration, and illness also distort and limit sensory perception. In addition, there are sound and light waves that are inaudible and invisible to unaided human perception.
+               </p>
+           </div>
+
+           <!-- Slide 26: Epistemology - Sources: Empiricism Cont. & Rationalism -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Sources: Empiricism Cont. & Rationalism</h2>
+             <p class="text-gray-600 mb-4">
+                Humans have invented scientific instruments to extend the range of their senses, but it is impossible to ascertain the exact dependability of these instruments since no one knows the total effect of the human mind in recording, interpreting, and distorting sensual perception. Confidence in these instruments is built upon speculative metaphysical theories whose validity has been reinforced by experimentation in which predictions have been verified through the use of a theoretical construct or hypothesis. In general, sensory knowledge is built upon assumptions that must be accepted by faith in the dependability of human sensory mechanisms. The advantage of empirical knowledge is that many sensory experiences and experiments are open to both replication and public examination.
+             </p>
+             <p class="text-gray-600">
+               A second important source of human knowledge is reason. The view that reasoning, thought, or logic is the central factor in knowledge is known as <strong>rationalism</strong>. The rationalist, in emphasizing humanity’s power of thought and the mind’s contributions to knowledge, is likely to claim that the senses alone cannot provide universal, valid judgments that are consistent with one another. From this perspective, the sensations and experiences humans obtain through their senses are the raw material of knowledge. These sensations must be organized by the mind into a meaningful system before they become knowledge. Rationalism in a less extreme form claims that people have the power to know with certainty various truths about the universe that the senses alone cannot give. In its extreme form, rationalism claims that humans are capable of arriving at irrefutable knowledge independently of sensory experience. Formal logic is a tool used by rationalists. Systems of logic have the advantage of possessing internal consistency, but they risk being disconnected from the external world. Systems of thought based upon logic are only as valid as the premises upon which they are built.
+             </p>
+           </div>
+
+           <!-- Slide 27: Epistemology - Sources: Intuition & Revelation -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Sources: Intuition & Revelation</h2>
+             <p class="text-gray-600 mb-4">
+               A third source of human knowledge is <strong>intuition</strong>- the direct apprehension of knowledge that is not derived from conscious reasoning or immediate sense perception. In the literature dealing with intuition, one often finds such expressions as “immediate feeling of certainty.” Intuition occurs beneath the threshold of consciousness and is often experienced as a sudden flash of insight. Intuition has been claimed under varying circumstances as a source of both religious and secular knowledge. Certainly many scientific breakthroughs have been initiated by intuitive hunches that were confirmed by experimentation. The weakness or danger of intuition is that it does not appear to be a safe method of obtaining knowledge when used alone. It goes astray very easily and may lead to absurd claims unless it is controlled by or checked against other methods of knowing. Intuitive knowledge, however, has the distinct advantage of being able to bypass the limitations of human experience.
+             </p>
+              <p class="text-gray-600">
+                A fourth influential source of knowledge throughout the span of human history has been <strong>revelation</strong>. Revealed knowledge has been of prime importance in the field of religion. It differs from all other sources of knowledge because it presupposes a transcendent supernatural reality concerning the divine will. Believers in supernatural revelation hold that this form of knowledge has the distinct advantage of being an omniscient source of information that is not available through other epistemological methods. The truth revealed through this source is believed by Christians to be absolute and uncontaminated. On the other hand, it is generally realized that distortion of revealed truth can occur in the process of human interpretation. Some people assert that a major disadvantage of revealed knowledge is that it must be accepted by faith and cannot be proved or disproved empirically.
+              </p>
+           </div>
+
+           <!-- Slide 28: Epistemology - Sources: Authority & Conclusion -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Source: Authority & Conclusion</h2>
+             <p class="text-gray-600 mb-4">
+               A fifth source of human knowledge, though not a philosophical position, is <strong>authority</strong>. Authoritative knowledge is accepted as true because it comes from experts or has been sanctified over time as tradition. In the classroom, the most common source of information is some authority, such as a textbook, teacher, or reference work. Accepting authority as a source of knowledge has its advantages as well as its dangers. Civilization would certainly stagnate if people refused to accept any statement unless they personally verified it through direct, firsthand experience. On the other hand, if authoritative knowledge is built upon a foundation of incorrect assumptions, then such knowledge will surely be distorted.
+             </p>
+              <p class="text-gray-600">
+                Dear learners, it is important to note that one source of information alone might not be capable of supplying people with all knowledge. It might be important to see the various sources as complementary rather than antagonistic. However, it is true that most people choose one source as being more basic than, or preferable to, the others, and then use it as a benchmark for testing other sources of knowledge. For example, in the contemporary world, knowledge obtained empirically is generally seen as the most basic and reliable type.
+              </p>
+           </div>
+
+          <!-- Slide 29: Axiology and Logic Overview -->
+          <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">4: Axiology and Logic</h2>
+             <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview</h3>
+             <p class="text-gray-600 mb-4">
+               We have said earlier that philosophy deals with the most basic issues faced by human beings. <strong>Axiology</strong> is the philosophical study of value, which originally meant the worth of something. It includes the studies of moral values, aesthetic values, as well as political and social values. <strong>Logic</strong>, on the other hand, is a philosophical study of arguments and the methods and principles of right reasoning. In this , we will discuss Axiology and Logic as the other two major fields of philosophy.
+             </p>
+          </div>
+
+           <!-- Slide 30: Axiology and Logic Objectives -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology and Logic Objectives</h2>
+              <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+              <p class="text-gray-600 mb-2">After a successful completion of this , you will be able to:</p>
+              <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+                <li>Understand the fundamental concern and issues that axiology and logic primarily deal with.</li>
+                <li>Identify the major subsets or aspects of axiological questions: ethical, aesthetical, political and social questions.</li>
+                <li>Recognize the fundamental philosophical debates concerning the nature and sources of moral, political and social rules and principles.</li>
+              </ul>
+           </div>
+
+           <!-- Slide 31: Axiology -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.1 Axiology</h2>
+              <div class="activity-box">
+                  <p class="font-semibold text-gray-700">Activity # 1:</p>
+                  <p class="italic text-gray-600">Dear learners, what do you think is Axiology? List any question that you might think is an axiological question. Show your question to student(s) beside you, and discuss about your questions together.</p>
+              </div>
+             <p class="text-gray-600 mb-4">
+               <strong>Axiology</strong> is the study or theory of value. The term Axiology stems from two Greek words- <em>“Axios”</em>, meaning “value, worth”, and <em>“logos”</em>, meaning “reason/ theory/ symbol/ science/study of”. Hence, Axiology is the philosophical study of value, which originally meant the worth of something. Axiology asks the philosophical questions of values that deal with notions of what a person or a society regards as good or preferable, such as:
+             </p>
+              <ul class="star-list pl-6 text-gray-600 space-y-1">
+                <li>What is a value?</li>
+                <li>Where do values come from?</li>
+                <li>How do we justify our values?</li>
+                <li>How do we know what is valuable?</li>
+                <li>What is the relationship between values and knowledge?</li>
+                <li>What kinds of values exist?</li>
+                <li>Can it be demonstrated that one value is better than another?</li>
+                <li>Who benefits from values?</li>
+                <li>Etc.</li>
+              </ul>
+           </div>
+
+           <!-- Slide 32: Axiology - Areas (Ethics) -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology - Areas: Ethics</h2>
+             <p class="text-gray-600 mb-4">
+               Axiology deals with the above and related issues of value in three areas, namely Ethics, Aesthetics, and Social/Political Philosophy.
+             </p>
+              <h3 class="text-xl font-semibold mb-2 text-gray-700">I. Ethics</h3>
+               <div class="activity-box">
+                   <p class="font-semibold text-gray-700">Activity # 2:</p>
+                   <p class="italic text-gray-600">Dear learners, how do you define ethics? What ethical rules, principles, and standards do you know and follow, and why? Discuss about it with the student(s) beside you.</p>
+               </div>
+              <p class="text-gray-600 mb-4">
+                <strong>Ethics</strong>, which is also known as <strong>Moral Philosophy</strong>, is a science that deals with the philosophical study of moral principles, values, codes, and rules, which may be used as standards for determining what kind of human conduct/action is said to be good or bad, right or wrong. Ethics has three main branches: meta-ethics, normative ethics, and applied ethics.
+              </p>
+           </div>
+
+           <!-- Slide 33: Ethics Questions and Branches -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethics Questions and Branches</h2>
+             <p class="text-gray-600 mb-4">Ethics raises various questions including:</p>
+              <ul class="star-list pl-6 text-gray-600 space-y-1">
+                <li>What is good/bad?</li>
+                <li>What is right/wrong?</li>
+                <li>Is it the Right Principle or the Good End that makes human action/conduct moral?</li>
+                <li>Is an action right because of its good end, or it is good because of its right principle?</li>
+                <li>Are moral principles universal, objective, and unconditional, or relative, subjective and conditional?</li>
+                <li>What is the ultimate foundation of moral principles? The supernatural God? Human reason? Mutual social contract? Social custom?</li>
+                <li>Does God exist? If so, is He Benevolent and Omnipotent?</li>
+                <li>If God is Benevolent, why He creates evil things? If God does not create evil things, then, there must be another creator who is responsible to creation of the evil things? But, if it is so, how can God be an Omnipotent creator?</li>
+                <li>Why we honor and obey moral rules? For the sake of our own individual benefits?, or for the sake of others?, or just for the sake of fulfilling our infallible duty?</li>
+              </ul>
+               <p class="text-gray-600 mt-4">
+                 Ethics, or ethical studies, can be grouped into three broad categories: <strong>Normative ethics</strong>, <strong>Meta-ethics</strong>, and <strong>Applied Ethics</strong>.
+               </p>
+           </div>
+
+           <!-- Slide 34: Ethics Branches Defined -->
+           <div class="slide">
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethics Branches Defined</h2>
+             <p class="text-gray-600 mb-4">
+               <strong>Normative Ethics</strong> refers to the ethical studies that attempt to study and determine precisely the moral rules, principles, standards and goals by which human beings might evaluate and judge the moral values of their conducts, actions and decisions. It is the reasoned search for principles of human conduct, including a critical study of the major theories about which things are good, which acts are right, and which acts are blameworthy. Consequentialism or Teleological Ethics, Deontological Ethics, and Virtue Ethics are the major examples of normative ethical studies.
+             </p>
+              <p class="text-gray-600 mb-4">
+                <strong>Meta-ethics</strong> is the highly technical philosophical discipline that deals with investigation of the meaning of ethical terms, including a critical study of how ethical statements can be verified. It is more concerned with the meanings of such ethical terms as good or bad and right or wrong than with what we think is good or bad and right or wrong. Moral Intuitionism, Moral Emotivism, Moral Prescriptivism, Moral Nihilism, and Ethical Relativism are the main examples of meta-ethical studies.
+              </p>
+              <p class="text-gray-600">
+                <strong>Applied Ethics</strong> is a normative ethics that attempts to explain, justify, apply moral rules, principles, standards, and positions to specific moral problems, such as capital punishment, euthanasia, abortion, adultery, animal right, and so on. This area of normative ethics is termed applied because the ethicist applies or uses general ethical princes in an attempt to resolve specific moral problems.
+              </p>
+           </div>
+
+           <!-- Slide 35: Axiology - Areas (Aesthetics) -->
+           <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology - Areas: Aesthetics</h2>
+              <h3 class="text-xl font-semibold mb-2 text-gray-700">II. Aesthetics</h3>
+               <div class="activity-box">
+                   <p class="font-semibold text-gray-700">Activity # 3:</p>
+                   <p class="italic text-gray-600">Dear learners, how do you define and understand aesthetics? What Discuss about it with the student(s) beside you.</p>
+               </div>
+              <p class="text-gray-600 mb-4">
+                <strong>Aesthetics</strong> is the theory of beauty. It studies about the particular value of our artistic and aesthetic experiences. It deals with beauty, art, enjoyment, sensory/emotional values, perception, and matters of taste and sentiment.
+              </p>
+              <p class="text-gray-600 mb-4">The following are typical Aesthetic questions:</p>
+               <ul class="star-list pl-6 text-gray-600 space-y-1">
+                 <li>What is art?</li>
+                 <li>What is beauty?</li>
+                 <li>What is the relation between art and beauty?</li>
+                 <li>What is the connection between art, beauty, and truth?</li>
+                 <li>Can there be any objective standard by which we may judge the beauty of artistic works, or beauty is subjective?</li>
+                 <li>What is artistic creativity and how does it differ from scientific creativity?</li>
+                 <li>Why works of art are valuable?</li>
+                 <li>Can artistic works communicate? If so, what do they communicate?</li>
+                 <li>Does art have any moral value, and obligations or constraints?</li>
+                 <li>Are there standards of quality in Art?</li>
+               </ul>
+           </div>
+
+           <!-- Slide 36: Axiology - Areas (Social/Political Philosophy) -->
+           <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology - Areas: Social/Political Philosophy</h2>
+              <h3 class="text-xl font-semibold mb-2 text-gray-700">III. Social/Political Philosophy</h3>
+               <div class="activity-box">
+                   <p class="font-semibold text-gray-700">Activity # 4:</p>
+                   <p class="italic text-gray-600">Dear learners, how do you define politics and society? What political and social rules, principles, and standards do you know and follow, and why? Discuss about it with the student(s) beside you.</p>
+               </div>
+              <p class="text-gray-600 mb-4">
+                <strong>Social/Political Philosophy</strong> studies about of the value judgments operating in a civil society, be it social or political.
+              </p>
+              <p class="text-gray-600 mb-4">The following questions are some of the major Social/Political Philosophy primarily deal with:</p>
+               <ul class="star-list pl-6 text-gray-600 space-y-1">
+                 <li>What form of government is best?</li>
+                 <li>What economic system is best?</li>
+                 <li>What is justice/injustice?</li>
+                 <li>What makes an action/judgment just/unjust?</li>
+                 <li>What is society?</li>
+                 <li>Does society exist? If it does, how does it come to existence?</li>
+                 <li>How are civil society and government come to exist?</li>
+                 <li>Are we obligated to obey all laws of the State?</li>
+                 <li>What is the purpose of government?</li>
+               </ul>
+           </div>
+
+           <!-- Slide 37: Logic -->
+           <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.2 Logic</h2>
+               <div class="activity-box">
+                   <p class="font-semibold text-gray-700">Activity # 5:</p>
+                   <p class="italic text-gray-600">Dear learners, how do you define and understand logic? Discuss about it with student(s) beside you.</p>
+               </div>
+              <p class="text-gray-600 mb-4">
+                <strong>Logic</strong> is the study or theory of principles of right reasoning. It deals with formulating the right principles of reasoning; and developing scientific methods of evaluating the validity and soundness of arguments.
+              </p>
+              <p class="text-gray-600 mb-4">The following are among the various questions raised by Logic:</p>
+               <ul class="star-list pl-6 text-gray-600 space-y-1">
+                 <li>What is an argument; What does it mean to argue?</li>
+                 <li>What makes an argument valid or invalid</li>
+                 <li>What is a sound argument?</li>
+                 <li>What relation do premise and conclusion have in argument?</li>
+                 <li>How can we formulate and evaluate an argument?</li>
+                 <li>What is a fallacy?; What makes an argument fallacious?</li>
+               </ul>
+           </div>
+
+           <!-- Slide 38: Importance of Learning Philosophy Overview -->
+           <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">5: Importance of Learning Philosophy</h2>
+              <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview</h3>
+              <p class="text-gray-600 mb-4">
+                Dear learners, we have seen in our first that philosophy is a rational and critical enterprise that tries to formulate and answer fundamental questions through an intensive application of reason- an application that draws on analysis, comparison, and evaluation-, and deals with the most basic issues faced by human beings. In this , we will discuss the fundamental benefits of learning philosophy.
+              </p>
+           </div>
+
+            <!-- Slide 39: Importance of Learning Philosophy Objectives -->
+            <div class="slide">
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance of Learning Philosophy Objectives</h2>
+               <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+               <p class="text-gray-600 mb-2">After a successful completion of this , you will be able to:</p>
+               <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+                 <li>Understand the fundamental benefits philosophy could provide to humanity.</li>
+               </ul>
+            </div>
+
+            <!-- Slide 40: Importance of Learning Philosophy - Socrates -->
+            <div class="slide">
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance of Learning Philosophy - Socrates</h2>
+                <div class="activity-box">
+                    <p class="font-semibold text-gray-700">Activity # 1:</p>
+                    <p class="italic text-gray-600">Dear learners, can you list, based on our previous s, the possible benefits of studying philosophy? Who do you think needs philosophy? Why? Discuss with the student(s) beside you.</p>
+                </div>
+               <p class="text-gray-600 mb-4">Dear learners, if you ask any philosophy student ‘what is the necessity of studying philosophy’, he/she may give you the following famous philosophical statement: <em>“The unexamined life is not worth living”</em>. The ancient Greek philosopher, Socrates, once said that <em>“I tell you that to let no day pass without discussing goodness and all the other subjects about which you hear me talking and examining both myself and others is really the best thing that a man can do, and that life without this sort of examination is not worth living…”</em>. Thus, among the various benefits of learning philosophy is that philosophy provides students with the tools they need to critically examine their own lives as well as the world in which they live. Let us clarify it more.
+               </p>
+            </div>
+
+             <!-- Slide 41: Importance - Self-Actualization -->
+             <div class="slide">
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance - Self-Actualization</h2>
+               <p class="text-gray-600 mb-4">
+                 Some modern psychologists point out that human beings have both maintenance and actualizing needs. The former refer to the physical and psychological needs that we must satisfy in order to maintain ourselves as human beings: food, shelter, security, social interaction, and the like. The later appear to be associated with self-fulfillment, creativity, self-expression, realization of one’s potential, and being everything one can be.
+               </p>
+               <p class="text-gray-600">
+                 Although philosophy may not necessarily lead to this sort of self-actualization, it can assist us to actualize ourselves by promoting the ideal of self-actualization. There are many characteristics of self-actualization to whose achievement studying philosophy has a primordial contribution. Here below are some of them.
+               </p>
+             </div>
+
+             <!-- Slide 42: Importance - Self-Actualization Characteristics (1) -->
+             <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Actualization Characteristics (1)</h2>
+                <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+                  <li>
+                    <strong>Intellectual and Behavioral Independence:</strong>- This is the ability to develop one’s own opinion and beliefs. Among the primary goals of philosophy, one is the integration of experiences into a unified, coherent, and systematic world views. Studying philosophy helps us not only to know the alternative world views but also to know how philosophers have ordered the universe for themselves. As a result, we can learn how to develop and integrate our experiences, thoughts, feelings, and actions for ourselves, and thus how to be intellectually and behaviorally independent.
+                  </li>
+                  <li>
+                    <strong>Reflective Self-Awareness:</strong>- self-actualization cannot be realized without a clear knowledge of oneself and the world in which one lives. Philosophy helps us to intensify our self awareness by inviting us to critically examine the essential intellectual grounds of our lives.
+                  </li>
+                  <li>
+                    <strong>Flexibility, Tolerance, and Open-Mindedness:</strong>- by studying different philosophical perspectives we can understand the evolutionary nature of intellectual achievement and the ongoing development of human thought. As we confront with the thoughts of various philosophers we can easily realize that no viewpoint is necessarily true or false- that the value of any attitude is contextual. Finally, we become more tolerant, open-minded, more receptive, and more sympathetic to views that contend or clash with ours.
+                  </li>
+                </ol>
+             </div>
+
+             <!-- Slide 43: Importance - Self-Actualization Characteristics (2) -->
+             <div class="slide">
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Actualization Characteristics (2)</h2>
+               <ol start="4" class="list-decimal pl-6 text-gray-600 space-y-4">
+                 <li>
+                   <strong>Creative and Critical Thinking:</strong>- this is the ability to develop original philosophical perspective on issues, problems, and events; and to engage them on a deeper level. From the study of philosophy, we can learn how to refine our powers of analysis, our abilities to think critically, to reason, to evaluate, to theorize, and to justify.
+                 </li>
+                 <li>
+                   <strong>Conceptualized and well-thought-out value systems in morality, art, politics, and the like:</strong>- since philosophy directly deals with morality, art, politics, and other related value theories, studying philosophy provides us with an opportunity to formulate feasible evaluations of value; and thereby to find meaning in our lives.
+                 </li>
+               </ol>
+             </div>
+
+             <!-- Slide 44: Importance - Uncertainty of Living -->
+             <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance - Uncertainty of Living</h2>
+                 <p class="text-gray-600 mb-4">
+                   The other benefit of studying philosophy that should not be missed is that it helps us to deal with the uncertainty of living. Philosophy helps us to realize the absence of an absolutely ascertained knowledge, and hence prepare ourselves to the ever growing human knowledge.
+                 </p>
+                  <p class="text-gray-600">
+                    But, what is the advantage of uncertainty? What Bertrand Russell stated in his book, <em>The Problem of Philosophy</em>, can be a sufficient answer for this question.
+                  </p>
+             </div>
+
+             <!-- Slide 45: Bertrand Russell Quote -->
+             <div class="slide">
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Bertrand Russell on Uncertainty</h2>
+               <blockquote>
+                 <p>
+                   The value of philosophy is, in part, to be sought largely in its very uncertainty. The man who has no tincture of philosophy goes through life imprisoned in the prejudices derived from common sense, from the habitual benefits of his age or his nation, and from convictions which have grown up in his mind without the cooperation or consent of his deliberate reason. To such a man the world tends to become definite, finite, obvious; common objects rouse no questions, and unfamiliar possibilities are contemptuously rejected. As soon as we begin to philosophize, on the contrary, even the commonest things lead to problems to which only very incomplete answers can be given. Philosophy, though unable to tell us with certainty what is the true answer to the doubts which it raises, is able to suggest many possibilities which enlarge our thoughts and free them from the tyranny of custom. Thus, while diminishing our feeling of certainty as to what things are, it greatly increases our knowledge as to what they may be; it removes the somewhat arrogant dogmatism of those who have never traveled into the region of liberating doubt, and it keeps alive our sense of wonder by showing familiar things in an unfamiliar aspect (Bertrand, 1912, P; 158).
+                 </p>
+               </blockquote>
+             </div>
+
+             <!-- Slide 46: Chapter Summary -->
+             <div class="slide">
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary</h2>
+               <p class="text-gray-600 mb-4">
+                 Logic, as a field of study, is a branch of philosophy that deals with the study of arguments and the principles and methods of right reasoning. Etymologically, the term “philosophy” can be defined as “love of wisdom”, being wisdom a critical habit and eternal vigilance about all things and a reverence for truth, whatever its form, and wherever its place. Therefore, philosophy, as a pursuit of wisdom, is the development of critical habits, the continuous search for truth, and the questioning of the apparent. It is, however, important to note that “questioning the apparent” does not mean denying the obviously real. It simply refers to the extraordinary ability and curiosity to deal creatively with the phenomenal world, to go beyond the common understanding, and to speculate about things that other people accept with no doubt.
+               </p>
+                <p class="text-gray-600">
+                  Philosophy, as a rational and critical enterprise that tries to formulate and answer fundamental questions through an intensive application of reason, is a dual-sided universal discipline: critical and constructive sides. While, as a critical discipline, it deals with giving a rational critic, analysis, clarification, and evaluation of answers given to basic metaphysical, epistemological, and axiological questions, it attempts, as a constructive discipline, to formulate rationally defensible answers to certain fundamental questions concerning the nature of reality, the nature of value, and the nature of knowledge and truth.
+                </p>
+             </div>
+
+              <!-- Slide 47: Chapter Summary (Continued) -->
+              <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary (Continued)</h2>
+                <p class="text-gray-600 mb-4">
+                  Philosophy, as an academic discipline, has its own salient features that distinguish it from other academic disciplines. Its systematic, logical and flexible approach to the ultimate reality of the universe, human life, knowledge experience, truth and values and its holistic and evolutionary nature are some the fundamental features of philosophy.
+                </p>
+                 <p class="text-gray-600 mb-4">
+                   Philosophy uses its major branches to deal with the most important issues human beings face, namely Metaphysics, Epistemology, Axiology, and Logic. Metaphysics deals with the studies of ultimate reality and existence. Epistemology deals with the study of the meaning, nature, source, scope and possibility of human knowledge. Axiology deals with the philosophical studies of human values, such as moral values, aesthetic values, as well as political and social values. Logic, on the other hand, is a philosophical study of arguments and the methods and principles of right reasoning.
+                 </p>
+                 <p class="text-gray-600">
+                   Philosophy provides various fundamental benefits to learners. It provides students with the tools they need to critically examine their own lives as well as the world in which they live, it assist them to actualize themselves by promoting the ideals of self-actualization. That is, studying philosophy helps to achieve the most important characteristic of self-actualization: Intellectual and Behavioral Independence, Reflective Self-Awareness, Flexibility, Tolerance, and Open-Mindedness, Creative and Critical Thinking, and Conceptualized and well-thought-out value systems in morality, art, politics, and the like. Moreover, studying philosophy helps us to deal with the uncertainty of living, meaning it helps us to realize the absence of an absolutely ascertained knowledge, and hence prepare ourselves to the ever growing human knowledge.
+                 </p>
+              </div>
+
+              <!-- Slide 48: Self Check Exercise -->
+              <div class="slide">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self Check Exercise</h2>
+                <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+                  <li>Define philosophy as a pursuit of wisdom.</li>
+                  <li>It is said that ‘seeking wisdom’ is one of the various essences of philosophy. Explain the wisdom that philosophers seek.</li>
+                  <li>List and discuss the major features of philosophy.</li>
+                  <li>Discuss briefly the core branches of philosophy.</li>
+                  <li>Explain the major aspects of metaphysical study.</li>
+                  <li>Discuss the fundamental epistemological debates concerning the source of human knowledge.</li>
+                  <li>Discuss briefly the major branches Ethics or Moral Philosophy.</li>
+                  <li>Discuss the importance of studying philosophy.</li>
+                </ol>
+              </div>
+
+               <!-- Slide 49: References -->
+               <div class="slide">
+                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
+                 <div class="text-xs text-gray-600 space-y-1 overflow-y-auto max-h-96">
+                     <p class="ref-item">Emmet, E.R. Learning to Philosophize, London, Penguin Books, 1964.</p>
+                     <p class="ref-item">Hurley, Patrick J. (2014) A Concise Introduction to Logic, 12th Edition, Wadsworth, Cengage Learning.</p>
+                     <p class="ref-item">Jones Gerald, Cardinal Daniel, et al (2006) Moral Philosophy: a guide to ethical theory, London, Hodder Murray: A Member of the Hodder Headline Group.</p>
+                     <p class="ref-item">Mabott, J. D. (1966) An Introduction to Ethics, London, Hutchinson University Library, Hutchinson & Co Publisher.</p>
+                     <p class="ref-item">Mautner, Thomas (2000) The Penguin Dictionary of Philosophy, London, Penguin Books.</p>
+                     <p class="ref-item">Plato in Cahn, M. Steven (1999) Classics of Western Philosophy, 5th ed. United States of America, Indianapolis/Cambridge, Hackett Publishing Company, Inc.</p>
+                     <p class="ref-item">Pojman, P. Louis (1998) Philosophical Traditions: A Text with Readings, United States of America. Wadsworth Publishing Company: A Division of International Thomson Publishing, Inc.</p>
+                     <p class="ref-item">Ratner, Joseph, ed. Intelligence in the Modern World: John Dewey's Philosophy, New York, The Modern Library, 1939.</p>
+                     <p class="ref-item">Woodhouse, Mark B. A Preface to Philosophy, (6th Edition) Belmont Wordsworth, 2000.</p>
+                  </div>
+               </div>
+
+
     </div>
 
-    <div class="footer">
-        PHIL1009 
+    <!-- Navigation Arrows -->
+    <div class="flex justify-between mt-4">
+      <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
+      <span id="slideCounter" class="text-gray-600 self-center">1 / 49</span> <!-- Updated slide counter -->
+      <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
     </div>
+  </div>
 
-    <script>
-        const slidesContainer = document.querySelector('.slides');
-        const slideElements = document.querySelectorAll('.slide');
-        const totalSlides = slideElements.length;
-        let currentIndex = 0;
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+    const slideCounter = document.getElementById('slideCounter'); // Get counter element
+    let currentSlide = 0;
 
-        function updateSlides() {
-            const offset = -currentIndex * 100;
-            slidesContainer.style.transform = `translateX(${offset}%)`;
-            updateSlideNumber();
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      prevButton.disabled = currentSlide === 0;
+      nextButton.disabled = currentSlide === slides.length - 1;
+      // Update slide counter text
+      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (event) => {
+       if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+            return;
         }
+      if (event.key === 'ArrowLeft' && currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      } else if (event.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    });
 
-        function updateSlideNumber() {
-            const slideNumbers = document.querySelectorAll('.slide-number');
-            slideNumbers.forEach((element, index) => {
-                element.textContent = `${currentIndex + 1} / ${totalSlides}`;
-            });
-        }
-
-        document.getElementById('next').addEventListener('click', () => {
-            if (currentIndex < totalSlides - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            updateSlides();
-        });
-
-        document.getElementById('prev').addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = totalSlides - 1;
-            }
-            updateSlides();
-        });
-
-        // Add keyboard navigation functionality
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight') {
-                if (currentIndex < totalSlides - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0;
-                }
-                updateSlides();
-            } else if (event.key === 'ArrowLeft') {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = totalSlides - 1;
-                }
-                updateSlides();
-            }
-        });
-
-        // Initialize the slide number display
-        updateSlideNumber();
-    </script>
+    updateSlide(); // Initialize the first slide and counter
+  </script>
 </body>
 </html>
