@@ -1,19 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Standardized Course Code -->
   <title>MCIE1012 - Chapter 2: Approaches to Ethics</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .slide { display: none; }
     .slide.active { display: block; }
-    /* Add some basic styling for the table */
+    /* Basic styling for tables */
     table, th, td {
       border: 1px solid #e2e8f0; /* gray-300 */
       padding: 6px; /* p-1.5 */
       font-size: 0.875rem; /* text-sm */
+      text-align: left; /* Default alignment */
     }
     table {
       width: 100%;
@@ -24,11 +25,10 @@
     th {
         background-color: #f7fafc; /* gray-100 */
         font-weight: bold;
-        text-align: center;
+        text-align: center; /* Center align headers */
     }
     td {
-        text-align: left;
-        vertical-align: top;
+        vertical-align: top; /* Align content to top */
     }
     /* Styling for activity boxes */
     .activity-box {
@@ -37,7 +37,25 @@
         border-radius: 0.375rem; /* rounded */
         border: 1px solid #bfdbfe; /* blue-200 */
         margin-bottom: 1rem; /* mb-4 */
+        margin-top: 1rem; /* mt-4 */
     }
+     /* Specific styling for bullet points */
+     .arrow-list li::before, .star-list li::before, .list-disc li::before, .list-decimal li::before, .list-\[circle\] li::before {
+         margin-right: 0.5em;
+     }
+     .list-disc, .list-decimal, .list-\[circle\] {
+        padding-left: 1.5rem; /* Standard indentation */
+     }
+     .arrow-list li::before {
+         content: '➢ ';
+     }
+     .star-list li::before {
+        content: '❖ ';
+     }
+     .arrow-list, .star-list {
+         list-style-type: none;
+         padding-left: 1rem;
+     }
     /* Ensure long reference lines wrap */
     .ref-item { word-break: break-word; margin-bottom: 0.5rem; }
      /* Simple diagram styling */
@@ -47,11 +65,13 @@
       margin: 15px 0;
       text-align: center;
       font-family: monospace;
+      background-color: #f9f9f9; /* Light background for diagram */
     }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
   <div class="container mx-auto p-4 max-w-4xl">
+     <!-- Standardized Course Code -->
     <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">MCIE1012 - Chapter Two</h1>
 
     <!-- Slides Container -->
@@ -62,28 +82,28 @@
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Two: Approaches to Ethics</h2>
         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.1 Chapter Introduction</h3>
         <p class="text-gray-600 mb-4">
-          Human beings ask questions about nature of morality. In the process of prescriptive inquiry, we employ a specific vocabulary. We also invoke theories to explain the nature of morality. All moral theories address the questions of what is Good, why it's Good, and where the Good is located?
+          Human beings naturally inquire into the nature of morality, asking questions about right and wrong, good and bad. In this prescriptive inquiry, we utilize specific ethical vocabulary and invoke various theories to explain morality's nature. Essentially, all moral theories address fundamental questions: What is the Good? Why is it Good? Where is the Good located?
         </p>
          <p class="text-gray-600 mb-4">
-          If there is anything "easy” about moral inquiry it's the fact that there are only three basic kinds of prescriptive moral theories: teleological theories, deontological theories, and virtue-based theories. Unfortunately, they often (but not always) provide different and mostly conflicting answers to these basic questions. This Chapter aim to introduce you to various ethical theories.
+          Moral inquiry involves exploring different perspectives. Generally, prescriptive moral theories fall into three basic categories: teleological (consequentialist), deontological (duty-based), and virtue-based theories. These approaches often provide distinct, sometimes conflicting, answers to core ethical questions. This chapter aims to introduce these major ethical theories.
         </p>
       </div>
 
       <!-- Slide 2: Chapter Objectives & Activity -->
       <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.2 Chapter Objectives</h2>
-        <p class="text-gray-600 mb-2">After reading this chapter, students will be able to:</p>
-        <ul class="list-[circle] pl-6 text-gray-600 space-y-1 mb-6">
-          <li>Discuss ideas, feelings and questions about activities regarded as right or wrong, good or bad.</li>
-          <li>Explain why there are particular rules about what is right or wrong, good or bad behavior for different groups and situations.</li>
-          <li>Analyze the ethical dimensions of various rules and codes of behavior.</li>
-          <li>Examine the personal and community factors involved in defining beliefs about what is right or wrong, good or bad behavior.</li>
-          <li>Analyze how different contexts and situations influence personal values, attitudes, beliefs and behaviors.</li>
-          <li>Critically analyze how groups justify particular actions and behaviors.</li>
+        <p class="text-gray-600 mb-2">Upon successful completion of this chapter, students will be able to:</p>
+        <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-6"> <!-- Changed list style -->
+          <li>Discuss ideas, feelings, and questions regarding actions considered right or wrong, good or bad.</li>
+          <li>Explain the reasoning behind particular rules governing right/wrong or good/bad behavior in different groups and situations.</li>
+          <li>Analyze the ethical dimensions inherent in various rules and codes of behavior.</li>
+          <li>Examine the personal and community factors influencing beliefs about right/wrong and good/bad behavior.</li>
+          <li>Analyze how different contexts and situations shape personal values, attitudes, beliefs, and behaviors.</li>
+          <li>Critically analyze how groups justify specific actions and behaviors.</li>
         </ul>
         <div class="activity-box">
             <p class="font-semibold text-gray-700">Activity:</p>
-            <p class="italic text-gray-600">Are you the type of person who usually ‘does the right thing? How do you know what the 'right thing' is?</p>
+            <p class="italic text-gray-600">Consider yourself: Are you generally someone who ‘does the right thing’? How do you determine what constitutes the 'right thing' in various situations?</p>
         </div>
       </div>
 
@@ -91,956 +111,737 @@
       <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3 Normative Ethics</h2>
         <p class="text-gray-600 mb-4">
-           We may now begin our review of problems and views in the area of normative ethics, starting with the theory of obligation and then going on to the theory of moral value and, finally, to the theory of nonmoral value. The ultimate concern of the normative theory of obligation is to guide us in the making of decisions and judgments about actions in particular situations. A main concern is to guide us as agents deciding what we should do.
+           We begin our exploration within <strong>normative ethics</strong>, which focuses on establishing standards or norms for conduct. It addresses theories of obligation (what actions are right/wrong) and theories of value (what states of affairs are good/bad). The primary concern of normative theories of obligation is to guide decision-making and judgment regarding actions in specific situations, addressing the question: how should we decide what is morally right or obligatory for an agent (oneself or another) in a given circumstance?
         </p>
-        <p class="text-gray-600 mb-4">
-           But we also wish to make judgments about what others should do, what should have been done, or whether an action was right or wrong. We are agents, spectators, advisers, instructors, judges, and critics. In all these roles, our primary question is: how may or should we decide or determine what is morally right for a certain agent (oneself or another) to do, or what he morally ought to do, in a certain situation?
-        </p>
-         <p class="text-gray-600 font-semibold mb-2">Normative ethics:</p>
-         <ul class="list-[circle] pl-6 text-gray-600 space-y-1 mb-4">
-             <li>Offers theories or accounts of the best way to live. These theories evaluate actions in a systematic way, focusing on outcomes, duties, or motivation to justify human conduct.</li>
-             <li>Includes ethical theories like utilitarianism, deontology, virtue ethics, principlism, narrative ethics, and feminist ethics.</li>
+         <p class="text-gray-600 font-semibold mb-2">Key Aspects of Normative Ethics:</p>
+         <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4"> <!-- Changed list style -->
+             <li>Offers systematic theories or accounts of the best way to live and act ethically.</li>
+             <li>Evaluates actions based on criteria such as outcomes (consequences), duties, or character motivations.</li>
+             <li>Includes major ethical frameworks like utilitarianism, deontology, virtue ethics, principlism, narrative ethics, and feminist ethics.</li>
          </ul>
-         <p class="text-gray-600 font-semibold mb-2">Normative ethics poses questions like:</p>
+         <p class="text-gray-600 font-semibold mb-2">Central Questions in Normative Ethics:</p>
          <ul class="list-disc pl-6 text-gray-600 space-y-1">
-             <li>Are there general principles or rules to distinguish right and wrong?</li>
-             <li>Are there virtues and/or relationships we can nurture to behave well?</li>
+             <li>Are there general principles or rules that reliably distinguish right from wrong actions?</li>
+             <li>Are there specific virtues or relationship patterns we should cultivate to ensure ethical behavior?</li>
          </ul>
       </div>
 
       <!-- Slide 4: Teleological Ethics (Consequentialist) Intro -->
       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.1 Teleological Ethics (Consequentialist)</h2>
-        <p class="text-gray-600 font-semibold mb-2">What is teleological/Consequentialist ethics?</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.1 Teleological Ethics (Consequentialism)</h2>
+        <p class="text-gray-600 font-semibold mb-2">What is Teleological/Consequentialist Ethics?</p>
         <p class="text-gray-600 mb-4">
-          It is referred as “the end justifies the means”. It believes in purpose, ends or goals of an action. It stresses that the <strong>consequences</strong> of an action determine the morality or immorality of a given action. An action is judged as right or wrong, moral or immoral depending on what happens because of it. One may have the best intention or follow high moral principles, but if the result is harmful or bad, the act is judged morally or ethically wrong.
+          Teleological ethics, often summarized as "the end justifies the means," judges the morality of an action based solely on its <strong>consequences</strong> or outcomes (from Greek *telos*, meaning end or purpose). An action is considered right or wrong depending on the results it produces. Good intentions or adherence to rules are secondary; if the outcome is harmful, the act is judged morally wrong.
         </p>
         <p class="text-gray-600 mb-4">
-          Moral philosophers offer alternative standards to prevailing moral rules. These generally fall into two sorts: (1) <strong>deontological theories</strong> and (2) <strong>teleological ones</strong>.
+           Moral theories generally fall into two main categories regarding the basis of moral judgment: (1) deontological and (2) teleological.
         </p>
         <p class="text-gray-600 mb-4">
-          A <strong>teleological theory</strong> says the basic or ultimate criterion of what is morally right, wrong, obligatory, etc., is the <strong>non-moral value</strong> brought into being. The final appeal must be to the comparative amount of good produced, or the comparative balance of good over evil.
+           A <strong>teleological theory</strong> posits that the ultimate criterion for determining what is morally right, wrong, or obligatory is the <strong>non-moral value</strong> produced by the action or rule. The final judgment rests on comparing the amount of good produced versus evil, or the balance of good over evil.
         </p>
-        <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
-            <li>An act is <strong>right</strong> if and only if it or its rule produces (or probably will/is intended to) at least as great a balance of good over evil as any alternative.</li>
-             <li>An act is <strong>wrong</strong> if and only if it does not.</li>
-             <li>An act <strong>ought to be done</strong> if and only if it or its rule produces (or probably will/is intended to) a greater balance of good over evil than any alternative.</li>
+        <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+            <li>An act is <strong>right</strong> if it (or the rule it follows) produces at least as great a balance of good over evil as any available alternative.</li>
+             <li>An act is <strong>wrong</strong> if it does not meet this criterion.</li>
+             <li>An act <strong>ought to be done</strong> if it (or its rule) produces a greater balance of good over evil than any alternative.</li>
         </ul>
       </div>
 
-      <!-- Slide 5: Teleological Ethics Continued -->
+      <!-- Slide 5: Teleological Ethics and Non-Moral Good -->
       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.1 Teleological Ethics (Continued)</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Teleological Ethics and Non-Moral Good</h2>
         <p class="text-gray-600 mb-4">
-           For a teleologist, the moral quality/value of actions, persons, or traits depends on the comparative nonmoral value they bring about (or try to). Making moral quality depend on the moral value it promotes would be circular. Teleological theories make the right, obligatory, and morally good dependent on the <strong>nonmorally good</strong>.
+           For teleologists, the moral quality of actions, persons, or character traits depends entirely on the comparative *non-moral* value they bring about or intend to bring about. (Defining moral value in terms of moral value would be circular). Thus, teleological theories make rightness and moral goodness dependent on achieving the <strong>non-morally good</strong>.
         </p>
         <p class="text-gray-600 mb-4">
-           To know if something is right, ought to be done, or is morally good, one must first know what is good in the nonmoral sense and whether the thing in question promotes it.
+           To determine if an action is right or obligatory according to a teleological theory, one must first identify what constitutes non-moral good (e.g., happiness, knowledge, pleasure) and then assess whether the action in question effectively promotes the greatest balance of that good over evil.
         </p>
          <p class="text-gray-600 mb-4">
-           Teleologists may hold various views on what is nonmorally good.
+           Teleologists differ on what constitutes the non-morally good:
            <ul class="list-disc pl-6 space-y-1 mt-1">
-               <li><strong>Hedonists:</strong> Identify good with pleasure and evil with pain. The right action/rule produces the greatest balance of pleasure over pain.</li>
-               <li><strong>Non-hedonists:</strong> Identify good with power, knowledge, self-realization, perfection, etc.</li>
+               <li><strong>Hedonists:</strong> Identify good solely with pleasure and evil solely with pain. The right action maximizes the balance of pleasure over pain.</li>
+               <li><strong>Non-hedonists:</strong> Identify good with other values like power, knowledge, self-realization, perfection, etc.</li>
            </ul>
-           The key is that the teleologist has *some* view of good/bad and determines right/obligatory by what is conducive to the greatest balance of good over evil.
+           Despite differing views on the specific 'good', all teleological theories determine rightness based on maximizing the net balance of that chosen non-moral good.
          </p>
       </div>
 
-       <!-- Slide 6: Deontological vs Teleological & Forms of Teleology -->
+       <!-- Slide 6: Deontology vs. Teleology & Forms of Teleology -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Deontological vs. Teleological Ethics</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Deontological vs. Teleological Ethics Compared</h2>
          <p class="text-gray-600 mb-4">
-           <strong>Deontological theories</strong> deny what teleological theories affirm. They deny that right, obligatory, and morally good are wholly a function of nonmoral good or maximizing the balance of good over evil (for self, society, or world). They assert other considerations make an action/rule right or obligatory besides consequences – e.g., features of the act itself (keeping a promise, justice, divine command).
+           <strong>Deontological theories</strong> (from Greek *deon*, meaning duty) fundamentally reject the teleological premise. They deny that rightness, obligation, and moral goodness depend *solely* on maximizing non-moral good. Deontologists argue that other factors besides consequences determine moral rightness—such as features of the act itself (e.g., keeping a promise is intrinsically right), adherence to rules or duties (e.g., respecting rights, following divine commands), or motives.
          </p>
          <p class="text-gray-600 mb-4">
-           Teleologists believe the sole ultimate right-making characteristic is the comparative nonmoral value produced. Deontologists deny this, insisting there are other basic right-making characteristics. For them, maximizing good over evil is either not a moral standard or not the *only* basic one.
+           While teleologists see maximizing good consequences as the *only* ultimate right-making characteristic, deontologists believe other factors are also intrinsically right-making, or that maximizing good is either not a moral requirement or not the *sole* basic one.
+          </p>
+          <p class="text-gray-600">
+           For a deontologist, an action can be morally right or obligatory even if it doesn't produce the best overall consequences, perhaps because it fulfills a duty or respects a right.
          </p>
-          <p class="text-gray-600 mb-4">
-           A deontologist contends an action/rule can be morally right/obligatory even if it doesn't promote the greatest balance of good over evil. It might be right due to some other fact or its own nature.
-         </p>
-          <p class="text-gray-600 font-semibold mb-2">Forms of Teleological Ethics (differ by 'whose good'):</p>
-          <ul class="list-disc pl-6 text-gray-600 space-y-1">
-              <li><strong>Ethical Egoism:</strong> Promote one's own greatest good (Epicurus, Hobbes, Nietzsche). An act/rule is right iff it promotes at least as great a balance of good over evil for *oneself* in the long run as any alternative.</li>
-              <li><strong>Ethical Universalism (Utilitarianism):</strong> Promote the greatest general good (Bentham, Mill). An act/rule is right iff it is conducive to at least as great a balance of good over evil in the *universe as a whole* as any alternative.</li>
-              <li><strong>Intermediate theories:</strong> Promote good for a specific group (nation, class, family, race).</li>
-              <li><strong>Ethical Altruism:</strong> Promote the good of *other* people.</li>
+          <p class="text-gray-600 font-semibold mb-2 mt-4">Forms of Teleological Ethics (Distinguished by Beneficiary):</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1 text-sm"> <!-- Smaller font -->
+              <li><strong>Ethical Egoism:</strong> Maximize *one's own* greatest good (e.g., Epicurus, Hobbes, Nietzsche).</li>
+              <li><strong>Ethical Universalism (Utilitarianism):</strong> Maximize the greatest good *overall*, considering everyone affected (e.g., Bentham, Mill).</li>
+              <li><strong>Group-Based Consequentialism:</strong> Maximize good for a specific group (e.g., nation, class, family).</li>
+              <li><strong>Ethical Altruism:</strong> Maximize the good *of others*, potentially excluding oneself.</li>
           </ul>
-          <p class="text-gray-600 mt-2">We will focus on egoism and universalism (utilitarianism).</p>
+          <p class="text-gray-600 mt-2">This chapter will focus primarily on ethical egoism and utilitarianism.</p>
        </div>
 
       <!-- Slide 7: Egoism Introduction -->
       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.2 Egoism: Ethical and Psychological</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.2 Egoism: Ethical and Psychological Perspectives</h2>
         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.3.2.1 Ethical Egoism</h3>
         <p class="text-gray-600 mb-4">
-           We usually assume morality involves not being overly concerned with oneself; selfishness is seen as unacceptable. However, disagreement exists about what constitutes ethical behavior.
-        </p>
-        <p class="text-gray-600 mb-4">
-           Since early Western history, the viewpoint that humans are *not* built to look out for others' interests has surfaced. Some argue proper moral conduct is "looking out for number one." These are known as psychological egoism and ethical egoism.
+           Common morality often assumes we shouldn't be excessively self-centered; selfishness is generally frowned upon. However, historical and philosophical perspectives have challenged this, suggesting that perhaps humans are primarily oriented towards their own interests. This leads to two related but distinct concepts: psychological egoism and ethical egoism.
         </p>
          <p class="text-gray-600 mb-4">
-           Focusing on consequences (ends justify means) doesn't necessarily imply egoist consequences (maximizing one's own happiness). For example, Machiavelli argued for using any means (force, deceit) to maintain political power for oneself/party. This is Consequentialist but not utilitarian (lacks common good as ultimate end).
+           Some consequentialist views prioritize self-interest or group interest. For example, Machiavelli advocated using any means necessary to maintain political power, a consequentialist approach focused on the ruler's or party's ends, not necessarily the common good (thus distinct from utilitarianism).
          </p>
         <div class="activity-box">
-            <p class="font-semibold text-gray-700">Dear Students, would you give your view on the following case?</p>
+            <p class="font-semibold text-gray-700">Case for Discussion:</p>
             <p class="text-sm text-gray-600 mt-2">
-               Some years ago, a Good Samaritan stopped to help a man whose car had broken down. The man shot and killed the Samaritan, stole his car, and led police on a high-speed chase until killed. Most admire the Samaritan, but the ethical egoist would say the Samaritan did the wrong thing. For ethical egoism, the only rule is: <strong>Look after yourself</strong>. Stopping was throwing his life away.
+               Imagine a Good Samaritan stops to help a stranded motorist, who then shoots and kills the Samaritan. Most would admire the Samaritan's action despite the tragic outcome. An ethical egoist, however, might argue the Samaritan acted wrongly. Why? Because for ethical egoism, the primary moral rule is: <strong>Look after your own self-interest</strong>. Stopping put the Samaritan's life at risk for no personal gain, violating this principle.
             </p>
+            <p class="italic text-gray-600 mt-2">What is your perspective on the Samaritan's action in light of ethical egoism?</p>
         </div>
       </div>
 
        <!-- Slide 8: Ethical Egoism Explained -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.2.1 Ethical Egoism (Continued)</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.2.1 Ethical Egoism Explained</h2>
          <p class="text-gray-600 mb-4">
-           This theory is called <strong>ethical egoism</strong> because it's a normative theory about how we *ought* to behave. It implies we ought to be selfish, or self-interested. "Ethical" here just means it's a theory advocating egoism as a moral rule.
+           This theory is termed <strong>ethical egoism</strong> because it is a *normative* theory proposing how we *ought* to behave—namely, selfishly or in our own rational self-interest. The term "ethical" here simply indicates it's a theory *about* morality, one that advocates egoism as the correct moral stance.
          </p>
-          <p class="text-gray-600 font-semibold mb-2">"You should look after yourself"</p>
+          <p class="text-gray-600 font-semibold mb-2 text-center">Core Principle: "You should act always to maximize your own self-interest."</p>
          <p class="text-gray-600 mb-4">
-           The ethical egoist insists not taking advantage is foolish. Morality results from self-interest: if I mistreat others, they mistreat me, so I behave myself. This is a twisted version of the Golden Rule ("Do unto others as you would have them do unto you"), slanted towards self-interest. We treat others well *so that* we might receive similar treatment – we do it for ourselves.
+           From this perspective, acting against one's self-interest is foolish. Cooperative or seemingly altruistic behavior is justified only if it ultimately serves one's own interests (e.g., "I treat others well *so that* they will treat me well"). This reinterprets reciprocity and rules like the Golden Rule through a lens of self-interest.
          </p>
-         <p class="text-gray-600 font-semibold mb-2">Argument from Psychological Egoism:</p>
-         <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-            <li>We all always seek to maximize our own self-interest (definition of psychological egoism).</li>
-            <li>If one cannot do an act, one has no obligation to do that act (ought implies can).</li>
-            <li>Altruistic acts involve putting others' interests ahead of our own (definition of altruism).</li>
-            <li>But, altruism contradicts psychological egoism and so is impossible (by premises 1 and 3).</li>
-            <li>Therefore, altruistic acts are never morally obligatory (by premises 2 and 4).</li>
+         <p class="text-gray-600 font-semibold mb-2">Argument Often Based on Psychological Egoism:</p>
+         <ol class="list-decimal pl-6 text-gray-600 space-y-1 text-sm"> <!-- Smaller font -->
+            <li>Premise: All humans inherently seek to maximize their own self-interest (Psychological Egoism).</li>
+            <li>Premise: One cannot be obligated to do what is impossible ("ought implies can").</li>
+            <li>Premise: Altruism requires prioritizing others' interests over one's own.</li>
+            <li>Inference: Altruism contradicts psychological egoism and is therefore impossible (from 1 & 3).</li>
+            <li>Conclusion: Therefore, acting altruistically is never morally obligatory (from 2 & 4).</li>
          </ol>
        </div>
 
       <!-- Slide 9: Ethical Egoism Clarifications & Application -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethical Egoism Clarifications & Application</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethical Egoism: Clarifications and Application</h2>
         <p class="text-gray-600 mb-4">
-           An ethical egoist might help a stranded motorist, not for the motorist's sake, but to ensure "what goes around, comes around." The Golden Rule emphasizes others; ethical egoism emphasizes the self. Any theory looking solely at consequences is Consequentialist.
+           Ethical egoism doesn't preclude helping others, but the motivation must ultimately stem from self-benefit (e.g., feeling good, expecting future reciprocation, benefiting loved ones whose happiness contributes to one's own). It prioritizes *long-term* self-interest, which might involve actions like healthy eating or exercise that involve immediate discomfort for future gain.
         </p>
         <p class="text-gray-600 mb-4">
-           Ethical egoism advises doing what provides long-term benefit to oneself (exercise, healthy eating, etc.). Others' interests are unimportant unless helping them advances one's own interests (helping your children because you love *them*, but not the neighbor's children unless you gain gratification).
+           The theory fundamentally asserts that only one's own welfare is morally significant. It doesn't necessarily endorse hedonism (seeking immediate pleasure); rational self-interest might require sacrifice or pain.
         </p>
-        <p class="text-gray-600 mb-4">
-           This leads to a rewritten Golden Rule: It's okay to treat others advantageously to yourself (and not them) if you can get away with it.
-        </p>
-        <p class="text-gray-600 font-semibold mb-2">Method to Apply Ethical Egoism:</p>
-         <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
-            <li>List the possible acts.</li>
-            <li>For each act, see how much net good it would do *for you*.</li>
-            <li>Identify the act that does the most net good *for you*.</li>
+        <p class="text-gray-600 font-semibold mb-2">Applying Ethical Egoism:</p>
+         <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+            <li>Identify possible actions.</li>
+            <li>Determine the net long-term benefit *to yourself* for each action.</li>
+            <li>Choose the action yielding the greatest net benefit *for you*.</li>
          </ul>
-         <p class="text-gray-600 font-semibold mb-2">Important points about ethical egoism:</p>
-          <ul class="list-disc pl-6 text-gray-600 space-y-1">
-              <li>Says *only* one's own welfare counts morally.</li>
-              <li>Doesn't forbid helping or require harming others, but the reason must stem from how it helps *you*.</li>
-              <li>Doesn't say always do what's most pleasurable; self-interest might require pain/sacrifice.</li>
-          </ul>
        </div>
 
        <!-- Slide 10: Psychological Egoism -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.2.2 Psychological Egoism</h2>
          <p class="text-gray-600 mb-4">
-           The main basis for ethical egoism is often psychological: an argument from human nature. It's claimed we are constituted to always seek our own advantage/welfare, or what we *think* gives the greatest balance of good over evil. Butler called this "self-love" as the only basic principle. Contemporary terms include "ego-satisfaction" as the final aim or the "pleasure principle" as the basic drive.
+           Ethical egoism often rests on <strong>psychological egoism</strong>, which is a *descriptive* theory about human motivation, claiming that humans *are* inherently constituted to always seek their own advantage, welfare, or perceived greatest balance of good over evil (sometimes termed "self-love," "ego-satisfaction," or driven by the "pleasure principle").
          </p>
          <p class="text-gray-600 mb-4">
-            If this psychological claim is true, the argument goes, our moral theory must recognize it. Our basic ethical principle must be self-love (perhaps "cool" self-love). Anything else flies in the face of facts.
+            If psychological egoism is true (i.e., if we *can only* act self-interestedly), then ethical egoism appears to be the only reasonable moral theory, as morality cannot demand the impossible ("ought implies can").
          </p>
-          <p class="text-gray-600 mb-4">
-            One might object that we can't logically infer an ethical conclusion (ought) from a psychological premise (is). However, the egoist might argue: if human nature *is* purely self-interested, it's unrealistic and unreasonable to propose we *ought* to do anything else. Since "ought" implies "can," and we supposedly *can* only act self-interestedly (except by mistake), ethical egoism is the only reasonable approach.
-         </p>
-          <p class="text-gray-600 mb-4">
-            Thus, ethical egoism generally presupposes <strong>psychological egoism</strong>: that each of us *is* always seeking our own greatest good (pleasure, happiness, power, etc.). The question isn't whether egoism is strong, but whether we *ever* desire others' welfare for its own sake, not just as a means to our own welfare.
+          <p class="text-gray-600">
+            The core debate, therefore, often shifts to whether psychological egoism accurately describes human motivation: Do we *ever* genuinely desire others' welfare for its own sake, or is it always merely a means to our own ultimate satisfaction?
           </p>
        </div>
 
        <!-- Slide 11: Arguments Against Psychological Egoism -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Arguments Against Psychological Egoism</h2>
-         <p class="text-gray-600 mb-4">Counterarguments (often attributed to Bishop Butler) against psychological egoism:</p>
-         <ol class="list-decimal pl-6 text-gray-600 space-y-2 mb-4">
-            <li>The desire for one's own good presupposes more basic desires (food, fame, sex). Without these "primary appetites," there'd be no "good" to be concerned about. Our welfare *is* the satisfaction of such desires.</li>
-            <li>It follows that the object of basic desires isn't one's own welfare, but the specific things (food, fame). One's own good (self-love) is just *one* desire among many, not the object of *all* desires.</li>
-            <li>Sometimes the object of a basic desire is for oneself (e.g., food). But it could be for someone else (e.g., enjoying the sight of the ocean, wanting someone else to enjoy something). Altruistic impulses (and desiring the right) might exist empirically.</li>
-            <li>As a matter of fact, such altruistic interests *do* exist (as does malevolence – desiring another's pain for its own sake), and a desire to do the right.</li>
+         <p class="text-gray-600 mb-4">Philosophers like Bishop Butler offer counterarguments:</p>
+         <ol class="list-decimal pl-6 text-gray-600 space-y-2 mb-4 text-sm"> <!-- Smaller font -->
+            <li>Seeking one's own good (self-love) logically presupposes having more basic desires for specific things (food, fame, helping others). Without these primary desires, there'd be no "good" or "satisfaction" to seek.</li>
+            <li>Therefore, the object of these basic desires isn't always one's own welfare; it's the specific thing desired (e.g., food itself, another person's happiness). Self-love is just *one* desire among many.</li>
+            <li>The object of a desire *can* be external to oneself (e.g., desiring another's well-being). Thus, altruistic impulses are psychologically possible.</li>
+            <li>Empirically, genuinely altruistic interests (and sometimes malevolent ones, or a desire to do right for its own sake) seem to exist.</li>
          </ol>
-         <p class="text-gray-600 font-semibold mb-2">The Psychological Egoist's Rebuttal and Counter-Rebuttal:</p>
-          <p class="text-gray-600 mb-4">
-            The egoist might say: "Yes, we do things for others, but we get *satisfaction* from it, and that satisfaction is our real end. Doing the 'altruistic' thing is just a means to our own satisfaction/good."
+         <p class="text-gray-600 font-semibold mb-2">The Satisfaction Rebuttal and Counter:</p>
+          <p class="text-gray-600 mb-4 text-sm"> <!-- Smaller font -->
+            *Egoist:* Even when helping others, the *real* goal is the satisfaction derived from helping; the act is just a means to self-satisfaction.
           </p>
-           <p class="text-gray-600 mb-4">
-             The counter: Of course we get satisfaction, but we don't do the act *because* of the expected satisfaction; we get satisfaction *because* we wanted to do the act in the first place. The egoist confuses the *object* of the desire (e.g., Person A enjoying the ocean) with the *satisfaction* that results for Person B when the object is attained. If B fails to get A to the ocean, B feels frustration *because* his goal was for A to enjoy himself, not because B's goal was frustration.
+           <p class="text-gray-600 mb-4 text-sm"> <!-- Smaller font -->
+             *Counter:* Satisfaction is the *result* of achieving a pre-existing goal (e.g., wanting the other person to benefit), not the goal itself. We feel satisfaction *because* we achieved what we desired for the other person. Confusing the object of desire with the resulting satisfaction is a key error (Butler's Stone).
            </p>
-         <p class="text-gray-600">Generally, Egoistic and particularistic consequentialism consider only effects on oneself or a limited group (family, citizens, race). Moral rightness depends on consequences for the individual agent or group.</p>
+         <p class="text-gray-600 mt-4">If psychological egoism is false, the main argument for ethical egoism weakens significantly, though ethical egoism could still be defended on other grounds.</p>
        </div>
 
-       <!-- Slide 12: Utilitarianism Intro & Activity -->
+       <!-- Slide 12: Utilitarianism Introduction & Activity -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.3 Utilitarianism: Producing the Best Consequences</h2>
          <p class="text-lg italic text-center text-gray-700 mb-6">
-           "That action is best, which procures the greatest happiness for the greatest numbers."
+           "That action is best, which procures the greatest happiness for the greatest numbers." - Francis Hutcheson (precursor to Bentham)
          </p>
          <div class="activity-box">
-            <p class="font-semibold text-gray-700">Activity:</p>
+            <p class="font-semibold text-gray-700">Dilemma for Discussion:</p>
             <p class="text-sm text-gray-600 mt-2 mb-2">
-               Suppose you are at Jigjiga with a dying millionaire. His last wish: give his $2 million to the Ethiopian Coffee Club (football) so they can buy better players. You promise. Later, in Addis Ababa, you see an ad from the Ethiopian Red Cross Society (ERCS) pleading for $2 million to save 100,000 people from starvation and build a sustainable economy. You trust ERCS's integrity. You reconsider your promise.
+               Imagine you are in Jigjiga with a dying millionaire. With his last breath, he makes you promise to deliver $2 million in cash to the Ethiopian Coffee Football Club for buying better players. Later, in Addis Ababa, you see an Ethiopian Red Cross Society (ERCS) appeal stating $2 million is desperately needed to save 100,000 people from starvation through sustainable aid. You trust ERCS completely. You reconsider your promise to the millionaire.
             </p>
-             <p class="italic text-gray-600">What is the right thing to do in this case?</p>
+             <p class="italic text-gray-600 mt-2">What is the morally right thing to do?</p>
          </div>
           <p class="text-gray-600 mb-4">
-            Consider traditional moral principles:
-            <ul class="list-disc pl-6 space-y-1 mt-1">
-                <li><strong>"Let your conscience be your guide."</strong> Problem: Consciences differ. If yours says give to the club and mine says give to ERCS, discussion ends.</li>
-                 <li><strong>"Do whatever is most loving."</strong> Problem: Whom to love – the millionaire or the starving? Love alone doesn't settle conflicts. Is love always required (e.g., towards enemies, Hitler)?</li>
-                  <li><strong>Golden Rule: "Do to others as you would have them do to you."</strong> Problem: Needs modification ("...if you were in their shoes"). Still doesn't specify whom to prioritize here.</li>
+            Traditional moral guides offer limited help here:
+            <ul class="list-disc pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+                <li><strong>Conscience:</strong> Varies between individuals.</li>
+                 <li><strong>Love:</strong> Whom to prioritize? Doesn't resolve conflicting obligations.</li>
+                  <li><strong>Golden Rule:</strong> Doesn't specify which 'other' to prioritize when interests conflict.</li>
             </ul>
+            These are useful rules of thumb but insufficient for complex dilemmas.
           </p>
-         <p class="text-gray-600">Conscience, love, Golden Rule are worthy rules of thumb but limited in complex cases with conflicting interests.</p>
        </div>
 
-       <!-- Slide 13: Deontology vs Teleology Example -->
+       <!-- Slide 13: Deontology vs Teleology in the Dilemma -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Deontology vs. Teleology in the Dilemma</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Analyzing the Dilemma: Deontology vs. Teleology</h2>
          <p class="text-gray-600 mb-4">
-            A more promising strategy uses definite moral rules/principles.
+            Resolving the millionaire dilemma often involves appealing to more fundamental moral rules or principles.
          </p>
          <p class="text-gray-600 mb-4">
-            If you decided to give the money to the Ethiopian Coffee Club to keep your promise (following the principle "Always keep your promise"), you adhered to <strong>deontology</strong>. Deontological systems value the act/kind of act itself; certain features have intrinsic value (e.g., lying is intrinsically wrong).
+            If you prioritized keeping your promise to the millionaire (following the principle "Always keep promises"), your reasoning aligns with <strong>deontology</strong>. Deontological theories emphasize duties, rules, and the intrinsic nature of actions, regardless of consequences. Promise-keeping is seen as intrinsically right.
          </p>
           <p class="text-gray-600 mb-4">
-            If you decided to give the money to ERCS to save lives and restore solvency, you sided with <strong>teleological ethics (consequentialism)</strong>. The center of value is the outcome/consequences. Lying might be judged right/wrong based on the consequences it produces.
+            If you prioritized giving the money to ERCS to maximize well-being (saving many lives), your reasoning aligns with <strong>teleological ethics (consequentialism)</strong>. Here, the moral value lies in the outcome; the action producing the best consequences is deemed right.
           </p>
-           <p class="text-gray-600 mb-4">
-            We examined one teleological ethic: ethical egoism (right act produces most good for the agent).
-           </p>
-            <p class="text-gray-600 mb-4">
-             Unlike egoism, <strong>utilitarianism</strong> is a *universal* teleological system. It calls for maximizing goodness in *society* – the greatest goodness for the greatest number – not just the agent's good.
+           <p class="text-gray-600">
+             <strong>Utilitarianism</strong>, unlike ethical egoism, is a *universal* teleological theory. It mandates maximizing the good (often defined as happiness or welfare) not just for oneself, but for *all* affected parties—the greatest good for the greatest number. In the dilemma, utilitarianism likely favors giving the money to ERCS due to the vastly greater positive consequences.
             </p>
        </div>
 
        <!-- Slide 14: Classic Utilitarianism (Bentham & Mill) -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.3.1 Classic Utilitarianism</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.3.1 Classic Utilitarianism: Bentham and Mill</h2>
          <p class="text-gray-600 mb-4">
-           We use utilitarian reasoning often. Formally, seeds were sown by Epicurus (342–270 BCE): "pleasure is the goal... the standard by which we judge everything good." Rightness/wrongness depends on pleasure/pain produced. Epicurus focused on individual experience (a form of egoism).
+           While utilitarian-like reasoning appears earlier (e.g., Epicurus focusing on individual pleasure), modern utilitarianism, emphasizing *general* happiness, originates primarily with British philosophers and social reformers <strong>Jeremy Bentham (1748–1832)</strong> and <strong>John Stuart Mill (1806–1873)</strong>. They aimed to create a rational, scientific basis for morality and law, focused on human needs and interests rather than tradition or dogma.
          </p>
-          <p class="text-gray-600 mb-4">
-            Epicurus inspired 18th-century philosophers emphasizing *general* happiness – pleasing consequences impacting others.
-          </p>
-           <p class="text-gray-600 mb-4">
-             The classical expressions are from English philosophers/reformers <strong>Jeremy Bentham (1748–1832)</strong> and <strong>John Stuart Mill (1806–1873)</strong>. They were nonreligious, optimistic humanists focused on moral and legal reform, impatient with rule-bound systems, seeking to make law serve human needs and interests.
-           </p>
-         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.3.3.2 Jeremy Bentham: Quantity over Quality</h3>
-          <p class="text-gray-600 mb-4">Bentham articulated two main features of utilitarianism:</p>
-          <ul class="list-disc pl-6 text-gray-600 space-y-2">
-              <li><strong>The consequentialist principle (teleological aspect):</strong> Rightness/wrongness is determined by the goodness/badness of results. The end justifies the means.</li>
-              <li><strong>The utility principle (hedonic aspect):</strong> The only thing good in itself is some state like pleasure, happiness, or welfare.</li>
+         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.3.3.2 Jeremy Bentham: Quantity of Pleasure</h3>
+          <p class="text-gray-600 mb-4">Bentham's utilitarianism has two core components:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+              <li><strong>The Consequentialist Principle:</strong> Rightness/wrongness depends solely on the consequences (goodness/badness of results).</li>
+              <li><strong>The Utility/Hedonic Principle:</strong> Pleasure (or happiness) is the only intrinsic good; pain is the only intrinsic evil.</li>
           </ul>
+           <p class="text-gray-600 mt-4">Bentham advocated <strong>hedonistic utilitarianism</strong>: the right action maximizes the net balance of pleasure over pain for all affected.</p>
        </div>
 
-      <!-- Slide 15: Hedonistic Utilitarianism & Hedonic Calculus -->
+      <!-- Slide 15: Hedonic Calculus -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Hedonistic Utilitarianism & Hedonic Calculus</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Bentham's Hedonic Calculus</h2>
         <p class="text-gray-600 mb-4">
-            <strong>Hedonistic utilitarianism</strong> views pleasure as the sole good, pain as the sole evil. An act is right if it brings more pleasure than pain or prevents pain; wrong if it brings more pain than pleasure or prevents pleasure.
-        </p>
-        <p class="text-gray-600 mb-4">
-           Bentham invented the <strong>hedonic calculus</strong> for measuring pleasure/pain. The quantitative score for any experience sums seven aspects:
-           <ol class="list-decimal pl-6 space-y-1">
-                <li>Intensity</li>
-                <li>Duration</li>
-                <li>Certainty</li>
-                <li>Nearness (propinquity)</li>
-                <li>Fruitfulness (fecundity - tendency to lead to more pleasures)</li>
-                <li>Purity (tendency not to be followed by pains)</li>
-                <li>Extent (number of people affected)</li>
+           To make utilitarianism scientific, Bentham proposed the <strong>hedonic calculus</strong> to quantify pleasure and pain based on seven factors:
+           <ol class="list-decimal pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+                <li><strong>Intensity:</strong> How strong is the pleasure/pain?</li>
+                <li><strong>Duration:</strong> How long does it last?</li>
+                <li><strong>Certainty:</strong> How likely is it to occur?</li>
+                <li><strong>Propinquity (Nearness):</strong> How soon will it occur?</li>
+                <li><strong>Fecundity (Fruitfulness):</strong> Likelihood of producing further pleasures?</li>
+                <li><strong>Purity:</strong> Likelihood of not being followed by opposite sensations (e.g., pain after pleasure)?</li>
+                <li><strong>Extent:</strong> How many people are affected?</li>
            </ol>
         </p>
          <p class="text-gray-600 mb-4">
-           By adding up pleasure/pain scores for all possible acts and comparing, we decide which to perform. In our example, if giving to famine victims causes 3 million "hedons" (happiness units) and giving to the club causes < 1,000 hedons, we *must* give to the victims.
+           In theory, one calculates the net utility (pleasure minus pain) for each alternative action, considering all affected individuals and all seven factors, then chooses the action with the highest score. Applying this to the millionaire dilemma: saving 100,000 lives likely yields vastly more "hedons" (units of happiness) than improving a football club.
          </p>
-         <p class="text-gray-600 mb-4">
-           Appeal of Bentham's utilitarianism:
-           <ul class="list-disc pl-6 space-y-1">
-               <li>Simple (one principle: maximize pleasure, minimize suffering).</li>
-               <li>Commonsensical (morality seems about reducing suffering, promoting benevolence).</li>
-               <li>Scientific (quantitative measurement, impartial application - no special treatment for self/others based on race, gender, relationship, religion).</li>
-           </ul>
-         </p>
+         <p class="text-gray-600 text-sm italic">Appeal of Bentham's approach: Simplicity (one principle), common sense alignment (focus on welfare), attempt at scientific objectivity and impartiality.</p>
        </div>
 
-      <!-- Slide 16: John Stuart Mill: Quality over Quantity -->
+      <!-- Slide 16: John Stuart Mill: Quality of Pleasure -->
       <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.3.3 John Stuart Mill: Quality over Quantity</h2>
         <p class="text-gray-600 mb-4">
-            To counter objections that utilitarianism was a "pig philosophy" (valuing only base pleasures), Bentham's successor, J.S. Mill, distinguished happiness from mere sensual pleasure. His version is often called <strong>eudaimonistic utilitarianism</strong> (from Greek *eudaimonia*, "happiness").
+            Responding to criticisms that Bentham's view valued base pleasures equally with higher pursuits (a "pig philosophy"), <strong>J.S. Mill</strong> modified utilitarianism. His version, often called <strong>eudaimonistic utilitarianism</strong> (from *eudaimonia*, Greek for happiness or flourishing), distinguishes between higher and lower pleasures based on *quality*, not just quantity.
         </p>
          <p class="text-gray-600 mb-4">
-            Mill defined happiness via higher-order pleasures/satisfactions: intellectual, aesthetic, social enjoyments, and minimal suffering.
-            <ul class="list-disc pl-6 space-y-1 mt-1">
-                <li><strong>Lower (elementary) pleasures:</strong> Eating, drinking, sexuality, resting, sensuous titillation. More intensely gratifying, but can lead to pain if overindulged.</li>
-                <li><strong>Higher pleasures:</strong> High culture, science, intellectuality, creativity. More long-term, continuous, gradual.</li>
+            Mill argued that intellectual, aesthetic, and social pleasures (higher pleasures) are intrinsically superior to purely sensual ones (lower pleasures).
+            <ul class="list-disc pl-6 space-y-1 mt-1 text-sm"> <!-- Smaller font -->
+                <li><strong>Lower pleasures:</strong> Eating, drinking, sex, rest. Intense but potentially lead to pain if overindulged.</li>
+                <li><strong>Higher pleasures:</strong> Intellect, creativity, art, friendship, moral sentiment. More durable, less likely to lead to pain.</li>
             </ul>
          </p>
           <p class="text-gray-600 mb-4 italic">
-             Mill argued higher pleasures are superior: “It is better to be a human being dissatisfied than a pig satisfied; better to be Socrates dissatisfied than a fool satisfied." Humans require more for true happiness: lower pleasures plus deep friendship, intellect, culture, art, knowledge, wisdom.
+             Mill famously stated: “It is better to be a human being dissatisfied than a pig satisfied; better to be Socrates dissatisfied than a fool satisfied." Those who have experienced both types of pleasure recognize the superior quality of the higher ones.
           </p>
-          <p class="text-gray-600 mb-4">
-             The quality of higher pleasures is better. Happiness is "not a life of rapture; but moments of such, in an existence made up of few and transitory pains, many and various pleasures, with a decided predominance of the active over the passive, and having as the foundation... not to expect more from life than it is capable of bestowing."
+          <p class="text-gray-600">
+             For Mill, true happiness involves cultivating these higher faculties and experiencing a life rich in varied pleasures with minimal pain, founded on realistic expectations. His focus on qualities like knowledge, freedom, and friendship arguably moves beyond pure hedonism.
           </p>
-           <p class="text-gray-600 mb-4">
-             Mill emphasizes higher qualities (knowledge, intelligence, freedom, friendship, love, health), perhaps moving beyond pure pleasure to a non-hedonic cultivated state of mind.
-           </p>
-      </div>
+       </div>
 
-      <!-- Slide 17: Act- and Rule-Utilitarianism -->
+      <!-- Slide 17: Act- vs. Rule-Utilitarianism -->
       <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.3.4 Act- and Rule-Utilitarianism</h2>
-        <p class="text-gray-600 mb-4">Two classical types:</p>
+        <p class="text-gray-600 mb-4">A key distinction within utilitarianism:</p>
          <p class="text-gray-600 mb-4">
-           <strong>Act-utilitarianism (e.g., Bentham):</strong> Ideally, apply the principle of utility to *all* alternatives in *each* moment.
-           <br><em>Definition:</em> An act is right if and only if it results in as much good as any available alternative.
-           <br><em>Problems:</em>
-             <ul class="list-disc pl-8 space-y-1 mt-1">
-                 <li>Practicality: Cannot do the calculations for every act; need rules of thumb (e.g., "Don't lie," "Keep promises"). But the *right* act is still the one maximizing utility.</li>
-                 <li>Intuition: Seems to violate fundamental intuitions about correct behavior (e.g., could justify punishing the innocent if it maximized utility).</li>
-             </ul>
+           <strong>Act-Utilitarianism:</strong> Applies the principle of utility directly to each individual *act*. The right act is the one that produces the best consequences in that specific situation.
+           <br><em>Critiques:</em> Impractical to calculate consequences for every act; seems to justify actions that violate common moral rules (like lying or breaking promises) if doing so maximizes utility in a particular case.
          </p>
-          <p class="text-gray-600 mb-4">
-            <strong>Rule-utilitarianism (elements in Mill):</strong> Focuses on rules.
-             <br><em>Definition:</em> An act is right if and only if it is required by a rule that is itself a member of a set of rules whose acceptance would lead to greater utility for society than any available alternative.
-            <br><em>Rationale:</em> Humans are rule-followers. We need action-guiding rules. Act-utilitarian rule ("maximize utility") is too general. We often lack time to calculate consequences (e.g., lying vs. truth-telling), so need specific rules (like truthfulness) that pass the utility test.
+          <p class="text-gray-600">
+            <strong>Rule-Utilitarianism:</strong> Applies the principle of utility to determine the validity of *rules* of conduct. An act is right if it conforms to a valid moral rule. A rule is valid if its general acceptance would produce greater utility than alternative rules (or no rule).
+            <br><em>Rationale:</em> Acknowledges need for stable rules to guide behavior, coordinate actions, and avoid constant calculation. Focuses on the utility of *having* rules like "keep promises" or "tell the truth."
           </p>
           <div class="activity-box">
-            <p class="font-semibold text-gray-700">Activity:</p>
-            <p class="italic text-gray-600">Debates continue. Trolley problem: You are driving a trolley, brakes fail. Ahead are 5 workers. You can switch to a sidetrack with 1 worker. What should you do?</p>
+            <p class="font-semibold text-gray-700">Trolley Problem Discussion:</p>
+            <p class="italic text-gray-600">You are driving a runaway trolley. You can steer it onto a sidetrack to avoid killing 5 workers on the main track, but doing so will kill 1 worker on the sidetrack. Should you steer onto the sidetrack? How would act- and rule-utilitarianism potentially analyze this?</p>
           </div>
       </div>
 
      <!-- Slide 18: Strengths of Utilitarianism -->
       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Strengths of Utilitarianism</h2>
-         <p class="text-gray-600 mb-4">Three positive features:</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Strengths of Utilitarianism</h2>
+         <p class="text-gray-600 mb-4">Utilitarianism offers several appealing features:</p>
          <ol class="list-decimal pl-6 space-y-2 mb-4">
              <li>
-                <strong>Single principle, absolute system:</strong> "Do what will promote the most utility!" Offers a potential answer for every situation. Simple, action-guiding principle (though application can be hard).
+                <strong>Provides a single principle for decision-making:</strong> Offers a potentially unifying, absolute standard ("Maximize overall utility") applicable to all situations.
              </li>
               <li>
-                <strong>Gets to the substance of morality:</strong> Not just formal guidelines, but a material core: promote human (and animal?) flourishing, reduce suffering. Appeals to sense that morality is *for* people, about helping and alleviating suffering. Seems commonsensical (e.g., helping Kitty Genovese, giving millionaire's money to starving vs. football club).
+                <strong>Focuses on the substance of morality:</strong> Directly addresses welfare, happiness, and suffering reduction, aligning with common intuitions that morality should promote well-being.
              </li>
               <li>
-                <strong>Addresses the problem of posterity:</strong> Why preserve resources for future generations? Egoism struggles here. Utilitarianism's duty is to maximize *general* happiness. If future life quality is positive, we have an obligation to continue human existence and ensure high quality of life. This implies obligations to future people: simplify lifestyles, conserve resources, protect species, reduce emissions, preserve wilderness.
+                <strong>Addresses obligations to future generations (Posterity):</strong> By aiming to maximize overall happiness across time, utilitarianism provides a basis for conserving resources and protecting the environment for future inhabitants, unlike purely egoistic theories.
              </li>
          </ol>
       </div>
 
-       <!-- Slide 19: Criticisms of Utilitarianism - Formulation -->
+       <!-- Slide 19: Criticisms: Formulation & Consequences -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticism of Utilitarianism (1)</h2>
-         <p class="text-gray-600 mb-4">Utilitarianism faces standard objections.</p>
-         <p class="font-semibold text-gray-700 mb-2">Problems with Formulating Utilitarianism</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticisms of Utilitarianism (1)</h2>
+         <p class="font-semibold text-gray-700 mb-2">Problem 1: Formulating the Principle</p>
          <p class="text-gray-600 mb-4">
-            The formulation "The greatest happiness for the greatest number" has two variables ("happiness," "number"), leading to conflict.
+            The slogan "greatest happiness for the greatest number" is ambiguous. Does it mean maximizing the *total* amount of happiness (which might favor a large population with moderate happiness) or the *highest average* happiness (which might favor a smaller, very happy population)? These goals can conflict. Furthermore, how exactly is happiness/utility measured and compared between individuals?
          </p>
-          <div class="activity-box">
-            <p class="font-semibold text-gray-700">Dear Students;</p>
-            <p class="text-sm text-gray-600 mt-2 mb-2">
-               Example: $1,000 prize for running the longest distance in the shortest time. Abebe runs 5 km in 31 min; Kelbesa runs 7 km in 50 min; Obang runs 1 km in 6 min. Who wins? Abebe is longest distance, Obang is shortest time.
-            </p>
-         </div>
+          <p class="font-semibold text-gray-700 mb-2">Problem 2: Calculating Consequences</p>
           <p class="text-gray-600 mb-4">
-            This mirrors the utilitarian problem:
-            <ul class="list-disc pl-6 space-y-1">
-                <li>Maximize the *number* getting happiness (spread it widely)? Might lead to procreating large populations.</li>
-                <li>Maximize the *total amount* of happiness? Might allow some to be much happier if their increase offsets losers' diminished happiness.</li>
-            </ul>
-             Should we prioritize total happiness or highest average happiness?
-          </p>
-          <p class="font-semibold text-gray-700 mb-2">The Comparative Consequences Objection</p>
-          <p class="text-gray-600 mb-4">
-             Requires superhuman ability to foresee all consequences. We normally don't know long-term consequences, which extend indefinitely.
+             Predicting *all* the consequences of an action, especially long-term ones, seems practically impossible. Act-utilitarianism, in particular, appears to demand superhuman foresight to determine which act truly maximizes utility over time.
           </p>
        </div>
 
-      <!-- Slide 20: Criticisms of Utilitarianism - Consistency, No-Rest, Publicity -->
+      <!-- Slide 20: Criticisms: Consistency, No-Rest, Publicity -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticism of Utilitarianism (2)</h2>
-         <p class="font-semibold text-gray-700 mb-2">The Consistency Objection to Rule-Utilitarianism</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticisms of Utilitarianism (2)</h2>
+         <p class="font-semibold text-gray-700 mb-2">Problem 3: Consistency of Rule-Utilitarianism</p>
           <p class="text-gray-600 mb-4">
-            Does rule-utilitarianism collapse into act-utilitarianism or become deontological? Argument: If following rules yields 100 hedons, but breaking a rule in a specific case (e.g., lying to spare feelings) yields 102 hedons without decreasing the total, shouldn't we break the rule? We could always improve rule-utilitarianism by breaking rules when utility increases, effectively making it act-utilitarianism. Thus, it may be inconsistent or lack an independent standard.
+            Critics argue rule-utilitarianism either collapses into act-utilitarianism (if rules can always be broken when doing so maximizes utility) or becomes a form of deontology (if rules are upheld even when breaking them would produce better immediate consequences). Maintaining a distinct, consistent rule-utilitarian position is challenging.
           </p>
-         <p class="font-semibold text-gray-700 mb-2">The No-Rest Objection</p>
+         <p class="font-semibold text-gray-700 mb-2">Problem 4: The No-Rest Objection</p>
           <p class="text-gray-600 mb-4">
-            We must always do the act promoting the *most* utility. There's always something better we could be doing (helping homeless instead of cinema, saving ozone instead of sleeping). Should give away all assets beyond bare minimum. Utilitarianism seems to allow little rest or enjoyment if sacrificing increases others' happiness.
+            Utilitarianism seems to demand constant action to maximize utility. We should always be doing whatever yields the most good, potentially leaving no room for personal projects, leisure, or rest if sacrificing these could produce more overall happiness (e.g., by constantly working for charity). It appears overly demanding.
           </p>
-          <p class="font-semibold text-gray-700 mb-2">The Publicity Objection</p>
+          <p class="font-semibold text-gray-700 mb-2">Problem 5: The Publicity Objection</p>
            <p class="text-gray-600 mb-4">
-            Moral principles should be public knowledge for all to obey. But utilitarians might hesitate to recommend everyone act as a utilitarian (esp. act-utilitarian) due to complex deliberation needed. Might be better if most acted as deontologists. Seems to contradict publicity requirement.
+            Moral principles arguably should be public knowledge. However, some utilitarians might worry that publicly advocating utilitarianism (especially act-utilitarianism) could lead to miscalculation or abuse, suggesting it might be better if most people followed simpler, deontological rules. This creates a potential conflict with the publicity requirement.
            </p>
        </div>
 
-       <!-- Slide 21: Criticisms of Utilitarianism - Relativism, Means, Lying -->
+       <!-- Slide 21: Criticisms: Relativism & Means Justifying Ends -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticism of Utilitarianism (3)</h2>
-         <p class="font-semibold text-gray-700 mb-2">The Relativism Objection</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticisms of Utilitarianism (3)</h2>
+         <p class="font-semibold text-gray-700 mb-2">Problem 6: The Relativism Objection</p>
          <p class="text-gray-600 mb-4">
-            Rule-utilitarianism might seem relativistic, endorsing different rules in different societies (e.g., polygamy vs. monogamy; "Don't waste water" in desert vs. plentiful areas). But this isn't conventional relativism; the rule isn't valid by community choice, but by the *actual situation* and utility.
+            Rule-utilitarianism might appear relativistic if different rules maximize utility in different contexts (e.g., water conservation rules varying by climate). However, this isn't true relativism; the rule's validity depends on objective utility based on the *actual situation*, not just cultural acceptance.
          </p>
-          <p class="font-semibold text-gray-700 mb-2">Criticism of the Ends Justifying Immoral Means</p>
+          <p class="font-semibold text-gray-700 mb-2">Problem 7: Ends Justifying Immoral Means</p>
           <p class="text-gray-600 mb-4">
-            Chief criticism: Utilitarian ends could justify immoral means (deceit, torture, slavery, killing minorities) if the larger populace benefits.
-            <br><em>Argument:</em>
-             <ol class="list-decimal pl-6 space-y-1">
-                <li>If a moral theory justifies universally deemed impermissible actions, it must be rejected.</li>
-                <li>Utilitarianism justifies such actions.</li>
-                <li>Therefore, utilitarianism must be rejected.</li>
+            A major objection is that utilitarianism could potentially justify actions widely considered immoral (e.g., lying, torture, sacrificing innocents) if doing so produces the greatest overall good.
+            <br><em>Argument Structure:</em>
+             <ol class="list-decimal pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+                <li>If a moral theory justifies actions universally deemed impermissible, it's flawed.</li>
+                <li>Utilitarianism potentially justifies such actions in certain circumstances.</li>
+                <li>Therefore, utilitarianism is flawed.</li>
              </ol>
           </p>
-           <p class="font-semibold text-gray-700 mb-2">The Lying Objection</p>
+           <p class="font-semibold text-gray-700 mb-2">Example: The Lying Objection</p>
             <p class="text-gray-600 mb-4">
-               W.D. Ross: Utilitarianism counterintuitively endorses lying if it serves the greater good. If Act A (lie) and Act B (truth) both yield 100 hedons, utilitarianism sees them as equal value. Implausible; truth seems intrinsically good.
+               Critics like W.D. Ross argue utilitarianism wrongly implies lying is acceptable whenever it maximizes utility, conflicting with the intuition that truthfulness has intrinsic value. Utilitarians might reply that truthfulness *is* generally useful (a rule-utility) but lying is permissible in specific cases where it clearly maximizes good (e.g., white lies, lying to protect someone from harm).
             </p>
-             <p class="text-gray-600 mb-4">
-                Utilitarian reply: Truthfulness likely promotes overall welfare (needed for reliable info) and would be a rule-utility. But where lying *clearly* promotes utility without undermining the rule (e.g., lying to a gangster, white lies), we should lie.
-             </p>
        </div>
 
-        <!-- Slide 22: Criticisms of Utilitarianism - Justice -->
+        <!-- Slide 22: Criticisms: The Justice Objection -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Criticism of Utilitarianism (4): The Justice Objection</h2>
          <p class="text-gray-600 mb-4">
-            Utilitarian response on truth/integrity is intensified when considering justice, which most think shouldn't be compromised.
+            Perhaps the most serious objection concerns justice. Utilitarianism seems capable of sacrificing individual rights or fairness for the sake of maximizing overall happiness.
          </p>
          <p class="text-gray-600 mb-4">
-            <strong>Example 1 (Sheriff):</strong> Rape/murder in racially volatile town. To prevent deadly riot and preserve harmony, sheriff could frame an innocent tramp. Speedy trial/execution likely stops riot. Only sheriff (and real criminal) know truth. Utilitarian seems committed to framing the tramp; many find this appalling.
+            <strong>Scenario 1 (Sheriff):</strong> To prevent a deadly riot, a sheriff contemplates framing an innocent person for a crime. Convicting the innocent person might maximize overall utility by restoring peace, but violates principles of justice.
          </p>
           <p class="text-gray-600 mb-4">
-            <strong>Example 2 (Physician):</strong> Utilitarian physician has 5 patients needing organs (heart, lungs, liver, kidneys). Healthy bachelor comes for immunization. Utility-calculus suggests killing bachelor and using organs saves 5 lives, maximizing good.
+            <strong>Scenario 2 (Transplant Surgeon):</strong> A surgeon realizes she could save five patients needing organs by sacrificing one healthy patient who came for a check-up. This act arguably maximizes utility (5 lives saved > 1 lost), but profoundly violates justice and individual rights.
           </p>
-           <p class="text-gray-600 mb-4">
-            These careless views of justice (misusing legal/medical systems) seem frightening.
-           </p>
-           <p class="text-gray-600 mb-4">
-             However, utilitarians can't exclude sacrificing innocents for greater good. Would we sacrifice one innocent to prevent enormous evil (e.g., nuclear bomb destroying NYC)? If only way is torturing maniac's 10-year-old daughter, would we?
+           <p class="text-gray-600">
+            These scenarios suggest utilitarianism might conflict with fundamental notions of justice and individual rights, which many believe should not be overridden merely for utility gains. While extreme cases might test intuitions (e.g., sacrificing one innocent to prevent nuclear war), the apparent willingness of utilitarianism to permit injustice for the 'greater good' remains a central criticism.
            </p>
        </div>
 
-        <!-- Slide 23: Utilitarian Response to Justice & Formula -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Utilitarianism: Justice Response & Action Formula</h2>
-          <p class="text-gray-600 mb-4">
-            Rule-utilitarian response to torture example: Two rules conflict (prevent harm vs. against torture). Appeal to higher-level rule: "Sacrifice innocent person to prevent significantly greater social harm." Or, if no rule, use remainder rule: "Do act maximizing utility." This could justify torture.
-          </p>
-          <p class="text-gray-600 mb-4">
-            Thus, justice is just another (lower-order) principle within utilitarianism. The difficulty lies in determining *which* wide-scale disasters warrant sacrificing innocents (e.g., wartime bombings overriding noncombatant distinction; deaths from driving automobiles). These judgment calls highlight utilitarianism's difficulty with justice.
-          </p>
-         <p class="font-semibold text-gray-700 mb-2">Three-Step Action Formula:</p>
-          <ol class="list-decimal pl-6 text-gray-600 space-y-1 mb-4">
-             <li>Project consequences of each alternative option (based on current knowledge).</li>
-             <li>Calculate likely happiness (or balance over unhappiness) produced by each.</li>
-             <li>Select the action producing the greatest happiness for the greatest number affected.</li>
-          </ol>
-         <p class="text-gray-600 mb-4">
-            Utilitarianism considers consequences for *all* affected parties. Moral rightness depends on consequences for all affected people/sentient beings.
-         </p>
-          <p class="font-semibold text-gray-700 mb-2">The principle of utility:</p>
-          <ul class="list-disc pl-6 text-gray-600 space-y-1">
-              <li>The morally right action produces the best overall consequences regarding utility/welfare of all affected parties.</li>
-              <li>Bentham's slogan: Right act/policy causes 'greatest happiness of the greatest number' (maximizes total utility/welfare).</li>
-          </ul>
-       </div>
 
        <!-- Slide 24: Altruism -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.3.5 Altruism</h2>
          <div class="activity-box">
-            <p class="font-semibold text-gray-700">Question for Students:</p>
+            <p class="font-semibold text-gray-700">Questions for Reflection:</p>
             <p class="text-sm text-gray-600 mt-2 mb-2">
-               'The end justifies the means'. Does this policy allow morally reprehensible acts for good ends?
-               <br>A. Is carrying out unjust/dishonest acts for good ends unusual in your experience?
-               <br>B. What about a doctor evading bad news for a depressed patient, or prescribing unneeded antibiotics?
-               <br>C. Does the common occurrence of such events suggest utilitarianism is well-suited to human behavior?
+               Does the policy 'The end justifies the means' permit morally questionable acts for good outcomes?
+               <br>A. Is it common in your experience for people to justify dishonest or unjust actions by appealing to good ends?
+               <br>B. Consider a doctor misleading a depressed patient about their prognosis or prescribing unnecessary medication 'just in case'. Are these justifiable?
+               <br>C. Does the prevalence of such behavior suggest utilitarianism aligns well with human tendencies, or does it highlight potential dangers?
             </p>
          </div>
           <p class="text-gray-600 mb-4">
-            In <strong>altruism</strong>, an action is right if consequences are favorable to all *except* the actor.
+            In contrast to egoism, <strong>altruism</strong> holds that an action is right if its consequences are favorable for everyone *except* the person acting. It prioritizes others' welfare.
           </p>
           <p class="text-gray-600 mb-4">
-             Bishop Butler argued for inherent psychological capacity for benevolence (<strong>psychological altruism</strong>): at least some actions are motivated by instinctive benevolence.
+             Arguments for altruism sometimes rely on <strong>psychological altruism</strong> (associated with Bishop Butler), the view that humans possess an inherent capacity for benevolence—acting out of genuine concern for others' well-being.
           </p>
-          <p class="text-gray-600 mb-4">
-             Psychological altruism (all human action is other-centered) is the opposite of psychological egoism. If both theories can be argued consistently, the soundness of one or both is questionable.
-          </p>
-           <p class="text-gray-600 mb-4">
-              Example: Degu (poor swimmer) saves a child from drowning in Lake Tana. Is his ultimate motivation his own benefit? Seems odd, given the risk.
-           </p>
            <p class="text-gray-600">
-             Altruists act to increase others' pleasure, even if it decreases their own pleasure or causes pain.
+             If psychological altruism exists, it counters psychological egoism. The debate centers on whether selfless motivations are genuinely possible. Consider Degu, a poor swimmer, risking his life to save a drowning child. Was his ultimate motivation self-benefit (e.g., social approval, feeling good)? Or was it genuine concern for the child, even at great personal risk? Altruism posits the latter is possible and morally commendable.
            </p>
            <div class="activity-box mt-4">
             <p class="font-semibold text-gray-700">Activity:</p>
-            <p class="italic text-gray-600">Write a case study on an individual/group you admire for altruistic motivation. Provide background and outline lessons learned.</p>
+            <p class="italic text-gray-600">Reflect on an individual or group you admire for apparent altruistic motivation. Describe their actions and explain the lessons learned from their example.</p>
            </div>
        </div>
 
       <!-- Slide 25: Deontological Ethics Intro -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.4 Deontological Ethics (Non-Consequentialist)</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.4 Deontological Ethics (Non-Consequentialism / Duty-Based)</h2>
+         <p class="font-semibold text-gray-700 mb-2">What duty requires of us?</p>
          <p class="text-gray-600 mb-4">
-            Differentiating egoistic/altruistic desires:
-            <ul class="list-disc pl-6 space-y-1 mb-4">
-                <li>Desire is <strong>egoistic</strong> iff it concerns one's own perceived benefit, not anyone else's.</li>
-                <li>Desire is <strong>altruistic</strong> iff it concerns the perceived benefit of at least someone else.</li>
-            </ul>
-             Altruists reject psychological egoism, arguing humans are instinctively benevolent, which is the basis of altruistic moral obligations.
-         </p>
-         <p class="font-semibold text-gray-700 mb-2">Deontology: What duty asks of us?</p>
-         <p class="text-gray-600 mb-4">
-             What makes a 'right' act right? Utilitarian/consequentialist: the good outcome. Deontological theory is often diametrically opposite.
+             While consequentialist theories (like utilitarianism and egoism) determine rightness based on outcomes, <strong>deontological theories</strong> argue that morality is based on duties, rules, obligations, or rights, independent of the consequences. Certain actions are considered intrinsically right or wrong based on their nature or the principles they uphold.
          </p>
           <p class="text-gray-600 mb-4">
-            Deontology is referred as “the means justifies the end”. Coined as “deontics”. Rightness/wrongness determined partly by formal rules of conduct, *not* consequences. Emphasis on intentions, motives, moral principles, performance of duty, rather than results. Consequences have nothing to do with rightness/wrongness.
+            Deontology emphasizes intentions, motives, moral principles, and fulfilling one's duty. The rightness or wrongness of an act lies in the act itself or the rule it follows, not primarily in the results it produces. Some moral obligations are considered absolute, regardless of the potential consequences.
           </p>
-          <p class="font-semibold text-gray-700 mb-2">Performance of One's own Duty</p>
+          <p class="font-semibold text-gray-700 mb-2">Classifying Duties</p>
            <p class="text-gray-600 mb-4">
-              17th-century German philosopher Samuel Pufendorf classified duties under three headings:
-              <ul class="list-disc pl-6 space-y-1">
-                 <li>Duties to God</li>
-                 <li>Duties to oneself</li>
-                 <li>Duties to others</li>
+              Philosopher Samuel Pufendorf (17th century) categorized duties:
+              <ul class="list-disc pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+                 <li><strong>Duties to God:</strong> Knowing and worshipping God.</li>
+                 <li><strong>Duties to oneself:</strong> Developing talents, preserving one's body/life.</li>
+                 <li><strong>Duties to others:</strong> Absolute (universal, e.g., avoid wronging others, treat equally, promote good) and Conditional (from agreements, e.g., keeping promises).</li>
               </ul>
            </p>
        </div>
 
-       <!-- Slide 26: Types of Duties (Pufendorf) & Divine Command Theory -->
+       <!-- Slide 26: Divine Command Theory (DCT) -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Types of Duties & Divine Command Theory</h2>
-         <p class="text-gray-600 font-semibold mb-1">Pufendorf's Duty Categories:</p>
-         <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
-            <li><strong>Towards God:</strong> (1) Theoretical duty to know God's existence/nature; (2) Practical duty to worship inwardly/outwardly.</li>
-            <li><strong>Towards oneself:</strong> (1) Duties of the soul (develop skills/talents); (2) Duties of the body (not harming body, not killing oneself).</li>
-            <li><strong>Towards others:</strong>
-                <ul class="list-[circle] pl-6">
-                   <li><em>Absolute duties</em> (universally binding): (1) Avoid wronging others; (2) Treat people as equals; (3) Promote others' good.</li>
-                   <li><em>Conditional duties</em> (result of contracts): Principal one is keeping promises.</li>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.4.1 The Divine Command Theory (DCT)</h2>
+         <p class="text-gray-600 mb-4">
+             One prominent deontological view bases morality on religion. The <strong>Divine Command Theory</strong> holds that ethical principles derive their validity solely from God's commands. An action is right because God commands it; an action is wrong because God forbids it. Without divine commands, objective morality wouldn't exist.
+         </p>
+         <p class="text-gray-600 font-semibold mb-1">Core Theses of Strong DCT:</p>
+         <ol class="list-decimal pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+             <li>Morality originates with God.</li>
+             <li>"Morally right" means "willed/commanded by God"; "morally wrong" means "against God's will."</li>
+             <li>Moral obligation stems directly from divine will, requiring no further justification.</li>
+         </ol>
+          <p class="text-gray-600 mb-4 text-sm"> <!-- Smaller font -->
+            Implications: An act is forbidden/required iff God commands against/for it. It's permissible iff God commands neither. If God doesn't exist, nothing is ethically required, forbidden, or permitted (moral nihilism).
+          </p>
+       </div>
+
+        <!-- Slide 27: Problems with DCT & Rights Theory Intro -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Problems with DCT & Introduction to Rights Theory</h2>
+         <p class="font-semibold text-gray-700 mb-2">Challenges to Divine Command Theory</p>
+         <ol class="list-decimal pl-6 text-gray-600 space-y-2 mb-4">
+            <li><strong>The Euthyphro Dilemma (Plato):</strong> Is an action right *because* God commands it, or does God command it *because* it is right?
+                <ul class="list-[circle] pl-6 text-sm"> <!-- Smaller font -->
+                   <li>If rightness is *solely* due to God's command, morality seems arbitrary (God could command cruelty, making it right).</li>
+                   <li>If God commands actions *because* they are independently right, then morality doesn't originate solely from God's will, contradicting DCT's core premise.</li>
                 </ul>
             </li>
-         </ul>
-         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.3.4.1 The Divine Command Theory (DCT)</h3>
-         <p class="text-gray-600 mb-4">
-             View that ethical principles are simply God's commands. Validity derives from God commanding them; they *mean* "commanded by God." Without God, no universally valid morality.
-         </p>
-         <p class="text-gray-600 font-semibold mb-1">Three Theses of Strong DCT:</p>
-         <ol class="list-decimal pl-6 text-gray-600 space-y-1 mb-4">
-             <li>Morality (rightness/wrongness) originates with God.</li>
-             <li>Moral rightness = "willed by God"; moral wrongness = "against God's will."</li>
-             <li>Morality based on divine will, not independent reasons; no further reasons needed.</li>
-         </ol>
-          <p class="text-gray-600 mb-4">
-            Modified DCTs drop/qualify theses. Strong form implies: Act A is forbidden/required iff God commands not-A/A. Act A is permitted iff God commands neither A nor not-A.
-          </p>
-           <p class="text-gray-600 font-semibold mb-1">Implications:</p>
-           <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-               <li>Act A is wrong iff contrary to God's command.</li>
-               <li>Act A is right (required) iff commanded by God.</li>
-               <li>Act A is morally permissible iff permitted by God's command.</li>
-               <li>If no God, nothing is ethically wrong, required, or permitted (moral nihilism).</li>
-           </ol>
-       </div>
-
-        <!-- Slide 27: Problems with DCT & Rights Theory -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Problems with DCT & Rights Theory</h2>
-         <p class="font-semibold text-gray-700 mb-2">Problems with the Divine Command Theory</p>
-         <ol class="list-decimal pl-6 text-gray-600 space-y-2 mb-4">
-            <li><strong>Redundancy of "God is good":</strong> If "good" = "what God commands," then "God is good" means "God does what God wills" or "God practices what he preaches." It doesn't ascribe a property *to* God. "God commands us to do good" becomes the empty "God commands us to do what God commands us to do."</li>
-             <li><strong>Arbitrariness of morality:</strong> If God's decree is the sole arbiter, heinous acts (rape, innocent killing, cruelty) could logically become morally good if God suddenly commanded them. Morality seems arbitrary.</li>
+             <li><strong>Redundancy Problem:</strong> If "good" simply means "commanded by God," statements like "God is good" become tautological ("God does what God commands") and lose their normative force.</li>
          </ol>
 
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">2.3.4.2 Rights Theory</h3>
+          <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">2.3.4.2 Rights Theory</h3>
           <p class="text-gray-600 mb-4">
-             A second duty-based approach. A "right" is a justified claim against another's behavior (e.g., my right not to be harmed by you).
+             Another duty-based approach focuses on <strong>rights</strong>. A right is typically understood as a justified claim or entitlement that one person has against another's behavior (e.g., my right to life implies your duty not to kill me).
           </p>
           <p class="text-gray-600 mb-4">
-             <strong>Correlativity of rights and duties:</strong> Rights of one imply duties of another (e.g., If I have right to $10 payment from Smith, Smith has duty to pay me $10).
-          </p>
-           <p class="text-gray-600 mb-4">
-              Most influential early account: 17th-century British philosopher <strong>John Locke</strong>. Laws of nature mandate we not harm anyone's life, health, liberty, or possessions. These are natural rights given by God.
-           </p>
-            <p class="text-gray-600 mb-4">
-               US Declaration of Independence (Jefferson, following Locke) recognizes foundational rights: life, liberty, pursuit of happiness. Others deduced: rights to property, movement, speech, religion.
-            </p>
-       </div>
-
-        <!-- Slide 28: Features of Moral Rights & Kant Intro -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Features of Moral Rights & Kant Intro</h2>
-         <p class="font-semibold text-gray-700 mb-2">Four features traditionally associated with moral rights:</p>
-         <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
-            <li><strong>Natural:</strong> Not invented/created by governments.</li>
-            <li><strong>Universal:</strong> Do not change country to country.</li>
-            <li><strong>Equal:</strong> Same for all people (irrespective of gender, race, handicap).</li>
-            <li><strong>Inalienable:</strong> Cannot hand over rights to another (e.g., selling self into slavery).</li>
-         </ul>
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">2.3.4.3 Kant's Categorical Imperative</h3>
-         <p class="text-gray-600 mb-4">
-             German philosopher <strong>Immanuel Kant (1724-1804)</strong> is identified with deontology. Adamantly opposed to outcomes determining moral worth.
-         </p>
-         <p class="text-gray-600 mb-4">
-             For deontologists, it's the <strong>intention</strong> of the person, not consequences, that determines rightness/wrongness. Emphasis on correctness of action, regardless of benefits/harm. Some moral obligations are absolutely binding, regardless of consequences.
-         </p>
-          <p class="font-semibold text-gray-700 mb-2">The Categorical Imperative</p>
-           <p class="text-gray-600 mb-4">
-             Kant's duty-based theory emphasizes a single principle. He agreed we have duties (develop talents, keep promises). But argued for a more foundational principle encompassing particular duties: a single, self-evident principle of reason called the "categorical imperative."
-           </p>
-       </div>
-
-      <!-- Slide 29: Categorical vs Hypothetical Imperatives -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Categorical vs. Hypothetical Imperatives</h2>
-        <p class="text-gray-600 mb-4">
-            A <strong>categorical imperative</strong> is fundamentally different from <strong>hypothetical imperatives</strong> that hinge on personal desire (e.g., "If you want a good job, then go to college"). A categorical imperative mandates action irrespective of desires (e.g., "You ought to do X").
-        </p>
-        <p class="text-gray-600 mb-4">
-           Kant emphasized <strong>good intention</strong> (good will). Nothing is good in itself except a "good will." Intelligence, judgment, etc., are good only if the will using them is good.
-        </p>
-         <p class="text-gray-600 mb-4">
-           By <strong>will</strong>, Kant means the uniquely human capacity to act according to concepts behind laws (principles). A good will acts according to nature's laws. A will is good without qualification only if its principle is: can the maxim of its action become a universal law?
-         </p>
-          <p class="text-gray-600 mb-4">
-            This standard is crucial. Kant believed there was one categorical imperative (universal command) from which all duties derive: <strong>Act in such a way that the maxim or general rule governing our action could be a universal law.</strong>
-          </p>
-           <p class="text-gray-600 mb-4">
-             Example: Making a promise you intend to break. Maxim: "Break promises when convenient." Could this be universal? No. It involves a contradiction of wills: you will to make promises (relying on the institution) and simultaneously will to break them (undermining the institution). Universal promise-breaking would dissolve the institution. Kant appeals to <strong>logical consistency</strong>, not bad consequences (unlike utilitarianism).
-           </p>
-           <p class="text-gray-600">Kant gives three versions/formulations of the categorical imperative. It's a deontological theory: based on objective ethical rules. Relies on idea all people are capable of reasoning similarly.</p>
-       </div>
-
-       <!-- Slide 30: Kantianism & Autonomy -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Kantianism & Autonomy</h2>
-         <p class="text-gray-600 mb-4">
-            Kantianism focuses on intent and action itself, not consequences like utilitarianism.
-         </p>
-         <p class="text-gray-600 mb-4">
-            <strong>Hypothetical imperatives</strong> tell us means to achieve ends, but not which ends to choose. Dichotomy: "right" ends (helping someone) vs. "good" ends (enriching oneself). Kant considered "right" superior; "good" was morally irrelevant.
-         </p>
-          <p class="text-gray-600 mb-4">
-            Right/moral conduct cannot be decided empirically. Judgments must be *a priori* (using pure practical reason). Reason, separate from experience, determines the moral principle: the <strong>categorical imperative</strong>. It dictates what *ought* to be done without reference to empirical factors. Moral questions determined independently of the subject. Because determined by pure reason, morality is universally valid (<strong>moral universalism</strong>) – impacting concepts of human rights and equality.
-          </p>
-          <p class="text-gray-600 mb-4">
-            Kant's theory hinges on <strong>autonomy</strong> and the categorical imperative. Unless an action is chosen freely/willingly, it has no meaning (or moral value).
-            <ul class="list-disc pl-6 space-y-1 mt-1">
-                <li><strong>Autonomy:</strong> Allows self-creation of values/morality. One's own beliefs, independence, government; acting without regard for others.</li>
-                <li><strong>Heteronomy:</strong> Acting under others' influence; allows placing blame externally.</li>
-            </ul>
+             <strong>Correlativity Thesis:</strong> Often, rights in one person imply corresponding duties in others.
           </p>
            <p class="text-gray-600">
-             Kant believed individuals are rational, capable of free choice (autonomous thinking). All humans, using reason on moral dilemmas, would agree on the Categorical Imperative (CI). The law is objective, but all can understand/agree via autonomous reflection. How does CI work?
+              Early influential accounts, like John Locke's, grounded rights in natural law ordained by God, mandating respect for life, liberty, health, and property as fundamental, natural rights. Thomas Jefferson echoed this in the US Declaration of Independence (life, liberty, pursuit of happiness).
            </p>
        </div>
 
-       <!-- Slide 31: Kant's Decision Procedure & Intent -->
+        <!-- Slide 28: Features of Moral Rights & Kantian Deontology Intro -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Kant's Decision Procedure & Intent</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Features of Moral Rights & Kantian Deontology</h2>
+         <p class="font-semibold text-gray-700 mb-2">Traditional Features of Moral Rights:</p>
+         <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+            <li><strong>Natural:</strong> Inherent, not created by human laws or governments.</li>
+            <li><strong>Universal:</strong> Apply to all people, everywhere.</li>
+            <li><strong>Equal:</strong> Possessed equally by all, regardless of race, gender, etc.</li>
+            <li><strong>Inalienable:</strong> Cannot be given away or taken away (though specific exercise might be forfeited).</li>
+         </ul>
+          <p class="text-gray-600 mt-4">Rights theory provides a framework where duties arise from respecting the fundamental entitlements of others.</p>
+
+          <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">2.3.4.3 Kant's Categorical Imperative</h3>
          <p class="text-gray-600 mb-4">
-            The decision procedure is straightforward: When considering a moral action, ask:
-            <ol class="list-decimal pl-6 space-y-1">
-               <li>What would happen if everyone did this, all the time?</li>
-               <li>Would that be the kind of world I'd like to live in?</li>
-            </ol>
+             The most influential deontological theory is arguably that of <strong>Immanuel Kant (1724-1804)</strong>. Kant staunchly rejected consequentialism, arguing that the moral worth of an action lies in the *intention* or *will* behind it, specifically whether it conforms to duty derived from reason, not in the outcomes produced.
          </p>
-          <p class="text-gray-600 mb-4">
-            Example: Murder. If everyone started killing, chaos ensues. Not a desirable world. Therefore, murder is wrong.
+           <p class="text-gray-600">
+             Kant sought a supreme principle of morality, derived from pure reason, which he called the <strong>Categorical Imperative</strong>. This principle dictates moral duties absolutely and universally, independent of personal desires or consequences.
+           </p>
+       </div>
+
+      <!-- Slide 29: Kant: Categorical vs. Hypothetical Imperatives -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Kant: Categorical vs. Hypothetical Imperatives</h2>
+        <p class="text-gray-600 mb-4">
+            Kant distinguished the <strong>Categorical Imperative</strong> (CI) from <strong>hypothetical imperatives</strong>.
+            <ul class="list-disc pl-6 space-y-1">
+                <li>*Hypothetical Imperatives:* Commands conditional on desires ("*If* you want Y, *then* do X"). They guide means to achieve subjective ends.</li>
+                <li>*Categorical Imperative:* An unconditional command derived from reason ("Do X" or "Don't do Y"), regardless of desires or consequences. It dictates objective moral duty.</li>
+            </ul>
+        </p>
+        <p class="text-gray-600 mb-4">
+           For Kant, the only thing good without qualification is a <strong>good will</strong>—a will that acts *from* duty, motivated by respect for the moral law derived from reason (the CI), not merely *in accordance* with duty (which could be done from self-interest or inclination).
+        </p>
+         <p class="text-gray-600">
+            The test for whether an action aligns with a good will is whether the principle (<strong>maxim</strong>) guiding the action can be consistently willed as a universal law, applicable to all rational beings without contradiction. This leads to the first formulation of the CI.
+         </p>
+       </div>
+
+
+       <!-- Slide 31: Kant: The Role of Intent -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Kant: The Importance of Intent</h2>
+         <p class="text-gray-600 mb-4">
+            A crucial aspect of Kant's ethics is the focus on <strong>intent</strong> or the <strong>maxim</strong> behind an action. The moral worth depends not on the outcome, but on *why* the action was performed.
+         </p>
+          <p class="font-semibold text-gray-700 mb-2">Example:</p>
+          <p class="text-gray-600 mb-4 text-sm"> <!-- Smaller font -->
+             Imagine someone considers murdering another but decides against it, *not* because murder is morally wrong, but solely because they fear getting caught. According to Kant, this person has *not* acted morally. Their decision stemmed from self-preservation (a hypothetical imperative), not from respect for the moral law (the categorical imperative). The action (or non-action) lacks moral worth.
           </p>
-          <p class="text-gray-600 mb-4">
-             A core aspect is <strong>intent</strong>. Intentions matter to Kant.
-          </p>
-          <p class="text-gray-600 mb-4">
-             Example: Murderer sees defenseless man, has knife. Considers killing. Decides not to kill – *not* because it's immoral, but due to risk of getting caught (self-preservation).
-             <br>Kant: You haven't acted ethically. Your action (or non-action) doesn't make you better. You didn't make a *moral* choice.
-          </p>
-           <p class="text-gray-600 mb-4">
-             However, if you chose not to kill because you realized it was *wrong* and didn't want to act unethically, *then* you acted morally and became a better person.
+           <p class="text-gray-600 mb-4 text-sm"> <!-- Smaller font -->
+             However, if the person refrains from murder *because* they recognize it as inherently wrong according to a universalizable principle, *then* their non-action has moral worth, stemming from a good will acting from duty.
            </p>
             <p class="text-gray-600">
-              Kant: A true moral proposition must be untied to particular conditions/identity of the deliberator. A moral maxim implies *absolute necessity*, disconnected from physical details, applicable to any rational being. Leads to first formulation...
+              For Kant, true moral maxims must possess absolute necessity, applying universally to all rational beings, independent of specific circumstances or desires.
             </p>
        </div>
 
-      <!-- Slide 32: CI Formulation 1: Universality & Duty Types -->
+      <!-- Slide 32: CI Formulation 1: Principle of Universality -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CI Formulation 1: Universality & Duty Types</h2>
-         <p class="font-semibold text-gray-700 mb-2">A. The Principle of Universality</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CI Formulation 1: The Principle of Universality</h2>
+         <p class="font-semibold text-gray-700 mb-2">A. First Formulation:</p>
          <p class="text-gray-600 mb-4 italic">
             "Act only according to that maxim whereby you can at the same time will that it should become a universal law without contradiction."
          </p>
           <p class="text-gray-600 mb-4">
-            Choose 'codes of conduct' only if they serve perfect/imperfect duty and are good for all. Kant divides duties from this formulation into two subsets:
-            <ul class="list-disc pl-6 space-y-1 mt-1">
-                <li>
-                   <strong>Perfect duties:</strong> Blameworthy if not met. Basic requirements for humans. We have a perfect duty *not* to act by maxims resulting in logical contradictions when universalized.
-                   <br>Example: "It is permissible to steal." Universalized, notion of property disappears, so stealing becomes impossible. Maxim logically negates itself.
-                   <br>Example: Avoidance of suicide. Suicide ends life; self-love impels improving life. Contradiction.
-                </li>
-                <li>
-                   <strong>Imperfect duties:</strong> Receive praise if completed, no blame if not. Circumstantial (e.g., cultivating talent). Based on pure reason but allow desires in practice. Not as strong as perfect duties, but still morally binding. Never truly completed. Differentiates from perfect duties because you can't constantly perform them.
-                   <br>Example: Perfecting writing ability.
-                </li>
-            </ul>
-          </p>
-       </div>
-
-       <!-- Slide 33: CI Formulation 2: Humanity as End -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CI Formulation 2: Humanity as End</h2>
-         <p class="font-semibold text-gray-700 mb-2">B. The Principle of Humanity as an End, Never as Merely a Means</p>
-         <p class="text-gray-600 mb-4 italic">
-            "Act in such a way that you treat humanity, whether in your own person or in the person of any other, never merely as a means to an end, but always at the same time as an end."
-         </p>
-          <p class="text-gray-600 mb-4">
-            Every rational action has a principle and an end. Most ends are subjective (pursued based on hypothetical imperatives). An objective end must be pursued categorically.
-          </p>
-          <p class="text-gray-600 mb-4">
-             This principle has widespread approval. People, as rational beings, are ends in themselves, never to be used *merely* as means. Physical things can be means; using people merely as means (slavery, prostitution, exploitation) degrades them.
+            This formulation provides a test: Can the principle behind your action be applied universally to everyone without generating a logical or practical contradiction? If universalizing the maxim leads to a state where the action itself becomes impossible or undermines the very system it relies upon, then the action is morally forbidden (violates a perfect duty).
           </p>
            <p class="text-gray-600 mb-4">
-             Also regulates actions affecting oneself. Suicide is wrong; treats my life as means to alleviate misery. Free will is source of rational action; treating it as subjective end denies freedom. Kant derives this second formulation from first.
+             Example (False Promise): Maxim: "It is permissible to make false promises when convenient." If universalized, no one would trust promises, making the act of promising (and thus breaking promises) meaningless. The maxim contradicts itself when universalized. Therefore, making false promises violates a perfect duty.
            </p>
-            <p class="text-gray-600 mb-4">
-              Combining formulations: We have *perfect duty* not to use humanity (self/others) *merely* as means. Example: Slavery. Slave owner has right to property, but not to own a person. Owning contradicts autonomy/free will, violating first maxim.
-            </p>
+           <p class="text-gray-600 mb-4">
+              Kant also distinguishes <strong>imperfect duties</strong> (e.g., developing talents, helping others). Maxims violating these might not lead to logical contradictions when universalized, but to states of affairs that no rational being could consistently *will* (e.g., a world where no one ever helps anyone else). These duties are still binding but allow more latitude in how they are fulfilled.
+           </p>
+       </div>
+
+       <!-- Slide 33: CI Formulation 2: Principle of Humanity -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CI Formulation 2: The Principle of Humanity</h2>
+         <p class="font-semibold text-gray-700 mb-2">B. Second Formulation:</p>
+         <p class="text-gray-600 mb-4 italic">
+            "Act in such a way that you treat humanity, whether in your own person or in the person of any other, never merely as a means, but always at the same time as an end."
+         </p>
+          <p class="text-gray-600 mb-4">
+            This formulation focuses on respecting the inherent worth and dignity of rational beings. Because humans possess reason and autonomy (the capacity for self-legislation), they are "ends in themselves," possessing intrinsic value. We must never treat people (including ourselves) *merely* as tools or instruments to achieve our own subjective ends.
+          </p>
+           <p class="text-gray-600 mb-4">
+             Using someone as a means (e.g., hiring a plumber) is permissible if their autonomy and dignity are respected (they consent, are fairly compensated). Using them *merely* as a means (e.g., through deception, coercion, exploitation, slavery) violates their status as an end-in-themselves and is morally forbidden (violates a perfect duty). Suicide is also wrong because it treats one's own rational nature merely as a means to end suffering.
+           </p>
              <p class="text-gray-600">
-               Always treat people with dignity, never as mere instruments. Treating as end = reflecting their inherent value (e.g., donating to charity). Treating as means = using as tool for something else (e.g., stealing neighbor's car for my happiness - wrong).
+               Treating someone as an end involves recognizing and respecting their capacity for rational choice and their inherent value.
              </p>
        </div>
 
-       <!-- Slide 34: CI Formulation 3: Autonomy & Rigidity Problem -->
+       <!-- Slide 34: CI Formulation 3: Principle of Autonomy & Rigidity -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CI Formulation 3: Autonomy & Rigidity</h2>
-         <p class="font-semibold text-gray-700 mb-2">C. The Principle of Autonomy</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CI Formulation 3: Autonomy & Problem of Rigidity</h2>
+         <p class="font-semibold text-gray-700 mb-2">C. Third Formulation: The Principle of Autonomy / Kingdom of Ends</p>
          <p class="text-gray-600 mb-4 italic">
              "Therefore, every rational being must so act as if he were through his maxim always a legislating member in the universal kingdom of ends."
          </p>
          <p class="text-gray-600 mb-4">
-             A truly autonomous will isn't subject to external interests, only laws it makes for itself. But these laws must be universalizable (as if binding others). Kant presents hypothetical "Kingdom of Ends" where all consider themselves both means and ends. Our actions affect everyone; should benefit all universally.
+             This formulation emphasizes <strong>autonomy</strong>—the idea that rational beings are self-legislating, creating the moral law through reason. However, the maxims we legislate for ourselves must be universalizable, suitable as laws for a hypothetical "Kingdom of Ends" where everyone is treated as both a law-maker (legislator) and an end-in-themselves. Our actions should reflect principles applicable and beneficial to all rational beings.
          </p>
+          <p class="font-semibold text-gray-700 mb-2">Problem: Rigidity and Conflicting Duties</p>
           <p class="text-gray-600 mb-4">
-            Recap Formulation 2: "Act... treat humanity... always... as an end and never merely as a means." We have perfect duty not to act by maxims creating incoherent states when universalized; imperfect duty not to act by maxims leading to unstable/undesirable states.
-          </p>
-          <p class="font-semibold text-gray-700 mb-2">Problem: Rigidity</p>
-          <p class="text-gray-600 mb-4">
-             Famous example: Crazed axe-murderer at door asks where your children are. Lying seems right, but universal lying is bad world. CI says you can't lie. Tell truth? Kant said yes, immoral to lie (but could lock door/call police).
+             A major criticism of Kant's theory is its perceived rigidity. Because the CI generates absolute, exceptionless duties (perfect duties), it seems unable to handle situations where duties conflict or where following a duty leads to disastrous consequences.
           </p>
            <p class="text-gray-600 mb-4">
-             Another example: Man holds gun to mother's head. Button next to you drops him into spike pit, saving her. CI says wrong thing to do (can't press button). Mother dies?
+             Example (Murderer at the Door): If a murderer asks for the location of their intended victim (who is hiding in your house), Kant's prohibition against lying (derived from the first formulation) seems to forbid misleading the murderer, even to save a life. This counterintuitive result suggests the theory might be too inflexible for complex moral realities. Similarly, dilemmas arise where any action seems to violate a perfect duty.
            </p>
-            <p class="text-gray-600">
-              Strict ethical systems struggle with complex exceptions. Morality too complex for these theories to fully work.
-            </p>
             <div class="activity-box mt-4">
               <p class="font-semibold text-gray-700">Activity:</p>
-              <p class="italic text-gray-600">Review Kant's rule of universality;
-              <br> A. Give examples where rule shouldn't/couldn't be observed?
-              <br> B. Agree consequences aren't fully controlled & shouldn't count in moral appraisal?
+              <p class="italic text-gray-600 text-sm">Consider Kant's principle of universality.
+              <br> a) Can you think of examples where universalizing a seemingly harmless maxim leads to problems, or where a universal rule seems inappropriate?
+              <br> b) Do you agree with Kant that consequences are largely irrelevant to the moral assessment of an action's intent? Why or why not?
               </p>
             </div>
        </div>
 
       <!-- Slide 35: Ross's Prima Facie Duties -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.4.4 Ross's Prima Facie Duties or Moral Guidelines</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.4.4 Ross's Prima Facie Duties</h2>
         <p class="text-gray-600 mb-4">
-            Fourth duty-based theory: British philosopher <strong>W.D. Ross (1877–1971)</strong>, emphasizing *prima facie* duties. (*Prima facie* = "at first sight" or "on the surface").
+            Addressing the rigidity of Kantianism and the potential injustices of utilitarianism, British philosopher <strong>W.D. Ross (1877–1971)</strong> proposed a deontological theory based on multiple, non-absolute duties he called <strong>prima facie duties</strong>. (*Prima facie* means "at first sight" or "on the surface").
         </p>
         <p class="text-gray-600 mb-4">
-           <strong>Prima facie duties:</strong> Duties dictating what we should do when other moral factors aren't considered. Generally obligate us, but might not in a specific case due to circumstances.
+           A <strong>prima facie duty</strong> is a genuine moral duty that is binding *other things being equal*. It tells us what we ought to do, assuming no other moral factors conflict. However, in situations where prima facie duties conflict, one duty might override another.
         </p>
          <p class="text-gray-600 mb-4">
-            <strong>Actual duty:</strong> The action one *ought* to perform after considering and weighing *all* relevant prima facie duties.
-         </p>
-          <p class="text-gray-600 mb-4">
-            Ross: Several prima facie duties help determine our concrete duty. A prima facie duty is binding (obligatory) *other things equal* (unless overridden/trumped by another duty). Strong presumption in its favor.
-            <br>Example: Duty to keep promises. Ought to keep promise unless stronger moral considerations override.
-         </p>
-         <p class="text-gray-600 mb-4">
-             Our <strong>actual or concrete duty</strong> is what we *should* perform in the specific situation. Morally bound to perform it. Prima facie duties relate to actual duties like reasons relate to conclusions.
+            Our <strong>actual duty</strong> in a specific situation is the prima facie duty that is most stringent or weighty after considering all conflicting prima facie duties. It's what we *ultimately* ought to do in that particular circumstance.
          </p>
           <p class="text-gray-600">
-             Term "duty" in "prima facie duty" is slightly misleading. They are <strong>guidelines</strong>, not exceptionless rules. Not following a guideline isn't necessarily violating a rule. But failing to do one's *actual* duty *is* violating a rule (the rule corresponding to the actual duty in that case).
+             Ross viewed prima facie duties as fundamental moral guidelines or considerations, intuitively recognized, rather than exceptionless rules derived from a single principle. Determining our actual duty requires careful judgment about the relative weights of conflicting prima facie duties in the specific context.
           </p>
        </div>
 
        <!-- Slide 36: Ross's List of Prima Facie Duties -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ross's List of Prima Facie Duties</h2>
-        <p class="text-gray-600 mb-4">Ross argues duties are "part of the fundamental nature of the universe." His list reflects actual moral convictions:</p>
-        <ul class="list-disc pl-6 text-gray-600 space-y-2 text-sm">
-           <li><strong>Duties of Fidelity:</strong> Keep promises, don't lie/deceive.</li>
-           <li><strong>Duties of Reparation:</strong> Make up for injuries done to others ("resting on a previous wrongful act"). Compensate harm caused.</li>
-           <li><strong>Duties of Gratitude:</strong> Thank/help those who help us. (E.g., helping a friend who was previously selfless).</li>
-           <li><strong>Duties of Justice:</strong> Act so benefits/burdens distributed fairly. Ross emphasizes negative aspect: duty to upset/prevent distributions not according to merit (pleasure/happiness). Includes preventing unjust distribution.</li>
-           <li><strong>Duties of Beneficence:</strong> Improve conditions of others (foster health, security, wisdom, goodness, happiness). "Rests upon the fact that there are other beings... whose condition we can make better..."</li>
-           <li><strong>Duties of Self-improvement:</strong> Act to promote one's own good (health, security, wisdom, goodness, virtue, intelligence, happiness).</li>
-           <li><strong>Duties of Non-maleficence:</strong> Non-injury. Don't harm others physically/psychologically (health, security, intelligence, character, happiness). Obliged to avoid hurting others.</li>
+        <p class="text-gray-600 mb-4">Ross believed these duties are self-evident aspects of morality, reflecting our common moral convictions. His non-exhaustive list includes:</p>
+        <ul class="list-decimal pl-6 text-gray-600 space-y-1 text-sm"> <!-- Smaller font, numbered list -->
+           <li><strong>Fidelity:</strong> Duties arising from promises and truthfulness.</li>
+           <li><strong>Reparation:</strong> Duty to make amends for wrongs done to others.</li>
+           <li><strong>Gratitude:</strong> Duty to return favors or services received from others.</li>
+           <li><strong>Justice:</strong> Duty to distribute benefits and burdens fairly, and prevent/rectify unjust distributions.</li>
+           <li><strong>Beneficence:</strong> Duty to improve the condition of others (promote their well-being).</li>
+           <li><strong>Self-improvement:</strong> Duty to improve one's own condition (virtue, intelligence).</li>
+           <li><strong>Non-maleficence (Non-injury):</strong> Duty not to harm others physically or psychologically. (Often considered the most stringent).</li>
         </ul>
-        <p class="text-gray-600 mt-4 text-sm">
-           (Jacques Thiroux added duty to *prevent* injury by others, distinct from Ross's non-injury which is about *not causing* harm intentionally/negligently/ignorantly).
-        </p>
+        <p class="text-gray-600 mt-4">When these duties conflict (e.g., keeping a promise vs. preventing harm), Ross argued we must use considered judgment (intuition, refined by experience) to determine which duty takes precedence and becomes our actual duty in that situation.</p>
        </div>
 
-       <!-- Slide 37: Summary of Ross & Virtue Ethics Intro -->
+       <!-- Slide 37: Virtue Ethics Introduction -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Summary of Ross & Virtue Ethics Intro</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Summary of Ross & Introduction to Virtue Ethics</h2>
         <p class="text-gray-600 mb-4">
-            Ross presents seven categories (maybe more). Insists we accept them based on <strong>intuition</strong>, not primarily reason/argument. When duties conflict, the more obligatory one is our actual duty. Actual duty has greatest prima facie rightness over wrongness.
+            Ross's theory offers a more flexible deontology than Kant's, acknowledging multiple fundamental duties identified through intuition. When duties conflict, judgment determines the actual duty, which is the prima facie duty with the greatest moral weight in that context.
         </p>
          <div class="activity-box mt-6">
             <p class="font-semibold text-gray-700">Activity:</p>
-            <p class="italic text-gray-600">Join classmates, imagine you are Ethiopia's prime minister. What principles would you use to govern society and the country?</p>
+            <p class="italic text-gray-600">Imagine you are the Prime Minister of Ethiopia. Which ethical principles (from Kant, Ross, Utilitarianism, etc.) would you prioritize in governing the country? Why?</p>
          </div>
 
-          <h2 class="text-2xl font-semibold mb-4 mt-8 text-gray-700">2.3.5 Virtue Ethics</h2>
-          <p class="font-semibold text-gray-700 mb-2">Virtue Ethics: Challenging the adequacy of rule-based theories</p>
+          <h2 class="text-2xl font-semibold mb-4 mt-8 text-gray-700">2.3.5 Virtue Ethics: Focus on Character</h2>
            <p class="text-gray-600 mb-4">
-              "Virtue ethics" is a normative theory focused on <strong>virtues</strong> or moral character, distinct from deontology (rules/duties) and consequentialism (outcomes).
+              Distinct from rule-based deontology and outcome-focused consequentialism, <strong>virtue ethics</strong> centers on <strong>moral character</strong>. It emphasizes cultivating virtues—positive character traits like honesty, courage, compassion, justice—as the key to ethical living.
            </p>
             <p class="text-gray-600">
-               Example: Helping someone in need.
-               <ul class="list-disc pl-6 space-y-1">
-                  <li>Deontologist: Emphasizes acting per rule ("Do unto others...").</li>
-                  <li>Consequentialist: Points to maximizing well-being consequences.</li>
-                  <li>Virtue ethicist: Emphasizes providing help would be charitable/benevolent (virtues).</li>
-               </ul>
+               Instead of asking "What is the right action?" or "What rule should I follow?", virtue ethics asks "What kind of person should I be?" The right action is often understood as what a virtuous person would characteristically do in the circumstances.
             </p>
        </div>
 
-      <!-- Slide 38: Aristotle's Ethics -->
+      <!-- Slide 38: Aristotle's Virtue Ethics -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.5.1 Aristotle's Ethics</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.3.5.1 Aristotle's Virtue Ethics</h2>
         <p class="text-gray-600 mb-4">
-            Ancient Greek philosopher <strong>Aristotle (384-322 B.C.)</strong> detailed virtue morality in *Nicomachean Ethics*. Understood 'virtus' as strength; virtues are strengths of character. Virtue theory later overshadowed by utilitarianism/deontology.
+            The foundational figure in Western virtue ethics is <strong>Aristotle (384-322 BCE)</strong>, particularly in his *Nicomachean Ethics*. For Aristotle, virtues (*arete*) are excellences or strengths of character developed through habituation.
         </p>
         <p class="text-gray-600 mb-4">
-           Resurfaced in past 50 years (Philippa Foot, Alasdair MacIntyre, Elizabeth Anscombe). Disillusioned with mainstream theories, argue virtue-based theory better answers "how ought we live?" than calculating consequences or obeying rules.
+           Virtue ethics experienced a revival in the mid-to-late 20th century (e.g., Anscombe, Foot, MacIntyre), partly due to dissatisfaction with perceived limitations of rule-based theories in capturing the complexity of moral life.
         </p>
-        <p class="font-semibold text-gray-700 mb-2">Key questions in virtue ethics:</p>
-        <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
-           <li>What sort of person do I want to be?</li>
-           <li>What virtues characterize that person?</li>
-           <li>What actions cultivate those virtues?</li>
-           <li>What actions characterize that sort of person?</li>
+        <p class="font-semibold text-gray-700 mb-2">Key questions in Aristotelian virtue ethics:</p>
+        <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+           <li>What is the ultimate human good or purpose (*telos*)? (Answer: *Eudaimonia* - flourishing, living well).</li>
+           <li>What constitutes living well for a human? (Answer: Activity of the soul in accordance with virtue/excellence).</li>
+           <li>What are the virtues (excellences)? (Answer: States of character, often involving finding a mean between extremes).</li>
+           <li>How are virtues acquired? (Answer: Through practice and habituation).</li>
         </ul>
-        <p class="text-gray-600 mb-4">
-          Good, right, happiness: Good isn't a disposition, involves teleological system involving actions.
-          <br> A. Good is what all things aim at. Something good performs its proper function (good cup, good oak). Right action conduces to good; different goods for different sciences/arts. "The good" (best good) desired for own sake; for humans, this is <strong>eudaimonia</strong> (activity of soul per *arete* - excellence/virtue). *Eudaemonia* = living/doing well.
-          <br> B. Human good not solved with mathematical exactitude (math starts general, argues to conclusions; ethics starts specific, argues to general). Ethics starts with actual moral judgments. Aristotle assumes natural tendencies.
-        </p>
+        <p class="text-gray-600">Aristotle believed the ultimate human good (*eudaimonia*) is achieved through rational activity performed virtuously or excellently over a complete life, requiring both moral and intellectual virtues, plus some external goods.</p>
        </div>
 
-      <!-- Slide 39: Aristotle: Happiness vs Virtue & Good Character -->
+      <!-- Slide 39: Aristotle: Character Development and the Mean -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle: Happiness, Virtue, Character</h2>
-        <p class="text-gray-600 mb-4">
-           C. Aristotle distinguishes happiness (*eudaimonia*) and moral virtue:
-            <ul class="list-[circle] pl-6 space-y-1">
-                <li>Moral virtue not end of life (can coexist with inactivity, misery).</li>
-                <li>Happiness (end of life) is activity according to reason (human *arete*/excellence).
-                    <ul class="list-disc pl-6">
-                        <li>Happiness involves both moral and intellectual *arete*.</li>
-                        <li>Some external goods necessary for this activity.</li>
-                    </ul>
-                </li>
-            </ul>
-        </p>
-         <p class="font-semibold text-gray-700 mb-2">The Good Character</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle: Character Development and the Mean</h2>
+        <p class="font-semibold text-gray-700 mb-2">Developing Good Character:</p>
           <p class="text-gray-600 mb-4">
-            A. People have natural capacity for good character, developed through practice. Capacity doesn't come first.
+            Aristotle argued we have a natural capacity for virtue, but virtue itself is acquired through practice and habituation. Acting virtuously leads to developing virtuous habits, which form a virtuous character. Once character is formed, virtuous actions flow naturally from it.
           </p>
            <div class="diagram mb-4">
-             ACT(S) ---&gt; HABIT(S) ---&gt; CHARACTER ---&gt; STATE OF MIND (DISPOSITION) ---&gt; ACT(S) ...
+             Repeated Actions → Form Habits → Shape Character (Disposition) → Guide Future Actions
            </div>
-           <ul class="list-[circle] pl-6 text-gray-600 space-y-1 mb-4">
-                <li>Sequence raises question of preeminence (acts vs dispositions). Interaction broken by Aristotle: acts *create* good dispositions; acts *flow from* good dispositions once created.</li>
-                 <li>*Arete* (virtue/excellence) is disposition developed from capacity by proper exercise.</li>
-                 <li>Habits developed through acting; character is structure of habits, formed by what we do.</li>
-           </ul>
-           <p class="text-gray-600">
-             B. Virtue (*arete*) defined as a <strong>mean</strong> between two extremes (excess and defect) regarding feeling/action, as practically wise person (*phronimos*) would determine. Mean not calculated *a priori*.
+           <p class="font-semibold text-gray-700 mb-2">The Doctrine of the Mean:</p>
+            <p class="text-gray-600 mb-4">
+             Moral virtue (*arete*) is typically a <strong>mean</strong> state between two vices: one of excess and one of deficiency, relative to us and the situation. This mean is determined by reason, specifically by the judgment of a person with <strong>phronesis</strong> (practical wisdom). It's not a strict mathematical average but finding the appropriate response between extremes.
            </p>
        </div>
 
-       <!-- Slide 40: Aristotle's Doctrine of the Mean (Table) -->
+       <!-- Slide 40: Aristotle's Doctrine of the Mean (Table Examples) -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle's Doctrine of the Mean</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle's Doctrine of the Mean: Examples</h2>
          <p class="text-gray-600 mb-4">
-            The mean is relative to individual and circumstances.
+            Finding the mean depends on context and the individual.
          </p>
           <table>
             <thead>
-                <tr><th>Aristotelian Virtues And Vices Sphere Of Action</th><th>Vice Of Deficiency</th><th>Mean Or Virtue</th><th>Vice Of Excess</th></tr>
+                <tr><th>Sphere of Action/Feeling</th><th>Vice (Deficiency)</th><th>Virtue (Mean)</th><th>Vice (Excess)</th></tr>
             </thead>
             <tbody>
-                <tr><td>Fear</td><td>cowardice</td><td>courage</td><td>foolhardiness</td></tr>
-                <tr><td>Pleasure and Pain</td><td>insensibility</td><td>temperance</td><td>self-indulgence</td></tr>
-                <tr><td>Acquisition (minor)</td><td>tight wad</td><td>liberality</td><td>spendthrift or prodigality</td></tr>
-                <tr><td>Acquisition (major)</td><td>undue humility</td><td>pride or proper ambition</td><td>undue vanity</td></tr>
-                <tr><td>Anger</td><td>unirascibility</td><td>patience or good temper</td><td>hotheadedness</td></tr>
-                <tr><td>Self-Expression</td><td>Self-deprecating</td><td>truthfulness</td><td>boastfulness</td></tr>
-                <tr><td>Conversation</td><td>boorishness</td><td>wittiness</td><td>buffoonery</td></tr>
-                <tr><td>Social Conduct</td><td>cantankerous</td><td>friendliness</td><td>obsequiousness</td></tr>
-                <tr><td>Exhibition</td><td>shamelessness</td><td>modesty</td><td>shyness</td></tr>
-                <tr><td>Indignation</td><td>spitefulness</td><td>righteous indignation</td><td>envy</td></tr>
+                <tr><td>Fear and Confidence</td><td>Cowardice</td><td>Courage</td><td>Rashness / Foolhardiness</td></tr>
+                <tr><td>Pleasure and Pain (Bodily)</td><td>Insensibility</td><td>Temperance</td><td>Self-indulgence / Profligacy</td></tr>
+                <tr><td>Giving/Taking Money (Minor)</td><td>Stinginess / Meanness</td><td>Liberality</td><td>Prodigality / Wastefulness</td></tr>
+                <tr><td>Giving/Taking Money (Major)</td><td>Pettiness / Shabbiness</td><td>Magnificence</td><td>Vulgarity / Tastelessness</td></tr>
+                <tr><td>Honor and Dishonor (Major)</td><td>Undue Humility / Pusillanimity</td><td>Magnanimity (Pride)</td><td>Vanity / Conceit</td></tr>
+                <tr><td>Honor and Dishonor (Minor)</td><td>Lack of Ambition</td><td>Proper Ambition</td><td>Over-ambition</td></tr>
+                <tr><td>Anger</td><td>Apathy / Unirascibility</td><td>Patience / Good Temper</td><td>Irascibility / Hotheadedness</td></tr>
+                <tr><td>Self-Expression (Truth)</td><td>Understatement / Mock Modesty</td><td>Truthfulness</td><td>Boastfulness</td></tr>
+                <tr><td>Conversation (Humor)</td><td>Boorishness</td><td>Wittiness</td><td>Buffoonery</td></tr>
+                <tr><td>Social Conduct</td><td>Contentiousness / Surliness</td><td>Friendliness</td><td>Obsequiousness / Flattery</td></tr>
+                <tr><td>Shame</td><td>Shamelessness</td><td>Modesty</td><td>Shyness / Bashfulness</td></tr>
+                <tr><td>Indignation (Pain at others' fortune)</td><td>Malice / Spitefulness</td><td>Righteous Indignation</td><td>Envy</td></tr>
             </tbody>
           </table>
+          <p class="text-gray-600 text-sm mt-2 italic">(Note: Table adapted from various interpretations of Nicomachean Ethics)</p>
        </div>
 
-       <!-- Slide 41: Aristotle: Mean, Phronesis, Ontology -->
+       <!-- Slide 41: Aristotle: Phronesis and Value -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle: Mean, Phronesis, Ontology</h2>
-        <ul class="list-[circle] pl-6 text-gray-600 space-y-2 mb-4">
-           <li>Level of courage differs for philosopher, commando, programmer.</li>
-           <li><strong>Phronesis</strong> (practical wisdom): Ability to see the right thing to do in circumstances. Theory not relativistic; appropriate standards exist.</li>
-           <li>Ontological dimension: virtue is a mean. Axiological (value) dimension: virtue is an extreme/excellence. (MLK Jr. quote on being "extremist" for love/justice).</li>
-           <li>Presumptively virtuous behavior can be extreme (Peter Abélard's "immoderate zeal for study" causing illness).</li>
-            <li>Hartmann's Diagram:
-                <div class="diagram">
-                    Goodness (Axiological Dimension - Peak)<br>
-                    /-------^-------\<br>
-                   /         |         \<br>
-                  Defect --- Mean ---- Excess<br>
-                       (Ontological Dimension - Base)
-                </div>
-            </li>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle: Phronesis and the Value of Virtue</h2>
+        <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4"> <!-- Changed list style -->
+           <li>The appropriate mean varies (e.g., courage differs for a soldier vs. a philosopher).</li>
+           <li><strong>Phronesis</strong> (practical wisdom) is the intellectual virtue enabling one to perceive the mean and act rightly in specific circumstances. It's acquired through experience and good judgment. Aristotle's theory is context-sensitive but not relativistic; there are objectively better/worse ways to act.</li>
+           <li>While virtue is ontologically a mean (a middle state), axiologically (in terms of value) it represents an excellence or peak, superior to both extremes.</li>
+           <li>Even virtuous behavior, if pursued immoderately (without *phronesis*), can become problematic (e.g., excessive study leading to illness).</li>
         </ul>
-         <p class="text-gray-600">Pleasure/pain powerful determinants. Pleasure is natural accompaniment of unimpeded activity; neither good/bad itself. Pleasure positive, perfects activity (skill improves chess/lovemaking). Pleasure cannot be directly sought (side-product of activity, element of happiness). Good person (*eudaimonia*) is standard for truly pleasant/unpleasant.</p>
+         <p class="text-gray-600">
+           Pleasure naturally accompanies unimpeded virtuous activity, perfecting it. It's an indicator of, but not the goal of, virtuous action. The truly pleasant life is the virtuous life, as judged by the good (*eudaimon*) person.
+         </p>
        </div>
 
        <!-- Slide 42: Aristotle: Friendship & Contemplation -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle: Friendship & Contemplation</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Aristotle: Friendship and Contemplation</h2>
         <p class="text-gray-600 mb-4">
-           IV. <strong>Friendship:</strong> Relationship to friend same as to oneself. Friend is second self.
-             <br> A. In friendship, person loves himself (egoism) not by seeking money, but by giving money away to receive honor.
-             <br> B. Kinds of friendship:
-                <ul class="list-disc pl-8 space-y-1">
-                    <li>Utility</li>
-                    <li>Pleasure</li>
-                    <li>The Good (endures as long as both retain character)</li>
-                </ul>
+           <strong>Friendship:</strong> Aristotle considered friendship essential for *eudaimonia*. A true friend is like a "second self."
+             <br> • True friendship (based on mutual appreciation of virtue) allows for shared virtuous activity and self-reflection.
+             <br> • Other forms exist based on utility or pleasure, but are less stable.
+             <br> • Self-love, properly understood, involves striving for virtue and honor, which benefits friends too.
         </p>
          <p class="text-gray-600 mb-4">
-           V. <strong>The Contemplative Faculty:</strong> Exercise of perfect happiness in intellectual/philosophic activity.
-            <br> A. Reason is highest faculty; can engage longer than other activities.
-            <br> B. Philosophy loved as end-in-itself; *eudaimonia* implies leisure/self-sufficiency for contemplation.
+           <strong>Contemplation:</strong> The highest form of human activity and happiness involves the exercise of reason in contemplation (*theoria*) – philosophical and scientific reflection.
+            <br> • Reason is our highest faculty.
+            <br> • Contemplation is loved for its own sake, requires leisure, and is the most self-sufficient activity, aligning with the divine element within us.
          </p>
-          <p class="font-semibold text-gray-700 mb-2">Aristotle on Pleasure (Summary)</p>
-          <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-            <li>*Eudaimonia*: Personal wellbeing, self-worth, zest for life, happiness, "good spirit".</li>
-            <li>Happiness is activity of soul per *arete* (living/doing well). (Compare Maslow/Jung).</li>
-            <li>Good is what performs proper function (*arete* established by purpose - teleological). Good person? Activity of soul per reason. Activity both moral (right thing/time) & intellectual (*phronesis*). External goods needed.</li>
-            <li>Moral virtue not end (can coexist with misery).</li>
-            <li>Good for person depends on circumstances (*i.e.*, initial conditions). Mean isn't relativism but applied to specifics (diet for weightlifter vs ballerina).</li>
-             <li>Pleasure is side-product of activity; results from unimpeded activity. Neither good/bad, but positive effect perfecting activity. Not sought for own sake (hedonistic paradox).</li>
+          <p class="font-semibold text-gray-700 mb-2">Aristotle Summary Points:</p>
+          <ol class="list-decimal pl-6 text-gray-600 space-y-1 text-sm"> <!-- Smaller font -->
+            <li>Human good (*eudaimonia*) is flourishing, achieved through rational activity according to virtue.</li>
+            <li>Moral virtue is a mean state, acquired by habit, guided by practical wisdom (*phronesis*).</li>
+            <li>Pleasure accompanies and perfects virtuous activity but isn't the ultimate goal.</li>
+            <li>Friendship and contemplation are crucial components of the best human life.</li>
           </ol>
        </div>
 
@@ -1049,239 +850,145 @@
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Virtue Ethics Activity</h2>
         <div class="activity-box mt-4">
            <p class="font-semibold text-gray-700">Activity:</p>
-           <p class="font-semibold text-gray-600 mt-2">Summary questions;</p>
+           <p class="font-semibold text-gray-600 mt-2">Reflection Questions:</p>
            <p class="text-sm text-gray-600 mt-1">
-              a. How do you understand ‘virtue’? Consider someone 'virtuous'. Describe them. What behaviors/attitudes are moral indicators of virtue?
+              a. How do you understand the concept of ‘virtue’? Think of someone you consider 'virtuous'. What qualities, behaviors, or attitudes make them so?
            </p>
            <p class="text-sm text-gray-600 mt-1">
-              b. Does a 'good' doctor/nurse have certain 'virtues'? Write short essay on 'The Caring Professional: a Life of Virtue'. Or, if virtue irrelevant in healthcare, explain why.
+              b. Does being a 'good' professional (e.g., doctor, nurse, teacher) involve possessing certain virtues beyond technical skill? Write a short essay exploring this idea, perhaps titled 'The Caring Professional: A Life of Virtue'. Alternatively, argue why virtue might be irrelevant in professional practice.
            </p>
          </div>
       </div>
 
       <!-- Slide 44: Non-Normative Ethics/Meta-ethics Intro -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.4 Non-Normative Ethics/Meta-ethics</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.4 Non-Normative Ethics / Meta-ethics</h2>
         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.4.1 What is Meta-ethics?</h3>
          <p class="text-gray-600 mb-4">
-            Debating moral questions (e.g., famine relief obligation) raises two types of philosophical questions:
-            <ul class="list-decimal pl-6 space-y-1">
-                <li><strong>First order questions:</strong> Which party is right, and why? (Province of *normative ethics*).</li>
-                <li><strong>Second order questions:</strong> What are the parties *doing* when debating? (Province of *metaethics*).</li>
+            When we debate moral questions (like famine relief obligations), philosophical inquiry operates on two levels:
+            <ul class="list-decimal pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+                <li><strong>First-Order Questions (Normative Ethics):</strong> What is the right thing to do? Which position is correct, and why?</li>
+                <li><strong>Second-Order Questions (Meta-ethics):</strong> What is the *nature* of moral debate itself? What are the participants *doing* when they make moral claims? What do moral terms mean? Do moral facts exist?</li>
             </ul>
          </p>
-          <p class="text-gray-600 mb-4 italic">
-             "In metaethics, we are concerned not with questions which are the province of normative ethics like 'Should I give to famine relief?'... but with questions about questions like these."
-          </p>
-          <p class="font-semibold text-gray-700 mb-2">Meta-ethics tries to answer questions such as:</p>
-          <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
-             <li>What does "good," "right," or "justice" mean?</li>
-             <li>What makes something good or right?</li>
-             <li>Is moral realism true?</li>
-             <li>Is morality irreducible, cognitive, or overriding?</li>
-             <li>Do intrinsic values exist?</li>
+          <p class="text-gray-600 font-semibold mb-2">Meta-ethics investigates:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+             <li>The meaning and function of moral language ("good," "right," "ought").</li>
+             <li>The metaphysics of morality (existence and nature of moral properties/facts).</li>
+             <li>The epistemology of morality (possibility and justification of moral knowledge).</li>
+             <li>The phenomenology of moral experience.</li>
+             <li>Moral psychology (relationship between moral judgment and motivation).</li>
+             <li>The objectivity or relativity of moral claims.</li>
           </ul>
-           <p class="text-gray-600 mb-4">
-            Normative ethics seeks answers *and* insight into *why* the answer is right. Classic theories disagree on the 'why'. Examples:
-            <ul class="list-disc pl-6 space-y-1">
-                <li>Act-utilitarianism (give relief because *this action* contributes most to GHPGN).</li>
-                 <li>Rule-utilitarianism (give relief because rule demanding it contributes most to GHPGN).</li>
-                 <li>Kantianism (give relief because universal refusal generates inconsistency).</li>
-            </ul>
-           </p>
+           <p class="text-gray-600">While normative ethics seeks to guide action by identifying correct principles (like utilitarianism or Kantianism), meta-ethics steps back to analyze the foundations, meaning, and status of moral discourse itself.</p>
        </div>
 
-        <!-- Slide 45: Meta-ethics Concerns -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Meta-ethics Concerns</h2>
-         <p class="text-gray-600 mb-4">
-            Normative ethics seeks general principles underlying moral practice, impacting practical problems. Meta-ethics concerned with questions about:
-         </p>
-          <ol class="list-[lower-alpha] pl-6 text-gray-600 space-y-2 mb-4">
-             <li><strong>Meaning:</strong> Semantic function of moral discourse? State facts or other role?</li>
-             <li><strong>Metaphysics:</strong> Do moral facts/properties exist? What are they like? Reducible to other facts or irreducible/*sui generis*?</li>
-             <li><strong>Epistemology/Justification:</strong> Moral knowledge possible? How know if judgments true/false? How justify claims?</li>
-             <li><strong>Phenomenology:</strong> How moral qualities represented in experience? Appear 'out there'?</li>
-             <li><strong>Moral psychology:</strong> Motivational state of moral judger? Connection between judgment and motivation?</li>
-             <li><strong>Objectivity:</strong> Moral judgments correct/incorrect? Can we find moral truth?</li>
-          </ol>
-           <p class="text-gray-600 mb-4">
-             List not exhaustive, questions related. Positive answer to (f) seems to presuppose fact-stating function (a). List wider than 50 years ago when metaethics seen mainly as language study.
-           </p>
-            <p class="text-gray-600 italic">
-             "[Metaethics] is not about what people ought to do. It is about what they are doing when they talk about what they ought to do." (Older view)
-            </p>
-            <p class="text-gray-600">Ordinary language philosophy waned; metaethics now includes metaphysics, epistemology, phenomenology, psychology.</p>
-       </div>
 
-        <!-- Slide 46: Cognitivism and Non-Cognitivism -->
+      <!-- Slide 46: Cognitivism vs. Non-Cognitivism -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.4.2 Cognitivism and Non-Cognitivism</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">2.4.2 Cognitivism vs. Non-Cognitivism</h2>
          <p class="text-gray-600 mb-4">
-            Consider moral judgment: "Murder is wrong." What psychological state does it express?
+            A central meta-ethical debate concerns the nature of moral judgments (e.g., "Murder is wrong"). What kind of mental state do they express?
          </p>
           <p class="text-gray-600 mb-4">
-            <strong>Cognitivists:</strong> Moral judgments express <strong>beliefs</strong>. Beliefs can be true/false (are truth-apt). So, moral judgments capable of being true/false.
+            <strong>Cognitivism:</strong> Moral judgments express <strong>beliefs</strong>. Since beliefs aim to represent the world and can be true or false, cognitivists hold that moral judgments are <strong>truth-apt</strong> (capable of being true or false).
           </p>
           <p class="text-gray-600 mb-4">
-             <strong>Non-cognitivists:</strong> Moral judgments express <strong>non-cognitive states</strong> (emotions, desires). These are not truth-apt. So, moral judgments not capable of being true/false. (Note: Desire *itself* isn't T/F, though "I have desire X" *can* be T/F).
+             <strong>Non-Cognitivism:</strong> Moral judgments primarily express <strong>non-cognitive states</strong>, such as emotions (approval/disapproval), desires, or commitments to norms. Since these states are not beliefs aiming to represent facts, non-cognitivists hold that moral judgments are <strong>not truth-apt</strong>.
           </p>
-         <h3 class="text-xl font-semibold mb-2 text-gray-700">2.4.2.1 Strong Cognitivism: Naturalism</h3>
+         <h3 class="text-xl font-semibold mb-2 text-gray-700">Cognitivist Theories: Naturalism</h3>
           <p class="text-gray-600 mb-4">
-            <strong>Strong cognitivism:</strong> Moral judgments (a) are truth-apt, AND (b) can result from cognitively accessing facts making them true. Can be naturalist or non-naturalist.
+            Cognitivist theories further divide based on their view of moral facts/properties.
           </p>
           <p class="text-gray-600 mb-4">
-             <strong>Naturalism:</strong> Moral judgment true/false due to a *natural* state of affairs, accessed by true judgment. What is natural? G.E. Moore: Subject matter of natural sciences and psychology.
-          </p>
-           <p class="text-gray-600 mb-4">
-              Natural property: Figures in natural science/psychology (e.g., property of conducing to GHPGN, preserving species). Natural state of affairs: Instantiation of natural property.
+             <strong>Ethical Naturalism:</strong> A form of cognitivism and <strong>moral realism</strong> (the view that objective moral facts/properties exist independently of human opinion). Naturalism holds that moral properties are identical to, or reducible to, <strong>natural properties</strong>—those studied by the natural sciences or psychology (e.g., properties like maximizing happiness, promoting survival, fulfilling biological functions). Moral judgments are true/false based on these natural facts.
            </p>
-            <p class="text-gray-600">
-               Naturalist cognitivists: Moral properties identical/reducible to natural properties.
-               <ul class="list-disc pl-6 space-y-1">
-                  <li>Cornell realists (Sturgeon, Boyd, Brink): Moral properties are irreducible natural properties.</li>
-                   <li>Naturalist reductionists: Moral properties reducible to other natural properties.</li>
-               </ul>
-                Both are moral realists: Moral facts/properties exist, independent of human opinion.
-            </p>
+            <p class="text-gray-600 text-sm italic">Sub-views include naturalist reductionism (moral properties *are* other natural properties) and non-reductionist Cornell realism (moral properties are distinct *but still natural* properties).</p>
        </div>
 
-      <!-- Slide 47: Strong Cognitivism: Non-Naturalism & Error Theory -->
+      <!-- Slide 47: Non-Naturalism & Error Theory -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Strong Cognitivism Variations</h2>
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">2.4.2.1.1 Strong Cognitivism: Non-Naturalism</h3>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Cognitivist Theories: Non-Naturalism & Error Theory</h2>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Ethical Non-Naturalism</h3>
         <p class="text-gray-600 mb-4">
-            <strong>Non-naturalists:</strong> Moral properties not identical/reducible to natural properties. They are irreducible and *sui generis* (unique).
-            <br>Two types:
-             <ul class="list-disc pl-6 space-y-1">
-                 <li>Moore's ethical non-naturalism (*Principia Ethica*, 1903): Moral goodness is non-natural, simple, unanalysable property.</li>
-                  <li>Contemporary version (McDowell, Wiggins, 1970s+).</li>
-             </ul>
-             Both are moral realists: Real moral facts/properties exist, independent of human opinion.
+            <strong>Ethical Non-Naturalism:</strong> Also a form of cognitivism and moral realism, but holds that moral properties are *not* natural properties. They are real, objective properties, but they are irreducible and *sui generis* (unique), distinct from the properties investigated by science. We come to know them through means like intuition (as argued by G.E. Moore) or specific forms of rational insight.
         </p>
 
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">2.4.2.1.2 Strong Cognitivism without Moral Realism: Mackie's 'Error-Theory'</h3>
+        <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">Mackie's Error Theory</h3>
         <p class="text-gray-600 mb-4">
-           <strong>John Mackie:</strong> Moral judgments *are* truth-apt and, if true, would grant access to moral facts. However, moral judgments are *always false*.
+           <strong>Error Theory (J.L. Mackie):</strong> A cognitivist but *anti-realist* view. Mackie agreed that moral judgments *aim* to state objective facts (express beliefs and are truth-apt). However, he argued that such objective moral facts or properties *do not actually exist*.
         </p>
          <p class="text-gray-600 mb-4">
-            Why? Simply no moral facts/properties of the required sort exist.
-            <ul class="list-disc pl-6 space-y-1">
-                <li>No plausible epistemology for accessing such facts/properties.</li>
-                <li>Such properties/facts would be "metaphysically queer" – unlike anything else. A moral property would have to motivate mere apprehension of it, which Mackie finds problematic.</li>
-            </ul>
-         </p>
-         <p class="text-gray-600">
-            Conclusion: No moral properties/facts. Positive moral judgments uniformly false. Our moral thinking involves radical error. Mackie is *not* a moral realist, but a moral *antirealist*.
+            Why? Mackie argued objective moral properties would be "metaphysically queer"—unlike anything else in the universe—and require an equally queer epistemic faculty to detect them. He also argued they would need an inherent (and mysterious) motivating power. Since such properties don't exist, *all* positive moral judgments (e.g., "X is good," "Y is wrong") are systematically *false*. Our moral thinking involves a fundamental error.
          </p>
        </div>
 
-       <!-- Slide 48: Weak Cognitivism & Non-Cognitivism -->
+       <!-- Slide 48: Weak Cognitivism & Non-Cognitivism Intro -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Weak Cognitivism & Non-Cognitivism</h2>
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">2.4.2.1.3 Weak Cognitivism without Moral Realism: 'Best Opinion' Theories</h3>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Weak Cognitivism & Non-Cognitivism Introduction</h2>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Weak Cognitivism / Constructivism</h3>
         <p class="text-gray-600 mb-4">
-            <strong>Weak cognitivism:</strong> Moral judgments (a) are truth-apt, BUT (b) *cannot* be upshot of cognitive access to moral properties/states of affairs.
+            Some theories are cognitivist (moral judgments express truth-apt beliefs) but anti-realist. These views deny that moral truths correspond to independent, objective moral facts "out there." Instead, moral truths might be seen as *constructed* by human attitudes, conventions, or ideal procedures. For example, truth might be determined by the consensus reached under ideal conditions or by our "best opinions." Moral judgments can be true/false relative to these constructed standards, but not by tracking mind-independent moral reality.
         </p>
-         <p class="text-gray-600 mb-4">
-            Agrees with strong cognitivism on (a), disagrees on (b). Example: Theory where our *best judgments* about morals *determine* extensions of moral terms, rather than tracking/detecting independent facts. (Extension = class of things predicate applies to).
-         </p>
-         <p class="text-gray-600 mb-4">
-            Moral judgments T/F, but not based on tracking/accessing faculty. Rejects moral realism by denying facts are constitutively independent of human opinion (not by denying facts exist like error-theory).
-         </p>
 
-         <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">2.4.3 Non-Cognitivism</h3>
+         <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">Non-Cognitivism Revisited</h3>
           <p class="text-gray-600 mb-4">
-            <strong>Non-cognitivists:</strong> Deny moral judgments even apt to be true/false. Disagree with both weak/strong cognitivism.
+            As stated earlier, <strong>Non-Cognitivism</strong> denies that moral judgments are truth-apt because they primarily express non-cognitive states (like emotions or commands) rather than beliefs about facts.
           </p>
           <p class="text-gray-600 mb-4">
-             Argument from moral psychology (example):
-             <ul class="list-disc pl-6 space-y-1">
-                <li>Cognitivist: Moral judgments express beliefs.</li>
-                <li>Motivation requires belief + desire (e.g., reach for fridge = belief water inside + desire water).</li>
-                <li>Internal/necessary fact: Sincerely judging X good motivates pursuing X.</li>
-                 <li>So, if moral judgment expressed belief, it'd be belief *necessarily* connected to desire.</li>
-                 <li>But, Hume: Beliefs/desires distinct existences; no necessary connection possible.</li>
-                 <li>Therefore, moral judgments cannot express beliefs. Therefore, not truth-apt.</li>
-             </ul>
+             A key argument for non-cognitivism relies on <strong>internalism</strong> about motivation: the idea that there's a necessary connection between sincerely making a moral judgment (e.g., "X is good") and being motivated (at least somewhat) to act accordingly. Combined with the <strong>Humean theory of motivation</strong> (motivation requires *both* a belief *and* a separate desire), non-cognitivists argue that moral judgments cannot be mere beliefs (as beliefs alone don't motivate) and must therefore express some desire-like or motivating non-cognitive state.
           </p>
-         <p class="text-gray-600">If judgments don't express beliefs, what do they express?</p>
        </div>
 
-       <!-- Slide 49: Non-Cognitivist Views & Frege-Geach Problem -->
+       <!-- Slide 49: Non-Cognitivist Varieties & Frege-Geach -->
        <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Non-Cognitivist Views & Frege-Geach Problem</h2>
-         <p class="text-gray-600 font-semibold mb-2">Three versions of non-cognitivism:</p>
-         <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
-            <li>J. Ayer's <strong>emotivism</strong> (1936): Moral judgments express emotions, sentiments of approval/disapproval.</li>
-             <li>Simon Blackburn's <strong>quasi-realism</strong> (1984): Moral judgments express dispositions to form sentiments of approval/disapproval.</li>
-             <li>Allan Gibbard's <strong>norm-expressivism</strong> (1990): Moral judgments express acceptance of norms.</li>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Non-Cognitivist Varieties & The Frege-Geach Problem</h2>
+         <p class="text-gray-600 font-semibold mb-2">Prominent Non-Cognitivist Views:</p>
+         <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4 text-sm"> <!-- Smaller font -->
+            <li><strong>Emotivism (A.J. Ayer, C.L. Stevenson):</strong> Moral judgments primarily express emotions or attitudes ("Murder is wrong" ≈ "Boo to murder!").</li>
+             <li><strong>Prescriptivism (R.M. Hare):</strong> Moral judgments function like universal imperatives or commands ("Murder is wrong" ≈ "Do not murder!").</li>
+             <li><strong>Quasi-Realism (Simon Blackburn):</strong> Moral judgments express complex attitudes or dispositions, while mimicking the linguistic structure of factual claims.</li>
+             <li><strong>Norm-Expressivism (Allan Gibbard):</strong> Moral judgments express acceptance of systems of norms.</li>
          </ul>
           <p class="text-gray-600 mb-4">
-            Main challenge: <strong>Frege-Geach problem</strong>.
-            <br> Emotivism: Judging "murder is wrong" = shouting "Boo for murder!" (evincing disapproval, not describing).
-            <br> But what about conditional statements like "If murder is wrong, then murdering your mother-in-law is wrong"? This makes sense.
-            <br> On emotivist interpretation, it *doesn't* make sense. (What would "If Boo for murder!, then Boo for murdering mother-in-law!" mean?) Difficulty embedding moral statements in complex sentences.
+            A major challenge for non-cognitivism is the <strong>Frege-Geach Problem (or Embedding Problem)</strong>. Moral statements appear meaningfully in complex sentences and logical inferences (e.g., "If lying is wrong, then getting your brother to lie is wrong"). Non-cognitivist accounts struggle to explain how terms like "wrong" retain consistent meaning in these embedded contexts if they merely express emotions or commands rather than state propositions. If "lying is wrong" just means "Boo to lying!", what does the conditional premise mean?
           </p>
-         <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">2.4.3.1 Internalism and Externalism, Humeanism and Anti-Humeanism</h3>
+         <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">Internalism vs. Externalism</h3>
           <p class="text-gray-600 mb-4">
-             Premise in psychology argument: Internal/necessary connection between sincere moral judgment and motivation. This is <strong>internalism</strong>.
+             The debate over the connection between moral judgment and motivation (internalism vs. externalism) and the nature of motivation itself (Humean vs. anti-Humean) remains central to meta-ethical discussions between cognitivists and non-cognitivists.
           </p>
            <div class="activity-box mt-4">
              <p class="font-semibold text-gray-700">Activity:</p>
-             <p class="italic text-gray-600">Note ethical behavior in your family. Classify it. Impact on your life? Write findings.</p>
+             <p class="italic text-gray-600 text-sm">Observe and note examples of ethical behavior within your family or close community. Can you classify these behaviors according to the theories discussed (utilitarian, deontological, virtue-based)? What impact do these ethical patterns have on your own life and values? Reflect on your findings.</p>
            </div>
        </div>
 
-      <!-- Slide 50: Responses to Argument & Meta-ethics Summary -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Responses & Meta-ethics Summary</h2>
-         <p class="text-gray-600 mb-4">
-            Some cognitivists respond by denying internalism. Connection between judgment and motivation is only external/contingent. These are <strong>externalists</strong>.
-         </p>
-         <p class="text-gray-600 mb-4">
-            Other cognitivists deny another premise: that motivation always involves *both* belief and desire (<strong>Humean theory of motivation</strong>). McDowell/Wiggins advance <strong>anti-Humean theory</strong>: beliefs *themselves* can be intrinsically motivating.
-         </p>
-         <p class="font-semibold text-gray-700 mb-2">Generally, Meta-ethics:</p>
-          <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
-             <li>Examines meaning of moral terms/concepts and relationships.</li>
-             <li>Explores origins of moral values (personhood, autonomy).</li>
-             <li>Considers difference between moral and other values.</li>
-             <li>Examines justification of moral claims.</li>
-          </ul>
-          <p class="font-semibold text-gray-700 mb-2">Meta-ethics also poses questions like:</p>
-           <ul class="list-disc pl-6 text-gray-600 space-y-1">
-              <li>What does "life is sacred" mean?</li>
-              <li>Are moral claims personal view, religious belief, social standard, or objective?</li>
-               <li>If objective, what makes them so?</li>
-               <li>Link between human psychology and moral claims?</li>
-           </ul>
-       </div>
 
        <!-- Slide 51: Chapter Summary -->
        <div class="slide">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary</h2>
         <p class="text-gray-600 mb-4">
-            Ethics is crucial for students to adopt ethical behavior for a good life, promoting a healthy society and fulfilling individual experience. In globalization, "Ethics will be one of the enablers of competitiveness." Stressing ethics' centrality benefits humankind and society, fostering growth through ethical qualities.
+            Understanding ethics is vital for cultivating ethical behavior, essential for personal fulfillment and societal well-being. In an interconnected world, ethical considerations are increasingly important. Studying different ethical approaches benefits individuals and society.
         </p>
          <p class="text-gray-600 mb-4">
-            Morality concerns habits, customs, ways of life assessed as good/bad, right/wrong. Moral values regulate behavior, maintain society, ensure peace/stability. Individuals have moral responsibility to respect societal values and avoid disturbing stability.
+            Morality involves the principles, values, and customs governing conduct, judged as right/wrong or good/bad. These values help regulate behavior and maintain social stability. Ethics provides the theoretical framework for analyzing and justifying moral beliefs and practices.
          </p>
           <p class="text-gray-600">
-            While utilitarianism, deontology, virtue theory are canonical, they evolve. Critiques lead to clarity and attunement to human living. Contemporary theories (principlism, narrative, feminist ethics) offer developments, fill gaps, acknowledge need to move from abstraction to concrete situations. This helps assess how moral theory guides decision-making and judgment.
+            This chapter explored major normative ethical theories: <strong>teleological/consequentialist</strong> theories (like egoism and utilitarianism), which judge actions based on outcomes; <strong>deontological</strong> theories (like Divine Command Theory, Rights Theory, Kantianism, Ross's Prima Facie Duties), which focus on duties, rules, or intentions; and <strong>virtue ethics</strong> (like Aristotle's), which emphasizes character development and virtues. It also introduced <strong>meta-ethics</strong>, which examines the meaning, nature, and justification of moral language and concepts, including debates between cognitivism and non-cognitivism. While canonical theories face critiques, contemporary approaches continue to refine ethical thought, aiming to guide moral decision-making in concrete situations.
           </p>
        </div>
 
        <!-- Slide 52: References -->
         <div class="slide">
             <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
+             <!-- Standardized and slightly annotated references -->
             <div class="text-xs text-gray-600 space-y-1 overflow-y-auto max-h-96">
-                <p class="ref-item">Macintyre, A. (1966) A Short History of Ethics: a history of moral philosophy from the Homeric age to the twentieth century. 3rd ed. London: the Macmillan Company.</p>
-                <p class="ref-item">Grcic, J. (1989) Moral Choices: Ethical Theories and Problems. Los Angeles: West Publishing Company.</p>
-                <p class="ref-item">Frankena, W. (1963) Ethics. Prentice-hall, Inc.</p>
-                <p class="ref-item">Guy, Jr., Alfred H. (n.d.). Successful Ways to Teach Ethics in any Discipline.</p>
-                <p class="ref-item">Madden, Theresa. (2000) A Compendium of Ideas and Resources for Using Ethics Across the Curriculum. Howard Community College.</p>
-                <p class="ref-item">Miller, Alexander, (1965) An introduction to contemporary metaethics. [Note: 1965 seems incorrect based on typical publication dates for Miller's work on metaethics, likely should be later, e.g., 2003 or 2013 for editions]</p>
+                <p class="ref-item">Frankena, W. K. (1973). *Ethics* (2nd ed.). Prentice-Hall. (Note: Original text cited 1963, likely 1st ed).</p>
+                <p class="ref-item">Grcic, J. (1989). *Moral Choices: Ethical Theories and Problems*. West Publishing Company.</p>
+                <p class="ref-item">Guy, Jr., A. H. (n.d.). *Successful Ways to Teach Ethics in any Discipline*. [Source details needed].</p>
+                <p class="ref-item">MacIntyre, A. (1984). *After Virtue: A Study in Moral Theory* (2nd ed.). University of Notre Dame Press. (Note: Original text cited 1966 *A Short History of Ethics*, which is also relevant but *After Virtue* is key for virtue ethics revival).</p>
+                <p class="ref-item">Madden, T. (2000). *A Compendium of Ideas and Resources for Using Ethics Across the Curriculum*. Howard Community College.</p>
+                <p class="ref-item">Miller, A. (2013). *An Introduction to Contemporary Metaethics* (2nd ed.). Polity Press. (Note: Corrected likely publication date from 1965).</p>
              </div>
         </div>
 
@@ -1290,16 +997,17 @@
     <!-- Navigation Arrows -->
     <div class="flex justify-between mt-4">
       <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
-      <span id="slideCounter" class="text-gray-600 self-center">1 / 52</span> <!-- Updated slide counter -->
+      <span id="slideCounter" class="text-gray-600 self-center">1 / 52</span> <!-- Counter remains -->
       <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
     </div>
   </div>
 
   <script>
+    // Script remains unchanged, starting at index 0 (slide 1)
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
-    const slideCounter = document.getElementById('slideCounter'); // Get counter element
+    const slideCounter = document.getElementById('slideCounter');
     let currentSlide = 0;
 
     function updateSlide() {
@@ -1308,7 +1016,6 @@
       });
       prevButton.disabled = currentSlide === 0;
       nextButton.disabled = currentSlide === slides.length - 1;
-      // Update slide counter text
       slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
     }
 
@@ -1326,7 +1033,6 @@
       }
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', (event) => {
        if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
             return;
