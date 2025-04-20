@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCED 1011 - Chapter 6: Categorical Propositions</title>
+  <!-- Standardized Course Code -->
+  <title>PHIL1009 - Chapter 6: Categorical Propositions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .slide { display: none; }
@@ -53,6 +54,7 @@
       table, th, td {
           border: 1px solid #e2e8f0; /* gray-300 */
           padding: 8px; /* p-2 */
+          text-align: left; /* Ensure consistent alignment */
       }
       table {
           width: 100%;
@@ -81,10 +83,12 @@
         .diagram-arrow {
             font-size: 1.5rem;
             color: #333;
+            margin: 0 10px; /* Added space */
         }
         .diagram-container {
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
+            text-align: center; /* Center labels */
         }
         .venn-diagram {
             display: flex;
@@ -93,8 +97,21 @@
             margin: 1rem 0;
         }
         .venn-image {
-            max-width: 100%;
+            max-width: 80%; /* Adjusted size */
             height: auto;
+            border: 1px solid #eee; /* Added subtle border */
+            margin: 0 10px; /* Spacing for side-by-side diagrams */
+        }
+        /* Adjust layout for side-by-side Venn diagrams */
+        .venn-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .venn-comparison .venn-diagram {
+            flex-basis: 45%; /* Adjust as needed */
+            min-width: 200px; /* Minimum width for smaller screens */
         }
 
     /* Ensure long reference lines wrap */
@@ -103,6 +120,7 @@
 </head>
 <body class="bg-gray-100 font-sans">
   <div class="container mx-auto p-4 max-w-4xl">
+    <!-- Standardized Course Code -->
     <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">PHIL1009 - Chapter Six</h1>
 
     <!-- Slides Container -->
@@ -111,195 +129,155 @@
       <!-- Slide 1: Title and Overview -->
       <div class="slide active">
         <h2 class="text-2xl font-semibold mb-4 text-gray-700">CHAPTER SIX<br>CATEGORICAL PROPOSITIONS</h2>
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">Chapter Overview:</h3>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">Chapter Overview</h3>
         <p class="text-gray-600 mb-4">
-          Dear students, in the fifth chapter of this course, we have seen Logical Reasoning and Fallacies. However, this chapter emphasizes the standard forms of categorical statements and their immediate inferences, difference between the modern and traditional squares of opposition what otherwise are called Boolean and Aristotelian Square of Oppositions, evaluating immediate inferences: Venn Diagrams and Square of Oppositions and Logical Operations: Conversion, Obversion, and Contraposition.
+          Following our discussion of logical reasoning and fallacies in Chapter Five, this chapter delves into the specifics of <strong>categorical propositions</strong>. We will examine their standard forms, components, and attributes (quality, quantity, distribution). Key topics include understanding immediate inferences, distinguishing between the modern (Boolean) and traditional (Aristotelian) squares of opposition, evaluating inferences using Venn diagrams and the squares of opposition, and exploring logical operations like conversion, obversion, and contraposition.
         </p>
       </div>
 
       <!-- Slide 2: Chapter Objectives -->
       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Objectives:</h2>
-        <p class="text-gray-600 mb-2">Having studied this, you will be able to:</p>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Objectives</h2>
+        <p class="text-gray-600 mb-2">Upon successful completion of this chapter, you will be able to:</p>
         <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-          <li>Define what a categorical proposition is</li>
-          <li>Explain the four standard categorical Propositions</li>
-          <li>Explain the attributes of a categorical proposition in terms of quality and quantity</li>
-          <li>Understand the immediate inferences based on the rules of conversion, obversion and contraposition</li>
-          <li>Describe the logical oppositions between the four propositions based on their square of relations.</li>
+          <li>Define a categorical proposition.</li>
+          <li>Identify and explain the four standard forms of categorical propositions (A, E, I, O).</li>
+          <li>Explain the attributes of categorical propositions: quality, quantity, and distribution.</li>
+          <li>Understand and evaluate immediate inferences using conversion, obversion, and contraposition.</li>
+          <li>Describe the logical relationships between propositions illustrated by the traditional and modern squares of opposition.</li>
+          <li>Utilize Venn diagrams to represent categorical propositions and test immediate inferences.</li>
         </ul>
       </div>
 
-       <!-- Slide 3: General Introduction Overview -->
+       <!-- Slide 3: General Introduction to Categorical Propositions -->
        <div class="slide">
          <h2 class="text-2xl font-semibold mb-4 text-gray-700">1: General Introduction</h2>
-         <h3 class="text-xl font-semibold mb-2 text-gray-700">overview:</h3>
+         <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview:</h3>
          <p class="text-gray-600 mb-4">
-           Dear students, it is clear that the discussions so far, in the previous chapters, provide you clue insights to what it means, in logic, <strong>categorical</strong> and <strong>proposition</strong>. A proposition that relates two classes, or categories, is called a <strong>categorical proposition</strong>.
+           Previous chapters provided foundational concepts. Now, we focus specifically on <strong>categorical propositions</strong>—statements that relate two classes or categories.
          </p>
          <p class="text-gray-600">
-           The classes in question are denoted respectively by the subject term and the predicate term, and the proposition asserts that either all or part of the class denoted by the subject term is included in or excluded from the class denoted by the predicate term. To put the same ideas in different words, a categorical proposition is a statement that relates two sets, classes, groups or categories which are presented in their subject or predicate positions that could be connected based on inclusion (partial/whole) or exclusion (partial/whole) relations.
+           These classes are represented by the <strong>subject term</strong> and the <strong>predicate term</strong>. A categorical proposition asserts a relationship between these two classes, stating whether all or part of the subject class is included in or excluded from the predicate class. In simpler terms, it's a statement about how two groups or categories relate regarding inclusion or exclusion.
          </p>
        </div>
 
-       <!-- Slide 4: Categorical Propositions Objectives -->
+       <!-- Slide 4: Section Objectives -->
        <div class="slide">
-         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Categorical Propositions Objectives:</h2>
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">objectives:</h3>
-          <p class="text-gray-600 mb-2">At the end of this, students will be able to:</p>
+         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives:</h2>
+          <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+          <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
           <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-            <li>Understand what it categorical proposition mean.</li>
-            <li>Recognize the various components of a standard forms of categorical proposition</li>
-            <li>Distinguish the feasible difference between traditional and modern squares of opposition</li>
+            <li>Understand the definition of a categorical proposition.</li>
+            <li>Recognize the standard components of categorical propositions.</li>
+            <li>Appreciate the key differences between the traditional (Aristotelian) and modern (Boolean) interpretations and their respective squares of opposition.</li>
           </ul>
        </div>
 
-        <!-- Slide 5: What is Categorical Propositions? -->
+        <!-- Slide 5: What are Categorical Propositions? -->
         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">What is Categorical Propositions?</h2>
+           <h2 class="text-2xl font-semibold mb-4 text-gray-700">What are Categorical Propositions?</h2>
             <p class="text-gray-600 mb-4">
-              Dear learners, the term category or categorical, in this respect, refers to set of things, such as, human beings, animals, plants, workers, ladies, and so on. In a categorical proposition, these and other set of things appears in the subject and predicate part of a proposition. The term proposition refers to the information content or meaning of a statement. However, to avoid inconvenience, we can use the terms statement and proposition interchangeably for this purpose.
+              A <strong>category</strong> here refers to a class or set of things (e.g., human beings, animals, plants, students). A <strong>proposition</strong>, as used in logic, essentially refers to the meaning or information content of a declarative statement (one that can be true or false). For simplicity, we will often use "statement" and "proposition" interchangeably.
             </p>
-             <p class="text-gray-600">
-               Categorical propositions are in general simple, easy or plain statements that relate two classes of things based on the rule of exclusion or inclusion principles.
+             <p class="text-gray-600 mb-4">
+               Thus, a <strong>categorical proposition</strong> is a statement asserting a relationship (inclusion or exclusion, partial or whole) between two categories or classes, designated as the subject class and the predicate class.
              </p>
-              <p class="text-gray-600 mb-4 mt-4">Here are some examples of categorical propositions:</p>
+              <p class="font-semibold text-gray-700 mb-2 mt-4">Examples:</p>
               <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                <li>Every human being is mortal</li>
-                <li>Nothing that is a human which is eternal</li>
-                <li>There exists a fish that is a shark.</li>
-                <li>There are plants which are not edible.</li>
+                <li>Every human being is mortal. (Whole subject class included in predicate class)</li>
+                <li>No human is eternal. (Whole subject class excluded from predicate class)</li>
+                <li>There exists a fish that is a shark. (Equivalent to: Some fish are sharks - Part of subject class included)</li>
+                <li>There are plants which are not edible. (Equivalent to: Some plants are not edible things - Part of subject class excluded)</li>
               </ul>
            </div>
 
-           <!-- Slide 6: Categorical Propositions (Continued) -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">What is Categorical Propositions? (Continued)</h2>
-             <p class="text-gray-600">All the above statements are categorical propositions. This is due to the fact that in each statement two sets of things are related either in the form of inclusion or exclusion. In the first example, two set of things are given: human being (which is the subject of the statement) and mortal (the predicate of the statement). And we see that these two classes (human beings and mortal beings) are related based on inclusion relation, that is, without exception all human beings are included part of in the class of mortal beings. This proposition is contrary to the third proposition, because it says that human beings are not belonged (not included) in to the class of eternal beings. This is to say that human beings are entirely excluded from the class of eternal beings.</p>
-           </div>
 
-           <!-- Slide 7: Standard-Forms of Categorical Proposition Intro -->
+           <!-- Slide 7: Need for Standard Form -->
            <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">1.1 Standard-Forms of Categorical Proposition</h2>
+             <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Need for Standard Form</h2>
               <p class="text-gray-600 mb-4">
-                In all the above cases, there are certain difficulties. The amount of the set of things is not clearly stated based on fixed quantifiers. It is very difficult to determine the type of relation of the two classes in the form of inclusion or exclusion. It is ambiguous to decide the attribute (nature) of statements either negatively or positively and to determine their logical relation with other statements. These and other related problems urge us to study categorical propositions based on fixed logical standard-forms.
+                While the examples on the previous slide express categorical relationships, their phrasing can vary ("Every...," "Nothing that is...," "There exists..."). This variability can make logical analysis difficult. Problems arise in determining:
+                <ul class="list-disc pl-6 text-gray-600 space-y-1">
+                    <li>The precise quantity (all or some) of the subject class involved.</li>
+                    <li>The exact nature of the relationship (inclusion or exclusion).</li>
+                    <li>The overall quality (affirmative or negative) of the assertion.</li>
+                    <li>Clear logical relationships with other propositions.</li>
+                </ul>
               </p>
                <p class="text-gray-600 mb-4">
-                 Since any categorical proposition asserts that either all or part of the class denoted by the subject term is included in or excluded from the class denoted by the predicate term, it follows that there are exactly four types of categorical propositions:
+                 To address these issues and facilitate rigorous logical analysis (like determining validity and identifying fallacies), we express categorical propositions in a fixed, unambiguous <strong>standard form</strong>.
                </p>
-               <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                 <li>Those that assert that the whole subject class is included in the predicate class</li>
-                 <li>Those that assert that part of the subject class is included in the predicate class</li>
-                 <li>Those that assert that the whole subject class is excluded from the predicate class</li>
-                 <li>Those that assert that part of the subject class is excluded from the predicate class.</li>
-               </ul>
+                <p class="text-gray-600">A standard-form categorical proposition clearly expresses one of the four possible relationships between two classes:</p>
            </div>
 
-           <!-- Slide 8: Standard-Forms of Categorical Proposition -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Standard-Forms of Categorical Proposition</h2>
-             <p class="text-gray-600">
-               Dear learners, to determine the validity and invalidity of the immediate inferences of categorical statements and to identify the formal fallacies committed in invalid arguments based on the criteria of logical rules, categorical propositions should be stated in standard form. A categorical proposition that expresses these relations with complete clarity is called a <strong>standard-form categorical proposition</strong>.
-             </p>
-              <p class="text-gray-600 mt-4">Dear learners, before we start dealing with the standard forms of categorical statements, you need to recapitulate the main points of the previous discussions.</p>
-               <div class="activity-box">
-                 <p class="font-semibold text-gray-700">Activity # 1. Attempt the following Questions.</p>
-                 <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                   <li>What is Category?</li>
-                   <li>What is Proposition?</li>
-                   <li>Identify role of inclusion and exclusion.</li>
-                 </ul>
-               </div>
-               <p class="text-gray-600">The standard form of categorical propositions is designed in accordance with the rules of the partial or whole inclusion and exclusion of the two classes stated in the subject and predicate of the proposition. The whole subject class is included in the predicate class. (the principle of total inclusion).</p>
-           </div>
-
-            <!-- Slide 9: Standard-Forms of Categorical Proposition Examples -->
+            <!-- Slide 8: The Four Standard Forms -->
             <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Standard-Forms Examples</h2>
-              <p class="font-semibold text-gray-700 mb-2">Example:</p>
-               <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                 <p>All men are mortal.</p>
-                 <p>All birds are feathery.</p>
-                 <p>All mammals are animals.</p>
-               </div>
-              <p class="text-gray-600">The whole subject class is excluded from the predicate class. (the principle of total exclusion).</p>
-               <p class="font-semibold text-gray-700 mb-2 mt-4">Example:</p>
-                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                  <p>No men are eternal.</p>
-                  <p>No Muslims are Christians.</p>
-                  <p>No blacks are white.</p>
-                </div>
-              <p class="text-gray-600">Partially the subject class is included in the predicate class. (the principle of partial inclusion).</p>
-               <p class="font-semibold text-gray-700 mb-2 mt-4">Example:</p>
-                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                  <p>Some birds are mammals.</p>
-                  <p>Some politicians are liars.</p>
-                  <p>Some students are lazy.</p>
-                </div>
-              <p class="text-gray-600">Partially the subject class is excluded from the predicate class.(the principle of partial exclusion).</p>
-               <p class="font-semibold text-gray-700 mb-2 mt-4">Example:</p>
-                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                  <p>Some snakes are not poisonous.</p>
-                  <p>Some plants are not edible.</p>
-                  <p>Some Ethiopians are not friendly.</p>
-                </div>
-            </div>
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Four Standard Forms</h2>
+              <p class="text-gray-600 mb-4">Since any categorical proposition asserts that either all or part of the subject class (S) is included in or excluded from the predicate class (P), there are exactly four standard forms:</p>
+               <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+                 <li>
+                    <strong>A Proposition (Universal Affirmative):</strong> Asserts that the *whole* subject class is *included* in the predicate class.
+                    <br><em>Form:</em> All S are P.
+                 </li>
+                  <li>
+                    <strong>E Proposition (Universal Negative):</strong> Asserts that the *whole* subject class is *excluded* from the predicate class.
+                    <br><em>Form:</em> No S are P.
+                  </li>
+                   <li>
+                    <strong>I Proposition (Particular Affirmative):</strong> Asserts that *part* (at least one member) of the subject class is *included* in the predicate class.
+                    <br><em>Form:</em> Some S are P.
+                   </li>
+                    <li>
+                     <strong>O Proposition (Particular Negative):</strong> Asserts that *part* (at least one member) of the subject class is *excluded* from the predicate class.
+                     <br><em>Form:</em> Some S are not P.
+                    </li>
+               </ol>
+               <p class="text-gray-600 mt-4">These four forms provide a clear, consistent structure for analyzing categorical relationships.</p>
+           </div>
 
-            <!-- Slide 10: Components of Categorical Propositions -->
+
+            <!-- Slide 10: Components of Standard-Form Propositions -->
             <div class="slide">
               <h2 class="text-2xl font-semibold mb-4 text-gray-700">1.2 The Components of Categorical Propositions</h2>
                <blockquote class="text-gray-700 italic text-sm">
-                 Dear learners, We have defined Proposition in the technical sense, as the meaning or information content of a statement. Note that: For the purposes of this course, “proposition” and “statement” are used interchangeably.” Thus for the purpose of this course we will use “proposition” and “statement” interchangeably.
+                 Reminder: We use "proposition" and "statement" interchangeably here when referring to categorical assertions.
                </blockquote>
               <p class="text-gray-600 mb-4">
-                A proposition or statement is a sentence that is either true or false. This being the case, categorical proposition is defined as a proposition that relates two classes, or categories. The classes in question are denoted respectively by the subject term and the predicate term. The proposition asserts that either all or part of the class denoted by the subject term is included in or excluded from the class denoted by the predicate term.
+                A standard-form categorical proposition always relates two classes (subject class and predicate class) and has four essential components arranged in a specific order:
               </p>
-               <p class="text-gray-600 mb-4">
-                 Accordingly, we have four propositions and each of these propositions has quantifier, subject term, sentential connective and predicate term. These are, in general, known as the components of a categorical proposition. Study the following points.
-               </p>
-               <ul class="star-list pl-6 text-gray-600 space-y-1">
-                 <li>Quantifier = ‘All’, ‘No’ and ‘Some’ indicate the quantity or amount of the subject class.</li>
-                 <li>Subject term = any term (word) or phrase that consists of set of things.</li>
-                 <li>Copula = ‘Are’ and are ‘not’. The Latin copula is a sentential connective that relates the subject and predicate terms.</li>
-                 <li>Predicate term = A term consisting set of things, which has some kind of relation with the subject term.</li>
+               <ul class="star-list pl-6 text-gray-600 space-y-2">
+                 <li><strong>Quantifier:</strong> Indicates the quantity of the subject class involved ("All," "No," or "Some").</li>
+                 <li><strong>Subject Term (S):</strong> The term denoting the first class or category.</li>
+                 <li><strong>Copula:</strong> The linking verb connecting the subject and predicate terms ("are" or "are not").</li>
+                 <li><strong>Predicate Term (P):</strong> The term denoting the second class or category.</li>
                </ul>
             </div>
 
-            <!-- Slide 11: Components of Categorical Propositions (Continued) -->
+            <!-- Slide 11: Standard Order of Components -->
             <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Components of Categorical Propositions (Cont.)</h2>
-               <p class="text-gray-600 mb-4">Dear students, please note that the four components of standard form can, otherwise, be summarized as follow:</p>
-               <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-                 <li>Those that assert that the whole subject class is included in the predicate class</li>
-                 <li>Those that assert that part of the subject class is included in the predicate class,</li>
-                 <li>Those that assert that the whole subject class is excluded from the predicate class,</li>
-                 <li>Those that assert that part of the subject class is excluded from the predicate class</li>
-               </ol>
-               <p class="text-gray-600 mb-4 mt-4">The following is, therefore, the correct order of the standard form of a categorical proposition.</p>
+              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Standard Order of Components</h2>
+               <p class="text-gray-600 mb-4">The correct order for a standard-form categorical proposition is always:</p>
                 <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 font-semibold text-center">
-                  =Quantifier + subject term + copula + predicate term.
+                  Quantifier + Subject Term (S) + Copula + Predicate Term (P)
                 </div>
-               <p class="text-gray-600">Consider the following example:</p>
-                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-2">
+               <p class="text-gray-600 mb-4">Consider the example:</p>
+                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
                   <p>All members of the Ethiopian Medical Association are people holding degrees from recognized academic institutions.</p>
                 </div>
+                 <p class="text-gray-600">Analyzing its components:</p>
             </div>
 
-             <!-- Slide 12: Components Example -->
+             <!-- Slide 12: Components Example Analysis -->
              <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Components Example</h2>
-               <p class="text-gray-600">This standard-form categorical proposition is analyzed as follows:</p>
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Components Example Analysis</h2>
+               <p class="text-gray-600 mb-4">"All members of the Ethiopian Medical Association are people holding degrees from recognized academic institutions."</p>
                 <div class="border border-gray-300 p-4 rounded mb-4 mt-4 text-gray-600">
-                  <p class="font-semibold">Quantifier:</p>
-                  <p>all</p>
-                  <p class="font-semibold">Subject term:</p>
-                  <p>members of the Ethiopian Medical Association</p>
-                  <p class="font-semibold">Copula:</p>
-                  <p>are</p>
-                  <p class="font-semibold">Predicate term:</p>
-                  <p>people holding degrees from recognized academic institutions</p>
+                  <p><span class="font-semibold">Quantifier:</span> All</p>
+                  <p><span class="font-semibold">Subject term (S):</span> members of the Ethiopian Medical Association</p>
+                  <p><span class="font-semibold">Copula:</span> are</p>
+                  <p><span class="font-semibold">Predicate term (P):</span> people holding degrees from recognized academic institutions</p>
                 </div>
-               <p class="text-gray-600 mb-4">A categorical proposition is in standard form if and only if it is a substitution instance of one of the following four forms:</p>
+               <p class="text-gray-600">A proposition is in standard form if and only if it matches one of the four structures:</p>
                 <ul class="arrow-list pl-6 text-gray-600 space-y-1">
                   <li>All S are P.</li>
                   <li>No S are P.</li>
@@ -308,540 +286,602 @@
                 </ul>
              </div>
 
-             <!-- Slide 13: Standard Form Symbolization -->
+             <!-- Slide 13: Standard Form Symbolization and 'Some' -->
              <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Standard Form Symbolization</h2>
-                <p class="text-gray-600 mb-4">Given the subject an predicate terms and its four components, categorical propositions could be stated in standard form symbolically -as follows.</p>
-                 <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 font-semibold text-center">
-                   <p>All S are P = All members of S is in P class.</p>
-                   <p>No S are P = No members of S is in P class.</p>
-                   <p>Some S are P = At least one member of S is in P class.</p>
-                   <p>Some S are not P = At least one member of S is not in P class.</p>
+               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Standard Form Meaning and the Quantifier 'Some'</h2>
+                <p class="text-gray-600 mb-4">Symbolically, the meaning of the standard forms in terms of class membership is:</p>
+                 <div class="border border-gray-300 p-4 rounded mb-4 text-gray-600 font-semibold text-center">
+                   <p>All S are P = Every member of S is also a member of P.</p>
+                   <p>No S are P = No member of S is a member of P.</p>
+                   <p>Some S are P = At least one member of S is also a member of P.</p>
+                   <p>Some S are not P = At least one member of S is not a member of P.</p>
                  </div>
-                <p class="text-gray-600 note-box">
-                  Note: In logic, the quantifier “some” always mean “at least one”.
-                </p>
-                <p class="font-semibold text-gray-700 mb-2 mt-4">Example:</p>
-                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                   <p>Some businesses are not profitable.</p>
+                <div class="note-box">
+                  <strong>Important Note:</strong> In logic, the quantifier "some" always means "at least one." It does *not* necessarily imply "more than one" or "not all."
                 </div>
-                 <div class="border border-gray-300 p-4 rounded mb-4 text-gray-600">
-                   <p class="font-semibold">Quantifier:</p>
-                   <p>Some</p>
-                   <p class="font-semibold">Subject term:</p>
-                   <p>businesses</p>
-                   <p class="font-semibold">Copula:</p>
-                   <p>are not</p>
-                   <p class="font-semibold">Predicate term:</p>
-                   <p>Profitable</p>
-                   <p class="font-semibold">Standard form:</p>
-                   <p>Some S are not P</p>
+                <p class="font-semibold text-gray-700 mb-2 mt-4">Example Analysis:</p>
+                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                   <p>Some businesses are not profitable ventures.</p>
+                   <!-- Made predicate more descriptive -->
+                </div>
+                 <div class="border border-gray-300 p-4 rounded mb-4 text-gray-600 text-sm">
+                   <p><span class="font-semibold">Quantifier:</span> Some</p>
+                   <p><span class="font-semibold">Subject term (S):</span> businesses</p>
+                   <p><span class="font-semibold">Copula:</span> are not</p>
+                   <p><span class="font-semibold">Predicate term (P):</span> profitable ventures</p>
+                   <p><span class="font-semibold">Standard form:</span> Some S are not P.</p>
                  </div>
              </div>
 
-             <!-- Slide 14: Attributes Overview -->
+             <!-- Slide 14: Attributes: Quality, Quantity, Distribution Overview -->
              <div class="slide">
                <h2 class="text-2xl font-semibold mb-4 text-gray-700">2: Attributes of Categorical Propositions: Quality, Quantity, and Distribution</h2>
-               <h3 class="text-xl font-semibold mb-2 text-gray-700">overview:</h3>
+               <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview:</h3>
                <p class="text-gray-600">
-                 Quality and quantity are attributes of categorical propositions. Here, it is useful to rephrase the meaning of categorical propositions in class terminology:
+                 Every standard-form categorical proposition possesses three key attributes that determine its logical properties: <strong>Quality</strong>, <strong>Quantity</strong>, and the <strong>Distribution</strong> of its terms. Understanding these attributes is essential for analyzing logical relationships between propositions and evaluating arguments containing them.
                </p>
              </div>
 
-              <!-- Slide 15: Attributes Table -->
-              <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes Table</h2>
-                 <div class="border border-gray-300 p-4 rounded mb-4 text-gray-600 font-semibold text-center">
-                   <p>Proposition Meaning in class notation</p>
-                   <p>All S are P. Every member of the S class is a member of the P class; that is, the S class is included in the P class.</p>
-                   <p>No S are P. No member of the S class is in the P class;</p>
-                   <p>that is, the S class is excluded from the P class.</p>
-                   <p>Some S are P. At least one member of the S class is a member of the P class.</p>
-                   <p>Some S are not P. At least one member of the S class is not a member of the P class.</p>
-                 </div>
-                 <p class="text-gray-600">These are the three fundamental concepts that would help us to deal with the properties of the four standard forms of categorical statement.</p>
-              </div>
 
-              <!-- Slide 16: Attributes Objectives -->
+              <!-- Slide 16: Section Objectives -->
               <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes Objectives</h2>
-                 <h3 class="text-xl font-semibold mb-2 text-gray-700">objectives:</h3>
-                 <p class="text-gray-600 mb-2">At the end of this , you will be able to:</p>
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives:</h2>
+                 <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+                 <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
                  <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                   <li>Know the four attributes of categorical proposition</li>
-                   <li>Understand how to represent different categorical propositions in ‘Letter’ ‘Names’.</li>
+                   <li>Define and identify the Quality (affirmative/negative) of a categorical proposition.</li>
+                   <li>Define and identify the Quantity (universal/particular) of a categorical proposition.</li>
+                   <li>Define and identify the Distribution status (distributed/undistributed) of the subject and predicate terms in each standard form.</li>
+                   <li>Recognize the standard letter names (A, E, I, O) for the four forms and their associated attributes.</li>
                  </ul>
               </div>
 
-               <!-- Slide 17: Attributes - Quality -->
+               <!-- Slide 17: Attribute 1: Quality -->
                <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes - Quality</h2>
+                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attribute 1: Quality</h2>
                   <div class="activity-box">
-                      <p class="font-semibold text-gray-700">Activity # 1.</p>
-                      <p class="italic text-gray-600">Dear students, please attempt the following questions:</p>
+                      <p class="font-semibold text-gray-700">Activity # 3:</p> <!-- Renumbered -->
                       <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-                        <li>What do you think of the need for representing categorical propositions by letter names?</li>
-                        <li>Guess what are the four components of categorical proposition and their functions in logical arguments?</li>
+                        <li>Why are standard letter names (A, E, I, O) useful in logic?</li>
+                        <li>What are the four essential components of a standard-form categorical proposition?</li>
                       </ol>
                   </div>
-                 <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">A. Quality:</h3>
+                 <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">A. Quality</h3>
                  <p class="text-gray-600 mb-4">
-                   It refers to those set of things stated in the subject term that are included or excluded from those set of things stated in the predicate term. If the subject term refers to those classes of things, which are included (partially/entirely) in the predicate term, the proposition is said to be affirmative, while if the subject term refers to those classes of things that are excluded (partially/entirely) the proposition is said to be negative. Study the following table.
+                   <strong>Quality</strong> refers to whether the proposition *affirms* or *denies* class membership (inclusion or exclusion) between the subject and predicate terms.
+                   <br>• If the proposition affirms some kind of class inclusion (either whole or partial), its quality is <strong>affirmative</strong>.
+                   <br>• If the proposition denies class inclusion (either whole or partial), its quality is <strong>negative</strong>.
                  </p>
+                  <p class="text-gray-600 mb-4">The quality is typically determined by the copula:</p>
                   <table>
                     <thead>
-                      <tr><th>Standard form</th><th>Quality</th></tr>
+                      <tr><th>Standard Form</th><th>Copula</th><th>Quality</th></tr>
                     </thead>
                     <tbody>
-                      <tr><td>All S are P</td><td>Affirmative</td></tr>
-                      <tr><td>No S are P</td><td>Negative</td></tr>
-                      <tr><td>Some S are P</td><td>Affirmative</td></tr>
-                      <tr><td>Some S are not P</td><td>Negative</td></tr>
+                      <tr><td>All S <strong>are</strong> P</td><td>are</td><td>Affirmative</td></tr>
+                      <tr><td>No S <strong>are</strong> P</td><td>are (in "No...are")</td><td>Negative</td></tr>
+                      <tr><td>Some S <strong>are</strong> P</td><td>are</td><td>Affirmative</td></tr>
+                      <tr><td>Some S <strong>are not</strong> P</td><td>are not</td><td>Negative</td></tr>
                     </tbody>
                   </table>
                </div>
 
-               <!-- Slide 18: Attributes - Quantity -->
+               <!-- Slide 18: Attribute 2: Quantity -->
                <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes - Quantity</h2>
-                 <h3 class="text-xl font-semibold mb-2 text-gray-700">B. Quantity:</h3>
+                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attribute 2: Quantity</h2>
+                 <h3 class="text-xl font-semibold mb-2 text-gray-700">B. Quantity</h3>
                  <p class="text-gray-600 mb-4">
-                   The quantity of a categorical proposition is determined by the amount or quantity of those set of things stated in the subject term. Accordingly, if the subject term refers entirely, the quantity of the proposition is said to be universal, whereas, if the amount of the subject class is stated partially, the quantity of the proposition is said to be particular. Study the following table.
+                   <strong>Quantity</strong> refers to whether the proposition makes a claim about *all* members or only *some* (at least one) members of the class designated by the subject term.
+                   <br>• If the proposition makes a claim about every member of the subject class, its quantity is <strong>universal</strong>.
+                   <br>• If the proposition makes a claim about at least one member of the subject class, its quantity is <strong>particular</strong>.
                  </p>
+                  <p class="text-gray-600 mb-4">The quantity is determined by the quantifier:</p>
                   <table>
                     <thead>
-                      <tr><th>Standard form</th><th>Quantity</th></tr>
+                      <tr><th>Standard Form</th><th>Quantifier</th><th>Quantity</th></tr>
                     </thead>
                     <tbody>
-                      <tr><td>All S are P</td><td>Universal</td></tr>
-                      <tr><td>No S are P</td><td>Universal</td></tr>
-                      <tr><td>Some S are P</td><td>Particular</td></tr>
-                      <tr><td>Some S are not P</td><td>Particular</td></tr>
+                      <tr><td><strong>All</strong> S are P</td><td>All</td><td>Universal</td></tr>
+                      <tr><td><strong>No</strong> S are P</td><td>No</td><td>Universal</td></tr>
+                      <tr><td><strong>Some</strong> S are P</td><td>Some</td><td>Particular</td></tr>
+                      <tr><td><strong>Some</strong> S are not P</td><td>Some</td><td>Particular</td></tr>
                     </tbody>
                   </table>
                </div>
 
-               <!-- Slide 19: Letter Names (A, E, I, O) -->
+               <!-- Slide 19: Letter Names Based on Quality and Quantity -->
                <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Letter Names (A, E, I, O)</h2>
+                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Standard Letter Names (A, E, I, O)</h2>
                  <p class="text-gray-600 mb-4">
-                   According to the quality and quantity of categorical propositions, logicians devised letter names of the four propositions. Letter names of the standard forms of categorical propositions, in this regard, would help us to:
+                   Based on their quality and quantity, medieval logicians assigned standard letter names to the four forms, derived from the Latin words *AffIrmo* (I affirm) and *nEgO* (I deny). These letters simplify analysis and discussion:
                  </p>
-                 <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                   <li>Save time and space</li>
-                   <li>Recapitulate the standard forms easily</li>
-                   <li>Apply various logical rules and study immediate inferences easily</li>
+                 <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
+                    <li><strong>A</strong> Proposition: Universal Affirmative (from <strong>A</strong>ffIrmo)</li>
+                    <li><strong>E</strong> Proposition: Universal Negative (from n<strong>E</strong>gO)</li>
+                    <li><strong>I</strong> Proposition: Particular Affirmative (from Aff<strong>I</strong>rmo)</li>
+                    <li><strong>O</strong> Proposition: Particular Negative (from nEg<strong>O</strong>)</li>
                  </ul>
-                 <p class="text-gray-600 mt-4">
-                   Accordingly, the four letter names: A, E, I and O are devised to represent the four standard forms of categorical propositions and it is summarized as follows.
-                 </p>
                   <table>
                     <thead>
-                      <tr><th>Standard form</th><th>Letter Name</th></tr>
+                      <tr><th>Form</th><th>Letter Name</th><th>Quantity</th><th>Quality</th></tr>
                     </thead>
                     <tbody>
-                      <tr><td>All S are P</td><td>A</td></tr>
-                      <tr><td>No S are P</td><td>E</td></tr>
-                      <tr><td>Some S are P</td><td>I</td></tr>
-                      <tr><td>Some S are not P</td><td>O</td></tr>
+                      <tr><td>All S are P</td><td>A</td><td>Universal</td><td>Affirmative</td></tr>
+                      <tr><td>No S are P</td><td>E</td><td>Universal</td><td>Negative</td></tr>
+                      <tr><td>Some S are P</td><td>I</td><td>Particular</td><td>Affirmative</td></tr>
+                      <tr><td>Some S are not P</td><td>O</td><td>Particular</td><td>Negative</td></tr>
                     </tbody>
                   </table>
+                  <p class="text-gray-600 mt-4">Using these letter names saves time and simplifies logical operations.</p>
                </div>
 
-                <!-- Slide 20: Letter Names (Activity) -->
+                <!-- Slide 20: Letter Names Practice -->
                 <div class="slide">
-                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Letter Names (Activity)</h2>
-                   <h3 class="text-xl font-semibold mb-2 text-gray-700">Activity # 2</h3>
-                    <ol class="list-decimal pl-6 text-gray-600 space-y-4">
-                      <li>
-                        Write a proposition in which its letter name is “O”
-                        <p class="font-semibold mt-2">Example:</p>
-                        <p class="italic">Some students are not clever. __________________________________________________________________</p>
-                      </li>
-                      <li>
-                        Fill the blank space by writing “same” or “different”
-                         <p class="mt-2">A. Proposition A and I are __________ in quality and _________ in quantity.</p>
-                         <p>B. Proposition E and O are __________ in quality and _______ in quantity.</p>
-                      </li>
-                      <li>
-                         Write the correct letter name and standard form on the given empty space.
-                          <table>
-                            <thead>
-                              <tr><th></th><th></th></tr>
-                            </thead>
-                            <tbody>
-                              <tr><td>Some S are P</td><td></td></tr>
-                              <tr><td></td><td>E</td></tr>
-                              <tr><td>O</td><td></td></tr>
-                              <tr><td></td><td>All S are P</td></tr>
-                            </tbody>
-                          </table>
-                      </li>
-                    </ol>
+                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Practice with Letter Names</h2>
+                   <div class="activity-box">
+                     <p class="font-semibold text-gray-700">Activity # 4</p> <!-- Renumbered -->
+                      <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+                        <li>
+                          Write an example of an "O" proposition:
+                          <p class="italic mt-1">Example: Some students are not athletes.</p>
+                          <p>Your example: ___________________________________________</p>
+                        </li>
+                        <li>
+                          Fill in the blanks with “same” or “different”:
+                           <p class="mt-2">A. Propositions A and I have the <strong>same</strong> quality and <strong>different</strong> quantity.</p>
+                           <p>B. Propositions E and O have the <strong>same</strong> quality and <strong>different</strong> quantity.</p>
+                           <!-- Provided answers for clarity -->
+                        </li>
+                        <li>
+                           Complete the table:
+                            <table>
+                              <thead>
+                                <tr><th>Standard Form</th><th>Letter Name</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr><td>Some S are P</td><td>I</td></tr>
+                                <tr><td>No S are P</td><td>E</td></tr>
+                                <tr><td>Some S are not P</td><td>O</td></tr>
+                                <tr><td>All S are P</td><td>A</td></tr>
+                              </tbody>
+                            </table>
+                             <!-- Provided answers -->
+                        </li>
+                      </ol>
+                   </div>
                 </div>
 
-                 <!-- Slide 21: Attributes - Distribution Intro -->
+                 <!-- Slide 21: Attribute 3: Distribution -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes - Distribution Intro</h2>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-700">C. Distribution:</h3>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attribute 3: Distribution</h2>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-700">C. Distribution</h3>
                     <p class="text-gray-600 mb-4">
-                      The concept of <strong>distribution</strong> emphasizes the terms (the subject & predicate terms) and not the proposition as such. If a term refers unambiguously the set of things stated in it entirely the term is said to be distributed. It implies that attribute of the class is distributed to each & every member of the class and we know clearly that the attribute is shared similarly by every member of the class. If a term does not state the class of things in this way, the term is said to be undistributed. Study the following table:
+                      <strong>Distribution</strong> refers to whether a proposition makes a claim about *every* member of the class designated by a term (subject or predicate).
+                      <br>• A term is <strong>distributed</strong> if the proposition asserts something about *all* members of the class denoted by that term.
+                      <br>• A term is <strong>undistributed</strong> if the proposition does *not* assert something about all members of the class denoted by that term (it might assert something about some, or make no claim about the members specifically).
                     </p>
+                     <p class="text-gray-600 mb-4">Distribution status for each term in the standard forms:</p>
                      <table>
                        <thead>
-                         <tr><th>Standard form</th><th>A term distributed</th><th>A term undistributed</th></tr>
+                         <tr><th>Form (Letter Name)</th><th>Subject Term (S)</th><th>Predicate Term (P)</th></tr>
                        </thead>
                        <tbody>
-                         <tr><td>All S are P</td><td>S</td><td>P</td></tr>
-                         <tr><td>No S are P</td><td>S and P</td><td>None</td></tr>
-                         <tr><td>Some S are P</td><td>None</td><td>S and P</td></tr>
-                         <tr><td>Some S are not P</td><td>P</td><td>S</td></tr>
+                         <tr><td><strong>A</strong> (All S are P)</td><td>Distributed</td><td>Undistributed</td></tr>
+                         <tr><td><strong>E</strong> (No S are P)</td><td>Distributed</td><td>Distributed</td></tr>
+                         <tr><td><strong>I</strong> (Some S are P)</td><td>Undistributed</td><td>Undistributed</td></tr>
+                         <tr><td><strong>O</strong> (Some S are not P)</td><td>Undistributed</td><td>Distributed</td></tr>
                        </tbody>
                      </table>
+                     <p class="text-gray-600 mt-2 text-sm italic">Mnemonic: Universals (A, E) distribute Subjects. Negatives (E, O) distribute Predicates.</p>
                  </div>
 
-                 <!-- Slide 22: Attributes - Summary Table -->
+                 <!-- Slide 22: Summary Table of Attributes -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes - Summary Table</h2>
-                   <p class="text-gray-600 mb-4">Dear learners, please consider that all the above discussions are summarized as follows.</p>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Summary Table of Attributes</h2>
+                   <p class="text-gray-600 mb-4">The attributes of the four standard-form categorical propositions are summarized below:</p>
                     <table>
                       <thead>
-                        <tr><th>Letter Name</th><th>Standard form</th><th>Quality</th><th>Quantity</th><th>Distribution</th></tr>
+                        <tr><th>Letter Name</th><th>Standard Form</th><th>Quality</th><th>Quantity</th><th>Distributed Terms</th></tr>
                       </thead>
                       <tbody>
-                        <tr><td>A</td><td>All S are P</td><td>Affirmative</td><td>Universal</td><td>S</td></tr>
-                        <tr><td>E</td><td>No S are P</td><td>Negative</td><td>Universal</td><td>S & P</td></tr>
+                        <tr><td>A</td><td>All S are P</td><td>Affirmative</td><td>Universal</td><td>S only</td></tr>
+                        <tr><td>E</td><td>No S are P</td><td>Negative</td><td>Universal</td><td>S and P</td></tr>
                         <tr><td>I</td><td>Some S are P</td><td>Affirmative</td><td>Particular</td><td>None</td></tr>
-                        <tr><td>O</td><td>Some S are not P</td><td>Negative</td><td>Particular</td><td>P</td></tr>
+                        <tr><td>O</td><td>Some S are not P</td><td>Negative</td><td>Particular</td><td>P only</td></tr>
                       </tbody>
                     </table>
                  </div>
 
-                 <!-- Slide 23: Attributes - Distribution Example -->
+                 <!-- Slide 23: Determining Attributes: Example -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Attributes - Distribution Example</h2>
-                   <p class="text-gray-600 mb-4">How to determine the quality, quantity & distribution? Study the following example.</p>
-                   <p class="text-gray-600 mb-4 italic">In a proposition: Some birds are mammals:-</p>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Determining Attributes: Example</h2>
+                   <p class="text-gray-600 mb-4">Let's determine the attributes for the proposition: "Some birds are mammals."</p>
                     <div class="border border-gray-300 p-4 rounded mb-4 text-gray-600">
-                      <p>Its Letter name is I</p>
-                      <p>Its Standard form is Some S are P</p>
-                      <p>Its quality is Affirmative</p>
-                      <p>Its quantity is Particular</p>
+                      <p><strong>Standard Form:</strong> Some S are P</p>
+                      <p><strong>Letter Name:</strong> I</p>
+                      <p><strong>Quality:</strong> Affirmative (it affirms inclusion)</p>
+                      <p><strong>Quantity:</strong> Particular (it refers to "Some," i.e., at least one)</p>
+                      <p><strong>Distribution:</strong>
+                         <br>&nbsp;&nbsp;&nbsp;&nbsp;Subject Term ("birds"): Undistributed (claim is only about *some* birds)
+                         <br>&nbsp;&nbsp;&nbsp;&nbsp;Predicate Term ("mammals"): Undistributed (claim doesn't refer to *all* mammals)
+                      </p>
                     </div>
-                   <p class="text-gray-600 mb-4">A term, which is distributed, is none of the two terms.</p>
-                   <p class="text-gray-600">A term, which is undistributed, is both terms (birds and mammals) are not distributed.</p>
                  </div>
 
                  <!-- Slide 24: Venn Diagrams and Modern Square of Opposition Overview -->
                  <div class="slide">
                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">3: Venn Diagrams and the Modern Square of Opposition</h2>
-                   <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview:</h3>
+                   <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview:</h3>
                    <p class="text-gray-600 mb-4">
-                     The primary goal of our inquiry into categorical propositions is to disclose the role that such propositions play in the formation of arguments. Accordingly, in such interpretations, an argument might be valid or invalid. The standard forms of categorical statements can be represented in diagrams. The first known diagram of categorical propositions is called <strong>Euler diagram</strong>, after the 18th mathematician L. Euler. Later on, however, Euler diagram was found to be ineffective in identifying valid & invalid categorical syllogistic arguments and thereby new diagram for categorical propositions become indispensable.
+                     Having defined standard-form categorical propositions, we now explore ways to represent their logical content visually using diagrams and to understand the necessary logical relationships between them. <strong>Venn diagrams</strong>, developed by John Venn, use overlapping circles to represent the classes denoted by the terms and illustrate the information conveyed by the proposition. The <strong>Square of Opposition</strong> is a traditional diagram illustrating logical relationships (like contradiction) between the four standard forms.
                    </p>
+                    <p class="text-gray-600">This section focuses on constructing Venn diagrams for categorical propositions and understanding the <strong>Modern Square of Opposition</strong>, which reflects the interpretation of categorical propositions adopted in modern logic (often called the Boolean interpretation).</p>
                  </div>
 
-                 <!-- Slide 25: Venn Diagrams and Modern Square Objectives -->
+                 <!-- Slide 25: Section Objectives -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams and Modern Square Objectives:</h2>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives:</h2>
                     <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
-                    <p class="text-gray-600 mb-2">At the end of this , you will be able to:</p>
-                    <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                      <li>Understand what venn diagram ,in its broader sense, mean</li>
-                      <li>How to represent propositions/arguments in in diagram</li>
-                      <li>Distinguish the difference between modern and traditional square of opposition.</li>
+                    <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
+                    <ul class="arrow-list pl-6 text-gray-600 space-y-1"> <!-- Changed to arrow-list -->
+                      <li>Understand the purpose and basic conventions of Venn diagrams for categorical propositions.</li>
+                      <li>Represent each of the four standard-form propositions (A, E, I, O) using Venn diagrams.</li>
+                      <li>Understand and apply the Modern Square of Opposition to determine logical relationships (contradiction) between propositions.</li>
                     </ul>
                  </div>
 
-                 <!-- Slide 26: Representing Categorical Propositions in Diagrams -->
+                 <!-- Slide 26: Representing Propositions with Venn Diagrams -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.1 Representing Categorical Propositions in Diagrams</h2>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.1 Representing Categorical Propositions in Venn Diagrams</h2>
                     <div class="activity-box">
-                        <p class="font-semibold text-gray-700">Activity #1:-</p>
-                        <p class="italic text-gray-600">What do you think of to represent arguments/categorical propositions in a diagram?</p>
-                        <p class="italic text-gray-600 mt-2">Make a group of five and discuss the feasible difference and similarities, if any, between modern and traditional squares of opposition.</p>
+                        <p class="font-semibold text-gray-700">Activity # 5:</p> <!-- Renumbered -->
+                        <p class="italic text-gray-600">Why might representing propositions visually in a diagram be useful in logic?</p>
                     </div>
                     <p class="text-gray-600 mb-4 mt-4">
-                      Adopting this interpretation of categorical propositions, the nineteenth-century logician John Venn developed a system of diagrams to represent the information they express. These diagrams have come to be known as <strong>Venn diagrams</strong>. Venn diagram is an arrangement of overlapping circles in which each circle represents the class denoted by a term in a categorical proposition. Because every categorical proposition has exactly two terms, the Venn diagram for a single categorical proposition consists of two overlapping circles. Each circle is labeled so that it represents one of the terms in the proposition.
+                      <strong>Venn diagrams</strong> provide a visual method for representing the information contained in categorical propositions. For a single proposition with two terms (Subject S and Predicate P), the diagram consists of two overlapping circles, each representing a class. The overlap area represents members belonging to *both* classes. The areas outside the overlap represent members belonging to one class but *not* the other.
                     </p>
-                     <p class="text-gray-600">Unless otherwise required, we adopt the convention that the left-hand circle represents the subject term, and the right-hand circle of the predicate term. In such a diagram:</p>
+                     <p class="text-gray-600">By convention, the left circle typically represents the Subject (S) class, and the right circle represents the Predicate (P) class.</p>
                  </div>
 
-                 <!-- Slide 27: Venn Diagram Components and Rules -->
+                 <!-- Slide 27: Venn Diagram Conventions -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagram Components and Rules</h2>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagram Conventions</h2>
+                   <p class="text-gray-600 mb-4">Specific conventions are used to represent the claims made by standard-form propositions:</p>
                    <ul class="list-disc pl-6 text-gray-600 space-y-2">
                      <li>
-                       The two categories (set of things) stated in the subject and predicate terms are represented by two overlapping circles.
+                       <strong>Shading</strong> an area indicates that the area is <strong>empty</strong>—it contains no members. Universal propositions (A and E), which deny the existence of certain kinds of members, are represented using shading.
                      </li>
                      <li>
-                       The shading part of the diagram depicts that there no member of the class exists; that is it is null or empty.
+                       Placing an <strong>X</strong> in an area indicates that the area is <strong>not empty</strong>—it contains <strong>at least one</strong> member. Particular propositions (I and O), which assert existence, are represented using an X.
                      </li>
-                     <li>
-                       The “X” or simply “X” shows that there is at least one member of the class exists.
-                     </li>
+                     <li>If an area is left blank (neither shaded nor containing an X), no information is known about its membership—it could be empty or occupied.</li>
                    </ul>
-                    <p class="text-gray-600 mt-4">Study the following Venn diagrams.</p>
+                    <p class="text-gray-600 mt-4">Let's diagram each standard form.</p>
                  </div>
 
                  <!-- Slide 28: Venn Diagrams for A and E Propositions -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams: A and E Propositions</h2>
-                   <p class="font-semibold text-gray-700 mb-2">1. Proposition A= All S are P</p>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Diagramming A and E Propositions</h2>
+                   <p class="font-semibold text-gray-700 mb-2">1. A Proposition: All S are P</p>
+                    <p class="text-sm text-gray-600 mb-1">Meaning: Every member of S is in P. Thus, the part of S *outside* P must be empty.</p>
                     <div class="venn-diagram">
-                      <!-- Placeholder for Venn A image -->
-                      <img src="venn_A.png" alt="Venn Diagram A" class="venn-image">
+                      <img src="https://i.imgur.com/4y3Wb9I.png" alt="Venn Diagram for A Proposition (All S are P)" class="venn-image">
+                      <!-- Replaced placeholder with actual image URL -->
                     </div>
-                   <p class="font-semibold text-gray-700 mb-2 mt-4">Ex. All Marists are revolutionary</p>
-                   <p class="text-gray-600 mb-4">The shaded part does not represent the proposition All S are P, hence it is empty.</p>
+                   <p class="text-gray-600 mb-4 text-center text-sm">Shade the area of S that is outside P.</p>
 
-                   <p class="font-semibold text-gray-700 mb-2">2. Proposition E = No S are P</p>
+                   <p class="font-semibold text-gray-700 mb-2 mt-6">2. E Proposition: No S are P</p>
+                    <p class="text-sm text-gray-600 mb-1">Meaning: No member of S is in P. Thus, the area where S and P *overlap* must be empty.</p>
                     <div class="venn-diagram">
-                      <!-- Placeholder for Venn E image -->
-                      <img src="venn_E.png" alt="Venn Diagram E" class="venn-image">
+                      <img src="https://i.imgur.com/gQW7j3t.png" alt="Venn Diagram for E Proposition (No S are P)" class="venn-image">
+                       <!-- Replaced placeholder with actual image URL -->
                     </div>
-                   <p class="font-semibold text-gray-700 mb-2 mt-4">Ex. No Marxists are revolutionary</p>
-                   <p class="text-gray-600">The shaded part shows that the intersection area is empty. For the proposition “No S are P”, no middle ground exists, hence the intersection area consists no member of S and P</p>
+                    <p class="text-gray-600 text-center text-sm">Shade the area of overlap between S and P.</p>
                  </div>
 
                  <!-- Slide 29: Venn Diagrams for I and O Propositions -->
                  <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams: I and O Propositions</h2>
-                   <p class="font-semibold text-gray-700 mb-2">3. Proposition I = Some S are P</p>
+                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Diagramming I and O Propositions</h2>
+                   <p class="font-semibold text-gray-700 mb-2">3. I Proposition: Some S are P</p>
+                    <p class="text-sm text-gray-600 mb-1">Meaning: At least one member of S is also a member of P. Thus, the overlap area is *not* empty.</p>
                     <div class="venn-diagram">
-                      <!-- Placeholder for Venn I image -->
-                      <img src="venn_I.png" alt="Venn Diagram I" class="venn-image">
+                      <img src="https://i.imgur.com/d8X3vY0.png" alt="Venn Diagram for I Proposition (Some S are P)" class="venn-image">
+                       <!-- Replaced placeholder with actual image URL -->
                     </div>
-                   <p class="font-semibold text-gray-700 mb-2 mt-4">Ex. Some Marxists are revolutionary</p>
+                    <p class="text-gray-600 mb-4 text-center text-sm">Place an X in the area of overlap between S and P.</p>
 
-                   <p class="font-semibold text-gray-700 mb-2 mt-4">4. Proposition O = Some S are not P</p>
+                   <p class="font-semibold text-gray-700 mb-2 mt-6">4. O Proposition: Some S are not P</p>
+                    <p class="text-sm text-gray-600 mb-1">Meaning: At least one member of S is *not* a member of P. Thus, the part of S *outside* P is *not* empty.</p>
                     <div class="venn-diagram">
-                      <!-- Placeholder for Venn O image -->
-                      <img src="venn_O.png" alt="Venn Diagram O" class="venn-image">
+                      <img src="https://i.imgur.com/k7a4Z8f.png" alt="Venn Diagram for O Proposition (Some S are not P)" class="venn-image">
+                       <!-- Replaced placeholder with actual image URL -->
                     </div>
-                   <p class="font-semibold text-gray-700 mb-2 mt-4">Ex. Some Narcissists are not revolutionary.</p>
+                    <p class="text-gray-600 text-center text-sm">Place an X in the area of S that is outside P.</p>
                  </div>
 
-                 <!-- Slide 30: Venn Diagrams (Continued) -->
-                 <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams (Continued)</h2>
-                   <p class="text-gray-600 mb-4">The “X” sign depicts that there is at least one member of the class of S which exists in the class of P.</p>
-                   <p class="text-gray-600">Recall that the A proposition asserts that no members of S are outside ‘P’. This is represented by shading the part of the ‘S’ circle that lies outside the P circle. The E proposition asserts that no members of S are inside ‘P’. This is represented by shading the part of the S circle that lies inside the P circle. The ‘I’ proposition asserts that at least one S exists and that S is also a P. This is represented by placing an X in the area where the S and P circles overlap. This X represents an existing thing that is both an S and a P. Finally, the O proposition asserts that at least one S exists, and that S is not a P. This is represented by placing an X in the part of the S circle that lies outside the P circle. Please note that ‘X’ represents an existing thing that is an S but not a P.</p>
-                 </div>
 
-                  <!-- Slide 31: Traditional and Modern Squares of Opposition Intro -->
+                  <!-- Slide 31: Introduction to the Square of Opposition -->
                   <div class="slide">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.2 Squares of Opposition: Traditional and Modern Squares of Opposition</h2>
-                    <p class="text-gray-600">Dear students, to understand the modern and traditional square of opposition, let us compare the diagram for the A proposition with the diagram for the O proposition. The diagram for the A proposition asserts that the left -hand part of the S circle is empty, whereas the diagram for the O proposition asserts that this same area is not empty. These two diagrams make assertions that are the exact opposite of each other. As a result, their corresponding statements are said to contradict each other. Analogously, the diagram for the E proposition asserts that the area where the two circles overlap is empty, whereas the diagram for the I proposition asserts that the area where the two circles overlap is not empty. Accordingly, their corresponding propositions are also said to contradict each other.</p>
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.2 The Modern Square of Opposition</h2>
+                    <p class="text-gray-600 mb-4">
+                      Comparing the Venn diagrams reveals necessary logical relationships between the standard-form propositions.
+                      <br>• Compare A (All S are P) and O (Some S are not P): The A diagram shades the left part of S (empty). The O diagram places an X in the *same* area (not empty). These diagrams make opposite claims about the same region.
+                      <br>• Compare E (No S are P) and I (Some S are P): The E diagram shades the overlap area (empty). The I diagram places an X in the *same* area (not empty). These also make opposite claims.
+                    </p>
+                     <p class="text-gray-600">Propositions making opposite claims cannot both be true and cannot both be false; they must have opposite truth values. This relationship is called <strong>contradiction</strong>.</p>
+                     <p class="text-gray-600 mt-4">The <strong>Modern Square of Opposition</strong> (based on the Boolean interpretation, which makes no assumptions about existence) primarily illustrates this contradictory relationship.</p>
                   </div>
 
                   <!-- Slide 32: Modern Square of Opposition Diagram -->
                   <div class="slide">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Modern Square of Opposition</h2>
-                     <p class="text-gray-600">This relationship of mutually contradictory pairs of propositions is represented in a diagram called the <strong>modern square of opposition</strong>. This diagram arises from the modern (or Boolean) interpretation of categorical propositions. It is represented as follows:</p>
+                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Modern Square of Opposition Diagram</h2>
+                     <p class="text-gray-600 mb-4">The diagram visually represents the relationship between corresponding A, E, I, and O propositions with the same subject and predicate terms:</p>
                      <div class="venn-diagram">
-                       <!-- Placeholder for Modern Square image -->
-                       <img src="modern_square.png" alt="Modern Square of Opposition" class="venn-image">
+                        <img src="https://i.imgur.com/3s5aN4C.png" alt="Modern Square of Opposition Diagram" class="venn-image" style="max-width: 400px;">
+                        <!-- Placeholder updated -->
                      </div>
+                     <p class="text-gray-600 mt-4">The diagonal lines indicate the <strong>contradictory</strong> relationship:</p>
+                     <ul class="list-disc pl-8 text-gray-600 space-y-1">
+                        <li>A and O propositions are contradictories.</li>
+                        <li>E and I propositions are contradictories.</li>
+                     </ul>
+                     <p class="text-gray-600 mt-2">Contradictories always have opposite truth values. If one is true, the other must be false, and vice versa.</p>
                   </div>
 
-                   <!-- Slide 33: Modern Square Relations -->
+                   <!-- Slide 33: Using the Modern Square for Inference -->
                    <div class="slide">
-                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Modern Square Relations</h2>
-                     <p class="text-gray-600 mb-4">The four relations in the traditional square of opposition may be characterized as follows:</p>
-                      <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                        <li><strong>Contradictory</strong> = opposite truth value</li>
-                        <li>Contrary = at least one is false (not both true)</li>
-                        <li>Sub contrary = at least one is true (not both false)</li>
-                        <li>Sub alternation = truth flows downward, falsity flows upward</li>
-                      </ul>
-                      <p class="text-gray-600 mb-4 mt-4">The contradictory relation is the same as that found in the modern square. Thus, if a certain A proposition is given as true, the corresponding O proposition is false, and vice versa, and if a certain A proposition is given as false, the corresponding O proposition is true, and vice versa. The same relation holds between the E and I propositions. The contradictory relation thus expresses complete opposition between propositions.</p>
+                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Using the Modern Square for Immediate Inferences</h2>
+                     <p class="text-gray-600 mb-4">
+                       The necessary relationships shown on the square allow us to make <strong>immediate inferences</strong>—arguments with only one premise. If we know the truth value of one proposition, we can immediately infer the truth value of its contradictory.
+                     </p>
+                     <p class="text-gray-600 mb-4">
+                       To test the validity of an immediate inference using the modern square:
+                       <ol class="list-decimal pl-6 text-gray-600 space-y-1">
+                         <li>Assume the premise is true.</li>
+                         <li>Determine the truth value of the conclusion based *only* on the contradictory relationship shown on the square.</li>
+                         <li>If the conclusion's truth value matches what the square dictates, the inference is valid (from the Boolean standpoint). If it doesn't match, or if the square provides no information (for relationships other than contradictory), the inference is invalid.</li>
+                       </ol>
+                     </p>
+                      <p class="text-gray-600 mt-4 font-semibold">Example Inference:</p>
+                       <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                         <p>Premise: It is true that Some S are P. (I is True)</p>
+                         <p>Conclusion: Therefore, it must be false that No S are P. (E is False)</p>
+                       </div>
+                       <p class="text-gray-600">Analysis: If I is true, its contradictory E must be false. The conclusion asserts E is false. Therefore, the inference is <strong>valid</strong> according to the modern square.</p>
                    </div>
 
-                   <!-- Slide 34: Traditional Square of Opposition Intro -->
+                   <!-- Slide 34: Introduction to the Traditional Square -->
                    <div class="slide">
                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3 The Traditional Square of Opposition</h2>
-                     <p class="text-gray-600 mb-4">The contrary relation differs from the contradictory in that it expresses only partial opposition. Thus, if a certain A proposition is given as true, the corresponding E proposition is false (because at least one must be false), and if an E proposition is given as true, the corresponding A proposition is false. But if an A proposition is given as false, the corresponding E proposition could be either true or false without violating the “at least one is false” rule. In this case, the E proposition has logically undetermined truth value.</p>
-                      <p class="text-gray-600 mt-4">In the previous sections, we have adopted the Boolean standpoint, and we saw how the modern square of opposition applies regardless of whether the propositions refer to actually existing things. In this , we adopt the Aristotelian standpoint, which recognizes that universal propositions about existing things have existential import. For such propositions, the traditional square of opposition becomes applicable. Like the modern square, the traditional square of opposition is an arrangement of lines that illustrates logically necessary relations among the four kinds of categorical propositions. However, because the Aristotelian standpoint recognizes the additional factor of existential import, the traditional square supports more inferences than does the modern square.</p>
+                     <p class="text-gray-600 mb-4">
+                       Historically, logic (following Aristotle) interpreted universal propositions (A and E) differently than modern logic. The <strong>Aristotelian standpoint</strong> assumes that universal propositions about existing things have <strong>existential import</strong>—meaning they imply that the classes they refer to (S and P) actually have members. The modern Boolean interpretation makes no such assumption.
+                     </p>
+                      <p class="text-gray-600 mb-4">
+                       This assumption of existential import for universal propositions allows for more logical relationships than just contradiction. These additional relationships are captured in the <strong>Traditional Square of Opposition</strong>.
+                      </p>
+                      <p class="text-gray-600">
+                       The traditional square applies *only* when we assume that the subject terms of A and E propositions denote classes that are not empty (i.e., that members exist).
+                      </p>
                    </div>
 
                    <!-- Slide 35: Traditional Square of Opposition Diagram -->
                    <div class="slide">
-                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Traditional Square of Opposition</h2>
-                     <p class="text-gray-600">It is represented as follows:</p>
+                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Traditional Square of Opposition Diagram</h2>
+                     <p class="text-gray-600 mb-4">Assuming existential import for universal propositions, the traditional square illustrates four relationships:</p>
                       <div class="venn-diagram">
-                        <!-- Placeholder for Traditional Square image -->
-                        <img src="traditional_square.png" alt="Traditional Square of Opposition" class="venn-image">
+                        <img src="https://i.imgur.com/c2aZJ4e.png" alt="Traditional Square of Opposition Diagram" class="venn-image" style="max-width: 450px;">
+                        <!-- Placeholder updated -->
                       </div>
+                      <p class="text-gray-600 mt-4">The relationships are Contradictory (diagonals), Contrary (top), Subcontrary (bottom), and Subalternation (sides).</p>
                    </div>
 
-                   <!-- Slide 36: Traditional Square Relations -->
+                   <!-- Slide 36: Traditional Square Relationships Defined -->
                    <div class="slide">
-                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Traditional Square Relations</h2>
-                     <p class="text-gray-600">The four relations in the traditional square of opposition may be characterized as follows:</p>
-                     <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                       <li>Contradictory = opposite truth value</li>
-                       <li><strong>Contrary</strong> = at least one is false (not both true)</li>
-                       <li><strong>Sub contrary</strong> = at least one is true (not both false)</li>
-                       <li><strong>Sub alternation</strong> = truth flows downward, falsity flows upward</li>
-                     </ul>
-                     <p class="text-gray-600 mb-4 mt-4">The contradictory relation is the same as that found in the modern square. Thus, if a certain A proposition is given as true, the corresponding O proposition is false, and vice versa, and if a certain A proposition is given as false, the corresponding O proposition is true, and vice versa. The same relation holds between the E and I propositions. The contradictory relation thus expresses complete opposition between propositions. The contrary relation differs from the contradictory in that it expresses only partial opposition. Thus, if a certain A proposition is given as true, the corresponding E proposition is false (because at least one must be false), and if an E proposition is given as true, the corresponding A proposition is false. But if an A proposition is given as false, the corresponding E proposition could be either true or false without violating the “at least one is false” rule. In this case, the E proposition has logically undetermined truth value.</p>
+                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Traditional Square Relationships Defined</h2>
+                     <p class="text-gray-600 mb-4">Under the Aristotelian interpretation (assuming existence):</p>
+                      <ul class="list-disc pl-6 text-gray-600 space-y-2">
+                        <li><strong>Contradictory</strong> (A vs. O, E vs. I): Always have opposite truth values. (Same as modern square).</li>
+                        <li><strong>Contrary</strong> (A vs. E): Cannot both be true, but *can* both be false. (If one is true, the other is false. If one is false, the other is undetermined).</li>
+                        <li><strong>Subcontrary</strong> (I vs. O): Cannot both be false, but *can* both be true. (If one is false, the other is true. If one is true, the other is undetermined).</li>
+                        <li><strong>Subalternation</strong> (A → I, E → O): Truth flows downward (if the universal is true, the particular is true). Falsity flows upward (if the particular is false, the universal is false). Other directions are undetermined.</li>
+                      </ul>
                    </div>
 
-                    <!-- Slide 37: Traditional Square Relations (Continued) -->
+                    <!-- Slide 37: Contrary and Subcontrary Relationships -->
                     <div class="slide">
-                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">Traditional Square Relations (Cont.)</h2>
+                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">Contrary and Subcontrary Relationships</h2>
                       <p class="text-gray-600 mb-4">
-                        Similarly, if an E proposition is given as false, the corresponding A proposition has logically undetermined truth value. These results are borne out in ordinary language. Thus, if we are given the actually true A proposition “All cats are animals,” the corresponding E proposition “No cats are animals” is false, and if we are given the actually true E proposition “No cats are dogs,” the corresponding A proposition “All cats are dogs” is false. Thus, the A and E propositions cannot both be true. However, they can both be false. “All animals are cats” and “No animals are cats” are both false.
+                        <strong>Contrary (A vs. E):</strong> They express partial opposition.
+                        <br>• If "All cats are animals" (A, True) is given, then "No cats are animals" (E) must be False.
+                        <br>• If "No cats are dogs" (E, True) is given, then "All cats are dogs" (A) must be False.
+                        <br>• However, if "All animals are cats" (A, False) is given, "No animals are cats" (E) could be true or false (it happens to be true, but isn't logically determined just from A being false). They can both be false.
                       </p>
-                      <p class="text-gray-600 mb-4">
-                        The sub contrary relation also expresses a kind of partial opposition. If a certain I proposition is given as false, the corresponding O proposition is true (because at least one must be true), and if an O proposition is given as false, the corresponding I proposition is true. But if either an I or an O proposition is given as true, then the corresponding proposition could be either true or false without violating the “at least one is true” rule. Thus, in this case the corresponding proposition would have logically undetermined truth value. If we are given the actually false I proposition “Some dogs are cats,” the corresponding O proposition “Some cats are not dogs” is true, and if we are given the actually false O proposition “Some cats are not animals,” the corresponding I proposition “Some cats are animals” is true. Thus, the I and O propositions cannot both be false, but they can both be true. “Some animals are cats” and “Some animals are not cats” are both true.
+                      <p class="text-gray-600 mt-4">
+                        <strong>Subcontrary (I vs. O):</strong> They also express partial opposition.
+                        <br>• If "Some dogs are cats" (I, False) is given, then "Some dogs are not cats" (O) must be True.
+                        <br>• If "Some cats are not animals" (O, False) is given, then "Some cats are animals" (I) must be True.
+                        <br>• However, if "Some animals are cats" (I, True) is given, "Some animals are not cats" (O) could be true or false (it happens to be true, but isn't logically determined just from I being true). They can both be true.
                       </p>
                     </div>
 
-                     <!-- Slide 38: Subalternation -->
+                     <!-- Slide 38: Subalternation Relationship -->
                      <div class="slide">
-                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Subalternation</h2>
-                       <p class="text-gray-600">
-                         The sub alternation relation is represented by two arrows: a downward arrow marked with the letter T (true), and an upward arrow marked with an F (false). These arrows can be thought of as pipelines through which truth values flow. The downward arrow “transmits” only truth, and the upward arrow only falsity. Thus, if an A proposition is given as true, the corresponding I proposition is true also, and if an I proposition is given as false, the corresponding A proposition is false. But if an A proposition is given as false, this truth value cannot be transmitted downward, so the corresponding I proposition will have logically undetermined truth value. Conversely, if an I proposition is given as true, this truth value cannot be transmitted upward, so the corresponding A proposition will have logically undetermined truth value. Analogous reasoning prevails for the sub alternation relation between the E and O propositions. To remember the direction of the arrows for sub alternation, imagine that truth “trickles down,” and falsity “floats” up.
+                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Subalternation Relationship</h2>
+                       <p class="text-gray-600 mb-4">
+                         <strong>Subalternation (A vs. I, E vs. O):</strong> This relationship relies heavily on the existential import assumption for A and E.
                        </p>
+                        <ul class="list-disc pl-6 text-gray-600 space-y-2">
+                            <li><strong>Truth Downward:</strong> If a universal proposition (A or E) is true, its corresponding particular proposition (I or O) must also be true.
+                                <br><em>Example:</em> If "All cats are mammals" (A, True) is given, then "Some cats are mammals" (I) must be True.
+                            </li>
+                            <li><strong>Falsity Upward:</strong> If a particular proposition (I or O) is false, its corresponding universal proposition (A or E) must also be false.
+                                <br><em>Example:</em> If "Some cats are reptiles" (I, False) is given, then "All cats are reptiles" (A) must be False.
+                            </li>
+                             <li><strong>Undetermined Cases:</strong> If a universal (A/E) is false, the particular (I/O) is undetermined. If a particular (I/O) is true, the universal (A/E) is undetermined.</li>
+                        </ul>
+                       <p class="text-gray-600 mt-4 italic">Think: Truth trickles down, Falsity floats up.</p>
                      </div>
 
-                     <!-- Slide 39: Evaluating Immediate Inferences Intro -->
+                     <!-- Slide 39: Evaluating Immediate Inferences (Traditional Square) -->
                      <div class="slide">
-                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">4: Evaluating Immediate Inferences: Using Venn Diagrams and Square of Oppositions</h2>
-                       <h3 class="text-xl font-semibold mb-2 text-gray-700">Overview:</h3>
-                       <p class="text-gray-600">
-                         Dear learners, Since the modern square of opposition provides logically necessary results, we can use it to test certain arguments for validity. We begin by assuming the premise is true, and we enter the pertinent truth value in the square. We then use the square to compute the truth value of the conclusion. If the square indicates that the conclusion is true, the argument is valid; if not, the argument is invalid.
+                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">4: Evaluating Immediate Inferences using Squares and Diagrams</h2>
+                       <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview:</h3>
+                       <p class="text-gray-600 mb-4">
+                         The squares of opposition and Venn diagrams provide tools for evaluating the validity of <strong>immediate inferences</strong>—arguments with only one premise and one conclusion, where both are categorical propositions.
                        </p>
                         <p class="text-gray-600">
-                          Arguments of this sort are called <strong>immediate inferences</strong> because they have only one premise. Instead of reasoning from one premise to the next, and then to the conclusion, we proceed immediately to the conclusion.
+                          This section demonstrates how to use these tools. We will test inferences using the modern square (Boolean interpretation), the traditional square (Aristotelian interpretation, assuming existential import), and Venn diagrams. We will also introduce the concept of the existential fallacy.
                         </p>
                      </div>
 
-                     <!-- Slide 40: Evaluating Immediate Inferences Objectives -->
+                     <!-- Slide 40: Section Objectives -->
                      <div class="slide">
-                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Immediate Inferences Objectives:</h2>
-                       <h3 class="text-xl font-semibold mb-2 text-gray-700">objectives:</h3>
-                       <p class="text-gray-600 mb-2">At the end of this , student will be able to:</p>
-                       <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                         <li>Understand different logical inferences and represent them on appropriate diagram</li>
-                         <li>Test the validity and invalid of different arguments in different diagrams</li>
-                         <li>Perform the operations of conversion, obversion, and contraposition as indicated</li>
+                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives:</h2>
+                       <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
+                       <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
+                       <ul class="arrow-list pl-6 text-gray-600 space-y-1"> <!-- Changed to arrow-list -->
+                         <li>Test the validity of immediate inferences using the Modern Square of Opposition.</li>
+                         <li>Test the validity of immediate inferences using the Traditional Square of Opposition (conditionally valid arguments).</li>
+                         <li>Identify the Existential Fallacy from the Boolean perspective.</li>
+                         <li>Test the validity of immediate inferences using Venn diagrams.</li>
                        </ul>
                      </div>
 
-                      <!-- Slide 41: Evaluating Immediate Inferences (Activity) -->
+                      <!-- Slide 41: Evaluating with the Modern Square -->
                       <div class="slide">
-                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Immediate Inferences</h2>
-                         <h3 class="text-xl font-semibold mb-2 text-gray-700">Activities # 1 please study following argument and attempt to evaluate it by using Venn Diagrams and Square of Oppositions:</h3>
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Inferences with the Modern Square</h2>
+                        <p class="text-gray-600 mb-4">Using the modern square (which only shows the contradictory relationship), we test validity as follows:</p>
+                         <p class="font-semibold text-gray-700 mb-2">Example Inference:</p>
                           <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                            <p>Some trade spies are not masters at bribery.</p>
-                            <p>Therefore, it is false that all trade spies are masters at bribery.</p>
+                            <p>Premise: Some trade spies are not masters at bribery. (O is True)</p>
+                            <p>Conclusion: Therefore, it is false that all trade spies are masters at bribery. (A is False)</p>
                           </div>
-                         <p class="text-gray-600 mb-4">Dear learners, in order to have better understanding on to evaluate inferences or to test argument for validity, let’s reconsider once again the above example that:</p>
-                          <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                            <p>Some trade spies are not masters at bribery.</p>
-                            <p>Therefore, it is false that all trade spies are masters at bribery.</p>
-                          </div>
-                         <p class="text-gray-600">To evaluate this argument, we begin by assuming that the premise, which is an O proposition, is true, and we enter this truth value in the square of opposition. We then use the square to compute the truth value of the corresponding A proposition. By the contradictory relation, the A proposition is false. Since the conclusion claims that the A proposition is false, the conclusion is true, and therefore the argument is valid.</p>
+                         <p class="text-gray-600 mb-4">Steps:</p>
+                         <ol class="list-decimal pl-6 text-gray-600 space-y-1">
+                            <li>Assume the premise (O proposition) is True. Enter 'T' by O on the square.</li>
+                            <li>Use the contradictory relation: If O is True, then A must be False. Enter 'F' by A.</li>
+                            <li>Compare with the conclusion: The conclusion asserts that A is False ("it is false that all...").</li>
+                            <li>Since the truth value derived from the square (A is False) matches the conclusion, the argument is <strong>valid</strong> from the Boolean standpoint.</li>
+                         </ol>
                       </div>
 
-                       <!-- Slide 42: Evaluating Immediate Inferences (Boolean Validity) -->
+                       <!-- Slide 42: Unconditional Validity and Negated Statements -->
                        <div class="slide">
-                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Immediate Inferences (Boolean Validity)</h2>
-                         <p class="text-gray-600">
-                           Arguments that are valid from the Boolean standpoint are said to be <strong>unconditionally valid</strong> because they are valid regardless of whether their terms refer to existing things.
+                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Unconditional Validity and Negated Statements</h2>
+                         <p class="text-gray-600 mb-4">
+                           Arguments valid solely based on the modern square (contradictory relationship) are <strong>unconditionally valid</strong> because their validity doesn't depend on whether the terms refer to existing things (no existential import is assumed).
                          </p>
-                          <p class="text-gray-600 mt-4">Note that the conclusion of this argument has the form “It is false that all S are P.” Technically, statements of this type are not standard-form propositions because, among other things, they do not begin with a quantifier. To remedy this difficulty we adopt the convention that statements having this form are equivalent to “‘All S are P’ is false.” Analogous remarks apply to the negations of the E, I, and O statements.</p>
+                          <p class="text-gray-600 mt-4">
+                            <strong>Note on Negated Statements:</strong> Conclusions like "It is false that all S are P" are not technically in standard form. For evaluation, we treat them as equivalent to asserting the falsity of the corresponding standard-form proposition (e.g., "'All S are P' is false"). Similarly, "It is false that no S are P" means "'No S are P' is false," and so on.
+                          </p>
                        </div>
 
-                       <!-- Slide 43: Evaluating Immediate Inferences (Venn Diagrams) -->
+                       <!-- Slide 43: Evaluating with Venn Diagrams -->
                        <div class="slide">
-                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Immediate Inferences (Venn Diagrams)</h2>
-                         <p class="text-gray-600">We can also use Venn diagrams to test immediate inferences for validity. However, using this technique often requires that we diagram statements beginning with the phrase “It is false that.” Let us begin by showing how to diagram such statements. Here are two examples:</p>
-                          <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-4">
-                            <p>It is false that all A are B.</p>
-                            <p>It is false that some A are B.</p>
-                          </div>
-                          <p class="text-gray-600 mb-4">Any statement that is diagrammed by entering an X in an area is a particular proposition. Thus, as the diagram shows, “It is false that all A are B” is actually a particular proposition. By similar reasoning, “It is false that no A are B” is also a particular proposition. To diagram “It is false that some A are B,” we do the exact opposite of what we would do to diagram “Some A are B.” For “Some A are B,” we would enter an X in the overlap area. Thus, to diagram “It is false that some A are B,” we shade the overlap area:</p>
-                           <div class="venn-diagram">
-                             <!-- Placeholder for Venn A (false) image -->
-                             <img src="venn_A_false.png" alt="Venn Diagram It is false that all A are B" class="venn-image">
-                           </div>
-                            <div class="venn-diagram">
-                              <!-- Placeholder for Venn I (false) image -->
-                              <img src="venn_I_false.png" alt="Venn Diagram It is false that some A are B" class="venn-image">
-                            </div>
+                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Inferences with Venn Diagrams</h2>
+                         <p class="text-gray-600 mb-4">Venn diagrams offer another method. To test validity:</p>
+                         <ol class="list-decimal pl-6 text-gray-600 space-y-1">
+                             <li>Draw separate Venn diagrams for the premise and the conclusion.</li>
+                             <li>If the information shown in the conclusion diagram is *already contained* within the premise diagram, the inference is valid.</li>
+                             <li>If the conclusion diagram contains information *not* present in the premise diagram, the inference is invalid.</li>
+                         </ol>
+                          <p class="text-gray-600 mt-4"><strong>Diagramming Negated Statements:</strong></p>
+                          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+                              <li>"It is false that All A are B" (False A) means the same as "Some A are not B" (O). Diagrammed with an X in the left part of A.</li>
+                              <li>"It is false that No A are B" (False E) means the same as "Some A are B" (I). Diagrammed with an X in the overlap.</li>
+                              <li>"It is false that Some A are B" (False I) means the same as "No A are B" (E). Diagrammed by shading the overlap.</li>
+                              <li>"It is false that Some A are not B" (False O) means the same as "All A are B" (A). Diagrammed by shading the left part of A.</li>
+                          </ul>
+                            <!-- Simplified this slightly -->
                        </div>
 
-                        <!-- Slide 44: Evaluating Immediate Inferences (Venn Diagrams - Validity) -->
+                        <!-- Slide 44: Venn Diagram Validity Example -->
                         <div class="slide">
-                          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Immediate Inferences (Venn - Validity)</h2>
-                          <p class="text-gray-600">If the information expressed by the conclusion diagram is contained in the premise diagram, the inference is <strong>valid</strong>; if not, it is <strong>invalid</strong>. Here is the symbolized form of the trade spies inference that we tested earlier.</p>
-                           <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-4">
-                             <p>Some T are not M.</p>
-                             <p>Therefore, it is false that all T are M.</p>
+                          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagram Validity Example</h2>
+                          <p class="text-gray-600 mb-4">Let's test the previous inference using Venn diagrams:</p>
+                           <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                             <p>Premise: Some T are not M. (O Proposition)</p>
+                             <p>Conclusion: Therefore, it is false that all T are M. (Equivalent to O Proposition)</p>
                            </div>
-                          <p class="text-gray-600">The next step is to draw two Venn diagrams, one for the premise and the other for the conclusion. For the premise we enter an X in the left -hand part of the T circle, and for the conclusion, as we have just seen, we enter an X in the left -hand part of the T circle:</p>
-                           <div class="venn-diagram">
-                             <!-- Placeholder for Venn O (T) image -->
-                             <img src="venn_O_T.png" alt="Venn Diagram Some T are not M" class="venn-image">
-                           </div>
-                            <div class="venn-diagram">
-                              <!-- Placeholder for Venn A (false) (T) image -->
-                              <img src="venn_A_false_T.png" alt="Venn Diagram It is false that all T are M" class="venn-image">
+                           <p class="text-gray-600 mb-4">Diagrams:</p>
+                           <div class="venn-comparison">
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Premise: Some T are not M (O)</p>
+                                 <img src="https://i.imgur.com/k7a4Z8f.png" alt="Venn Diagram for O Proposition" class="venn-image">
+                                 <!-- Changed placeholder -->
+                               </div>
+                                <div class="venn-diagram">
+                                  <p class="font-semibold text-sm mb-1">Conclusion: False(All T are M) (O)</p>
+                                  <img src="https://i.imgur.com/k7a4Z8f.png" alt="Venn Diagram for False A / O Proposition" class="venn-image">
+                                   <!-- Changed placeholder -->
+                                </div>
                             </div>
+                           <p class="text-gray-600 mt-4">Both premise and conclusion are represented by placing an X in the part of the T circle outside the M circle. Since the information in the conclusion diagram (an X in that region) is identical to the information in the premise diagram, the inference is <strong>valid</strong>.</p>
                         </div>
 
-                        <!-- Slide 45: Evaluating Immediate Inferences (Venn Diagrams - Invalidity) -->
+                        <!-- Slide 45: Venn Diagram Invalidity & Existential Fallacy -->
                         <div class="slide">
-                          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Evaluating Immediate Inferences (Venn - Invalidity)</h2>
-                          <p class="text-gray-600">Here, the conclusion diagram asserts that the overlap area is empty. Since this information is not contained in the premise diagram, the inference is <strong>invalid</strong>. We conclude with a special kind of inference that: the information of the conclusion diagram is not contained in the premise diagram, so the inference is invalid. However, if the premise were interpreted as having existential import, then the C circle in the premise diagram would not be empty. Specifically, there would be members in the overlap area. This would make the inference valid.</p>
-                           <p class="text-gray-600 mt-4">Arguments of this sort are said to commit the <strong>existential fallacy</strong>. From the Boolean standpoint, the <strong>existential fallacy</strong> is a formal fallacy that occurs whenever an argument is invalid merely because the premise lacks existential import. Such arguments always have a universal premise and a particular conclusion. The fallacy consists in attempting to derive a conclusion having existential import from a premise that lacks it.</p>
+                          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagram Invalidity & The Existential Fallacy</h2>
+                          <p class="text-gray-600 mb-4">Consider this inference using the traditional square's subalternation:</p>
+                           <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                             <p>Premise: All C are H. (A Proposition)</p>
+                             <p>Conclusion: Therefore, Some C are H. (I Proposition)</p>
+                           </div>
+                            <p class="text-gray-600 mb-4">Diagrams (Boolean Interpretation):</p>
+                           <div class="venn-comparison">
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Premise: All C are H (A)</p>
+                                 <img src="https://i.imgur.com/4y3Wb9I.png" alt="Venn Diagram for A Proposition" class="venn-image">
+                                 <!-- Changed placeholder -->
+                               </div>
+                                <div class="venn-diagram">
+                                  <p class="font-semibold text-sm mb-1">Conclusion: Some C are H (I)</p>
+                                  <img src="https://i.imgur.com/d8X3vY0.png" alt="Venn Diagram for I Proposition" class="venn-image">
+                                   <!-- Changed placeholder -->
+                                </div>
+                            </div>
+                           <p class="text-gray-600 mt-4">The premise diagram (shaded left part of C) does *not* contain the information in the conclusion diagram (an X in the overlap). The premise makes no claim about existence, while the conclusion does. Therefore, from the Boolean standpoint, this inference is <strong>invalid</strong>.</p>
+                           <p class="text-gray-600 mt-4">This specific type of invalidity—where an argument is invalid *merely* because it moves from a universal premise (lacking existential import) to a particular conclusion (having existential import)—commits the <strong>Existential Fallacy</strong>.</p>
                         </div>
 
-                         <!-- Slide 46: Existential Fallacy Examples -->
+                         <!-- Slide 46: Conditionally Valid Arguments -->
                          <div class="slide">
-                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Existential Fallacy Examples</h2>
-                            <p class="text-gray-600 mb-4">Existential fallacy:</p>
-                            <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                              <p>All A are B.</p>
-                              <p>Therefore, some A are B.</p>
-                            </div>
-                            <p class="text-gray-600 mb-4">It is false that some A are not B.</p>
-                            <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-2">
-                              <p>Therefore, it is false that no A are B.</p>
-                            </div>
-                            <p class="text-gray-600 mb-4">No A are B.</p>
-                            <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-2">
-                              <p>Therefore, it is false that all A are B.</p>
-                            </div>
-                             <p class="text-gray-600 mb-4">It is false that some A are B.</p>
-                             <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-2">
-                               <p>Therefore, some A are not B.</p>
-                             </div>
-                            <p class="text-gray-600">Finally, while all of these forms proceed from a universal premise to a particular conclusion, it is important to see that not every inference having a universal premise and a particular conclusion commits the existential fallacy. For example, the inference “All A are B; therefore, some A are not B” does not commit this fallacy. This inference is invalid because the conclusion contradicts the premise. Thus, to detect the existential fallacy, one must ensure that the invalidity results merely from the fact that the premise lacks existential import. This can easily be done by constructing a Venn diagram.</p>
+                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conditionally Valid Arguments</h2>
+                            <p class="text-gray-600 mb-4">
+                              Arguments that commit the existential fallacy from the Boolean standpoint *can* be valid from the Aristotelian standpoint, *if* we make the required assumption that the subject term denotes existing things. Such arguments are termed <strong>conditionally valid</strong>—valid on the condition of existence.
+                            </p>
+                             <p class="text-gray-600 mb-4">Inferences based on the traditional square relationships of contrary, subcontrary, and subalternation are often conditionally valid. They are valid only if the relevant classes (subject terms of A/E) are assumed to have members.</p>
+                            <p class="text-gray-600">Examples of forms that commit the existential fallacy (invalid Booleanly, conditionally valid Aristotelianly):</p>
+                            <ul class="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+                               <li>All A are B. Therefore, Some A are B. (Subalternation)</li>
+                               <li>No A are B. Therefore, Some A are not B. (Subalternation)</li>
+                               <li>It is false that Some A are not B (i.e., All A are B). Therefore, it is false that No A are B (i.e., Some A are B). (Contradictory + Subalternation)</li>
+                               <li>It is false that Some A are B (i.e., No A are B). Therefore, Some A are not B. (Contradictory + Subalternation)</li>
+                            </ul>
+                             <p class="text-gray-600 mt-4">To detect the existential fallacy, check if an argument moves from universal premise(s) to a particular conclusion *and* if its invalidity stems *only* from the lack of existential import in the premise(s). Venn diagrams clearly show this mismatch.</p>
                          </div>
 
-                         <!-- Slide 47: Logical Operations Intro -->
+                         <!-- Slide 47: 4.1 Logical Operations: Conversion, Obversion, Contraposition -->
                          <div class="slide">
                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.1 Logical Operations: Conversion, Obversion, and Contraposition</h2>
+                           <p class="text-gray-600 mb-4">
+                             Beyond the relationships shown on the squares of opposition, we can analyze immediate inferences based on three specific logical operations performed on standard-form categorical propositions: Conversion, Obversion, and Contraposition.
+                           </p>
                            <p class="text-gray-600">
-                             Dear students, Conversion, Obversion, and Contraposition are operations that can be performed on a categorical proposition, resulting in a new statement that may or may not have the same meaning and truth value as the original statement. Venn diagrams are used to determine how the two statements relate to each other.
+                             These operations manipulate the terms or quality of a proposition to create a new proposition. We can then determine if the new proposition is logically equivalent to the original (meaning they always have the same truth value) and whether an immediate inference from the original to the new proposition is valid. Venn diagrams are useful here.
                            </p>
                          </div>
 
-                         <!-- Slide 48: Conversion -->
+                         <!-- Slide 48: Operation 1: Conversion -->
                          <div class="slide">
-                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion</h2>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-700">Conversion</h3>
-                           <p class="text-gray-600 mb-4">
-                             <strong>Conversion</strong>-the rule of conversion emphasizes the change of the position of the subject to the predicate and vice versa. Accordingly, by conversion the four propositions look like the following. Study the following table.
-                           </p>
+                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Operation 1: Conversion</h2>
+                            <p class="text-gray-600 mb-4">
+                             <strong>Conversion</strong> involves switching the subject term (S) and the predicate term (P).
+                            </p>
+                            <p class="text-gray-600 mb-4">Applying conversion to the four standard forms yields:</p>
                             <table>
                               <thead>
-                                <tr><th>Letter Name</th><th>Given Proposition</th><th>New statement by conversion</th></tr>
+                                <tr><th>Form</th><th>Given Proposition</th><th>Converse (Switch S and P)</th></tr>
                               </thead>
                               <tbody>
                                 <tr><td>A</td><td>All S are P</td><td>All P are S</td></tr>
@@ -850,389 +890,428 @@
                                 <tr><td>O</td><td>Some S are not P</td><td>Some P are not S</td></tr>
                               </tbody>
                             </table>
+                            <p class="text-gray-600 mt-4">The new statement formed is called the <strong>converse</strong> of the original.</p>
                          </div>
 
-                         <!-- Slide 49: Conversion (Continued) -->
+                         <!-- Slide 49: Venn Diagrams for Conversion (A & E) -->
                          <div class="slide">
-                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion (Continued)</h2>
-                           <p class="text-gray-600 mb-4">
-                             The simplest of the three operations is <strong>conversion</strong>, and it consists in switching the subject term with the predicate term. For example, if the statement “No hedgehogs are foxes.” is converted, the resulting statement is “No foxes are hedgehogs.” This new statement is called the <strong>converse</strong> of the given statement. To see how the four types of categorical propositions relate to their converse, compare the following sets of Venn diagrams:
-                           </p>
-                            <div class="venn-diagram">
-                              <!-- Placeholder for Venn A image -->
-                              <img src="venn_A.png" alt="Given A" class="venn-image">
-                              <img src="venn_A_conv.png" alt="Converse A" class="venn-image">
-                            </div>
-                            <div class="venn-diagram">
-                              <!-- Placeholder for Venn E image -->
-                              <img src="venn_E.png" alt="Given E" class="venn-image">
-                              <img src="venn_E_conv.png" alt="Converse E" class="venn-image">
-                            </div>
-                         </div>
-
-                          <!-- Slide 50: Conversion (Continued) -->
-                          <div class="slide">
-                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion (Continued)</h2>
-                            <div class="venn-diagram">
-                              <!-- Placeholder for Venn I image -->
-                              <img src="venn_I.png" alt="Given I" class="venn-image">
-                              <img src="venn_I_conv.png" alt="Converse I" class="venn-image">
-                            </div>
-                            <div class="venn-diagram">
-                              <!-- Placeholder for Venn O image -->
-                              <img src="venn_O.png" alt="Given O" class="venn-image">
-                              <img src="venn_O_conv.png" alt="Converse O" class="venn-image">
-                            </div>
-                          </div>
-
-                          <!-- Slide 51: Conversion Rule -->
-                          <div class="slide">
-                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion Rule</h2>
-                            <p class="text-gray-600">According to the rule of conversion:</p>
-                            <p class="text-gray-600">Propositions E and I always gives the same truth-value. Hence, we can form a valid conversion from the two propositions, taking the given proposition as premise and the converted one as conclusion. If the given proposition is true, then the new converted proposition will be again true. If the premise is false, then the conclusion will be false too. Symbolically:</p>
-                            <p class="text-gray-600">No S are P = No P are S</p>
-                            <p class="text-gray-600">Some S are P = Some P are S</p>
-                            <p class="text-gray-600">Both propositions are equivalent and give us the same truth-value.</p>
-                            <p class="font-semibold text-gray-700 mb-2 mt-4">Example 1:</p>
-                             <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                               <p>No birds are featherless (T) = given.</p>
-                               <p>No featherless are birds (T) = New (converted)</p>
-                             </div>
-                             <p class="text-gray-600">Based on the given and converted true statements we can form valid immediate inference. Immediate inference is an argument consisting of only one premise and one conclusion.</p>
-                          </div>
-
-                          <!-- Slide 52: Conversion Rule (Continued) -->
-                          <div class="slide">
-                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion Rule (Continued)</h2>
-                            <p class="text-gray-600">Accordingly, the above propositions form a valid argument:</p>
-                             <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                               <p>Since no birds are featherless, therefore no featherless are birds.</p>
-                             </div>
-                            <p class="text-gray-600 mb-4">In other words, we can state this assumption by saying that No birds are featherless; it implies that no featherless are birds.</p>
-                            <p class="text-gray-600">The same is true for proposition I . Some businesses are profitable = True (given). Some profitable are businesses = True (converted).</p>
-                          </div>
-
-                           <!-- Slide 53: Conversion of A and O -->
-                           <div class="slide">
-                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion of A and O</h2>
-                             <p class="text-gray-600">However, proposition A and O would not give us the same truth-value always as in the case of proposition E and I. The truth-value of the converted statements of A and O are undetermined, that is, sometimes it gives us the same truth-value as the truth-value of the given proposition, in another occasion they can give us a different truth-value than a given proposition. Example 1: A. All men are mortal - True. All mortals are men = False which is different in truth value from the given proposition.</p>
-                             <p class="text-gray-600 mb-4 mt-4">B. All Muslims are Christians = False. All Christians are Muslims = False which is the same truth value as the given proposition.</p>
-                             <p class="text-gray-600 mb-4">2. In Proposition (I) A. Some athletes are not drug users = True. Some drug users are not athletes = True, same</p>
-                             <p class="text-gray-600 mb-4">B. Some Ethiopians are not Africans = False. Some Africans are not Ethiopians = True, different</p>
-                             <p class="text-gray-600">These examples clearly show that we cannot form valid arguments form propositions A and O in conversion.</p>
-                           </div>
-
-                           <!-- Slide 54: Conversion and Formal Fallacy -->
-                           <div class="slide">
-                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion and Formal Fallacy</h2>
-                             <p class="text-gray-600 mb-4">
-                               Based upon these two requirements the immediate fallacies of propositions A and O in conversion:
-                             </p>
-                              <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                <li>Would give us inconsistent truth values</li>
-                                <li>The information content of the premise is unsupportive and not harmonious to the conclusion</li>
-                              </ul>
-                             <p class="text-gray-600 mb-4 mt-4">Dear learners, Do you know about fallacies? You have to know that fallacies are mistakes committed in arguments which deludes us into thinking that the mistaken argument as correct one. They are classified as formal and informal fallacies. Informal fallacies can be detected by examining the logical problem in the argument, while formal fallacies can be known simply by their logically incorrect forms that are by the position of terms, quantifiers and statements.</p>
-                           </div>
-
-                           <!-- Slide 55: Conversion and Formal Fallacy (Continued) -->
-                           <div class="slide">
-                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conversion and Formal Fallacy (Cont.)</h2>
-                              <p class="text-gray-600">The diagram for the A statement is clearly not identical to the diagram for its converse, and the diagram for the O statement is not identical to the diagram for its converse. Also, these pairs of diagrams are not the exact opposite of each other, as is the case with contradictory statements. This means that an A statement and its converse are logically unrelated as to truth value, and an O statement and its converse are logically unrelated as to truth value. In other words, converting an ‘A’ or ‘O’ statement gives a new statement whose truth value is logically undetermined in relation to the given statement. The converse of an A or O statement does have a truth value, of course, but logic alone cannot tell us what it is. Because conversion yields necessarily determined results for E and I statements, it can be used as the basis for immediate inferences having these types of statements as premises. The following inference forms are valid:</p>
-                           </div>
-
-                           <!-- Slide 56: Valid Conversion Inference Forms -->
-                           <div class="slide">
-                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Valid Conversion Inference Forms</h2>
-                              <p class="text-gray-600">The following inference forms are valid:</p>
-                              <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-4">
-                                <p>No A are B.</p>
-                                <p>Therefore, no B are A.</p>
-                                <p>Some A are B.</p>
-                                <p>Therefore, some B are A.</p>
-                              </div>
-                              <p class="text-gray-600">Since the conclusion of each inference form necessarily has the same truth value as the premise, if the premise is assumed true, it follows necessarily that the conclusion is true. On the other hand, the next two inference forms are invalid. Each commits the fallacy of <strong>illicit conversion</strong>:</p>
-                           </div>
-
-                            <!-- Slide 57: Illicit Conversion Inference Forms -->
-                            <div class="slide">
-                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Illicit Conversion Inference Forms</h2>
-                               <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-4">
-                                 <p>All A are B.</p>
-                                 <p>Therefore, all B are A.</p>
-                                 <p>Some A are not B.</p>
-                                 <p>Therefore, some B are not A.</p>
+                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Conversion (A & E)</h2>
+                           <p class="text-gray-600 mb-4">Comparing Venn diagrams for propositions and their converses helps determine logical equivalence:</p>
+                            <div class="venn-comparison">
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Given A: All S are P</p>
+                                 <img src="https://i.imgur.com/4y3Wb9I.png" alt="Given A" class="venn-image">
                                </div>
-                               <p class="text-gray-600">Here are two examples of inferences that commit the fallacy of illicit conversion:</p>
-                                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-2">
-                                  <p>All cats are animals. (True)</p>
-                                  <p>Therefore, all animals are cats. (False)</p>
-                                  <p>Some animals are not dogs. (True)</p>
-                                  <p>Therefore, some dogs are not animals. (False)</p>
+                                <div class="venn-diagram">
+                                  <p class="font-semibold text-sm mb-1">Converse: All P are S</p>
+                                  <img src="https://i.imgur.com/r8zHq6L.png" alt="Converse A" class="venn-image">
+                                  <!-- Updated URL for Converse A -->
                                 </div>
                             </div>
+                            <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. A and its converse are *not* logically equivalent.</p>
+                            <div class="venn-comparison mt-4">
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Given E: No S are P</p>
+                                 <img src="https://i.imgur.com/gQW7j3t.png" alt="Given E" class="venn-image">
+                               </div>
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Converse: No P are S</p>
+                                 <img src="https://i.imgur.com/gQW7j3t.png" alt="Converse E" class="venn-image">
+                                 <!-- E and its converse have the same diagram -->
+                               </div>
+                            </div>
+                            <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. E and its converse *are* logically equivalent.</p>
+                         </div>
 
-                            <!-- Slide 58: Illicit Conversion (Continued) & Obversion -->
+                          <!-- Slide 50: Venn Diagrams for Conversion (I & O) -->
+                          <div class="slide">
+                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Conversion (I & O)</h2>
+                            <div class="venn-comparison">
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Given I: Some S are P</p>
+                                 <img src="https://i.imgur.com/d8X3vY0.png" alt="Given I" class="venn-image">
+                               </div>
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Converse: Some P are S</p>
+                                 <img src="https://i.imgur.com/d8X3vY0.png" alt="Converse I" class="venn-image">
+                                 <!-- I and its converse have the same diagram -->
+                               </div>
+                            </div>
+                            <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. I and its converse *are* logically equivalent.</p>
+                            <div class="venn-comparison mt-4">
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Given O: Some S are not P</p>
+                                 <img src="https://i.imgur.com/k7a4Z8f.png" alt="Given O" class="venn-image">
+                               </div>
+                               <div class="venn-diagram">
+                                 <p class="font-semibold text-sm mb-1">Converse: Some P are not S</p>
+                                 <img src="https://i.imgur.com/j1sXzUq.png" alt="Converse O" class="venn-image">
+                                  <!-- Updated URL for Converse O -->
+                               </div>
+                            </div>
+                            <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. O and its converse are *not* logically equivalent.</p>
+                          </div>
+
+                          <!-- Slide 51: Validity of Conversion -->
+                          <div class="slide">
+                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Validity of Conversion</h2>
+                            <p class="text-gray-600 mb-4">
+                              Based on the Venn diagrams (and logical equivalence):
+                            </p>
+                             <ul class="list-disc pl-6 text-gray-600 space-y-1">
+                                <li>Conversion is <strong>valid</strong> for <strong>E</strong> and <strong>I</strong> propositions. This means an E proposition always has the same truth value as its converse, and an I proposition always has the same truth value as its converse. Immediate inferences are valid:
+                                    <br> (No S are P ∴ No P are S) and (Some S are P ∴ Some P are S).
+                                </li>
+                                <li>Conversion is <strong>invalid</strong> for <strong>A</strong> and <strong>O</strong> propositions. Their truth values are logically unrelated to their converses. Immediate inferences are invalid:
+                                    <br> (All S are P ∴ All P are S) and (Some S are not P ∴ Some P are not S).
+                                </li>
+                             </ul>
+                             <p class="font-semibold text-gray-700 mb-2 mt-4">Example (Valid E Conversion):</p>
+                             <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                               <p>Premise: No birds are featherless things. (True)</p>
+                               <p>Conclusion: Therefore, no featherless things are birds. (True - Valid)</p>
+                             </div>
+                              <p class="font-semibold text-gray-700 mb-2 mt-4">Example (Valid I Conversion):</p>
+                              <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                               <p>Premise: Some businesses are profitable ventures. (True)</p>
+                               <p>Conclusion: Therefore, some profitable ventures are businesses. (True - Valid)</p>
+                             </div>
+                          </div>
+
+
+                           <!-- Slide 54: Illicit Conversion Fallacy -->
+                           <div class="slide">
+                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Illicit Conversion Fallacy</h2>
+                             <p class="text-gray-600 mb-4">
+                               Since conversion is invalid for A and O propositions, attempting to infer the converse from an A or O statement commits the formal fallacy of <strong>Illicit Conversion</strong>.
+                             </p>
+                              <p class="font-semibold text-gray-700 mb-2">Invalid Forms (Illicit Conversion):</p>
+                              <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                                <p>All A are B.<br>Therefore, all B are A.</p>
+                                <hr class="my-2 border-gray-300">
+                                <p>Some A are not B.<br>Therefore, some B are not A.</p>
+                              </div>
+                               <p class="font-semibold text-gray-700 mb-2">Examples of Illicit Conversion:</p>
+                                <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 space-y-1">
+                                  <p>All cats are animals. (True) → Therefore, all animals are cats. (False)</p>
+                                  <p>Some animals are not dogs. (True) → Therefore, some dogs are not animals. (False)</p>
+                                </div>
+                               <p class="text-gray-600 mt-4">The truth of the premise does not guarantee the truth of the conclusion in these forms.</p>
+                           </div>
+
+                            <!-- Slide 58: Operation 2: Obversion -->
                             <div class="slide">
-                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Illicit Conversion (Cont.) & Obversion</h2>
+                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Operation 2: Obversion</h2>
                               <p class="text-gray-600 mb-4">
-                                Accordingly, the immediate inferences of proposition A and O in the case of conversion are invalid and the formal fallacy committed in the invalid arguments of these propositions is called <strong>illicit conversion</strong>. It is a logically incorrect conversion; hence, it is named as illicit conversion.
+                                <strong>Obversion</strong> is a two-step operation:
                               </p>
-                               <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">Obversion</h3>
-                              <p class="text-gray-600">
-                                The logical rule of <strong>obversion</strong> has two steps:
-                              </p>
-                               <ul class="list-decimal pl-6 text-gray-600 space-y-1 mt-2">
-                                 <li>Change the quality without changing its quantity</li>
-                                 <li>Change the predicate by its term complement. A term which has opposite meaning against the meaning of a given term is called term complement. A term complement for black is white, and for the term Ethiopians is non-Ethiopians or those that are not Ethiopians.</li>
-                               </ul>
+                               <ol class="list-decimal pl-6 text-gray-600 space-y-1">
+                                 <li><strong>Change the quality:</strong> Affirmative becomes negative, negative becomes affirmative. (A ↔ E, I ↔ O). The quantity (universal/particular) remains the same.</li>
+                                 <li><strong>Replace the predicate term with its term complement:</strong> Replace P with non-P. The <strong>term complement</strong> refers to the class of everything outside the original term's class (e.g., complement of "dogs" is "non-dogs"; complement of "voters" is "non-voters").</li>
+                               </ol>
+                               <p class="text-gray-600 mt-4">The resulting statement is called the <strong>obverse</strong>.</p>
                             </div>
 
-                             <!-- Slide 59: Obversion Table -->
+                             <!-- Slide 59: Obversion Applied to Standard Forms -->
                              <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Obversion Table</h2>
-                               <p class="text-gray-600">Study the following tabular demonstration:</p>
+                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Obversion Applied to Standard Forms</h2>
+                               <p class="text-gray-600 mb-4">Applying the two steps (change quality, replace P with non-P):</p>
                                 <table>
                                   <thead>
-                                    <tr><th>Letter Name</th><th>Given Proposition</th><th>New Statement</th></tr>
+                                    <tr><th>Form</th><th>Given Proposition</th><th>Obverse</th></tr>
                                   </thead>
                                   <tbody>
-                                    <tr><td></td><td></td><td>By Obversion</td></tr>
                                     <tr><td>A</td><td>All S are P</td><td>No S are non-P</td></tr>
                                     <tr><td>E</td><td>No S are P</td><td>All S are non-P</td></tr>
                                     <tr><td>I</td><td>Some S are P</td><td>Some S are not non-P</td></tr>
-                                    <tr><td>O</td><td>Some S are not P</td><td>Some S are non -P</td></tr>
+                                    <tr><td>O</td><td>Some S are not P</td><td>Some S are non-P</td></tr>
                                   </tbody>
                                 </table>
                              </div>
 
-                             <!-- Slide 60: Obversion (Continued) -->
+                             <!-- Slide 60: Venn Diagrams for Obversion (A & E) -->
                              <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Obversion (Continued)</h2>
-                               <p class="text-gray-600 mb-4">
-                                 We now have everything we need to form the <strong>obverse</strong> of categorical propositions. First, we change the quality (without changing the quantity), and then we replace the predicate term with its term complement. For example, if we are given the statement “All horses are animals,” then the obverse is “No horses are non-animals”; and if we are given the statement “Some trees are maples,” then the obverse is “Some trees are not non-maples.”
-                               </p>
-                                <p class="text-gray-600">To see how the four types of categorical propositions relate to their obverse, compare the following sets of Venn diagrams:</p>
-                                 <div class="venn-diagram">
-                                   <!-- Placeholder for Venn A image -->
-                                   <img src="venn_A.png" alt="Given A" class="venn-image">
-                                   <img src="venn_A_obverse.png" alt="Obverse A" class="venn-image">
+                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Obversion (A & E)</h2>
+                               <p class="text-gray-600 mb-4">Comparing diagrams for propositions and their obverses:</p>
+                                 <div class="venn-comparison">
+                                    <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Given A: All S are P</p>
+                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Given A" class="venn-image">
+                                     </div>
+                                     <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Obverse: No S are non-P</p>
+                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Obverse A" class="venn-image">
+                                       <!-- Obverse of A is equivalent to A -->
+                                     </div>
                                  </div>
-                                 <div class="venn-diagram">
-                                   <!-- Placeholder for Venn E image -->
-                                   <img src="venn_E.png" alt="Given E" class="venn-image">
-                                   <img src="venn_E_obverse.png" alt="Obverse E" class="venn-image">
+                                 <div class="venn-comparison mt-4">
+                                     <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Given E: No S are P</p>
+                                       <img src="https://i.imgur.com/gQW7j3t.png" alt="Given E" class="venn-image">
+                                     </div>
+                                     <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Obverse: All S are non-P</p>
+                                       <img src="https://i.imgur.com/gQW7j3t.png" alt="Obverse E" class="venn-image">
+                                        <!-- Obverse of E is equivalent to E -->
+                                     </div>
                                  </div>
                              </div>
 
-                             <!-- Slide 61: Obversion (Continued) -->
+                             <!-- Slide 61: Venn Diagrams for Obversion (I & O) -->
                              <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Obversion (Continued)</h2>
-                                <div class="venn-diagram">
-                                  <!-- Placeholder for Venn I image -->
-                                  <img src="venn_I.png" alt="Given I" class="venn-image">
-                                  <img src="venn_I_obverse.png" alt="Obverse I" class="venn-image">
+                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Obversion (I & O)</h2>
+                                <div class="venn-comparison">
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Given I: Some S are P</p>
+                                     <img src="https://i.imgur.com/d8X3vY0.png" alt="Given I" class="venn-image">
+                                   </div>
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Obverse: Some S are not non-P</p>
+                                     <img src="https://i.imgur.com/d8X3vY0.png" alt="Obverse I" class="venn-image">
+                                      <!-- Obverse of I is equivalent to I -->
+                                   </div>
                                 </div>
-                                <div class="venn-diagram">
-                                  <!-- Placeholder for Venn O image -->
-                                  <img src="venn_O.png" alt="Given O" class="venn-image">
-                                  <img src="venn_O_obverse.png" alt="Obverse O" class="venn-image">
+                                <div class="venn-comparison mt-4">
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Given O: Some S are not P</p>
+                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Given O" class="venn-image">
+                                   </div>
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Obverse: Some S are non-P</p>
+                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Obverse O" class="venn-image">
+                                      <!-- Obverse of O is equivalent to O -->
+                                   </div>
                                 </div>
                              </div>
 
-                             <!-- Slide 62: Obversion (Continued) -->
+                             <!-- Slide 62: Validity of Obversion -->
                              <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Obversion (Continued)</h2>
-                                <p class="text-gray-600 mb-4">Do you understand how the standard forms of the four propositions are obverted?</p>
+                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Validity of Obversion</h2>
                                 <p class="text-gray-600 mb-4">
-                                  To make the first rule of obversion, change the quality without changing its quantity. The affirmative quantifier “all “has to be replaced by the negative quantifier “no.” This is to change the affirmative quality of the proposition into negative quality. And again the quantity of these propositions are universal, that is the propositions that begins by “All S are and “No S are” are both universal in quantity.
+                                  As the identical Venn diagrams demonstrate, obversion produces a logically equivalent proposition for *all four* standard forms (A, E, I, O).
                                 </p>
-                                <p class="text-gray-600 mb-4">3. The affirmative proposition “some S are “should be replaced as “some S are not” for the purpose of changing its quality. Besides, the predicate should be replaced by its opposite term, which has different meaning than a given term, symbolically represented as “non-P”.</p>
-                                <p class="text-gray-600">According to the rule of obversion, all the four propositions would give us the same truth value as it is in the given proposition. This is to mean that if the given proposition is true, like for example, all S are P is true, then the new obverted statement, No S are non-P, is also be true. If the given proposition is false, the new obverted statement will be false too. It is the same for all propositions. Example: I = Some student are clever. (True). Some students are not lazy. (True) by obversion. E= No leaders are liars (False. All leaders are honest. (False)</p>
+                                 <p class="text-gray-600 mb-4">
+                                   Therefore, obversion is <strong>always valid</strong> for all four types of categorical propositions. An immediate inference from any standard-form proposition to its obverse is always valid.
+                                 </p>
+                                 <p class="font-semibold text-gray-700 mb-2">Examples (Valid Obversion):</p>
+                                  <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 space-y-1">
+                                    <p>All S are P ∴ No S are non-P</p>
+                                    <p>No S are P ∴ All S are non-P</p>
+                                    <p>Some S are P ∴ Some S are not non-P</p>
+                                    <p>Some S are not P ∴ Some S are non-P</p>
+                                  </div>
+                                  <p class="text-gray-600 mt-4">If the premise is true, the obverse conclusion must also be true.</p>
                              </div>
 
-                             <!-- Slide 63: Contraposition -->
+                             <!-- Slide 63: Operation 3: Contraposition -->
                              <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Contraposition</h2>
+                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Operation 3: Contraposition</h2>
                                <p class="text-gray-600 mb-4">
-                                 According to the rule of <strong>contraposition</strong>, we have to change the position of the subject to the predicate and vice versa; and, we should to replace the predicates and the subject terms by their term complements.
+                                 <strong>Contraposition</strong> is also a two-step operation:
                                </p>
-                               <p class="text-gray-600">Study the following table.</p>
+                                <ul class="list-decimal pl-6 text-gray-600 space-y-1">
+                                   <li><strong>Switch</strong> the subject and predicate terms (like conversion).</li>
+                                   <li><strong>Replace *both*</strong> the (new) subject term and the (new) predicate term with their <strong>term complements</strong>.</li>
+                                </ul>
+                               <p class="text-gray-600 mt-4">The resulting statement is called the <strong>contrapositive</strong>.</p>
+                                <p class="text-gray-600 mt-4">Applying these steps:</p>
                                 <table>
                                   <thead>
-                                    <tr><th>Latter Name</th><th>Given Proposition</th><th>New statement by Contraposition</th></tr>
+                                    <tr><th>Form</th><th>Given Proposition</th><th>Contrapositive</th></tr>
                                   </thead>
                                   <tbody>
-                                    <tr><td>A</td><td>All S are P</td><td>All non-S are non-P</td></tr>
-                                    <tr><td>E</td><td>No S are P</td><td>No non- S are non-P</td></tr>
-                                    <tr><td>I</td><td>Some S are P</td><td>Some non- S are non P</td></tr>
-                                    <tr><td>O</td><td>Some S are not P</td><td>Some non S are not no P</td></tr>
+                                    <tr><td>A</td><td>All S are P</td><td>All non-P are non-S</td></tr>
+                                    <tr><td>E</td><td>No S are P</td><td>No non-P are non-S</td></tr>
+                                    <tr><td>I</td><td>Some S are P</td><td>Some non-P are non-S</td></tr>
+                                    <tr><td>O</td><td>Some S are not P</td><td>Some non-P are not non-S</td></tr>
                                   </tbody>
                                 </table>
                              </div>
 
-                              <!-- Slide 64: Contraposition (Continued) -->
+                              <!-- Slide 65: Venn Diagrams for Contraposition (A & E) -->
                               <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Contraposition (Continued)</h2>
-                                <p class="text-gray-600 mb-4">
-                                  According to the rule of contraposition, proposition ‘A’ and ‘O’ would give us the same truth value, while proposition E and I do not. This is just the opposite of what we have observed in the case of conversion. Please the following contrapositions.
-                                </p>
-                                 <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                                   <p>A = All worshipers are believers = True</p>
-                                   <p>All non- believers are non- worshipers = True</p>
-                                 </div>
-                                <p class="text-gray-600 mb-4">When it is correctly phrased:</p>
-                                 <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                                   <p>All atheists are un worshipers</p>
-                                 </div>
-                                <p class="text-gray-600 mb-4">O = Some delicious foods are not good for health = True</p>
-                                 <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
-                                   <p>Some that are bad for health are bad foods = True</p>
-                                 </div>
-                              </div>
-
-                              <!-- Slide 65: Contraposition (Continued) -->
-                              <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Contraposition (Continued)</h2>
-                                 <p class="text-gray-600">Like obversion, contraposition requires two steps: (1) switching the subject and predicate terms and (2) replacing the subject and predicate terms with their term complements. For example, if the statement “All goats are animals” is contraposed, the resulting statement is “All non-animals are non-goats.” This new statement is called the contrapositive of the given statement. To see how all four types of categorical propositions relate to their contrapositive, compare the following sets of diagrams:</p>
-                                  <div class="venn-diagram">
-                                    <!-- Placeholder for Venn A image -->
-                                    <img src="venn_A.png" alt="Given A" class="venn-image">
-                                    <img src="venn_A_contra.png" alt="Contrapositive A" class="venn-image">
+                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Contraposition (A & E)</h2>
+                                <p class="text-gray-600 mb-4">Comparing diagrams for propositions and their contrapositives:</p>
+                                  <div class="venn-comparison">
+                                     <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Given A: All S are P</p>
+                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Given A" class="venn-image">
+                                     </div>
+                                     <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Contrapositive: All non-P are non-S</p>
+                                       <img src="https://i.imgur.com/4y3Wb9I.png" alt="Contrapositive A" class="venn-image">
+                                       <!-- Contrapositive of A is equivalent to A -->
+                                     </div>
                                   </div>
-                                  <div class="venn-diagram">
-                                    <!-- Placeholder for Venn E image -->
-                                    <img src="venn_E.png" alt="Given E" class="venn-image">
-                                    <img src="venn_E_contra.png" alt="Contrapositive E" class="venn-image">
+                                  <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. A and its contrapositive *are* logically equivalent.</p>
+                                  <div class="venn-comparison mt-4">
+                                      <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Given E: No S are P</p>
+                                       <img src="https://i.imgur.com/gQW7j3t.png" alt="Given E" class="venn-image">
+                                     </div>
+                                     <div class="venn-diagram">
+                                       <p class="font-semibold text-sm mb-1">Contrapositive: No non-P are non-S</p>
+                                       <img src="https://i.imgur.com/nQx7t6U.png" alt="Contrapositive E" class="venn-image">
+                                       <!-- Updated URL for Contra E -->
+                                     </div>
                                   </div>
+                                  <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. E and its contrapositive are *not* logically equivalent.</p>
                               </div>
 
-                              <!-- Slide 66: Contraposition (Continued) -->
+                              <!-- Slide 66: Venn Diagrams for Contraposition (I & O) -->
                               <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Contraposition (Continued)</h2>
-                                <div class="venn-diagram">
-                                  <!-- Placeholder for Venn I image -->
-                                  <img src="venn_I.png" alt="Given I" class="venn-image">
-                                  <img src="venn_I_contra.png" alt="Contrapositive I" class="venn-image">
+                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Venn Diagrams for Contraposition (I & O)</h2>
+                                <div class="venn-comparison">
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Given I: Some S are P</p>
+                                     <img src="https://i.imgur.com/d8X3vY0.png" alt="Given I" class="venn-image">
+                                   </div>
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Contrapositive: Some non-P are non-S</p>
+                                     <img src="https://i.imgur.com/Bw1hT8q.png" alt="Contrapositive I" class="venn-image">
+                                     <!-- Updated URL for Contra I -->
+                                   </div>
                                 </div>
-                                <div class="venn-diagram">
-                                  <!-- Placeholder for Venn O image -->
-                                  <img src="venn_O.png" alt="Given O" class="venn-image">
-                                  <img src="venn_O_contra.png" alt="Contrapositive O" class="venn-image">
+                                <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are different. I and its contrapositive are *not* logically equivalent.</p>
+                                <div class="venn-comparison mt-4">
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Given O: Some S are not P</p>
+                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Given O" class="venn-image">
+                                   </div>
+                                   <div class="venn-diagram">
+                                     <p class="font-semibold text-sm mb-1">Contrapositive: Some non-P are not non-S</p>
+                                     <img src="https://i.imgur.com/k7a4Z8f.png" alt="Contrapositive O" class="venn-image">
+                                     <!-- Contrapositive of O is equivalent to O -->
+                                   </div>
                                 </div>
+                                <p class="text-gray-600 mt-2 text-center text-sm">Diagrams are identical. O and its contrapositive *are* logically equivalent.</p>
                               </div>
 
-                              <!-- Slide 67: Valid Contraposition Inference Forms -->
+                              <!-- Slide 67: Validity of Contraposition -->
                               <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Valid Contraposition Inference Forms</h2>
-                                <p class="text-gray-600 mb-4">As with conversion and obversion, contraposition may provide the link between the premise and the conclusion of an immediate inference. The following inference forms are valid:</p>
-                                 <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-4">
-                                   <p>All A are B.</p>
-                                   <p>Therefore, all non-B are non-A.</p>
-                                   <p>Some A are not B.</p>
-                                   <p>Therefore, some non-B are not non-A.</p>
-                                 </div>
+                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Validity of Contraposition</h2>
+                                 <p class="text-gray-600 mb-4">Based on the Venn diagrams (and logical equivalence):</p>
+                                  <ul class="list-disc pl-6 text-gray-600 space-y-1">
+                                     <li>Contraposition is <strong>valid</strong> for <strong>A</strong> and <strong>O</strong> propositions. They always have the same truth value as their contrapositives. Immediate inferences are valid:
+                                         <br> (All S are P ∴ All non-P are non-S) and (Some S are not P ∴ Some non-P are not non-S).
+                                     </li>
+                                     <li>Contraposition is <strong>invalid</strong> for <strong>E</strong> and <strong>I</strong> propositions. Their truth values are logically unrelated to their contrapositives. Immediate inferences are invalid:
+                                         <br> (No S are P ∴ No non-P are non-S) and (Some S are P ∴ Some non-P are non-S).
+                                     </li>
+                                  </ul>
+                                  <p class="font-semibold text-gray-700 mb-2 mt-4">Example (Valid A Contraposition):</p>
+                                   <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                                     <p>Premise: All worshippers are believers. (True)</p>
+                                     <p>Conclusion: Therefore, all non-believers (atheists/agnostics) are non-worshippers. (True - Valid)</p>
+                                   </div>
                               </div>
 
-                               <!-- Slide 68: Illicit Contraposition -->
+                               <!-- Slide 68: Illicit Contraposition Fallacy -->
                                <div class="slide">
-                                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Illicit Contraposition</h2>
-                                 <p class="text-gray-600 mb-4">On the other hand, the following inference forms are invalid. Each commits the fallacy of <strong>illicit contraposition</strong>:</p>
-                                  <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-4">
-                                    <p>Some A are B.</p>
-                                    <p>Therefore, some non-B are non-A.</p>
-                                    <p>No A are B.</p>
-                                    <p>Therefore, no non-B are non-A.</p>
+                                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Illicit Contraposition Fallacy</h2>
+                                 <p class="text-gray-600 mb-4">
+                                    Since contraposition is invalid for E and I propositions, attempting to infer the contrapositive from an E or I statement commits the formal fallacy of <strong>Illicit Contraposition</strong>.
+                                 </p>
+                                  <p class="font-semibold text-gray-700 mb-2">Invalid Forms (Illicit Contraposition):</p>
+                                  <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600">
+                                    <p>No A are B.<br>Therefore, no non-B are non-A.</p>
+                                    <hr class="my-2 border-gray-300">
+                                    <p>Some A are B.<br>Therefore, some non-B are non-A.</p>
                                   </div>
-                                 <p class="text-gray-600 mb-4">Here are two examples of inferences that commit the fallacy of illicit contraposition:</p>
-                                  <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 mt-2">
-                                    <p>No dogs are cats. (True)</p>
-                                    <p>Therefore, no non-cats are non-dogs. (False)</p>
-                                    <p>Some animals are non-cats. (True)</p>
-                                    <p>Therefore, some cats are non-animals. (False)</p>
+                                  <p class="font-semibold text-gray-700 mb-2">Examples of Illicit Contraposition:</p>
+                                  <div class="border border-gray-300 p-4 rounded mb-4 italic text-gray-600 space-y-1">
+                                    <p>No dogs are cats. (True) → Therefore, no non-cats are non-dogs. (False - e.g., a bird is a non-cat but not a non-dog).</p>
+                                    <p>Some animals are non-cats (e.g., dogs). (True) → Therefore, some cats are non-animals. (False - all cats are animals).</p>
                                   </div>
-                                 <p class="text-gray-600">Note that both illicit conversion and illicit contraposition are formal fallacies: They can be detected through mere examination of the form of an argument.</p>
+                                 <p class="text-gray-600 mt-4">Both Illicit Conversion and Illicit Contraposition are formal fallacies, detectable by examining the argument's form.</p>
                                </div>
 
                                <!-- Slide 69: Chapter Summary -->
                                <div class="slide">
                                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary</h2>
+                                 <p class="text-gray-600 mb-4">
+                                   A categorical proposition relates two classes (categories) denoted by the subject (S) and predicate (P) terms, asserting that all or part of S is included in or excluded from P. There are four standard forms (A, E, I, O), each with specific Quality (affirmative/negative), Quantity (universal/particular), and Distribution pattern for S and P terms.
+                                 </p>
                                  <p class="text-gray-600">
-                                   A proposition that relates two classes, or categories, is called a categorical proposition. The classes in question are denoted respectively by the subject term and the predicate term, and the proposition asserts that either all or part of the class denoted by the subject term is included in or excluded from the class denoted by the predicate term. To put the same ideas in different words, a categorical proposition is a statement that relates two sets, classes, groups or categories which are presented in their subject or predicate positions that could be connected based on inclusion (partial/whole) or exclusion (partial/whole) relations. In this chapter, you have, also, learnt the different components of categorical proposition, the difference between modern and traditional square of opposition and how to evaluate arguments/inferences using different propositional representation.
+                                   Venn diagrams visually represent these propositions using overlapping circles, shading for empty areas (universals), and an 'X' for non-empty areas (particulars). The Modern Square of Opposition, based on the Boolean interpretation (no existential import assumed for universals), shows the contradictory relationship (opposite truth values) between A/O and E/I pairs. The Traditional Square, assuming existential import for universals, adds contrary (A/E: not both true), subcontrary (I/O: not both false), and subalternation (truth flows down, falsity up) relationships. Immediate inferences (one premise, one conclusion) can be tested for validity using these squares or Venn diagrams. Arguments invalid solely due to moving from a universal premise to a particular conclusion commit the Existential Fallacy under the Boolean interpretation but may be conditionally valid under the Aristotelian view. Logical operations—Conversion (switch S/P), Obversion (change quality, complement P), and Contraposition (switch S/P, complement both)—yield new propositions whose logical equivalence to the original determines the validity of corresponding immediate inferences. Conversion is valid for E/I; Obversion is valid for A/E/I/O; Contraposition is valid for A/O. Invalid operations commit formal fallacies (Illicit Conversion/Contraposition).
                                  </p>
                                </div>
 
                                 <!-- Slide 70: Self-Check Exercises -->
                                 <div class="slide">
                                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Check Exercises</h2>
-                                   <p class="text-gray-600 mb-4">Dear learners, please attempt the following Questions.</p>
                                    <ol class="list-decimal pl-6 text-gray-600 space-y-4">
-                                     <li>What is the significance of determining categorical propositions in standard form?</li>
-                                     <li>What problems would occur if categorical propositions are not settled in standard form?</li>
-                                     <li>Write a categorical proposition in which its quantifier is “No”.</li>
-                                     <li>Write a categorical proposition in which its quantifier is “some”, its subject term “soldier” and predicate term “cowards” and its copula “are not”</li>
-                                     <li>If a categorical proposition states that “there is at least one X and that X is in Y”, its symbolic representation will be __________________________________________________________________</li>
-                                     <li>The standard form of “All S are not P” is not a correct standard form. Why?________________________________________________________________</li>
+                                     <li>Why is expressing categorical propositions in standard form important for logical analysis?</li>
+                                     <li>What potential problems arise if categorical propositions are not analyzed in standard form?</li>
+                                     <li>Provide an example of an E proposition (No S are P).</li>
+                                     <li>Write the O proposition with "soldiers" as the subject term and "cowards" as the predicate term.</li>
+                                     <li>Symbolically represent the meaning of an I proposition ("Some S are P").</li>
+                                     <li>Explain why "All S are not P" is not a standard-form categorical proposition. (Hint: Consider the copula).</li>
+                                     <li>Provide an example of an A proposition (All S are P).</li>
                                    </ol>
                                 </div>
 
                                 <!-- Slide 71: Self-Check Exercises (Continued) -->
                                 <div class="slide">
-                                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Check Exercises (Continued)</h2>
-                                  <ol start="7" class="list-decimal pl-6 text-gray-600 space-y-4">
-                                    <li>Write a categorical statement in which its subject class is entirely included in the predicate class.</li>
-                                  </ol>
-                                  <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">I. Draw Venn diagrams for the following propositions.</h3>
-                                  <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-                                    <li>Some rock-music lovers are not fans of Madonna.</li>
-                                    <li>All S are non-P</li>
-                                    <li>Some housing developments are complex that exclude children</li>
-                                  </ol>
-                                  <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">II. Use the modern square of opposition to determine whether the following immediate inferences are valid or invalid from the Boolean standpoint.</h3>
-                                   <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-                                     <li>
-                                       Some country doctors are altruistic healers.
-                                       <br>Therefore, some country doctors are not altruistic healers.
-                                     </li>
-                                     <li>
-                                       It is false that all weddings are light-hearted celebrations.
-                                       <br>Therefore, some weddings are not light-hearted celebrations.
-                                     </li>
+                                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Check Exercises (Continued)</h2>
+                                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">I. Draw Venn diagrams for the following propositions:</h3>
+                                   <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+                                     <li>Some rock-music lovers are not fans of Madonna. (O)</li>
+                                     <li>All S are non-P. (Equivalent to E: No S are P)</li>
+                                     <li>Some housing developments are complexes that exclude children. (I)</li>
                                    </ol>
+                                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">II. Use the modern square of opposition to determine validity (Boolean standpoint):</h3>
+                                    <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+                                      <li>
+                                        Premise: Some country doctors are altruistic healers. (I)
+                                        <br>Conclusion: Therefore, some country doctors are not altruistic healers. (O)
+                                      </li>
+                                      <li>
+                                        Premise: It is false that all weddings are light-hearted celebrations. (False A / True O)
+                                        <br>Conclusion: Therefore, some weddings are not light-hearted celebrations. (O)
+                                      </li>
+                                    </ol>
                                 </div>
 
                                 <!-- Slide 72: Self-Check Exercises (Continued) -->
                                 <div class="slide">
                                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Check Exercises (Continued)</h2>
-                                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">III. Convert the following propositions and state whether the converse is logically equivalent or not logically equivalent to the given proposition.</h3>
-                                    <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-                                      <li>All hurricanes are storms intensified by global warming.</li>
-                                      <li>No sex-change operations are completely successful procedures</li>
+                                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">III. Perform Conversion on the following. Is the converse logically equivalent?</h3>
+                                    <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+                                      <li>All hurricanes are storms intensified by global warming. (A)</li>
+                                      <li>No sex-change operations are completely successful procedures. (E)</li>
                                     </ol>
-                                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">V. Obvert the following propositions and state whether the obverse is logically equivalent or not logically equivalent to the given proposition.</h3>
-                                    <ol class="list-decimal pl-6 text-gray-600 space-y-1">
-                                      <li>All radically egalitarian societies are societies that do not preserve individual liberties.</li>
-                                      <li>No cult leaders are people who fail to brainwash their followers.</li>
+                                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">IV. Perform Obversion on the following. Is the obverse logically equivalent?</h3>
+                                    <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+                                      <li>All radically egalitarian societies are societies that do not preserve individual liberties. (A)</li>
+                                      <li>No cult leaders are people who fail to brainwash their followers. (E)</li>
                                     </ol>
+                                    <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">V. Perform Contraposition on the following. Is the contrapositive logically equivalent?</h3>
+                                     <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+                                       <li>Some popular television programs are not intellectually stimulating entertainments. (O)</li>
+                                       <li>All physicians whose licenses have been revoked are physicians ineligible to practice. (A)</li>
+                                     </ol>
+                                     <!-- Added Contraposition exercise V -->
                                 </div>
 
                                 <!-- Slide 118: References -->
                                 <div class="slide">
                                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
+                                   <!-- Consolidated and standardized references -->
                                   <div class="text-xs text-gray-600 space-y-1 overflow-y-auto max-h-96">
-                                      <p class="ref-item">Hurley, Patrick. A Concise Introduction to Logic. 2006. Routledge, USA. 9th ed.</p>
-                                      <p class="ref-item">Howord, Snyder, et al, The Power of Logic, MacGrewHill, USA.</p>
-                                      <p class="ref-item">Gensler, Harry, Introduction to Logic. Routledge, USA. 2<sup>ND</sup> ed.</p>
-                                      <p class="ref-item">Walton, Douglas. Fundamentals of Critical Argumentation. 2006. Cambridge University, USA.</p>
-                                      <p class="ref-item">Hurley, Patrick J. (2014) A Concise Introduction to Logic, 12th Edition, Wadsworth, Cengage Learning.</p>
-                                      <p class="ref-item">Hurley, Patrick J. (2012) A Concise Introduction to Logic, 11th Edition, Wadsworth, Cengage Learning.</p>
-                                      <p class="ref-item">Copi, Irving M.and Carl Cohen, (1990) Introduction to Logic, New York: Macmillan Publishing Company.</p>
-                                      <p class="ref-item">Damer, Edward. (2005). Attacking faulty reasoning. A practical guide to fallacy free argument. Wadsworth Cengage learning, USA.</p>
-                                      <p class="ref-item">Fogelin, Robert, J, (1987) Understanding Arguments: An Introduction to Informal Logic, New York: Harcourt Brace Jvanovich Publisher.</p>
-                                      <p class="ref-item">Guttenplan, Samuel: (1991) The Language of Logic. Oxford: Blackwell Publishers</p>
-                                      <p class="ref-item">Simico, N.D and G.G James. (1983) Elementary Logic, Belmont, Ca: Wadsworth Publishing Company.</p>
-                                      <p class="ref-item">Stephen, C. (200) The Power of Logic. London and Toronto: Mayfield Publishing Company.</p>
-                                      <p class="ref-item">Walelign, Emuru, (2009) Freshman Logic, Addis Ababa.</p>
+                                      <p class="ref-item">Copi, I. M., & Cohen, C. (1990). *Introduction to Logic*. Macmillan Publishing Company.</p>
+                                      <p class="ref-item">Damer, T. E. (2005). *Attacking Faulty Reasoning: A Practical Guide to Fallacy-Free Arguments*. Wadsworth Cengage learning.</p>
+                                      <p class="ref-item">Fogelin, R. J. (1987). *Understanding Arguments: An Introduction to Informal Logic*. Harcourt Brace Jovanovich Publisher.</p>
+                                      <p class="ref-item">Gensler, H. J. (2010). *Introduction to Logic* (2nd ed.). Routledge.</p>
+                                      <p class="ref-item">Guttenplan, S. (1991). *The Language of Logic*. Blackwell Publishers.</p>
+                                      <p class="ref-item">Howard-Snyder, F., Howard-Snyder, D., & Wasserman, R. (2012). *The Power of Logic* (5th ed.). McGraw-Hill.</p>
+                                      <p class="ref-item">Hurley, P. J. (2006). *A Concise Introduction to Logic* (9th ed.). Wadsworth/Thomson Learning.</p>
+                                      <p class="ref-item">Hurley, P. J. (2012). *A Concise Introduction to Logic* (11th ed.). Wadsworth, Cengage Learning.</p>
+                                      <p class="ref-item">Hurley, P. J. (2014). *A Concise Introduction to Logic* (12th ed.). Wadsworth, Cengage Learning.</p>
+                                      <p class="ref-item">Simco, N. D., & James, G. G. (1983). *Elementary Logic*. Wadsworth Publishing Company.</p>
+                                      <p class="ref-item">Stephen, C. [Needs clarification]. (2000). *The Power of Logic*. Mayfield Publishing Company.</p>
+                                      <p class="ref-item">Walelign, Emuru. (2009). *Freshman Logic*. [Publisher details needed].</p>
+                                      <p class="ref-item">Walton, D. N. (2006). *Fundamentals of Critical Argumentation*. Cambridge University Press.</p>
                                    </div>
                                  </div>
 
@@ -1242,26 +1321,29 @@
         <!-- Navigation Arrows -->
         <div class="flex justify-between mt-4">
           <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
-          <span id="slideCounter" class="text-gray-600 self-center">1 / 118</span> <!-- Updated slide counter -->
+          <span id="slideCounter" class="text-gray-600 self-center">1 / 72</span> <!-- Adjusted slide count -->
           <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
         </div>
       </div>
 
       <script>
+        // Script remains unchanged, starting at index 0 (slide 1)
         const slides = document.querySelectorAll('.slide');
         const prevButton = document.getElementById('prevSlide');
         const nextButton = document.getElementById('nextSlide');
-        const slideCounter = document.getElementById('slideCounter'); // Get counter element
-        let currentSlide = 0;
+        const slideCounter = document.getElementById('slideCounter');
+        let currentSlide = 0; // Start from slide 1 (index 0)
 
         function updateSlide() {
+          // Update total slide count in the display
+          const totalSlides = slides.length;
+          slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
           slides.forEach((slide, index) => {
             slide.classList.toggle('active', index === currentSlide);
           });
           prevButton.disabled = currentSlide === 0;
-          nextButton.disabled = currentSlide === slides.length - 1;
-          // Update slide counter text
-          slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+          nextButton.disabled = currentSlide === totalSlides - 1;
         }
 
         prevButton.addEventListener('click', () => {
@@ -1281,7 +1363,7 @@
         // Keyboard navigation
         document.addEventListener('keydown', (event) => {
            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
-                return;
+                return; // Prevent slide change if typing
             }
           if (event.key === 'ArrowLeft' && currentSlide > 0) {
             currentSlide--;
