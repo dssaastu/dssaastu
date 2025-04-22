@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Science Department Courses</title>
+    <!-- Font Awesome link is NOT needed for this version -->
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -43,10 +44,12 @@
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
+            transition: background-color 0.2s ease;
         }
-        .navbar a:hover {
+        .navbar a:hover, .navbar a:focus {
             background-color: #333;
             border-radius: 5px;
+            outline: none;
         }
         .navbar-toggler {
             display: none;
@@ -56,94 +59,133 @@
             padding: 10px 20px;
             font-size: 1.2rem;
             cursor: pointer;
-            margin-left: auto;
+            margin-left: auto; /* Pushes toggler to the right */
         }
         .navbar-menu {
             display: flex;
-            flex-direction: row;
+            flex-direction: row; /* Default for desktop */
+            align-items: center; /* Vertically align items if navbar wraps */
         }
-        .navbar-menu.collapsed {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-        }
-        .navbar-menu.show {
-            display: flex;
-        }
-        .navbar-menu a {
-            padding: 15px;
-            border-bottom: 1px solid #333;
-        }
+
         .container {
-            width: 80%;
+            width: 85%; /* Slightly wider */
+            max-width: 1200px; /* Max width for large screens */
             margin: 40px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 30px 20px; /* Adjusted padding */
+            background-color: transparent; /* Make container transparent */
+            border-radius: 0; /* Remove container radius */
+            box-shadow: none; /* Remove container shadow */
         }
         .container h2 {
-            font-size: 2rem;
+            font-size: 2.2rem; /* Larger heading */
             text-align: center;
             margin-bottom: 40px;
+            color: #1A252F; /* Darker heading color */
+            font-weight: 600;
         }
         .course-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px; /* Increased gap */
             justify-content: center;
         }
+        /* Styles for the course card itself */
         .course-item {
-            flex: 1 1 calc(33.333% - 40px);
+            flex: 1 1 calc(33.333% - 30px);
             box-sizing: border-box;
-            max-width: 300px;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .course-item img {
-            width: 100%;
-            height: auto;
-            border-bottom: 4px solid #e0e0e0;
-            transition: transform 0.3s;
-        }
-        .course-item:hover img {
-            transform: scale(1.05);
+            max-width: calc(33.333% - 30px);
+            min-width: 280px; /* Minimum width */
+            background-color: #ffffff; /* White background for the card */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Ensure content stays within rounded corners */
+            display: flex; /* Use flexbox */
         }
         .course-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            transform: translateY(-6px); /* Lift effect */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
         }
+        /* Style for the clickable link area */
         .course-item a {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            flex-grow: 1;
+            padding: 25px 20px; /* Padding inside the card */
             text-decoration: none;
             color: inherit;
+            text-align: center;
         }
-        .course-item a:focus, .course-item a:hover {
-            outline: none;
+         .course-item a:focus-visible {
+            outline: 3px solid #2C3E50; /* Clearer focus outline */
+            outline-offset: 1px;
+            border-radius: 12px;
+        }
+
+        /* Styles for the text content inside the card */
+        .course-title {
+            color: blue;
+            font-size: 1.25rem; /* Slightly larger title */
+            font-weight: bold;
+            margin: 0 0 15px 0; /* Margin below title */
+            line-height: 1.3;
+        }
+        .course-code {
+            color: red;
+            font-size: 0.95rem;
+            margin: 0 0 10px 0; /* Margin below code */
+        }
+        .course-institution {
+            color: green;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        /* Remove image styles if any remained */
+        .course-item img { display: none; }
+
+        .footer {
+             margin-top: 50px;
+             padding-bottom: 20px;
         }
         .footer p {
-            margin-top: 15px;
+            margin-top: 10px;
             font-size: 0.9rem;
+            line-height: 1.5;
         }
         .footer a {
-            color: #fff;
+            color: #A7C7E7;
             text-decoration: none;
             margin: 0 10px;
+            transition: color 0.2s ease;
         }
-        .footer a:hover {
+        .footer a:hover, .footer a:focus {
+            color: #fff;
             text-decoration: underline;
+            outline: none;
         }
 
         /* Responsive Styles */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) { /* Tablets */
+             .course-item {
+                flex-basis: calc(50% - 30px);
+                max-width: calc(50% - 30px);
+            }
+             .container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) { /* Smaller tablets/large phones */
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
             }
             .navbar-toggler {
                 display: block;
+                 align-self: flex-end;
+                 margin: 5px 15px;
             }
             .navbar-menu {
                 display: none;
@@ -153,17 +195,58 @@
             .navbar-menu.show {
                 display: flex;
             }
+             .navbar-menu a {
+                padding: 12px 20px;
+                text-align: left;
+                border-bottom: 1px solid #333;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .navbar-menu a:last-child {
+                 border-bottom: none;
+            }
+             .header h1 { font-size: 1.4rem; }
+             .container h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 576px) { /* Phones */
+             .course-list {
+                 gap: 20px;
+             }
+             .course-item {
+                flex-basis: 100%; /* Full width */
+                max-width: 95%; /* Slightly less than full width */
+                margin-left: auto;
+                margin-right: auto;
+                min-width: unset;
+             }
+             .course-item a {
+                 padding: 20px;
+             }
+              .course-title { font-size: 1.15rem; }
+              .course-code { font-size: 0.9rem; }
+              .course-institution { font-size: 0.85rem; }
+             .container {
+                width: 100%; /* Full width container on small screens */
+                padding: 25px 10px; /* Adjust padding */
+            }
+             .header h1 { font-size: 1.3rem; }
+             .header p { font-size: 0.9rem; }
+             .footer p { font-size: 0.85rem; }
+             .footer a { margin: 0 5px; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>Social Science Department</h1>
         <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
-    
-    <div class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+    </header>
+
+    <nav class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-menu">
+            ☰ <!-- Hamburger icon -->
+        </button>
         <div class="navbar-menu" id="navbar-menu">
             <a href="index.html">Home</a>
             <a href="courses.html">Courses</a>
@@ -172,57 +255,119 @@
             <a href="contact.html">Contact</a>
             <a href="gallery.html">Gallery</a>
         </div>
-    </div>
-    
-    <div class="container">
+    </nav>
+
+    <main class="container">
         <h2>Available Courses</h2>
         <div class="course-list">
+
+            <!-- Course 1: Logic -->
             <div class="course-item">
-                <a href="logic.html" target="_blank">
-                    <img src="image1.jpg" alt="Course 1">
+                <a href="logic.html" target="_blank" aria-label="Logic and Critical Thinking Course">
+                    <!-- Img tag removed -->
+                    <div> <!-- Simple div wrapper for content -->
+                        <h4 class="course-title">Logic and Critical Thinking</h4>
+                        <p class="course-code">Course Code: PHIL.1009</p>
+                        <p class="course-institution">AASTU</p>
+                    </div>
                 </a>
             </div>
+
+            <!-- Course 2: Moral & Civic -->
             <div class="course-item">
-                <a href="mcie1012mainpage.html" target="_blank">
-                    <img src="image2.jpg" alt="Course 2">
+                <a href="mcie1012mainpage.html" target="_blank" aria-label="Moral and Civic Education Course">
+                     <!-- Img tag removed -->
+                     <div>
+                        <h4 class="course-title">Moral and Civic Education</h4>
+                        <p class="course-code">Course Code: MCIE1012</p>
+                        <p class="course-institution">AASTU</p>
+                    </div>
                 </a>
             </div>
+
+            <!-- Course 3: Geography -->
             <div class="course-item">
-                <a href="https://example.com/course3" target="_blank">
-                    <img src="image3.jpg" alt="Course 3">
+                 <!-- NOTE: Update href if needed -->
+                <a href="https://example.com/course3" target="_blank" aria-label="Geography of Ethiopia and the Horn Course">
+                     <!-- Img tag removed -->
+                     <div>
+                        <h4 class="course-title">Geography of Ethiopia and the Horn</h4>
+                        <p class="course-code">Course Code: GeIs1001</p> <!-- As per image -->
+                        <p class="course-institution">AASTU</p>
+                    </div>
                 </a>
             </div>
+
+            <!-- Course 4: History -->
             <div class="course-item">
-                <a href="https://example.com/course4" target="_blank">
-                    <img src="image4.jpg" alt="Course 4">
+                <!-- NOTE: Update href if needed -->
+                <a href="https://example.com/course4" target="_blank" aria-label="History of Ethiopia and the Horn Course">
+                     <!-- Img tag removed -->
+                     <div>
+                        <h4 class="course-title">History of Ethiopia and the Horn</h4>
+                        <p class="course-code">Course Code: Hist1001</p>
+                        <p class="course-institution">AASTU</p>
+                    </div>
                 </a>
             </div>
+
+            <!-- Course 5: Anthropology -->
             <div class="course-item">
-                <a href="https://example.com/course5" target="_blank">
-                    <img src="image5.jpg" alt="Course 5">
+                <!-- NOTE: Update href if needed -->
+                <a href="https://example.com/course5" target="_blank" aria-label="Social Anthropology Course">
+                     <!-- Img tag removed -->
+                     <div>
+                        <h4 class="course-title">Social Anthropology</h4>
+                        <p class="course-code">Course Code: Soc.1001</p>
+                        <p class="course-institution">AASTU</p>
+                    </div>
                 </a>
             </div>
+
+            <!-- Course 6: Global Trends -->
             <div class="course-item">
-                <a href="https://example.com/course6" target="_blank">
-                    <img src="image6.jpg" alt="Course 6">
+                <!-- NOTE: Update href if needed -->
+                <a href="https://example.com/course6" target="_blank" aria-label="Global Trends Course">
+                     <!-- Img tag removed -->
+                     <div>
+                        <h4 class="course-title">Global Trends</h4>
+                        <p class="course-code">Course Code: GlTr.1001</p>
+                        <p class="course-institution">AASTU</p>
+                    </div>
                 </a>
             </div>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+
+        </div> <!-- /.course-list -->
+    </main> <!-- /.container -->
+
+    <footer class="footer">
+        <p>© 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
         <p>
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a> | 
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a> |
             <a href="map.html">Sitemap</a>
         </p>
-    </div>
+    </footer>
 
     <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-            var menu = document.getElementById('navbar-menu');
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+
+        toggler.addEventListener('click', function() {
+            const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
             menu.classList.toggle('show');
+            toggler.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Optional: Close menu if clicking outside of it on mobile/tablet
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) { // Only run on smaller screens
+                const isClickInsideNav = menu.contains(event.target) || toggler.contains(event.target);
+                if (menu.classList.contains('show') && !isClickInsideNav) {
+                    menu.classList.remove('show');
+                    toggler.setAttribute('aria-expanded', 'false');
+                }
+            }
         });
     </script>
 </body>
