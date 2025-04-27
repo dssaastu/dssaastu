@@ -1446,7 +1446,7 @@
                                         </div>
 
 
-    </div>
+    </div> <!-- End Slides Container -->
 
     <!-- Navigation Arrows -->
     <div class="flex justify-between mt-4">
@@ -1454,23 +1454,27 @@
       <span id="slideCounter" class="text-gray-600 self-center">1 / 90</span> <!-- Counter remains as specified -->
       <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
     </div>
-  </div>
+  </div> <!-- End Container -->
 
-    <script>
+  <!-- ======================= -->
+  <!-- == CORRECTED SCRIPT == -->
+  <!-- ======================= -->
+  <script>
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
     const slideCounter = document.getElementById('slideCounter');
-    let currentSlide = 0; // <--- CHANGE THIS TO 0 to start at the first slide
+    let currentSlide = 0; // Start at the first slide (index 0)
 
     function updateSlide() {
       // Hide all slides first
       slides.forEach((slide, index) => {
-        // More efficient way: remove active from all, then add to current
-        slide.classList.remove('active');
+        slide.classList.remove('active'); // Remove active from all
       });
       // Show the current slide
-      slides[currentSlide].classList.add('active');
+      if (slides[currentSlide]) { // Check if slide exists
+        slides[currentSlide].classList.add('active'); // Add active to the current one
+      }
 
       // Enable/disable buttons based on position
       prevButton.disabled = currentSlide === 0;
@@ -1480,25 +1484,40 @@
       slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
     }
 
-    // --- ADD THIS MISSING CODE ---
-    // Event listener for the Next button
-    nextButton.addEventListener('click', () => {
-      if (currentSlide < slides.length - 1) { // Check if not already on the last slide
-        currentSlide++; // Move to the next slide index
-        updateSlide(); // Update the display
+    // --- Navigation Functions (Refactored for reusability) ---
+    function goToNextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            updateSlide();
+        }
+    }
+
+    function goToPrevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlide();
+        }
+    }
+
+    // --- Event Listeners ---
+
+    // Mouse click listeners
+    nextButton.addEventListener('click', goToNextSlide);
+    prevButton.addEventListener('click', goToPrevSlide);
+
+    // Keyboard listener (ADDED)
+    document.addEventListener('keyup', (event) => {
+      // Check which key was pressed
+      if (event.key === 'ArrowRight') {
+        goToNextSlide(); // Call the same function as the Next button
+      } else if (event.key === 'ArrowLeft') {
+        goToPrevSlide(); // Call the same function as the Previous button
       }
+      // You could add more keys here like Home, End, PageUp, PageDown if desired
     });
 
-    // Event listener for the Previous button
-    prevButton.addEventListener('click', () => {
-      if (currentSlide > 0) { // Check if not already on the first slide
-        currentSlide--; // Move to the previous slide index
-        updateSlide(); // Update the display
-      }
-    });
-    // --- END OF MISSING CODE ---
-
-    updateSlide(); // Initialize the slide display and button states on page load
-</script>
+    // Initialize the slide display and button states on page load
+    updateSlide();
+  </script>
 </body>
 </html>
