@@ -1457,25 +1457,48 @@
   </div>
 
     <script>
-    // Script remains unchanged, starting at index 45 (slide 1) as per user's last input
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
     const slideCounter = document.getElementById('slideCounter');
-    let currentSlide = 1; // <--- THIS IS THE LINE TO CHANGE
+    let currentSlide = 0; // <--- CHANGE THIS TO 0 to start at the first slide
 
     function updateSlide() {
+      // Hide all slides first
       slides.forEach((slide, index) => {
-        slide.classList.toggle('active', index === currentSlide);
+        // More efficient way: remove active from all, then add to current
+        slide.classList.remove('active');
       });
+      // Show the current slide
+      slides[currentSlide].classList.add('active');
+
+      // Enable/disable buttons based on position
       prevButton.disabled = currentSlide === 0;
       nextButton.disabled = currentSlide === slides.length - 1;
-      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`; // Adds 1 for display
+
+      // Update counter (add 1 for human-readable display)
+      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
     }
 
-    // ... rest of the script ...
+    // --- ADD THIS MISSING CODE ---
+    // Event listener for the Next button
+    nextButton.addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) { // Check if not already on the last slide
+        currentSlide++; // Move to the next slide index
+        updateSlide(); // Update the display
+      }
+    });
 
-    updateSlide(); // Initialize the slide display and counter
-  </script>
+    // Event listener for the Previous button
+    prevButton.addEventListener('click', () => {
+      if (currentSlide > 0) { // Check if not already on the first slide
+        currentSlide--; // Move to the previous slide index
+        updateSlide(); // Update the display
+      }
+    });
+    // --- END OF MISSING CODE ---
+
+    updateSlide(); // Initialize the slide display and button states on page load
+</script>
 </body>
 </html>
