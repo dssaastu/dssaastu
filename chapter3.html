@@ -1451,18 +1451,18 @@
     <!-- Navigation Arrows -->
     <div class="flex justify-between mt-4">
       <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
-      <span id="slideCounter" class="text-gray-600 self-center">46 / 90</span> <!-- Counter remains as specified -->
+      <span id="slideCounter" class="text-gray-600 self-center">1 / 90</span> <!-- Counter remains as specified -->
       <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
     </div>
   </div>
 
   <script>
-    // Script remains unchanged, starting at index 45 (slide 46)
+    // Script remains unchanged, starting at index 45 (slide 1)
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
     const slideCounter = document.getElementById('slideCounter');
-    let currentSlide = 45; // Start from slide 46 (index 45) as per user's last input
+    let currentSlide = 1; // Start from slide 1 (index 45) as per user's last input
 
     function updateSlide() {
       slides.forEach((slide, index) => {
