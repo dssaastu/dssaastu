@@ -1,298 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Standardized Course Code in Title -->
-  <title>PHIL1009 - Chapter 1: Logic and Philosophy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .slide { display: none; }
-    .slide.active { display: block; }
-    /* Styling for activity boxes */
-    .activity-box {
-        background-color: #eff6ff; /* blue-50 */
-        padding: 0.75rem; /* p-3 */
-        border-radius: 0.375rem; /* rounded */
-        border: 1px solid #bfdbfe; /* blue-200 */
-        margin-bottom: 1rem; /* mb-4 */
-        margin-top: 1rem; /* mt-4 */
-    }
-     /* Specific styling for bullet points (like merits/demerits, questions) */
-     .arrow-list li::before, .star-list li::before {
-         margin-right: 0.5em;
-     }
-     .arrow-list li::before {
-         content: '➢ '; /* Using a right arrow symbol */
-     }
-     .star-list li::before {
-         content: '❖ '; /* Using a star symbol */
-     }
-     .arrow-list, .star-list {
-         list-style-type: none;
-         padding-left: 1rem; /* Adjust as needed */
-     }
-      /* Styling for blockquotes (like the Bertrand Russell quote) */
-     blockquote {
-         border-left: 4px solid #d1d5db; /* gray-300 */
-         padding-left: 1rem; /* pl-4 */
-         font-style: italic;
-         color: #4b5563; /* gray-700 */
-         margin-bottom: 1rem;
-         margin-top: 1rem;
-     }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIL1009 - Chapter 1: Logic and Philosophy</title> <!-- Updated Title -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /* Prevent body scrolling, the container/slides will manage overflow */
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
 
-    /* Ensure long reference lines wrap */
-    .ref-item { word-break: break-word; margin-bottom: 0.5rem; }
-  </style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .presentation-container {
+            width: 90%;
+            max-width: 1000px;
+            /* Use vh for relative height, allowing it to fit within different screen sizes */
+            height: 85vh;
+            max-height: 650px; /* Keep a reasonable max height */
+            min-height: 450px; /* Prevent it from becoming too small */
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            position: relative;
+            /* Hide parts of slides that are outside the container during transition */
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 40px 50px; /* Add padding */
+            box-sizing: border-box; /* Include padding in width/height */
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden; /* Use visibility for better performance when not active */
+            /* Initial transform state for slides not active */
+            transform: translateX(100%);
+            /* Add transition for smooth animation */
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            /* Allow content within the slide to scroll if it overflows */
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 1; /* Ensure active slide is above others during transition */
+        }
+
+        /* States for transitions */
+        .slide.exiting-left { transform: translateX(-100%); opacity: 0; z-index: 0; }
+        .slide.exiting-right { transform: translateX(100%); opacity: 0; z-index: 0; }
+         /* Note: entering classes are handled by removing transform(100% or -100%) and adding active */
+
+
+        /* Custom scrollbar for slides */
+        .slide::-webkit-scrollbar { width: 8px; }
+        .slide::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .slide::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .slide::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Basic typography styling within slides */
+        .slide h1, .slide h2, .slide h3 { color: #0056b3; margin-bottom: 15px; }
+        .slide h1 { font-size: 2.6em; text-align: center;}
+        .slide h2 { font-size: 1.8em; border-bottom: 2px solid #0056b3; padding-bottom: 8px; }
+        .slide h3 { font-size: 1.5em; color: #007bff; margin-bottom: 10px;}
+        .slide p, .slide li { font-size: 1em; line-height: 1.5; margin-bottom: 8px; }
+        .slide ul { list-style-type: disc; padding-left: 25px; margin-bottom: 10px;}
+        .slide ol { list-style-type: decimal; padding-left: 25px; margin-bottom: 10px;}
+        .slide ul ul, .slide ol ul { list-style-type: circle; margin-top: 5px;}
+        .slide li strong { color: #0056b3; } /* Highlight key terms in lists */
+
+
+        /* Specific styling for the Title Slide */
+        .slide.title-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden; /* Title slide should not scroll */
+        }
+        .slide.title-slide h1 { font-size: 2.8em; margin-bottom: 25px; line-height: 1.2; }
+        .slide.title-slide .presenter-info { margin-top: 30px; font-size: 1.3em; }
+        .slide.title-slide .presenter-info p { margin: 8px 0; }
+        .slide.title-slide .affiliation-info { margin-top: 10px; font-size: 1.1em; }
+        .slide.title-slide .affiliation-info p { margin: 4px 0; color: #444; }
+        .slide.title-slide .event-info { margin-top: 25px; font-size: 1em; color: #555;}
+        .slide.title-slide .event-info p { margin: 3px 0; }
+
+
+         /* Specific style for Keywords */
+         .slide .keywords-section {
+             margin-top: 20px;
+             font-size: 1.1em;
+             text-align: center;
+             padding: 20px;
+             border: 1px dashed #ccc;
+             border-radius: 5px;
+             background-color: #f9f9f9;
+         }
+         .slide .keywords-section strong {
+             font-size: 1.3em;
+             display: block;
+             margin-bottom: 15px;
+             color: #0056b3;
+         }
+
+         /* Specific style for Abstract */
+        .slide .abstract-section strong {
+             display: block;
+             margin-bottom: 15px;
+             text-align: center;
+             font-size: 1.6em;
+             color: #0056b3;
+         }
+         .slide .abstract-section {
+             text-align: justify; /* Justify abstract text */
+         }
+
+
+         /* Specific style for References */
+         .slide.references h2 {
+              text-align: left;
+         }
+         .slide.references ul {
+             list-style: none; /* Remove bullet points */
+             padding: 0;
+             font-size: 0.8em; /* Slightly smaller for references */
+             line-height: 1.6; /* Increase line height for readability */
+         }
+         .slide.references li {
+             margin-bottom: 10px; /* Space between references */
+             padding-bottom: 0px;
+             text-indent: -20px; /* Hanging indent */
+             padding-left: 20px; /* Space for hanging indent */
+             word-break: break-word; /* Ensure long lines wrap */
+         }
+         .slide.references li:last-child {
+             border-bottom: none; /* No border on last item */
+             padding-bottom: 0;
+         }
+
+        /* Navigation Buttons */
+        .side-nav-button {
+            position: fixed; /* Use fixed to stay relative to viewport */
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            padding: 15px 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 100; /* High z-index to be above presentation */
+            transition: background-color 0.3s, opacity 0.3s;
+            line-height: 1;
+            /* Add some margin to avoid sticking to the edge */
+            margin: 0 10px;
+        }
+        .side-nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .side-nav-button:disabled {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #aaa;
+            cursor: not-allowed;
+        }
+        #prevBtn {
+            left: 10px;
+        }
+        #nextBtn {
+            right: 10px;
+        }
+
+        /* Slide Counter */
+        .slide-counter-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100; /* High z-index to be above presentation */
+             pointer-events: none; /* Allows clicks to pass through */
+        }
+        .slide-counter-text {
+            font-size: 0.9em;
+            color: #333;
+        }
+
+         /* Ensure images fit within slides */
+        .slide img {
+            max-width: 100%; /* Ensure images don't exceed slide width */
+            max-height: 80%; /* Limit height to leave space for text/title */
+            height: auto;
+            display: block;
+            margin: 15px auto; /* Center images */
+            object-fit: contain; /* Ensure image aspect ratio is maintained */
+        }
+
+         /* Specific style for Objectives/Questions lists */
+         .slide .objectives-list, .slide .questions-list {
+             list-style-type: none;
+             padding-left: 0;
+         }
+         .slide .objectives-list li, .slide .questions-list li {
+             margin-bottom: 10px; /* Reduced margin for tighter lists */
+             padding-left: 25px;
+             position: relative;
+             line-height: 1.5; /* Adjusted line height */
+         }
+         .slide .objectives-list li:before {
+             content: "\2022"; /* Unicode bullet point */
+             color: #007bff;
+             font-weight: bold;
+             display: inline-block;
+             width: 1em;
+             margin-left: -1em;
+             position: absolute;
+             left: 0;
+         }
+          .slide .questions-list li:before {
+             content: "\2753"; /* Unicode question mark */
+             color: #007bff;
+             font-weight: bold;
+             display: inline-block;
+             width: 1em;
+             margin-left: -1em;
+             position: absolute;
+             left: 0;
+         }
+         /* Default list styling for other uls */
+        .slide ul:not(.objectives-list):not(.questions-list) {
+            list-style-type: disc; /* Default disc bullets */
+            padding-left: 25px; /* Indent for bullets */
+            margin-bottom: 10px;
+        }
+        .slide ul:not(.objectives-list):not(.questions-list) li {
+            margin-bottom: 6px; /* Spacing between list items */
+            padding-left: 0; /* No extra padding for default li */
+            position: static; /* Reset position from custom lists */
+        }
+         .slide ul:not(.objectives-list):not(.questions-list) li::before {
+            content: ""; /* Remove pseudo-element from default li */
+        }
+
+
+         /* Style for Methodology numbered steps */
+         .slide .methodology-steps {
+            list-style-type: decimal;
+            padding-left: 25px;
+         }
+          .slide .methodology-steps li {
+             margin-bottom: 12px;
+             line-height: 1.6;
+         }
+
+         /* Style for Recommendation list */
+         .slide .recommendation-list {
+             list-style-type: none;
+             padding-left: 0;
+         }
+         .slide .recommendation-list li {
+             margin-bottom: 15px;
+             padding-left: 25px;
+             position: relative;
+             line-height: 1.6;
+         }
+         .slide .recommendation-list li:before {
+             content: "\2713"; /* Unicode checkmark */
+             color: green;
+             font-weight: bold;
+             display: inline-block;
+             width: 1em;
+             margin-left: -1em;
+             position: absolute;
+             left: 0;
+         }
+
+         /* Specific style for Activity Boxes */
+         .slide .activity-box {
+             background-color: #eef2ff; /* Light blue/gray */
+             padding: 12px 18px;
+             border-radius: 6px;
+             border: 1px solid #c7d2fe; /* Light border */
+             margin: 15px 0px; /* Adjusted margin */
+             color: #444;
+         }
+         .slide .activity-box strong { /* For "Activity # X:" part */
+             font-style: normal;
+             font-weight: bold;
+             display: block;
+             margin-bottom: 6px;
+             color: #0056b3; /* Theme color */
+         }
+         .slide .activity-box p {
+            margin-bottom: 0; /* Remove default p margin inside activity box */
+            font-style: italic; /* Ensure inner p also italic */
+            line-height: 1.4;
+         }
+
+
+         /* Styling for blockquotes */
+         .slide blockquote {
+             border-left: 4px solid #0056b3; /* Theme color accent */
+             padding-left: 20px;
+             margin: 20px 0 20px 10px; /* Top/bottom margin, left indent */
+             font-style: italic;
+             color: #4a5568; /* Slightly muted text color */
+         }
+         .slide blockquote p {
+             margin-bottom: 10px; /* Spacing between paragraphs in a blockquote */
+             line-height: 1.6;
+         }
+         .slide blockquote p:last-child {
+             margin-bottom: 0;
+         }
+
+    </style>
 </head>
-<body class="bg-gray-100 font-sans">
-  <div class="container mx-auto p-4 max-w-4xl">
-    <!-- Standardized Course Code in Header -->
-    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">PHIL1009 - Chapter One</h1>
+<body>
 
-    <!-- Slides Container -->
-    <div id="slides" class="relative bg-white rounded-lg shadow-lg p-6 min-h-[450px]">
-
-      <!-- Slide 1: Title and Overview -->
-      <div class="slide active">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CHAPTER ONE<br>LOGIC AND PHILOSOPHY</h2>
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">Chapter Overview</h3>
-        <p class="text-gray-600 mb-4">
-          Logic is often considered both a field of study and an instrument. As a field of study, it is a branch of philosophy concerning arguments and the principles and methods of sound reasoning. As an instrument, it is a tool used to formulate rational arguments and critically evaluate the soundness of others' arguments. Before logic became a distinct field of study, philosophers employed it as a fundamental tool to investigate issues that captured their philosophical interest, such as reality, knowledge, and value.
-        </p>
-         <p class="text-gray-600">
-           Philosophy is the study of general and fundamental problems concerning matters such as existence, knowledge, truth, beauty, law, justice, validity, mind, and language. It is a rational and critical enterprise seeking to answer fundamental questions through the intensive application of reason—an application drawing upon analysis, comparison, and evaluation. This chapter explores the fundamental nature, concepts, features, and core areas of philosophy. Furthermore, it discusses the importance of studying logic and philosophy.
-         </p>
-      </div>
-
-      <!-- Slide 2: Chapter Objectives -->
-      <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Objectives</h2>
-        <p class="text-gray-600 mb-2">Upon successful completion of this chapter, you will be able to:</p>
-        <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-          <li>Understand the meaning, nature, and features of philosophy.</li>
-          <li>Recognize the major fields of philosophy.</li>
-          <li>Appreciate the importance of studying logic and philosophy.</li>
-        </ul>
-      </div>
-
-       <!-- Slide 3: Meaning and Nature of Philosophy Overview -->
-       <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">1: Meaning and Nature of Philosophy</h2>
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-        <p class="text-gray-600 mb-4">
-          Due to its universal nature, defining philosophy by a specific subject matter is challenging. However, its etymological definition is 'love of wisdom.' As a pursuit of wisdom, philosophy involves developing critical habits, continuously searching for truth, and questioning the apparent. In this section, students will be introduced to the fundamental meaning, nature, and concepts of philosophy.
-        </p>
-         <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Objectives:</h3>
-         <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-         <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-           <li>Recognize the basic concepts of philosophy.</li>
-           <li>Understand the meaning and nature of philosophy.</li>
-         </ul>
-       </div>
-
-        <!-- Slide 4: Meaning and Nature of Philosophy -->
-        <div class="slide">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Meaning and Nature of Philosophy</h2>
-            <div class="activity-box">
-                <p class="font-semibold text-gray-700">Activity # 1:</p>
-                <p class="italic text-gray-600">Do you have prior familiarity with philosophy? If so, how would you describe it?</p>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide title-slide">
+            <h1>PHIL1009 - Chapter One<br>Logic and Philosophy</h1>
+            <div class="presenter-info" style="font-size: 1.1em;">
+                <p></p>
             </div>
-            <p class="text-gray-600 mb-4">
+        </div>
+
+        <!-- Slide 2: Chapter Overview -->
+        <div class="slide">
+            <h2>Chapter Overview</h2>
+            <p>
+              Logic is often considered both a field of study and an instrument. As a field of study, it is a branch of philosophy concerning arguments and the principles and methods of sound reasoning. As an instrument, it is a tool used to formulate rational arguments and critically evaluate the soundness of others' arguments. Before logic became a distinct field of study, philosophers employed it as a fundamental tool to investigate issues that captured their philosophical interest, such as reality, knowledge, and value.
+            </p>
+            <p>
+              Philosophy is the study of general and fundamental problems concerning matters such as existence, knowledge, truth, beauty, law, justice, validity, mind, and language. It is a rational and critical enterprise seeking to answer fundamental questions through the intensive application of reason—an application drawing upon analysis, comparison, and evaluation. This chapter explores the fundamental nature, concepts, features, and core areas of philosophy. Furthermore, it discusses the importance of studying logic and philosophy.
+            </p>
+        </div>
+
+        <!-- Slide 3: Chapter Objectives -->
+        <div class="slide">
+            <h2>Chapter Objectives</h2>
+            <p>Upon successful completion of this chapter, you will be able to:</p>
+            <ul class="objectives-list">
+              <li>Understand the meaning, nature, and features of philosophy.</li>
+              <li>Recognize the major fields of philosophy.</li>
+              <li>Appreciate the importance of studying logic and philosophy.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: Meaning and Nature of Philosophy Overview -->
+        <div class="slide">
+            <h2>1: Meaning and Nature of Philosophy</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Due to its universal nature, defining philosophy by a specific subject matter is challenging. However, its etymological definition is 'love of wisdom.' As a pursuit of wisdom, philosophy involves developing critical habits, continuously searching for truth, and questioning the apparent. In this section, students will be introduced to the fundamental meaning, nature, and concepts of philosophy.
+            </p>
+            <h3>Section Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="objectives-list">
+              <li>Recognize the basic concepts of philosophy.</li>
+              <li>Understand the meaning and nature of philosophy.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 5: Meaning and Nature of Philosophy -->
+        <div class="slide">
+            <h2>Meaning and Nature of Philosophy</h2>
+            <div class="activity-box">
+                <strong>Activity # 1:</strong>
+                <p>Do you have prior familiarity with philosophy? If so, how would you describe it?</p>
+            </div>
+            <p>
                 It is important to note initially that providing a precise definition of philosophy is difficult. While other disciplines like chemistry, physics, or geography can be easily defined by their subject matter, philosophy primarily deals with broad, universal issues rather than a specific domain. However, this does not mean philosophy is incomprehensible. Understanding philosophy best comes from engaging with the thoughts of philosophers, identifying its salient features, participating in philosophical inquiry, and actively 'doing' philosophy.
             </p>
-             <p class="text-gray-600">
+            <p>
                Philosophy is neither as elusive nor as remote from everyday problems as often perceived. It is widely agreed that the best way to learn and understand philosophy is to <strong>philosophize</strong>: confront philosophical questions, use philosophical language, become acquainted with diverse philosophical positions and arguments, read original philosophical texts, and grapple with the issues firsthand.
-             </p>
+            </p>
         </div>
 
-        <!-- Slide 5: Meaning and Nature of Philosophy (Continued) -->
+        <!-- Slide 6: Meaning and Nature of Philosophy (Continued) -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Meaning and Nature of Philosophy (Continued)</h2>
-          <p class="text-gray-600 mb-4">
+            <h2>Meaning and Nature of Philosophy (Continued)</h2>
+            <p>
             Socrates famously stated, <em>“Wonder is the feeling of a philosopher, and philosophy begins in wonder.”</em> While many may lack detailed knowledge of philosophy's history, nature, language, or issues, we all think and reflect on matters important to us. We have all been moved by the sense of wonder from which philosophy arises. Thus, we all engage, to varying degrees, in philosophical thinking, even if reflection alone does not make one a philosopher.
-          </p>
-           <p class="text-gray-600 mb-4">
+            </p>
+            <p>
              For a clearer definition, referring to the word's etymology is more fruitful than associating it with a specific subject. Etymologically, "philosophy" originates from the Greek words "philos" (love) and "sophia" (wisdom). Thus, philosophy literally means "love of wisdom."
-           </p>
-           <p class="text-gray-600">
+            </p>
+            <p>
              The ancient Greek thinker Pythagoras first used "philosopher" to describe someone demonstrating marked curiosity about their experiences. Anyone asking questions like: Does God exist? What is reality? What is the ultimate source of Being? What is knowledge? What does it mean to know? How do we acquire knowledge? What is value? exhibits a curiosity reflecting a vital concern for wisdom regarding the world and human experience. Therefore, seeking wisdom is central to philosophy's essence, derived from its etymological roots. However, this is not sufficient for a complete understanding, as not all forms of wisdom constitute philosophy.
-           </p>
+            </p>
         </div>
 
-        <!-- Slide 6: Wisdom and Questioning -->
+        <!-- Slide 7: Wisdom and Questioning -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy: Wisdom and Questioning</h2>
-           <div class="activity-box">
-               <p class="font-semibold text-gray-700">Activity # 2:</p>
-               <p class="italic text-gray-600">What kind of wisdom do you think philosophers pursue?</p>
-           </div>
-           <p class="text-gray-600 mb-4">
-             The wisdom philosophers seek differs from the expertise or technical skills of professionals. One might possess encyclopedic knowledge yet lack understanding of its meaning and significance. According to Socrates, wisdom involves a critical habit, perpetual vigilance about all things, and reverence for truth, regardless of its form or location. Based on this Socratic understanding, philosophy, as the pursuit of wisdom, entails developing critical habits, continuously searching for truth, and questioning the apparent.
-           </p>
+            <h2>Philosophy: Wisdom and Questioning</h2>
             <div class="activity-box">
-                <p class="font-semibold text-gray-700">Activity # 3:</p>
-                <p class="italic text-gray-600">What does it mean to "question the apparent"? Does it imply denying facts or practical reality?</p>
+               <strong>Activity # 2:</strong>
+               <p>What kind of wisdom do you think philosophers pursue?</p>
             </div>
-             <p class="text-gray-600">
+            <p>
+             The wisdom philosophers seek differs from the expertise or technical skills of professionals. One might possess encyclopedic knowledge yet lack understanding of its meaning and significance. According to Socrates, wisdom involves a critical habit, perpetual vigilance about all things, and reverence for truth, regardless of its form or location. Based on this Socratic understanding, philosophy, as the pursuit of wisdom, entails developing critical habits, continuously searching for truth, and questioning the apparent.
+            </p>
+            <div class="activity-box">
+                <strong>Activity # 3:</strong>
+                <p>What does it mean to "question the apparent"? Does it imply denying facts or practical reality?</p>
+            </div>
+            <p>
                Interrogating the obvious involves engaging creatively with the phenomenal world, moving beyond common understanding, and speculating about matters others accept without question.
-             </p>
+            </p>
         </div>
 
-        <!-- Slide 7: Questioning and Criticism -->
+        <!-- Slide 8: Questioning and Criticism -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy: Questioning and Criticism</h2>
-          <p class="text-gray-600 mb-4">
+            <h2>Philosophy: Questioning and Criticism</h2>
+            <p>
             However, questioning or criticism is not philosophy's ultimate goal, although asking the right questions is often seen as its beginning, direction, and essence. Posing insightful questions is an art, involving the ability to foresee the non-obvious and imagine diverse possibilities and alternative approaches to the apparent. When we genuinely wonder about the existing world and raise questions about its order, each query propels us from phenomenal facts towards profound speculation.
-          </p>
-          <p class="text-gray-600">
+            </p>
+            <p>
             As Vincent Barry stated, the philosophical enterprise is <em>"an active imaginative process of formulating proper questions and resolving them by rigorous, persistent analysis"</em>.
-          </p>
+            </p>
         </div>
 
-        <!-- Slide 8: Philosophy as Rational and Critical -->
+        <!-- Slide 9: Philosophy as Rational and Critical -->
         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy as Rational and Critical</h2>
-            <p class="text-gray-600 mb-4">
+           <h2>Philosophy as Rational and Critical</h2>
+            <p>
               Consequently, philosophy is a rational and critical enterprise that attempts to formulate and answer fundamental questions through an intensive application of reason—an application relying on analysis, comparison, and evaluation. It involves reason, rational criticism, examination, and analysis. Accordingly, philosophy possesses a <strong>constructive side</strong>, attempting to formulate rationally defensible answers to fundamental questions about the nature of reality, value, knowledge, and truth.
             </p>
-             <p class="text-gray-600">
+            <p>
                Simultaneously, its <strong>critical side</strong> manifests in providing rational critique, analysis, clarification, and evaluation of answers proposed to basic metaphysical, epistemological, and axiological questions.
-             </p>
+            </p>
         </div>
 
-         <!-- Slide 9: Philosophy as Activity -->
-         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Philosophy as an Activity</h2>
-           <p class="text-gray-600 mb-4">
+        <!-- Slide 10: Philosophy as Activity -->
+        <div class="slide">
+           <h2>Philosophy as an Activity</h2>
+           <p>
              Another noteworthy point is that <strong>philosophy is an activity</strong>. It is not something easily mastered or learned passively in schools. Great philosophers are recognized not merely for mastering philosophical content, but for actively engaging in philosophical practice. It is their extraordinary ability to think critically, conceptualize, analyze, compare, evaluate, and understand—that is, to <strong>philosophize</strong>—that distinguishes them.
            </p>
-            <p class="text-gray-600">
+            <p>
               Of course, philosophizing produces philosophy as a product (theories, texts). However, what makes someone a great philosopher is not the resulting philosophy itself, but their outstanding capacity to philosophize.
             </p>
-         </div>
-
-        <!-- Slide 10: Basic Features of Philosophy Overview -->
-        <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">2: Basic Features of Philosophy</h2>
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-          <p class="text-gray-600 mb-4">
-            As an academic discipline, philosophy possesses distinct features setting it apart from other fields, whether natural sciences, social sciences, or humanities. This section introduces the generally recognized fundamental features of philosophy.
-          </p>
-           <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Objectives:</h3>
-           <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-           <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-             <li>Recognize and understand the fundamental features that make philosophy a unique academic discipline.</li>
-           </ul>
         </div>
 
-        <!-- Slide 11: Basic Features of Philosophy -->
+        <!-- Slide 11: Basic Features of Philosophy Overview -->
         <div class="slide">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy</h2>
-             <div class="activity-box">
-                 <p class="font-semibold text-gray-700">Activity # 1:</p>
-                 <p class="italic text-gray-600">Based on the previous section (Section 1), list potential features of philosophy. Discuss these with a classmate.</p>
-             </div>
-            <p class="text-gray-600 mb-4">The general features of philosophy can be summarized as follows:</p>
-            <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+            <h2>2: Basic Features of Philosophy</h2>
+            <h3>Section Overview</h3>
+            <p>
+            As an academic discipline, philosophy possesses distinct features setting it apart from other fields, whether natural sciences, social sciences, or humanities. This section introduces the generally recognized fundamental features of philosophy.
+            </p>
+            <h3>Section Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="objectives-list">
+             <li>Recognize and understand the fundamental features that make philosophy a unique academic discipline.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 12: Basic Features of Philosophy -->
+        <div class="slide">
+            <h2>Basic Features of Philosophy</h2>
+            <div class="activity-box">
+                 <strong>Activity # 1:</strong>
+                 <p>Based on the previous section (Section 1), list potential features of philosophy. Discuss these with a classmate.</p>
+            </div>
+            <p>The general features of philosophy can be summarized as follows:</p>
+            <ol>
               <li>
                 <strong>Philosophy involves a set of views or beliefs about life and the universe</strong>, often held uncritically.
-                <p class="text-gray-600 mt-1">This refers to the informal sense of philosophy or “having” a philosophy. When someone says “my philosophy is…,” they usually mean an informal personal attitude towards the topic under discussion.</p>
+                <p style="margin-top: 5px;">This refers to the informal sense of philosophy or “having” a philosophy. When someone says “my philosophy is…,” they usually mean an informal personal attitude towards the topic under discussion.</p>
               </li>
               <li>
                 <strong>Philosophy is a process of reflecting on and criticizing our most deeply held conceptions and beliefs.</strong>
-                <p class="text-gray-600 mt-1">This is the formal sense of “doing” philosophy. These two senses—"having" and "doing"—are interconnected. Without having a philosophy in the personal sense, one cannot *do* philosophy in the critical, reflective sense. However, merely having a philosophy is insufficient for doing philosophy. A genuine philosophical attitude is searching and critical; it is open-minded and tolerant, willing to examine all sides of an issue without prejudice.</p>
+                <p style="margin-top: 5px;">This is the formal sense of “doing” philosophy. These two senses—"having" and "doing"—are interconnected. Without having a philosophy in the personal sense, one cannot *do* philosophy in the critical, reflective sense. However, merely having a philosophy is insufficient for doing philosophy. A genuine philosophical attitude is searching and critical; it is open-minded and tolerant, willing to examine all sides of an issue without prejudice.</p>
               </li>
             </ol>
         </div>
 
-        <!-- Slide 12: Basic Features of Philosophy (Continued) -->
+        <!-- Slide 13: Basic Features of Philosophy (Continued) -->
         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
-            <p class="text-gray-600 mb-4">
+           <h2>Basic Features of Philosophy (Continued)</h2>
+            <p>
               To philosophize involves more than just reading and knowing about philosophy; it requires mastering argumentation skills, employing analytical techniques, and assimilating material to think philosophically.
             </p>
-            <p class="text-gray-600 mb-4">
+            <p>
               To philosophize also means to <strong>generalize</strong>. Philosophers are reflective and critical, taking a second look at common-sense assumptions. They attempt to thoroughly consider life’s diverse problems and face all facts impartially. Merely accumulating knowledge does not guarantee understanding, as it doesn't necessarily cultivate the ability to critically evaluate facts for consistent and coherent judgment.
             </p>
-            <p class="text-gray-600">
+            <p>
               Critical evaluations often vary. Philosophers, theologians, scientists, and others may disagree due to differing perspectives and assumptions. Their personal experiences, cultural backgrounds, and training can vary widely, especially across different times and places. Secondly, philosophers operate within a changing universe; people, society, and nature evolve. Some are responsive to change, while others adhere to established traditions and systems declared authoritative and final. Thirdly, philosophy addresses areas of human experience where evidence is incomplete, allowing for diverse interpretations. Despite these disagreements, philosophers persistently probe, examine, and evaluate, hoping to present consistent principles for living.
             </p>
         </div>
 
-         <!-- Slide 13: Basic Features of Philosophy (Continued) -->
-         <div class="slide">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
-             <p class="text-gray-600 mb-4">
-               <span class="font-semibold">3) Philosophy is a rational attempt to view the world as a whole.</span>
-                Philosophy seeks to integrate the conclusions of various sciences and human experiences into a coherent worldview. Philosophers aim for an overall perspective on life, unlike the specialized viewpoints of scientists, businesspeople, or artists. While formulating a comprehensive worldview presents difficulties and dangers, confining attention solely to fragments of human experience also carries risks. Philosophy attempts to offer a holistic view—a life and worldview—integrating knowledge from sciences and other disciplines to achieve a consistent understanding. According to this view, philosophy strives to bring insights from human inquiry (religious, historical, scientific) into a meaningful interpretation that informs our lives.
-             </p>
-              <p class="text-gray-600">
-                <span class="font-semibold">4) Philosophy involves the logical analysis of language and the clarification of word and concept meanings.</span>
-                 This is certainly one function of philosophy. Nearly all philosophers employ analytical methods and seek clarity in terminology and language use. Some view this as philosophy's primary task, and a few claim it as its sole legitimate function. These individuals often consider philosophy a specialized field serving the sciences by clarifying language, rather than a broad discipline reflecting on all life experiences. This perspective gained considerable support in the twentieth century, tending to limit knowledge to statements about observable facts and their interrelations—the domain of the sciences. Not all linguistic analysts define knowledge so narrowly, however. While rejecting many non-scientific assertions, many believe knowledge of ethical principles (though experientially derived) is possible. Those adopting the narrower view often neglect or deny generalized worldviews, traditional moral philosophy, and theology. From this perspective, philosophy aims to expose confusion and clarify the meaning and use of terms in science and everyday life.
-              </p>
-         </div>
-
-          <!-- Slide 14: Basic Features of Philosophy (Continued) -->
-          <div class="slide">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
-            <p class="text-gray-600">
-              <span class="font-semibold">5) Philosophy addresses a group of perennial problems that intrigue people and for which philosophers continually seek answers.</span>
-               Philosophy probes the deepest problems of human existence. While some past philosophical questions have found satisfactory answers for most philosophers, many remain tentatively answered or unsolved. What constitutes a philosophical question? "Did Ram make a false statement on his income tax return?" is a factual question. However, "What is truth?" and "What distinguishes right from wrong?" possess philosophical significance. We sometimes contemplate fundamental life issues: What is life, and why am I here? Why does anything exist at all? What is life's place in the vast universe? Is the universe friendly or indifferent? Do events occur by chance, mechanism, or is there a plan, purpose, or intelligence guiding things? Is my life controlled by external forces, or do I possess some degree of control? Why do people strive for rights, justice, and a better future? What do concepts like "right" and "justice" mean, and what characterizes a good society? Individuals are often asked to sacrifice, even their lives, for certain values. What are life's genuine values, and how can they be attained? Is there a fundamental distinction between right and wrong, or is it merely subjective opinion? What is beauty? Should religion play a role in one's life? Is belief in God intellectually valid? Is there a possibility of life after death? Can we find answers to these and related questions? Where does knowledge originate, and can we be certain of anything's truth?
-            </p>
-          </div>
-
-           <!-- Slide 15: Basic Features of Philosophy (Continued) -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Basic Features of Philosophy (Continued)</h2>
-             <p class="text-gray-600">
-               These are all philosophical questions. The quest for answers has generated theories and systems of thought like idealism, realism, pragmatism, analytic philosophy, existentialism, phenomenology, and process philosophy. Philosophy also encompasses the diverse theories developed by great thinkers such as Socrates, Plato, Aristotle, Augustine, Aquinas, Descartes, Spinoza, Locke, Berkeley, Kant, Hegel, Nietzsche, Royce, James, Dewey, Whitehead, and others. Without these individuals and their contributions, philosophy would lack its current rich content. Unconsciously or not, we are constantly influenced by ideas passed down through societal traditions.
-             </p>
-           </div>
-
-        <!-- Slide 16: Core Fields of Philosophy Overview -->
+        <!-- Slide 14: Basic Features of Philosophy (Continued) -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Core Fields of Philosophy</h2>
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">3: Metaphysics and Epistemology</h3>
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-          <p class="text-gray-600 mb-4">
-            As previously discussed, philosophy is a rational and critical enterprise aiming to formulate and answer fundamental questions through rigorous reasoning, involving analysis, comparison, and evaluation. It addresses the most basic issues confronting human beings. Philosophy's content is often better understood by asking the right questions rather than simply providing definitive answers. Indeed, philosophy can be seen as the study of questions—specifically, "right" questions: those that are meaningful, relevant, and capable of influencing how people live and work.
-          </p>
-           <p class="text-gray-600">
-             Philosophy comprises various primary and secondary branches. This course focuses on the primary ones: Metaphysics, Epistemology, Axiology, and Logic. Metaphysics and Epistemology are crucial fields addressing the nature of ultimate reality and human knowledge, respectively. This section examines Metaphysics and Epistemology, while the subsequent section (Section 4) will cover Axiology and Logic.
-           </p>
+            <h2>Basic Features of Philosophy (Continued)</h2>
+            <p>
+               <strong>3) Philosophy is a rational attempt to view the world as a whole.</strong>
+                Philosophy seeks to integrate the conclusions of various sciences and human experiences into a coherent worldview. Philosophers aim for an overall perspective on life, unlike the specialized viewpoints of scientists, businesspeople, or artists. While formulating a comprehensive worldview presents difficulties and dangers, confining attention solely to fragments of human experience also carries risks. Philosophy attempts to offer a holistic view—a life and worldview—integrating knowledge from sciences and other disciplines to achieve a consistent understanding. According to this view, philosophy strives to bring insights from human inquiry (religious, historical, scientific) into a meaningful interpretation that informs our lives.
+            </p>
+            <p>
+                <strong>4) Philosophy involves the logical analysis of language and the clarification of word and concept meanings.</strong>
+                 This is certainly one function of philosophy. Nearly all philosophers employ analytical methods and seek clarity in terminology and language use. Some view this as philosophy's primary task, and a few claim it as its sole legitimate function. These individuals often consider philosophy a specialized field serving the sciences by clarifying language, rather than a broad discipline reflecting on all life experiences. This perspective gained considerable support in the twentieth century, tending to limit knowledge to statements about observable facts and their interrelations—the domain of the sciences. Not all linguistic analysts define knowledge so narrowly, however. While rejecting many non-scientific assertions, many believe knowledge of ethical principles (though experientially derived) is possible. Those adopting the narrower view often neglect or deny generalized worldviews, traditional moral philosophy, and theology. From this perspective, philosophy aims to expose confusion and clarify the meaning and use of terms in science and everyday life.
+            </p>
         </div>
 
-        <!-- Slide 17: Core Fields of Philosophy Objectives -->
+        <!-- Slide 15: Basic Features of Philosophy (Continued) -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Core Fields of Philosophy Objectives</h2>
-           <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Objectives:</h3>
-           <p class="text-gray-600 mb-2">After successful completion of this section, you will be able to:</p>
-           <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+            <h2>Basic Features of Philosophy (Continued)</h2>
+            <p>
+              <strong>5) Philosophy addresses a group of perennial problems that intrigue people and for which philosophers continually seek answers.</strong>
+               Philosophy probes the deepest problems of human existence. While some past philosophical questions have found satisfactory answers for most philosophers, many remain tentatively answered or unsolved. What constitutes a philosophical question? "Did Ram make a false statement on his income tax return?" is a factual question. However, "What is truth?" and "What distinguishes right from wrong?" possess philosophical significance. We sometimes contemplate fundamental life issues: What is life, and why am I here? Why does anything exist at all? What is life's place in the vast universe? Is the universe friendly or indifferent? Do events occur by chance, mechanism, or is there a plan, purpose, or intelligence guiding things? Is my life controlled by external forces, or do I possess some degree of control? Why do people strive for rights, justice, and a better future? What do concepts like "right" and "justice" mean, and what characterizes a good society? Individuals are often asked to sacrifice, even their lives, for certain values. What are life's genuine values, and how can they be attained? Is there a fundamental distinction between right and wrong, or is it merely subjective opinion? What is beauty? Should religion play a role in one's life? Is belief in God intellectually valid? Is there a possibility of life after death? Can we find answers to these and related questions? Where does knowledge originate, and can we be certain of anything's truth?
+            </p>
+        </div>
+
+        <!-- Slide 16: Basic Features of Philosophy (Continued) -->
+        <div class="slide">
+            <h2>Basic Features of Philosophy (Continued)</h2>
+            <p>
+               These are all philosophical questions. The quest for answers has generated theories and systems of thought like idealism, realism, pragmatism, analytic philosophy, existentialism, phenomenology, and process philosophy. Philosophy also encompasses the diverse theories developed by great thinkers such as Socrates, Plato, Aristotle, Augustine, Aquinas, Descartes, Spinoza, Locke, Berkeley, Kant, Hegel, Nietzsche, Royce, James, Dewey, Whitehead, and others. Without these individuals and their contributions, philosophy would lack its current rich content. Unconsciously or not, we are constantly influenced by ideas passed down through societal traditions.
+            </p>
+        </div>
+
+        <!-- Slide 17: Core Fields of Philosophy Overview -->
+        <div class="slide">
+            <h2>Core Fields of Philosophy</h2>
+            <h3>3: Metaphysics and Epistemology</h3>
+            <h3>Section Overview</h3>
+            <p>
+            As previously discussed, philosophy is a rational and critical enterprise aiming to formulate and answer fundamental questions through rigorous reasoning, involving analysis, comparison, and evaluation. It addresses the most basic issues confronting human beings. Philosophy's content is often better understood by asking the right questions rather than simply providing definitive answers. Indeed, philosophy can be seen as the study of questions—specifically, "right" questions: those that are meaningful, relevant, and capable of influencing how people live and work.
+            </p>
+            <p>
+             Philosophy comprises various primary and secondary branches. This course focuses on the primary ones: Metaphysics, Epistemology, Axiology, and Logic. Metaphysics and Epistemology are crucial fields addressing the nature of ultimate reality and human knowledge, respectively. This section examines Metaphysics and Epistemology, while the subsequent section (Section 4) will cover Axiology and Logic.
+            </p>
+        </div>
+
+        <!-- Slide 18: Core Fields of Philosophy Objectives -->
+        <div class="slide">
+            <h2>Core Fields of Philosophy Objectives</h2>
+            <h3>Section Objectives:</h3>
+            <p>After successful completion of this section, you will be able to:</p>
+            <ul class="objectives-list">
              <li>Understand the fundamental concerns and issues addressed by metaphysics and epistemology.</li>
              <li>Identify major subfields or aspects of metaphysical inquiry.</li>
              <li>Recognize fundamental philosophical debates (epistemological debates) concerning the sources of human knowledge.</li>
-           </ul>
+            </ul>
         </div>
 
-        <!-- Slide 18: Metaphysics -->
+        <!-- Slide 19: Metaphysics -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.1 Metaphysics</h2>
-           <div class="activity-box">
-               <p class="font-semibold text-gray-700">Activity # 1:</p>
-               <p class="italic text-gray-600">What do you understand metaphysics to be? Can you formulate a question you think might be metaphysical? Share and discuss your question with a classmate.</p>
-           </div>
-           <p class="text-gray-600 mb-4">
+            <h2>3.1 Metaphysics</h2>
+            <div class="activity-box">
+               <strong>Activity # 1:</strong>
+               <p>What do you understand metaphysics to be? Can you formulate a question you think might be metaphysical? Share and discuss your question with a classmate.</p>
+            </div>
+            <p>
              <strong>Metaphysics</strong> is the branch of philosophy investigating the ultimate nature of reality or existence. It addresses issues concerning reality, God, freedom, the soul/immortality, the mind-body problem, the relationship between form and substance, cause and effect, and related topics. Metaphysicians seek an irreducible foundation of reality or 'first principles' from which absolute knowledge or truth can be derived. The term "metaphysics" originates from the Greek words <em>meta</em> (meaning "beyond," "upon," or "after") and <em>physika</em> ("physics"). Literally, it signifies 'those things after the physics.' This name arose because Aristotle's writings on 'first philosophy' followed his treatise on physics, and his editor, Andronicus of Rhodes, consequently labeled them "metaphysics."
-           </p>
+            </p>
         </div>
 
-        <!-- Slide 19: Metaphysics Questions -->
+        <!-- Slide 20: Metaphysics Questions -->
         <div class="slide">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysics Questions</h2>
-           <p class="text-gray-600 mb-4">Metaphysics primarily addresses questions such as:</p>
-           <ul class="star-list pl-6 text-gray-600 space-y-1">
+            <h2>Metaphysics Questions</h2>
+            <p>Metaphysics primarily addresses questions such as:</p>
+            <ul class="questions-list">
              <li>What is reality?</li>
              <li>What is ultimately real?</li>
              <li>What is the nature of ultimate reality?</li>
@@ -306,68 +604,83 @@
              <li>What constitutes a human being? A thinking mind? A perishable body? A combination?</li>
              <li>What is time?</li>
              <li>What is the meaning of life?</li>
-           </ul>
+            </ul>
         </div>
 
-         <!-- Slide 20: Metaphysics - Reality Example -->
-         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysics - Example: The Nature of Reality</h2>
-            <p class="text-gray-600 mb-4">
+        <!-- Slide 21: Metaphysics - Reality Example -->
+        <div class="slide">
+            <h2>Metaphysics - Example: The Nature of Reality</h2>
+            <p>
               Initially, questions like ‘What is real?’ might seem simple. However, consider George Knight’s example regarding the existence of a floor, revealing the question's far-reaching implications: What is the exact nature of the floor you stand on? Its existence seems straightforward: flat, solid, smooth, possessing a specific color, composed of identifiable material (wood, concrete), and supporting your weight.
             </p>
-             <p class="text-gray-600 mb-4">
+            <p>
                However, suppose a physicist enters the room and is questioned about the floor's reality. She might reply that the floor comprises molecules, which consist of atoms, electrons, protons, and neutrons—ultimately reducible to electric energy. A passing chemist might offer a third perspective: the floor is a collection of hydrocarbons arranged in a particular way, subject to environmental influences like heat, cold, moisture, dryness, and oxidation.
-             </p>
-              <p class="text-gray-600 mb-4">
+            </p>
+            <p>
                 Clearly, the question of reality is not as simplistic as it first appears. If the reality of a common floor is perplexing, consider the larger problems encountered as humanity searches for the ultimate reality of the universe.
-              </p>
-              <p class="text-gray-600">
+            </p>
+            <p>
                 Metaphysical questions are fundamental because they provide the foundation for all subsequent inquiry. These questions can be categorized into four main subsets or aspects.
-              </p>
-         </div>
+            </p>
+        </div>
 
-         <!-- Slide 21: Metaphysical Aspects -->
-         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysical Aspects</h2>
-           <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+        <!-- Slide 22: Metaphysical Aspects -->
+        <div class="slide">
+            <h2>Metaphysical Aspects</h2>
+            <ol>
              <li>
-               <strong>Cosmological Aspect:</strong> Cosmology involves the study of theories concerning the origin, nature, and development of the universe as an orderly system. Questions in this domain include: “How did the universe originate and develop? Was it by accident or design? Does its existence serve any purpose?”
+               <strong>Cosmological Aspect:</strong> Cosmology involves the study of theories concerning the origin, nature, and
+               development of the universe as an orderly system. Questions in this domain include: “How did the universe
+               originate and develop? Was it by accident or design? Does its existence serve any purpose?”
              </li>
              <li>
-               <strong>Theological Aspect:</strong> Theology, as a part of religious theory, deals with conceptions of and about God. Typical questions are: “Is there a God? If so, is there one or multiple? What are God's attributes? If God is both all-good and all-powerful, why does evil exist? If God exists, what is His relationship to human beings and the everyday world?”
+               <strong>Theological Aspect:</strong> Theology, as a part of religious theory, deals with conceptions of and about God.
+               Typical questions are: “Is there a God? If so, is there one or multiple? What are God's attributes? If God is
+               both all-good and all-powerful, why does evil exist? If God exists, what is His relationship to human beings
+               and the everyday world?”
              </li>
              <li>
-               <strong>Anthropological Aspect:</strong> Anthropology focuses on the study of human beings, asking questions such as: What is the relationship between mind and body? Is mind more fundamental than body, or vice versa? What is humanity’s moral status? Are people inherently good, evil, or morally neutral? To what extent are individuals free? Do they possess free will, or are their thoughts and actions determined by environment, inheritance, or a divine being? Does each person have a soul? If so, what is it? Differing stances on these questions significantly influence political, social, religious, and educational ideals and practices.
-             </li>
-           </ol>
-         </div>
-
-          <!-- Slide 22: Metaphysical Aspects (Continued) & Epistemology Intro -->
-          <div class="slide">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Metaphysical Aspects (Cont.) & Epistemology Introduction</h2>
-            <ol start="4" class="list-decimal pl-6 text-gray-600 space-y-4">
-             <li>
-               <strong>Ontological Aspect:</strong> Ontology is the study of the nature of existence, exploring what it means for something to exist. Central ontological questions include: “Is basic reality found in matter or physical energy (the sensory world), or in spirit or spiritual energy? Is reality composed of one element (e.g., matter or spirit), two (e.g., matter and spirit), or many?” “Is reality inherently orderly and lawful, or merely orderable by the human mind? Is it fixed and stable, or is change its central characteristic? Is this reality friendly, unfriendly, or neutral towards humanity?”
+               <strong>Anthropological Aspect:</strong> Anthropology focuses on the study of human beings, asking questions such as:
+               What is the relationship between mind and body? Is mind more fundamental than body, or vice versa? What is
+               humanity’s moral status? Are people inherently good, evil, or morally neutral? To what extent are individuals
+               free? Do they possess free will, or are their thoughts and actions determined by environment, inheritance, or
+               a divine being? Does each person have a soul? If so, what is it? Differing stances on these questions
+               significantly influence political, social, religious, and educational ideals and practices.
              </li>
             </ol>
-            <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">3.2 Epistemology</h3>
-            <p class="text-gray-600 mb-4">
+        </div>
+
+        <!-- Slide 23: Metaphysical Aspects (Continued) & Epistemology Intro -->
+        <div class="slide">
+            <h2>Metaphysical Aspects (Cont.)</h2>
+            <ol start="4">
+             <li>
+               <strong>Ontological Aspect:</strong> Ontology is the study of the nature of existence, exploring what it means for
+               something to exist. Central ontological questions include: “Is basic reality found in matter or physical
+               energy (the sensory world), or in spirit or spiritual energy? Is reality composed of one element (e.g.,
+               matter or spirit), two (e.g., matter and spirit), or many?” “Is reality inherently orderly and lawful, or
+               merely orderable by the human mind? Is it fixed and stable, or is change its central characteristic? Is this
+               reality friendly, unfriendly, or neutral towards humanity?”
+             </li>
+            </ol>
+            <h2 style="margin-top: 20px;">3.2 Epistemology</h2>
+            <p>
               <strong>Epistemology</strong> is the branch of philosophy studying the nature, scope, meaning, and possibility of knowledge. It examines issues related to knowledge, opinion, truth, falsity, reason, experience, and faith.
             </p>
-             <p class="text-gray-600">
+            <p>
                Etymologically, "epistemology" derives from the Greek words <em>episteme</em> ("knowledge," "understanding") and <em>logos</em> ("study of"). Therefore, Epistemology is the study of the nature, source, and validity of knowledge. It seeks answers to basic questions like “What is true?” and “How do we know?” Epistemology covers both the <strong>content of thought</strong> and <strong>thought itself</strong>, dealing with the reliability of knowledge and the validity of the sources through which we acquire information.
-             </p>
-          </div>
+            </p>
+        </div>
 
-           <!-- Slide 23: Epistemology Questions -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology Questions</h2>
-             <div class="activity-box">
-                 <p class="font-semibold text-gray-700">Activity # 2:</p>
-                 <p class="italic text-gray-600">What do you understand epistemology to be? Can you formulate a question you think is epistemological? Share and discuss your question with a classmate.</p>
-             </div>
-             <p class="text-gray-600 mb-4">Epistemology addresses questions and issues including:</p>
-              <ul class="star-list pl-6 text-gray-600 space-y-1">
+        <!-- Slide 24: Epistemology Questions -->
+        <div class="slide">
+            <h2>Epistemology Questions</h2>
+            <div class="activity-box">
+                 <strong>Activity # 2:</strong>
+                 <p>What do you understand epistemology to be? Can you formulate a question you think is epistemological? Share and discuss your question with a classmate.</p>
+            </div>
+            <p>Epistemology addresses questions and issues including:</p>
+            <ul class="questions-list">
                 <li>What is knowledge?</li>
                 <li>What does it mean to know something?</li>
                 <li>What distinguishes knowledge from belief or opinion?</li>
@@ -377,99 +690,99 @@
                 <li>What are the relationship and difference between faith and reason?</li>
                 <li>What is the source of knowledge? Experience? Reason? Both?</li>
                 <li>How can we be certain that our sensory perceptions are accurate?</li>
-              </ul>
-           </div>
+            </ul>
+        </div>
 
-           <!-- Slide 24: Epistemology - Skepticism & Agnosticism -->
-           <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Skepticism and Agnosticism</h2>
-               <p class="text-gray-600 mb-4">
+        <!-- Slide 25: Epistemology - Skepticism & Agnosticism -->
+        <div class="slide">
+            <h2>Epistemology - Skepticism and Agnosticism</h2>
+            <p>
                  Epistemology confronts several fundamental issues. One concerns whether reality can be known at all. <strong>Skepticism</strong>, in its strict sense, is the position asserting that humans cannot acquire reliable knowledge and that the search for truth is futile. This idea was articulated by the Greek Sophist Gorgias, who claimed that nothing exists, and even if it did, we could not know it. Extreme skepticism would render intelligent action impossible.
-               </p>
-                <p class="text-gray-600 mb-4">
+            </p>
+            <p>
                   A closely related term is <strong>agnosticism</strong>, which denotes a profession of ignorance regarding the existence or nonexistence of God.
-                </p>
-                <p class="text-gray-600 mb-4">
+            </p>
+            <p>
                   Most people believe that reality can be known. However, accepting this position necessitates identifying the sources through which reality may be known and establishing criteria for judging the validity of knowledge. A second foundational issue in epistemology is whether all truth is relative or if some truths are absolute. Is all truth subject to change? Could what is true today be false tomorrow? If "Yes," such truths are relative. Conversely, if Absolute Truth exists, it is eternally and universally true, independent of time or place. Related to the relativity/absoluteness debate are questions about whether knowledge is subjective or objective, and whether truth exists independently of human experience.
-                </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 25: Epistemology - Sources of Human Knowledge: Empiricism -->
-           <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Sources of Knowledge: Empiricism</h2>
-              <p class="text-gray-600 mb-4">
+        <!-- Slide 26: Epistemology - Sources of Human Knowledge: Empiricism -->
+        <div class="slide">
+            <h2>Epistemology - Sources of Knowledge: Empiricism</h2>
+            <p>
                 A central aspect of epistemology concerns the sources of human knowledge. If truth, even absolute Truth, exists in the universe, how can humans comprehend it? How does it become human knowledge? Central to many answers is <strong>empiricism</strong> (knowledge obtained through the senses). Empirical knowledge seems inherent to human experience. When we step outside on a spring day and see the landscape's beauty, hear birdsong, feel the sun's warmth, and smell fragrant blossoms, we "know" it is spring. Sensory knowing is immediate and universal for humans, forming the basis for much of our knowledge.
-              </p>
-               <p class="text-gray-600">
+            </p>
+            <p>
                  The existence of sensory data is undeniable, and most people uncritically accept it as representing "reality." However, naively embracing this approach is risky, as sensory data has proven both incomplete and unreliable. (For instance, the common experience of a stick appearing bent when partially submerged in water but straight when viewed in air.) Factors like fatigue, frustration, and illness also distort and limit sensory perception. Furthermore, sound and light waves exist beyond the range of unaided human perception.
-               </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 26: Epistemology - Sources: Empiricism Cont. & Rationalism -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Sources: Empiricism (Cont.) and Rationalism</h2>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 27: Epistemology - Sources: Empiricism Cont. & Rationalism -->
+        <div class="slide">
+            <h2>Sources: Empiricism (Cont.) and Rationalism</h2>
+            <p>
                 Humans have invented scientific instruments to extend sensory range, but determining these instruments' exact dependability is impossible, as the mind's full effect in recording, interpreting, and distorting sensory perception remains unknown. Confidence in these instruments relies on speculative metaphysical theories reinforced by experiments where predictions are verified using theoretical constructs or hypotheses. Generally, sensory knowledge rests on assumptions about the reliability of human sensory mechanisms, accepted largely on faith. The advantage of empirical knowledge lies in the fact that many sensory experiences and experiments are replicable and open to public scrutiny.
-             </p>
-             <p class="text-gray-600">
+            </p>
+            <p>
                A second vital source of human knowledge is reason. The view prioritizing reasoning, thought, or logic as central to knowledge is known as <strong>rationalism</strong>. Rationalists, emphasizing humanity's power of thought and the mind's contribution to knowledge, argue that senses alone cannot yield universal, valid judgments consistent with each other. From this viewpoint, sensations and experiences gained through senses are merely the raw material of knowledge, requiring organization by the mind into a meaningful system. A less extreme form of rationalism holds that humans can know certain truths about the universe with certainty, truths unattainable through senses alone. Extreme rationalism claims humans can achieve irrefutable knowledge independently of sensory experience. Formal logic serves as a tool for rationalists. Logical systems offer internal consistency but risk detachment from the external world. Thought systems based on logic are only as valid as their underlying premises.
-             </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 27: Epistemology - Sources: Intuition & Revelation -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Sources: Intuition and Revelation</h2>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 28: Epistemology - Sources: Intuition & Revelation -->
+        <div class="slide">
+            <h2>Epistemology - Sources: Intuition and Revelation</h2>
+            <p>
                A third source of human knowledge is <strong>intuition</strong>—the direct apprehension of knowledge not derived from conscious reasoning or immediate sense perception. Literature on intuition often mentions expressions like an "immediate feeling of certainty." Intuition operates below the threshold of consciousness, often manifesting as a sudden flash of insight. It has been claimed as a source of both religious and secular knowledge throughout history. Many scientific breakthroughs originated from intuitive hunches later confirmed by experimentation. The weakness or danger of intuition lies in its unreliability when used alone; it can easily lead to absurd claims unless controlled or verified by other methods of knowing. However, intuitive knowledge offers the distinct advantage of potentially bypassing the limitations of human experience.
-             </p>
-              <p class="text-gray-600">
+            </p>
+            <p>
                 A fourth influential source of knowledge across human history is <strong>revelation</strong>. Revealed knowledge holds prime importance in religion. It differs from other knowledge sources by presupposing a transcendent supernatural reality communicating divine will. Believers in supernatural revelation consider this form of knowledge uniquely advantageous, providing omniscient information unavailable through other epistemological methods. Truth revealed through this source is often believed (e.g., by Christians) to be absolute and uncontaminated. However, it is generally acknowledged that distortion can occur during human interpretation. Some argue a major disadvantage is that revealed knowledge must be accepted by faith and cannot be empirically proven or disproven.
-              </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 28: Epistemology - Sources: Authority & Conclusion -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Epistemology - Source: Authority and Conclusion</h2>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 29: Epistemology - Sources: Authority & Conclusion -->
+        <div class="slide">
+            <h2>Epistemology - Source: Authority and Conclusion</h2>
+            <p>
                A fifth common source of human knowledge, though not typically considered a distinct philosophical position, is <strong>authority</strong>. Authoritative knowledge is accepted as true because it originates from experts or has been sanctified by tradition over time. In educational settings, common sources of information include authorities like textbooks, teachers, or reference works. Accepting authority offers advantages but also carries risks. Civilization would stagnate if individuals refused to accept any statement without personal, firsthand verification. Conversely, if authoritative knowledge rests on incorrect assumptions, it will inevitably be distorted.
-             </p>
-              <p class="text-gray-600">
+            </p>
+            <p>
                 It is crucial to recognize that a single source of information may not suffice to provide all knowledge. The various sources might be better viewed as complementary rather than antagonistic. Nonetheless, most people tend to favor one source as more fundamental or preferable, using it as a benchmark to test knowledge derived from other sources. For instance, in the contemporary world, empirically obtained knowledge is often regarded as the most basic and reliable type.
-              </p>
-           </div>
+            </p>
+        </div>
 
-          <!-- Slide 29: Axiology and Logic Overview -->
-          <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">4: Axiology and Logic</h2>
-             <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 30: Axiology and Logic Overview -->
+        <div class="slide">
+            <h2>4: Axiology and Logic</h2>
+            <h3>Section Overview</h3>
+            <p>
                As established earlier, philosophy addresses the most fundamental issues faced by humans. <strong>Axiology</strong> is the philosophical study of value, originally referring to the worth of something. It encompasses the study of moral values (ethics), aesthetic values (aesthetics), as well as political and social values. <strong>Logic</strong>, conversely, is the philosophical study of arguments and the methods and principles of sound reasoning. This section discusses Axiology and Logic, the remaining two major fields of philosophy introduced in this chapter.
-             </p>
-          </div>
+            </p>
+        </div>
 
-           <!-- Slide 30: Axiology and Logic Objectives -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology and Logic Objectives</h2>
-              <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Objectives:</h3>
-              <p class="text-gray-600 mb-2">After successful completion of this section, you will be able to:</p>
-              <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+        <!-- Slide 31: Axiology and Logic Objectives -->
+        <div class="slide">
+            <h2>Axiology and Logic Objectives</h2>
+            <h3>Section Objectives:</h3>
+            <p>After successful completion of this section, you will be able to:</p>
+            <ul class="objectives-list">
                 <li>Understand the fundamental concerns and issues addressed by axiology and logic.</li>
                 <li>Identify the major subsets of axiological questions: ethical, aesthetic, political, and social questions.</li>
                 <li>Recognize fundamental philosophical debates concerning the nature and sources of moral, political, and social rules and principles.</li>
-              </ul>
-           </div>
+            </ul>
+        </div>
 
-           <!-- Slide 31: Axiology -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.1 Axiology</h2>
-              <div class="activity-box">
-                  <p class="font-semibold text-gray-700">Activity # 1:</p>
-                  <p class="italic text-gray-600">What do you understand axiology to be? Can you formulate a question you think is axiological? Share and discuss your question with a classmate.</p>
-              </div>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 32: Axiology -->
+        <div class="slide">
+            <h2>4.1 Axiology</h2>
+            <div class="activity-box">
+                  <strong>Activity # 1:</strong>
+                  <p>What do you understand axiology to be? Can you formulate a question you think is axiological? Share and discuss your question with a classmate.</p>
+            </div>
+            <p>
                <strong>Axiology</strong> is the study or theory of value. The term derives from two Greek words: <em>axios</em> ("value," "worth") and <em>logos</em> ("reason," "theory," "study of"). Hence, Axiology is the philosophical study of value, focusing on what individuals or societies regard as good or preferable. It asks philosophical questions about values, such as:
-             </p>
-              <ul class="star-list pl-6 text-gray-600 space-y-1">
+            </p>
+            <ul class="questions-list">
                 <li>What is value?</li>
                 <li>Where do values originate?</li>
                 <li>How do we justify our values?</li>
@@ -478,30 +791,30 @@
                 <li>What kinds of values exist (e.g., moral, aesthetic, economic)?</li>
                 <li>Can it be demonstrated that one value is objectively better than another?</li>
                 <li>Who benefits from particular value systems?</li>
-              </ul>
-           </div>
+            </ul>
+        </div>
 
-           <!-- Slide 32: Axiology - Areas (Ethics) -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology - Areas: Ethics</h2>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 33: Axiology - Areas (Ethics) -->
+        <div class="slide">
+            <h2>Axiology - Areas: Ethics</h2>
+            <p>
                Axiology explores these and related issues of value within three main areas: Ethics, Aesthetics, and Social/Political Philosophy.
-             </p>
-              <h3 class="text-xl font-semibold mb-2 text-gray-700">I. Ethics</h3>
-               <div class="activity-box">
-                   <p class="font-semibold text-gray-700">Activity # 2:</p>
-                   <p class="italic text-gray-600">How would you define ethics? What ethical rules, principles, or standards do you know and follow? Why do you follow them? Discuss with a classmate.</p>
-               </div>
-              <p class="text-gray-600 mb-4">
+            </p>
+            <h3>I. Ethics</h3>
+            <div class="activity-box">
+                   <strong>Activity # 2:</strong>
+                   <p>How would you define ethics? What ethical rules, principles, or standards do you know and follow? Why do you follow them? Discuss with a classmate.</p>
+            </div>
+            <p>
                 <strong>Ethics</strong>, also known as <strong>Moral Philosophy</strong>, is the branch of philosophy concerned with the systematic study of moral principles, values, codes, and rules. These serve as standards for evaluating human conduct or actions as good or bad, right or wrong. Ethics traditionally comprises three main branches: meta-ethics, normative ethics, and applied ethics.
-              </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 33: Ethics Questions and Branches -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethics: Questions and Branches</h2>
-             <p class="text-gray-600 mb-4">Ethics addresses various fundamental questions, including:</p>
-              <ul class="star-list pl-6 text-gray-600 space-y-1">
+        <!-- Slide 34: Ethics Questions and Branches -->
+        <div class="slide">
+            <h2>Ethics: Questions and Branches</h2>
+            <p>Ethics addresses various fundamental questions, including:</p>
+            <ul class="questions-list">
                 <li>What constitutes good/bad?</li>
                 <li>What constitutes right/wrong?</li>
                 <li>Is morality determined by adherence to the Right Principle or achieving the Good End?</li>
@@ -511,39 +824,39 @@
                 <li>Does God exist? If so, is God benevolent and omnipotent?</li>
                 <li>If God is benevolent, why does evil exist? If God did not create evil, must there be another creator responsible for evil? If so, how can God be considered omnipotent?</li>
                 <li>Why do we adhere to moral rules? For individual benefit? For the benefit of others? Or simply to fulfill an intrinsic duty?</li>
-              </ul>
-               <p class="text-gray-600 mt-4">
+            </ul>
+            <p style="margin-top: 15px;">
                  Ethical studies can be grouped into three broad categories: <strong>Normative Ethics</strong>, <strong>Meta-ethics</strong>, and <strong>Applied Ethics</strong>.
-               </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 34: Ethics Branches Defined -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethics: Branches Defined</h2>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 35: Ethics Branches Defined -->
+        <div class="slide">
+            <h2>Ethics: Branches Defined</h2>
+            <p>
                <strong>Normative Ethics</strong> attempts to determine and justify the moral rules, principles, standards, and goals by which humans might evaluate the morality of their conduct, actions, and decisions. It involves the reasoned search for principles of human conduct, including a critical study of major theories regarding what is good, which acts are right, and which are blameworthy. Major examples include Consequentialism (Teleological Ethics), Deontological Ethics, and Virtue Ethics.
-             </p>
-              <p class="text-gray-600 mb-4">
+            </p>
+            <p>
                 <strong>Meta-ethics</strong> is a highly abstract philosophical discipline investigating the meaning of ethical terms (like "good," "bad," "right," "wrong") and critically examining how ethical statements can be justified or verified. It is less concerned with identifying specific good or bad actions and more focused on the nature of moral language and judgment. Key examples include Moral Intuitionism, Moral Emotivism, Moral Prescriptivism, Moral Nihilism, and Ethical Relativism.
-              </p>
-              <p class="text-gray-600">
+            </p>
+            <p>
                 <strong>Applied Ethics</strong> is a branch of normative ethics that attempts to explain, justify, and apply general moral rules, principles, and standards to specific contemporary moral problems, such as capital punishment, euthanasia, abortion, adultery, animal rights, and environmental ethics. It is termed "applied" because ethicists use general ethical principles to resolve specific moral dilemmas.
-              </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 35: Axiology - Areas (Aesthetics) -->
-           <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology - Areas: Aesthetics</h2>
-              <h3 class="text-xl font-semibold mb-2 text-gray-700">II. Aesthetics</h3>
-               <div class="activity-box">
-                   <p class="font-semibold text-gray-700">Activity # 3:</p>
-                   <p class="italic text-gray-600">How do you define and understand aesthetics? What makes something beautiful or artistic in your view? Discuss with a classmate.</p>
-               </div>
-              <p class="text-gray-600 mb-4">
+        <!-- Slide 36: Axiology - Areas (Aesthetics) -->
+        <div class="slide">
+            <h2>Axiology - Areas: Aesthetics</h2>
+            <h3>II. Aesthetics</h3>
+            <div class="activity-box">
+                   <strong>Activity # 3:</strong>
+                   <p>How do you define and understand aesthetics? What makes something beautiful or artistic in your view? Discuss with a classmate.</p>
+            </div>
+            <p>
                 <strong>Aesthetics</strong> is the theory of beauty and art. It explores the particular value of our artistic and aesthetic experiences, dealing with concepts such as beauty, art, enjoyment, sensory/emotional values, perception, taste, and sentiment.
-              </p>
-              <p class="text-gray-600 mb-4">Typical Aesthetic questions include:</p>
-               <ul class="star-list pl-6 text-gray-600 space-y-1">
+            </p>
+            <p>Typical Aesthetic questions include:</p>
+            <ul class="questions-list">
                  <li>What is art?</li>
                  <li>What is beauty?</li>
                  <li>What is the relationship between art and beauty?</li>
@@ -554,22 +867,22 @@
                  <li>Can artistic works communicate meaning? If so, what do they communicate?</li>
                  <li>Does art possess moral value? Does it have moral obligations or constraints?</li>
                  <li>Are there objective standards of quality in art?</li>
-               </ul>
-           </div>
+            </ul>
+        </div>
 
-           <!-- Slide 36: Axiology - Areas (Social/Political Philosophy) -->
-           <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Axiology - Areas: Social/Political Philosophy</h2>
-              <h3 class="text-xl font-semibold mb-2 text-gray-700">III. Social/Political Philosophy</h3>
-               <div class="activity-box">
-                   <p class="font-semibold text-gray-700">Activity # 4:</p>
-                   <p class="italic text-gray-600">How do you define politics and society? What political or social rules, principles, or standards do you recognize or follow? Why? Discuss with a classmate.</p>
-               </div>
-              <p class="text-gray-600 mb-4">
+        <!-- Slide 37: Axiology - Areas (Social/Political Philosophy) -->
+        <div class="slide">
+            <h2>Axiology - Areas: Social/Political Philosophy</h2>
+            <h3>III. Social/Political Philosophy</h3>
+            <div class="activity-box">
+                   <strong>Activity # 4:</strong>
+                   <p>How do you define politics and society? What political or social rules, principles, or standards do you recognize or follow? Why? Discuss with a classmate.</p>
+            </div>
+            <p>
                 <strong>Social/Political Philosophy</strong> investigates the value judgments operating within a civil society, concerning both social structures and political systems.
-              </p>
-              <p class="text-gray-600 mb-4">Key questions addressed by Social/Political Philosophy include:</p>
-               <ul class="star-list pl-6 text-gray-600 space-y-1">
+            </p>
+            <p>Key questions addressed by Social/Political Philosophy include:</p>
+            <ul class="questions-list">
                  <li>What form of government is best?</li>
                  <li>What economic system is preferable?</li>
                  <li>What constitutes justice and injustice?</li>
@@ -578,152 +891,152 @@
                  <li>How do civil society and government originate?</li>
                  <li>Are citizens obligated to obey all state laws? Under what conditions?</li>
                  <li>What is the purpose of government?</li>
-               </ul>
-           </div>
+            </ul>
+        </div>
 
-           <!-- Slide 37: Logic -->
-           <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.2 Logic</h2>
-               <div class="activity-box">
-                   <p class="font-semibold text-gray-700">Activity # 5:</p>
-                   <p class="italic text-gray-600">How do you define and understand logic? Discuss its purpose or value with a classmate.</p>
-               </div>
-              <p class="text-gray-600 mb-4">
+        <!-- Slide 38: Logic -->
+        <div class="slide">
+            <h2>4.2 Logic</h2>
+            <div class="activity-box">
+                   <strong>Activity # 5:</strong>
+                   <p>How do you define and understand logic? Discuss its purpose or value with a classmate.</p>
+            </div>
+            <p>
                 <strong>Logic</strong> is the study or theory of the principles of correct reasoning. It focuses on formulating the right principles for reasoning and developing systematic methods for evaluating the validity and soundness of arguments.
-              </p>
-              <p class="text-gray-600 mb-4">Among the questions raised by Logic are:</p>
-               <ul class="star-list pl-6 text-gray-600 space-y-1">
+            </p>
+            <p>Among the questions raised by Logic are:</p>
+            <ul class="questions-list">
                  <li>What constitutes an argument? What does it mean to argue logically?</li>
                  <li>What makes an argument valid or invalid?</li>
                  <li>What defines a sound argument?</li>
                  <li>What relationship exists between premises and conclusion in an argument?</li>
                  <li>How can we effectively formulate and evaluate arguments?</li>
                  <li>What is a fallacy? What makes an argument fallacious?</li>
-               </ul>
-           </div>
+            </ul>
+        </div>
 
-           <!-- Slide 38: Importance of Learning Philosophy Overview -->
-           <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">5: Importance of Learning Philosophy</h2>
-              <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-              <p class="text-gray-600 mb-4">
+        <!-- Slide 39: Importance of Learning Philosophy Overview -->
+        <div class="slide">
+            <h2>5: Importance of Learning Philosophy</h2>
+            <h3>Section Overview</h3>
+            <p>
                 As discussed in Section 1, philosophy is a rational and critical enterprise seeking to formulate and answer fundamental questions through intensive reasoning—involving analysis, comparison, and evaluation—addressing the most basic issues faced by humans. This section explores the fundamental benefits derived from studying philosophy.
-              </p>
-           </div>
+            </p>
+        </div>
 
-            <!-- Slide 39: Importance of Learning Philosophy Objectives -->
-            <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance of Learning Philosophy Objectives</h2>
-               <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Objectives:</h3>
-               <p class="text-gray-600 mb-2">After successful completion of this section, you will be able to:</p>
-               <ul class="arrow-list pl-6 text-gray-600 space-y-1">
+        <!-- Slide 40: Importance of Learning Philosophy Objectives -->
+        <div class="slide">
+            <h2>Importance of Learning Philosophy Objectives</h2>
+            <h3>Section Objectives:</h3>
+            <p>After successful completion of this section, you will be able to:</p>
+            <ul class="objectives-list">
                  <li>Understand the fundamental benefits philosophy offers to individuals and society.</li>
-               </ul>
-            </div>
+            </ul>
+        </div>
 
-            <!-- Slide 40: Importance of Learning Philosophy - Socrates -->
-            <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Importance of Learning Philosophy</h2>
-                <div class="activity-box">
-                    <p class="font-semibold text-gray-700">Activity # 1:</p>
-                    <p class="italic text-gray-600">Based on previous sections, what potential benefits might studying philosophy offer? Who do you think needs philosophy, and why? Discuss with a classmate.</p>
-                </div>
-               <p class="text-gray-600 mb-4">
-               If asked about the necessity of studying philosophy, a student might recall Socrates' famous declaration: <em>“The unexamined life is not worth living.”</em> Socrates elaborated, <em>“I tell you that to let no day pass without discussing goodness and all the other subjects about which you hear me talking and examining both myself and others is really the best thing that a man can do, and that life without this sort of examination is not worth living…”</em> Thus, a primary benefit of learning philosophy is that it equips individuals with the tools needed to critically examine their own lives and the world around them. Let us explore this further.
-               </p>
+        <!-- Slide 41: Importance of Learning Philosophy - Socrates -->
+        <div class="slide">
+            <h2>The Importance of Learning Philosophy</h2>
+            <div class="activity-box">
+                    <strong>Activity # 1:</strong>
+                    <p>Based on previous sections, what potential benefits might studying philosophy offer? Who do you think needs philosophy, and why? Discuss with a classmate.</p>
             </div>
+            <p>
+            If asked about the necessity of studying philosophy, a student might recall Socrates' famous declaration: <em>“The unexamined life is not worth living.”</em> Socrates elaborated, <em>“I tell you that to let no day pass without discussing goodness and all the other subjects about which you hear me talking and examining both myself and others is really the best thing that a man can do, and that life without this sort of examination is not worth living…”</em> Thus, a primary benefit of learning philosophy is that it equips individuals with the tools needed to critically examine their own lives and the world around them. Let us explore this further.
+            </p>
+        </div>
 
-             <!-- Slide 41: Importance - Self-Actualization -->
-             <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance: Contribution to Self-Actualization</h2>
-               <p class="text-gray-600 mb-4">
+        <!-- Slide 42: Importance - Self-Actualization -->
+        <div class="slide">
+            <h2>Importance: Contribution to Self-Actualization</h2>
+            <p>
                  Some modern psychologists distinguish between maintenance needs and actualizing needs. Maintenance needs include the physical and psychological requirements for survival and well-being: food, shelter, security, social interaction, etc. Actualizing needs relate to self-fulfillment, creativity, self-expression, realizing one's potential, and becoming everything one is capable of being.
-               </p>
-               <p class="text-gray-600">
+            </p>
+            <p>
                  While philosophy may not guarantee self-actualization, it can significantly contribute by promoting the ideal itself and fostering characteristics associated with it. Studying philosophy makes a primordial contribution to achieving several key characteristics of self-actualization, some of which are detailed below.
-               </p>
-             </div>
+            </p>
+        </div>
 
-             <!-- Slide 42: Importance - Self-Actualization Characteristics (1) -->
-             <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Characteristics of Self-Actualization Fostered by Philosophy (1)</h2>
-                <ol class="list-decimal pl-6 text-gray-600 space-y-4">
-                  <li>
+        <!-- Slide 43: Importance - Self-Actualization Characteristics (1) -->
+        <div class="slide">
+            <h2>Characteristics of Self-Actualization Fostered by Philosophy (1)</h2>
+            <ol>
+                <li>
                     <strong>Intellectual and Behavioral Independence:</strong> This refers to the ability to develop one's own reasoned opinions and beliefs. A primary goal of philosophy is integrating experiences into a unified, coherent, and systematic worldview. Studying philosophy exposes us to alternative worldviews and shows how philosophers have structured their understanding of the universe. Consequently, we learn to develop and integrate our own experiences, thoughts, feelings, and actions, thereby fostering intellectual and behavioral autonomy.
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <strong>Reflective Self-Awareness:</strong> Self-actualization requires clear knowledge of oneself and the world. Philosophy enhances self-awareness by prompting critical examination of the fundamental intellectual underpinnings of our lives.
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <strong>Flexibility, Tolerance, and Open-Mindedness:</strong> By studying diverse philosophical perspectives, we understand the evolutionary nature of intellectual achievement and the ongoing development of human thought. Encountering various philosophers' ideas helps us realize that no single viewpoint holds absolute truth and that the value of any attitude is often contextual. This fosters greater tolerance, open-mindedness, receptivity, and sympathy towards views differing from our own.
-                  </li>
-                </ol>
-             </div>
+                </li>
+            </ol>
+        </div>
 
-             <!-- Slide 43: Importance - Self-Actualization Characteristics (2) -->
-             <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Characteristics of Self-Actualization Fostered by Philosophy (2)</h2>
-               <ol start="4" class="list-decimal pl-6 text-gray-600 space-y-4">
-                 <li>
+        <!-- Slide 44: Importance - Self-Actualization Characteristics (2) -->
+        <div class="slide">
+            <h2>Characteristics of Self-Actualization Fostered by Philosophy (2)</h2>
+            <ol start="4">
+                <li>
                    <strong>Creative and Critical Thinking:</strong> This involves the ability to develop original philosophical perspectives on issues, problems, and events, and to engage with them deeply. Studying philosophy refines our analytical powers, critical thinking skills, reasoning abilities, evaluation capacity, theoretical aptitude, and justification skills.
-                 </li>
-                 <li>
+                </li>
+                <li>
                    <strong>Conceptualized and Well-Reasoned Value Systems:</strong> Since philosophy directly engages with morality, art, politics, and other value theories, its study provides opportunities to formulate reasoned evaluations of value, thereby helping us find meaning in our lives across various domains (moral, aesthetic, political, etc.).
-                 </li>
-               </ol>
-             </div>
+                </li>
+            </ol>
+        </div>
 
-             <!-- Slide 44: Importance - Uncertainty of Living -->
-             <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance: Dealing with Uncertainty</h2>
-                 <p class="text-gray-600 mb-4">
-                   Another significant benefit of studying philosophy is its capacity to help us navigate the inherent uncertainty of life. Philosophy encourages awareness of the limits of absolute certainty in knowledge, thereby preparing us to engage with the continuously evolving landscape of human understanding.
-                 </p>
-                  <p class="text-gray-600">
-                    But what is the advantage of embracing uncertainty? Bertrand Russell, in his book <em>The Problems of Philosophy</em>, offers a compelling answer.
-                  </p>
-             </div>
+        <!-- Slide 45: Importance - Uncertainty of Living -->
+        <div class="slide">
+            <h2>Importance: Dealing with Uncertainty</h2>
+            <p>
+               Another significant benefit of studying philosophy is its capacity to help us navigate the inherent uncertainty of life. Philosophy encourages awareness of the limits of absolute certainty in knowledge, thereby preparing us to engage with the continuously evolving landscape of human understanding.
+            </p>
+            <p>
+                But what is the advantage of embracing uncertainty? Bertrand Russell, in his book <em>The Problems of Philosophy</em>, offers a compelling answer.
+            </p>
+        </div>
 
-             <!-- Slide 45: Bertrand Russell Quote -->
-             <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Bertrand Russell on the Value of Uncertainty</h2>
-               <blockquote>
-                 <p>
-                   The value of philosophy is, in fact, to be sought largely in its very uncertainty. The man who has no tincture of philosophy goes through life imprisoned in the prejudices derived from common sense, from the habitual beliefs of his age or his nation, and from convictions which have grown up in his mind without the co-operation or consent of his deliberate reason. To such a man the world tends to become definite, finite, obvious; common objects rouse no questions, and unfamiliar possibilities are contemptuously rejected. As soon as we begin to philosophize, on the contrary, we find... that even the most everyday things lead to problems to which only very incomplete answers can be given. Philosophy, though unable to tell us with certainty what is the true answer to the doubts which it raises, is able to suggest many possibilities which enlarge our thoughts and free them from the tyranny of custom. Thus, while diminishing our feeling of certainty as to what things are, it greatly increases our knowledge as to what they may be; it removes the somewhat arrogant dogmatism of those who have never travelled into the region of liberating doubt, and it keeps alive our sense of wonder by showing familiar things in an unfamiliar aspect. (Adapted from Bertrand Russell, *The Problems of Philosophy*, 1912)
-                 </p>
-               </blockquote>
-               <!-- Note: Minor adaptation for flow and modern punctuation; original meaning preserved. Removed page number reference for general presentation. -->
-             </div>
+        <!-- Slide 46: Bertrand Russell Quote -->
+        <div class="slide">
+            <h2>Bertrand Russell on the Value of Uncertainty</h2>
+            <blockquote>
+                <p>
+                   The value of philosophy is, in fact, to be sought largely in its very uncertainty. The man who has no tincture of philosophy goes through life imprisoned in the prejudices derived from common sense, from the habitual beliefs of his age or his nation, and from convictions which have grown up in his mind without the co-operation or consent of his deliberate reason. To such a man the world tends to become definite, finite, obvious; common objects rouse no questions, and unfamiliar possibilities are contemptuously rejected. As soon as we begin to philosophize, on the contrary, we find... that even the most everyday things lead to problems to which only very incomplete answers can be given. Philosophy, though unable to tell us with certainty what is the true answer to the doubts which it raises, is able to suggest many possibilities which enlarge our thoughts and free them from the tyranny of custom. Thus, while diminishing our feeling of certainty as to what things are, it greatly increases our knowledge as to what they may be; it removes the somewhat arrogant dogmatism of those who have never travelled into the region of liberating doubt, and it keeps alive our sense of wonder by showing familiar things in an unfamiliar aspect.
+                </p>
+            </blockquote>
+            <p style="font-size: 0.8em; text-align: right; margin-top:10px;">(Adapted from Bertrand Russell, <em>The Problems of Philosophy</em>, 1912)</p>
+        </div>
 
-             <!-- Slide 46: Chapter Summary -->
-             <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary</h2>
-               <p class="text-gray-600 mb-4">
+        <!-- Slide 47: Chapter Summary -->
+        <div class="slide">
+            <h2>Chapter Summary</h2>
+            <p>
                  Logic, as a field of study within philosophy, concerns arguments and the principles of sound reasoning. Etymologically, "philosophy" means "love of wisdom," where wisdom entails a critical habit, perpetual vigilance regarding all things, and reverence for truth. Therefore, philosophy as the pursuit of wisdom involves developing critical habits, continuously searching for truth, and questioning the apparent. Questioning the apparent does not mean denying reality but rather engaging creatively with the world, moving beyond common understanding, and speculating about matters others accept unquestioningly.
-               </p>
-                <p class="text-gray-600">
+            </p>
+            <p>
                   As a rational and critical enterprise aiming to formulate and answer fundamental questions through reason, philosophy has dual aspects: critical and constructive. Critically, it analyzes, clarifies, and evaluates answers to basic metaphysical, epistemological, and axiological questions. Constructively, it attempts to formulate rationally defensible answers concerning the nature of reality, value, knowledge, and truth.
-                </p>
-             </div>
+            </p>
+        </div>
 
-              <!-- Slide 47: Chapter Summary (Continued) -->
-              <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary (Continued)</h2>
-                <p class="text-gray-600 mb-4">
+        <!-- Slide 48: Chapter Summary (Continued) -->
+        <div class="slide">
+            <h2>Chapter Summary (Continued)</h2>
+            <p>
                   As an academic discipline, philosophy possesses distinct features, including its systematic, logical, and flexible approach to ultimate questions about the universe, human life, knowledge, truth, and values, along with its holistic and evolutionary nature.
-                </p>
-                 <p class="text-gray-600 mb-4">
+            </p>
+            <p>
                    Philosophy utilizes its major branches—Metaphysics, Epistemology, Axiology, and Logic—to address core human concerns. Metaphysics investigates ultimate reality and existence. Epistemology studies the meaning, nature, source, scope, and possibility of human knowledge. Axiology examines human values, encompassing moral (Ethics), aesthetic (Aesthetics), and social/political values. Logic focuses on arguments and the principles of sound reasoning.
-                 </p>
-                 <p class="text-gray-600">
+            </p>
+            <p>
                    Studying philosophy offers significant benefits. It equips individuals with tools for critical self-examination and understanding the world. It aids self-actualization by fostering intellectual independence, reflective self-awareness, flexibility, tolerance, open-mindedness, creative and critical thinking, and the development of well-reasoned value systems. Furthermore, philosophy helps individuals navigate life's inherent uncertainties by fostering an appreciation for the limits of absolute knowledge and preparing them for the ongoing growth of human understanding.
-                 </p>
-              </div>
+            </p>
+        </div>
 
-              <!-- Slide 48: Self Check Exercise -->
-              <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Check Exercise</h2>
-                <ol class="list-decimal pl-6 text-gray-600 space-y-4">
+        <!-- Slide 49: Self Check Exercise -->
+        <div class="slide">
+            <h2>Self-Check Exercise</h2>
+            <ol>
                   <li>Define philosophy in terms of its etymological meaning, "pursuit of wisdom."</li>
                   <li>Explain the specific type of wisdom that philosophers seek, distinguishing it from other kinds of knowledge or skill.</li>
                   <li>List and briefly discuss the major features that characterize philosophy as a discipline.</li>
@@ -732,85 +1045,245 @@
                   <li>Discuss the fundamental epistemological debate concerning the primary sources of human knowledge (e.g., Empiricism vs. Rationalism).</li>
                   <li>Briefly outline the major branches within Ethics (Moral Philosophy).</li>
                   <li>Discuss the key benefits and importance of studying philosophy.</li>
-                </ol>
-              </div>
+            </ol>
+        </div>
 
-               <!-- Slide 49: References -->
-               <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
-                 <!-- References retained from original; formatting checked for basic consistency -->
-                 <div class="text-xs text-gray-600 space-y-1 overflow-y-auto max-h-96">
-                     <p class="ref-item">Emmet, E. R. (1964). *Learning to Philosophize*. Penguin Books.</p>
-                     <p class="ref-item">Hurley, Patrick J. (2014). *A Concise Introduction to Logic* (12th ed.). Wadsworth, Cengage Learning.</p>
-                     <p class="ref-item">Jones, G., Cardinal, D., et al. (2006). *Moral Philosophy: A Guide to Ethical Theory*. Hodder Murray.</p>
-                     <p class="ref-item">Mabbott, J. D. (1966). *An Introduction to Ethics*. Hutchinson University Library, Hutchinson & Co Publisher.</p>
-                     <p class="ref-item">Mautner, Thomas (Ed.). (2000). *The Penguin Dictionary of Philosophy*. Penguin Books.</p>
-                     <p class="ref-item">Plato. (1999). In S. M. Cahn (Ed.), *Classics of Western Philosophy* (5th ed.). Hackett Publishing Company, Inc.</p>
-                     <p class="ref-item">Pojman, Louis P. (1998). *Philosophical Traditions: A Text with Readings*. Wadsworth Publishing Company.</p>
-                     <p class="ref-item">Ratner, Joseph (Ed.). (1939). *Intelligence in the Modern World: John Dewey's Philosophy*. The Modern Library.</p>
-                     <p class="ref-item">Russell, Bertrand. (1912). *The Problems of Philosophy*. (Various publishers).</p> <!-- Added Russell Reference -->
-                     <p class="ref-item">Woodhouse, Mark B. (2000). *A Preface to Philosophy* (6th ed.). Wadsworth.</p> <!-- Corrected publisher/imprint -->
-                  </div>
-               </div>
-
+        <!-- Slide 50: References -->
+        <div class="slide references">
+            <h2>References</h2>
+            <ul>
+                <li>Emmet, E. R. (1964). <em>Learning to Philosophize</em>. Penguin Books.</li>
+                <li>Hurley, Patrick J. (2014). <em>A Concise Introduction to Logic</em> (12th ed.). Wadsworth, Cengage Learning.</li>
+                <li>Jones, G., Cardinal, D., et al. (2006). <em>Moral Philosophy: A Guide to Ethical Theory</em>. Hodder Murray.</li>
+                <li>Mabbott, J. D. (1966). <em>An Introduction to Ethics</em>. Hutchinson University Library, Hutchinson & Co Publisher.</li>
+                <li>Mautner, Thomas (Ed.). (2000). <em>The Penguin Dictionary of Philosophy</em>. Penguin Books.</li>
+                <li>Plato. (1999). In S. M. Cahn (Ed.), <em>Classics of Western Philosophy</em> (5th ed.). Hackett Publishing Company, Inc.</li>
+                <li>Pojman, Louis P. (1998). <em>Philosophical Traditions: A Text with Readings</em>. Wadsworth Publishing Company.</li>
+                <li>Ratner, Joseph (Ed.). (1939). <em>Intelligence in the Modern World: John Dewey's Philosophy</em>. The Modern Library.</li>
+                <li>Russell, Bertrand. (1912). <em>The Problems of Philosophy</em>. (Various publishers).</li>
+                <li>Woodhouse, Mark B. (2000). <em>A Preface to Philosophy</em> (6th ed.). Wadsworth.</li>
+            </ul>
+        </div>
 
     </div>
 
-    <!-- Navigation Arrows -->
-    <div class="flex justify-between mt-4">
-      <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
-      <span id="slideCounter" class="text-gray-600 self-center">1 / 49</span> <!-- Counter remains correct -->
-      <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
+    <div class="slide-counter-container">
+        <span id="slideCounter" class="slide-counter-text"></span>
     </div>
-  </div>
 
-  <script>
-    // JavaScript remains unchanged as requested
-    const slides = document.querySelectorAll('.slide');
-    const prevButton = document.getElementById('prevSlide');
-    const nextButton = document.getElementById('nextSlide');
-    const slideCounter = document.getElementById('slideCounter'); // Get counter element
-    let currentSlide = 0;
+    <button id="prevBtn" class="side-nav-button" onclick="showPrevSlide()">‹</button>
+    <button id="nextBtn" class="side-nav-button" onclick="showNextSlide()">›</button>
 
-    function updateSlide() {
-      slides.forEach((slide, index) => {
-        slide.classList.toggle('active', index === currentSlide);
-      });
-      prevButton.disabled = currentSlide === 0;
-      nextButton.disabled = currentSlide === slides.length - 1;
-      // Update slide counter text
-      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
-    }
 
-    prevButton.addEventListener('click', () => {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlide();
-      }
-    });
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounterElem = document.getElementById('slideCounter');
+        let currentSlide = 0;
+        const animationDuration = 600; // Match CSS transition duration
 
-    nextButton.addEventListener('click', () => {
-      if (currentSlide < slides.length - 1) {
-        currentSlide++;
-        updateSlide();
-      }
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (event) => {
-       if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
-            return; // Prevent slide change if typing in an input/textarea
+        function updateSlideCounter() {
+            if (slides.length > 0) {
+                slideCounterElem.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+            } else {
+                slideCounterElem.textContent = `No slides`;
+            }
         }
-      if (event.key === 'ArrowLeft' && currentSlide > 0) {
-        currentSlide--;
-        updateSlide();
-      } else if (event.key === 'ArrowRight' && currentSlide < slides.length - 1) {
-        currentSlide++;
-        updateSlide();
-      }
-    });
 
-    updateSlide(); // Initialize the first slide and counter
-  </script>
+        function updateNavButtons() {
+             if (slides.length <= 1) {
+                 prevBtn.disabled = true;
+                 nextBtn.disabled = true;
+                 prevBtn.style.display = 'none';
+                 nextBtn.style.display = 'none';
+             } else {
+                 prevBtn.disabled = currentSlide === 0;
+                 nextBtn.disabled = currentSlide === slides.length - 1;
+                 prevBtn.style.display = 'block';
+                 nextBtn.style.display = 'block';
+             }
+        }
+
+        function showSlide(newIndex, direction) {
+            if (slides.length === 0) return;
+            if (newIndex < 0 || newIndex >= slides.length) {
+                return;
+            }
+
+            const oldSlide = slides[currentSlide];
+            const newSlide = slides[newIndex];
+
+            if (!newSlide) {
+                 console.error(`Slide at index ${newIndex} not found.`);
+                 return;
+            }
+
+            if (newIndex === currentSlide && oldSlide.classList.contains('active') && direction !== 'init') {
+                newSlide.scrollTop = 0; // Reset scroll if clicking on the already active slide
+                return;
+            }
+
+            newSlide.scrollTop = 0;
+
+            if (oldSlide && oldSlide !== newSlide) {
+                oldSlide.classList.remove('active');
+                if (direction === 'next') {
+                    oldSlide.classList.add('exiting-left');
+                } else if (direction === 'prev') {
+                    oldSlide.classList.add('exiting-right');
+                }
+                oldSlide.style.zIndex = '0';
+            }
+
+            newSlide.classList.remove('active', 'exiting-left', 'exiting-right');
+
+            if (direction === 'init') {
+                newSlide.style.transform = 'translateX(0)';
+                newSlide.style.opacity = '1';
+            } else {
+                newSlide.style.opacity = '0'; // Start transparent for fade-in
+                if (direction === 'prev') {
+                    newSlide.style.transform = 'translateX(-100%)';
+                } else { // 'next'
+                    newSlide.style.transform = 'translateX(100%)';
+                }
+            }
+            newSlide.style.visibility = 'visible';
+            newSlide.style.zIndex = '1';
+
+            newSlide.offsetHeight; // Force reflow
+
+            newSlide.classList.add('active'); // Triggers CSS transition for opacity and transform
+
+            currentSlide = newIndex;
+
+            setTimeout(() => {
+                slides.forEach((s, i) => {
+                    if (i === currentSlide) {
+                        // For the active slide, ensure inline styles used for transition start are cleared
+                        // so that .active class styles fully apply.
+                        s.style.transform = ''; // Let .active class's transform: translateX(0) take over
+                        s.style.opacity = '';   // Let .active class's opacity: 1 take over
+                    } else {
+                        // For non-active slides, ensure they are hidden and reset
+                        s.classList.remove('active', 'exiting-left', 'exiting-right');
+                        s.style.visibility = 'hidden';
+                        s.style.opacity = '0';
+                        s.style.transform = 'translateX(100%)'; // Reset to default off-screen right
+                        s.style.zIndex = '0';
+                    }
+                });
+            }, animationDuration);
+
+            updateNavButtons();
+            updateSlideCounter();
+        }
+
+
+        function showNextSlide() {
+            if (currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1, 'next');
+            }
+        }
+
+        function showPrevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1, 'prev');
+            }
+        }
+
+        function initializeSlides() {
+            if (slides.length > 0) {
+                slides.forEach((slide) => { // No index needed here
+                    slide.classList.remove('active', 'exiting-left', 'exiting-right');
+                    slide.style.transform = 'translateX(100%)';
+                    slide.style.opacity = '0';
+                    slide.style.visibility = 'hidden';
+                    slide.style.zIndex = '0';
+                    slide.scrollTop = 0;
+                });
+                currentSlide = 0;
+                showSlide(0, 'init');
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+            updateNavButtons();
+            updateSlideCounter();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+             initializeSlides();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            const activeElement = document.activeElement;
+            const activeSlide = slides[currentSlide];
+
+            if (activeElement) {
+                const tagName = activeElement.tagName.toLowerCase();
+                if (tagName === 'input' || tagName === 'textarea' || tagName === 'select' || activeElement.isContentEditable) {
+                     return;
+                }
+            }
+
+            const epsilon = 1.5;
+
+            switch (event.key) {
+                case 'ArrowRight':
+                case 'PageDown':
+                    event.preventDefault();
+                    showNextSlide();
+                    break;
+                case 'ArrowLeft':
+                case 'PageUp':
+                    event.preventDefault();
+                    showPrevSlide();
+                    break;
+                case 'ArrowDown':
+                    event.preventDefault();
+                    if (activeSlide) {
+                        const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
+                        const isNotAtBottom = activeSlide.scrollTop < (activeSlide.scrollHeight - activeSlide.clientHeight - epsilon);
+                        if (isScrollable && isNotAtBottom) {
+                            activeSlide.scrollTop += activeSlide.clientHeight * 0.15;
+                        }
+                    }
+                    break;
+                case 'ArrowUp':
+                    event.preventDefault();
+                    if (activeSlide) {
+                        const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
+                        const isNotAtTop = activeSlide.scrollTop > epsilon;
+                        if (isScrollable && isNotAtTop) {
+                            activeSlide.scrollTop -= activeSlide.clientHeight * 0.15;
+                        }
+                    }
+                    break;
+                case 'Home':
+                    event.preventDefault();
+                    if (activeSlide) {
+                        if (currentSlide !== 0) {
+                            showSlide(0, 'prev');
+                        } else {
+                            activeSlide.scrollTop = 0;
+                        }
+                    }
+                    break;
+                case 'End':
+                    event.preventDefault();
+                     if (activeSlide) {
+                        if (currentSlide !== slides.length - 1) {
+                            showSlide(slides.length - 1, 'next');
+                        } else {
+                            activeSlide.scrollTop = activeSlide.scrollHeight;
+                        }
+                     }
+                    break;
+            }
+        });
+    </script>
+
 </body>
 </html>
