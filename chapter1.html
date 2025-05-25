@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHIL1009 - Chapter 1: Logic and Philosophy</title> <!-- Updated Title -->
+    <title>PHIL1009 - Chapter 1: Logic and Philosophy</title>
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            /* Prevent body scrolling, the container/slides will manage overflow */
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
@@ -26,15 +25,13 @@
         .presentation-container {
             width: 90%;
             max-width: 1000px;
-            /* Use vh for relative height, allowing it to fit within different screen sizes */
             height: 85vh;
-            max-height: 650px; /* Keep a reasonable max height */
-            min-height: 450px; /* Prevent it from becoming too small */
+            max-height: 650px;
+            min-height: 450px;
             background-color: #fff;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             border-radius: 8px;
             position: relative;
-            /* Hide parts of slides that are outside the container during transition */
             overflow: hidden;
         }
 
@@ -44,18 +41,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            padding: 30px 40px 50px; /* Add padding */
-            box-sizing: border-box; /* Include padding in width/height */
+            padding: 30px 40px 50px;
+            box-sizing: border-box;
             background-color: #fff;
             opacity: 0;
-            visibility: hidden; /* Use visibility for better performance when not active */
-            /* Initial transform state for slides not active */
+            visibility: hidden;
             transform: translateX(100%);
-            /* Add transition for smooth animation */
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             display: flex;
             flex-direction: column;
-            /* Allow content within the slide to scroll if it overflows */
             overflow-y: auto;
             overflow-x: hidden;
         }
@@ -64,40 +58,33 @@
             opacity: 1;
             visibility: visible;
             transform: translateX(0);
-            z-index: 1; /* Ensure active slide is above others during transition */
+            z-index: 1;
         }
 
-        /* States for transitions */
         .slide.exiting-left { transform: translateX(-100%); opacity: 0; z-index: 0; }
         .slide.exiting-right { transform: translateX(100%); opacity: 0; z-index: 0; }
-         /* Note: entering classes are handled by removing transform(100% or -100%) and adding active */
 
-
-        /* Custom scrollbar for slides */
         .slide::-webkit-scrollbar { width: 8px; }
         .slide::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
         .slide::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
         .slide::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* Basic typography styling within slides */
         .slide h1, .slide h2, .slide h3 { color: #0056b3; margin-bottom: 15px; }
         .slide h1 { font-size: 2.6em; text-align: center;}
         .slide h2 { font-size: 1.8em; border-bottom: 2px solid #0056b3; padding-bottom: 8px; }
         .slide h3 { font-size: 1.5em; color: #007bff; margin-bottom: 10px;}
         .slide p, .slide li { font-size: 1em; line-height: 1.5; margin-bottom: 8px; }
-        .slide ul { list-style-type: disc; padding-left: 25px; margin-bottom: 10px;}
+        .slide ul { list-style-type: disc; padding-left: 25px; margin-bottom: 10px;} /* General UL styling */
         .slide ol { list-style-type: decimal; padding-left: 25px; margin-bottom: 10px;}
         .slide ul ul, .slide ol ul { list-style-type: circle; margin-top: 5px;}
-        .slide li strong { color: #0056b3; } /* Highlight key terms in lists */
+        .slide li strong { color: #0056b3; }
 
-
-        /* Specific styling for the Title Slide */
         .slide.title-slide {
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
-            overflow: hidden; /* Title slide should not scroll */
+            overflow: hidden;
         }
         .slide.title-slide h1 { font-size: 2.8em; margin-bottom: 25px; line-height: 1.2; }
         .slide.title-slide .presenter-info { margin-top: 30px; font-size: 1.3em; }
@@ -107,62 +94,36 @@
         .slide.title-slide .event-info { margin-top: 25px; font-size: 1em; color: #555;}
         .slide.title-slide .event-info p { margin: 3px 0; }
 
-
-         /* Specific style for Keywords */
-         .slide .keywords-section {
-             margin-top: 20px;
-             font-size: 1.1em;
-             text-align: center;
-             padding: 20px;
-             border: 1px dashed #ccc;
-             border-radius: 5px;
-             background-color: #f9f9f9;
-         }
-         .slide .keywords-section strong {
-             font-size: 1.3em;
-             display: block;
-             margin-bottom: 15px;
-             color: #0056b3;
-         }
-
-         /* Specific style for Abstract */
-        .slide .abstract-section strong {
-             display: block;
-             margin-bottom: 15px;
-             text-align: center;
-             font-size: 1.6em;
-             color: #0056b3;
-         }
-         .slide .abstract-section {
-             text-align: justify; /* Justify abstract text */
-         }
-
-
-         /* Specific style for References */
-         .slide.references h2 {
+        /* === MODIFIED REFERENCE STYLING === */
+        .slide.references h2 {
               text-align: left;
          }
-         .slide.references ul {
-             list-style: none; /* Remove bullet points */
-             padding: 0;
-             font-size: 0.8em; /* Slightly smaller for references */
-             line-height: 1.6; /* Increase line height for readability */
+        .slide.references ul {
+             list-style: none !important; /* FORCE NO BULLETS on UL */
+             padding: 0 !important;      /* Ensure no padding that might mimic bullets */
+             font-size: 0.8em;
+             line-height: 1.6;
+             margin: 0; /* Reset margin for UL itself */
          }
-         .slide.references li {
-             margin-bottom: 10px; /* Space between references */
+        .slide.references li {
+             list-style-type: none !important; /* FORCE NO BULLETS on LI */
+             margin-bottom: 12px;
              padding-bottom: 0px;
-             text-indent: -20px; /* Hanging indent */
-             padding-left: 20px; /* Space for hanging indent */
-             word-break: break-word; /* Ensure long lines wrap */
+             text-indent: -25px;
+             padding-left: 25px;
+             /* word-break: break-word; /* Optional, but good for long URLs */
          }
-         .slide.references li:last-child {
-             border-bottom: none; /* No border on last item */
+        .slide.references li:last-child {
              padding-bottom: 0;
+             /* If you want absolutely no space after the last reference:
+             margin-bottom: 0;
+             */
          }
+         /* === END OF MODIFIED REFERENCE STYLING === */
 
-        /* Navigation Buttons */
+
         .side-nav-button {
-            position: fixed; /* Use fixed to stay relative to viewport */
+            position: fixed;
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.3);
@@ -173,28 +134,16 @@
             font-weight: bold;
             cursor: pointer;
             border-radius: 5px;
-            z-index: 100; /* High z-index to be above presentation */
+            z-index: 100;
             transition: background-color 0.3s, opacity 0.3s;
             line-height: 1;
-            /* Add some margin to avoid sticking to the edge */
             margin: 0 10px;
         }
-        .side-nav-button:hover {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .side-nav-button:disabled {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: #aaa;
-            cursor: not-allowed;
-        }
-        #prevBtn {
-            left: 10px;
-        }
-        #nextBtn {
-            right: 10px;
-        }
+        .side-nav-button:hover { background-color: rgba(0, 0, 0, 0.6); }
+        .side-nav-button:disabled { background-color: rgba(0, 0, 0, 0.1); color: #aaa; cursor: not-allowed; }
+        #prevBtn { left: 10px; }
+        #nextBtn { right: 10px; }
 
-        /* Slide Counter */
         .slide-counter-container {
             position: fixed;
             bottom: 10px;
@@ -204,141 +153,73 @@
             padding: 8px 15px;
             border-radius: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 100; /* High z-index to be above presentation */
-             pointer-events: none; /* Allows clicks to pass through */
+            z-index: 100;
+            pointer-events: none;
         }
-        .slide-counter-text {
-            font-size: 0.9em;
-            color: #333;
-        }
+        .slide-counter-text { font-size: 0.9em; color: #333; }
 
-         /* Ensure images fit within slides */
         .slide img {
-            max-width: 100%; /* Ensure images don't exceed slide width */
-            max-height: 80%; /* Limit height to leave space for text/title */
+            max-width: 100%;
+            max-height: 80%;
             height: auto;
             display: block;
-            margin: 15px auto; /* Center images */
-            object-fit: contain; /* Ensure image aspect ratio is maintained */
+            margin: 15px auto;
+            object-fit: contain;
         }
 
-         /* Specific style for Objectives/Questions lists */
-         .slide .objectives-list, .slide .questions-list {
+        .slide .objectives-list, .slide .questions-list {
              list-style-type: none;
              padding-left: 0;
          }
-         .slide .objectives-list li, .slide .questions-list li {
-             margin-bottom: 10px; /* Reduced margin for tighter lists */
+        .slide .objectives-list li, .slide .questions-list li {
+             margin-bottom: 10px;
              padding-left: 25px;
              position: relative;
-             line-height: 1.5; /* Adjusted line height */
+             line-height: 1.5;
          }
-         .slide .objectives-list li:before {
-             content: "\2022"; /* Unicode bullet point */
-             color: #007bff;
-             font-weight: bold;
-             display: inline-block;
-             width: 1em;
-             margin-left: -1em;
-             position: absolute;
-             left: 0;
+        .slide .objectives-list li:before {
+             content: "\2022"; color: #007bff; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; position: absolute; left: 0;
          }
-          .slide .questions-list li:before {
-             content: "\2753"; /* Unicode question mark */
-             color: #007bff;
-             font-weight: bold;
-             display: inline-block;
-             width: 1em;
-             margin-left: -1em;
-             position: absolute;
-             left: 0;
+        .slide .questions-list li:before {
+             content: "\2753"; color: #007bff; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; position: absolute; left: 0;
          }
-         /* Default list styling for other uls */
-        .slide ul:not(.objectives-list):not(.questions-list) {
-            list-style-type: disc; /* Default disc bullets */
-            padding-left: 25px; /* Indent for bullets */
+        /* Adjusted general ul styling slightly to ensure specificity for other lists */
+        .slide ul:not(.slide.references ul):not(.objectives-list):not(.questions-list) {
+            list-style-type: disc;
+            padding-left: 25px;
             margin-bottom: 10px;
         }
-        .slide ul:not(.objectives-list):not(.questions-list) li {
-            margin-bottom: 6px; /* Spacing between list items */
-            padding-left: 0; /* No extra padding for default li */
-            position: static; /* Reset position from custom lists */
+        .slide ul:not(.slide.references ul):not(.objectives-list):not(.questions-list) li {
+            margin-bottom: 6px; padding-left: 0; position: static;
+             list-style-type: disc; /* Ensure these LIs get bullets if their parent UL does */
         }
-         .slide ul:not(.objectives-list):not(.questions-list) li::before {
-            content: ""; /* Remove pseudo-element from default li */
+        .slide ul:not(.slide.references ul):not(.objectives-list):not(.questions-list) li::before {
+            content: ""; /* Remove custom pseudo-elements for these general lists */
         }
 
 
-         /* Style for Methodology numbered steps */
-         .slide .methodology-steps {
-            list-style-type: decimal;
-            padding-left: 25px;
-         }
-          .slide .methodology-steps li {
-             margin-bottom: 12px;
-             line-height: 1.6;
-         }
-
-         /* Style for Recommendation list */
-         .slide .recommendation-list {
-             list-style-type: none;
-             padding-left: 0;
-         }
-         .slide .recommendation-list li {
-             margin-bottom: 15px;
-             padding-left: 25px;
-             position: relative;
-             line-height: 1.6;
-         }
-         .slide .recommendation-list li:before {
-             content: "\2713"; /* Unicode checkmark */
-             color: green;
-             font-weight: bold;
-             display: inline-block;
-             width: 1em;
-             margin-left: -1em;
-             position: absolute;
-             left: 0;
-         }
-
-         /* Specific style for Activity Boxes */
-         .slide .activity-box {
-             background-color: #eef2ff; /* Light blue/gray */
+        .slide .activity-box {
+             background-color: #eef2ff;
              padding: 12px 18px;
              border-radius: 6px;
-             border: 1px solid #c7d2fe; /* Light border */
-             margin: 15px 0px; /* Adjusted margin */
+             border: 1px solid #c7d2fe;
+             margin: 15px 0px;
              color: #444;
          }
-         .slide .activity-box strong { /* For "Activity # X:" part */
-             font-style: normal;
-             font-weight: bold;
-             display: block;
-             margin-bottom: 6px;
-             color: #0056b3; /* Theme color */
+        .slide .activity-box strong {
+             font-style: normal; font-weight: bold; display: block; margin-bottom: 6px; color: #0056b3;
          }
-         .slide .activity-box p {
-            margin-bottom: 0; /* Remove default p margin inside activity box */
-            font-style: italic; /* Ensure inner p also italic */
-            line-height: 1.4;
-         }
+        .slide .activity-box p { margin-bottom: 0; font-style: italic; line-height: 1.4; }
 
-
-         /* Styling for blockquotes */
-         .slide blockquote {
-             border-left: 4px solid #0056b3; /* Theme color accent */
+        .slide blockquote {
+             border-left: 4px solid #0056b3;
              padding-left: 20px;
-             margin: 20px 0 20px 10px; /* Top/bottom margin, left indent */
+             margin: 20px 0 20px 10px;
              font-style: italic;
-             color: #4a5568; /* Slightly muted text color */
+             color: #4a5568;
          }
-         .slide blockquote p {
-             margin-bottom: 10px; /* Spacing between paragraphs in a blockquote */
-             line-height: 1.6;
-         }
-         .slide blockquote p:last-child {
-             margin-bottom: 0;
-         }
+        .slide blockquote p { margin-bottom: 10px; line-height: 1.6; }
+        .slide blockquote p:last-child { margin-bottom: 0; }
 
     </style>
 </head>
@@ -349,7 +230,7 @@
         <div class="slide title-slide">
             <h1>PHIL1009 - Chapter One<br>Logic and Philosophy</h1>
             <div class="presenter-info" style="font-size: 1.1em;">
-                <p></p>
+                <p>Course Material</p>
             </div>
         </div>
 
@@ -1081,7 +962,7 @@
         const nextBtn = document.getElementById('nextBtn');
         const slideCounterElem = document.getElementById('slideCounter');
         let currentSlide = 0;
-        const animationDuration = 600; // Match CSS transition duration
+        const animationDuration = 600;
 
         function updateSlideCounter() {
             if (slides.length > 0) {
@@ -1120,7 +1001,7 @@
             }
 
             if (newIndex === currentSlide && oldSlide.classList.contains('active') && direction !== 'init') {
-                newSlide.scrollTop = 0; // Reset scroll if clicking on the already active slide
+                newSlide.scrollTop = 0;
                 return;
             }
 
@@ -1142,35 +1023,32 @@
                 newSlide.style.transform = 'translateX(0)';
                 newSlide.style.opacity = '1';
             } else {
-                newSlide.style.opacity = '0'; // Start transparent for fade-in
+                newSlide.style.opacity = '0';
                 if (direction === 'prev') {
                     newSlide.style.transform = 'translateX(-100%)';
-                } else { // 'next'
+                } else {
                     newSlide.style.transform = 'translateX(100%)';
                 }
             }
             newSlide.style.visibility = 'visible';
             newSlide.style.zIndex = '1';
 
-            newSlide.offsetHeight; // Force reflow
+            newSlide.offsetHeight; 
 
-            newSlide.classList.add('active'); // Triggers CSS transition for opacity and transform
+            newSlide.classList.add('active'); 
 
             currentSlide = newIndex;
 
             setTimeout(() => {
                 slides.forEach((s, i) => {
                     if (i === currentSlide) {
-                        // For the active slide, ensure inline styles used for transition start are cleared
-                        // so that .active class styles fully apply.
-                        s.style.transform = ''; // Let .active class's transform: translateX(0) take over
-                        s.style.opacity = '';   // Let .active class's opacity: 1 take over
+                        s.style.transform = ''; 
+                        s.style.opacity = '';   
                     } else {
-                        // For non-active slides, ensure they are hidden and reset
                         s.classList.remove('active', 'exiting-left', 'exiting-right');
                         s.style.visibility = 'hidden';
                         s.style.opacity = '0';
-                        s.style.transform = 'translateX(100%)'; // Reset to default off-screen right
+                        s.style.transform = 'translateX(100%)'; 
                         s.style.zIndex = '0';
                     }
                 });
@@ -1179,7 +1057,6 @@
             updateNavButtons();
             updateSlideCounter();
         }
-
 
         function showNextSlide() {
             if (currentSlide < slides.length - 1) {
@@ -1195,7 +1072,7 @@
 
         function initializeSlides() {
             if (slides.length > 0) {
-                slides.forEach((slide) => { // No index needed here
+                slides.forEach((slide) => { 
                     slide.classList.remove('active', 'exiting-left', 'exiting-right');
                     slide.style.transform = 'translateX(100%)';
                     slide.style.opacity = '0';
@@ -1231,24 +1108,16 @@
             const epsilon = 1.5;
 
             switch (event.key) {
-                case 'ArrowRight':
-                case 'PageDown':
-                    event.preventDefault();
-                    showNextSlide();
-                    break;
-                case 'ArrowLeft':
-                case 'PageUp':
-                    event.preventDefault();
-                    showPrevSlide();
-                    break;
+                case 'ArrowRight': case 'PageDown':
+                    event.preventDefault(); showNextSlide(); break;
+                case 'ArrowLeft': case 'PageUp':
+                    event.preventDefault(); showPrevSlide(); break;
                 case 'ArrowDown':
                     event.preventDefault();
                     if (activeSlide) {
                         const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
                         const isNotAtBottom = activeSlide.scrollTop < (activeSlide.scrollHeight - activeSlide.clientHeight - epsilon);
-                        if (isScrollable && isNotAtBottom) {
-                            activeSlide.scrollTop += activeSlide.clientHeight * 0.15;
-                        }
+                        if (isScrollable && isNotAtBottom) activeSlide.scrollTop += activeSlide.clientHeight * 0.15;
                     }
                     break;
                 case 'ArrowUp':
@@ -1256,30 +1125,16 @@
                     if (activeSlide) {
                         const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
                         const isNotAtTop = activeSlide.scrollTop > epsilon;
-                        if (isScrollable && isNotAtTop) {
-                            activeSlide.scrollTop -= activeSlide.clientHeight * 0.15;
-                        }
+                        if (isScrollable && isNotAtTop) activeSlide.scrollTop -= activeSlide.clientHeight * 0.15;
                     }
                     break;
                 case 'Home':
                     event.preventDefault();
-                    if (activeSlide) {
-                        if (currentSlide !== 0) {
-                            showSlide(0, 'prev');
-                        } else {
-                            activeSlide.scrollTop = 0;
-                        }
-                    }
+                    if (activeSlide) currentSlide !== 0 ? showSlide(0, 'prev') : activeSlide.scrollTop = 0;
                     break;
                 case 'End':
                     event.preventDefault();
-                     if (activeSlide) {
-                        if (currentSlide !== slides.length - 1) {
-                            showSlide(slides.length - 1, 'next');
-                        } else {
-                            activeSlide.scrollTop = activeSlide.scrollHeight;
-                        }
-                     }
+                     if (activeSlide) currentSlide !== slides.length - 1 ? showSlide(slides.length - 1, 'next') : activeSlide.scrollTop = activeSlide.scrollHeight;
                     break;
             }
         });
