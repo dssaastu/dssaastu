@@ -1,1178 +1,1479 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Standardized Course Code -->
-  <title>PHIL1009 - Chapter 4: Basic Concepts of Critical Thinking</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .slide { display: none; }
-    .slide.active { display: block; }
-    /* Styling for activity boxes */
-    .activity-box {
-        background-color: #eff6ff; /* blue-50 */
-        padding: 0.75rem; /* p-3 */
-        border-radius: 0.375rem; /* rounded */
-        border: 1px solid #bfdbfe; /* blue-200 */
-        margin-bottom: 1rem; /* mb-4 */
-        margin-top: 1rem; /* mt-4 */
-    }
-     /* Specific styling for bullet points */
-     .arrow-list li::before, .star-list li::before {
-         margin-right: 0.5em;
-     }
-     .arrow-list li::before {
-         content: '➢ '; /* Using a right arrow symbol */
-     }
-     .star-list {
-         list-style-type: none;
-         padding-left: 1rem; /* Adjust as needed */
-     }
-     .star-list li::before {
-        content: '❖ '; /* Using a star symbol */
-     }
-      /* Styling for notes */
-      .note-box {
-         background-color: #f0f9ff; /* blue-50 */
-         padding: 0.5rem; /* p-2 */
-         border-left: 4px solid #93c5fd; /* blue-300 */
-         margin-bottom: 1rem;
-         font-style: italic;
-      }
-       /* Styling for blockquotes */
-      blockquote {
-          border-left: 4px solid #d1d5db; /* gray-300 */
-          padding-left: 1rem; /* pl-4 */
-          font-style: italic;
-          color: #4b5563; /* gray-700 */
-          margin-bottom: 1rem;
-          margin-top: 1rem;
-      }
-      /* Styling for tables */
-      table, th, td {
-          border: 1px solid #e2e8f0; /* gray-300 */
-          padding: 8px; /* p-2 */
-      }
-      table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 1rem; /* mt-4 */
-          margin-bottom: 1rem; /* mb-4 */
-      }
-      th {
-          background-color: #f7fafc; /* gray-100 */
-          font-weight: bold;
-          text-align: left; /* Ensure consistent alignment */
-      }
-       .diagram-flow {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-       }
-        .diagram-box {
-           border: 1px solid #ccc;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIL1009 - Chapter 4: Basic Concepts of Critical Thinking</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .presentation-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 85vh;
+            max-height: 650px;
+            min-height: 450px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 40px 50px;
+            box-sizing: border-box;
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 1;
+        }
+
+        .slide.exiting-left { transform: translateX(-100%); opacity: 0; z-index: 0; }
+        .slide.exiting-right { transform: translateX(100%); opacity: 0; z-index: 0; }
+
+        .slide::-webkit-scrollbar { width: 8px; }
+        .slide::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .slide::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .slide::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        .slide h1, .slide h2, .slide h3 { color: #0056b3; margin-bottom: 15px; }
+        .slide h1 { font-size: 2.6em; text-align: center;}
+        .slide h2 { font-size: 1.8em; border-bottom: 2px solid #0056b3; padding-bottom: 8px; }
+        .slide h3 { font-size: 1.5em; color: #007bff; margin-bottom: 10px;}
+        .slide p, .slide li { font-size: 1em; line-height: 1.5; margin-bottom: 8px; }
+        .slide ul { list-style-type: disc; padding-left: 25px; margin-bottom: 10px;}
+        .slide ol { list-style-type: decimal; padding-left: 25px; margin-bottom: 10px;}
+        .slide ul ul, .slide ol ul { list-style-type: circle; margin-top: 5px;}
+        .slide li strong { color: #0056b3; }
+
+        .slide.title-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .slide.title-slide h1 { font-size: 2.8em; margin-bottom: 25px; line-height: 1.2; }
+        .slide.title-slide .presenter-info { margin-top: 30px; font-size: 1.3em; }
+        .slide.title-slide .presenter-info p { margin: 8px 0; }
+
+        /* === REFERENCE STYLING (from successful version) === */
+        .slide.references h2 {
+              text-align: left;
+         }
+        .slide.references ul {
+             list-style: none !important;
+             padding: 0 !important;
+             margin: 0;
+             font-size: 0.8em;
+             line-height: 1.6;
+         }
+        .slide.references li {
+             list-style-type: none !important;
+             margin-bottom: 12px;
+             padding-bottom: 0px;
+             text-indent: -25px;
+             padding-left: 25px;
+             word-break: break-word;
+         }
+        .slide.references li:last-child {
+             margin-bottom: 0;
+             padding-bottom: 0;
+         }
+         /* === END OF REFERENCE STYLING === */
+
+
+        .side-nav-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            padding: 15px 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 100;
+            transition: background-color 0.3s, opacity 0.3s;
+            line-height: 1;
+            margin: 0 10px;
+        }
+        .side-nav-button:hover { background-color: rgba(0, 0, 0, 0.6); }
+        .side-nav-button:disabled { background-color: rgba(0, 0, 0, 0.1); color: #aaa; cursor: not-allowed; }
+        #prevBtn { left: 10px; }
+        #nextBtn { right: 10px; }
+
+        .slide-counter-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            pointer-events: none;
+        }
+        .slide-counter-text { font-size: 0.9em; color: #333; }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 80%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            object-fit: contain;
+        }
+
+        .slide .objectives-list, .slide .questions-list, .slide .arrow-list, .slide .star-list {
+             list-style-type: none;
+             padding-left: 0;
+         }
+        .slide .objectives-list li, .slide .questions-list li, .slide .arrow-list li, .slide .star-list li {
+             margin-bottom: 10px;
+             padding-left: 25px;
+             position: relative;
+             line-height: 1.5;
+         }
+        .slide .objectives-list li:before, .slide .arrow-list li:before {
+             content: "\2022"; color: #007bff; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; position: absolute; left: 0;
+         }
+        .slide .questions-list li:before, .slide .star-list li:before {
+             content: "\2753"; color: #007bff; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; position: absolute; left: 0;
+         }
+        .slide ul:not(.slide.references ul):not(.objectives-list):not(.questions-list):not(.arrow-list):not(.star-list) {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        .slide ul:not(.slide.references ul):not(.objectives-list):not(.questions-list):not(.arrow-list):not(.star-list) li {
+            margin-bottom: 6px; padding-left: 0; position: static;
+            list-style-type: disc;
+        }
+        .slide ul:not(.slide.references ul):not(.objectives-list):not(.questions-list):not(.arrow-list):not(.star-list) li::before {
+            content: "";
+        }
+
+        .slide .activity-box {
+             background-color: #eef2ff;
+             padding: 12px 18px;
+             border-radius: 6px;
+             border: 1px solid #c7d2fe;
+             margin: 15px 0px;
+             color: #444;
+         }
+        .slide .activity-box strong {
+             font-style: normal; font-weight: bold; display: block; margin-bottom: 6px; color: #0056b3;
+         }
+        .slide .activity-box p { margin-bottom: 0; font-style: italic; line-height: 1.4; }
+
+        .slide .note-box {
+             background-color: #f0f9ff;
+             padding: 10px 15px;
+             border-left: 4px solid #007bff;
+             margin: 15px 0px;
+             font-style: italic;
+             color: #334155;
+        }
+        .slide .note-box strong {
+            font-style: normal;
+            font-weight: bold;
+            color: #0056b3;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .slide blockquote {
+             border-left: 4px solid #0056b3;
+             padding-left: 20px;
+             margin: 20px 0 20px 10px;
+             font-style: italic;
+             color: #4a5568;
+         }
+        .slide blockquote p { margin-bottom: 10px; line-height: 1.6; }
+        .slide blockquote p:last-child { margin-bottom: 0; }
+
+        .slide table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .slide th, .slide td {
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .slide th {
+            background-color: #e9ecef;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .slide tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .slide .diagram-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+        .slide .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .slide .diagram-box {
+           border: 1px solid #0056b3;
+           background-color: #e7f0f9;
            padding: 8px 12px;
            text-align: center;
-           margin: 0 5px;
-           min-width: 80px;
+           margin: 0 8px;
+           min-width: 100px;
+           border-radius: 4px;
+           font-size: 0.9em;
         }
-        .diagram-arrow {
-            font-size: 1.5rem;
-            color: #333;
-            margin: 0 10px; /* Added space around arrow */
+        .slide .diagram-arrow {
+            font-size: 1.8em;
+            color: #0056b3;
+            margin: 0 12px;
+            font-weight: bold;
         }
-        .diagram-container {
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center; /* Center diagram labels */
+        .slide .diagram-container p.text-sm {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 2px;
         }
-
-    /* Ensure long reference lines wrap */
-    .ref-item { word-break: break-word; margin-bottom: 0.5rem; }
-  </style>
+    </style>
 </head>
-<body class="bg-gray-100 font-sans">
-  <div class="container mx-auto p-4 max-w-4xl">
-    <!-- Standardized Course Code -->
-    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">PHIL1009 - Chapter Four</h1>
+<body>
 
-    <!-- Slides Container -->
-    <div id="slides" class="relative bg-white rounded-lg shadow-lg p-6 min-h-[450px]">
-
-      <!-- Slide 1: Title and Overview -->
-      <div class="slide active">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">CHAPTER FOUR<br>BASIC CONCEPTS OF CRITICAL THINKING</h2>
-        <h3 class="text-xl font-semibold mb-2 text-gray-700">Chapter Overview</h3>
-        <p class="text-gray-600 mb-4">
-          This chapter focuses on the power of disciplined thinking—learning to think independently and become your own person. While many high schools emphasize "lower-order thinking" (passively absorbing and repeating information), colleges and universities prioritize fostering "higher-order thinking": the active, intelligent evaluation of ideas and information.
-        </p>
-         <p class="text-gray-600">
-           As Martin Luther King Jr. stated, “The function of education is to teach one to think intensively and to think critically.” Therefore, the primary goal of teaching critical thinking is to equip students with the ability to think—to become independent, self-directed thinkers and learners. It involves personal empowerment and enrichment derived from using one's mind to its full potential. This chapter addresses the meaning, standards, principles, characteristics, barriers, and benefits of critical thinking.
-         </p>
-      </div>
-
-      <!-- Slide 2: Chapter Objectives -->
-      <div class="slide">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Objectives</h2>
-        <p class="text-gray-600 mb-2">Upon successful completion of this chapter, you will be able to:</p>
-        <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-          <li>Define critical thinking.</li>
-          <li>Understand the standards of critical thinking.</li>
-          <li>Appreciate the principles guiding good arguments and critical thinking.</li>
-          <li>Understand the characteristics of critical thinking.</li>
-          <li>Identify common barriers to critical thinking.</li>
-          <li>Recognize the benefits of critical thinking.</li>
-        </ul>
-      </div>
-
-       <!-- Slide 3: Meaning of Critical Thinking Overview -->
-       <div class="slide">
-         <h2 class="text-2xl font-semibold mb-4 text-gray-700">1: Meaning of Critical Thinking</h2>
-         <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-         <p class="text-gray-600 mb-4">
-           Critical thinking encompasses a wide range of cognitive skills and intellectual dispositions necessary for effectively identifying, analyzing, and evaluating arguments and truth claims. This section explores the fundamental meaning and general nature of critical thinking.
-         </p>
-          <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Objectives:</h3>
-          <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-          <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-            <li>Understand the meaning and overall concept of critical thinking.</li>
-          </ul>
-       </div>
-
-        <!-- Slide 4: What is Critical Thinking? -->
-        <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">What is Critical Thinking?</h2>
-            <div class="activity-box">
-                <p class="font-semibold text-gray-700">Activity # 1:</p>
-                <p class="italic text-gray-600">How would you define critical thinking?</p>
+    <div class="presentation-container">
+        <!-- Slide 1: Title and Overview -->
+        <div class="slide title-slide">
+            <h1>PHIL1009 - Chapter Four<br>Basic Concepts of Critical Thinking</h1>
+            <div class="presenter-info" style="font-size: 1.1em;">
+                <p></p>
             </div>
-           <p class="text-gray-600 mb-4">
-             The word <strong>critical</strong> implies exercising skilled judgment or observation. In this context, critical thinking means thinking clearly and intelligently. More specifically, <strong>critical thinking</strong> is the general term for a broad set of cognitive skills and intellectual dispositions required to effectively identify, analyze, and evaluate arguments and claims to truth.
-           </p>
-            <p class="text-gray-600">
+        </div>
+
+        <!-- Slide 2: Chapter Overview -->
+        <div class="slide">
+            <h2>Chapter Overview</h2>
+            <p>
+              This chapter focuses on the power of disciplined thinking—learning to think independently and become your own person. While many high schools emphasize "lower-order thinking" (passively absorbing and repeating information), colleges and universities prioritize fostering "higher-order thinking": the active, intelligent evaluation of ideas and information.
+            </p>
+            <p>
+               As Martin Luther King Jr. stated, “The function of education is to teach one to think intensively and to think critically.” Therefore, the primary goal of teaching critical thinking is to equip students with the ability to think—to become independent, self-directed thinkers and learners. It involves personal empowerment and enrichment derived from using one's mind to its full potential. This chapter addresses the meaning, standards, principles, characteristics, barriers, and benefits of critical thinking.
+            </p>
+        </div>
+
+        <!-- Slide 3: Chapter Objectives -->
+        <div class="slide">
+            <h2>Chapter Objectives</h2>
+            <p>Upon successful completion of this chapter, you will be able to:</p>
+            <ul class="arrow-list">
+              <li>Define critical thinking.</li>
+              <li>Understand the standards of critical thinking.</li>
+              <li>Appreciate the principles guiding good arguments and critical thinking.</li>
+              <li>Understand the characteristics of critical thinking.</li>
+              <li>Identify common barriers to critical thinking.</li>
+              <li>Recognize the benefits of critical thinking.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: Meaning of Critical Thinking Overview -->
+        <div class="slide">
+            <h2>1: Meaning of Critical Thinking</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Critical thinking encompasses a wide range of cognitive skills and intellectual dispositions necessary for effectively identifying, analyzing, and evaluating arguments and truth claims. This section explores the fundamental meaning and general nature of critical thinking.
+            </p>
+            <h3>Section Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="arrow-list">
+                <li>Understand the meaning and overall concept of critical thinking.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 5: What is Critical Thinking? -->
+        <div class="slide">
+            <h2>What is Critical Thinking?</h2>
+            <div class="activity-box">
+                <strong>Activity # 1:</strong>
+                <p>How would you define critical thinking?</p>
+            </div>
+            <p>
+              The word <strong>critical</strong> implies exercising skilled judgment or observation. In this context, critical thinking means thinking clearly and intelligently. More specifically, <strong>critical thinking</strong> is the general term for a broad set of cognitive skills and intellectual dispositions required to effectively identify, analyze, and evaluate arguments and claims to truth.
+            </p>
+            <p>
               Furthermore, critical thinking helps individuals discover and overcome personal biases, formulate and present convincing reasons for conclusions, and make reasonable, intelligent decisions about what to believe and how to act.
             </p>
         </div>
 
-        <!-- Slide 5: Defining Critical Thinking -->
+        <!-- Slide 6: Defining Critical Thinking -->
         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Defining Critical Thinking Further</h2>
-           <p class="text-gray-600 mb-4">
-             However, mere intelligence does not guarantee the ability to think critically or reason effectively about information. Being smart is not sufficient; critical thinking is a process or journey that helps us reach the most useful, well-supported conclusions when evaluating claims.
-           </p>
-           <p class="text-gray-600 mb-4">
-             Critical thinking involves thinking clearly, fairly, rationally, objectively, and independently. It is a process aimed at impartial investigation, unswayed by irrelevant emotions. The ultimate goal is to arrive at well-reasoned, considered, and justifiable conclusions.
-           </p>
-            <p class="text-gray-600">
+            <h2>Defining Critical Thinking Further</h2>
+            <p>
+              However, mere intelligence does not guarantee the ability to think critically or reason effectively about information. Being smart is not sufficient; critical thinking is a process or journey that helps us reach the most useful, well-supported conclusions when evaluating claims.
+            </p>
+            <p>
+              Critical thinking involves thinking clearly, fairly, rationally, objectively, and independently. It is a process aimed at impartial investigation, unswayed by irrelevant emotions. The ultimate goal is to arrive at well-reasoned, considered, and justifiable conclusions.
+            </p>
+            <p>
               The American philosopher John Dewey defined critical thinking as an "active, persistent, and careful consideration of a belief or supposed form of knowledge in the light of the grounds which support it and the further conclusions to which it tends." Key aspects of this definition include the emphasis on being active, persistent, and focusing on the grounds (reasons) supporting beliefs.
             </p>
         </div>
 
-         <!-- Slide 6: Dewey's Definition: Active and Persistent -->
-         <div class="slide">
-           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Dewey's Definition: Active and Persistent Consideration</h2>
-           <p class="text-gray-600 mb-4">
-             First, Dewey emphasizes that critical thinking is an <strong>‘active’</strong> process. This contrasts with passively receiving ideas and information from others. Critical thinking involves actively engaging with information: thinking things through for oneself, raising questions, seeking relevant information, rather than passively learning from external sources.
-           </p>
-            <p class="text-gray-600">
+        <!-- Slide 7: Dewey's Definition: Active and Persistent -->
+        <div class="slide">
+            <h2>Dewey's Definition: Active and Persistent Consideration</h2>
+            <p>
+              First, Dewey emphasizes that critical thinking is an <strong>‘active’</strong> process. This contrasts with passively receiving ideas and information from others. Critical thinking involves actively engaging with information: thinking things through for oneself, raising questions, seeking relevant information, rather than passively learning from external sources.
+            </p>
+            <p>
               Second, it requires <strong>persistent and careful consideration</strong>. This contrasts with unreflective thinking, such as jumping to conclusions or making hasty decisions. While quick decisions are sometimes necessary or appropriate for minor issues, critical thinking demands persistence and careful thought, especially for important matters.
             </p>
-         </div>
+        </div>
 
-          <!-- Slide 7: Dewey's Definition: Grounds and Implications -->
-          <div class="slide">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Dewey's Definition: Grounds and Implications</h2>
-            <p class="text-gray-600">
+        <!-- Slide 8: Dewey's Definition: Grounds and Implications -->
+        <div class="slide">
+            <h2>Dewey's Definition: Grounds and Implications</h2>
+            <p>
               The most crucial part of Dewey’s definition concerns the <strong>‘grounds which support’</strong> a belief and the <strong>‘further conclusions to which it tends’</strong>. In essence, Dewey highlights the importance of *reasons* for holding beliefs and understanding the *implications* of those beliefs. Critical thinking places immense value on reasoning—providing reasons, evaluating reasoning, and understanding logical consequences. While there's more to critical thinking, skillful reasoning is undeniably a core element.
             </p>
-          </div>
+        </div>
 
-           <!-- Slide 8: Glaser's Definition -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Glaser's Definition: Attitude and Skill</h2>
-              <p class="text-gray-600 mb-4">
+        <!-- Slide 9: Glaser's Definition -->
+        <div class="slide">
+            <h2>Glaser's Definition: Attitude and Skill</h2>
+            <p>
                 Edward Glaser offered another influential definition, describing critical thinking as involving: (1) an <strong>attitude</strong> of being disposed to thoughtfully consider problems and subjects within one's experience; (2) <strong>knowledge</strong> of the methods of logical inquiry and reasoning; and (3) <strong>skill</strong> in applying those methods.
-              </p>
-             <p class="text-gray-600">
+            </p>
+            <p>
                Glaser's definition, clearly influenced by Dewey, emphasizes two key aspects widely recognized today:
                <br>• Critical thinking involves specific thinking <strong>skills</strong> (like logical analysis).
                <br>• Critical thinking also requires a <strong>disposition</strong> or attitude—a willingness and inclination to use those skills thoughtfully.
                <br>It combines habits of mind and abilities in approaching and understanding experience.
-             </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 9: Paul's Definition: Self-Improvement -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Paul's Definition: Improving Thinking Quality</h2>
-             <p class="text-gray-600">
+        <!-- Slide 10: Paul's Definition: Self-Improvement -->
+        <div class="slide">
+            <h2>Paul's Definition: Improving Thinking Quality</h2>
+            <p>
                Richard Paul provides another important perspective: <strong>Critical thinking</strong> is "that mode of thinking—about any subject, content or problem—in which the thinker improves the quality of his or her thinking by skillfully taking charge of the structures inherent in thinking and imposing intellectual standards upon them."
-             </p>
-              <p class="text-gray-600 mt-4">
+            </p>
+            <p>
                 Paul's definition uniquely emphasizes self-reflection and improvement. It highlights a consensus view among scholars: developing critical thinking involves <strong>‘thinking about one’s thinking’</strong> (meta-cognition) and consciously striving to improve it by adhering to standards of good reasoning within a specific domain.
-              </p>
-           </div>
+            </p>
+        </div>
 
-           <!-- Slide 10: Scriven's Definition & Critico-Creative Thinking -->
-           <div class="slide">
-             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Scriven's Definition & Critico-Creative Thinking</h2>
-             <p class="text-gray-600 mb-4">
+        <!-- Slide 11: Scriven's Definition & Critico-Creative Thinking -->
+        <div class="slide">
+            <h2>Scriven's Definition & Critico-Creative Thinking</h2>
+            <p>
                Michael Scriven defined critical thinking as the "skilled and active interpretation and evaluation of observations and communications, information and argumentation." He viewed it as a fundamental academic competency, comparable to reading and writing. Scriven stressed that critical thinking is a <strong>‘skilled’</strong> activity; merely intending to think critically isn't enough. Thinking must meet objective standards (like clarity, relevance, reasonableness) to qualify as critical, and proficiency in meeting these standards varies.
-             </p>
-              <p class="text-gray-600 mt-4">
+            </p>
+            <p>
                 Critical thinking is sometimes termed <strong>‘critico-creative’</strong> thinking. This addresses two points:
                 <br>1. It counters the misconception that "critical" implies only negative criticism.
                 <br>2. It highlights that effective evaluation requires creativity—imagining alternatives, considering different viewpoints, finding additional information, etc.
-              </p>
-           </div>
+            </p>
+        </div>
 
-            <!-- Slide 11: Critico-Creative Thinking (Continued) -->
-            <div class="slide">
-              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Critico-Creative Thinking (Continued)</h2>
-              <p class="text-gray-600">
+        <!-- Slide 12: Critico-Creative Thinking (Continued) -->
+        <div class="slide">
+            <h2>Critico-Creative Thinking (Continued)</h2>
+            <p>
                 To effectively judge arguments and ideas, one must not only identify flaws but also envision better alternatives and consider the strongest possible case for different viewpoints. This requires imagination and creativity. Thus, while "critico-creative" emphasizes the positive and imaginative aspects, the widely used term "critical thinking" should be understood in this comprehensive sense: evaluative thinking that involves both critique and creativity, particularly concerning the quality of reasoning supporting beliefs or actions.
-              </p>
+            </p>
+        </div>
+
+        <!-- Slide 13: Standards of Critical Thinking Overview -->
+        <div class="slide">
+            <h2>2: Standards of Critical Thinking</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Critical thinking is disciplined thinking guided by clear intellectual standards. Not all thinking qualifies as critical. To distinguish critical from uncritical thinking, we apply certain standards—conditions or levels that thinking must meet to be considered rigorous and acceptable. Key intellectual standards include clarity, precision, accuracy, relevance, consistency, logical correctness, completeness, and fairness. This section discusses these essential standards.
+            </p>
+        </div>
+
+        <!-- Slide 14: Standards of Critical Thinking Objectives -->
+        <div class="slide">
+            <h2>Section Objectives</h2>
+            <h3>Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="arrow-list">
+              <li>Recognize and understand key intellectual standards for critical thinking.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 15: Identifying Standards -->
+        <div class="slide">
+            <h2>Identifying Standards of Critical Thinking</h2>
+            <div class="activity-box">
+                <strong>Activity # 2:</strong>
+                <p>What standards distinguish good critical thinking from poor thinking? What basic criteria should critical thought meet?</p>
             </div>
-
-             <!-- Slide 12: Standards of Critical Thinking Overview -->
-             <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">2: Standards of Critical Thinking</h2>
-                <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-                <p class="text-gray-600">
-                  Critical thinking is disciplined thinking guided by clear intellectual standards. Not all thinking qualifies as critical. To distinguish critical from uncritical thinking, we apply certain standards—conditions or levels that thinking must meet to be considered rigorous and acceptable. Key intellectual standards include clarity, precision, accuracy, relevance, consistency, logical correctness, completeness, and fairness. This section discusses these essential standards.
-                </p>
-             </div>
-
-             <!-- Slide 13: Standards of Critical Thinking Objectives -->
-             <div class="slide">
-               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives</h2>
-                <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
-                <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-                <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                  <li>Recognize and understand key intellectual standards for critical thinking.</li>
-                </ul>
-             </div>
-
-              <!-- Slide 14: Identifying Standards -->
-              <div class="slide">
-                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Identifying Standards of Critical Thinking</h2>
-                 <div class="activity-box">
-                     <p class="font-semibold text-gray-700">Activity # 2:</p>
-                     <p class="italic text-gray-600">What standards distinguish good critical thinking from poor thinking? What basic criteria should critical thought meet?</p>
-                 </div>
-                 <p class="text-gray-600 mt-4">
-                   As established, critical thinking involves disciplined evaluation based on clear intellectual standards. These standards serve as benchmarks to differentiate rigorous, critical thought from uncritical thought. They define the conditions necessary for thinking to be considered sound and acceptable.
-                 </p>
-              </div>
-
-               <!-- Slide 15: Standard 1: Clarity -->
-               <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Intellectual Standards: Clarity</h2>
-                 <h3 class="text-xl font-semibold mb-2 text-gray-700">1. Clarity</h3>
-                 <p class="text-gray-600 mb-4">
-                   <strong>Clarity</strong> requires understanding concepts clearly and expressing them in language free from obscurity and vagueness. When constructing or evaluating arguments, clarity is paramount. Before effectively assessing an argument, we must clearly understand what is being asserted. Lack of clarity hinders evaluation.
-                 </p>
-                  <p class="text-gray-600 mb-4">
-                    Clarity acts as a "gateway" standard. If a statement is unclear, we cannot determine its accuracy, relevance, or logical merit because its meaning is uncertain. For example, the question "What can be done about the education system in Ethiopia?" is vague. To address it critically, one needs to clarify the specific problem being considered. A clearer formulation might be: "What strategies can educators implement to ensure students develop skills essential for success in their careers and daily lives?"
-                  </p>
-               </div>
-
-               <!-- Slide 16: Importance of Clarity -->
-               <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Importance of Clarity</h2>
-                 <p class="text-gray-600 mb-4">
-                   Lack of clarity can stem from laziness, carelessness, lack of skill, or even a misguided attempt to appear sophisticated or profound.
-                 </p>
-                 <blockquote>
-                    As William Strunk Jr. and E. B. White noted in *The Elements of Style*, "Muddiness is not merely a disturber of prose, it is also a destroyer of life, of hope..." Miscommunication due to unclear language can have serious consequences.
-                 </blockquote>
-                  <p class="text-gray-600 mt-4">
-                    Critical thinkers pursue clarity not only in language but also in thought. Achieving personal goals requires clear understanding of those goals, realistic self-assessment, and clear comprehension of challenges and opportunities. Valuing and seeking clarity of thought is essential for self-understanding and effective action.
-                  </p>
-               </div>
-
-               <!-- Slide 17: Standard 2: Precision -->
-               <div class="slide">
-                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Intellectual Standards: Precision</h2>
-                 <h3 class="text-xl font-semibold mb-2 text-gray-700">2. Precision</h3>
-                 <p class="text-gray-600 mb-4">
-                   <strong>Precision</strong> involves being exact, specific, and sufficiently detailed. Many everyday ideas, though seemingly understood, are actually vague. Careful examination reveals imprecision. Achieving precision requires close attention to detail. While precision is obviously vital in fields like medicine or engineering, it's equally important in everyday critical thinking.
-                 </p>
-                  <p class="text-gray-600">
-                    To navigate the complexities and uncertainties of many real-world problems, critical thinkers insist on precise questions and answers: What *exactly* is the problem? What *exactly* are the alternatives? What *exactly* are the pros and cons of each? Habitually seeking such precision is characteristic of critical thought.
-                  </p>
-               </div>
-
-                <!-- Slide 18: Standard 3: Accuracy -->
-                <div class="slide">
-                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Intellectual Standards: Accuracy</h2>
-                  <h3 class="text-xl font-semibold mb-2 text-gray-700">3. Accuracy</h3>
-                  <p class="text-gray-600 mb-4">
-                    <strong>Accuracy</strong> relates to correctness and truthfulness. Critical thinking relies on genuine, correct information. Reasoning based on false or inaccurate information will likely lead to flawed conclusions and distorted views of reality.
-                  </p>
-                  <blockquote>
-                     As John Rawls observed, truth is a primary virtue of intellectual systems; elegant theories must be rejected or revised if untrue. Ideas should be evaluated based on factual accuracy, not just their appeal.
-                  </blockquote>
-                  <p class="text-gray-600 mt-4">
-                    The "Garbage in, garbage out" principle applies to human thinking: decisions based on false information are likely to be poor ones. Critical thinkers value truth and actively seek accurate, timely information to inform their judgments and decisions as consumers, citizens, parents, and professionals.
-                  </p>
-                </div>
-
-                <!-- Slide 19: Standards 4 & 5: Relevance and Consistency -->
-                <div class="slide">
-                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Intellectual Standards: Relevance & Consistency</h2>
-                  <h3 class="text-xl font-semibold mb-2 text-gray-700">4. Relevance</h3>
-                   <p class="text-gray-600 mb-4">
-                     <strong>Relevance</strong> concerns logical connection. In any discussion or analysis, information considered should directly bear on the issue at hand. Raising irrelevant points is a common tactic to distract from the core argument. Critical thinkers focus on information pertinent to the question being addressed. Ideas or premises are relevant if they provide evidence or have a logical bearing on the conclusion's truth or merit.
-                   </p>
-                   <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">5. Consistency</h3>
-                    <p class="text-gray-600">
-                     <strong>Consistency</strong> requires holding beliefs and behaving in ways that are not contradictory. Logic dictates that if beliefs are inconsistent, at least one must be false. Critical thinkers strive for consistency, scrutinizing their own thinking and others' assertions for contradictions.
-                   </p>
-                </div>
-
-                <!-- Slide 20: Types of Consistency -->
-                <div class="slide">
-                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Types of Consistency</h2>
-                   <p class="text-gray-600 mb-4">Two key types of inconsistency should be avoided:</p>
-                   <ul class="list-disc pl-6 text-gray-600 space-y-2">
-                     <li>
-                       <strong>Logical Inconsistency:</strong> Holding beliefs that cannot simultaneously be true (e.g., believing both that all politicians are corrupt and that Senator Smith is an honest politician).
-                     </li>
-                     <li>
-                       <strong>Practical Inconsistency:</strong> A mismatch between one's stated beliefs or values and one's actions (hypocrisy). While sometimes deliberate, this often stems from self-deception.
-                     </li>
-                   </ul>
-                    <p class="text-gray-600 mb-4">
-                      While hypocrisy is a character issue, cases where individuals are unaware of practical inconsistencies highlight the human capacity for self-deception. Critical thinking aims to uncover such hidden inconsistencies.
-                    </p>
-                </div>
-
-                 <!-- Slide 21: The Challenge of Consistency -->
-                 <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">The Challenge of Consistency</h2>
-                   <blockquote class="text-gray-700 italic text-sm">
-                     Author Harold Kushner illustrates practical inconsistency: "Ask the average person which is more important... making money or being devoted to his family, and virtually everyone will answer family... But watch how the average person actually lives... See where he really invests his time and energy... he will give away the fact that he really does not live by what he says he believes." People might rationalize long work hours as devotion, masking conflicting priorities.
-                   </blockquote>
-                   <p class="text-gray-600 mt-4">
-                     Critical thinking helps reveal unconscious practical inconsistencies, enabling rational resolution. Similarly, people often hold logically inconsistent beliefs without realizing it (e.g., claiming all morality is relative while simultaneously condemning certain actions as objectively wrong). Critical thinking fosters awareness and avoidance of such logical contradictions. Critical thinkers strive for both logical and practical consistency.
-                   </p>
-                 </div>
-
-                 <!-- Slide 22: Standards 6 & 7: Logical Correctness and Completeness -->
-                 <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Intellectual Standards: Logical Correctness & Completeness</h2>
-                   <h3 class="text-xl font-semibold mb-2 text-gray-700">6. Logical Correctness</h3>
-                    <p class="text-gray-600 mb-4">
-                     To think logically means to reason correctly—drawing well-founded conclusions from beliefs or evidence. Critical thinking requires not only accurate beliefs but also the ability to reason validly or strongly from those beliefs. Illogical thinking involves drawing conclusions that don't actually follow from the premises or holding mutually contradictory ideas. Thinking is logical when the combined thoughts are mutually supportive and coherent.
-                   </p>
-                    <h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">7. Completeness</h3>
-                     <p class="text-gray-600">
-                      Critical thinking values depth and thoroughness over superficiality. While deep analysis isn't always feasible or appropriate (e.g., in a brief editorial), thinking is generally better when it explores issues comprehensively rather than skimming the surface. Completeness involves considering multiple perspectives, relevant factors, and potential complexities.
-                    </p>
-                 </div>
-
-                 <!-- Slide 23: Standard 8: Fairness -->
-                 <div class="slide">
-                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Intellectual Standards: Fairness</h2>
-                   <h3 class="text-xl font-semibold mb-2 text-gray-700">8. Fairness</h3>
-                   <p class="text-gray-600 mb-4">
-                     <strong>Fairness</strong> requires thinking that is open-minded, impartial, and free from distorting biases and preconceptions. Achieving complete objectivity is challenging; personal experiences and cultural backgrounds inevitably shape perspectives. People naturally resist unfamiliar ideas, prejudge issues, stereotype others, and equate truth with self-interest or group interest.
-                   </p>
-                    <p class="text-gray-600 mb-4">
-                      While perfect freedom from bias might be unattainable, striving for basic fair-mindedness is essential for critical thinking. It involves acknowledging one's own perspective and potential biases, and actively working to consider other viewpoints equitably, especially when evaluating ideas that challenge one's own interests or beliefs.
-                    </p>
-                 </div>
-
-                  <!-- Slide 24: Codes of Intellectual Conduct Intro -->
-                  <div class="slide">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">3: Codes of Intellectual Conduct for Effective Discussion</h2>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-                    <p class="text-gray-600 mb-4">
-                      Previous chapters established that good arguments involve claims supported by evidence and that critical thinking provides the skills and standards for evaluating such claims. This raises the question: What specific principles distinguish good arguments and critical thinking in practice? How should discussions be conducted to foster critical engagement?
-                    </p>
-                    <p class="text-gray-600">
-                      This section discusses basic codes of intellectual conduct, focusing on the principles underlying good argumentation and critical thinking, particularly within the context of constructive discussion and dialogue.
-                    </p>
-                  </div>
-
-                  <!-- Slide 25: Codes of Intellectual Conduct Objectives -->
-                  <div class="slide">
-                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives</h2>
-                     <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
-                     <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-                     <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                       <li>Recognize key principles governing good arguments.</li>
-                       <li>Appreciate fundamental principles guiding critical thinking processes.</li>
-                     </ul>
-                  </div>
-
-                   <!-- Slide 26: Principles of Good Argument Intro -->
-                   <div class="slide">
-                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.1 Principles of Good Argument</h2>
-                      <div class="activity-box">
-                          <p class="font-semibold text-gray-700">Activity # 3:</p>
-                          <p class="italic text-gray-600">What criteria distinguish a good argument from a poor one?</p>
-                      </div>
-                      <p class="text-gray-600">
-                        Whether engaging in discussion with others or internally debating an issue, constructing strong arguments is crucial. The following principles contribute to effective and ethical argumentation:
-                      </p>
-                   </div>
-
-                   <!-- Slide 27: Structural Principle -->
-                   <div class="slide">
-                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">1. The Structural Principle</h2>
-                     <p class="text-gray-600 mb-4 font-semibold">
-                       Principle: An argument should possess a clear and sound structure.
-                     </p>
-                     <p class="text-gray-600 mb-4">
-                       This principle requires that arguments meet fundamental structural requirements. A well-formed argument should:
-                       <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                         <li>Avoid using premises that contradict each other.</li>
-                         <li>Avoid using premises that contradict the conclusion.</li>
-                         <li>Avoid premises that explicitly or implicitly assume the conclusion's truth (begging the question).</li>
-                         <li>Employ valid deductive reasoning or strong inductive reasoning (i.e., the conclusion should genuinely follow from the premises with the appropriate degree of certainty or probability).</li>
-                       </ul>
-                     </p>
-                      <p class="text-gray-600">
-                        Arguments with fundamentally flawed structures (like contradictory premises, from which anything can be logically derived) cannot function effectively to establish a conclusion.
-                      </p>
-                   </div>
-
-                   <!-- Slide 28: Relevance Principle -->
-                   <div class="slide">
-                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">2. The Relevance Principle</h2>
-                      <p class="text-gray-600 font-semibold mb-4">
-                        Principle: Premises presented must be relevant to the truth or merit of the conclusion.
-                      </p>
-                      <p class="text-gray-600 mb-4">
-                        A good argument uses only reasons whose truth provides genuine evidence for the conclusion. Assessing the truth of irrelevant premises is pointless.
-                      </p>
-                      <p class="text-gray-600">
-                        To check for relevance, ask:
-                        <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                           <li>If this premise were true, would it make the conclusion more likely to be true? (If yes, likely relevant).</li>
-                           <li>Even if true, is this premise a factor that *should* influence our judgment about the conclusion's truth? (If no, likely irrelevant). For example, the popularity of an idea doesn't necessarily speak to its truth or merit, making premises about popularity often irrelevant to the conclusion's validity.</li>
-                        </ul>
-                      </p>
-                   </div>
-
-
-                    <!-- Slide 30: Acceptability Principle -->
-                    <div class="slide">
-                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">3. The Acceptability Principle</h2>
-                       <p class="text-gray-600 font-semibold mb-4">
-                         Principle: Reasons offered in support of a conclusion should be acceptable to a mature, rational person.
-                       </p>
-                       <p class="text-gray-600">
-                        The premises must meet standard criteria of acceptability. A premise is acceptable if it's reasonable to believe based on available evidence and common knowledge. "Acceptable" is often preferred over "true" because:
-                       </p>
-                        <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                            <li>Argumentation aims for agreement, often starting from premises the audience is likely to accept.</li>
-                            <li>Establishing absolute truth is difficult; "reasonable to accept" is a more practical standard.</li>
-                            <li>In many contexts (like testimony), "true" often means "accepted as true" by the speaker.</li>
-                        </ul>
-                    </div>
-
-
-                    <!-- Slide 32: Sufficiency Principle -->
-                    <div class="slide">
-                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">4. The Sufficiency Principle</h2>
-                       <p class="text-gray-600 font-semibold mb-4">
-                         Principle: The premises, taken together, must provide enough relevant and acceptable evidence to justify accepting the conclusion.
-                       </p>
-                       <p class="text-gray-600">
-                        This principle addresses the *quantity* and *weight* of the evidence. Relevant and acceptable premises might still be insufficient if they don't collectively provide strong enough support. Assessing sufficiency involves asking:
-                       </p>
-                        <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                           <li>Are the reasons offered, even if relevant and acceptable, *enough* to warrant belief in the conclusion?</li>
-                           <li>Is the evidence free from flaws like faulty causal reasoning?</li>
-                           <li>Is crucial evidence missing that would be necessary to accept the conclusion?</li>
-                        </ul>
-                        <p class="text-gray-600 mt-2">Disagreements often arise over the *weight* or importance assigned to different pieces of evidence.</p>
-                    </div>
-
-
-                    <!-- Slide 34: Rebuttal Principle -->
-                    <div class="slide">
-                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">5. The Rebuttal Principle</h2>
-                       <p class="text-gray-600 font-semibold mb-4">
-                         Principle: A good argument should effectively address anticipated serious criticisms or counterarguments.
-                       </p>
-                       <p class="text-gray-600">
-                        Arguments usually exist in a context where alternative views or criticisms are possible. A strong argument anticipates and refutes or mitigates the most significant objections against its position or reasoning. It demonstrates awareness of the broader dialectical context.
-                       </p>
-                    </div>
-
-                    <!-- Slide 35: Applying the Rebuttal Principle -->
-                    <div class="slide">
-                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">Applying the Rebuttal Principle</h2>
-                      <p class="text-gray-600 mb-4">
-                        Applying this principle involves considering:
-                        <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                            <li>What are the strongest counterarguments to the position?</li>
-                            <li>Does the argument address these effectively?</li>
-                            <li>What are potential weaknesses in the argument itself?</li>
-                            <li>Does the argument acknowledge and address these weaknesses?</li>
-                            <li>Does it explain why alternative positions are less convincing?</li>
-                        </ul>
-                      </p>
-                    </div>
-
-                     <!-- Slide 36: Violating the Rebuttal Principle -->
-                     <div class="slide">
-                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Violating the Rebuttal Principle</h2>
-                       <p class="text-gray-600 mb-4">
-                         Arguments fail this principle when they employ diversionary tactics instead of genuine rebuttal. Examples include:
-                         <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                            <li>Misrepresenting criticisms (Straw Man fallacy).</li>
-                            <li>Addressing only trivial objections.</li>
-                            <li>Introducing irrelevant side issues (Red Herring).</li>
-                            <li>Using humor or ridicule instead of substance.</li>
-                            <li>Ignoring or denying counterevidence.</li>
-                            <li>Attacking the critic instead of the criticism (Ad Hominem).</li>
-                         </ul>
-                       </p>
-                        <p class="text-gray-600">These tactics violate the obligation to engage honestly with opposing viewpoints.</p>
-                     </div>
-
-                     <!-- Slide 37: Principles of Critical Thinking Intro -->
-                     <div class="slide">
-                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.2 Principles of Critical Thinking</h2>
-                       <p class="text-gray-600">
-                         Beyond the principles of good argumentation, certain principles guide the *process* of critical thinking itself, particularly in constructive dialogue and inquiry. These reflect essential attitudes for effective intellectual conduct.
-                       </p>
-                     </div>
-
-                      <!-- Slide 38: Fallibility Principle -->
-                      <div class="slide">
-                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">1. The Fallibility Principle</h2>
-                         <p class="text-gray-600 font-semibold mb-4">
-                           Principle: Acknowledge your own fallibility.
-                         </p>
-                         <p class="text-gray-600 mb-4">
-                            Participants in a discussion should be willing to accept that their own initial views might be incorrect or incomplete. Recognizing one's potential fallibility is crucial for genuine inquiry and open-mindedness.
-                         </p>
-                          <div class="activity-box">
-                              <p class="font-semibold text-gray-700">Activity # 4:</p>
-                              <p class="italic text-gray-600">What attitudes distinguish critical thinking from uncritical thinking during a discussion?</p>
-                          </div>
-                      </div>
-
-                      <!-- Slide 39: Importance of the Fallibility Principle -->
-                      <div class="slide">
-                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance of the Fallibility Principle</h2>
-                        <p class="text-gray-600">
-                          Consciously accepting your own fallibility signals a willingness to learn and potentially change your mind if presented with better arguments or evidence. Refusing to acknowledge fallibility suggests a closed-minded approach, hindering productive discussion. Given the complexity of many issues and the diversity of perspectives, it's statistically more likely that any individual is wrong about some things than right about everything. Admitting fallibility opens the door to intellectual growth and finding more defensible positions.
-                        </p>
-                      </div>
-
-                       <!-- Slide 40: Truth Seeking Principle -->
-                       <div class="slide">
-                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">2. The Truth-Seeking Principle</h2>
-                         <p class="text-gray-600 font-semibold mb-4">
-                           Principle: Commit to earnestly searching for the truth or the most defensible position.
-                         </p>
-                         <p class="text-gray-600">
-                           This principle involves a genuine desire to find the best answer, rather than simply defending a pre-existing belief. It requires willingness to seriously examine alternative views, seek insights in others' positions, and allow one's own views to be challenged through arguments and objections.
-                         </p>
-                       </div>
-
-                       <!-- Slide 41: Importance of the Truth-Seeking Principle -->
-                       <div class="slide">
-                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Importance of the Truth-Seeking Principle</h2>
-                          <p class="text-gray-600">
-                            The search for truth is often a collaborative process involving discussion and the critical examination of diverse ideas. A genuine interest in truth necessitates considering alternative perspectives and welcoming critiques of one's own arguments. If the goal is simply to win or confirm existing biases, the pursuit of truth is compromised.
-                          </p>
-                       </div>
-
-
-                         <!-- Slide 43: Additional Principles of Critical Thinking -->
-                         <div class="slide">
-                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Additional Principles of Critical Thinking</h2>
-                            <p class="text-gray-600 mb-4">Building on fallibility and truth-seeking, several other principles guide effective critical thinking and discussion:</p>
-                            <ul class="list-decimal pl-6 text-gray-600 space-y-2">
-                              <li><strong>The Clarity Principle:</strong> Strive to express your own points clearly and precisely, and seek clarification when others' points are unclear. Avoid vagueness and ambiguity.</li>
-                              <li><strong>The Burden of Proof Principle:</strong> Recognize that the responsibility for providing supporting evidence lies with the person making a claim. Do not demand that others disprove your unsupported claims.</li>
-                              <li><strong>The Principle of Charity:</strong> When interpreting someone else's argument, formulate it in its strongest, most plausible version, addressing the best possible case for their view, rather than attacking a weak caricature (Straw Man).</li>
-                              <li><strong>The Suspension of Judgment Principle:</strong> If the available evidence or reasoning is insufficient to support any conclusion, be willing to withhold judgment until further evidence is available. Avoid jumping to conclusions.</li>
-                              <li><strong>The Resolution Principle:</strong> Aim to resolve the issue by accepting the conclusion best supported by the evidence and arguments. Be willing to revise your position if significant new evidence emerges, but avoid reopening the issue without good reason.</li>
-                            </ul>
-                            <!-- Consolidated principles from original text and common CT literature -->
-                         </div>
-
-                         <!-- Slide 44: Characteristics of Critical Thinking Overview -->
-                         <div class="slide">
-                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">4: Characteristics of Critical Thinking</h2>
-                           <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-                           <p class="text-gray-600">
-                             Having discussed the meaning, standards, and principles related to critical thinking and good argumentation, we can now outline the general characteristics typically exhibited by critical thinkers, contrasting them with the traits of uncritical thinkers.
-                           </p>
-                         </div>
-
-                         <!-- Slide 45: Characteristics of Critical Thinking Objectives -->
-                         <div class="slide">
-                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives</h2>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
-                            <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-                            <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                              <li>Appreciate the general characteristics and habits of mind associated with critical thinking.</li>
-                              <li>Contrast the characteristics of critical thinkers with those of uncritical thinkers.</li>
-                            </ul>
-                         </div>
-
-                          <!-- Slide 46: Basic Traits of Critical Thinkers Intro -->
-                          <div class="slide">
-                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.1 Basic Traits of Critical Thinkers</h2>
-                            <p class="text-gray-600">
-                              A critical thinker embodies certain dispositions, attitudes, skills, abilities, habits, and values. This section highlights some key intellectual traits characteristic of critical individuals.
-                            </p>
-                          </div>
-
-                           <!-- Slide 47: Key Traits of Critical Thinkers (1) -->
-                           <div class="slide">
-                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Traits of Critical Thinkers (1)</h2>
-                              <div class="activity-box">
-                                  <p class="font-semibold text-gray-700">Activity # 5:</p> <!-- Renumbered activity -->
-                                  <p class="italic text-gray-600">What specific characteristics best distinguish critical thinkers from uncritical ones?</p>
-                              </div>
-                             <p class="text-gray-600 mb-4">Critical thinkers typically:</p>
-                             <ul class="arrow-list pl-6 text-gray-600 space-y-2">
-                               <li>Practice intellectual honesty: Acknowledge ignorance and limitations, recognize potential errors in their thinking.</li>
-                               <li>View problems and controversies as challenges: Engage with complex issues rather than avoiding them.</li>
-                               <li>Value understanding and curiosity: Remain patient with complexity and invest effort to overcome confusion.</li>
-                               <li>Base judgments on evidence: Rely on evidence over personal preference, suspend judgment when evidence is insufficient, and revise beliefs when new evidence warrants it.</li>
-                             </ul>
-                           </div>
-
-                            <!-- Slide 48: Key Traits of Critical Thinkers (2) -->
-                            <div class="slide">
-                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Traits of Critical Thinkers (2)</h2>
-                              <ul class="arrow-list pl-6 text-gray-600 space-y-2">
-                                <li>Engage respectfully with differing views: Listen attentively to others' ideas, even in disagreement.</li>
-                                <li>Seek balanced perspectives: Recognize that extreme views are often flawed and strive for fair-mindedness.</li>
-                                <li>Exercise emotional restraint: Control feelings rather than being controlled by them; think before acting or speaking impulsively.</li>
-                                <li>Pursue intellectual independence: Think for themselves rather than simply conforming to group opinion.</li> <!-- Added trait -->
-                              </ul>
-                            </div>
-
-                            <!-- Slide 49: Basic Traits of Uncritical Thinkers Intro -->
-                            <div class="slide">
-                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">4.2 Basic Traits of Uncritical Thinkers</h2>
-                              <p class="text-gray-600">
-                                In contrast to the characteristics of critical thinkers, uncritical thinkers exhibit traits that hinder rigorous thought and open-minded inquiry. This section outlines some common traits of uncritical thinking.
-                              </p>
-                            </div>
-
-                             <!-- Slide 50: Key Traits of Uncritical Thinkers (1) -->
-                             <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Traits of Uncritical Thinkers (1)</h2>
-                                <p class="text-gray-600 mb-4">Uncritical thinkers often:</p>
-                                <ul class="arrow-list pl-6 text-gray-600 space-y-2">
-                                  <li>Exhibit intellectual arrogance: Pretend to know more than they do, ignore limitations, assume their views are error-free.</li>
-                                  <li>Avoid challenges: View problems and controversies as nuisances or threats.</li>
-                                  <li>Display impatience with complexity: Prefer confusion over the effort required for understanding.</li>
-                                  <li>Rely on impressions and biases: Base judgments on initial reactions or gut feelings, disregard evidence quality, and cling rigidly to existing views.</li>
-                                </ul>
-                             </div>
-
-                             <!-- Slide 51: Key Traits of Uncritical Thinkers (2) -->
-                             <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Traits of Uncritical Thinkers (2)</h2>
-                                <ul class="arrow-list pl-6 text-gray-600 space-y-2">
-                                  <li>Demonstrate closed-mindedness: Preoccupied with their own opinions, unwilling to listen attentively to others, quick to refute opposing views without fair consideration.</li>
-                                  <li>Lack balance: Favor views confirming their existing beliefs and ignore or dismiss contradictory perspectives.</li>
-                                  <li>Act impulsively: Tend to follow feelings without reflection; act before thinking.</li>
-                                  <li>Conform uncritically: Follow group opinions or authority without independent evaluation.</li> <!-- Added trait -->
-                                </ul>
-                             </div>
-
-
-                             <!-- Slide 53: Comparison: Standards and Skills -->
-                             <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Comparison: Standards & Skills</h2>
-                                <p class="text-gray-600 mb-4">
-                                  <strong>Critical thinkers</strong> strive for clarity, precision, accuracy, and adhere to intellectual standards. They are sensitive to biases like egocentrism and sociocentrism. They skillfully understand, analyze, and evaluate arguments, reasoning logically and drawing well-supported conclusions from evidence.
-                                </p>
-                                 <p class="text-gray-600">
-                                   <strong>Uncritical thinkers</strong> often think unclearly, imprecisely, and inaccurately. They frequently fall prey to egocentrism, sociocentrism, unwarranted assumptions, and wishful thinking. They tend to misunderstand or unfairly evaluate opposing viewpoints and draw illogical or unsupported conclusions.
-                                 </p>
-                             </div>
-
-                             <!-- Slide 54: Comparison: Openness and Evidence -->
-                             <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Comparison: Openness & Evidence</h2>
-                                <p class="text-gray-600 mb-4">
-                                  <strong>Critical thinkers</strong> practice intellectual honesty, acknowledging limitations. They listen open-mindedly, welcoming criticism of their own beliefs. They base beliefs on facts and evidence, aware of their own biases.
-                                </p>
-                                 <p class="text-gray-600">
-                                   <strong>Uncritical thinkers</strong> often pretend to know more than they do, ignoring limitations. They are typically closed-minded, resisting criticism. They tend to base beliefs on personal preference or self-interest, often unaware of their own biases and preconceptions.
-                                 </p>
-                             </div>
-
-                             <!-- Slide 55: Comparison: Independence and Pursuit of Truth -->
-                             <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">Comparison: Independence & Pursuit of Truth</h2>
-                                <p class="text-gray-600 mb-4">
-                                  <strong>Critical thinkers</strong> think independently, unafraid to question group opinion. They possess intellectual courage, facing ideas that challenge their basic beliefs fairly. They actively pursue truth, remain curious, and persevere through intellectual challenges.
-                                </p>
-                                 <p class="text-gray-600">
-                                   <strong>Uncritical thinkers</strong> often engage in "groupthink," conforming without question. They tend to fear or resist ideas challenging their core beliefs. They are often indifferent to truth, lack curiosity, and give up easily when faced with intellectual difficulties.
-                                 </p>
-                             </div>
-
-                             <!-- Slide 56: Barriers to Critical Thinking Overview -->
-                             <div class="slide">
-                               <h2 class="text-2xl font-semibold mb-4 text-gray-700">5: Barriers to Critical Thinking</h2>
-                               <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-                               <p class="text-gray-600 mb-4">
-                                 Critical thinking involves disciplined skills and attitudes for evaluating arguments and claims. If critical thinking is so valuable, why is uncritical thinking common, even among intelligent individuals? The reasons are complex.
-                               </p>
-                                <p class="text-gray-600">
-                                  This section discusses common impediments to critical thinking. While many factors exist, we will focus on four major barriers: egocentrism, sociocentrism, unwarranted assumptions/stereotypes, and relativistic thinking. This list is not exhaustive.
-                                </p>
-                             </div>
-
-                              <!-- Slide 57: Barriers to Critical Thinking Objectives -->
-                              <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives</h2>
-                                <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
-                                <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-                                <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                                  <li>Identify and define major psychological and philosophical barriers to critical thinking.</li>
-                                </ul>
-                              </div>
-
-                              <!-- Slide 58: Common Barriers -->
-                              <div class="slide">
-                                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Common Barriers to Critical Thinking</h2>
-                                 <div class="activity-box">
-                                     <p class="font-semibold text-gray-700">Activity # 6:</p> <!-- Renumbered activity -->
-                                     <p class="italic text-gray-600">What factors do you think impede or obstruct critical thinking?</p>
-                                 </div>
-                                <p class="text-gray-600 mt-4">
-                                  Numerous factors can hinder critical thinking. Common barriers include:
-                                  <ul class="list-disc pl-6 text-gray-600 space-y-1 mt-2">
-                                      <li>Lack of relevant background information</li>
-                                      <li>Poor reading skills</li>
-                                      <li>Bias and Prejudice</li>
-                                      <li>Superstition</li>
-                                      <li>Egocentrism (self-centered thinking)</li>
-                                      <li>Sociocentrism (group-centered thinking), including Peer Pressure, Conformism, Provincialism</li>
-                                      <li>Narrow-mindedness / Closed-mindedness</li>
-                                      <li>Distrust in reason</li>
-                                      <li>Relativistic thinking</li>
-                                      <li>Stereotyping</li>
-                                      <li>Unwarranted assumptions</li>
-                                      <li>Scapegoating (blaming the innocent)</li>
-                                      <li>Rationalization (making excuses)</li>
-                                      <li>Wishful thinking</li>
-                                  </ul>
-                                </p>
-                              </div>
-
-                               <!-- Slide 59: Barrier 1: Egocentrism -->
-                               <div class="slide">
-                                 <h2 class="text-2xl font-semibold mb-4 text-gray-700">Barrier 1: Egocentrism</h2>
-                                 <p class="text-gray-600 mb-4">
-                                   <strong>Egocentrism</strong>, the tendency to see reality centered on oneself, is a powerful barrier. Egocentric individuals view their own interests, ideas, and values as inherently superior. While varying in degree, egocentric biases affect nearly everyone.
-                                 </p>
-                                  <p class="text-gray-600">Two common manifestations are:</p>
-                                   <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                       <li><strong>Self-Interested Thinking:</strong> Accepting/defending beliefs primarily because they align with one's own interests.</li>
-                                       <li><strong>Superiority Bias (Illusory Superiority):</strong> Overrating oneself or seeing oneself as better than average in various respects.</li>
-                                   </ul>
-                                </div>
-
-                                <!-- Slide 60: Egocentrism: Self-interested Thinking -->
-                                <div class="slide">
-                                  <h2 class="text-2xl font-semibold mb-4 text-gray-700">Egocentrism: Self-Interested Thinking</h2>
-                                  <p class="text-gray-600 mb-4">
-                                    <strong>Self-interested thinking</strong> involves favoring beliefs that benefit oneself, often regardless of objective evidence. Examples abound: doctors supporting laws limiting malpractice suits, professors favoring tenure and sabbaticals, factory workers supporting plant closing notifications (while owners oppose them). While some positions might have valid reasons, self-interest often influences belief formation.
-                                  </p>
-                                  <p class="text-gray-600">
-                                    This bias obstructs critical thinking. Reasoning that "This benefits me, therefore it is good" relies on the unstated, self-serving assumption that one's own wants and needs are paramount. Critical thinking rejects such special pleading, demanding objective evaluation of evidence and arguments, prioritizing truth even when inconvenient.
-                                  </p>
-                                </div>
-
-                                 <!-- Slide 61: Egocentrism: Superiority Bias -->
-                                 <div class="slide">
-                                   <h2 class="text-2xl font-semibold mb-4 text-gray-700">Egocentrism: Superiority Bias</h2>
-                                   <p class="text-gray-600">
-                                     The <strong>superiority bias</strong> (or illusory superiority) is the tendency to overestimate one's own qualities and abilities relative to others. Most people tend to see themselves as above average in positive traits (like intelligence, fairness, or driving skill) and less susceptible to biases than others—a statistically unlikely scenario. Believing oneself immune to such self-deception is itself an indicator of superiority bias. Recognizing this universal tendency is a step towards mitigating egocentric thought.
-                                   </p>
-                                 </div>
-
-                                  <!-- Slide 62: Barrier 2: Sociocentrism -->
-                                  <div class="slide">
-                                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Barrier 2: Sociocentrism</h2>
-                                    <p class="text-gray-600 mb-4">
-                                      <strong>Sociocentrism</strong>, or group-centered thinking, is another major barrier. It involves focusing excessively on one's group identity and interests, hindering rational thought. Like egocentrism for the individual, sociocentrism prioritizes the group perspective.
-                                    </p>
-                                    <p class="text-gray-600">Two key forms are:</p>
-                                     <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                       <li><strong>Group Bias:</strong> The tendency to view one's own group (nation, tribe, religion, peer group) as inherently superior to others, often accompanied by suspicion or negative views of "outsiders."</li>
-                                       <li><strong>Conformism:</strong> The tendency to follow group norms, beliefs, or authority figures, often unthinkingly, due to a desire to belong.</li>
-                                     </ul>
-                                  </div>
-
-                                  <!-- Slide 63: Sociocentrism: Group Bias and Conformism -->
-                                  <div class="slide">
-                                    <h2 class="text-2xl font-semibold mb-4 text-gray-700">Sociocentrism: Group Bias and Conformism</h2>
-                                    <p class="text-gray-600 mb-4">
-                                      <strong>Group bias</strong> is often absorbed unconsciously from childhood, leading people to assume the superiority of their own society's beliefs, institutions, and values. This "mine-is-better" thinking contributes significantly to conflict, intolerance, and oppression globally.
-                                    </p>
-                                    <p class="text-gray-600">
-                                      <strong>Conformism</strong> stems from the powerful human motivation to belong. This desire can override individual critical judgment, leading people to adopt group beliefs or follow authority figures without independent evaluation. Classic social psychology experiments (like Milgram's obedience studies or Asch's conformity experiments) demonstrate how easily individuals can abandon their own judgment under group or authority pressure.
-                                    </p>
-                                  </div>
-
-                                   <!-- Slide 64: Overcoming Sociocentrism -->
-                                   <div class="slide">
-                                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Overcoming Sociocentrism</h2>
-                                     <p class="text-gray-600">
-                                       The influence of authority and the pressure to conform can significantly impair critical thinking. We can be easily impressed or intimidated into abandoning our own values and judgments. As critical thinkers, recognizing the seductive power of peer pressure and undue reliance on authority is essential. Cultivating habits of independent thought and questioning group assumptions are necessary countermeasures.
-                                     </p>
-                                   </div>
-
-                                   <!-- Slide 65: Barrier 3: Unwarranted Assumptions and Stereotypes -->
-                                   <div class="slide">
-                                     <h2 class="text-2xl font-semibold mb-4 text-gray-700">Barrier 3: Unwarranted Assumptions & Stereotypes</h2>
-                                     <p class="text-gray-600 mb-4">
-                                       An <strong>assumption</strong> is something taken for granted as true without proof. Many daily actions rely on warranted assumptions based on past experience (e.g., assuming class will be held at the scheduled time). These are reasonable expectations.
-                                     </p>
-                                      <p class="text-gray-600 mb-4">
-                                       However, <strong>unwarranted assumptions</strong>—those held without good reason—are significant barriers to critical thinking. They distort perception and reasoning.
-                                     </p>
-                                      <p class="text-gray-600">
-                                        A common type of unwarranted assumption is a <strong>stereotype</strong>: a generalized belief about a group of people, assuming all members share certain characteristics, often ignoring individual differences.
-                                      </p>
-                                   </div>
-
-                                   <!-- Slide 67: Stereotypes as Unwarranted Assumptions -->
-                                    <div class="slide">
-                                      <h2 class="text-2xl font-semibold mb-4 text-gray-700">Stereotypes as Unwarranted Assumptions</h2>
-                                      <p class="text-gray-600 mb-4">
-                                        Stereotyping involves forming opinions about individuals based on group membership rather than individual qualities. It assumes uniformity ("all politicians are alike," "all members of X group are Y"). Since individuals within any group vary significantly, stereotypes are frequently false, oversimplified, or misleading generalizations.
-                                      </p>
-                                      <p class="text-gray-600">
-                                        Stereotypes often arise from <strong>hasty generalization</strong>—drawing broad conclusions from insufficient evidence (e.g., judging an entire nationality based on encountering one individual). Media portrayals and social biases can also perpetuate stereotypes. Recognizing and challenging our tendency to stereotype is crucial for fair and accurate thinking.
-                                      </p>
-                                    </div>
-
-
-                                     <!-- Slide 69: Barrier 4: Relativistic Thinking -->
-                                     <div class="slide">
-                                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Barrier 4: Relativistic Thinking</h2>
-                                       <p class="text-gray-600 mb-4">
-                                         <strong>Relativism</strong>, the view that truth is merely a matter of opinion, poses a significant challenge to critical thinking (which relies on evaluating claims against objective standards). Two main forms exist:
-                                       </p>
-                                       <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                          <li>
-                                            <strong>Subjectivism:</strong> Truth is relative to the individual. What is true *for* person A is simply whatever person A believes. There is no objective truth independent of individual belief.
-                                          </li>
-                                           <li>
-                                            <strong>Cultural Relativism:</strong> Truth is relative to one's culture or society. What is true *for* members of culture A is whatever culture A believes. There is no objective truth independent of cultural consensus.
-                                          </li>
-                                       </ul>
-                                     </div>
-
-                                     <!-- Slide 70: Subjectivism and Cultural Relativism -->
-                                     <div class="slide">
-                                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Subjectivism and Cultural Relativism Examples</h2>
-                                        <p class="text-gray-600 mb-4">
-                                          Under <strong>subjectivism</strong>, if Abdella believes abortion is always wrong, and Obang believes it isn't always wrong, then *both* beliefs are considered "true" for the respective individuals. Objective truth is denied.
-                                        </p>
-                                        <p class="text-gray-600">
-                                          Under <strong>cultural relativism</strong>, if drinking wine is considered wrong in Iranian culture but acceptable in French culture, then drinking wine *is* wrong in Iran and *is* acceptable in France, according to the respective cultural norms. Again, objective truth independent of cultural belief is denied.
-                                        </p>
-                                     </div>
-
-                                     <!-- Slide 71: Moral Relativism -->
-                                     <div class="slide">
-                                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Moral Relativism</h2>
-                                        <p class="text-gray-600 mb-4">
-                                          While few endorse absolute relativism about *all* truths (e.g., mathematical truths), relativism is commonly applied to specific domains, most notably morality. <strong>Moral Relativism</strong> asserts that moral truth is relative.
-                                        </p>
-                                        <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                           <li>
-                                             <strong>Moral Subjectivism:</strong> What is morally right for an individual is simply whatever that individual believes is right.
-                                           </li>
-                                            <li>
-                                             <strong>Cultural Moral Relativism:</strong> What is morally right for members of a culture is whatever that culture believes is right.
-                                           </li>
-                                        </ul>
-                                        <p class="text-gray-600 mt-4">Example: If Culture A deems polygamy wrong and Culture B deems it right, cultural moral relativism holds that polygamy *is* wrong for A and *is* right for B.</p>
-                                     </div>
-
-                                     <!-- Slide 72: Appeal and Problems of Moral Relativism -->
-                                     <div class="slide">
-                                       <h2 class="text-2xl font-semibold mb-4 text-gray-700">Appeal and Problems of Moral Relativism</h2>
-                                        <p class="text-gray-600 mb-4">
-                                          Cultural moral relativism often seems appealing for two main reasons:
-                                          <br>1. It appears to explain persistent, deep disagreements in ethics by suggesting there's no objective truth, only differing opinions.
-                                          <br>2. It seems to promote tolerance by implying we shouldn't judge other cultures' practices by our own standards.
-                                        </p>
-                                         <p class="text-gray-600">
-                                           However, these appeals face significant problems. First, disagreement about an issue (like ethics or religion) doesn't logically entail that there is no objective truth concerning that issue. Difficulty in finding truth doesn't mean truth doesn't exist.
-                                         </p>
-                                     </div>
-
-                                      <!-- Slide 73: Problems of Moral Relativism (Cont.) -->
-                                      <div class="slide">
-                                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Problems of Moral Relativism (Cont.)</h2>
-                                        <p class="text-gray-600 mb-4">
-                                          Second, cultural moral relativism doesn't consistently support tolerance. It dictates adherence to one's own culture's norms. If a culture *values* intolerance, then relativism would imply that being intolerant is morally right for members of that culture.
-                                        </p>
-                                         <p class="text-gray-600">
-                                           Furthermore, cultural relativism makes meaningful moral criticism of other cultures (or even one's own culture's past or present norms) impossible, as it implies that the prevailing cultural standard *is* the ultimate moral standard for that culture. It also struggles with defining "culture" and handling subcultures or individuals who disagree with the majority.
-                                         </p>
-                                      </div>
-
-                                      <!-- Slide 74: Learning from Relativism -->
-                                      <div class="slide">
-                                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">What Can We Learn from Relativism?</h2>
-                                        <p class="text-gray-600 mb-4">
-                                          While flawed as a theory of truth, the prevalence of moral disagreement highlighted by relativism *should* encourage intellectual humility. Recognizing that decent, intelligent people hold vastly different moral views should make us cautious about assuming the absolute correctness of our own beliefs.
-                                        </p>
-                                         <p class="text-gray-600">
-                                           This lesson in open-mindedness and caution doesn't require accepting the problematic tenets of relativism itself. It can be learned through critical thinking and empathetic engagement with diverse perspectives. Relativism, ultimately, undermines the very possibility of critical evaluation by suggesting all opinions (individual or cultural) are equally valid.
-                                         </p>
-                                      </div>
-
-
-                                      <!-- Slide 76: Barrier 5: Wishful Thinking -->
-                                      <div class="slide">
-                                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Barrier 5: Wishful Thinking</h2>
-                                        <p class="text-gray-600 mb-4">
-                                          <strong>Wishful thinking</strong> occurs when we believe something not because of good evidence, but simply because we *want* it to be true. It involves letting desires dictate beliefs.
-                                        </p>
-                                        <p class="text-gray-600">
-                                           This is a common human tendency. People often fear the unknown, death, or powerlessness, leading them to embrace comforting myths, unsubstantiated cures, or beliefs in extraordinary phenomena (like psychic powers) without critical scrutiny, simply because these beliefs fulfill a desire or alleviate a fear. Reason often struggles against the allure of wishful thinking. Critical thinking requires confronting reality as it is, based on evidence, rather than shaping beliefs according to desires.
-                                        </p>
-                                      </div>
-
-                                      <!-- Slide 77: Benefits of Critical Thinking Overview -->
-                                      <div class="slide">
-                                        <h2 class="text-2xl font-semibold mb-4 text-gray-700">6: Benefits of Critical Thinking</h2>
-                                        <h3 class="text-xl font-semibold mb-2 text-gray-700">Section Overview</h3>
-                                        <p class="text-gray-600">
-                                          Cultivating critical thinking skills and adopting a critical mindset offers numerous advantages in academic, professional, and personal life. This section explores some of the key benefits of developing critical thinking abilities.
-                                        </p>
-                                      </div>
-
-                                       <!-- Slide 78: Benefits of Critical Thinking Objectives -->
-                                       <div class="slide">
-                                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Section Objectives</h2>
-                                          <h3 class="text-xl font-semibold mb-2 text-gray-700">Objectives:</h3>
-                                          <p class="text-gray-600 mb-2">After completing this section, you will be able to:</p>
-                                          <ul class="arrow-list pl-6 text-gray-600 space-y-1">
-                                            <li>Identify and appreciate the major benefits of critical thinking in various contexts.</li>
-                                          </ul>
-                                       </div>
-
-                                       <!-- Slide 79: Identifying Benefits -->
-                                       <div class="slide">
-                                         <h2 class="text-2xl font-semibold mb-4 text-gray-700">Identifying the Benefits</h2>
-                                          <div class="activity-box">
-                                              <p class="font-semibold text-gray-700">Activity # 7:</p> <!-- Renumbered activity -->
-                                              <p class="italic text-gray-600">What advantages do you think result from developing critical thinking skills?</p>
-                                          </div>
-                                           <p class="text-gray-600 mt-4">Thinking critically provides significant advantages across different areas of life.</p>
-                                       </div>
-
-                                        <!-- Slide 80: Core Skills and Dispositions -->
-                                        <div class="slide">
-                                          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Core Skills and Dispositions Developed</h2>
-                                          <p class="text-gray-600 mb-4">
-                                            Critical thinking cultivates essential skills and dispositions:
-                                          </p>
-                                           <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                               <li>Raising and identifying fundamental questions and problems.</li>
-                                               <li>Reformulating problems clearly and precisely.</li>
-                                               <li>Gathering and assessing relevant information effectively.</li>
-                                               <li>Developing reasoned conclusions and solutions, testing them against appropriate criteria.</li>
-                                               <li>Thinking open-mindedly within alternative systems of thought.</li>
-                                               <li>Recognizing and evaluating one's own assumptions, implications, and consequences.</li>
-                                               <li>Communicating effectively with others to solve complex problems.</li>
-                                           </ul>
-                                          <p class="text-gray-600 mt-4">
-                                            University education aims not just to impart facts, but to teach students *how* to think critically—to become independent, self-directed learners. Developing these skills requires effort and practice, strengthening mental discipline and fostering confidence.
-                                          </p>
-                                        </div>
-
-                                        <!-- Slide 81: Benefits in the Classroom -->
-                                        <div class="slide">
-                                          <h2 class="text-2xl font-semibold mb-4 text-gray-700">Benefits in the Classroom</h2>
-                                          <p class="text-gray-600 mb-4">
-                                            University education emphasizes critical scrutiny over mere acquisition of information. The focus shifts from *what* you know to *how* you know it and whether your beliefs withstand examination.
-                                          </p>
-                                          <p class="text-gray-600 mb-4">
-                                            Critical thinking skills directly enhance academic performance by improving your ability to:
-                                          </p>
-                                           <ul class="list-disc pl-6 text-gray-600 space-y-1">
-                                             <li><strong>Understand</strong> complex arguments and beliefs presented by others (in texts, lectures, discussions).</li>
-                                             <li><strong>Critically Evaluate</strong> those arguments and beliefs, identifying strengths, weaknesses, assumptions, and biases.</li>
-                                             <li><strong>Develop and Defend</strong> your own well-supported arguments and beliefs in assignments, discussions, and papers.</li>
-                                           </ul>
-                                        </div>
-
-                                         <!-- Slide 82: Understanding and Evaluating in Class -->
-                                         <div class="slide">
-                                           <h2 class="text-2xl font-semibold mb-4 text-gray-700">Understanding and Evaluating in Class</h2>
-                                            <p class="text-gray-600 mb-4">
-                                               Success in university requires comprehending complex material. Critical thinking skills, such as identifying main points, analyzing structure, and clarifying meaning, significantly improve understanding of course content.
-                                             </p>
-                                             <p class="text-gray-600">
-                                               Furthermore, instructors frequently ask students to "critically discuss" ideas. Critical thinking provides the strategies (identifying assumptions, evaluating evidence, considering counterarguments, assessing logical strength) needed to perform such evaluations effectively.
-                                             </p>
-                                          </div>
-
-                                          <!-- Slide 83: Developing Arguments and Transferable Skills -->
-                                          <div class="slide">
-                                            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Developing Arguments and Transferable Skills</h2>
-                                            <p class="text-gray-600 mb-4">
-                                              University assignments often require constructing your own arguments (e.g., writing argumentative essays). Success demands more than just assessing information; it requires organizing evidence and reasoning to convincingly support your thesis. Critical thinking training systematically improves this crucial skill.
-                                            </p>
-                                            <p class="text-gray-600">
-                                              Crucially, critical thinking skills are <strong>transferable</strong>. Learning how to structure arguments, judge source credibility, or make reasoned decisions in one context equips you to apply these skills across diverse subjects, professional situations, and personal life challenges. The goal is to facilitate this transfer, making critical thinking a universally applicable tool.
-                                            </p>
-                                          </div>
-
-                                           <!-- Slide 84: Benefits in Life -->
-                                           <div class="slide">
-                                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Benefits in Life</h2>
-                                             <p class="text-gray-600 mb-4">
-                                               Beyond academics, critical thinking offers significant advantages:
-                                             </p>
-                                             <ol class="list-decimal pl-6 text-gray-600 space-y-2">
-                                                <li>
-                                                  <strong>Improved Personal Decision-Making:</strong> Critical thinking helps avoid foolish choices in areas like career paths, relationships, and personal conduct by encouraging careful, clear, and logical consideration of important life decisions.
-                                                </li>
-                                                 <li>
-                                                  <strong>Enhanced Civic Engagement:</strong> In democratic societies, citizens make collective decisions about governance and public policy. Informed, rational decision-making by the populace is vital. Critical thinking equips citizens to evaluate policies, assess candidates, and participate constructively. Addressing complex societal problems (e.g., environmental issues, poverty, conflict) requires widespread critical thought.
-                                                </li>
-                                             </ol>
-                                           </div>
-
-                                           <!-- Slide 85: Benefits: Personal Enrichment -->
-                                           <div class="slide">
-                                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Benefits: Personal Enrichment and Liberation</h2>
-                                              <p class="text-gray-600 mb-4">
-                                                 3. <strong>Personal Enrichment and Intellectual Freedom:</strong> Studying critical thinking offers intrinsic rewards. Historically, people often accepted prevailing beliefs without question (e.g., geocentrism, divine right of kings, social inequalities). Critical thinking empowers individuals to question assumptions, challenge biases inherited from their upbringing or society, and step back from dominant ideologies.
-                                             </p>
-                                             <p class="text-gray-600">
-                                               It fosters the ability to ask, "This is what I've been taught, but is it true?" enabling self-directed, "examined" lives, as advocated by Socrates. This intellectual liberation—the ability to think for oneself—is arguably the ultimate goal and highest reward of education.
-                                             </p>
-                                           </div>
-
-                                           <!-- Slide 86: Chapter Summary -->
-                                           <div class="slide">
-                                             <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary</h2>
-                                             <p class="text-gray-600">
-                                               Critical thinking involves skilled judgment and intelligent thought. It encompasses a range of cognitive skills and intellectual dispositions necessary for effectively identifying, analyzing, and evaluating arguments and truth claims. It helps overcome biases, present reasoned conclusions, and make intelligent decisions about beliefs and actions.
-                                             </p>
-                                           </div>
-
-                                            <!-- Slide 87: Chapter Summary (Continued) -->
-                                            <div class="slide">
-                                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Summary (Continued)</h2>
-                                              <p class="text-gray-600 mb-4">
-                                                Intelligence alone does not guarantee critical thinking, which is an active process aimed at reaching well-reasoned, justifiable conclusions through clear, fair, rational, objective, and independent thought. It requires adhering to intellectual standards (clarity, precision, accuracy, relevance, consistency, logical correctness, completeness, fairness) and following principles of good argumentation and intellectual conduct (fallibility, truth-seeking, clarity, burden of proof, charity, suspension of judgment, resolution).
-                                               </p>
-                                               <p class="text-gray-600">
-                                                 Critical thinkers exhibit traits like intellectual honesty, curiosity, evidence-based judgment, and open-mindedness, contrasting with uncritical thinkers prone to arrogance, bias, and conformity. Common barriers include egocentrism, sociocentrism, unwarranted assumptions, stereotypes, relativism, and wishful thinking. Overcoming these barriers through critical thinking yields significant benefits in academic performance, personal decision-making, civic engagement, and intellectual autonomy.
-                                               </p>
-                                            </div>
-
-                                            <!-- Slide 88: Self Check Exercise -->
-                                            <div class="slide">
-                                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">Self-Check Exercise</h2>
-                                              <ol class="list-decimal pl-6 text-gray-600 space-y-4">
-                                                <li>Provide a comprehensive definition of critical thinking.</li>
-                                                <li>List and briefly explain the major intellectual standards of critical thinking.</li>
-                                                <li>Outline the key principles of good argumentation and critical intellectual conduct discussed.</li>
-                                                <li>Compare and contrast the main characteristics of critical thinkers and uncritical thinkers.</li>
-                                                <li>Identify and explain at least four common barriers to critical thinking.</li>
-                                                <li>Discuss the major benefits of developing critical thinking skills in academic, personal, and civic life.</li>
-                                              </ol>
-                                            </div>
-
-                                            <!-- Slide 89: References -->
-                                            <div class="slide">
-                                              <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
-                                              <!-- Standardized reference formatting -->
-                                              <div class="text-xs text-gray-600 space-y-1 overflow-y-auto max-h-96">
-                                                  <p class="ref-item">Bassham, G., Irwin, W., Nardone, H., & Wallace, J. M. (2013). *Critical Thinking: A Student's Introduction* (5th ed.). McGraw-Hill.</p> <!-- Corrected Author order -->
-                                                  <p class="ref-item">Bailin, S., Case, R., Coombs, J. R., & Daniels, L. B. (1999). Common Misconceptions of Critical Thinking. *Journal of Curriculum Studies*, *31*(3), 269-283.</p> <!-- Found probable source for Sharon Bailing et al. -->
-                                                  <p class="ref-item">Bowell, T., & Kemp, G. (2015). *Critical Thinking: A Concise Guide* (4th ed.). Routledge.</p> <!-- Corrected Author order, added edition -->
-                                                  <p class="ref-item">Damer, T. E. (2009). *Attacking Faulty Reasoning: A Practical Guide to Fallacy-Free Arguments* (6th ed. or later). Wadsworth Cengage Learning.</p> <!-- Added edition -->
-                                                  <p class="ref-item">Fisher, A. (2011). *Critical Thinking: An Introduction* (2nd ed.). Cambridge University Press.</p> <!-- Corrected publisher -->
-                                                  <p class="ref-item">Moon, J. (2008). *Critical Thinking: An Exploration of Theory and Practice*. Routledge.</p>
-                                                  <p class="ref-item">Paul, R., & Elder, L. (2008). *The Miniature Guide to Critical Thinking Concepts and Tools*. Foundation for Critical Thinking Press.</p> <!-- Corrected publisher -->
-                                                  <p class="ref-item">Rawls, J. (1971). *A Theory of Justice*. Belknap Press of Harvard University Press.</p>
-                                               </div>
-                                            </div>
-
-
+            <p>
+               As established, critical thinking involves disciplined evaluation based on clear intellectual standards. These standards serve as benchmarks to differentiate rigorous, critical thought from uncritical thought. They define the conditions necessary for thinking to be considered sound and acceptable.
+            </p>
         </div>
 
-        <!-- Navigation Arrows -->
-        <div class="flex justify-between mt-4">
-          <button id="prevSlide" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 disabled:opacity-50" disabled>Previous</button>
-          <span id="slideCounter" class="text-gray-600 self-center">1 / 89</span> <!-- Counter starts at 1 -->
-          <button id="nextSlide" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Next</button>
+        <!-- Slide 16: Standard 1: Clarity -->
+        <div class="slide">
+            <h2>Intellectual Standards: Clarity</h2>
+            <h3>1. Clarity</h3>
+            <p>
+              <strong>Clarity</strong> requires understanding concepts clearly and expressing them in language free from obscurity and vagueness. When constructing or evaluating arguments, clarity is paramount. Before effectively assessing an argument, we must clearly understand what is being asserted. Lack of clarity hinders evaluation.
+            </p>
+            <p>
+                Clarity acts as a "gateway" standard. If a statement is unclear, we cannot determine its accuracy, relevance, or logical merit because its meaning is uncertain. For example, the question "What can be done about the education system in Ethiopia?" is vague. To address it critically, one needs to clarify the specific problem being considered. A clearer formulation might be: "What strategies can educators implement to ensure students develop skills essential for success in their careers and daily lives?"
+            </p>
         </div>
-      </div>
 
-      <script>
-        // Script remains unchanged, starting at index 0 (slide 1)
+        <!-- Slide 17: Importance of Clarity -->
+        <div class="slide">
+            <h2>The Importance of Clarity</h2>
+            <p>
+              Lack of clarity can stem from laziness, carelessness, lack of skill, or even a misguided attempt to appear sophisticated or profound.
+            </p>
+            <blockquote>
+               As William Strunk Jr. and E. B. White noted in *The Elements of Style*, "Muddiness is not merely a disturber of prose, it is also a destroyer of life, of hope..." Miscommunication due to unclear language can have serious consequences.
+            </blockquote>
+            <p>
+                Critical thinkers pursue clarity not only in language but also in thought. Achieving personal goals requires clear understanding of those goals, realistic self-assessment, and clear comprehension of challenges and opportunities. Valuing and seeking clarity of thought is essential for self-understanding and effective action.
+            </p>
+        </div>
+
+        <!-- Slide 18: Standard 2: Precision -->
+        <div class="slide">
+            <h2>Intellectual Standards: Precision</h2>
+            <h3>2. Precision</h3>
+            <p>
+              <strong>Precision</strong> involves being exact, specific, and sufficiently detailed. Many everyday ideas, though seemingly understood, are actually vague. Careful examination reveals imprecision. Achieving precision requires close attention to detail. While precision is obviously vital in fields like medicine or engineering, it's equally important in everyday critical thinking.
+            </p>
+            <p>
+                To navigate the complexities and uncertainties of many real-world problems, critical thinkers insist on precise questions and answers: What *exactly* is the problem? What *exactly* are the alternatives? What *exactly* are the pros and cons of each? Habitually seeking such precision is characteristic of critical thought.
+            </p>
+        </div>
+
+        <!-- Slide 19: Standard 3: Accuracy -->
+        <div class="slide">
+            <h2>Intellectual Standards: Accuracy</h2>
+            <h3>3. Accuracy</h3>
+            <p>
+                <strong>Accuracy</strong> relates to correctness and truthfulness. Critical thinking relies on genuine, correct information. Reasoning based on false or inaccurate information will likely lead to flawed conclusions and distorted views of reality.
+            </p>
+            <blockquote>
+               As John Rawls observed, truth is a primary virtue of intellectual systems; elegant theories must be rejected or revised if untrue. Ideas should be evaluated based on factual accuracy, not just their appeal.
+            </blockquote>
+            <p>
+                The "Garbage in, garbage out" principle applies to human thinking: decisions based on false information are likely to be poor ones. Critical thinkers value truth and actively seek accurate, timely information to inform their judgments and decisions as consumers, citizens, parents, and professionals.
+            </p>
+        </div>
+
+        <!-- Slide 20: Standards 4 & 5: Relevance and Consistency -->
+        <div class="slide">
+            <h2>Intellectual Standards: Relevance & Consistency</h2>
+            <h3>4. Relevance</h3>
+            <p>
+              <strong>Relevance</strong> concerns logical connection. In any discussion or analysis, information considered should directly bear on the issue at hand. Raising irrelevant points is a common tactic to distract from the core argument. Critical thinkers focus on information pertinent to the question being addressed. Ideas or premises are relevant if they provide evidence or have a logical bearing on the conclusion's truth or merit.
+            </p>
+            <h3>5. Consistency</h3>
+            <p>
+              <strong>Consistency</strong> requires holding beliefs and behaving in ways that are not contradictory. Logic dictates that if beliefs are inconsistent, at least one must be false. Critical thinkers strive for consistency, scrutinizing their own thinking and others' assertions for contradictions.
+            </p>
+        </div>
+
+        <!-- Slide 21: Types of Consistency -->
+        <div class="slide">
+            <h2>Types of Consistency</h2>
+            <p>Two key types of inconsistency should be avoided:</p>
+            <ul>
+              <li>
+                <strong>Logical Inconsistency:</strong> Holding beliefs that cannot simultaneously be true (e.g., believing both that all politicians are corrupt and that Senator Smith is an honest politician).
+              </li>
+              <li>
+                <strong>Practical Inconsistency:</strong> A mismatch between one's stated beliefs or values and one's actions (hypocrisy). While sometimes deliberate, this often stems from self-deception.
+              </li>
+            </ul>
+            <p>
+              While hypocrisy is a character issue, cases where individuals are unaware of practical inconsistencies highlight the human capacity for self-deception. Critical thinking aims to uncover such hidden inconsistencies.
+            </p>
+        </div>
+
+        <!-- Slide 22: The Challenge of Consistency -->
+        <div class="slide">
+            <h2>The Challenge of Consistency</h2>
+            <blockquote>
+              Author Harold Kushner illustrates practical inconsistency: "Ask the average person which is more important... making money or being devoted to his family, and virtually everyone will answer family... But watch how the average person actually lives... See where he really invests his time and energy... he will give away the fact that he really does not live by what he says he believes." People might rationalize long work hours as devotion, masking conflicting priorities.
+            </blockquote>
+            <p>
+              Critical thinking helps reveal unconscious practical inconsistencies, enabling rational resolution. Similarly, people often hold logically inconsistent beliefs without realizing it (e.g., claiming all morality is relative while simultaneously condemning certain actions as objectively wrong). Critical thinking fosters awareness and avoidance of such logical contradictions. Critical thinkers strive for both logical and practical consistency.
+            </p>
+        </div>
+
+        <!-- Slide 23: Standards 6 & 7: Logical Correctness and Completeness -->
+        <div class="slide">
+            <h2>Intellectual Standards: Logical Correctness & Completeness</h2>
+            <h3>6. Logical Correctness</h3>
+            <p>
+              To think logically means to reason correctly—drawing well-founded conclusions from beliefs or evidence. Critical thinking requires not only accurate beliefs but also the ability to reason validly or strongly from those beliefs. Illogical thinking involves drawing conclusions that don't actually follow from the premises or holding mutually contradictory ideas. Thinking is logical when the combined thoughts are mutually supportive and coherent.
+            </p>
+            <h3>7. Completeness</h3>
+            <p>
+               Critical thinking values depth and thoroughness over superficiality. While deep analysis isn't always feasible or appropriate (e.g., in a brief editorial), thinking is generally better when it explores issues comprehensively rather than skimming the surface. Completeness involves considering multiple perspectives, relevant factors, and potential complexities.
+            </p>
+        </div>
+
+        <!-- Slide 24: Standard 8: Fairness -->
+        <div class="slide">
+            <h2>Intellectual Standards: Fairness</h2>
+            <h3>8. Fairness</h3>
+            <p>
+              <strong>Fairness</strong> requires thinking that is open-minded, impartial, and free from distorting biases and preconceptions. Achieving complete objectivity is challenging; personal experiences and cultural backgrounds inevitably shape perspectives. People naturally resist unfamiliar ideas, prejudge issues, stereotype others, and equate truth with self-interest or group interest.
+            </p>
+            <p>
+              While perfect freedom from bias might be unattainable, striving for basic fair-mindedness is essential for critical thinking. It involves acknowledging one's own perspective and potential biases, and actively working to consider other viewpoints equitably, especially when evaluating ideas that challenge one's own interests or beliefs.
+            </p>
+        </div>
+
+        <!-- Slide 25: Codes of Intellectual Conduct Intro -->
+        <div class="slide">
+            <h2>3: Codes of Intellectual Conduct for Effective Discussion</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Previous chapters established that good arguments involve claims supported by evidence and that critical thinking provides the skills and standards for evaluating such claims. This raises the question: What specific principles distinguish good arguments and critical thinking in practice? How should discussions be conducted to foster critical engagement?
+            </p>
+            <p>
+              This section discusses basic codes of intellectual conduct, focusing on the principles underlying good argumentation and critical thinking, particularly within the context of constructive discussion and dialogue.
+            </p>
+        </div>
+
+        <!-- Slide 26: Codes of Intellectual Conduct Objectives -->
+        <div class="slide">
+            <h2>Section Objectives</h2>
+            <h3>Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="arrow-list">
+              <li>Recognize key principles governing good arguments.</li>
+              <li>Appreciate fundamental principles guiding critical thinking processes.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 27: Principles of Good Argument Intro -->
+        <div class="slide">
+            <h2>3.1 Principles of Good Argument</h2>
+            <div class="activity-box">
+                <strong>Activity # 3:</strong>
+                <p>What criteria distinguish a good argument from a poor one?</p>
+            </div>
+            <p>
+                Whether engaging in discussion with others or internally debating an issue, constructing strong arguments is crucial. The following principles contribute to effective and ethical argumentation:
+            </p>
+        </div>
+
+        <!-- Slide 28: Structural Principle -->
+        <div class="slide">
+            <h2>1. The Structural Principle</h2>
+            <p><strong>Principle: An argument should possess a clear and sound structure.</strong></p>
+            <p>
+               This principle requires that arguments meet fundamental structural requirements. A well-formed argument should:
+            </p>
+            <ul>
+                <li>Avoid using premises that contradict each other.</li>
+                <li>Avoid using premises that contradict the conclusion.</li>
+                <li>Avoid premises that explicitly or implicitly assume the conclusion's truth (begging the question).</li>
+                <li>Employ valid deductive reasoning or strong inductive reasoning (i.e., the conclusion should genuinely follow from the premises with the appropriate degree of certainty or probability).</li>
+            </ul>
+            <p>
+                Arguments with fundamentally flawed structures (like contradictory premises, from which anything can be logically derived) cannot function effectively to establish a conclusion.
+            </p>
+        </div>
+
+        <!-- Slide 29: Relevance Principle -->
+        <div class="slide">
+            <h2>2. The Relevance Principle</h2>
+            <p><strong>Principle: Premises presented must be relevant to the truth or merit of the conclusion.</strong></p>
+            <p>
+                A good argument uses only reasons whose truth provides genuine evidence for the conclusion. Assessing the truth of irrelevant premises is pointless.
+            </p>
+            <p>
+                To check for relevance, ask:
+            </p>
+            <ul>
+               <li>If this premise were true, would it make the conclusion more likely to be true? (If yes, likely relevant).</li>
+               <li>Even if true, is this premise a factor that *should* influence our judgment about the conclusion's truth? (If no, likely irrelevant). For example, the popularity of an idea doesn't necessarily speak to its truth or merit, making premises about popularity often irrelevant to the conclusion's validity.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 30: Acceptability Principle -->
+        <div class="slide">
+            <h2>3. The Acceptability Principle</h2>
+            <p><strong>Principle: Reasons offered in support of a conclusion should be acceptable to a mature, rational person.</strong></p>
+            <p>
+                The premises must meet standard criteria of acceptability. A premise is acceptable if it's reasonable to believe based on available evidence and common knowledge. "Acceptable" is often preferred over "true" because:
+            </p>
+            <ul>
+                <li>Argumentation aims for agreement, often starting from premises the audience is likely to accept.</li>
+                <li>Establishing absolute truth is difficult; "reasonable to accept" is a more practical standard.</li>
+                <li>In many contexts (like testimony), "true" often means "accepted as true" by the speaker.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 31: Sufficiency Principle -->
+        <div class="slide">
+            <h2>4. The Sufficiency Principle</h2>
+            <p><strong>Principle: The premises, taken together, must provide enough relevant and acceptable evidence to justify accepting the conclusion.</strong></p>
+            <p>
+                This principle addresses the *quantity* and *weight* of the evidence. Relevant and acceptable premises might still be insufficient if they don't collectively provide strong enough support. Assessing sufficiency involves asking:
+            </p>
+            <ul>
+               <li>Are the reasons offered, even if relevant and acceptable, *enough* to warrant belief in the conclusion?</li>
+               <li>Is the evidence free from flaws like faulty causal reasoning?</li>
+               <li>Is crucial evidence missing that would be necessary to accept the conclusion?</li>
+            </ul>
+            <p style="margin-top: 10px;">Disagreements often arise over the *weight* or importance assigned to different pieces of evidence.</p>
+        </div>
+
+        <!-- Slide 32: Rebuttal Principle -->
+        <div class="slide">
+            <h2>5. The Rebuttal Principle</h2>
+            <p><strong>Principle: A good argument should effectively address anticipated serious criticisms or counterarguments.</strong></p>
+            <p>
+                Arguments usually exist in a context where alternative views or criticisms are possible. A strong argument anticipates and refutes or mitigates the most significant objections against its position or reasoning. It demonstrates awareness of the broader dialectical context.
+            </p>
+        </div>
+
+        <!-- Slide 33: Applying the Rebuttal Principle -->
+        <div class="slide">
+            <h2>Applying the Rebuttal Principle</h2>
+            <p>Applying this principle involves considering:</p>
+            <ul>
+                <li>What are the strongest counterarguments to the position?</li>
+                <li>Does the argument address these effectively?</li>
+                <li>What are potential weaknesses in the argument itself?</li>
+                <li>Does the argument acknowledge and address these weaknesses?</li>
+                <li>Does it explain why alternative positions are less convincing?</li>
+            </ul>
+        </div>
+
+        <!-- Slide 34: Violating the Rebuttal Principle -->
+        <div class="slide">
+            <h2>Violating the Rebuttal Principle</h2>
+            <p>Arguments fail this principle when they employ diversionary tactics instead of genuine rebuttal. Examples include:</p>
+            <ul>
+                <li>Misrepresenting criticisms (Straw Man fallacy).</li>
+                <li>Addressing only trivial objections.</li>
+                <li>Introducing irrelevant side issues (Red Herring).</li>
+                <li>Using humor or ridicule instead of substance.</li>
+                <li>Ignoring or denying counterevidence.</li>
+                <li>Attacking the critic instead of the criticism (Ad Hominem).</li>
+            </ul>
+            <p>These tactics violate the obligation to engage honestly with opposing viewpoints.</p>
+        </div>
+
+        <!-- Slide 35: Principles of Critical Thinking Intro -->
+        <div class="slide">
+            <h2>3.2 Principles of Critical Thinking</h2>
+            <p>
+              Beyond the principles of good argumentation, certain principles guide the *process* of critical thinking itself, particularly in constructive dialogue and inquiry. These reflect essential attitudes for effective intellectual conduct.
+            </p>
+        </div>
+
+        <!-- Slide 36: Fallibility Principle -->
+        <div class="slide">
+            <h2>1. The Fallibility Principle</h2>
+            <p><strong>Principle: Acknowledge your own fallibility.</strong></p>
+            <p>
+                Participants in a discussion should be willing to accept that their own initial views might be incorrect or incomplete. Recognizing one's potential fallibility is crucial for genuine inquiry and open-mindedness.
+            </p>
+            <div class="activity-box">
+                <strong>Activity # 4:</strong>
+                <p>What attitudes distinguish critical thinking from uncritical thinking during a discussion?</p>
+            </div>
+        </div>
+
+        <!-- Slide 37: Importance of the Fallibility Principle -->
+        <div class="slide">
+            <h2>Importance of the Fallibility Principle</h2>
+            <p>
+              Consciously accepting your own fallibility signals a willingness to learn and potentially change your mind if presented with better arguments or evidence. Refusing to acknowledge fallibility suggests a closed-minded approach, hindering productive discussion. Given the complexity of many issues and the diversity of perspectives, it's statistically more likely that any individual is wrong about some things than right about everything. Admitting fallibility opens the door to intellectual growth and finding more defensible positions.
+            </p>
+        </div>
+
+        <!-- Slide 38: Truth Seeking Principle -->
+        <div class="slide">
+            <h2>2. The Truth-Seeking Principle</h2>
+            <p><strong>Principle: Commit to earnestly searching for the truth or the most defensible position.</strong></p>
+            <p>
+              This principle involves a genuine desire to find the best answer, rather than simply defending a pre-existing belief. It requires willingness to seriously examine alternative views, seek insights in others' positions, and allow one's own views to be challenged through arguments and objections.
+            </p>
+        </div>
+
+        <!-- Slide 39: Importance of the Truth-Seeking Principle -->
+        <div class="slide">
+            <h2>Importance of the Truth-Seeking Principle</h2>
+            <p>
+                The search for truth is often a collaborative process involving discussion and the critical examination of diverse ideas. A genuine interest in truth necessitates considering alternative perspectives and welcoming critiques of one's own arguments. If the goal is simply to win or confirm existing biases, the pursuit of truth is compromised.
+            </p>
+        </div>
+
+        <!-- Slide 40: Additional Principles of Critical Thinking -->
+        <div class="slide">
+            <h2>Additional Principles of Critical Thinking</h2>
+            <p>Building on fallibility and truth-seeking, several other principles guide effective critical thinking and discussion:</p>
+            <ul class="arrow-list">
+              <li><strong>The Clarity Principle:</strong> Strive to express your own points clearly and precisely, and seek clarification when others' points are unclear. Avoid vagueness and ambiguity.</li>
+              <li><strong>The Burden of Proof Principle:</strong> Recognize that the responsibility for providing supporting evidence lies with the person making a claim. Do not demand that others disprove your unsupported claims.</li>
+              <li><strong>The Principle of Charity:</strong> When interpreting someone else's argument, formulate it in its strongest, most plausible version, addressing the best possible case for their view, rather than attacking a weak caricature (Straw Man).</li>
+              <li><strong>The Suspension of Judgment Principle:</strong> If the available evidence or reasoning is insufficient to support any conclusion, be willing to withhold judgment until further evidence is available. Avoid jumping to conclusions.</li>
+              <li><strong>The Resolution Principle:</strong> Aim to resolve the issue by accepting the conclusion best supported by the evidence and arguments. Be willing to revise your position if significant new evidence emerges, but avoid reopening the issue without good reason.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 41: Characteristics of Critical Thinking Overview -->
+        <div class="slide">
+            <h2>4: Characteristics of Critical Thinking</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Having discussed the meaning, standards, and principles related to critical thinking and good argumentation, we can now outline the general characteristics typically exhibited by critical thinkers, contrasting them with the traits of uncritical thinkers.
+            </p>
+        </div>
+
+        <!-- Slide 42: Characteristics of Critical Thinking Objectives -->
+        <div class="slide">
+            <h2>Section Objectives</h2>
+            <h3>Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="arrow-list">
+              <li>Appreciate the general characteristics and habits of mind associated with critical thinking.</li>
+              <li>Contrast the characteristics of critical thinkers with those of uncritical thinkers.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 43: Basic Traits of Critical Thinkers Intro -->
+        <div class="slide">
+            <h2>4.1 Basic Traits of Critical Thinkers</h2>
+            <p>
+              A critical thinker embodies certain dispositions, attitudes, skills, abilities, habits, and values. This section highlights some key intellectual traits characteristic of critical individuals.
+            </p>
+        </div>
+
+        <!-- Slide 44: Key Traits of Critical Thinkers (1) -->
+        <div class="slide">
+            <h2>Key Traits of Critical Thinkers (1)</h2>
+            <div class="activity-box">
+                <strong>Activity # 5:</strong>
+                <p>What specific characteristics best distinguish critical thinkers from uncritical ones?</p>
+            </div>
+            <p>Critical thinkers typically:</p>
+            <ul class="arrow-list">
+               <li>Practice intellectual honesty: Acknowledge ignorance and limitations, recognize potential errors in their thinking.</li>
+               <li>View problems and controversies as challenges: Engage with complex issues rather than avoiding them.</li>
+               <li>Value understanding and curiosity: Remain patient with complexity and invest effort to overcome confusion.</li>
+               <li>Base judgments on evidence: Rely on evidence over personal preference, suspend judgment when evidence is insufficient, and revise beliefs when new evidence warrants it.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 45: Key Traits of Critical Thinkers (2) -->
+        <div class="slide">
+            <h2>Key Traits of Critical Thinkers (2)</h2>
+            <ul class="arrow-list">
+              <li>Engage respectfully with differing views: Listen attentively to others' ideas, even in disagreement.</li>
+              <li>Seek balanced perspectives: Recognize that extreme views are often flawed and strive for fair-mindedness.</li>
+              <li>Exercise emotional restraint: Control feelings rather than being controlled by them; think before acting or speaking impulsively.</li>
+              <li>Pursue intellectual independence: Think for themselves rather than simply conforming to group opinion.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 46: Basic Traits of Uncritical Thinkers Intro -->
+        <div class="slide">
+            <h2>4.2 Basic Traits of Uncritical Thinkers</h2>
+            <p>
+                In contrast to the characteristics of critical thinkers, uncritical thinkers exhibit traits that hinder rigorous thought and open-minded inquiry. This section outlines some common traits of uncritical thinking.
+            </p>
+        </div>
+
+        <!-- Slide 47: Key Traits of Uncritical Thinkers (1) -->
+        <div class="slide">
+            <h2>Key Traits of Uncritical Thinkers (1)</h2>
+            <p>Uncritical thinkers often:</p>
+            <ul class="arrow-list">
+              <li>Exhibit intellectual arrogance: Pretend to know more than they do, ignore limitations, assume their views are error-free.</li>
+              <li>Avoid challenges: View problems and controversies as nuisances or threats.</li>
+              <li>Display impatience with complexity: Prefer confusion over the effort required for understanding.</li>
+              <li>Rely on impressions and biases: Base judgments on initial reactions or gut feelings, disregard evidence quality, and cling rigidly to existing views.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 48: Key Traits of Uncritical Thinkers (2) -->
+        <div class="slide">
+            <h2>Key Traits of Uncritical Thinkers (2)</h2>
+            <ul class="arrow-list">
+              <li>Demonstrate closed-mindedness: Preoccupied with their own opinions, unwilling to listen attentively to others, quick to refute opposing views without fair consideration.</li>
+              <li>Lack balance: Favor views confirming their existing beliefs and ignore or dismiss contradictory perspectives.</li>
+              <li>Act impulsively: Tend to follow feelings without reflection; act before thinking.</li>
+              <li>Conform uncritically: Follow group opinions or authority without independent evaluation.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 49: Comparison: Standards and Skills -->
+        <div class="slide">
+            <h2>Comparison: Standards & Skills</h2>
+            <p>
+              <strong>Critical thinkers</strong> strive for clarity, precision, accuracy, and adhere to intellectual standards. They are sensitive to biases like egocentrism and sociocentrism. They skillfully understand, analyze, and evaluate arguments, reasoning logically and drawing well-supported conclusions from evidence.
+            </p>
+            <p>
+               <strong>Uncritical thinkers</strong> often think unclearly, imprecisely, and inaccurately. They frequently fall prey to egocentrism, sociocentrism, unwarranted assumptions, and wishful thinking. They tend to misunderstand or unfairly evaluate opposing viewpoints and draw illogical or unsupported conclusions.
+            </p>
+        </div>
+
+        <!-- Slide 50: Comparison: Openness and Evidence -->
+        <div class="slide">
+            <h2>Comparison: Openness & Evidence</h2>
+            <p>
+              <strong>Critical thinkers</strong> practice intellectual honesty, acknowledging limitations. They listen open-mindedly, welcoming criticism of their own beliefs. They base beliefs on facts and evidence, aware of their own biases.
+            </p>
+            <p>
+               <strong>Uncritical thinkers</strong> often pretend to know more than they do, ignoring limitations. They are typically closed-minded, resisting criticism. They tend to base beliefs on personal preference or self-interest, often unaware of their own biases and preconceptions.
+            </p>
+        </div>
+
+        <!-- Slide 51: Comparison: Independence and Pursuit of Truth -->
+        <div class="slide">
+            <h2>Comparison: Independence & Pursuit of Truth</h2>
+            <p>
+              <strong>Critical thinkers</strong> think independently, unafraid to question group opinion. They possess intellectual courage, facing ideas that challenge their basic beliefs fairly. They actively pursue truth, remain curious, and persevere through intellectual challenges.
+            </p>
+            <p>
+               <strong>Uncritical thinkers</strong> often engage in "groupthink," conforming without question. They tend to fear or resist ideas challenging their core beliefs. They are often indifferent to truth, lack curiosity, and give up easily when faced with intellectual difficulties.
+            </p>
+        </div>
+
+        <!-- Slide 52: Barriers to Critical Thinking Overview -->
+        <div class="slide">
+            <h2>5: Barriers to Critical Thinking</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Critical thinking involves disciplined skills and attitudes for evaluating arguments and claims. If critical thinking is so valuable, why is uncritical thinking common, even among intelligent individuals? The reasons are complex.
+            </p>
+            <p>
+              This section discusses common impediments to critical thinking. While many factors exist, we will focus on four major barriers: egocentrism, sociocentrism, unwarranted assumptions/stereotypes, and relativistic thinking. This list is not exhaustive.
+            </p>
+        </div>
+
+        <!-- Slide 53: Barriers to Critical Thinking Objectives -->
+        <div class="slide">
+            <h2>Section Objectives</h2>
+            <h3>Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="arrow-list">
+              <li>Identify and define major psychological and philosophical barriers to critical thinking.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 54: Common Barriers -->
+        <div class="slide">
+            <h2>Common Barriers to Critical Thinking</h2>
+            <div class="activity-box">
+                <strong>Activity # 6:</strong>
+                <p>What factors do you think impede or obstruct critical thinking?</p>
+            </div>
+            <p>
+              Numerous factors can hinder critical thinking. Common barriers include:
+            </p>
+            <ul>
+                <li>Lack of relevant background information</li>
+                <li>Poor reading skills</li>
+                <li>Bias and Prejudice</li>
+                <li>Superstition</li>
+                <li>Egocentrism (self-centered thinking)</li>
+                <li>Sociocentrism (group-centered thinking), including Peer Pressure, Conformism, Provincialism</li>
+                <li>Narrow-mindedness / Closed-mindedness</li>
+                <li>Distrust in reason</li>
+                <li>Relativistic thinking</li>
+                <li>Stereotyping</li>
+                <li>Unwarranted assumptions</li>
+                <li>Scapegoating (blaming the innocent)</li>
+                <li>Rationalization (making excuses)</li>
+                <li>Wishful thinking</li>
+            </ul>
+        </div>
+
+        <!-- Slide 55: Barrier 1: Egocentrism -->
+        <div class="slide">
+            <h2>Barrier 1: Egocentrism</h2>
+            <p>
+              <strong>Egocentrism</strong>, the tendency to see reality centered on oneself, is a powerful barrier. Egocentric individuals view their own interests, ideas, and values as inherently superior. While varying in degree, egocentric biases affect nearly everyone.
+            </p>
+            <p>Two common manifestations are:</p>
+            <ul>
+                <li><strong>Self-Interested Thinking:</strong> Accepting/defending beliefs primarily because they align with one's own interests.</li>
+                <li><strong>Superiority Bias (Illusory Superiority):</strong> Overrating oneself or seeing oneself as better than average in various respects.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 56: Egocentrism: Self-interested Thinking -->
+        <div class="slide">
+            <h2>Egocentrism: Self-Interested Thinking</h2>
+            <p>
+              <strong>Self-interested thinking</strong> involves favoring beliefs that benefit oneself, often regardless of objective evidence. Examples abound: doctors supporting laws limiting malpractice suits, professors favoring tenure and sabbaticals, factory workers supporting plant closing notifications (while owners oppose them). While some positions might have valid reasons, self-interest often influences belief formation.
+            </p>
+            <p>
+              This bias obstructs critical thinking. Reasoning that "This benefits me, therefore it is good" relies on the unstated, self-serving assumption that one's own wants and needs are paramount. Critical thinking rejects such special pleading, demanding objective evaluation of evidence and arguments, prioritizing truth even when inconvenient.
+            </p>
+        </div>
+
+        <!-- Slide 57: Egocentrism: Superiority Bias -->
+        <div class="slide">
+            <h2>Egocentrism: Superiority Bias</h2>
+            <p>
+              The <strong>superiority bias</strong> (or illusory superiority) is the tendency to overestimate one's own qualities and abilities relative to others. Most people tend to see themselves as above average in positive traits (like intelligence, fairness, or driving skill) and less susceptible to biases than others—a statistically unlikely scenario. Believing oneself immune to such self-deception is itself an indicator of superiority bias. Recognizing this universal tendency is a step towards mitigating egocentric thought.
+            </p>
+        </div>
+
+        <!-- Slide 58: Barrier 2: Sociocentrism -->
+        <div class="slide">
+            <h2>Barrier 2: Sociocentrism</h2>
+            <p>
+              <strong>Sociocentrism</strong>, or group-centered thinking, is another major barrier. It involves focusing excessively on one's group identity and interests, hindering rational thought. Like egocentrism for the individual, sociocentrism prioritizes the group perspective.
+            </p>
+            <p>Two key forms are:</p>
+            <ul>
+               <li><strong>Group Bias:</strong> The tendency to view one's own group (nation, tribe, religion, peer group) as inherently superior to others, often accompanied by suspicion or negative views of "outsiders."</li>
+               <li><strong>Conformism:</strong> The tendency to follow group norms, beliefs, or authority figures, often unthinkingly, due to a desire to belong.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 59: Sociocentrism: Group Bias and Conformism -->
+        <div class="slide">
+            <h2>Sociocentrism: Group Bias and Conformism</h2>
+            <p>
+              <strong>Group bias</strong> is often absorbed unconsciously from childhood, leading people to assume the superiority of their own society's beliefs, institutions, and values. This "mine-is-better" thinking contributes significantly to conflict, intolerance, and oppression globally.
+            </p>
+            <p>
+              <strong>Conformism</strong> stems from the powerful human motivation to belong. This desire can override individual critical judgment, leading people to adopt group beliefs or follow authority figures without independent evaluation. Classic social psychology experiments (like Milgram's obedience studies or Asch's conformity experiments) demonstrate how easily individuals can abandon their own judgment under group or authority pressure.
+            </p>
+        </div>
+
+        <!-- Slide 60: Overcoming Sociocentrism -->
+        <div class="slide">
+            <h2>Overcoming Sociocentrism</h2>
+            <p>
+              The influence of authority and the pressure to conform can significantly impair critical thinking. We can be easily impressed or intimidated into abandoning our own values and judgments. As critical thinkers, recognizing the seductive power of peer pressure and undue reliance on authority is essential. Cultivating habits of independent thought and questioning group assumptions are necessary countermeasures.
+            </p>
+        </div>
+
+        <!-- Slide 61: Barrier 3: Unwarranted Assumptions and Stereotypes -->
+        <div class="slide">
+            <h2>Barrier 3: Unwarranted Assumptions & Stereotypes</h2>
+            <p>
+              An <strong>assumption</strong> is something taken for granted as true without proof. Many daily actions rely on warranted assumptions based on past experience (e.g., assuming class will be held at the scheduled time). These are reasonable expectations.
+            </p>
+            <p>
+               However, <strong>unwarranted assumptions</strong>—those held without good reason—are significant barriers to critical thinking. They distort perception and reasoning.
+            </p>
+            <p>
+                A common type of unwarranted assumption is a <strong>stereotype</strong>: a generalized belief about a group of people, assuming all members share certain characteristics, often ignoring individual differences.
+            </p>
+        </div>
+
+        <!-- Slide 62: Stereotypes as Unwarranted Assumptions -->
+        <div class="slide">
+            <h2>Stereotypes as Unwarranted Assumptions</h2>
+            <p>
+                Stereotyping involves forming opinions about individuals based on group membership rather than individual qualities. It assumes uniformity ("all politicians are alike," "all members of X group are Y"). Since individuals within any group vary significantly, stereotypes are frequently false, oversimplified, or misleading generalizations.
+            </p>
+            <p>
+                Stereotypes often arise from <strong>hasty generalization</strong>—drawing broad conclusions from insufficient evidence (e.g., judging an entire nationality based on encountering one individual). Media portrayals and social biases can also perpetuate stereotypes. Recognizing and challenging our tendency to stereotype is crucial for fair and accurate thinking.
+            </p>
+        </div>
+
+        <!-- Slide 63: Barrier 4: Relativistic Thinking -->
+        <div class="slide">
+            <h2>Barrier 4: Relativistic Thinking</h2>
+            <p>
+              <strong>Relativism</strong>, the view that truth is merely a matter of opinion, poses a significant challenge to critical thinking (which relies on evaluating claims against objective standards). Two main forms exist:
+            </p>
+            <ul>
+              <li>
+                <strong>Subjectivism:</strong> Truth is relative to the individual. What is true *for* person A is simply whatever person A believes. There is no objective truth independent of individual belief.
+              </li>
+              <li>
+                <strong>Cultural Relativism:</strong> Truth is relative to one's culture or society. What is true *for* members of culture A is whatever culture A believes. There is no objective truth independent of cultural consensus.
+              </li>
+            </ul>
+        </div>
+
+        <!-- Slide 64: Subjectivism and Cultural Relativism -->
+        <div class="slide">
+            <h2>Subjectivism and Cultural Relativism Examples</h2>
+            <p>
+              Under <strong>subjectivism</strong>, if Abdella believes abortion is always wrong, and Obang believes it isn't always wrong, then *both* beliefs are considered "true" for the respective individuals. Objective truth is denied.
+            </p>
+            <p>
+              Under <strong>cultural relativism</strong>, if drinking wine is considered wrong in Iranian culture but acceptable in French culture, then drinking wine *is* wrong in Iran and *is* acceptable in France, according to the respective cultural norms. Again, objective truth independent of cultural belief is denied.
+            </p>
+        </div>
+
+        <!-- Slide 65: Moral Relativism -->
+        <div class="slide">
+            <h2>Moral Relativism</h2>
+            <p>
+              While few endorse absolute relativism about *all* truths (e.g., mathematical truths), relativism is commonly applied to specific domains, most notably morality. <strong>Moral Relativism</strong> asserts that moral truth is relative.
+            </p>
+            <ul>
+              <li>
+                <strong>Moral Subjectivism:</strong> What is morally right for an individual is simply whatever that individual believes is right.
+              </li>
+              <li>
+                <strong>Cultural Moral Relativism:</strong> What is morally right for members of a culture is whatever that culture believes is right.
+              </li>
+            </ul>
+            <p style="margin-top: 15px;">Example: If Culture A deems polygamy wrong and Culture B deems it right, cultural moral relativism holds that polygamy *is* wrong for A and *is* right for B.</p>
+        </div>
+
+        <!-- Slide 66: Appeal and Problems of Moral Relativism -->
+        <div class="slide">
+            <h2>Appeal and Problems of Moral Relativism</h2>
+            <p>
+              Cultural moral relativism often seems appealing for two main reasons:
+              <br>1. It appears to explain persistent, deep disagreements in ethics by suggesting there's no objective truth, only differing opinions.
+              <br>2. It seems to promote tolerance by implying we shouldn't judge other cultures' practices by our own standards.
+            </p>
+            <p>
+               However, these appeals face significant problems. First, disagreement about an issue (like ethics or religion) doesn't logically entail that there is no objective truth concerning that issue. Difficulty in finding truth doesn't mean truth doesn't exist.
+            </p>
+        </div>
+
+        <!-- Slide 67: Problems of Moral Relativism (Cont.) -->
+        <div class="slide">
+            <h2>Problems of Moral Relativism (Cont.)</h2>
+            <p>
+              Second, cultural moral relativism doesn't consistently support tolerance. It dictates adherence to one's own culture's norms. If a culture *values* intolerance, then relativism would imply that being intolerant is morally right for members of that culture.
+            </p>
+            <p>
+               Furthermore, cultural relativism makes meaningful moral criticism of other cultures (or even one's own culture's past or present norms) impossible, as it implies that the prevailing cultural standard *is* the ultimate moral standard for that culture. It also struggles with defining "culture" and handling subcultures or individuals who disagree with the majority.
+            </p>
+        </div>
+
+        <!-- Slide 68: Learning from Relativism -->
+        <div class="slide">
+            <h2>What Can We Learn from Relativism?</h2>
+            <p>
+              While flawed as a theory of truth, the prevalence of moral disagreement highlighted by relativism *should* encourage intellectual humility. Recognizing that decent, intelligent people hold vastly different moral views should make us cautious about assuming the absolute correctness of our own beliefs.
+            </p>
+            <p>
+               This lesson in open-mindedness and caution doesn't require accepting the problematic tenets of relativism itself. It can be learned through critical thinking and empathetic engagement with diverse perspectives. Relativism, ultimately, undermines the very possibility of critical evaluation by suggesting all opinions (individual or cultural) are equally valid.
+            </p>
+        </div>
+
+        <!-- Slide 69: Barrier 5: Wishful Thinking -->
+        <div class="slide">
+            <h2>Barrier 5: Wishful Thinking</h2>
+            <p>
+              <strong>Wishful thinking</strong> occurs when we believe something not because of good evidence, but simply because we *want* it to be true. It involves letting desires dictate beliefs.
+            </p>
+            <p>
+               This is a common human tendency. People often fear the unknown, death, or powerlessness, leading them to embrace comforting myths, unsubstantiated cures, or beliefs in extraordinary phenomena (like psychic powers) without critical scrutiny, simply because these beliefs fulfill a desire or alleviate a fear. Reason often struggles against the allure of wishful thinking. Critical thinking requires confronting reality as it is, based on evidence, rather than shaping beliefs according to desires.
+            </p>
+        </div>
+
+        <!-- Slide 70: Benefits of Critical Thinking Overview -->
+        <div class="slide">
+            <h2>6: Benefits of Critical Thinking</h2>
+            <h3>Section Overview</h3>
+            <p>
+              Cultivating critical thinking skills and adopting a critical mindset offers numerous advantages in academic, professional, and personal life. This section explores some of the key benefits of developing critical thinking abilities.
+            </p>
+        </div>
+
+        <!-- Slide 71: Benefits of Critical Thinking Objectives -->
+        <div class="slide">
+            <h2>Section Objectives</h2>
+            <h3>Objectives:</h3>
+            <p>After completing this section, you will be able to:</p>
+            <ul class="arrow-list">
+                <li>Identify and appreciate the major benefits of critical thinking in various contexts.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 72: Identifying Benefits -->
+        <div class="slide">
+            <h2>Identifying the Benefits</h2>
+            <div class="activity-box">
+                <strong>Activity # 7:</strong>
+                <p>What advantages do you think result from developing critical thinking skills?</p>
+            </div>
+            <p>Thinking critically provides significant advantages across different areas of life.</p>
+        </div>
+
+        <!-- Slide 73: Core Skills and Dispositions -->
+        <div class="slide">
+            <h2>Core Skills and Dispositions Developed</h2>
+            <p>
+              Critical thinking cultivates essential skills and dispositions:
+            </p>
+            <ul>
+                <li>Raising and identifying fundamental questions and problems.</li>
+                <li>Reformulating problems clearly and precisely.</li>
+                <li>Gathering and assessing relevant information effectively.</li>
+                <li>Developing reasoned conclusions and solutions, testing them against appropriate criteria.</li>
+                <li>Thinking open-mindedly within alternative systems of thought.</li>
+                <li>Recognizing and evaluating one's own assumptions, implications, and consequences.</li>
+                <li>Communicating effectively with others to solve complex problems.</li>
+            </ul>
+            <p style="margin-top: 15px;">
+              University education aims not just to impart facts, but to teach students *how* to think critically—to become independent, self-directed learners. Developing these skills requires effort and practice, strengthening mental discipline and fostering confidence.
+            </p>
+        </div>
+
+        <!-- Slide 74: Benefits in the Classroom -->
+        <div class="slide">
+            <h2>Benefits in the Classroom</h2>
+            <p>
+              University education emphasizes critical scrutiny over mere acquisition of information. The focus shifts from *what* you know to *how* you know it and whether your beliefs withstand examination.
+            </p>
+            <p>
+              Critical thinking skills directly enhance academic performance by improving your ability to:
+            </p>
+            <ul>
+              <li><strong>Understand</strong> complex arguments and beliefs presented by others (in texts, lectures, discussions).</li>
+              <li><strong>Critically Evaluate</strong> those arguments and beliefs, identifying strengths, weaknesses, assumptions, and biases.</li>
+              <li><strong>Develop and Defend</strong> your own well-supported arguments and beliefs in assignments, discussions, and papers.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 75: Understanding and Evaluating in Class -->
+        <div class="slide">
+            <h2>Understanding and Evaluating in Class</h2>
+            <p>
+               Success in university requires comprehending complex material. Critical thinking skills, such as identifying main points, analyzing structure, and clarifying meaning, significantly improve understanding of course content.
+            </p>
+            <p>
+               Furthermore, instructors frequently ask students to "critically discuss" ideas. Critical thinking provides the strategies (identifying assumptions, evaluating evidence, considering counterarguments, assessing logical strength) needed to perform such evaluations effectively.
+            </p>
+        </div>
+
+        <!-- Slide 76: Developing Arguments and Transferable Skills -->
+        <div class="slide">
+            <h2>Developing Arguments and Transferable Skills</h2>
+            <p>
+              University assignments often require constructing your own arguments (e.g., writing argumentative essays). Success demands more than just assessing information; it requires organizing evidence and reasoning to convincingly support your thesis. Critical thinking training systematically improves this crucial skill.
+            </p>
+            <p>
+              Crucially, critical thinking skills are <strong>transferable</strong>. Learning how to structure arguments, judge source credibility, or make reasoned decisions in one context equips you to apply these skills across diverse subjects, professional situations, and personal life challenges. The goal is to facilitate this transfer, making critical thinking a universally applicable tool.
+            </p>
+        </div>
+
+        <!-- Slide 77: Benefits in Life -->
+        <div class="slide">
+            <h2>Benefits in Life</h2>
+            <p>
+              Beyond academics, critical thinking offers significant advantages:
+            </p>
+            <ol>
+                <li>
+                  <strong>Improved Personal Decision-Making:</strong> Critical thinking helps avoid foolish choices in areas like career paths, relationships, and personal conduct by encouraging careful, clear, and logical consideration of important life decisions.
+                </li>
+                <li>
+                  <strong>Enhanced Civic Engagement:</strong> In democratic societies, citizens make collective decisions about governance and public policy. Informed, rational decision-making by the populace is vital. Critical thinking equips citizens to evaluate policies, assess candidates, and participate constructively. Addressing complex societal problems (e.g., environmental issues, poverty, conflict) requires widespread critical thought.
+                </li>
+            </ol>
+        </div>
+
+        <!-- Slide 78: Benefits: Personal Enrichment -->
+        <div class="slide">
+            <h2>Benefits: Personal Enrichment and Liberation</h2>
+            <p>
+                 3. <strong>Personal Enrichment and Intellectual Freedom:</strong> Studying critical thinking offers intrinsic rewards. Historically, people often accepted prevailing beliefs without question (e.g., geocentrism, divine right of kings, social inequalities). Critical thinking empowers individuals to question assumptions, challenge biases inherited from their upbringing or society, and step back from dominant ideologies.
+            </p>
+            <p>
+              It fosters the ability to ask, "This is what I've been taught, but is it true?" enabling self-directed, "examined" lives, as advocated by Socrates. This intellectual liberation—the ability to think for oneself—is arguably the ultimate goal and highest reward of education.
+            </p>
+        </div>
+
+        <!-- Slide 79: Chapter Summary -->
+        <div class="slide">
+            <h2>Chapter Summary</h2>
+            <p>
+              Critical thinking involves skilled judgment and intelligent thought. It encompasses a range of cognitive skills and intellectual dispositions necessary for effectively identifying, analyzing, and evaluating arguments and truth claims. It helps overcome biases, present reasoned conclusions, and make intelligent decisions about beliefs and actions.
+            </p>
+        </div>
+
+        <!-- Slide 80: Chapter Summary (Continued) -->
+        <div class="slide">
+            <h2>Chapter Summary (Continued)</h2>
+            <p>
+              Intelligence alone does not guarantee critical thinking, which is an active process aimed at reaching well-reasoned, justifiable conclusions through clear, fair, rational, objective, and independent thought. It requires adhering to intellectual standards (clarity, precision, accuracy, relevance, consistency, logical correctness, completeness, fairness) and following principles of good argumentation and intellectual conduct (fallibility, truth-seeking, clarity, burden of proof, charity, suspension of judgment, resolution).
+            </p>
+            <p>
+              Critical thinkers exhibit traits like intellectual honesty, curiosity, evidence-based judgment, and open-mindedness, contrasting with uncritical thinkers prone to arrogance, bias, and conformity. Common barriers include egocentrism, sociocentrism, unwarranted assumptions, stereotypes, relativism, and wishful thinking. Overcoming these barriers through critical thinking yields significant benefits in academic performance, personal decision-making, civic engagement, and intellectual autonomy.
+            </p>
+        </div>
+
+        <!-- Slide 81: Self Check Exercise -->
+        <div class="slide">
+            <h2>Self-Check Exercise</h2>
+            <ol>
+              <li>Provide a comprehensive definition of critical thinking.</li>
+              <li>List and briefly explain the major intellectual standards of critical thinking.</li>
+              <li>Outline the key principles of good argumentation and critical intellectual conduct discussed.</li>
+              <li>Compare and contrast the main characteristics of critical thinkers and uncritical thinkers.</li>
+              <li>Identify and explain at least four common barriers to critical thinking.</li>
+              <li>Discuss the major benefits of developing critical thinking skills in academic, personal, and civic life.</li>
+            </ol>
+        </div>
+
+        <!-- Slide 82: References -->
+        <div class="slide references">
+            <h2>References</h2>
+            <ul>
+                <li>Bassham, G., Irwin, W., Nardone, H., & Wallace, J. M. (2013). <em>Critical Thinking: A Student's Introduction</em> (5th ed.). McGraw-Hill.</li>
+                <li>Bailin, S., Case, R., Coombs, J. R., & Daniels, L. B. (1999). Common Misconceptions of Critical Thinking. <em>Journal of Curriculum Studies</em>, <em>31</em>(3), 269-283.</li>
+                <li>Bowell, T., & Kemp, G. (2015). <em>Critical Thinking: A Concise Guide</em> (4th ed.). Routledge.</li>
+                <li>Damer, T. E. (2009). <em>Attacking Faulty Reasoning: A Practical Guide to Fallacy-Free Arguments</em> (6th ed. or later). Wadsworth Cengage Learning.</li>
+                <li>Fisher, A. (2011). <em>Critical Thinking: An Introduction</em> (2nd ed.). Cambridge University Press.</li>
+                <li>Moon, J. (2008). <em>Critical Thinking: An Exploration of Theory and Practice</em>. Routledge.</li>
+                <li>Paul, R., & Elder, L. (2008). <em>The Miniature Guide to Critical Thinking Concepts and Tools</em>. Foundation for Critical Thinking Press.</li>
+                <li>Rawls, J. (1971). <em>A Theory of Justice</em>. Belknap Press of Harvard University Press.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="slide-counter-container">
+        <span id="slideCounter" class="slide-counter-text"></span>
+    </div>
+
+    <button id="prevBtn" class="side-nav-button" onclick="showPrevSlide()">‹</button>
+    <button id="nextBtn" class="side-nav-button" onclick="showNextSlide()">›</button>
+
+
+    <script>
         const slides = document.querySelectorAll('.slide');
-        const prevButton = document.getElementById('prevSlide');
-        const nextButton = document.getElementById('nextSlide');
-        const slideCounter = document.getElementById('slideCounter');
-        let currentSlide = 0; // Start from slide 1 (index 0)
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounterElem = document.getElementById('slideCounter');
+        let currentSlide = 0;
+        const animationDuration = 600;
 
-        function updateSlide() {
-          slides.forEach((slide, index) => {
-            slide.classList.toggle('active', index === currentSlide);
-          });
-          prevButton.disabled = currentSlide === 0;
-          nextButton.disabled = currentSlide === slides.length - 1;
-          slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+        function updateSlideCounter() {
+            if (slides.length > 0) {
+                slideCounterElem.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+            } else {
+                slideCounterElem.textContent = `No slides`;
+            }
         }
 
-        prevButton.addEventListener('click', () => {
-          if (currentSlide > 0) {
-            currentSlide--;
-            updateSlide();
-          }
-        });
+        function updateNavButtons() {
+             if (slides.length <= 1) {
+                 prevBtn.disabled = true;
+                 nextBtn.disabled = true;
+                 prevBtn.style.display = 'none';
+                 nextBtn.style.display = 'none';
+             } else {
+                 prevBtn.disabled = currentSlide === 0;
+                 nextBtn.disabled = currentSlide === slides.length - 1;
+                 prevBtn.style.display = 'block';
+                 nextBtn.style.display = 'block';
+             }
+        }
 
-        nextButton.addEventListener('click', () => {
-          if (currentSlide < slides.length - 1) {
-            currentSlide++;
-            updateSlide();
-          }
+        function showSlide(newIndex, direction) {
+            if (slides.length === 0) return;
+            if (newIndex < 0 || newIndex >= slides.length) {
+                return;
+            }
+
+            const oldSlide = slides[currentSlide];
+            const newSlide = slides[newIndex];
+
+            if (!newSlide) {
+                 console.error(`Slide at index ${newIndex} not found.`);
+                 return;
+            }
+
+            if (newIndex === currentSlide && oldSlide.classList.contains('active') && direction !== 'init') {
+                newSlide.scrollTop = 0;
+                return;
+            }
+
+            newSlide.scrollTop = 0;
+
+            if (oldSlide && oldSlide !== newSlide) {
+                oldSlide.classList.remove('active');
+                if (direction === 'next') {
+                    oldSlide.classList.add('exiting-left');
+                } else if (direction === 'prev') {
+                    oldSlide.classList.add('exiting-right');
+                }
+                oldSlide.style.zIndex = '0';
+            }
+
+            newSlide.classList.remove('active', 'exiting-left', 'exiting-right');
+
+            if (direction === 'init') {
+                newSlide.style.transform = 'translateX(0)';
+                newSlide.style.opacity = '1';
+            } else {
+                newSlide.style.opacity = '0';
+                if (direction === 'prev') {
+                    newSlide.style.transform = 'translateX(-100%)';
+                } else {
+                    newSlide.style.transform = 'translateX(100%)';
+                }
+            }
+            newSlide.style.visibility = 'visible';
+            newSlide.style.zIndex = '1';
+
+            newSlide.offsetHeight; 
+
+            newSlide.classList.add('active'); 
+
+            currentSlide = newIndex;
+
+            setTimeout(() => {
+                slides.forEach((s, i) => {
+                    if (i === currentSlide) {
+                        s.style.transform = ''; 
+                        s.style.opacity = '';   
+                    } else {
+                        s.classList.remove('active', 'exiting-left', 'exiting-right');
+                        s.style.visibility = 'hidden';
+                        s.style.opacity = '0';
+                        s.style.transform = 'translateX(100%)'; 
+                        s.style.zIndex = '0';
+                    }
+                });
+            }, animationDuration);
+
+            updateNavButtons();
+            updateSlideCounter();
+        }
+
+        function showNextSlide() {
+            if (currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1, 'next');
+            }
+        }
+
+        function showPrevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1, 'prev');
+            }
+        }
+
+        function initializeSlides() {
+            if (slides.length > 0) {
+                slides.forEach((slide) => { 
+                    slide.classList.remove('active', 'exiting-left', 'exiting-right');
+                    slide.style.transform = 'translateX(100%)';
+                    slide.style.opacity = '0';
+                    slide.style.visibility = 'hidden';
+                    slide.style.zIndex = '0';
+                    slide.scrollTop = 0;
+                });
+                currentSlide = 0;
+                showSlide(0, 'init');
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+            updateNavButtons();
+            updateSlideCounter();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+             initializeSlides();
         });
 
         document.addEventListener('keydown', (event) => {
-           if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
-                return; // Prevent slide change if typing
-            }
-          if (event.key === 'ArrowLeft' && currentSlide > 0) {
-            currentSlide--;
-            updateSlide();
-          } else if (event.key === 'ArrowRight' && currentSlide < slides.length - 1) {
-            currentSlide++;
-            updateSlide();
-          }
-        });
+            const activeElement = document.activeElement;
+            const activeSlide = slides[currentSlide];
 
-        updateSlide(); // Initialize the slide display and counter
-      </script>
-    </body>
-    </html>
+            if (activeElement) {
+                const tagName = activeElement.tagName.toLowerCase();
+                if (tagName === 'input' || tagName === 'textarea' || tagName === 'select' || activeElement.isContentEditable) {
+                     return;
+                }
+            }
+
+            const epsilon = 1.5;
+
+            switch (event.key) {
+                case 'ArrowRight': case 'PageDown':
+                    event.preventDefault(); showNextSlide(); break;
+                case 'ArrowLeft': case 'PageUp':
+                    event.preventDefault(); showPrevSlide(); break;
+                case 'ArrowDown':
+                    event.preventDefault();
+                    if (activeSlide) {
+                        const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
+                        const isNotAtBottom = activeSlide.scrollTop < (activeSlide.scrollHeight - activeSlide.clientHeight - epsilon);
+                        if (isScrollable && isNotAtBottom) activeSlide.scrollTop += activeSlide.clientHeight * 0.15;
+                    }
+                    break;
+                case 'ArrowUp':
+                    event.preventDefault();
+                    if (activeSlide) {
+                        const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
+                        const isNotAtTop = activeSlide.scrollTop > epsilon;
+                        if (isScrollable && isNotAtTop) activeSlide.scrollTop -= activeSlide.clientHeight * 0.15;
+                    }
+                    break;
+                case 'Home':
+                    event.preventDefault();
+                    if (activeSlide) currentSlide !== 0 ? showSlide(0, 'prev') : activeSlide.scrollTop = 0;
+                    break;
+                case 'End':
+                    event.preventDefault();
+                     if (activeSlide) currentSlide !== slides.length - 1 ? showSlide(slides.length - 1, 'next') : activeSlide.scrollTop = activeSlide.scrollHeight;
+                    break;
+            }
+        });
+    </script>
+
+</body>
+</html>
