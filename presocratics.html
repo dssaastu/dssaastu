@@ -8,17 +8,84 @@
         /* --- CORE STYLES --- */
         body { font-family: 'Nyala', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
         .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
-        .header h1 { margin: 0; font-size: 2rem; }
+        .header h1 { margin: 0; font-size: 2rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } /* English font */
+        .header p { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } /* English font */
         .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
+        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } /* English font */
         .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
         .navbar-menu { display: flex; flex-direction: row; }
         .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
-        .footer p { margin-top: 15px; font-size: 0.9rem; }
+        .footer p { margin-top: 15px; font-size: 0.9rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } /* English font */
         .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
-        .content-wrapper { width: 80%; max-width: 900px; margin: 40px auto; }
-        .content-wrapper h2 { text-align: center; margin-bottom: 30px; font-size: 2.2rem; color: #2C3E50; }
+
+        /* --- NEW: Main Page Layout for Content + Sidebar --- */
+        .page-layout {
+            display: flex;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            align-items: flex-start;
+        }
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* --- NEW: Sticky Sidebar Navigation --- */
+        .sidebar-nav {
+            flex-basis: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        .sidebar-nav h3 {
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #212529;
+            border-bottom: 1px solid #ced4da;
+        }
+        .sidebar-nav h3::before {
+            content: '\2630';
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .sidebar-nav ol {
+            list-style: none;
+            counter-reset: item;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-nav li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        .sidebar-nav li::before {
+            counter-increment: item;
+            content: counter(item) ". ";
+            font-weight: 600;
+            color: #212529;
+        }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #0056b3;
+        }
+        .sidebar-nav a:hover {
+            text-decoration: underline;
+        }
+        .sidebar-nav::-webkit-scrollbar { width: 8px; }
+        .sidebar-nav::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb:hover { background: #aaa; }
 
         /* --- SINGLE POST STYLES --- */
         .full-post {
@@ -27,59 +94,35 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             padding: 30px 40px;
         }
-        .full-post-header img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .full-post h1 {
-            font-size: 2.5rem;
-            color: #2C3E50;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-        .post-meta { 
-            font-size: 1.1em; 
-            color: #777; 
-            margin-bottom: 25px; 
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-        .post-body h2 {
-            font-size: 2rem;
-            color: #1A252F;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-align: left;
-            border-bottom: 2px solid #2C3E50;
-            padding-bottom: 10px;
-        }
-        .post-body h3 {
-            font-size: 1.6rem;
-            color: #2C3E50;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .post-body p, .post-body li {
-            line-height: 1.9;
-            margin-bottom: 1.2em;
-            font-size: 1.2rem;
-            text-align: justify;
-        }
-        .post-body ol, .post-body ul {
-            padding-left: 40px;
-        }
-        .post-body .reference-item {
-            font-size: 1rem;
-            text-align: left;
-            padding-left: 20px;
-        }
+        .full-post-header img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .full-post h1 { font-size: 2.5rem; color: #2C3E50; margin-bottom: 10px; line-height: 1.3; }
+        .post-meta { font-size: 1.1em; color: #777; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .post-body h2 { font-size: 2rem; color: #1A252F; margin-top: 40px; margin-bottom: 20px; text-align: left; border-bottom: 2px solid #2C3E50; padding-bottom: 10px; }
+        .post-body h3 { font-size: 1.6rem; color: #2C3E50; margin-top: 30px; margin-bottom: 15px; }
+        .post-body p, .post-body li { line-height: 1.9; margin-bottom: 1.2em; font-size: 1.2rem; text-align: justify; }
+        .post-body ol, .post-body ul { padding-right: 40px; padding-left: 0; }
+        .post-body .reference-item { font-size: 1rem; text-align: left; padding-left: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } /* English font for references */
 
         /* --- Responsive Styles --- */
-        @media (max-width: 768px) { .navbar { flex-direction: column; align-items: flex-start; } .navbar-toggler { display: block; } .navbar-menu { display: none; flex-direction: column; width: 100%; } .navbar-menu.show { display: flex; } .full-post { padding: 20px; } .full-post h1 { font-size: 2rem; } .content-wrapper { width: 95%; }}
+        @media (max-width: 1100px) {
+            .page-layout { flex-direction: column; }
+            .sidebar-nav {
+                position: static;
+                order: -1;
+                width: auto;
+                margin-bottom: 30px;
+                max-height: 300px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .navbar-toggler { display: block; }
+            .navbar-menu { display: none; flex-direction: column; width: 100%; }
+            .navbar-menu.show { display: flex; }
+            .full-post { padding: 20px; }
+            .full-post h1 { font-size: 2rem; }
+            .page-layout { width: 95%; }
+        }
     </style>
 </head>
 <body>
@@ -101,58 +144,54 @@
         </div>
     </div>
     
-    <div class="content-wrapper">
+    <div class="page-layout">
         <main class="main-content">
             <article class="full-post">
                 <header class="full-post-header">
                     <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ancient Greek ruins, representing the foundations of Western philosophy.">
                     <h1>ከአፈ-ታሪክ ወደ አመክንዮ፡ የፕሪሶክራቲክ ፈላስፎች የአእምሮ አብዮት</h1>
                     <p class="post-meta">
-                        በ፡ መሀመድ ዘይኑ ሀሰን | Posted on February 10, 2024
+                        በ፡ መሀመድ ዘይኑ ሀሰን | የታተመው፡ የካቲት 3, 2016
                     </p>
                 </header>
 
                 <div class="post-body">
-                    <h2>መግቢያ</h2>
+                    <h2 id="megbia">መግቢያ</h2>
                     <p>የሰው ልጅ የአስተሳሰብ ታሪክ እንደ ረጅም ጉዞ ቢታይ፣ የምዕራባውያን ፍልስፍናና ሳይንስ መነሻ የሆነው ታላቅ ምዕራፍ የተጀመረው ከሶቅራጥስ፣ ከፕሌቶና ከአርስቶትል ዘመን በፊት ነበር። ይህ ከክርስቶስ ልደት በፊት በ6ኛው እና በ5ኛው ክፍለ ዘመን መካከል የነበረው ወሳኝ ወቅት፣ በአእምሮአዊ አብዮት የተሞላ ነበር። በዚህ ዘመን የነበሩ አሳቢዎች፣ “ፕሪሶክራቲክስ” (Presocratics) በመባል የሚታወቁ ሲሆን፣ የሰው ልጅ ስለ ዓለም ያለውን ግንዛቤ ከመሰረቱ ለውጠዋል።</p>
-                    <p>ከእነሱ በፊት፣ የግሪክ ማህበረሰብ ዓለምንና የተፈጥሮ ክስተቶችን የሚያብራራው በአፈ-ታሪክ (Mythos) ነበር። የነጎድጓድ ድምፅ የዜኡስ ቁጣ፣ የማዕበል መንቀሳቀስ የፖሳይደን ኃይል፣ የወቅቶች መፈራረቅ የዴሜተር እና የፐርሰፎኒ ታሪክ ውጤት ነበር። ሁሉም ነገር በአማልክት ፈቃድና ስሜት የሚመራ ነበር። የፕሪሶክራቲክ ፈላስፎች ግን ይህንን አስተሳሰብ በመተው፣ በምትኩ አዲስ እና አብዮታዊ የሆነ መንገድን አስተዋወቁ፤ ይኸውም ዓለምን በአመክንዮና በምክንያታዊነት (Logos) ለመረዳት መሞከር ነው።</p>
+                    <p>ከእነሱ በፊት፣ የግሪክ ማህበረሰብ ዓለምንና የተፈጥሮ ክስተቶችን የሚያብራራው በአፈ-ታሪክ (Mythos) ነበር። የነጎድጓድ ድምፅ የዜኡስ ቁጣ፣ የማዕበል መንቀሳቀስ የፖሳይደን ኃይል، የወቅቶች መፈራረቅ የዴሜተር እና የፐርሰፎኒ ታሪክ ውጤት ነበር። ሁሉም ነገር በአማልክት ፈቃድና ስሜት የሚመራ ነበር። የፕሪሶክራቲክ ፈላስፎች ግን ይህንን አስተሳሰብ በመተው፣ በምትኩ አዲስ እና አብዮታዊ የሆነ መንገድን አስተዋወቁ፤ ይኸውም ዓለምን በአመክንዮና በምክንያታዊነት (Logos) ለመረዳት መሞከር ነው።</p>
                     <p>የዚህ ታላቅ የአእምሮ ንቅናቄ ማዕከል የነበረችው አዮኒያ (በተለይ የሚሊጢን ከተማ)፣ በወቅቱ የበለጸገች የንግድና የባህል ማዕከል ነበረች። ይህም ከተለያዩ ስልጣኔዎች (እንደ ግብፅ እና ባቢሎን) ጋር የነበራት ግንኙነት አዳዲስ ሀሳቦች እንዲፈጠሩ ምቹ ሁኔታን ፈጥሯል። እነዚህ ፈላስፎች ለመጀመሪያ ጊዜ “የአጽናፈ ሰማይ መሰረታዊ ምንነት ምንድን ነው?” የሚለውን ማዕከላዊ ጥያቄ አንስተዋል። ይህንን መሰረታዊ ንጥረ ነገር አርኬ (Arche) ብለው ሰይመውታል። ፍለጋቸው የአጽናፈ ሰማይን ብዝሃነት በአንድ ወጥ መርህ ለማብራራት የተደረገ የመጀመሪያው ሙከራ ነበር።</p>
 
-                    <h2>የሚሊጢን ትምህርት ቤት</h2>
+                    <h2 id="milesian-school">የሚሊጢን ትምህርት ቤት</h2>
                     <h3>ቴለስ (ከክርስቶስ ልደት በፊት ከ624 – 546 ገደማ)</h3>
                     <p>ቴለስ “የፍልስፍና አባት” የሚል ስያሜ ያገኘው፣ ዓለምን ከአፈ-ታሪክ (Mythos) ማብራሪያ ነጻ በማውጣት ወደ ተፈጥሮአዊ ምልከታና አመክንዮ (Logos) የተሸጋገረ የመጀመሪያው ሰው በመሆኑ ነው። የቴለስ ዝነኛ ሀሳብ “የሁሉም ነገር መሰረታዊ ንጥረ ነገር (Arche) ውሃ ነው” የሚለው ነው። ይህ ድምዳሜ ላይ የደረሰባቸው ምክንያቶች ህይወት በውሃ ላይ ጥገኛ መሆኗን መመልከቱ፣ ውሃ በተለያዩ ቅርጾች (ፈሳሽ፣ ጠጣር፣ ጋዝ) መገኘቱ እና የኖረባት ሚሊጢን በባህር የተከበበች መሆኗ ናቸው። ሌላው ከቴለስ ጋር የሚነሳው ውስብስብ ሀሳብ “ሁሉም ነገር በአማልክት የተሞላ ነው” (Hylozoism) የሚለው አባባሉ ነው። ይህ ማለት ቁስ አካል በራሱ ህይወት ወይም የመንቀሳቀስ ኃይል አለው የሚለውን ሀሳብ የሚያንጸባርቅ ነው።</p>
-
                     <h3>አናክሲማንደር (ከክርስቶስ ልደት በፊት ከ610 – 546 ገደማ)</h3>
-                    <p>የቴለስ ተማሪና ተተኪ የነበረው አናክሲማንደር፣ ፍልስፍናን ከሚታየውና ከሚዳሰሰው ዓለም ወደ ላቀ ረቂቅ (abstract) ደረጃ ያሸጋገረ ፈላስፋ ነው። የእሱ ዋነኛ አስተዋፅኦ የአርኬ ምንጭ “አፔይሮን” (Apeiron) ነው ብሎ ማወጁ ነው። ቃሉ የግሪክ ሲሆን ትርጉሙም “ወሰን የለሽ”፣ “የማይገደብ”፣ ወይም “ያልተወሰነ” ማለት ነው። አናክሲማንደር፣ ዓለም በተቃራኒ ነገሮች (ሙቀትና ቅዝቃዜ፣ ድርቀትና እርጥበት) የተሞላች ስለሆነ፣ የአለም መሰረት ከነዚህ ተቃራኒ ባህሪያት የጸዳ፣ ገለልተኛ እና ሁሉንም ሊያመነጭ የሚችል መሆን አለበት ብሎ ያምን ነበር።</p>
-
+                    <p>የቴለስ ተማሪና ተተኪ የነበረው አናክሲማንደር፣ ፍልስፍናን ከሚታየውና ከሚዳሰሰው ዓለም ወደ ላቀ ረቂቅ (abstract) ደረጃ ያሸጋገረ ፈላስፋ ነው። የእሱ ዋነኛ አስተዋፅኦ የአርኬ ምንጭ “አፔይሮን” (Apeiron) ነው ብሎ ማወጁ ነው። ቃሉ የግሪክ ሲሆን ትርጉሙም “ወሰን የለሽ”፣ “የማይገደብ”፣ ወይም “ያልተወሰነ” ማለት ነው። አናክሲማንደር፣ ዓለም በተቃራኒ ነገሮች (ሙቀትና ቅዝቃዜ፣ ድርቀትና እርጥበት) የተሞላች ስለሆነ፣ የአለም መሰረት ከነዚህ ተቃራኒ ባህሪያት የጸዳ، ገለልተኛ እና ሁሉንም ሊያመነጭ የሚችል መሆን አለበት ብሎ ያምን ነበር።</p>
                     <h3>አናክሲሜኔስ (ከክርስቶስ ልደት በፊት ከ585 – 528 ገደማ)</h3>
                     <p>የሚሊጢን ትምህርት ቤት ሶስተኛው ታላቅ ፈላስፋ አናክሲሜኔስ፣ “የሁሉም ነገር መሰረታዊ ንጥረ ነገር አየር (Air)” ነው ብሏል። አየርን የመረጠው፣ ልክ እንደ ውሃ የሚታይና የሚዳሰስ ሆኖ ነገር ግን እንደ አፔይሮን ወሰን የለሽ እና በሁሉም ቦታ የሚገኝ በመሆኑ ነው። የእሱ ትልቁ አስተዋፅኦ፣ አንድ መሰረታዊ ንጥረ ነገር (አየር) እንዴት ወደ ሌሎች ነገሮች እንደሚለወጥ የሚያሳይ ሳይንሳዊ ሂደት ማቅረቡ ነው። ይህ ሂደት መቅጠን (Rarefaction) እና መወፈር (Condensation) ነው። አየር ሲቀጥን ይሞቃል ወደ እሳትም ይለወጣል፤ ሲወፈር ደግሞ ይቀዘቅዝና በቅደም ተከተል ወደ ንፋስ፣ ደመና፣ ውሃ፣ መሬት እና ድንጋይ ይለወጣል።</p>
 
-                    <h2>ታላቁ ክርክር፡ ሄራክሊተስ እና ፓርሜኒደስ</h2>
+                    <h2 id="great-debate">ታላቁ ክርክር፡ ሄራክሊተስ እና ፓርሜኒደስ</h2>
                     <h3>ሄራክሊተስ (ከክርስቶስ ልደት በፊት ከ535 – 475 ገደማ)</h3>
                     <p>የሄራክሊተስ ማዕከላዊ ሀሳብ “ሁሉም ነገር በቋሚ እና የማያቋርጥ ለውጥ ውስጥ ነው” (Panta Rhei) የሚለው ነው። ዝነኛ አባባሉ፣ “አንድ ወንዝ ውስጥ ሁለት ጊዜ መግባት አትችልም” የሚለው ነው። ምክንያቱም ሁለተኛ ጊዜ ስትገባ ወንዙም አዲስ ውሃ ይዞ መጥቷል፤ አንተም በጊዜ ሂደት ተለውጠሃል። ለእርሱ፣ ቋሚነት የስሜት ህዋሳት የሚፈጥሩት ማታለያ ነው። እውነተኛው እውነታ የማያቋርጥ ሂደትና ለውጥ (Flux) ብቻ ነው። ይህ ለውጥ በዘፈቀደ የሚከሰት ሳይሆን “ሎጎስ” (Logos) ብሎ በሰየመው ሁለንተናዊ መርህ፣ ህግ ወይም አመክንዮ የሚመራ ነው።</p>
-
                     <h3>ፓርሜኒደስ (ከ5ኛው ክፍለ ዘመን ዓ.ዓ)</h3>
                     <p>የሄራክሊተስን የለውጥ ፍልስፍና ፍጹም በሚባል መልኩ የተቃወመው ፈላስፋ ፓርሜኒደስ ነው። ፍልስፍናውን ሙሉ በሙሉ በስሜት ህዋሳት ላይ ሳይሆን በንጹህ አመክንዮ (pure logic) ላይ የመሰረተ የመጀመሪያው ፈላስፋ ነው። የእሱ መነሻ “ያለው ነገር አለ፤ የሌለው ነገር የለም” (“What is, is; what is not, is not”) የሚል ነው። ከዚህ በመነሳት፣ ለውጥ ማለት አንድ ነገር ከ“አለመኖር” ወደ “መኖር” መምጣት (መፈጠር) ወይም ከ“መኖር” ወደ “አለመኖር” መሄድ (መጥፋት) ስለሆነ፣ በሎጂክ ደረጃ የማይቻል ነው ሲል ይሞግታል። ስለዚህ፣ የስሜት ህዋሳት የሚነግሩን የለውጥ እና የብዝሃነት ገጽታ ሁሉ ማታለያ ነው። እውነተኛው ህልውና (Being) አንድ፣ ዘላለማዊ، የማይለወጥ፣ እና የማይንቀሳቀስ መሆን አለበት።</p>
 
-                    <h2>ፕሉራሊስቶች፡ ሁለቱን ጽንፎች ለማስታረቅ የተደረገ ሙከራ</h2>
+                    <h2 id="pluralists">ፕሉራሊስቶች፡ ሁለቱን ጽንፎች ለማስታረቅ የተደረገ ሙከራ</h2>
                     <h3>ኤምፔዶክለስ (ከክርስቶስ ልደት በፊት ከ494 – 434 ገደማ)</h3>
                     <p>የሄራክሊተስን እና የፓርሜኒደስን ተቃራኒ አስተሳሰቦች ለማስታረቅ የሞከሩት ፈላስፎች “ፕሉራሊስቶች” ይባላሉ። ከነሱም ዋነኛው ኤምፔዶክለስ ነው። እሱ የአለም መሰረት አንድ ሳይሆን አራት የማይለወጡ እና ዘላለማዊ የሆኑ “ስሮች” (roots) ናቸው ብሏል፡ መሬት፣ ውሃ፣ አየር እና እሳት። እነዚህ ስሮች በራሳቸው የማይለወጡ በመሆናቸው ከፓርሜኒደስ ጋር ይስማማል። ነገር ግን፣ እነዚህ ስሮች በሁለት ተቃራኒ ኃይሎች—ፍቅር (Love - Philia) እና ጥል (Strife - Neikos)—በመደባለቅና በመለያየት የምናየውን የለውጥ ዓለም ይፈጥራሉ በማለት ከሄራክሊተስ ጋር ይስማማል።</p>
-
                     <h3>አናክሳጎራስ (ከ5ኛው ክፍለ ዘመን ዓ.ዓ)</h3>
-                    <p>አናክሳጎራስ የአለም መሰረት አራት ነገሮች ብቻ ሊሆኑ አይችሉም ብሏል። እሱ ያነሳው ጥያቄ፣ ከአራት ነገሮች ብቻ እንዴት ጸጉር፣ ስጋ، አጥንት እና ሌሎች ስፍር ቁጥር የሌላቸው ነገሮች ሊፈጠሩ ይችላሉ? የሚል ነበር። የእሱ ቁልፍ ሀሳብ “በሁሉም ነገር ውስጥ የሁሉም ነገር ቅንጣት አለ” የሚል ነው። በዚህ መሰረት፣ እያንዳንዱ ነገር ስፍር ቁጥር የሌላቸው “ዘሮች” (spermata) ድብልቅ ነው። መጀመሪያ ላይ እነዚህ ዘሮች በሁከት (chaos) ውስጥ ተደባልቀው ነበር። ይህንን ድብልቅ ወደ ሥርዓት ያመጣው “ኑስ” (Nous) ብሎ የሰየመው ኃይል ነው፤ ትርጉሙም አእምሮ ወይም ህሊና ማለት ነው። ኑስ ከሁሉም ነገር የተለየ፣ ንጹህ፣ ሁሉን አዋቂ እና ኃያል ሲሆን፣ የመጀመሪያውን እንቅስቃሴ በመፍጠር የተደባለቁትን ዘሮች እንዲለያዩና ሥርዓት እንዲይዙ አድርጓል።</p>
+                    <p>አናክሳጎራስ የአለም መሰረት አራት ነገሮች ብቻ ሊሆኑ አይችሉም ብሏል። እሱ ያነሳው ጥያቄ፣ ከአራት ነገሮች ብቻ እንዴት ጸጉር፣ ስጋ، አጥንት እና ሌሎች ስፍር ቁጥር የሌላቸው ነገሮች ሊፈጠሩ ይችላሉ? የሚል ነበር። የእሱ ቁልፍ ሀሳብ “በሁሉም ነገር ውስጥ የሁሉም ነገር ቅንጣት አለ” የሚል ነው። በዚህ መሰረት፣ እያንዳንዱ ነገር ስፍር ቁጥር የሌላቸው “ዘሮች” (spermata) ድብልቅ ነው። መጀመሪያ ላይ እነዚህ ዘሮች በሁከት (chaos) ውስጥ ተደባልቀው ነበር። ይህንን ድብልቅ ወደ ሥርዓት ያመጣው “ኑስ” (Nous) ብሎ የሰየመው ኃይል ነው፤ ትርጉሙም አእምሮ ወይም ህሊና ማለት ነው። ኑስ ከሁሉም ነገር የተለየ، ንጹህ፣ ሁሉን አዋቂ እና ኃያል ሲሆን፣ የመጀመሪያውን እንቅስቃሴ በመፍጠር የተደባለቁትን ዘሮች እንዲለያዩና ሥርዓት እንዲይዙ አድርጓል።</p>
                     
-                    <h2>አቶሚስቶች፡ የቁስ-ተኮር ፍልስፍና ቁንጮ</h2>
+                    <h2 id="atomists">አቶሚስቶች፡ የቁስ-ተኮር ፍልስፍና ቁንጮ</h2>
                     <h3>ዲሞክሪተስ (ከክርስቶስ ልደት በፊት ከ460 – 370 ገደማ)</h3>
                     <p>የፕሪ-ሶክራቲክ ፍልስፍና የመጨረሻው እና ከፍተኛው ደረጃ አቶሚዝም (Atomism) ነው። መስራቾቹ ሉሲፐስ እና ዝነኛ ተማሪው ዲሞክሪተስ ናቸው። እንደነሱ፣ እውነተኛው እውነታ ከሁለት ነገሮች ብቻ የተሰራ ነው፡ አተሞች (Atoms) እና ባዶ ህዋ (The Void)። “አቶም” የሚለው ቃል የግሪክ ሲሆን ትርጉሙም “የማይከፋፈል” (uncuttable) ማለት ነው። አተሞች ዘላለማዊ፣ የማይለወጡ፣ ጠንካራ እና በቁጥር ስፍር የሌላቸው ናቸው። በቅርጽ፣ በመጠን እና በአቀማመጥ ይለያያሉ። እነዚህ አተሞች በባዶ ህዋ ውስጥ ያለማቋረጥ እና በዘፈቀደ ሲንቀሳቀሱ ይጋጫሉ፣ ይጣበቃሉ፣ እና የምናያቸውን ነገሮች ሁሉ ይፈጥራሉ። ይህ የዓለም አፈጣጠር ሙሉ በሙሉ በሜካኒካል እና በቁሳዊ ሂደት ላይ የተመሰረተ ነው።</p>
                     
-                    <h2>ሶፊስቶች እና የፍልስፍና ሽግግር</h2>
-                    <p>ከአቶሚስቶች በኋላ የፍልስፍናው ትኩረት ከአጽናፈ ሰማይ (Cosmos) ወደ ሰው ልጅ (Man) ተሸጋገረ። ይህንን ሽግግር በዋነኝነት ያመጡት ሶፊስቶች (The Sophists) ናቸው። ሶፊስቶች ተዘዋዋሪ እና ተከፋይ መምህራን ነበሩ። ፍጹም የሆነ እና ለሁሉም ሰው እውነት የሆነ ነገር የለም ብለው ያምኑ ነበር። ከታላላቅ ሶፊስቶች አንዱ የሆነው ፕሮታጎራስ፣ “ሰው የሁሉም ነገር መለኪያ ነው” (Man is the measure of all things) የሚል ዝነኛ አባባል ነበረው። ይህም እውነት አንጻራዊ (relative) መሆኑን ያሳያል። የሶፊስቶች አስተሳሰብ፣ እውነትን አንጻራዊ በማድረጋቸው እና ለማሳመን ጥበብ ብቻ ትኩረት በመስጠታቸው በሶቅራጥስ እና በፕሌቶ ከፍተኛ ትችት ደርሶባቸዋል።</p>
+                    <h2 id="sophists">ሶፊስቶች እና የፍልስፍና ሽግግር</h2>
+                    <p>ከአቶሚስቶች በኋላ የፍልስፍናው ትኩረት ከአጽናፈ ሰማይ (Cosmos) ወደ ሰው ልጅ (Man) ተሸጋገረ። ይህንን ሽግግር በዋነኝነት ያመጡት ሶፊስቶች (The Sophists) ናቸው። ሶፊስቶች ተዘዋዋሪ እና ተከፋይ መምህራን ነበሩ። ፍጹም የሆነ እና ለሁሉም ሰው እውነት የሆነ ነገር የለም ብለው ያምኑ ነበር። ከታላላቅ ሶፊስቶች አንዱ የሆነው ፕሮታጎራስ፣ “ሰው የሁሉም ነገር መለኪያ ነው” (Man is the measure of all things) የሚል ዝነኛ አባባል ነበረው። ይህም እውነት አንጻራዊ (relative) መሆኑን ያሳያል። የሶፊስቶች አስተሳሰብ، እውነትን አንጻራዊ በማድረጋቸው እና ለማሳመን ጥበብ ብቻ ትኩረት በመስጠታቸው በሶቅራጥስ እና በፕሌቶ ከፍተኛ ትችት ደርሶባቸዋል።</p>
 
-                    <h2>ማጠቃለያ እና የታሪክ አሻራ</h2>
-                    <p>የፕሪሶክራቲክ ፈላስፎች ጉዞ፣ የሰው ልጅ ከአለም ጋር ያለውን ግንኙነት ከመሰረቱ የቀየረ ታላቅ አብዮት ነበር። ጉዟቸው የጀመረው ከቀላል ነገር ግን መሰረታዊ ከሆነ ጥያቄ ነበር፡- “ሁሉም ነገር ከምን ተገኘ?” ከቴለስ ተጨባጭ መልስ እስከ ፓርሜኒደስ አመክንዮአዊ ጥብቅነት፣ ከአናክሳጎራስ “ኑስ” እስከ ዲሞክሪተስ አተሞች ድረስ፣ እያንዳንዱ ፈላስፋ ለቀጣዩ ትውልድ የአስተሳሰብ መሰረት ጥሏል። በተለይ የአቶሚስቶች ፍልስፍና፣ ዓለምን ያለ ምንም መለኮታዊ ጣልቃ ገብነት በቁስ አካልና በተፈጥሮ ህግጋት ብቻ ያብራራ የመጀመሪያው የተሟላ የቁስ-ተኮር (Materialist) ፍልስፍና ነበር። የፕሪሶክራቲክ ፈላስፎች ያበረከቱት አስተዋፅኦ ዛሬም ድረስ ይስተጋባል። እነሱ የጀመሩት ከ Mythos ወደ Logos የተደረገው ጉዞ፣ የሰው ልጅ የእውቀት ድንበሮችን ያለማቋረጥ እንዲያስፋ ያደረገ የማይበርድ ፍለጋ ነው።</p>
+                    <h2 id="conclusion">ማጠቃለያ እና የታሪክ አሻራ</h2>
+                    <p>የፕሪሶክራቲክ ፈላስፎች ጉዞ፣ የሰው ልጅ ከአለም ጋር ያለውን ግንኙነት ከመሰረቱ የቀየረ ታላቅ አብዮት ነበር። ጉዟቸው የጀመረው ከቀላል ነገር ግን መሰረታዊ ከሆነ ጥያቄ ነበር፡- “ሁሉም ነገር ከምን ተገኘ?” ከቴለስ ተጨባጭ መልስ እስከ ፓርሜኒደስ አመክንዮአዊ ጥብቅነት፣ ከአናክሳጎራስ “ኑስ” እስከ ዲሞክሪተስ አተሞች ድረስ፣ እያንዳንዱ ፈላስፋ ለቀጣዩ ትውልድ የአስተሳሰብ መሰረት ጥሏል። በተለይ የአቶሚስቶች ፍልስፍና، ዓለምን ያለ ምንም መለኮታዊ ጣልቃ ገብነት በቁስ አካልና በተፈጥሮ ህግጋት ብቻ ያብራራ የመጀመሪያው የተሟላ የቁስ-ተኮር (Materialist) ፍልስፍና ነበር። የፕሪሶክራቲክ ፈላስፎች ያበረከቱት አስተዋፅኦ ዛሬም ድረስ ይስተጋባል። እነሱ የጀመሩት ከ Mythos ወደ Logos የተደረገው ጉዞ፣ የሰው ልጅ የእውቀት ድንበሮችን ያለማቋረጥ እንዲያስፋ ያደረገ የማይበርድ ፍለጋ ነው።</p>
 
-                    <h3>የጽሁፍ ምንጮች</h3>
+                    <h2 id="references">የጽሁፍ ምንጮች</h2>
                     <p class="reference-item">[1] Barnes, J. (1982). The Presocratic Philosophers. Routledge.</p>
                     <p class="reference-item">[2] Guthrie, W. K. C. (1962–1981). A History of Greek Philosophy (Vols. 1-6). Cambridge University Press.</p>
                     <p class="reference-item">[3] Kirk, G. S., Raven, J. E., & Schofield, M. (1983). The Presocratic Philosophers: A Critical History with a Selection of Texts (2nd ed.). Cambridge University Press.</p>
@@ -162,6 +201,19 @@
             </article>
         </main>
         
+        <nav class="sidebar-nav">
+            <h3>ክፍሎች</h3>
+            <ol>
+                <li><a href="#megbia">መግቢያ</a></li>
+                <li><a href="#milesian-school">የሚሊጢን ት/ቤት</a></li>
+                <li><a href="#great-debate">ታላቁ ክርክር</a></li>
+                <li><a href="#pluralists">ፕሉራሊስቶች</a></li>
+                <li><a href="#atomists">አቶሚስቶች</a></li>
+                <li><a href="#sophists">ሶፊስቶች</a></li>
+                <li><a href="#conclusion">ማጠቃለያ</a></li>
+                <li><a href="#references">ምንጮች</a></li>
+            </ol>
+        </nav>
     </div>
     
     <div class="footer">

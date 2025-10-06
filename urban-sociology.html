@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF.8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The City of Tomorrow: The Future of Urban Sociology - Blog</title>
     <style>
@@ -17,8 +17,75 @@
         .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
         .footer p { margin-top: 15px; font-size: 0.9rem; }
         .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
-        .content-wrapper { width: 80%; max-width: 900px; margin: 40px auto; }
-        .content-wrapper h2 { text-align: center; margin-bottom: 30px; font-size: 2.2rem; color: #2C3E50; }
+
+        /* --- NEW: Main Page Layout for Content + Sidebar --- */
+        .page-layout {
+            display: flex;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            align-items: flex-start;
+        }
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* --- NEW: Sticky Sidebar Navigation --- */
+        .sidebar-nav {
+            flex-basis: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        .sidebar-nav h3 {
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #212529;
+            border-bottom: 1px solid #ced4da;
+        }
+        .sidebar-nav h3::before {
+            content: '\2630';
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .sidebar-nav ol {
+            list-style: none;
+            counter-reset: item;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-nav li {
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .sidebar-nav li::before {
+            counter-increment: item;
+            content: counter(item) ". ";
+            font-weight: 600;
+            color: #212529;
+        }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #0056b3;
+            font-size: 0.95em;
+        }
+        .sidebar-nav a:hover {
+            text-decoration: underline;
+        }
+        .sidebar-nav::-webkit-scrollbar { width: 8px; }
+        .sidebar-nav::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb:hover { background: #aaa; }
 
         /* --- SINGLE POST STYLES --- */
         .full-post {
@@ -27,52 +94,33 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             padding: 30px 40px;
         }
-        .full-post-header img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .full-post h1 {
-            font-size: 2.5rem;
-            color: #2C3E50;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        .post-meta { 
-            font-size: 0.9em; 
-            color: #777; 
-            margin-bottom: 25px; 
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-        .post-body h2 {
-            font-size: 1.8rem;
-            color: #1A252F;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-align: left; /* Aligns subheadings to the left */
-        }
-        .post-body p {
-            line-height: 1.7;
-            margin-bottom: 1.2em;
-            font-size: 1.1rem;
-        }
-        .post-body blockquote {
-            border-left: 4px solid #2C3E50;
-            padding-left: 20px;
-            margin: 25px 0;
-            font-style: italic;
-            color: #555;
-            background-color: #f9f9f9;
-            padding: 15px 20px;
-            border-radius: 0 5px 5px 0;
-        }
+        .full-post-header img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .full-post h1 { font-size: 2.5rem; color: #2C3E50; margin-bottom: 10px; line-height: 1.2; }
+        .post-meta { font-size: 0.9em; color: #777; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .post-body h2 { font-size: 1.8rem; color: #1A252F; margin-top: 40px; margin-bottom: 20px; text-align: left; }
+        .post-body p { line-height: 1.7; margin-bottom: 1.2em; font-size: 1.1rem; }
+        .post-body blockquote { border-left: 4px solid #2C3E50; padding-left: 20px; margin: 25px 0; font-style: italic; color: #555; background-color: #f9f9f9; padding: 15px 20px; border-radius: 0 5px 5px 0; }
 
         /* --- Responsive Styles --- */
-        @media (max-width: 768px) { .navbar { flex-direction: column; align-items: flex-start; } .navbar-toggler { display: block; } .navbar-menu { display: none; flex-direction: column; width: 100%; } .navbar-menu.show { display: flex; } .full-post { padding: 20px; } .full-post h1 { font-size: 2rem; } .content-wrapper { width: 95%; }}
+        @media (max-width: 1100px) {
+            .page-layout { flex-direction: column; }
+            .sidebar-nav {
+                position: static;
+                order: -1;
+                width: auto;
+                margin-bottom: 30px;
+                max-height: 300px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .navbar-toggler { display: block; }
+            .navbar-menu { display: none; flex-direction: column; width: 100%; }
+            .navbar-menu.show { display: flex; }
+            .full-post { padding: 20px; }
+            .full-post h1 { font-size: 2rem; }
+            .page-layout { width: 95%; }
+        }
     </style>
 </head>
 <body>
@@ -94,7 +142,7 @@
         </div>
     </div>
     
-    <div class="content-wrapper">
+    <div class="page-layout">
         <main class="main-content">
             <article class="full-post">
                 <header class="full-post-header">
@@ -106,31 +154,42 @@
                 </header>
 
                 <div class="post-body">
-                    <p>For the first time in human history, more than half of the world's population lives in cities. This unprecedented urban shift has transformed not only our physical landscapes but also our social fabric, our political structures, and our very identities. As we look to the future, urban sociology stands at the forefront of understanding—and shaping—the complex forces at play. The city is no longer just a place to study; it is the laboratory where the future of humanity is being tested. Here, we explore four critical frontiers that will define the future of urban sociology.</p>
+                    <p id="introduction">For the first time in human history, more than half of the world's population lives in cities. This unprecedented urban shift has transformed not only our physical landscapes but also our social fabric, our political structures, and our very identities. As we look to the future, urban sociology stands at the forefront of understanding—and shaping—the complex forces at play. The city is no longer just a place to study; it is the laboratory where the future of humanity is being tested. Here, we explore four critical frontiers that will define the future of urban sociology.</p>
 
-                    <h2>1. The Digital City: Smart, but for Whom?</h2>
+                    <h2 id="digital-city">1. The Digital City: Smart, but for Whom?</h2>
                     <p>The rise of "smart cities" promises a new era of urban efficiency, driven by big data, artificial intelligence, and the Internet of Things (IoT). From optimized traffic flows to responsive energy grids, the potential benefits are immense. However, this digital transformation raises profound sociological questions. Who controls the data? How do algorithms, often designed with hidden biases, affect policing, housing, and access to services? Urban sociologists are crucial in examining the "right to the smart city," ensuring that technological advancements promote equity and citizen empowerment rather than deepening surveillance and social stratification.</p>
 
-                    <h2>2. The Sustainable City: Green Dreams and Urban Realities</h2>
+                    <h2 id="sustainable-city">2. The Sustainable City: Green Dreams and Urban Realities</h2>
                     <p>In the face of climate change, the push for sustainable urbanism has never been more urgent. Cities are hubs of innovation for green infrastructure, renewable energy, and circular economies. Yet, a sociological lens reveals a complex picture. The phenomenon of "green gentrification" shows how environmental amenities like parks and bike lanes can drive up property values, displacing long-term, often lower-income, residents. The future of urban sociology lies in advocating for environmental justice, asking critical questions about who benefits from sustainability initiatives and who bears the environmental burdens of urban life.</p>
 
-                    <h2>3. The Divided City: Old Inequalities, New Forms</h2>
+                    <h2 id="divided-city">3. The Divided City: Old Inequalities, New Forms</h2>
                     <p>While cities are engines of opportunity, they remain sites of profound inequality. Classic issues of spatial segregation, housing affordability, and gentrification continue to dominate the field. The future, however, presents new dimensions to these challenges. The gig economy is reshaping labor markets, creating precarious work conditions, while the rise of remote work threatens to create a new spatial divide between a mobile "laptop class" and place-bound essential service workers. Sociologists must analyze how these new economic forces are reconfiguring urban inequality and what policies can foster more inclusive urban economies.</p>
                     
                     <blockquote>
                         The ultimate task of the urban sociologist is not merely to analyze the city as it is, but to imagine the city as it could be: a place of justice, community, and shared prosperity for all its inhabitants.
                     </blockquote>
 
-                    <h2>4. The Post-Pandemic City: Redefining Community and Space</h2>
+                    <h2 id="post-pandemic-city">4. The Post-Pandemic City: Redefining Community and Space</h2>
                     <p>The COVID-19 pandemic was a global, unplanned experiment in urban life. It emptied downtown cores, highlighted our reliance on public spaces, and accelerated trends like remote work and e-commerce. As we emerge from this crisis, we are forced to reconsider the very purpose of the city. Will downtown business districts recover, or will they be repurposed for residential and recreational use? The concept of the "15-minute city," where all essential needs are accessible within a short walk or bike ride, has gained significant traction. The future of urban sociology will involve studying how these shifts are redefining our sense of community, our relationship with our local neighborhoods, and the fundamental design of urban space.</p>
 
-                    <h2>Conclusion</h2>
+                    <h2 id="conclusion">Conclusion</h2>
                     <p>The city of tomorrow is being built today. Navigating its challenges—from digital surveillance to climate resilience, from economic division to social reconnection—requires more than just technological or architectural solutions. It requires a deep understanding of the human experience. The role of the urban sociologist has never been more vital. By asking the tough questions and centering equity and justice, we can help ensure that the cities of the future are not just smarter and greener, but also more humane and inclusive for everyone.</p>
 
                 </div>
             </article>
         </main>
         
+        <nav class="sidebar-nav">
+            <h3>In This Article</h3>
+            <ol>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#digital-city">The Digital City</a></li>
+                <li><a href="#sustainable-city">The Sustainable City</a></li>
+                <li><a href="#divided-city">The Divided City</a></li>
+                <li><a href="#post-pandemic-city">The Post-Pandemic City</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ol>
+        </nav>
     </div>
     
     <div class="footer">
