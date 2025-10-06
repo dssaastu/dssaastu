@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy in the Age of Post-Truth - Blog</title>
+    <style>
+        /* --- CORE STYLES --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 2rem; }
+        .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
+        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+        .navbar a:hover { background-color: #333; border-radius: 5px; }
+        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
+        .navbar-menu { display: flex; flex-direction: row; }
+        .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
+        .footer p { margin-top: 15px; font-size: 0.9rem; }
+        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
+
+        /* --- NEW: Main Page Layout for Content + Sidebar --- */
+        .page-layout {
+            display: flex;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            align-items: flex-start;
+        }
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* --- NEW: Sticky Sidebar Navigation --- */
+        .sidebar-nav {
+            flex-basis: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        .sidebar-nav h3 {
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #212529;
+            border-bottom: 1px solid #ced4da;
+        }
+        .sidebar-nav h3::before {
+            content: '\2630';
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .sidebar-nav ol {
+            list-style: none;
+            counter-reset: item;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-nav li {
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .sidebar-nav li::before {
+            counter-increment: item;
+            content: counter(item) ". ";
+            font-weight: 600;
+            color: #212529;
+        }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #0056b3;
+            font-size: 0.95em;
+        }
+        .sidebar-nav a:hover {
+            text-decoration: underline;
+        }
+        .sidebar-nav::-webkit-scrollbar { width: 8px; }
+        .sidebar-nav::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+        /* --- SINGLE POST STYLES --- */
+        .full-post {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+        }
+        .full-post-header img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .full-post h1 { font-size: 2.5rem; color: #2C3E50; margin-bottom: 10px; line-height: 1.2; text-align: center; }
+        .post-meta { font-size: 0.9em; text-align: center; color: #777; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .post-body h2 { font-size: 1.8rem; color: #1A252F; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid #2C3E50; padding-bottom: 10px; }
+        .post-body p, .post-body li { line-height: 1.7; margin-bottom: 1.2em; }
+        .post-body ul { list-style-type: disc; padding-left: 20px; }
+        .post-body ul li { margin-bottom: 0.8em; }
+        .post-body .reference-list li { font-size: 0.9rem; line-height: 1.6; }
+        
+        /* --- Responsive Styles --- */
+        @media (max-width: 1100px) {
+            .page-layout { flex-direction: column; }
+            .sidebar-nav {
+                position: static;
+                order: -1;
+                width: auto;
+                margin-bottom: 30px;
+                max-height: 300px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .navbar-toggler { display: block; }
+            .navbar-menu { display: none; flex-direction: column; width: 100%; }
+            .navbar-menu.show { display: flex; }
+            .full-post { padding: 20px; }
+            .full-post h1 { font-size: 2rem; }
+            .page-layout { width: 95%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="page-layout">
+        <main class="main-content">
+            <article class="full-post">
+                <header class="full-post-header">
+                    <!-- NEW IMAGE HERE -->
+                    <img src="https://images.pexels.com/photos/392025/pexels-photo-392025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A crossroads with multiple signs pointing in different directions, symbolizing the confusion and competing claims of the post-truth era.">
+                    <h1>Philosophy in the Age of Post-Truth: Reassessing the Foundations of Knowledge and Belief</h1>
+                    <p class="post-meta">
+                        By Mohammed Zeinu Hassen
+                    </p>
+                </header>
+
+                <div class="post-body">
+                    <p><em><strong>Abstract:</strong> This article investigates the challenges introduced by the contemporary "post-truth" phenomenon, utilizing a variety of philosophical frameworks and particularly emphasizing the contributions of Jamil Asghar's critique of postmodern relativism, Yael Brahms' examination of post-truth, and other referenced scholarly works. It posits that the contemporary crisis of truth is a result of an interplay between postmodern skepticism regarding objective knowledge and the disruptive influences exerted by emerging technologies on our information landscape. This discourse re-evaluates essential epistemological inquiries, including the essence of truth, the legitimacy of diverse truth criteria, and the manner in which belief formation shapes our collective comprehension of reality. It concludes by proposing that philosophy occupies a distinctive position to provide innovative avenues for critical analysis, rational discourse, and a comprehensive framework for understanding knowledge and belief.</em></p>
+                    <p><strong>Keywords:</strong> Post-truth, Epistemology, Philosophy, Knowledge, Belief, Objectivity, Subjectivity, Postmodernism, Justification, Truth, Reality, Islamic Epistemology, Correspondence Theory, Coherence Theory, Pragmatic Theory.</p>
+
+                    <h2 id="introduction">1. Introduction</h2>
+                    <p>The term “post-truth,” now a pervasive fixture in contemporary discourse, has not only captured the zeitgeist of our times but has also cast a long shadow over the very foundations of knowledge and belief. While the term itself has garnered recent attention, the underlying issues it signifies—the erosion of objective facts as guiding principles in public life—are not entirely novel. Philosophy, with its enduring engagement with questions of truth and justification, has been grappling with such themes for centuries. The contemporary “post-truth” crisis, however, brings these themes into a sharper, more urgent focus, calling for a rigorous re-examination of our epistemological frameworks and a critical appraisal of the forces that have led to this present moment.</p>
+                    <p>As Yael Brahms (2020) articulates, “post-truth" is often defined as a condition where "objective facts are less influential in shaping public opinion than appeals to emotion and personal belief” (p. 1). This is not a passive acceptance of untruth, but a form of active engagement where emotional narratives and personal convictions overwhelm evidence-based reasoning. This shift presents a crucial problem because, as philosopher Bernard Harcourt (2021) points out, “Post-truth is not merely a matter of false statements or disinformation; it involves a deeper skepticism about the very possibility of objective knowledge, a sense that ‘alternative facts' are equally valid" (p. 148). This contemporary crisis is not simply a result of postmodern intellectual trends; it also emerges from the complex interplay of these ideas with transformative developments in communication technologies. The proliferation of digital platforms and social media networks has created an unprecedented environment where misinformation and propaganda can spread quickly, reinforced by algorithms that amplify existing biases (Buechel, 2023).</p>
+
+                    <h2 id="postmodern-challenge">2. The Postmodern Challenge to Truth and Objectivity</h2>
+                    <p>The contemporary “post-truth" phenomenon is not merely a political or sociological occurrence; it represents, at its core, a profound epistemological crisis rooted in the challenges that postmodern thought has posed to the very concept of objective truth. Central to postmodern thought is the critique of what Lyotard calls “metanarratives”, or encompassing stories that supposedly legitimize knowledge and power (Lyotard, 1997). As Jamil Asghar (2012) rightly observes, postmodernism “constitutes a headlong attack on modernist claims about the existence of meaning, rationality, and value" (p. 295). It challenges the notion that we can access a singular, independent reality through neutral means.</p>
+                    <p>As Asghar (2012) further contends, Postmodernism's “obsession with the inadequacy of language" (p. 295) highlights the way in which all truths are ultimately filtered through language. This emphasis on the social and linguistic construction of reality, while offering valuable insights, has also opened a pathway for extreme relativism. By destabilizing the notion of a singular, objective truth, postmodernism has unintentionally created a climate where multiple and often contradictory interpretations of reality can be put forth. This blurring of the lines between fact and opinion has far-reaching consequences, suggesting that all interpretations are equally valid, and therefore that all "truths" are ultimately subjective. This deep skepticism towards objective truth underscores a crucial point: knowledge is not a passive reflection of a pre-existing reality. Our understanding is always mediated through our concepts, our culture, and our language.</p>
+
+                    <h2 id="post-truth-phenomenon">3. The Post-Truth Phenomenon</h2>
+                    <p>The contemporary phenomenon often termed “post-truth" should not be mistaken as a mere increase in deliberate deception. The core of the "post-truth" crisis lies in a more profound and insidious shift in the very criteria we use to determine truth itself. It is a shift in which factual accuracy, evidence-based reasoning, and logical coherence are actively devalued in favor of emotional appeals and personal convictions. As Yael Brahms (2020) observes, “the most prominent characteristic of the phenomenon is the loss of the fact-based objective truth, or at least a decline in its value” (p. 8).</p>
+                    <p>This devaluation of factual truth is further amplified by the pervasive influence of technology. As Brahms (2020) notes, "technology is what brokers reality to us today" (p. 9). Our understanding of the world is mediated through digital platforms where the "reality" presented is often "distorted en route” (p. 10), manipulated through algorithmic filtering and misinformation. Furthermore, in this mediated environment, “the public's faith in institutions...is steadily dwindling” (p. 10). This decline in institutional trust, combined with the rise of echo chambers, creates a situation where our shared sense of reality becomes fragmented and increasingly polarized, making reasoned dialogue more difficult (Figà Talamanca Arfini, 2022).</p>
+
+                    <h2 id="competing-theories">4. Competing Theories of Truth</h2>
+                    <p>In light of the complexities of the post-truth environment, a robust response requires an engagement with diverse theories of truth. As Brahms (2020) outlines, four prominent theories offer distinct insights:</p>
+                    <ul>
+                        <li><b>The Correspondence Theory:</b> Championed by figures like Bertrand Russell, this theory defines truth as a correspondence between a proposition and a fact in the world. Asghar (2012) also embraces this, claiming "truth is determined by the way things are and it is quite independent of our knowing it" (p. 295). However, it struggles with complex propositions where finding a "corresponding fact" is difficult or impossible.</li>
+                        <li><b>The Coherence Theory:</b> Supported by thinkers like Harold Joachim, this theory defines truth as the consistency of a proposition within a broader system of beliefs. While valuable for its emphasis on logical consistency, it can lead to a situation where multiple, contradictory “truths" exist within different, internally consistent systems.</li>
+                        <li><b>The Pragmatic Theory:</b> Supported by philosophers like William James, this theory defines truth by its utility and practical outcomes. A belief is true if it is useful. This can lead to a relativistic approach where truth is defined by what is convenient for an individual or group.</li>
+                        <li><b>The Pluralistic Approach:</b> Supported by thinkers like Crispin Wright, this approach suggests that different criteria of truth may apply for different topics of discourse. For instance, a scientific statement may be judged by correspondence, while a moral statement is evaluated by its coherence with ethical principles.</li>
+                    </ul>
+
+                    <h2 id="epistemological-humility">5. The Need for Epistemological Humility and Critical Discourse</h2>
+                    <p>Given the profound challenges posed by the “post-truth” landscape, one of the most urgent requirements is the cultivation of epistemological humility. This is an attitude that acknowledges the inherent limitations of human knowledge and recognizes that our perspectives are always shaped by personal experiences and cultural contexts. Asghar's (2012) critique rightly notes that a conception of knowledge where the individual is the sole arbiter of truth is flawed, as it suggests truth is primarily subjective.</p>
+                    <p>Instead, the search for truth requires a careful examination of the information we receive as well as the assumptions and biases we bring to the process of interpretation (Schwandt, Lincoln, Guba, 2007). This perspective underscores the critical importance of reasoned dialogue and engaging with diverse perspectives to mitigate our inherent biases. As Brahms (2020) notes, the post-truth phenomenon weakens our ability to clarify and function within reality (p. 17). To combat this, we must develop a critical analysis of information, but this analysis must be conducted with intellectual humility, remaining open to re-evaluating our beliefs when presented with new evidence.</p>
+
+                    <h2 id="philosophy-guide">6. Philosophy as a Guide in the Post-Truth Landscape</h2>
+                    <p>Given the complex nature of the post-truth environment, philosophy emerges as an indispensable guide. It offers the needed tools to deal with an information landscape where the very standards of truth and objectivity are being challenged. As Asghar (2012) writes, “the problematic nature of these philosophies [postmodern, analytic], and their built-in incompetence to gain access to truth" (p. 295) suggests that philosophical critique is required to understand our current situation.</p>
+                    <p>Furthermore, philosophy's emphasis on argumentation, logic, and rigorous analysis offers powerful tools for evaluating truth-claims. We should not naively embrace a rejection of objective truth, which is as problematic as a dogmatic belief in it, but rather refine our understanding of objectivity. As Brahms (2020) points out, even national security decision-makers are losing faith in experts and adopting more pragmatic or interpretative truths (p. 10). Recognizing this complexity does not call for abandoning the idea of truth, but for viewing it through a lens that acknowledges factual accuracy, logical coherence, and practical effectiveness, while also recognizing the subjective element within every claim. "Truth" must be viewed as a complex interplay of diverse elements that must be balanced in context.</p>
+
+                    <h2 id="conclusion">7. Conclusion</h2>
+                    <p>The post-truth phenomenon presents a profound challenge to the foundations of knowledge and belief, rooted in a convergence of postmodern skepticism and technological destabilization. This article argues that philosophy is essential in dealing with this landscape. By embracing epistemological humility, developing critical discourse, and engaging in a careful analysis of the various theories of truth, we can begin to build a more robust approach to knowledge and belief. The task is not simply to identify and reject falsehoods; it is also to re-imagine how we create and validate our understanding of the world around us.</p>
+                    <p>No singular theory of truth offers a definitive resolution. Rather, it is imperative that we recognize the intricate terrain which necessitates a synthesis of diverse methodologies, whilst simultaneously acknowledging the subjective dimension inherent in all knowledge assertions.</p>
+
+                    <h2 id="references">References</h2>
+                    <ol class="reference-list">
+                        <li>Arsenault, A. (2020). Microtargeting, automation, and forgery: Disinformation in the age of artificial intelligence.</li>
+                        <li>Asghar, J. (2012). The Postmodernist Relativization of Truth: A Critique. <i>Islamic Studies, 51</i>(3), 295–312.</li>
+                        <li>Atkins, G. D. (1985). <i>Reading deconstruction, deconstructive reading.</i> University Press of Kentucky.</li>
+                        <li>Birchall, C. (2006). <i>Knowledge goes pop: From conspiracy theory to gossip.</i> Berg Publishers.</li>
+                        <li>Brahms, Y. (2020). <i>Philosophy of Post-Truth.</i> Institute for National Security Studies.</li>
+                        <li>Buechel, B. (2023). Misinformation due to asymmetric information sharing. <i>Journal of Economic Dynamics and Control, 150,</i> 104641.</li>
+                        <li>Edelman, M. (2001). <i>The politics of misinformation.</i> Cambridge University Press.</li>
+                        <li>Fallon, K. (2019). Post-Truth Politics: Conspiracy Media and the Specter of "Fake News." In <i>Where Truth Lies: Digital Culture and Documentary Media after 9/11</i> (pp. 156-180). University of California Press.</li>
+                        <li>Figà Talamanca, G., & Arfini, S. (2022). Through the newsfeed glass: Rethinking filter bubbles and echo chambers. <i>Philosophy Technology, 35</i>(1), 20.</li>
+                        <li>Fischer, R., & Klazar, E. (2020). Facts, Truth, and Post-Truth. <i>The International Journal of Information, Diversity, & Inclusion, 4</i>(3/4), 5–19.</li>
+                        <li>Harcourt, B. E. (2021). Post-Truth. <i>Nomos, 64,</i> 147–175.</li>
+                        <li>Hyvönen, A. (2018). Careless Speech. <i>New Perspectives, 26</i>(3), 31-56.</li>
+                        <li>Kallipoliti, L. (2017). Deviant Beasts of Post-Truth. <i>Thresholds, 45,</i> 14-28.</li>
+                        <li>Malcolm, D. (2021). Post-Truth Society? An Eliasian Sociological Analysis of Knowledge in the 21st Century. <i>Sociology, 55</i>(6), 1063-1079.</li>
+                        <li>Malpas, J. (1992). Retrieving Truth: Modernism, Post-modernism and The Problem of Truth. <i>Soundings: An Interdisciplinary Journal, 75</i>(2/3), 287-306.</li>
+                        <li>Mezirow, J. (1990). Fostering critical reflection in adulthood. Jossey-Bass Publishers.</li>
+                        <li>Schwandt, T. A., Lincoln, Y. S., & Guba, E. G. (2007). Judging interpretations: But is it rigorous? Trustworthiness and authenticity in naturalistic evaluation. <i>New Directions for Evaluation, 2007</i>(114).</li>
+                        <li>Toms, D. (2020). Public Opinion Polling and Post-truth Politics in Indonesia. <i>Contemporary Southeast Asia, 42</i>(1), 1–27.</li>
+                        <li>Tweyman, S. (1976). Truth, Happiness and Obligation: The Moral Philosophy of William Wollaston. <i>Philosophy, 51</i>(195), 35-46.</li>
+                        <li>Wight, C. (2018). Post-Truth, Postmodernism and Alternative Facts. <i>New Perspectives, 26</i>(3), 17-30.</li>
+                        <li>Zagorin, P. (1999). History, the referent, and narrative: Reflections on postmodernism now. <i>History and Theory, 38</i>(1), 1-24.</li>
+                    </ol>
+                </div>
+            </article>
+        </main>
+        
+        <nav class="sidebar-nav">
+            <h3>Sections</h3>
+            <ol>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#postmodern-challenge">Postmodern Challenge</a></li>
+                <li><a href="#post-truth-phenomenon">Post-Truth Phenomenon</a></li>
+                <li><a href="#competing-theories">Competing Theories</a></li>
+                <li><a href="#epistemological-humility">Epistemological Humility</a></li>
+                <li><a href="#philosophy-guide">Philosophy as a Guide</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+                <li><a href="#references">References</a></li>
+            </ol>
+        </nav>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            document.getElementById('navbar-menu').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
