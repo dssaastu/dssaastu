@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Science Department Courses</title>
+    <title>Gallery - Social Science Department</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -43,200 +43,164 @@
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
+            transition: background-color 0.2s ease;
         }
         .navbar a:hover {
             background-color: #333;
             border-radius: 5px;
         }
-        .navbar-toggler {
-            display: none;
-            background-color: #1A252F;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: auto;
-        }
-        .navbar-menu {
-            display: flex;
-            flex-direction: row;
-        }
-        .navbar-menu.collapsed {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-        }
-        .navbar-menu.show {
-            display: flex;
-        }
-        .navbar-menu a {
-            padding: 15px;
-            border-bottom: 1px solid #333;
-        }
+        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
+        .navbar-menu { display: flex; flex-direction: row; }
+
         .container {
-            width: 80%;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
         }
         .container h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            color: #1A252F;
+            font-weight: 600;
         }
-        .course-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .course-item {
-            flex: 1 1 calc(33.333% - 40px);
-            box-sizing: border-box;
-            max-width: 300px;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .course-item img {
-            width: 100%;
-            height: auto;
-            border-bottom: 4px solid #e0e0e0;
-            transition: transform 0.3s;
-        }
-        .course-item:hover img {
-            transform: scale(1.05);
-        }
-        .course-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        }
-        .course-item a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-        .course-item a:focus, .course-item a:hover {
-            outline: none;
-        }
-        .footer p {
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Gallery styles */
+        
+        /* --- CUSTOMIZED GALLERY STYLES --- */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 25px;
         }
-
         .gallery-item {
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
         .gallery-item img {
             width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images fill the container without distortion */
             display: block;
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s ease;
         }
-
         .gallery-item:hover img {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        .gallery-item-overlay svg {
+            width: 50px;
+            height: 50px;
         }
 
+        /* --- CUSTOMIZED LIGHTBOX / OVERLAY STYLES --- */
         .overlay {
-            display: none;
+            display: none; /* Hidden by default */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.85);
             justify-content: center;
             align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-
+        .overlay.show {
+            display: flex;
+            opacity: 1;
+        }
         .overlay-content {
             position: relative;
             text-align: center;
             background-color: #fff;
             padding: 20px;
-        }
-
-        .overlay-content img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             max-width: 90vw;
-            max-height: 80vh;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
-
-        .overlay-content p {
-            margin: 10px 0;
+        .overlay-content img {
+            max-width: 100%;
+            max-height: calc(90vh - 100px); /* Adjust height to leave space for description */
+            object-fit: contain;
+            border-radius: 4px;
         }
-
-        .arrow {
+        #overlay-description {
+            margin: 15px 0 0 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        .close-button, .arrow-button {
             position: absolute;
-            top: 50%;
-            font-size: 24px;
-            color: #000;
+            background-color: rgba(44, 62, 80, 0.8);
+            color: #fff;
+            border: none;
             cursor: pointer;
-            user-select: none;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s ease;
+            line-height: 1; /* Helps vertical alignment */
         }
-
-        .arrow.left {
-            left: 10px;
+        .close-button:hover, .arrow-button:hover {
+            background-color: #1A252F;
         }
-
-        .arrow.right {
-            right: 10px;
+        .close-button {
+            top: -15px;
+            right: -15px;
         }
+        .arrow-button.left { left: -60px; top: 50%; transform: translateY(-50%); }
+        .arrow-button.right { right: -60px; top: 50%; transform: translateY(-50%); }
 
-        /* Responsive Styles */
+        .footer { margin-top: 50px; }
+        .footer p { margin-top: 15px; font-size: 0.9rem; }
+        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
+
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .navbar-toggler {
-                display: block;
-            }
-            .navbar-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            .navbar-menu.show {
-                display: flex;
-            }
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .navbar-toggler { display: block; align-self: flex-end; }
+            .navbar-menu { display: none; flex-direction: column; width: 100%; }
+            .navbar-menu.show { display: flex; }
+            .navbar-menu a { width: 100%; box-sizing: border-box; }
+            .arrow-button.left { left: 10px; }
+            .arrow-button.right { right: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>Social Science Department</h1>
         <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
+    </header>
     
-    <div class="navbar">
+    <nav class="navbar">
         <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
         <div class="navbar-menu" id="navbar-menu">
             <a href="index.html">Home</a>
@@ -244,96 +208,130 @@
             <a href="about.html">About Us</a>
             <a href="staff.html">Staff</a>
             <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a> <!-- BLOG LINK ADDED FOR CONSISTENCY -->
             <a href="gallery.html">Gallery</a>
         </div>
-    </div>
+    </nav>
     
-    <div class="container">
-        <h2>Gallery</h2>
+    <main class="container">
+        <h2>Our Gallery</h2>
         <div class="gallery">
-            <div class="gallery-item" data-description=" research and innovation cetnter under construction " data-image="gallery1.jpg">
-                <img src="gallery1.jpg" alt="Image 1">
+            <div class="gallery-item" data-description="Research and innovation center under construction">
+                <img src="gallery1.jpg" alt="Construction site of a new building">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-            <div class="gallery-item" data-description="Dstudents attending seminar , during tea break reading brochures">
-                <img src="gallery2.jpg" alt="Image 2">
+            <div class="gallery-item" data-description="Students attending a seminar, reading brochures during a tea break">
+                <img src="gallery2.jpg" alt="Students mingling during a conference break">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-            <div class="gallery-item" data-description="AASTU meeting hall, red carpet" data-image="gallery3.jpg">
-                <img src="gallery3.jpg" alt="Image 3">
+            <div class="gallery-item" data-description="The AASTU meeting hall with its red carpet">
+                <img src="gallery3.jpg" alt="Large modern auditorium with red carpet aisle">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-            <div class="gallery-item" data-description="digital library, students taking training " data-image="gallery4.jpg">
-                <img src="gallery4.jpg" alt="Image 4">
+            <div class="gallery-item" data-description="Students taking training in the digital library">
+                <img src="gallery4.jpg" alt="Students at computers in a digital library">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-            <div class="gallery-item" data-description="green area AASTU" data-image="gallery5.jpg">
-                <img src="gallery5.jpg" alt="Image 5">
+            <div class="gallery-item" data-description="A green area on the AASTU campus">
+                <img src="gallery5.jpg" alt="Lush green park area on a university campus">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-            <div class="gallery-item" data-description="Staff planting tree" data-image="gallery6.jpg">
-                <img src="gallery6.jpg" alt="Image 6">
+            <div class="gallery-item" data-description="Staff members planting a tree on campus">
+                <img src="gallery6.jpg" alt="Group of people planting a small tree">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-	   <div class="gallery-item" data-description="corridors inside AASTU" data-image="gallery7.jpg">
-                <img src="gallery7.jpg" alt="Image 6">
+	        <div class="gallery-item" data-description="Corridors inside an AASTU building">
+                <img src="gallery7.jpg" alt="Modern, clean hallway inside a university building">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-	   
-	   <div class="gallery-item" data-description="postgraduare students during graduation" data-image="gallery8.jpg">
-                <img src="gallery8.jpg" alt="Image 6">
+	        <div class="gallery-item" data-description="Postgraduate students during their graduation ceremony">
+                <img src="gallery8.jpg" alt="Graduating students in caps and gowns">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-	   <div class="gallery-item" data-description="new research and innovation center under construction" data-image="gallery9.jpg">
-                <img src="gallery9.jpg" alt="Image 6">
+	        <div class="gallery-item" data-description="New research and innovation center under construction">
+                <img src="gallery9.jpg" alt="Another view of the research center construction site">
+                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
             </div>
-            <!-- Add more gallery items as needed -->
         </div>
-    </div>
+    </main>
 
     <div class="overlay" id="overlay">
         <div class="overlay-content">
-            <span class="arrow left" onclick="changeImage(-1)">&#10094;</span>
-            <img id="overlay-image" src="" alt="Overlay Image">
+            <button class="close-button" id="close-button" aria-label="Close image viewer">&times;</button>
+            <img id="overlay-image" src="" alt="Enlarged gallery image">
             <p id="overlay-description"></p>
-            <span class="arrow right" onclick="changeImage(1)">&#10095;</span>
         </div>
+        <button class="arrow-button left" id="prev-button" aria-label="Previous image">&#10094;</button>
+        <button class="arrow-button right" id="next-button" aria-label="Next image">&#10095;</button>
     </div>
 
-    <div class="footer">
+    <footer class="footer">
         <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
-        <p>
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a> | 
-            <a href="map.html">Sitemap</a>
-        </p>
-    </div>
+    </footer>
 
     <script>
         document.getElementById('navbar-toggler').addEventListener('click', function() {
             document.getElementById('navbar-menu').classList.toggle('show');
         });
 
-        var galleryItems = document.querySelectorAll('.gallery-item');
-        var overlay = document.getElementById('overlay');
-        var overlayImage = document.getElementById('overlay-image');
-        var overlayDescription = document.getElementById('overlay-description');
-        var currentIndex = 0;
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const overlay = document.getElementById('overlay');
+        const overlayImage = document.getElementById('overlay-image');
+        const overlayDescription = document.getElementById('overlay-description');
+        const closeButton = document.getElementById('close-button');
+        const nextButton = document.getElementById('next-button');
+        const prevButton = document.getElementById('prev-button');
+        let currentIndex = 0;
 
-        galleryItems.forEach(function(item, index) {
-            item.addEventListener('click', function() {
-                overlayImage.src = item.querySelector('img').src;
-                overlayDescription.textContent = item.getAttribute('data-description');
-                overlay.style.display = 'flex';
-                currentIndex = index;
-            });
-        });
+        function showOverlay(index) {
+            currentIndex = index;
+            const item = galleryItems[currentIndex];
+            overlayImage.src = item.querySelector('img').src;
+            overlayDescription.textContent = item.dataset.description;
+            overlay.classList.add('show');
+        }
 
-        overlay.addEventListener('click', function(event) {
-            if (event.target === overlay) {
-                overlay.style.display = 'none';
-            }
-        });
+        function hideOverlay() {
+            overlay.classList.remove('show');
+        }
 
         function changeImage(direction) {
             currentIndex += direction;
-            if (currentIndex < 0) currentIndex = galleryItems.length - 1;
-            if (currentIndex >= galleryItems.length) currentIndex = 0;
-            overlayImage.src = galleryItems[currentIndex].querySelector('img').src;
-            overlayDescription.textContent = galleryItems[currentIndex].getAttribute('data-description');
+            if (currentIndex < 0) {
+                currentIndex = galleryItems.length - 1;
+            } else if (currentIndex >= galleryItems.length) {
+                currentIndex = 0;
+            }
+            showOverlay(currentIndex);
         }
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => showOverlay(index));
+        });
+        
+        closeButton.addEventListener('click', hideOverlay);
+        nextButton.addEventListener('click', () => changeImage(1));
+        prevButton.addEventListener('click', () => changeImage(-1));
+
+        // Close when clicking the dark background
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                hideOverlay();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (event) => {
+            if (overlay.classList.contains('show')) {
+                if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'Escape') {
+                    hideOverlay();
+                }
+            }
+        });
     </script>
 </body>
 </html>

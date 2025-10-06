@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>‹‹አላውቅም›› የማለት በጎነት - መሀመድ ዘይኑ ሀሰን</title>
+    <style>
+        /* --- CORE STYLES --- */
+        body { font-family: 'Nyala', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 2rem; }
+        .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
+        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+        .navbar a:hover { background-color: #333; border-radius: 5px; }
+        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
+        .navbar-menu { display: flex; flex-direction: row; }
+        .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
+        .footer p { margin-top: 15px; font-size: 0.9rem; }
+        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
+        .content-wrapper { width: 80%; max-width: 900px; margin: 40px auto; } 
+
+        /* --- SINGLE POST STYLES --- */
+        .full-post {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+        }
+        .full-post-header img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .full-post h1 {
+            font-size: 2.5rem;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            text-align: center;
+        }
+        .full-post-header .subtitle {
+            font-size: 1.5rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .post-meta { 
+            font-size: 1.2em; 
+            color: #777; 
+            margin-bottom: 25px; 
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        .post-body h2 {
+            font-size: 2rem;
+            color: #1A252F;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2C3E50;
+            padding-bottom: 10px;
+        }
+        .post-body h3 {
+            font-size: 1.6rem;
+            color: #2C3E50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .post-body p, .post-body li {
+            line-height: 1.9;
+            margin-bottom: 1.2em;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+        .post-body .reference-item {
+            text-align: left;
+            margin-bottom: 1em;
+            font-size: 1rem;
+        }
+        .post-body blockquote {
+            border-left: 4px solid #2C3E50;
+            padding-left: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #555;
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        .post-body pre {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+        }
+        .post-body ol {
+            padding-left: 20px;
+        }
+        .diagram-container img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 768px) { .navbar { flex-direction: column; align-items: flex-start; } .navbar-toggler { display: block; } .navbar-menu { display: none; flex-direction: column; width: 100%; } .navbar-menu.show { display: flex; } .full-post { padding: 20px; } .full-post h1 { font-size: 2rem; } .content-wrapper { width: 95%; }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="content-wrapper">
+        <main class="main-content">
+            <article class="full-post">
+                <header class="full-post-header">
+                    <img src="https://images.pexels.com/photos/212286/pexels-photo-212286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Colorful question marks on a dark background, representing uncertainty and inquiry.">
+                    <h1>‹‹አላውቅም›› የማለት በጎነት፡</h1>
+                    <p class="subtitle">እርግጠኛ አለመሆን ለእምነት ምክንያታዊ አማራጭ ሲሆን</p>
+                    <p class="post-meta">
+                        በ መሀመድ ዘይኑ ሀሰን
+                    </p>
+                </header>
+
+                <div class="post-body">
+                    <p>ይህ ጽሑፍ፣ ለህላዌያዊ እርግጠኛ አለመሆን ምላሽ ለመስጠት ወደ ሁለትዮሽ የእግዚአብሔር እምነት ማዘንበል ከዕውቀት አንጻር ምክንያታዊነት የጎደለው መሆኑን ይሞግታል፡፡ የስነ-ልቦና ጥናቶች እንደሚያሳዩት፣ ሰዎች አስጨናቂ እና ያልታወቁ ነገሮች ሲያጋጥሟቸው ወደ ተዘጋጁ መልሶች የመሳብ ተፈጥሯዊ ዝንባሌ አላቸው፡፡ ሆኖም ይህ ዝንባሌ ከምክንያታዊ ማረጋገጫ ጋር መምታታት የለበትም፡፡ ምክንያታዊ እምነት በተፈጥሮው ደረጃዊ ነው፤ ማለትም የመተማመንን መጠን ከሚመለከተው የማስረጃ መጠን ጋር ያስተካክላል፡፡ በአንጻሩ፣ በእምነት ላይ የተመሠረቱ ቁርጠኝነቶች እርግጠኛ አለመሆንን ወደ ሁለትዮሽ የማረጋገጫ ወይም የመካድ ምድቦች በማጠቃለል፣ ጥልቅ ምርመራን ያዳክማሉ፤ እንዲሁም አማራጭ መላምቶችን የመፈተሽ ዕድልን ይዘጋሉ፡፡ ይህ ጽሑፍ ከግንዛቤ ሳይንስ፣ ከሃይማኖት ፍልስፍና እና ከሥርዓታዊ የዕውቀት ፍልስፍና በመነሳት፣ እርግጠኛ አለመሆንን መቀበል — ‹‹አላውቅም›› ለማለት ባለው ፈቃደኝነት የሚገለጸው — ለምን ምክንያታዊ አቋም እንደሆነ የሚያስረዳ ማዕቀፍ ያቀርባል፡፡ ትንታኔው ሲጠቃለል፣ ዕውቀታዊ ትህትናን ማዳበር እና ላልታወቁ ማብራሪያዎች የተወሰነ የይሆናልነት ክምችት ማስቀመጥ፣ ለህላዌያዊ ጥያቄዎች እምነትን እንደ ዝግጁ መልስ ከመውሰድ ይልቅ ወደ እውቀት የሚወስድ ጠንካራ መንገድ መሆኑን ያስረዳል፡፡</p>
+                    
+                    <h2>ተዛማጅ ሥራዎች</h2>
+                    <p>በእምነት እና በምክንያታዊ እምነት መካከል ያለው ውጥረት በፍልስፍና እና በሥነ-መለኮት ውስጥ ለረጅም ጊዜ ሲዳሰስ ቆይቷል፡፡ ክሊፈርድ (1877) ያቀረበው ዝነኛ አባባል፣ ማለትም በቂ ባልሆነ ማስረጃ ላይ ተመስርቶ ማመን ስህተት ነው የሚለው፣ እስከ ዛሬ ድረስ ክርክሮችን የሚቀርጽ ማስረጃዊ መስፈርት አስቀምጧል፡፡ በአንጻሩ ጄምስ (1896)፣ ምንም እንኳን ወሳኝ ማስረጃ በሌለበት ሁኔታ ማመን ህላዌያዊ ጥቅሞችን የሚያስገኝ ከሆነ የተፈቀደ ነው ሲል ተከራክሯል፡፡ ይህ ተግባራዊ ማረጋገጫ ተጽዕኖ ፈጣሪ ሆኖ ቢቀጥልም፣ የስነ-ልቦና ምቾትን ከዕውቀት ዋስትና ጋር ማደባለቅን በሚያስጠነቅቁ ተቺዎች ብዙ ጊዜ ተቃውሞ ይገጥመዋል (Kelly, 2003; Nozick, 1993)።</p>
+                    <p>የዘመናችን የሃይማኖት ፍልስፍና ይበልጥ ሥርዓታዊ የሆኑ የእምነት መከላከያዎችን አቅርቧል፡፡ ፕላንቲንጋ (2000) በእግዚአብሔር ማመን ‹‹በትክክል መሰረታዊ›› ሊሆን እንደሚችል፣ ማለትም ያለማስረጃ ማረጋገጫ ሊኖረው እንደሚችል ይከራከራል፤ አልስተን (1991) ደግሞ ሃይማኖታዊ ልምድን እንደ ህጋዊ የእምነት አፈጣጠር ሂደት ይከላከልለታል፡፡ ስዊንበርን (2003) በተለይ ከተአምራት ጋር በተያያዘ የሥነ-መለኮትን ገላጭ ኃይል ይሞግታል፤ በሌላ በኩል ሼለንበርግ (2005, 2015) ያለጊዜው ቁርጠኝነትን በመተቸት፣ በጥልቅ እርግጠኛ አለመሆን ሁኔታዎች ውስጥ ለ‹‹አልቲሚዝም›› (ultimism) ክፍት መሆንን እንደ ምክንያታዊ አቋም ያቀርባል፡፡</p>
+                    <p>በሥርዓታዊ የዕውቀት ፍልስፍና ውስጥ የተከሰቱ ትይዩ እድገቶች የማስረጃዊነትን ግንዛቤ አጠናክረዋል፡፡ ደ ፊኔቲ (2017) እምነት እንደ ግላዊ የይሆናልነት መጠን መወሰድ እንዳለበት ሀሳብ አቅርቧል፤ ተከታይ ስራዎችም የምክንያታዊ ተአማኒነትን ደረጃዊ ባህሪ አብራርተዋል (Howson & Urbach, 2006; Joyce, 1998, 2009; Pettigrew, 2016; Titelbaum, 2013; Weisberg, 2013)፡፡ ሞስ (2018) እና ዋሊ (1991) ደግሞ ያልተወሰኑ ወይም በክልል-የተገደቡ ተአማኒነቶችን በመደገፍ፣ ባልተሟላ ማስረጃ ፊት ዕውቀታዊ ትህትናን ይፈቅዳሉ፡፡ እነዚህ አካሄዶች ምክንያታዊ እምነት ወደ ሁለትዮሽ ማረጋገጫ ወይም መካድ ከመውደቅ ይልቅ፣ የማስረጃን ድጋፍ መጠን መከተል እንዳለበት በሚለው አቋም ላይ ይስማማሉ፡፡</p>
+                    <p>በመጨረሻም፣ ስነ-ልቦና እምነት ለምን እንደ ዝግጁ ምላሽ እንደሚሰራ ተጨባጭ ግንዛቤ ይሰጠናል፡፡ የግንዛቤ መዘጋት ፍላጎት (Kruglanski & Webster, 1996)፣ እርግጠኛ አለመሆንን አለመቻል (Carleton, 2016)፣ እና የትርጉም ጥበቃ ሞዴል (Heine et al., 2006) ላይ የተደረጉ ጥናቶች እንደሚያሳዩት፣ ሰዎች የሁለት ትርጉም ያላቸውን ሁኔታዎች ያለጊዜው ለመፍታት የተጋለጡ ናቸው፡፡ ቦየር (2001) እና ባሬት (2004) ወኪልን የመለየት ዝንባሌን ያጎላሉ፤ የሙከራ ጥናቶች ደግሞ እርግጠኛ አለመሆን ለሐሰተኛ ስርዓተ-ጥለት ግንዛቤ እና ለሴራ ጽንሰ-ሀሳቦች ተጋላጭነትን እንደሚጨምር ያሳያሉ (van Prooijen & Jostmann, 2013; Whitson & Galinsky, 2008)። እነዚህ ግኝቶች እርግጠኛ አለመሆን ውስጥ የእምነትን ስርጭት ያብራራሉ፤ ነገር ግን — ይህ ጽሑፍ እንደሚከራከረው — ምክንያታዊነቱን አያረጋግጡም፡፡</p>
+
+                    <h2>መግቢያ</h2>
+                    <p>የሰው ልጆች ሁልጊዜም በእርግጠኛ አለመሆን ሲታወኩ ኖረዋል፤ በተለይም ከሕልውና፣ ከዓላማ እና ከእጣ ፈንታ ጥያቄዎች ጋር ሲጋፈጡ፡፡ የግንዛቤ ሳይንስ እና ስነ-ልቦና እንደሚያመለክቱት፣ ሰዎች በተፈጥሯቸው ከሁለት ትርጉም ጋር ምቾት አይሰማቸውም፡፡ የግንዛቤ መዘጋት ፍላጎት ላይ የተደረገ ጥናት እንደሚያሳየው፣ ግለሰቦች እውነት ገና አልታወቀም ከሚለው ክፍት እውቅና ይልቅ፣ ጉድለት ያለበትን እምነት ለመያዝ ይቀናቸዋል (Carleton, 2016; Kruglanski & Webster, 1996)። በሃይማኖት ስነ-ልቦና ውስጥ የተደረጉ ጥናቶች ይህንን ምስል ያጠናክራሉ፡ ሰዎች ግልጽ ባልሆኑ ሁኔታዎች ውስጥ ወኪልን ከመጠን በላይ የመለየት ዝንባሌ ያላቸው ይመስላል፤ ይህም በህላዌያዊ አለመረጋጋት ጊዜ ከተፈጥሮ በላይ የሆኑ ማብራሪያዎችን አሳማኝ እና ስሜታዊ በሆነ መልኩ አርኪ ያደርጋቸዋል (Barrett, 2004; Boyer, 2001)፡፡ በተመሳሳይ መልኩ፣ የሙከራ ግኝቶች እንደሚያሳዩት ሰዎች ቁጥጥር ሲያጡ ወይም እርግጠኛ ያልሆነ የወደፊት ሁኔታ ሲገጥማቸው፣ ሐሰተኛ ስርዓተ-ጥለቶችን የማስተዋል እና እርግጠኝነትን የሚሰጡ ገላጭ ስርዓቶችን የመቀበል ዕድላቸው ከፍ ያለ ነው (van Prooijen & Jostmann, 2013; Whitson & Galinsky, 2008)። በትርጉም-ጥበቃ ሞዴል መሰረት፣ የህይወት ወጥነት ላይ የሚደርሱ ስጋቶች የማካካሻ መዋቅር ፍለጋን ይቀሰቅሳሉ (Heine et al., 2006)። ሃይማኖታዊ የዓለም አመለካከቶች፣ ዝግጁ በሆኑ የመነሻ፣ የትርጉም እና የፍጻሜ ማብራሪያዎቻቸው፣ እነዚህን የስነ-ልቦና ዝንባሌዎች በማሟላት ለሌሎች አስጨናቂ ጥያቄዎች የታሸገ መፍትሔ ይሰጣሉ፡፡</p>
+                    <p>ሆኖም፣ የስነ-ልቦናዊ ማራኪነት ከዕውቀት ህጋዊነት ጋር እኩል አይደለም፡፡ ሰዎች በእርግጠኛ አለመሆን ሁኔታዎች ውስጥ ወደ እግዚአብሔር እምነት መሳባቸው በራሱ እንዲህ ያለው እምነት ምክንያታዊ መሆኑን ሊያረጋግጥ አይችልም፡፡ ተፈጥሯዊ ዝንባሌን ከምክንያታዊ ማረጋገጫ ጋር ማምታታት ሁለት የተለያዩ መስኮችን ማደባለቅ ነው፡ ገላጭ የሆነውን የስነ-ልቦና መስክ እና ደንብ-አውጪ የሆነውን የዕውቀት ፍልስፍና መስክ፡፡ በዘመናዊ ሥርዓታዊ የዕውቀት ፍልስፍና እንደተገለጸው፣ ምክንያታዊ እምነት ሁለትዮሽ ሳይሆን በተፈጥሮው ደረጃዊ ነው፡ የመተማመንን መጠን ከሚመለከተው የማስረጃ መጠን ጋር ያስተካክላል (Howson & Urbach, 2006; Joyce, 1998; Pettigrew, 2016)።</p>
+
+                    <h2>የታሸጉ መልሶች ማራኪነት</h2>
+                    <p>የመክፈቻው ክርክር ሰዎች በተፈጥሯቸው እርግጠኛ አለመሆንን በፍጥነት ለመፍታት የተጋለጡ መሆናቸውን ካረጋገጠ፣ ሃይማኖታዊ ወይም ዶግማዊ ስርዓቶች ለምን ብዙውን ጊዜ ነባሪ መፍትሔ እንደሚሆኑ መመርመር አስፈላጊ ነው፡፡ ሃይማኖት የተናጠል ሀሳቦችን ብቻ አያቀርብም፤ አጠቃላይ ማዕቀፍ — ስለ መነሻ፣ ደንቦች፣ ስቃይ እና እጣ ፈንታ ጥያቄዎች እርስ በርስ የተያያዙ የመልሶች ስብስብ — ያቀርባል፡፡ ይህ ሥርዓታዊ ባህሪው ግልጽ ባልሆኑ ሁኔታዎች ውስጥ እምነትን ማራኪ ያደርገዋል፡፡ የስነ-ልቦና ሥነ-ጽሑፍ እንደሚያረጋግጠው፣ ግለሰቦች ጠንካራ የሆነ የእርግጠኛ አለመሆንን አለመቻል ያሳያሉ፤ ብዙውን ጊዜ በትዕግስት ከሚደረግ ጥናት ይልቅ በስልጣን ባላቸው ወይም በቀላሉ በሚገኙ ማብራሪያዎች መታመን ይመርጣሉ (Carleton, 2016; Kruglanski & Webster, 1996)። በህላዌያዊው መስክ፣ ስለ ሞት እና ትርጉም ያሉ ጥያቄዎች ቀጥተኛ መፍትሔን በሚቃወሙበት፣ የተዋሃደ ትረካ ተስፋ በተለይ ጠንካራ መሳሳብ አለው፡፡</p>
+                    <p>የግንዛቤ እና የማህበራዊ ሳይንቲስቶች ይህንን መስህብ ከሰው ልጅ የግንዛቤ ጥልቅ ባህሪያት ጋር ያያይዘውታል፡፡ ቦየር (2001) ሃይማኖታዊ ጽንሰ-ሀሳቦች ወኪልን የመለየት ከልክ ያለፈ ዝንባሌን እንደሚጠቀሙ ይከራከራል፤ ባሬት (2004) ደግሞ ሰዎችን ሥነ-መለኮታዊ ይገባኛል ጥያቄዎችን ለመቀበል የተዘጋጁ ‹‹የተወለዱ አማኞች›› በማለት ይገልጻቸዋል፡፡ ተጓዳኝ የሙከራ ጥናቶች እንደሚያሳዩት፣ ግለሰቦች የቁጥጥር ስሜት ሲያጡ፣ በዘፈቀደነት ላይ ሥርዓትን የመጫን ዕድላቸው ከፍ ያለ ሲሆን፣ ምንም ወኪል ወይም ትርጉም ያለው ስርዓተ-ጥለት በሌለበት ቦታ እንኳ እነዚህን ነገሮች ያስተውላሉ (Whitson & Galinsky, 2008)።</p>
+
+                    <h2>ምክንያታዊ እምነት እንደ ደረጃዊ መተማመን</h2>
+                    <p>የዕውቀት ፍልስፍና ተግባር ዝንባሌዎቻችንን መመዝገብ ሳይሆን መገምገም ነው፡፡ ከደ ፊኔቲ (2017) ጀምሮ፣ እምነት እንደ ‹በርቷል/ጠፍቷል› ማብሪያ ሳይሆን እንደ የመተማመን ደረጃዎች ጉዳይ ተደርጎ ተወስዷል፡፡ c(H) ∈ [0, 1] የአንድን አማኝ ተአማኒነት በመላምት H ላይ ያመላክታል፡፡ በይሆናልነት አመለካከት መሰረት፣ ምክንያታዊነት c(·) የይሆናልነት ደንቦችን እንዲታዘዝ እና ዝማኔዎች በማስረጃ አማካኝነት በተቀመጡ ደንቦች (ለምሳሌ፣ ሁኔታዊነት) እንዲከናወኑ ይጠይቃል፡፡ ቀጣይ እድገቶች ይህንን አመለካከት ከትክክለኛነት እና ከወጥነት አንጻር ይከላከላሉ፡ በኃላፊነት ማመን ማለት የአንድን ሰው የመተማመን ደረጃ ከማስረጃ ጋር ማመጣጠን ነው (Howson & Urbach, 2006; Joyce, 1998, 2009; Pettigrew, 2016)።</p>
+                    <p>በጣም አስፈላጊው ነገር፣ ተመጣጣኝነት ሐሰተኛ ትክክለኛነትን አያስገድድም፡፡ ማስረጃ ያልተሟላ ወይም አማራጭ መላምቶችን ለመለየት በጣም ግልጽ ያልሆነ ሲሆን፣ ትክክለኛ ያልሆኑ ተአማኒነቶች እና በመርህ ላይ የተመሰረተ የውሳኔ ማቆም ምክንያታዊ አማራጮች ናቸው፡፡ የአንድን ሰው የእምነት ሁኔታ በክልል [L(H), U(H)] ወይም በተፈቀዱ የይሆናልነት መለኪያዎች ስብስብ መወከል፣ የሌለንን ትክክለኛነት ከመናገር ይልቅ ክፍተቱን ይቀበላል (Levi, 1986; Titelbaum, 2013; Walley, 1991; Weisberg, 2013)፡፡ በዚህ አመለካከት መሰረት፣ ለህላዌያዊ አለመወሰን ትክክለኛው ምላሽ ወደ ሁለትዮሽ እምነት መዝለል ሳይሆን፣ ትክክለኛውን የድጋፍ ሁኔታ የሚያንጸባርቁ መካከለኛ — ብዙውን ጊዜ ትክክለኛ ያልሆኑ — ተአማኒነቶችን መጠበቅ ነው፡፡</p>
+
+                    <h2>ወደ እምነት የማዘንበል ዋጋዎች</h2>
+                    <p>ምክንያታዊ እምነት እንደ ደረጃዊ መተማመን በትክክል ከተረዳ፣ እርግጠኛ አለመሆንን ወደ ሁለትዮሽ የእምነት ቁርጠኝነት የመቀነስ አደጋዎች ግልጽ ይሆናሉ፡፡ ለህላዌያዊ ጥያቄዎች ምላሽ ለመስጠት ወደ እግዚአብሔር እምነት ማዘንበል በርካታ ዕውቀታዊ ዋጋዎችን ያስከፍላል፡፡ አንደኛ፣ የጥያቄ መዘጋትን ያበረታታል፡፡ አንዴ መለኮታዊ ማብራሪያ በቂ እንደሆነ ከተወሰደ፣ ተፈጥሯዊ ወይም ፍልስፍናዊ አማራጮችን የመመርመር ተነሳሽነት ይቀንሳል፡፡ ይህ ክስተት ተቺዎች ‹‹የክፍተት-አምላክ›› አስተሳሰብ ብለው ከሚገልጹት ጋር ይመሳሰላል፤ በዚህም ያልተብራሩ ክስተቶች ለመለኮታዊ እርምጃ ይወሰዳሉ፤ በኋላ ላይ ሳይንስ ሲራመድ በተፈጥሯዊ ማብራሪያዎች ይተካሉ (Dawes, 2016; Earman, 2000)፡፡ ጉዳቱ ተሳሳች መሆን ሳይሆን ያልተፈታን ጥያቄ አስቀድሞ እንደተፈታ አድርጎ በመቁጠር ተጨማሪ ምርመራን ማደናቀፍ ነው፡፡</p>
+                    <p>ሁለተኛ፣ ወደ እምነት ማዘንበል ዶግማዊ አስተሳሰብን የማስረጽ አደጋ አለው፡፡ አስቀድሞ የተዘጋጀ የዶክትሪን ስብስብ መቀበል፣ ንቁ ግምገማን በባለስልጣን መገዛት ሊተካ ይችላል፤ ይህም የግለሰቡን ራስ-ገዝ የማመዛዘን ችሎታ ይቀንሳል፡፡ ይህ ብዙውን ጊዜ በእምነት ላይ የተመሰረቱ ቁርጠኝነቶች ከገሃዱ ዓለም ማስረጃ ጋር ሲጋጩ የግንዛቤ አለመጣጣምን ይፈጥራል፡፡ የከሸፉ ትንቢቶች ላይ የተደረጉ ክላሲካል ጥናቶች እንደሚያሳዩት፣ አማኞች እንዲህ ያለውን አለመጣጣም የሚፈቱት የተረጋገጠውን የይገባኛል ጥያቄ በመተው ሳይሆን፣ እምነታቸውን ለመጠበቅ ማስረጃውን እንደገና በመተርጎም ነው (Festinger et al., 1956)፡፡ በተነሳሽነት ላይ የተመሰረተ የማመዛዘን ጥናትም እንደሚያሳየው፣ ማንነትን የሚገልጹ እምነቶች ለምርጫ ግምገማ ይጋለጣሉ (Kunda, 1990; Taber & Lodge, 2006)። ውጤቱም እምነቶች ከእርምት የሚጠበቁበት እና ጥያቄ ለበታችነት የሚገዛበት ዕውቀታዊ አካባቢ ነው፡፡</p>
+                    
+                    <h2>እርግጠኛ አለመሆንን የመቀበል በጎነት</h2>
+                    <p>ወደ እምነት ማዘንበል ዕውቀታዊ ዋጋዎችን የሚያስከፍል ከሆነ፣ ተቃራኒው አቋም — እርግጠኛ አለመሆንን መቀበል — እንደ ገንቢ አማራጭ ይወጣል፡፡ ገና እንደማያውቁ መቀበል ወደ ሽባነት ወይም ተስፋ መቁረጥ መውደቅ ሳይሆን፣ የዘመናችን የዕውቀት ፈላስፎች ዕውቀታዊ ትህትና ብለው የሚገልጹትን መቀበል ነው፡፡ ይህ በጎነት የአንድን ሰው የእውቀት ገደቦች መገንዘብ እና ለወደፊት ማስረጃዎች መርህን ክፍት አድርጎ መያዝን ያጠቃልላል (Baehr, 2011; Roberts & Wood, 2007; Whitcomb et al., 2017)፡፡ በህላዌያዊ ጥያቄ ውስጥ፣ እንዲህ ያለው ትህትና በተለይ ዋጋ ያለው ነው፤ ምክንያቱም በጥያቄ ውስጥ ያሉት ጉዳዮች — ስለ ሕይወት ዓላማ፣ ሞት፣ ወይም ከፍ ያለ ህላዌ — በፍጥነት ለመፍታት በጣም አስቸጋሪ የሆኑት ናቸው፡፡</p>
+                    <p>‹‹አላውቅም›› የማለት ምክንያታዊነት በሥርዓታዊ የዕውቀት ፍልስፍና መነጽር ሲታይ ይበልጥ ግልጽ ይሆናል፡፡ የይሆናልነት አካሄዶች እርግጠኛ አለመሆንን እንደ አሳፋሪ ክፍተት ሳይሆን እንደ ሥርዓት ያለው የታገደ ፍርድ እንድንወክል ያስችሉናል፡፡ ትክክለኛ ያልሆኑ የይሆናልነት ሞዴሎች፣ ለምሳሌ፣ ላልታወቁ ወይም ላልተገመቱ አማራጮች የይሆናልነት ክምችት እንዲመደብ ይመክራሉ (Levi, 1986; Walley, 1991)። ይህ ተግባር ያለጊዜው የሚመጣውን የእምነት እና አለማመን ክፍፍልን ይቃወማል፤ እንዲሁም ማስረጃ በራስ የመተማመን አቋምን ለማረጋገጥ በጣም ደካማ ወይም ያልተወሰነ ሊሆን እንደሚችል ያንጸባርቃል፡፡ በእንደዚህ ዓይነት ሁኔታ የእግዚአብሔርን መኖር ማረጋገጥ ወይም መካድ ማስረጃው ከሚችለው በላይ መናገር ነው፤ እርግጠኛ አለመሆንን መቀበል ግን እምነትን ከማስረጃ ጋር ማመጣጠን ነው፤ ይህም የምክንያታዊ ተአማኒነት ዋና ነገር ነው (Joyce, 1998; Moss, 2018)፡፡</p>
+
+                    <h2>ተቃራኒ ክርክሮች እና ምላሾች</h2>
+                    <p>ወደ-እምነት-ማዘንበልን የሚተች ማንኛውም ትችት በሃይማኖት ፍልስፍና ውስጥ ያሉትን ዋና ዋና መከላከያዎች ከግምት ሳያስገባ ሊቀጥል አይችልም፡፡ አራት ታዋቂ የምላሽ መስመሮች ምርመራ ያስፈልጋቸዋል፡</p>
+                    
+                    <h3>እምነት እንደ ጥያቄ ማሟያ</h3>
+                    <p>በአንድ አመለካከት መሰረት፣ እምነት ተጨባጭ ዘዴዎች ሊደርሱባቸው የማይችሉትን ክፍተቶች በመሙላት፣ የትርጓሜ አድማስን ያቀርባል፡፡ ፕላንቲንጋ (2000) በእግዚአብሔር ማመን ‹‹በትክክል መሰረታዊ›› ሊሆን እንደሚችል፣ በአስተማማኝ የግንዛቤ ችሎታዎች ላይ የተመሰረተ እና ምንም ማስረጃዊ ድጋፍ እንደማይፈልግ ይከራከራል፤ አልስተን (1991) ደግሞ ሃይማኖታዊ ልምድን ዋስትና ያለው እምነትን ሊያስገኝ የሚችል የእምነት አፈጣጠር ሂደት አድርጎ ይሟገታል፡፡ ችግሩ እነዚህ ሀሳቦች እንዲህ ያሉት መገለጦች ከስነ-ልቦናዊ አሳማኝ ቦታ-ያዦች ይልቅ እውነተኛ የእውቀት ምንጮች መሆናቸውን ከማረጋገጥ ይልቅ ያስባሉ፡፡ እንደ ማሟያዎች መቁጠር ይበልጥ አስተማማኝ ማብራሪያዎችን ሊገልጡ የሚችሉ ጥያቄዎችን በመዝጋት እንደ ምትክ እንዲሰሩ ያደርጋቸዋል፡፡</p>
+                    
+                    <h3>እምነት እንደ አስፈላጊ የሞራል መሰረት</h3>
+                    <p>አንዳንዶች ሃይማኖት ዓለማዊ አስተሳሰብ ሊያረጋግጠው የማይችለውን ተጨባጭ የእሴት መሰረት ይሰጣል ብለው ይከራከራሉ (ለምሳሌ፣ ስዊንበርን (2003))፡፡ ሆኖም፣ ከክሊፈርድ (1877) ‹‹ያለ በቂ ማስረጃ ማመን ሃላፊነት የጎደለው ነው›› ከሚለው አባባል እስከ ፌልድማን እና ኮኒ (2004) ሥርዓታዊ የማስረጃዊነት መከላከያ ድረስ፣ ማስረጃዊ ተቺዎች ማንኛውም እምነት ተመጣጣኝ ድጋፍ ከሌለው ምክንያታዊ ደረጃ እንደማያገኝ ይከራከራሉ፡፡ በተጨማሪም፣ ማህበራዊ ደንቦች ያለ ሥነ-መለኮታዊ ቁርጠኝነት ሊረዱ እና ሊጸድቁ ይችላሉ፡፡ የእምነት የሞራል ማራኪነት የተመጣጣኝነትን ደንብ አያዳክምም፡፡</p>
+                    
+                    <h3>ለእምነት ተግባራዊ ፈቃድ</h3>
+                    <p>ጄምስ (1896) ማስረጃ በሌለበት ሁኔታ አንድ ሰው እምነቱ ህላዌያዊ ትርጉም የሚሰጥ ከሆነ ለማመን ሊጸድቅ ይችላል ይላል፡፡ ነገር ግን የስነ-ልቦናዊ ጥቅምን ከዕውቀት ማረጋገጫ ጋር ማደባለቅ ጥሩ ስሜት በሚሰማን እና እውነት በሆነው መካከል ያለውን ልዩነት ያፈርሳል፡፡ ኬሊ (2003) እና ኖዚክ (1993) ምክንያታዊነት ወደ ተግባራዊ ጥቅም ሊቀነስ እንደማይችል ይከራከራሉ፤ ምክንያታዊነት ለምርጫ ከመገዛት ይልቅ ለማስረጃ ስሜታዊ መሆንን ይጠይቃል፡፡ እምነት በዋነኝነት ለሀዘን ማስታገሻነት የሚጠበቅ ከሆነ፣ ስሜታዊ መረጋጋትን ሊሰጥ ይችላል፤ ነገር ግን የዕውቀት ብቃትን ፈተና ይወድቃል፡፡</p>
+                    
+                    <h3>እምነት እንደ ትህትና</h3>
+                    <p>አንዳንዶች እምነትን ምስጢርን መቀበል እና የምክንያትን ገደቦች መገንዘብ አድርገው ይገልጻሉ (ለምሳሌ፣ ሮበርትስ እና ዉድ (2007))፡፡ ሆኖም፣ እውነተኛ ትህትና፣ ባኤር (2011) እና ዊትኮምብ እና ሌሎች (2017) እንደሚያጎሉት፣ ለዶግማ በዝምታ መገዛት ሳይሆን፣ ለዕርምት ንቁ ክፍት መሆን እና መተማመንን ከማስረጃ ጋር ለማመጣጠን ፈቃደኛ መሆን ነው፡፡ በዚህ ግንዛቤ፣ ለመጨረሻ ጥያቄዎች ያለው ትሁት አቋም የእምነት ሁለትዮሽ እርግጠኝነት ሳይሆን፣ በሥርዓት የታገዘ አለማወቅን መቀበል ነው፡ ‹‹አላውቅም፡፡››</p>
+
+                    <h2>ማጠቃለያ</h2>
+                    <p>የህይወት ጥልቅ ጥያቄዎች ሲያጋጥሙን ወደ እግዚአብሔር እምነት የማዘንበል ግፊት፣ የሰው ልጅ ለእርግጠኛ አለመሆን ያለውን ጥላቻ እና የታሸጉ ገላጭ ስርዓቶችን ማራኪነት ከግምት ውስጥ ስናስገባ፣ ለመረዳት የሚቻል ነው፡፡ የግንዛቤ ሳይንስ እና ስነ-ልቦና እንዲህ ያሉ እምነቶች ግልጽ ባልሆኑ ሁኔታዎች ለምን አሳማኝ እንደሆኑ ያብራራሉ፤ ነገር ግን እምነት ምክንያታዊ ምላሽ መሆኑን አያረጋግጡም፡፡ ከሥርዓታዊ የዕውቀት ፍልስፍና አንጻር፣ ምክንያታዊ እምነት በተፈጥሮው የደረጃ ጉዳይ ነው፡ መተማመን ካለው ማስረጃ ጥንካሬ ጋር መመጣጠን አለበት፡፡ ሁለትዮሽ የእምነት ቁርጠኝነቶች፣ ሙሉ ማረጋገጫን ወይም መካድን በመጠየቅ፣ ይህንን መርህ ያዛባሉ እና ጥያቄን በመዝጋት ይተካሉ፡፡</p>
+                    <p>ወደ እምነት የማዘንበል ዋጋዎች ከፍተኛ ናቸው፡፡ ጥያቄዎች ያለጊዜው ሲዘጉ የአዕምሮ ጉጉት ይታፈናል፤ ዶግማዊ አስተሳሰብ ራስ-ገዝ የማመዛዘን ችሎታን ይተካል፤ እና ተነሳሽነት ያለው ግንዛቤ የተቃራኒ ማስረጃን እንደገና መተርጎምን ያበረታታል፡፡ ለባለስልጣን መገዛት ግለሰቦችን ለብዝበዛ የበለጠ ሊያጋልጥ ይችላል፤ ይህም ራስን የመምራት የግምገማ ችሎታን ይቀንሳል፡፡ በአንጻሩ፣ ‹‹አላውቅም›› የማለት ፈቃደኝነት ዕውቀታዊ ትህትናን ያካትታል፡፡ የሰውን ልጅ የመረዳት ገደቦችን ይቀበላል፣ ላልታወቁ አማራጮች የይሆናልነት ክምችቶችን ይጠብቃል፣ እና ለተጨማሪ ምርመራ ያለውን አማራጭ ዋጋ ይጠብቃል፡፡</p>
+                    <p>የሃይማኖታዊ መከላከያዎች — በማሟያነት፣ በሞራል መሰረት፣ በተግባራዊ ምቾት፣ ወይም በትህትና መልክ የተቀረጹ — በመጨረሻ የስነ-ልቦና ማራኪነትን ከዕውቀት ማረጋገጫ ጋር ያደባልቃሉ፡፡ ምቾት እና ወጥነት የእውነት በቂ አመልካቾች አይደሉም፡፡ ለእርግጠኛ አለመሆን እውነተኛ ምክንያታዊ ምላሽ የእምነትን ሁለትዮሽ አቋም መቀበል ሳይሆን፣ ከማስረጃ ጋር የተስተካከለ እና ለክለሳ ክፍት የሆነ ደረጃዊ የእምነት ሞዴልን መቀበል ነው፡፡ የ‹‹አላውቅም›› በጎነት የአዕምሮ ታማኝነትን እየጠበቀ ቀጣይነት ያለው ምርመራን በማበረታታት ችሎታው ላይ ነው፡፡ ያለጊዜው መዘጋትን በመቃወም፣ እምነት ከሚሰጠው ይልቅ ይበልጥ ጠንካራ እና እውነተኛ የሆነ የእውቀት ፍለጋን ያረጋግጣል፡፡</p>
+
+                    <h2>አባሪ ሀ፡ የቤይዝ ሥርዓት እና ደረጃዊ እምነት</h2>
+                    <p>የቤይዝ ጽንሰ-ሐሳብ ምክንያታዊ እምነት ከሁለትዮሽ ይልቅ ለምን ደረጃዊ መሆን እንዳለበት የሚያሳይ የታመቀ መንገድ ያቀርባል፡፡ በዕድል መልክ ሲቀመጥ፡</p>
+                    <pre>
+P(H|E)     P(H)       P(E|H)
+-------  =  ----  x  ---------   (A1)
+P(¬H|E)    P(¬H)      P(E|¬H)
+                    </pre>
+                    <p><b>ማብራሪያ፡</b> ድህረ-ግምት ዕድሎች ከቅድመ-ግምት ዕድሎች በቤይዝ ፋክተር (የማስረጃው የመሆን ዕድል ጥምርታ በH እና በእሱ ተቃራኒ ስር) ተባዝተው እኩል ይሆናሉ፡፡</p>
+                    <p>ይህ መዋቅር ተመጣጣኝነትን ያስገድዳል፡ ማስረጃ ለH በመጠኑ ብቻ የሚደግፍ ከሆነ፣ ድህረ-ግምት መተማመን በመጠኑ ብቻ ሊጨምር ይችላል፡፡ ከደካማ ማስረጃ ወደ ሁለትዮሽ እርግጠኝነት መዝለል የማዘመን አመክንዮን መዝለል ነው፡፡</p>
+                    <p>ሁለት ተጨማሪ መርሆዎች የደረጃዊውን ሞዴል ያጠናክራሉ፡፡ አንደኛ፣ ቅድመ-ግምቶች መላውን የመላምት ምህዳር መሸፈን አለባቸው፡</p>
+                    <pre>
+  N
+  Σ P(Hᵢ) = 1.   (A2)
+ i=1
+                    </pre>
+                    <p><b>ማብራሪያ፡</b> ለአንድ መላምት መተማመንን መመደብ በሌሎች ላይ ያለውን መተማመን መቀነስን ይጠይቃል፤ ይህ የቁጠባ ህግ ያልተመረመሩ ‹‹ነባሪዎችን›› ያስወግዳል፡፡</p>
+                    <p>ሁለተኛ፣ ምክንያታዊ ሞዴሎች ላልተገመቱ አማራጮች የይሆናልነት ክምችቶችን መተው አለባቸው፡</p>
+                    <pre>P(¬H) = Σ P(Halt,j) + P(Unknowns).   (A3)</pre>
+                    <p><b>ማብራሪያ፡</b> ላልታወቁ ነገሮች ዜሮ ያልሆነ የይሆናልነት መጠን በመመደብ፣ አንድ ሰው ያለጊዜው መዘጋትን ይቋቋማል እና ለግኝት ክፍትነትን ይጠብቃል፡፡</p>
+                    <p>በአንድ ላይ፣ እነዚህ ገደቦች ምክንያታዊ እምነት ለምን ወደ ሁለትዮሽ እምነት ሊጠቃለል እንደማይችል ያሳያሉ፡፡ ተአማኒነቶች በሥርዓቱ ከ0 እስከ 1 ባለው ክልል ውስጥ እንዲሆኑ ይገደዳሉ፤ ይህም የቅድመ-ግምት መዋቅርን እና የማስረጃን ክብደት ይከታተላል፡፡ ጆይስ (1998) እና ፔቲግሩ (2016) እንደሚከራከሩት፣ ደረጃዊ ተአማኒነቶች ብቻ በተለያዩ ሊሆኑ በሚችሉ ዓለማት ውስጥ የትክክለኛነት ደንቦችን ያከብራሉ፡፡ ‹‹አላውቅም›› የማለት ዕውቀታዊ በጎነት በትክክል ማስረጃ በማይፈቅድበት ቦታ ከፍተኛ ተአማኒነትን ከመመደብ መቆጠብ ነው፡፡</p>
+
+                    <h2>አባሪ ለ፡ የምክንያታዊ/ኢ-ምክንያታዊ የእምነት ደረጃዎች ሥዕላዊ መግለጫ</h2>
+                    <p>ከዚህ በታች ያለው መግለጫ ምክንያታዊ እምነትን ከኢ-ምክንያታዊ አቻዎቹ የሚለይ ጽንሰ-ሀሳባዊ ሞዴል ያቀርባል፡፡ የሞዴሉ ማዕከላዊ ሃሳብ ‹‹ምክንያታዊ እምነት ከሚመለከተው የማስረጃ ደረጃ ጋር የሚመጣጠን የእምነት ደረጃ ነው›› የሚል ነው፡፡</p>
+                    <div class="diagram-container">
+                        <img src="https://i.imgur.com/u5hG8zV.png" alt="Diagram showing the relationship between evidence and rational belief.">
+                        <p style="text-align:center; font-style:italic;">ሥዕል 1: የማስረጃ/የእምነት ደረጃዎች እና ትስስራቸው ሥዕላዊ መግለጫ።</p>
+                    </div>
+                    <ul>
+                        <li><b>ምክንያታዊ እምነት፡</b> ማዕከላዊው አካል የምክንያታዊነት ሁኔታን ያሳያል፡፡ እዚህ ላይ፣ የእምነት ደረጃ (በእምነት ደረጃ ላይ ባለ ክብደት ባለው ኳስ የተወከለው) ከማስረጃ ደረጃ ላይ ካለው ተጓዳኝ የማስረጃ ደረጃ ጋር ቀጥተኛ ቀጥ ያለ አሰላለፍ ላይ እንዳለ ይታያል፡፡ ይህ እምነት ከማስረጃ ድጋፉ ጋር ተመጣጣኝ መሆኑን ያመለክታል፡፡</li>
+                        <li><b>ኢ-ምክንያታዊ እምነት እና አለማመን፡</b> ምክንያታዊውን አቋም ከበው ሁለት የኢ-ምክንያታዊነት ዓይነቶች አሉ፡፡
+                            <ul>
+                                <li><b>ኢ-ምክንያታዊ አለማመን፡</b> በጣም ዝቅተኛ የእምነት ደረጃ (ወደ 0% የቀረበ) ሆኖ ይታያል፤ ይህም ካለው ማስረጃ ጋር በእጅጉ የተዛባ ነው፡፡</li>
+                                <li><b>ኢ-ምክንያታዊ እምነት፡</b> ከልክ ያለፈ ከፍተኛ የእምነት ደረጃ (ወደ 100% የቀረበ) ሆኖ ይታያል፤ ይህም በተመሳሳይ መልኩ ከተመሳሳይ ማስረጃ የተለየ ነው፡፡</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>ሥዕሉ እነዚህን ኢ-ምክንያታዊ ሁኔታዎች ከማስረጃ-ነክ ካልሆኑ ምክንያቶች ጋር ያያይዛቸዋል፡፡ በሁለቱም ጫፎች ላይ፣ ዶግማዊነት የሚል ስያሜ የተሰጣቸው ምስሎች ማግኔቶችን በመጠቀም ይታያሉ፤ እነዚህም በዚህ ጽሑፍ ውስጥ እንደተብራራው የእርግጠኝነት ፍላጎት ያሉትን ስሜቶች በመወከል፣ የአንድን ግለሰብ እምነት ማስረጃው ከሚፈቅደው አቋም እንዲርቅ ይስባሉ፡፡ ይህ እርምጃ እምነትን ወደ ዋስትና ወደሌለው እርግጠኝነት ወይም ውድቅነት ሁኔታ ያዛውረዋል፡፡</p>
+
+                    <h2>አባሪ ሐ፡ የተብራራ የቅርስ አመክንዮ አጻጻፍ</h2>
+                    <ol>
+                        <li><b>∀ H, ∃ c(H) ∈ [0, 1]</b><br><i>ማብራሪያ፡</i> ለማንኛውም መላምት H፣ ከ0 እስከ 1 ባለው የክፍተት ውስጥ የእምነት ደረጃን የሚሰጥ የተአማኒነት ተግባር c(H) አለ፡፡ እምነት ደረጃዊ ነው እንጂ ሁለትዮሽ አይደለም፡፡</li>
+                        <li><b>Rationality ⇒ c(·) obeys probability axioms</b><br><i>ማብራሪያ፡</i> ምክንያታዊ እምነት ተአማኒነቶች የመደመር እና የወጥነት የይሆናልነት ደንቦችን እንዲከተሉ ይጠይቃል፡፡</li>
+                        <li><b>c(H|E) = (P(E|H) * c(H)) / P(E)</b><br><i>ማብራሪያ፡</i> አዲስ ማስረጃ E ሲገኝ፣ በH ላይ ያለው ተአማኒነት በቤይዝ ጽንሰ-ሐሳብ መሰረት በተመጣጣኝ ሁኔታ መዘመን አለበት፡፡</li>
+                        <li><b>PosteriorOdds(H:¬H) = PriorOdds(H:¬H) × (P(E|H) / P(E|¬H))</b><br><i>ማብራሪያ፡</i> የH እና የ¬H ዕድሎች ከቅድመ-ግምት ዕድሎች በቤይዝ ፋክተር (የመሆን ዕድል ጥምርታ) ተባዝተው እኩል ይሆናሉ፡፡</li>
+                        <li><b>Σ P(Hi) = 1</b><br><i>ማብራሪያ፡</i> በተሟላ ክፍፍል ውስጥ፣ ሁሉም የይሆናልነቶች ድምር 1 ነው፤ አንዱን መጨመር ሌሎቹን ይቀንሳል፡፡</li>
+                        <li><b>P(¬H) = Σ P(Halt) + P(Unknowns)</b><br><i>ማብራሪያ፡</i> የ¬H ይሆናልነት አማራጭ መላምቶችን እና ላልታወቁ አማራጮች ክምችትን ያካትታል፡፡</li>
+                        <li><b>Faith(H) ⇒ (c(H) = 1 V c(H) = 0) ∧ (c(H) ≁ Evidence)</b><br><i>ማብራሪያ፡</i> በH ላይ ያለ እምነት ማለት ከተመጣጣኝ ማስረጃ ውጪ እርግጠኝነት (0 ወይም 1) ማለት ነው፡፡</li>
+                        <li><b>DefaultToFaith(H) ⇒ (¬Inquiry) ∧ Dogmatism ∧ Vulnerability</b><br><i>ማብራሪያ፡</i> ወደ እምነት ማዘንበል ጥያቄን ያፍናል፣ ዶግማን ያሰርጻል፣ እና ተጋላጭነትን ያበረታታል፡፡</li>
+                        <li><b>Rationality(H) ⇒ c(H) ∝ Evidence(H)</b><br><i>ማብራሪያ፡</i> በH ላይ ያለ ምክንያታዊ እምነት የማስረጃውን ተመጣጣኝ ጥንካሬ ይከተላል፡፡</li>
+                        <li><b>Evidence(H) incomplete ⇒ Rational(c(H)) ∈ [L(H), U(H)] ⊂ [0, 1]</b><br><i>ማብራሪያ፡</i> ባልተሟላ ማስረጃ፣ ምክንያታዊ ተአማኒነት የክልል ነው እንጂ ሁለትዮሽ እርግጠኝነት አይደለም፡፡</li>
+                        <li><b>EmbraceUncertainty ⇒ (EpistemicHumility) ∧ PreserveInquiry ∧ ProportionBeliefToEvidence</b><br><i>ማብራሪያ፡</i> እርግጠኛ አለመሆንን መቀበል ትህትናን ያበረታታል፣ ጥያቄን ይጠብቃል፣ እና እምነትን ከማስረጃ ጋር ያመጣጥናል፡፡</li>
+                        <li><b>Conclusion. ∀H; (Rationality(H) ⇒ GradientCredence(H)) ∧ (Faith(H) ⇒ Irrational)</b><br><i>ማብራሪያ፡</i> ምክንያታዊነት ደረጃዊ ተአማኒነትን ይጠይቃል፡፡ እምነት እምነትን ያለተመጣጣኝ ማስረጃ ወደ ሁለትዮሽ ምድቦች ስለሚሰበስብ ምክንያታዊ ያልሆነ ያደርገዋል፡፡</li>
+                    </ol>
+
+                    <h2>አባሪ መ፡ ማጣቀሻዎች</h2>
+                    <p class="reference-item">Alston, W. P. (1991). <i>Perceiving god: The epistemology of religious experience.</i> Cornell University Press.</p>
+                    <p class="reference-item">Baehr, J. (2011). <i>The inquiring mind: On intellectual virtues and virtue epistemology.</i> Oxford University Press.</p>
+                    <p class="reference-item">Barrett, J. L. (2004). <i>Why would anyone believe in god?</i> AltaMira Press.</p>
+                    <p class="reference-item">Boyer, P. (2001). <i>Religion explained: The evolutionary origins of religious thought.</i> Basic Books.</p>
+                    <p class="reference-item">Carleton, R. N. (2016). Into the unknown: A review and synthesis of contemporary models involving uncertainty. <i>Journal of Anxiety Disorders, 39</i>, 30–43. https://doi.org/10.1016/j.janxdis.2016.02.007</p>
+                    <p class="reference-item">Clifford, W. K. (1877). The ethics of belief. In T. H. Huxley (Ed.), <i>Lectures and essays</i> (pp. 338–363). Macmillan.</p>
+                    <p class="reference-item">Dawes, G. W. (2016). <i>Galileo and the conflict between religion and science.</i> Routledge.</p>
+                    <p class="reference-item">de Finetti, B. (2017). Foresight: Its logical laws, its subjective sources [Original work published 1937] (A. Marchese, Trans.). In A. Marchese & R. Viertl (Eds.), <i>Philosophical lectures on probability</i> (pp. 73–87). Springer.</p>
+                    <p class="reference-item">Earman, J. (2000). <i>Hume’s abject failure: The argument against miracles.</i> Oxford University Press.</p>
+                    <p class="reference-item">Feldman, R., & Conee, E. (2004). <i>Evidentialism: Essays in epistemology.</i> Oxford University Press.</p>
+                    <p class="reference-item">Festinger, L., Riecken, H. W., & Schachter, S. (1956). <i>When prophecy fails.</i> University of Minnesota Press.</p>
+                    <p class="reference-item">Heine, S. J., Proulx, Z., & Vohs, K. D. (2006). The meaning maintenance model: On the coherence of social motivations. <i>Personality and Social Psychology Review, 10</i>(2), 88–110. https://doi.org/10.1207/s15327957pspr1002_1</p>
+                    <p class="reference-item">Howson, C., & Urbach, P. (2006). <i>Scientific reasoning: The bayesian approach</i> (3rd ed.). Open Court.</p>
+                    <p class="reference-item">James, W. (1896). <i>The will to believe and other essays in popular philosophy.</i> Longmans, Green, Co.</p>
+                    <p class="reference-item">Joyce, J. M. (1998). A nonpragmatic vindication of probabilism. <i>Philosophy of Science, 65</i>(4), 575–603. https://doi.org/10.1086/392661</p>
+                    <p class="reference-item">Joyce, J. M. (2009). Accuracy and coherence: Prospects for an alethic epistemology of partial belief. In F. Huber & C. Schmidt-Petri (Eds.), <i>Degrees of belief</i> (pp. 263–297). Springer. https://doi.org/10.1007/978-1-4020-9198-8_11</p>
+                    <p class="reference-item">Kelly, T. (2003). Epistemic rationality as instrumental rationality: A critique. <i>Philosophy and Phenomenological Research, 66</i>(3), 612–640. https://doi.org/10.1111/j.1933-1592.2003.tb00280.x</p>
+                    <p class="reference-item">Kruglanski, A. W., & Webster, D. M. (1996). Motivated closing of the mind: “seizing” and “freezing”. <i>Psychological Review, 103</i>(2), 263–283. https://doi.org/10.1037/0033-295X.103.2.263</p>
+                    <p class="reference-item">Kunda, Z. (1990). The case for motivated reasoning. <i>Psychological Bulletin, 108</i>(3), 480–498. https://doi.org/10.1037/0033-2909.108.3.480</p>
+                    <p class="reference-item">Levi, I. (1986). <i>Hard choices: Decision making under unresolved conflict.</i> Cambridge University Press.</p>
+                    <p class="reference-item">Moss, S. (2018). <i>Probabilistic knowledge.</i> Oxford University Press.</p>
+                    <p class="reference-item">Nozick, R. (1993). <i>The nature of rationality.</i> Princeton University Press.</p>
+                    <p class="reference-item">Pettigrew, R. (2016). <i>Accuracy and the laws of credence.</i> Oxford University Press.</p>
+                    <p class="reference-item">Plantinga, A. (2000). <i>Warranted christian belief.</i> Oxford University Press.</p>
+                    <p class="reference-item">Roberts, R. C., & Wood, W. J. (2007). <i>Intellectual virtues: An essay in regulative epistemology.</i> Oxford University Press.</p>
+                    <p class="reference-item">Schellenberg, J. L. (2005). <i>Prolegomena to a philosophy of religion.</i> Cornell University Press.</p>
+                    <p class="reference-item">Schellenberg, J. L. (2015). <i>Religion after science?</i> Cambridge University Press.</p>
+                    <p class="reference-item">Swinburne, R. (2003). <i>The resurrection of god incarnate.</i> Oxford University Press.</p>
+                    <p class="reference-item">Taber, C. S., & Lodge, M. (2006). Motivated skepticism in the evaluation of political beliefs. <i>American Journal of Political Science, 50</i>(3), 755–769. https://doi.org/10.1111/j.1540-5907.2006.00214.x</p>
+                    <p class="reference-item">Titelbaum, M. G. (2013). <i>Quitting certainties: A bayesian framework modeling degrees of belief.</i> Oxford University Press.</p>
+                    <p class="reference-item">van Prooijen, J.-W., & Jostmann, N. B. (2013). Belief in conspiracy theories: The influence of uncertainty and perceived morality. <i>European Journal of Social Psychology, 43</i>(1), 109–115. https://doi.org/10.1002/ejsp.1922</p>
+                    <p class="reference-item">Walley, P. (1991). <i>Statistical reasoning with imprecise probabilities.</i> Chapman & Hall.</p>
+                    <p class="reference-item">Weisberg, J. (2013). Varieties of bayesianism. In M. Steup, J. Turri, & E. Sosa (Eds.), <i>Contemporary debates in epistemology</i> (2nd ed., pp. 208–225). Wiley-Blackwell.</p>
+                    <p class="reference-item">Whitcomb, D., Battaly, H., Baehr, J., & Howard-Snyder, D. (2017). Intellectual humility: Owning our limitations. <i>Philosophy and Phenomenological Research, 94</i>(3), 509–539. https://doi.org/10.1111/phpr.12228</p>
+                    <p class="reference-item">Whitson, J. A., & Galinsky, A. D. (2008). Lacking control increases illusory pattern perception. <i>Science, 322</i>(5898), 115–117. https://doi.org/10.1126/science.1159845</p>
+
+                </div>
+            </article>
+        </main>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            document.getElementById('navbar-menu').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

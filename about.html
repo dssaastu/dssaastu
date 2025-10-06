@@ -5,368 +5,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Social Science Department</title>
     <style>
-        /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            background-color: #f5f7fa; /* Simpler background for content focus */
             margin: 0;
             padding: 0;
             line-height: 1.6;
             color: #333;
         }
-
         .header, .footer {
             background-color: #2C3E50;
             color: #fff;
-            padding: 15px 10px; /* Slightly reduced padding */
+            padding: 20px 0;
             text-align: center;
         }
-
-        .header h1 {
-            margin: 0;
-            font-size: 1.4rem; /* Slightly reduced base size */
-        }
-
-        .header p {
-            font-size: 0.9rem; /* Slightly reduced base size */
-            margin-top: 5px;
-        }
-
+        .header h1 { margin: 0; font-size: 1.5rem; }
         .navbar {
             display: flex;
             justify-content: center;
             background-color: #1A252F;
-            padding: 5px 10px; /* Reduced padding */
+            padding: 10px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            flex-wrap: wrap; /* Allow wrapping if needed, though handled by media query */
-            align-items: center; /* Align toggler vertically */
+            flex-wrap: wrap;
         }
-
         .navbar a {
             color: #fff;
-            padding: 10px 15px; /* Adjusted padding */
+            padding: 10px 20px;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9rem; /* Slightly reduced font size */
+            transition: background-color 0.2s ease;
         }
+        .navbar a:hover { background-color: #333; border-radius: 5px; }
+        .navbar-toggler { display: none; background-color: transparent; border: none; color: #fff; padding: 8px 12px; font-size: 1.5rem; cursor: pointer; margin-left: auto; }
+        .navbar-menu { display: flex; flex-direction: row; }
 
-        .navbar a:hover {
-            background-color: #34495E; /* Slightly lighter hover */
-            border-radius: 5px;
-        }
-
-        .navbar-toggler {
-            display: none; /* Hidden by default */
-            background-color: transparent;
-            border: none;
+        /* --- CUSTOMIZED HERO SECTION --- */
+        .hero {
+            background-image: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('campus.jpg');
+            background-size: cover;
+            background-position: center;
             color: #fff;
-            padding: 8px 12px;
-            font-size: 1.5rem; /* Larger icon */
-            cursor: pointer;
-            margin-left: auto; /* Pushes toggler to the right */
+            text-align: center;
+            padding: 80px 20px;
         }
-
-        .navbar-menu {
-            display: flex;
-            flex-direction: row; /* Horizontal by default */
-            list-style: none; /* Remove potential list bullets */
-            margin: 0;
-            padding: 0;
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
         }
 
         .container {
-            width: 85%; /* Default width */
-            max-width: 1100px; /* Max width for large screens */
-            margin: 30px auto; /* Adjusted margin */
-            padding: 30px; /* Adjusted padding */
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 40px;
             background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
-
-        .container h2 {
-            font-size: 1.8rem; /* Adjusted base size */
+        .container h3 {
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 30px; /* Adjusted margin */
+            margin-bottom: 40px;
             color: #2C3E50;
         }
 
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px; /* Increased gap between sections */
-        }
-
-        .about-section {
-            display: flex;
-            gap: 25px; /* Adjusted gap */
-            align-items: center;
-        }
-
-        .about-section img {
-            flex: 1;
-            max-width: 300px;
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            object-fit: cover; /* Ensure image covers area nicely */
-        }
-
-        .about-text {
-            flex: 2;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem; /* Adjusted base size */
-            margin-top: 0; /* Remove potential top margin */
-            margin-bottom: 10px;
-            color: #2C3E50;
-        }
-
-        .about-text p {
-            font-size: 1rem;
-            color: #555; /* Slightly darker grey */
-        }
-
-        .about-mission {
+        /* --- CUSTOMIZED CORE VALUES SECTION --- */
+        .core-values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             text-align: center;
-            margin-top: 30px; /* Adjusted margin */
-            padding: 25px; /* Adjusted padding */
-            background-color: #f0f4f8; /* Slightly different background */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Softer shadow */
         }
-
-        .about-mission h3 {
-            font-size: 1.5rem; /* Match other h3 */
+        .value-item {
+            padding: 20px;
+        }
+        .value-item svg {
+            width: 50px;
+            height: 50px;
             color: #2C3E50;
-            margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-
-        .about-mission p {
+        .value-item h4 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: #1A252F;
+        }
+        .value-item p {
             font-size: 1rem;
             color: #555;
         }
 
-        .footer p {
-            margin: 5px 0; /* Reduced margin */
-            font-size: 0.85rem; /* Adjusted size */
+        /* --- CUSTOMIZED STATS SECTION --- */
+        .stats-section {
+            background-color: #1A252F;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 50px 0;
         }
-         .footer p:first-of-type { /* Add some space above the first line */
-            margin-top: 10px;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
-
-        .footer a {
-            color: #ecf0f1; /* Lighter color for links */
+        .stat-item .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        .stat-item .stat-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        /* --- CUSTOMIZED CTA SECTION --- */
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+        }
+        .cta-button {
+            background-color: #2C3E50;
+            color: white;
+            padding: 15px 30px;
             text-decoration: none;
-            margin: 0 8px; /* Adjusted margin */
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button:hover {
+            background-color: #1A252F;
+            transform: translateY(-3px);
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        .footer { margin-top: 0; }
+        .footer p { margin: 5px 0; font-size: 0.9rem; }
+        .footer a { color: #ecf0f1; text-decoration: none; margin: 0 8px; }
+
+        @media (max-width: 992px) {
+            .core-values-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 2.5rem; }
         }
-
-        /* ------------------------- */
-        /* Responsive Styles (Mobile First Approach - adjusted from original) */
-        /* ------------------------- */
-
-        /* Styles for small screens (up to 768px) */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.2rem; /* Smaller heading on mobile */
-            }
-            .header p {
-                font-size: 0.8rem;
-            }
-
-            .navbar {
-                justify-content: space-between; /* Space between brand/links and toggler */
-                 padding: 8px 15px; /* Adjust padding for mobile */
-            }
-
-            .navbar-toggler {
-                display: block; /* Show toggler */
-            }
-
-            .navbar-menu {
-                display: none; /* Hide menu by default */
-                flex-direction: column; /* Stack menu items vertically */
-                width: 100%; /* Full width */
-                background-color: #1A252F; /* Ensure background color */
-                position: absolute; /* Position below navbar */
-                top: 100%; /* Place it right below the navbar */
-                left: 0;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow to dropdown */
-            }
-
-            .navbar-menu.show {
-                display: flex; /* Show menu when toggled */
-            }
-
-            .navbar-menu a {
-                padding: 12px 20px; /* Good tappable area */
-                border-bottom: 1px solid #333; /* Separator */
-                text-align: center; /* Center text */
-                width: 100%; /* Ensure full width */
-                box-sizing: border-box; /* Include padding in width */
-            }
-             .navbar-menu a:last-child {
-                 border-bottom: none; /* Remove border from last item */
-             }
-
-            .container {
-                width: 90%; /* More width on smaller screens */
-                margin: 20px auto; /* Reduce top/bottom margin */
-                padding: 20px; /* Reduce padding */
-            }
-
-            .container h2 {
-                font-size: 1.5rem; /* Reduce h2 size */
-                margin-bottom: 25px;
-            }
-
-            .about-section {
-                flex-direction: column; /* Stack image and text */
-                text-align: center; /* Center text below image */
-                gap: 15px; /* Reduce gap when stacked */
-            }
-
-            .about-section img {
-                max-width: 90%; /* Allow image to be large but not edge-to-edge */
-                 width: auto; /* Let height adjust */
-                 flex: none; /* Reset flex property */
-                 margin-bottom: 15px; /* Space below image */
-                 order: 1; /* Ensure image comes first visually */
-            }
-
-            .about-text {
-                 flex: none; /* Reset flex property */
-                 width: 100%; /* Take full width */
-                 order: 2; /* Ensure text comes after image */
-            }
-
-            .about-text h3, .about-mission h3 {
-                font-size: 1.3rem; /* Reduce h3 size */
-            }
-             .about-text p, .about-mission p {
-                font-size: 0.95rem; /* Slightly smaller body text */
-            }
-
-            .footer p {
-                font-size: 0.8rem;
-            }
-             .footer a {
-                 margin: 0 5px; /* Reduce space between footer links */
-             }
+            .navbar { justify-content: space-between; }
+            .navbar-toggler { display: block; }
+            .navbar-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background-color: #1A252F; }
+            .navbar-menu.show { display: flex; }
+            .navbar-menu a { padding: 12px 20px; border-bottom: 1px solid #333; text-align: center; }
         }
-
-        /* Optional: Styles for very small screens (e.g., less than 480px) */
-         @media (max-width: 480px) {
-             .header h1 {
-                font-size: 1.1rem;
-            }
-             .container {
-                 padding: 15px;
-             }
-             .about-text h3, .about-mission h3 {
-                font-size: 1.2rem;
-            }
-             .about-text p, .about-mission p {
-                font-size: 0.9rem;
-            }
-         }
-
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>Social Science Department</h1>
         <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
+    </header>
 
     <nav class="navbar">
-        <!-- Consider adding a Brand/Logo element here if needed -->
-        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-menu">
-            ☰ <!-- Hamburger Icon -->
-        </button>
+        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">☰</button>
         <div class="navbar-menu" id="navbar-menu">
             <a href="index.html">Home</a>
             <a href="courses.html">Courses</a>
             <a href="about.html">About Us</a>
             <a href="staff.html">Staff</a>
             <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a> <!-- BLOG LINK ADDED FOR CONSISTENCY -->
             <a href="gallery.html">Gallery</a>
         </div>
     </nav>
 
-    <div class="container">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <!-- Section 1 -->
-            <div class="about-section">
-                <img src="campus.jpg" alt="AASTU Campus"> <!-- Added descriptive alt text -->
-                <div class="about-text">
-                    <h3>Our History</h3>
-                    <p>The Social Science Department at AASTU has a long-standing tradition of excellence in education and research, dedicated to fostering critical thinking, creativity, and global citizenship among its students.</p>
-                </div>
-            </div>
-             <!-- Section 2 -->
-            <div class="about-section">
-                <!-- Swapped order in HTML for potential semantic meaning, though CSS `order` handles visual -->
-                <img src="faculty.jpg" alt="Social Science Faculty Members"> <!-- Added descriptive alt text -->
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>We are committed to providing high-quality education that equips students with the knowledge, skills, and ethical perspectives needed to understand complex social issues and contribute meaningfully to society.</p>
-                </div>
-            </div>
-             <!-- Section 3 -->
-            <div class="about-section">
-                 <img src="students.jpg" alt="Diverse group of students learning"> <!-- Added descriptive alt text -->
-                <div class="about-text">
-                    <h3>Our Vision</h3>
-                    <p>Our vision is to be a leading institution recognized nationally and globally for our innovative teaching methods, impactful research, and contributions to social science education and practice.</p>
-                </div>
-            </div>
-        </div>
+    <section class="hero">
+        <h2>Our Story and Commitment</h2>
+        <p>Discover the values, history, and vision that drive the Social Science Department at AASTU to academic excellence and social impact.</p>
+    </section>
 
-        <div class="about-mission">
-            <h3>Join Us on Our Journey</h3>
-            <p>At the Social Science Department, we believe in the power of education to transform lives and societies. We invite prospective students, researchers, and partners to join us on our journey of discovery, learning, and growth.</p>
+    <main class="container">
+        <h3>Our Core Values</h3>
+        <div class="core-values-grid">
+            <div class="value-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                <h4>Our History</h4>
+                <p>Rooted in a tradition of academic excellence, our department has been a cornerstone of AASTU, fostering critical thinking and global citizenship for years.</p>
+            </div>
+            <div class="value-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" /></svg>
+                <h4>Our Mission</h4>
+                <p>To deliver high-quality education that equips students with the knowledge, skills, and ethical perspectives to understand and address complex social issues.</p>
+            </div>
+            <div class="value-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639l7.5-10.5a1.012 1.012 0 011.634.639V21a1.012 1.012 0 01-1.634.639l-7.5-10.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12.036 12.322a1.012 1.012 0 010-.639l7.5-10.5a1.012 1.012 0 011.634.639V21a1.012 1.012 0 01-1.634.639l-7.5-10.5z" /></svg>
+                <h4>Our Vision</h4>
+                <p>To be a leading institution recognized for our innovative teaching, impactful research, and significant contributions to social science education and practice.</p>
+            </div>
         </div>
+    </main>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="11">0</div>
+                <div class="stat-label">Faculty Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="15000">0</div>
+                <div class="stat-label">Students Enrolled</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="6">0</div>
+                <div class="stat-label">Core Courses</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container cta-section">
+         <h3>Join Us on Our Journey</h3>
+         <p>We believe in the power of education to transform lives and societies. We invite you to explore what our department has to offer.</p>
+         <br>
+         <a href="courses.html" class="cta-button">Explore Our Courses</a>
     </div>
 
-    <div class="footer">
+    <footer class="footer">
          <p>© 2024 Social Science Department, AASTU</p>
         <p>Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
-        <p>
-            <a href="privacy.html">Privacy Policy</a> |
-            <a href="terms.html">Terms of Service</a> |
-            <a href="map.html">Sitemap</a>
-        </p>
-    </div>
+    </footer>
 
     <script>
+        // Navbar toggle
         const toggler = document.getElementById('navbar-toggler');
         const menu = document.getElementById('navbar-menu');
-
         toggler.addEventListener('click', function() {
-            const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
             menu.classList.toggle('show');
-            toggler.setAttribute('aria-expanded', !isExpanded); // Toggle aria-expanded state
         });
 
-        // Optional: Close menu if clicking outside of it
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = toggler.contains(event.target) || menu.contains(event.target);
-            if (!isClickInsideNav && menu.classList.contains('show')) {
-                menu.classList.remove('show');
-                toggler.setAttribute('aria-expanded', 'false');
-            }
-        });
+        // Animated number counter
+        function animateNumbers() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200; // Lower number = faster animation
+
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+
+                    const increment = Math.ceil(target / speed);
+
+                    if (count < target) {
+                        counter.innerText = Math.min(count + increment, target);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Use Intersection Observer to trigger animation when section is visible
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+        observer.observe(statsSection);
     </script>
 </body>
 </html>
