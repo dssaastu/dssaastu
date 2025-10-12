@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring Urban Governance in Ethiopia: Non-state Actors' Engagement - AASTU Blog</title>
+    <style>
+        /* --- CORE STYLES --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 2rem; }
+        .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
+        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+        .navbar a:hover { background-color: #333; border-radius: 5px; }
+        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
+        .navbar-menu { display: flex; flex-direction: row; }
+        .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
+        .footer p { margin-top: 15px; font-size: 0.9rem; }
+        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
+
+        /* --- NEW: Main Page Layout for Content + Sidebar --- */
+        .page-layout {
+            display: flex;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px; /* Increased width to accommodate sidebar */
+            margin: 40px auto;
+            align-items: flex-start; /* Align items to the top */
+        }
+        .main-content {
+            flex: 1;
+            min-width: 0; /* Prevents flexbox overflow issues */
+        }
+        
+        /* --- NEW: Sticky Sidebar Navigation --- */
+        .sidebar-nav {
+            flex-basis: 280px; /* Sidebar width */
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px; /* Position below the main navbar */
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: calc(100vh - 120px); /* Control height and enable scrolling */
+            overflow-y: auto;
+        }
+        .sidebar-nav h3 {
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #212529;
+            border-bottom: 1px solid #ced4da;
+        }
+        .sidebar-nav h3::before {
+            content: '\2630'; /* Hamburger menu icon */
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .sidebar-nav ol {
+            list-style: none;
+            counter-reset: item;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-nav li {
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .sidebar-nav li::before {
+            counter-increment: item;
+            content: counter(item) ". ";
+            font-weight: 600;
+            color: #212529;
+        }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #0056b3;
+            font-size: 0.95em;
+        }
+        .sidebar-nav a:hover {
+            text-decoration: underline;
+        }
+        /* Custom scrollbar for sidebar */
+        .sidebar-nav::-webkit-scrollbar { width: 8px; }
+        .sidebar-nav::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .sidebar-nav::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+        /* --- SINGLE POST STYLES --- */
+        .full-post {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 30px 40px;
+        }
+        .full-post-header img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; background-color: #eee; }
+        .full-post h1 { font-size: 2.5rem; color: #2C3E50; margin-bottom: 10px; line-height: 1.2; }
+        .post-meta { font-size: 0.9em; color: #777; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .post-body h2 { font-size: 1.8rem; color: #1A252F; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid #2C3E50; padding-bottom: 10px; }
+        .post-body h3 { font-size: 1.5rem; color: #1A252F; margin-top: 30px; margin-bottom: 15px; }
+        .post-body p { line-height: 1.7; margin-bottom: 1.2em; }
+        .post-body blockquote { border-left: 4px solid #2C3E50; padding-left: 20px; margin: 25px 0; font-style: italic; color: #555; background-color: #f9f9f9; padding-top: 10px; padding-bottom: 10px; border-radius: 0 5px 5px 0; }
+        .post-body ol, .post-body ul { padding-left: 20px; }
+        .post-body ol li, .post-body ul li { margin-bottom: 10px; line-height: 1.6; }
+        .references-list li { margin-bottom: 15px; }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 1100px) {
+            .page-layout { flex-direction: column; }
+            .sidebar-nav {
+                position: static; /* Un-stick the sidebar */
+                order: -1; /* Move it to the top */
+                width: auto; /* Let it fill the container */
+                margin-bottom: 30px;
+                max-height: 300px; /* Give a reasonable max-height when stacked */
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .navbar-toggler { display: block; }
+            .navbar-menu { display: none; flex-direction: column; width: 100%; }
+            .navbar-menu.show { display: flex; }
+            .full-post { padding: 20px; }
+            .full-post h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Social Science Department</h1>
+        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+    </div>
+    
+    <div class="navbar">
+        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+        <div class="navbar-menu" id="navbar-menu">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="staff.html">Staff</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <a href="gallery.html">Gallery</a>
+        </div>
+    </div>
+    
+    <div class="page-layout">
+        <!-- Main Column for the Full Blog Post -->
+        <main class="main-content">
+            <article class="full-post">
+                <header class="full-post-header">
+                    <img src="urban.png" alt="An image representing urban governance and development in Ethiopia.">
+                    <h1>Exploring Urban Governance in Ethiopia: Institutional Principles of Non-state Actors' Engagement</h1>
+                    <p class="post-meta">
+                        <strong>Authors:</strong> Mengistu Gutema Kebede, Solomon Negussie<br>
+                        <strong>Source:</strong> American Journal of Management Science and Engineering, Vol. 7, No. 2, 2022, pp. 6-13.<br>
+                        <strong>Published:</strong> May 19, 2022
+                    </p>
+                </header>
+
+                <div class="post-body">
+                    <p><em><strong>Abstract:</strong> The purpose of this article is to look in to the institutional principles that encourage non-state actors (NSAs') to participate in urban infrastructure and services. This article uses a qualitative research approach to achieve the purpose of the research. To acquire qualitative data, qualitative techniques such as interviews, focus groups, document analysis, and key informant interviews were used. The findings of the study indicate that NSAs' engagements are governed by legal and policy provisions in the case study urban local governments (ULGs'). In spite of the aforementioned provisions, there have been imbalances in these provisions to safely deal with the involvement of NSAs' in urban infrastructure service provisions. Furthermore, there was a significant disconnect between legal/policy provisions and their execution. The case study ULGs' lacked the necessary resources to carry out constitutional provisions relating to the involvement of NSAs' in urban infrastructure services. Consequently, the institutional environment might impede the role of NSAs' engagement to improve decentralized development policy. The case study ULGs' general institutional situation was pathetic to encourage the involvement of NSAs' in urban infrastructure service provisions. The traditional top-down approach to institutional assistance was incompatible with the bottom-up nature of partnership development. There was significant gap in institutionalizing the involvement of NSAs' in urban infrastructure service provisions although there have been proper efforts to institutionalize their engagement. This case study, therefore, contends that to guide NSAs' involvement and the sharing of the merit of partnership development, unambiguous norms and regulations must be established. These laws and regulations must give the NSAs' the freedom to engage in the activities of development and make judgments. Besides, this article contends that in order to fulfill their obligation to facilitate NSAs' engagements, the case study ULGs' require extensive manpower development. The development of manpower must concentrate on developing competent personnel and a welcoming institutional culture. The ULGs' should have given sufficient powers and responsibilities over infrastructure service provisions.</em></p>
+                    <p><strong>Keywords:</strong> State Actors, NSAs' Institution, ULG, Infrastructure Services</p>
+
+                    <h2 id="introduction">1. Introduction</h2>
+                    <p>Urban infrastructure services such as cobblestone road, water and electricity are by far an essential attribute for the well being of the urban community. Nevertheless, the lack of resources so as to provide these services became an obstacle for the ULGs' to accomplish their promises. In such cases, in partnership with NSAs' state actors regularly offer urban infrastructure services [9]. Based on mutually beneficial exchanges, governments can always strengthen their capacity by creating close relationship with non-state actors [1]. As a result, the government in collaboration with NSAs' can accomplish more than it seems conceivably accomplish without help. Despite the fact that NSAs' engagement in Ethiopia has sparked increased attention since the Cotonou Partnership Agreement [3] in 2000, the implications of institutional norms have been overlooked. Hence, in this article, we look at NSAs' engagements in the context of institutional principles, and we try to figure out how the nature of the institutional frameworks affects NSAs' engagement in the delivery of infrastructure services.</p>
+
+                    <h2 id="frameworks">2. Theoretical and Conceptual Frameworks</h2>
+                    <h3>2.1. Urban Governance</h3>
+                    <p>Governance has been defined in a variety of ways however interdependencies and voluntary interactions among several actors, as well as the patterns of relationships that follow, are fundamental characteristics of each definitions. For Helmsing governance entails “complex processes and organizational systems that necessitate vertical and horizontal systemic coordination and management of public affairs" [13]. Obeng-Odoom defined governance as ".... decision-making and implementation processes" [18]. It entails the interaction between governmental, civil society, private, and community development organizations [24]. In his book Making Local Governance Work, Goss defined governance as "new forms of collective decision-making at the local level that lead to the development of different relationships, not just among state actors, but also among citizens, their organizations, and other voluntary and private agencies" [12]. The aforementioned definitions of gave the way for the engagements of NSAs' in governance arrangements in order to take care of societal institutions and to clear up public problems.</p>
+                    <p>Governance, according to the World Bank, is "the manner in which power is exercised in the administration of countries' economic and social resources for development"[27]. The United Nations Development Programme defines governance as "the means, processes, and organizations through which persons and groups voice their interests, exercise their legal rights, fulfill their obligations, and arbitrate their disagreements" [25]. Based on the working definition of UNDP, UN-Habitat has defined urban governance as “the sum of the many ways individuals and institutions, public and private, plan and manage the common affairs of the city" [26].</p>
+                    
+                    <h3>2.2. The Institution's Role in Promoting NSAs' Engagement</h3>
+                    <p>Institutions are broadly defined as any type of limitation devised by humans so as to influence interactions of human beings [17]. Institutions, according to this definition forbid, allow, or need specified types of behavior, such as economic, social or political actions, that are vital for improving information flows, lowering transaction costs, and defining and enforcing property rights. However, this definition is not universally accepted. Other types of the institutions were left out, namely procedural devices, regulatory frameworks and organizational entities [22].</p>
+                    <p>Institutions are made up of both formal written rules and typically unwritten codes of conduct that support and supplement formal rules. Laws and regulations, charters, property rights, statute and common law, and constitutions are examples of formal rules. Socially imposed behavioral norms; expansions, elaborations, and revisions of formal rules; and internally enforced standards of behavior are examples of informal rules [14]. The informal rules category of institution, however, is not taken in to account for the purpose of this article.</p>
+
+                    <h2 id="methodology">3. Research Methodology</h2>
+                    <h3>3.1. Research Setting</h3>
+                    <p>For the following reasons, urban local governments in general, and Ambo, FinoteSelam, and Butajira ULGs in particular, were purposefully chosen as the study's case. The decision to choose an urban area over a rural area stemmed from the fact that urban areas are densely packed in a limited space and require more sophisticated infrastructure and services than rural areas. Nevertheless, due to capacity constraints, ULGs are unable to deliver all of the essential infrastructure services. As a result of the imbalance between demand and supply, NSAs became involved in order to meet the ULGs' need. As a result, cities are the local administrative divisions where NSA engagements are developed enough to perform substantial research.</p>
+
+                    <h3>3.2. Qualitative Research Method</h3>
+                    <p>Qualitative research entails recording and investigating the complexity of real-world phenomena [6]. To this purpose, qualitative research methods look into not only what, where, and when decisions are made, but also why and how they are made. In addition, qualitative research frequently collects data through content analysis, observation, historical comparison, interviews and FGDs. These qualities indicate that a qualitative research technique approach is a good fit for this article, which intends to examine the institutional principles for NSAs' engagement in the case study ULGs.</p>
+
+                    <h3>3.3. Sampling Size</h3>
+                    <p>In contrast to its quantitative equivalent, the sample size for qualitative research is typically modest. In qualitative research, the sample size is determined by a point of data saturation. The participants from NSAs' and participants from state actors were carefully chosen. ULG Councils, ULG Cabinets, ULG Mayors and ULG Managers are among them. Participants from the NSAs' namely CBO, chamber of business, local communities, and advisors on urban issues are carefully picked besides state actors. Accordingly, in this research purposive sampling strategy helps to select units that are judged to fit the specific criterion of usefulness in the research out of a population under investigation. As a result, the researcher purposefully conducted 3 FGDs, 24 interviews, and 12 key informant interviews from Ambo, FinoteSelam and Butajira Urban Local Governments'.</p>
+
+                    <h2 id="engagement">4. Non-State Actors' Engagement Institutional Setting/Principles</h2>
+                    <p>NSAs' engagement is promoted and sustained by an enabling environment at both the national and local levels. In order to improve NSAs' engagement for development, the institutional environment is critical. In the case of this article, institutional principles includes Legal frameworks and policy environment designed to manage the involvement of NSAs' as well as ULGs' power and manpower that allow ULGs' to facilitate the involvement of NSAs' in service provision.</p>
+                    
+                    <h3>4.1. Non-State Actors Engagement Legal Frameworks</h3>
+                    <h4>4.1.1. International Treaties</h4>
+                    <p>Ethiopia as a member of African Caribbean Pacific (ACP) country has ratified the Cotonou Agreement between the ACP and the European Union. One of the key goals of the partnership, as stated in Article 1 of the agreement, is to put up the institutional structures necessary for organized NSAs' [3]. Article 7 of the ACP-EC Agreement, in particular, emphasizes the need to strengthen the capacity of civil society organizations, such as community-based organizations and non-governmental organizations (NGOs), in order to improve their contribution to growth and development [3]. However, the empirical findings from the case study ULGs' respondents affirmed that there were no activities related with promoting the engagement of NSAs' in development decision making.</p>
+                    
+                    <h4>4.1.2. The 1995 Ethiopia Constitution</h4>
+                    <p>Proclamation No. 1/1995, Article, 31 enacted the general provisions about NSAs regulatory framework as “Every person has the right to freedom of association for any cause or purpose. Organizations formed, in violation of appropriate laws or to illegally subvert the constitutional order, or which promote such activities are prohibited" [8]. Besides, the Proclamation, Article, 42 provide “The rights to engage freely in economic activity for citizens and for workers the right to form trade unions and other associations" [8]. As a result, in these provisions the participation of NSAs are acknowledged and they are intended to allow meaningful involvement in political, social, economic, and cultural life.</p>
+                    
+                    <h4>4.1.3. Urban Local Government Proclamation</h4>
+                    <p>According to the Preamble of Proclamations No. 65/2003, 91/2003 and 103/2006 in the state of Oromia, Amhara and SNNP respectively, one reason for formulating this Proclamation become "to streamline the operation and organization of city administrations on the basis of good governance and democratic standards in an effort to permit them create massive development ability for the development of the region and improvement of the living standard of the residents" [15, 29, 7]. A closer examination of this rationale revealed that the Proclamation is meant to build a participatory urban local government structure. Nevertheless, findings from FGDs and document analysis revealed that for the purpose of NSAs' engagement the ULG's organization structures were not favorable.</p>
+                    
+                    <h3>4.2. Urban Local Governments' Power</h3>
+                    <p>One aspect of capacity that permits the ULG to facilitate NSAs' involvement in service provision is the power/authority vested in the ULGs'. The power devolved to the ULG decides who has the power to make decisions about the delivery of local public services. Devolution of public service provision power to sub-regional governments is how this power is gained. The devolution of sufficient power allows for prompt and adequate responses to the NSAs' needs at the case study ULGs'. In line with this general approach, the case study ULGs' capacity were evaluated in terms of the power the ULGs' have over the service provision initiatives examined in this article. One of the topics covered in this article was NSAs' engagement in the provision of electricity supply. Despite its essential requirement and the NSAs' significant interest in involving in the supply of electricity, the case study ULGs' did not offer appropriate support, according to the findings of focus groups and interviews with key informants from the NSAs'.</p>
+
+                    <h3>4.3. Manpower in the Case Study Urban Local Governments'</h3>
+                    <p>For Tsegaye, manpower relates to “the training, recruitment, utilization and retention of managerial, professional and technical talent that contribute to task performance at the organizational level." [23]. In order to increase the involvement of NSAs' for urban infrastructure services, manpower is critical in channeling other organizational variables for other government resources. The examination of the employee profiles designated to handle NSAs' participation revealed that they lacked the necessary qualifications. According to the findings of interviews with the case study ULGs' Managers, staffs that are appointed to the roles/positions of Public Engagement Expert (PEE) and External Resource Mobilization Expert (ERME) at the kebele and ULG levels lacked expertise of participatory procedures, which are critical to facilitating the involvement of NSAs'.</p>
+
+                    <h2 id="conclusions">5. Conclusions</h2>
+                    <p>In accordance with the objective of the study, this section gives general conclusions based on the study's finding. NSAs' engagements are governed by legal and policy provisions in the case study ULGs'. In spite of the aforementioned provisions, there have been imbalances in these provisions to safely deal with the involvement of NSAs' in urban infrastructure service provisions. Furthermore, there was a significant disconnect between legal/policy provisions and their execution. The case study ULGs' lacked the necessary resources to carry out constitutional provisions relating to the involvement of NSAs' in urban infrastructure services. Consequently, the institutional environment might impede the role of NSAs' engagement to improve decentralized development policy. The case study ULGs' general institutional situation was pathetic to encourage the involvement of NSAs'. The traditional top-down approach to institutional assistance was incompatible with the bottom-up nature of partnership development. There was significant gap in institutionalizing the involvement of NSAs' in service provisions although there have been proper efforts to institutionalize their engagement.</p>
+
+                    <h2 id="recommendations">6. Recommendations</h2>
+                    <p>The recommendations that follow may have a larger impact. As a result, the following recommendations are made:</p>
+                    <ol>
+                        <li>To guide NSAs' involvement and the sharing of the merit of partnership development, unambiguous norms and regulations must be established. These laws and regulations must give the NSAs' the freedom to engage in the activities of development and make judgments.</li>
+                        <li>Instead of being the primary maker and provider of development, the government's role must be limited to that of facilitator. As opposed to dominating development decision-making, the case study ULGs' government officers and professionals are needed to function as change agents. They are just required to give technical assistance and inputs from professionals.</li>
+                        <li>In order to fulfill their obligation to facilitate NSAs' engagements, the case study ULGs' require extensive manpower development. The development of manpower must concentrate on developing competent personnel and a welcoming institutional culture. The ULGs' should have given sufficient powers and responsibilities over infrastructure service provisions.</li>
+                    </ol>
+
+                    <h2 id="references">References</h2>
+                    <ol class="references-list">
+                        <li>Bell, S., & Hindmoor, A. (2007). A state-centric relational approach.</li>
+                        <li>Bevir, M. (Ed.). (2009). Key Concepts in Governance. London: Sage.</li>
+                        <li>British Council. (2015). Update Mapping Non-State Actors in Ethiopia. A research study commissioned by the European Union.</li>
+                        <li>Claridge, G., & Claridge, C. L. (1997). Expanding the role of collaborative management and stewardship in the conservation management of Australia's Marine and Coastal Resources. Department of the Environment.</li>
+                        <li>Cook, B., & Kothari, U. (2001). The case for participation as tyranny. Participation: The new tyranny, 1-15. Zed Books.</li>
+                        <li>Cresswell, J. W. (2014). Research Design: Qualitative, Quantitative and Mixed Method Approaches. United States of America: Sage Publications.</li>
+                        <li>Debub NegaritGazeta of Southern Nations Nationalities and peoples Regional State (SNNPR): The revised cities proclamation: Proclamation No. 103 (2006).</li>
+                        <li>Federal NegaritGazeta of the Federal Democratic Republic Ethiopia: The Constitution of the Federal Democratic Republic of Ethiopia. Proclamation No. 1(1995).</li>
+                        <li>FentaMandefiro (2007), Local Governance Network and Service Development in Amhara and Tigray Regional States. Doctoral dissertation.</li>
+                        <li>Gamble, Andrew (2000) Economic Governance. In Pierre, Jon (2000) Debating Governance. Authority, Steering and Democracy (pp. 110-137). Oxford: Oxford University Press.</li>
+                        <li>German Advisory Council on Global Change (1997). Local government implementation of Agenda 21. Ways Towards Sustainable Management of Freshwater Resources: Annual Report.</li>
+                        <li>Goss, S. (2001) Making Local Governance Work: Networks, Relationships and the Management of Change. New York: Palgrave.</li>
+                        <li>Helmsing, A. H. J. (2000) Decentralization and Enablement: Issues in the Local Governance Debate. Utrecht: University of Utrecht.</li>
+                        <li>Johannes, J. (2003). Institutions and development: a critical review (No. 210). OECD Development Centre Working Paper.</li>
+                        <li>Magalata Oromia: A proclamation to amend Proclamation No 65 (2003) the urban local government of Oromia National Regional State Proclamation No. 116 (2006).</li>
+                        <li>Myers, G. (Ed.). (2011). African Cities: Alternative Visions of Urban Theory and Practice. London, New York: Zed Books.</li>
+                        <li>North, D. C. (1990). Institutions, institutional change and economic performance. Cambridge university press.</li>
+                        <li>Obeng-Odoom, F. 2013. Governance for pro-poor urban development: Lessons from Ghana. First ed. London: Routledge.</li>
+                        <li>Pierre, Jon & Peters, B. Guy (2000) Governance, Politics and the State. Basingstoke: Macmillan, New York: St. Martin's.</li>
+                        <li>Shah, I. A., & Baporikar, N. (2012). Participatory approach to development in Pakistan. Journal of Economic and Social Studies, 2 (1), 111-141.</li>
+                        <li>Smith, B. L. (2003). Public policy and public participation: engaging citizens and community in the development of public policy. Health Canada.</li>
+                        <li>Thompson, J. (1995). Participatory approaches in government bureaucracies: Facilitating the process of institutional change. World Development, 23 (9), 1521-1554.</li>
+                        <li>TsegayeTegenu. (2006). Evaluation of the Operation and Performance of Ethnic Decentraliation System in Ethiopia. Addis Ababa University Press.</li>
+                        <li>United Nations Development Programme. 2005. Pro-poor urban governance: Lessons from LIFE 1992-2005. New York.</li>
+                        <li>United Nations Development Programm. 1997. Governance for Sustainable Human Development (New York: UNDP).</li>
+                        <li>UN-Habitat. 2002. Global Campaign on Urban Governance: Concept Paper. Nairobi, UN-Habitat.</li>
+                        <li>World Bank. (1992). Governance and Development. Washington DC: World Bank.</li>
+                        <li>Yeshanew, S. A. (2012). CSO Law in Ethiopia: Considering its Constraints and Consequences. Journal of Civil Society, 8 (4), 369-384.</li>
+                        <li>ZikreHig of the Amhara National Regional State in the Federal Democratic Republic of Ethiopia: A proclamation of the urban local government of ANRS Proclamation No. 65 (2003).</li>
+                    </ol>
+                </div>
+            </article>
+        </main>
+
+        <!-- NEW: Sticky Sidebar Navigation -->
+        <nav class="sidebar-nav">
+            <h3>Article Sections</h3>
+            <ol>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#frameworks">2. Conceptual Frameworks</a></li>
+                <li><a href="#methodology">3. Research Methodology</a></li>
+                <li><a href="#engagement">4. NSA Engagement Principles</a></li>
+                <li><a href="#conclusions">5. Conclusions</a></li>
+                <li><a href="#recommendations">6. Recommendations</a></li>
+                <li><a href="#references">References</a></li>
+            </ol>
+        </nav>
+        
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+    </div>
+
+    <script>
+        document.getElementById('navbar-toggler').addEventListener('click', function() {
+            document.getElementById('navbar-menu').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
