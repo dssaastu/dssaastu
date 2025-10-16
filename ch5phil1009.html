@@ -1072,10 +1072,16 @@
 </div>
 
 <script>
-    // --- JavaScript for Keyboard Navigation and Setup ---
+    // --- JavaScript for Navigation and Setup ---
     const slides = document.querySelectorAll('.slide');
+    const presentationContainer = document.querySelector('.presentation-container'); // Get the main container
     const totalSlides = slides.length;
     let currentSlide = 0;
+
+    // --- Touch navigation variables ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // Minimum swipe distance in pixels to trigger navigation
 
     function setupSlides() {
         slides.forEach((slide, index) => {
@@ -1110,6 +1116,7 @@
         slides[newIndex].focus({ preventScroll: true });
     }
 
+    // --- Keyboard Event Listeners (Existing) ---
     document.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowRight') {
             event.preventDefault();
@@ -1120,8 +1127,31 @@
         }
     });
 
+    // --- Touch Event Listeners (Newly Added) ---
+    presentationContainer.addEventListener('touchstart', (event) => {
+        // Record the starting X position of the touch
+        touchStartX = event.touches[0].clientX;
+    }, { passive: true });
+
+    presentationContainer.addEventListener('touchend', (event) => {
+        // Record the ending X position of the touch
+        touchEndX = event.changedTouches[0].clientX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        // Calculate the horizontal distance swiped
+        const swipeDistance = touchEndX - touchStartX;
+
+        // If swiped left (more than the threshold)
+        if (swipeDistance < -swipeThreshold) {
+            navigateToSlide(currentSlide + 1);
+        }
+        // If swiped right (more than the threshold)
+        else if (swipeDistance > swipeThreshold) {
+            navigateToSlide(currentSlide - 1);
+        }
+    }
+
     setupSlides();
 </script>
-
-</body>
-</html>
