@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter six: Categorical Propositions</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+        /* --- Basic Reset & Body Setup --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* --- Presentation Container --- */
+        .presentation-container {
+            width: 100vw;
+            height: 100dvh; /* Use dynamic height to account for toolbars */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Slide Container Styling --- */
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 5% 8%; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start;
+            overflow-y: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.6s ease-in-out;
+            font-size: 1.1em; /* Base font size */
+        }
+        
+        .slide:focus {
+            outline: none;
+        }
+
+        /* --- Slide Animation States --- */
+        .slide.active { transform: translateX(0); z-index: 1; }
+        .slide.previous { transform: translateX(-100%); z-index: 0; }
+        .slide.next { transform: translateX(100%); z-index: 0; }
+
+        /* --- Typography and Content Styling --- */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #003366;
+            font-size: 2.8em;
+            margin: 0 0 1em 0;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #003366;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: 1.8em;
+            margin-top: 1.2em;
+            margin-bottom: 0.8em;
+        }
+        
+        /* Specific styling for the main title slide */
+        .title-slide {
+            align-items: center;
+            justify-content: center; /* Center the main title slide */
+        }
+        .title-slide h1 {
+            font-size: 4em;
+            text-align: center;
+            border-bottom: none;
+            color: teal;
+        }
+        .title-slide .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        p, li {
+            line-height: 1.6;
+            max-width: 950px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 1em;
+        }
+        
+        b, strong {
+            font-weight: 700;
+            color: #003366;
+        }
+
+        ul, ol { 
+            padding-left: 30px; 
+            width: 100%;
+            max-width: 950px;
+        }
+        ul ul {
+            list-style-type: disc;
+            margin-top: 10px;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: #333;
+            border-left: 3px solid #0055A4;
+            padding-left: 20px;
+            margin: 20px 40px;
+            width: 100%;
+            max-width: 850px;
+        }
+        
+        .slide img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1em auto;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #555;
+            z-index: 2;
+        }
+        
+        .button-container {
+          display: flex;
+          justify-content: flex-start;
+          margin-top: 2em;
+        }
+        .download-btn {
+          background-color: #003366;
+          color: white;
+          padding: 12px 24px;
+          text-decoration: none;
+          font-size: 0.8em;
+          font-weight: bold;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+          border: none;
+          cursor: pointer;
+        }
+        .download-btn:hover { background-color: #0055A4; }
+
+        @media (max-width: 768px) {
+            .slide { font-size: 1em; padding: 6% 7%; }
+            h1, .title-slide h1 { font-size: 2.2em; }
+            h2 { font-size: 1.5em; }
+            .slide-number { bottom: 15px; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+
+    <!-- Slide 1: Title Slide -->
+    <section class="slide title-slide">
+        <div>
+            <h1>CATEGORICAL PROPOSITIONS</h1>
+            <p class="subtitle">COMPILED BY: MOHAMMED Z.</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Introduction -->
+    <section class="slide">
+        <p>Originated by Aristotle, the concept of categorical propositions has constituted one of the core topics in logic for over 2,000 years. It remains important even today because many of the statements we make in ordinary discourse are either categorical propositions as they stand or are readily translatable into them. Standard form categorical propositions represent an ideal of clarity in language, and a familiarity with the relationships that prevail among them provides a backdrop of precision for all kinds of linguistic usage.</p>
+    </section>
+
+    <!-- Slide 3: Outline -->
+    <section class="slide">
+        <h1 style="color: orange; border-bottom: none;">OUTLINE</h1>
+        <ul>
+            <li>Categorical Propositions
+                <ul>
+                    <li>The Components of Categorical Propositions</li>
+                    <li>Attributes of Categorical Propositions: Quality, Quantity, and Distribution</li>
+                    <li>Representing Categorical Propositions
+                        <ul>
+                            <li>Venn Diagrams</li>
+                            <li>Boolean and Aristotelian Square of Oppositions</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Evaluating Immediate Inferences: Venn Diagrams and Square of Oppositions</li>
+            <li>Logical Operations: Conversion, Obversion, and Contraposition</li>
+            <li>Translating Ordinary Language Statements into Categorical Form</li>
+        </ul>
+    </section>
+
+    <!-- Slide 4: Objectives -->
+    <section class="slide">
+        <h1>Objectives:-</h1>
+        <ol>
+            <li><b>Define and identify categorical propositions:</b>
+                <ul>
+                    <li>Understand the fundamental structure of categorical propositions, including their subjects, predicates, and copulas.</li>
+                    <li>Distinguish between affirmative and negative propositions, as well as universal and particular propositions.</li>
+                    <li>Recognize the four basic forms of categorical propositions (A, E, I, O).</li>
+                </ul>
+            </li>
+            <li><b>Explain the key components of categorical propositions:</b>
+                <ul>
+                    <li>Analyze the roles of subjects, predicates, copulas, and quantifiers within propositions.</li>
+                    <li>Understand the concepts of quality, quantity, and distribution, and their impact on the meaning of propositions.</li>
+                    <li>Explain how categorical propositions categorize subjects and predicates.</li>
+                </ul>
+            </li>
+            <li><b>Represent categorical propositions using various formats:</b>
+                <ul>
+                    <li>Construct Venn diagrams to visually represent the relationships between subjects and predicates in propositions.</li>
+                    <li>Apply the Boolean and Aristotelian square of oppositions to categorize and compare different propositional forms.</li>
+                    <li>Translate propositions from ordinary language into formal categorical form.</li>
+                </ul>
+            </li>
+            <li><b>Evaluate immediate inferences from categorical propositions:</b>
+                <ul>
+                    <li>Use Venn diagrams and the square of oppositions to identify valid immediate inferences from given propositions.</li>
+                    <li>Recognize valid inferences like conversion, obversion, and contraposition.</li>
+                    <li>Analyze the limitations of immediate inferences and their dependence on propositional form.</li>
+                </ul>
+            </li>
+            <li><b>Apply logical operations to transform propositions:</b>
+                <ul>
+                    <li>Perform conversion, obversion, and contraposition on categorical propositions to derive new valid conclusions.</li>
+                    <li>Understand the conditions under which each operation is valid and the limitations involved.</li>
+                    <li>Utilize logical operations to analyze and manipulate arguments based on categorical propositions.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Slide 5: The Components of Categorical Propositions -->
+    <section class="slide">
+        <h1>The Components of Categorical Propositions</h1>
+        <p>A categorical proposition is a statement that establishes a relationship between two classes or categories. The subject term represents one class, while the predicate term represents another class. The proposition asserts that either the entire subject class or a portion of it is either included in or excluded from the predicate class.</p>
+        <p>Given that a categorical proposition asserts the inclusion or exclusion of the subject class in relation to the predicate class, we can identify four distinct types of standard form of categorical propositions:</p>
+        <ol>
+            <li><b>Universal Affirmative:</b> These propositions assert that the entire subject class is included in the predicate class. For example, "All birds can fly" states that every member of the subject class (birds) is part of the predicate class (things that can fly).</li>
+            <li><b>Particular Affirmative:</b> These propositions assert that only a portion of the subject class is included in the predicate class. For instance, "Some dogs are friendly" indicates that at least some members of the subject class (dogs) fall into the predicate class (friendly animals).</li>
+            <li><b>Universal Negative:</b> These propositions assert that the entire subject class is excluded from the predicate class. An example would be "No insects are mammals," which states that no member of the subject class (insects) is part of the predicate class (mammals).</li>
+            <li><b>Particular Negative:</b> These propositions assert that a portion of the subject class is excluded from the predicate class. For instance, "Some fruits are not citrus" indicates that at least some members of the subject class (fruits) do not belong to the predicate class (citrus fruits).</li>
+        </ol>
+    </section>
+
+    <!-- Slide 6: Standard Form -->
+    <section class="slide">
+        <h1>Standard-Form Categorical Proposition</h1>
+        <p>A categorical proposition that expresses these relations with complete clarity is called a standard-form categorical proposition. A categorical proposition is in <b>standard form</b> if and only if it is a substitution instance of one of the following four forms:</p>
+        <ol>
+            <li>All S are P.</li>
+            <li>No S are P.</li>
+            <li>Some S are P.</li>
+            <li>Some S are not P.</li>
+        </ol>
+        <p>Many categorical propositions, of course, are not in standard form because, among other things, they do not begin with the words “all,” “no,” or “some.”</p>
+    </section>
+
+    <!-- Slide 7: Quantifiers, Subject, Predicate, Copula -->
+    <section class="slide">
+        <h1>Key Components Explained</h1>
+        <ul>
+            <li><b>Quantifiers</b> are words that specify the extent to which the subject class is included in or excluded from the predicate class. The quantifiers "all," "no," and "some" play this role in categorical propositions.</li>
+            <li>The use of "all" indicates that the entire subject class is included in the predicate class, while "no" asserts that the entire subject class is excluded from the predicate class. On the other hand, the word "some" always signifies that at least one member of the subject class is involved.</li>
+            <li>To represent these propositions symbolically, the <b>subject term</b> is represented by the letter S, and the <b>predicate term</b> is represented by the letter P. The words "are" and "are not" serve as the <b>copula</b>, linking or connecting the subject term with the predicate term.</li>
+            <li>Quantifiers such as "all," "no," and "some" specify the quantity or extent of inclusion or exclusion between the subject and the predicate classes in a categorical proposition. The copula, represented by "are" and "are not," acts as the linking word that couples the subject term and the predicate term together.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 8: Exercise -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <p>In the following categorical propositions identify the quantifier, subject term, copula, and predicate term.</p>
+        <ol>
+            <li>All electric vehicles are cars that reduce greenhouse gas emissions.</li>
+            <li>Some social media platforms are websites that promote misinformation.</li>
+            <li>No fast food chains that use sustainable packaging are companies that contribute to plastic pollution.</li>
+            <li>Some renewable energy sources are technologies that harness solar power.</li>
+            <li>All online learning platforms are tools that provide accessible education.</li>
+            <li>Some self-driving cars are vehicles that improve road safety.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 9: Quality, Quantity, and Distribution -->
+    <section class="slide">
+        <h1>Quality, Quantity, and Distribution</h1>
+        <p>Quality and quantity are attributes of categorical propositions. In order to see how these attributes pertain, it is useful to rephrase the meaning of categorical propositions in class terminology:</p>
+        <blockquote><b>Proposition:</b> All S are P.<br><b>Meaning in class notation:</b> Every member of the S class is a member of the P class; that is, the S class is included in the P class.</blockquote>
+        <blockquote><b>Proposition:</b> No S are P.<br><b>Meaning in class notation:</b> No member of the S class is a member of the P class; that is, the S class is excluded from the P class.</blockquote>
+        <blockquote><b>Proposition:</b> Some S are P.<br><b>Meaning in class notation:</b> At least one member of the S class is a member of the P class.</blockquote>
+        <blockquote><b>Proposition:</b> Some S are not P.<br><b>Meaning in class notation:</b> At least one member of the S class is not a member of the P class.</blockquote>
+    </section>
+
+    <!-- Slide 10: Quality and Quantity -->
+    <section class="slide">
+        <h1>Quality & Quantity</h1>
+        <ul>
+            <li>The <b>quality</b> of a categorical proposition refers to whether it affirms or denies class membership. Categorical propositions can be classified as either affirmative or negative based on their quality.
+                <ul>
+                    <li><b>Affirmative propositions</b> state that there is a connection or inclusion between the subject and predicate classes. For example, "All S are P" and "Some S are P" are affirmative propositions.</li>
+                    <li><b>Negative propositions</b> deny the class membership or connection between the subject and predicate classes. Examples of negative propositions include "No S are P" and "Some S are not P."</li>
+                </ul>
+            </li>
+            <li>The <b>quantity</b> of a categorical proposition refers to whether the statement applies universally or only to a portion of the subject class.
+                <ul>
+                    <li><b>Universal propositions</b> make a claim about every member of the subject class. Both "All S are P" and "No S are P" are universal propositions.</li>
+                    <li><b>Particular propositions</b>, on the other hand, assert something about one or more members of the subject class without making a claim about all of them. "Some S are P" and "Some S are not P" are particular propositions.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 11: A, E, I, and O Propositions -->
+    <section class="slide">
+        <h1>Determining Quality & Quantity</h1>
+        <ul>
+            <li>It is important to note that the quantity of a categorical proposition can often be determined by examining the quantifier used. The words "all" and "no" immediately imply universal quantity, while the word "some" implies particular quantity.</li>
+            <li>In universal propositions, the quality is determined by the quantifier used. For example, in the proposition "All S are P," the quantifier "all" indicates universal quantity, and the proposition is affirmative. Similarly, in the proposition "No S are P," the quantifier "no" implies universal quantity, and the proposition is negative.</li>
+            <li>In particular propositions, the quality is determined by the copula. For instance, in the proposition "Some S are P," the copula "are" indicates the proposition is affirmative. In contrast, in "Some S are not P," the copula "are not" suggests the proposition is negative.</li>
+            <li>To provide a concise way of denoting the four different kinds of categorical propositions, they are commonly designated by letter names corresponding to the first four vowels of the Roman alphabet: <b>A, E, I, and O.</b>
+                <ul>
+                    <li>The universal affirmative proposition is represented by an <b>A</b> proposition.</li>
+                    <li>The universal negative proposition is represented by an <b>E</b> proposition.</li>
+                    <li>The particular affirmative proposition is represented by an <b>I</b> proposition.</li>
+                    <li>The particular negative proposition is represented by an <b>O</b> proposition.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 12: Summary Table -->
+    <section class="slide">
+        <h1>Summary of Proposition Types</h1>
+        <blockquote>
+            <b>Proposition:</b> All S are P.<br>
+            <b>Letter name:</b> A<br>
+            <b>Quantity:</b> universal<br>
+            <b>Quality:</b> affirmative
+        </blockquote>
+        <blockquote>
+            <b>Proposition:</b> No S are P.<br>
+            <b>Letter name:</b> E<br>
+            <b>Quantity:</b> universal<br>
+            <b>Quality:</b> negative
+        </blockquote>
+        <blockquote>
+            <b>Proposition:</b> Some S are P.<br>
+            <b>Letter name:</b> I<br>
+            <b>Quantity:</b> particular<br>
+            <b>Quality:</b> affirmative
+        </blockquote>
+        <blockquote>
+            <b>Proposition:</b> Some S are not P.<br>
+            <b>Letter name:</b> O<br>
+            <b>Quantity:</b> particular<br>
+            <b>Quality:</b> negative
+        </blockquote>
+    </section>
+
+    <!-- Slide 13: Distribution -->
+    <section class="slide">
+        <h1>Distribution</h1>
+        <ul>
+            <li><b>Distribution</b> is an attribute that applies to the terms (subject and predicate) of categorical propositions, unlike quality and quantity which are attributes of the propositions themselves.</li>
+            <li>A term is considered <b>distributed</b> if the proposition makes a statement about every member of the class indicated by that term. In other words, a term is distributed if the proposition assigns or attributes something to every member of the class it represents. On the other hand, if the proposition does not make an assertion about every member of the class, the term is considered <b>undistributed</b>.</li>
+            <li>To remember the rule for distribution, it can be helpful to use a mnemonic: "<b>U</b>nprepared <b>S</b>tudents <b>N</b>ever <b>P</b>ass." By focusing on the first letter of each word in this phrase, one can recall that <b>U</b>niversals (A and E statements) distribute <b>S</b>ubjects, while <b>N</b>egatives (E and O statements) distribute <b>P</b>redicates.</li>
+            <li>In summary, distribution is an attribute of the terms in categorical propositions, and it determines whether the proposition makes a statement about every member of a class. Universal statements distribute their subject terms, and negative statements distribute their predicate terms.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 14: Distribution Summary -->
+    <section class="slide">
+        <h1>Distribution Summary</h1>
+        <p>Another mnemonic that accomplishes the same purpose is "<b>A</b>ny <b>S</b>tudent <b>E</b>arning <b>B</b>'s <b>I</b>s <b>N</b>ot <b>O</b>n <b>P</b>robation." In this mnemonic the first letters may help one recall that <b>A</b> statements distribute the <b>S</b>ubject, <b>E</b> statements distribute <b>B</b>oth terms, <b>I</b> statements distribute <b>N</b>either term, and <b>O</b> statements distribute the <b>P</b>redicate.</p>
+        <p>It can be summarized as follows:</p>
+        <blockquote>
+            <b>Proposition (A):</b> All S are P. <br>
+            <b>Terms distributed:</b> S
+        </blockquote>
+        <blockquote>
+            <b>Proposition (E):</b> No S are P. <br>
+            <b>Terms distributed:</b> S and P
+        </blockquote>
+        <blockquote>
+            <b>Proposition (I):</b> Some S are P. <br>
+            <b>Terms distributed:</b> none
+        </blockquote>
+        <blockquote>
+            <b>Proposition (O):</b> Some S are not P. <br>
+            <b>Terms distributed:</b> P
+        </blockquote>
+    </section>
+
+    <!-- Slide 15: Exercise -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <h2>Identify the letter name, quantity, and quality. Then state whether the subject and predicate terms are distributed or undistributed.</h2>
+        <ol>
+            <li>Some entrepreneurs are innovators who disrupt traditional industries with their groundbreaking ideas.</li>
+            <li>All renewable energy sources are alternatives that reduce dependence on fossil fuels.</li>
+            <li>Some social media platforms are tools that facilitate global communication and networking.</li>
+        </ol>
+
+        <h2>Change the quality but not the quantity of the following categorical propositions:</h2>
+        <ol>
+            <li>Some slumlords are people who eventually wind up in jail.</li>
+            <li>Some scientific discoveries are breakthroughs that revolutionize our understanding of the universe.</li>
+            <li>No addictive substances that are consumed in excess are beneficial to long-term health.</li>
+        </ol>
+
+        <h2>Change the quantity but not the quality of the following categorical propositions:</h2>
+        <ol>
+            <li>Some prescription medicines are substances hazardous to human health.</li>
+            <li>Some shelter animals are not good prospects for adoption.</li>
+            <li>No tax proposals that favor the rich are fair proposals.</li>
+        </ol>
+    </section>
+    
+    <!-- Slide 16 -->
+    <section class="slide">
+        <h1>Venn Diagrams and the Boolean (modern) Square of Opposition</h1>
+        <p>The main objective of our investigation into categorical propositions is to understand their role in constructing arguments. However, universal propositions (A and E) can be interpreted in two distinct ways, and depending on which an argument may be valid or invalid. Therefore, before analyzing arguments, we need to explore the two possible interpretations of universal propositions. Our exploration will primarily focus on a concept known as <b>existential import</b>.</p>
+        <p>To illustrate the concept of existential import, let's consider the following pair of propositions:</p>
+        <ul>
+            <li>All Tom Cruise's movies are hits.</li>
+            <li>All unicorns are one-horned animals.</li>
+        </ul>
+        <p>In everyday conversation, the first proposition implies that Tom Cruise has indeed made some movies. In other words, the statement carries existential import. It suggests that one or more movies associated with Tom Cruise actually exist. On the contrary, the second statement does not make such an implication. Although the statement can be considered true because unicorns, by definition, have a single horn, it does not imply the actual existence of unicorns.</p>
+    </section>
+
+    <!-- Slide 17 -->
+    <section class="slide">
+        <h1>Interpreting Universal Propositions</h1>
+        <p>The question arises as to how universal propositions should be interpreted in terms of implying the actual existence of the entities being discussed. Two different approaches have been taken by logicians in response to this question.</p>
+        <p>From an <b>Aristotelian standpoint</b>, it is held that universal propositions about existing entities do carry existential import. In other words, such propositions imply the existence of the entities being referred to. For example:</p>
+        <ul>
+            <li>"All pheasants are birds" implies the existence of pheasants.</li>
+            <li>"No pine trees are maples" implies the existence of pine trees.</li>
+            <li>"All satyrs are vile creatures" does not imply the existence of satyrs because they are mythical beings.</li>
+        </ul>
+        <p>In this viewpoint, the first two statements have existential import because their subject terms denote entities that actually exist. However, the third statement has no existential import because satyrs do not exist.</p>
+    </section>
+
+    <!-- Slide 18 -->
+    <section class="slide">
+        <h1>The Boolean Standpoint</h1>
+        <p>From a <b>Boolean standpoint</b>:</p>
+        <ul>
+            <li>"All trucks are vehicles" does not imply the existence of trucks.</li>
+            <li>"No roses are daisies" does not imply the existence of roses.</li>
+            <li>"All werewolves are monsters" does not imply the existence of werewolves.</li>
+        </ul>
+        <p>The Aristotelian standpoint is receptive or open to existence. It acknowledges the existence of things, and universal statements about those things carry existential import. On the contrary, the Boolean standpoint is closed or unreceptive to existence. It does not recognize the existence of things, even when they do exist. Therefore, universal statements about those things do not carry existential import.</p>
+        <p>It is important to note that neither the Aristotelian nor the Boolean standpoint recognizes the existence of things that do not exist. In such cases, the Aristotelian standpoint aligns with the Boolean standpoint.</p>
+    </section>
+
+    <!-- Slide 19 -->
+    <section class="slide">
+        <h1>Comparing Aristotelian and Boolean Standpoints</h1>
+        <ul>
+            <li>The Aristotelian standpoint and the Boolean standpoint differ only in their treatment of universal (A and E) propositions. However, they are identical when it comes to particular (I and O) propositions.</li>
+            <li>Both standpoints acknowledge that particular propositions assert the existence of entities. For instance, from both standpoints, the statement "Some cats are animals" affirms the existence of at least one cat that is an animal. Likewise, "Some fish are not mammals" asserts the existence of at least one fish that is not a mammal. Thus, the term "some" implies existence according to both standpoints.</li>
+            <li>Due to its closed stance on existence, the Boolean standpoint is simpler compared to the Aristotelian standpoint. Therefore, our focus will initially be on arguments analyzed from the Boolean standpoint.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 20 -->
+    <section class="slide">
+        <h1>Venn Diagrams</h1>
+        <p>From the <b>Boolean standpoint</b>, the four kinds of categorical propositions have the following meaning. Notice that the first two (universal) propositions imply nothing about the existence of the things denoted by S:</p>
+        <ul>
+            <li><b>All S are P.</b> = No members of S are outside P.</li>
+            <li><b>No S are P.</b> = No members of S are inside P.</li>
+            <li><b>Some S are P.</b> = At least one S exists that is a P.</li>
+            <li><b>Some S are not P.</b> = At least one S exists that is not a P.</li>
+        </ul>
+        <p>Adopting this interpretation, the nineteenth-century logician John Venn developed a system of diagrams to represent the information they express. These diagrams have come to be known as Venn diagrams.</p>
+    </section>
+
+    <!-- Slide 21 -->
+    <section class="slide">
+        <h1>Venn Diagram Basics</h1>
+        <p>A Venn diagram is a visual representation that uses overlapping circles to depict the classes indicated by the terms in a categorical proposition. Since every categorical proposition consists of two terms, a Venn diagram for a single proposition comprises two circles that intersect. Each circle is labeled to represent one of the terms. By convention, the circle on the left represents the subject term (S), while the circle on the right represents the predicate term (P).</p>
+        <img src="cat1.png" alt="Basic two-circle Venn diagram with S and P labels.">
+        <p>Individuals belonging to the class represented by each term are located within their respective circles. If there are individuals in the overlapping region, they belong to both the S class and the P class. Lastly, individuals outside both circles are not members of either class.</p>
+    </section>
+
+    <!-- Slide 22 -->
+    <section class="slide">
+        <h1>Marking Venn Diagrams</h1>
+        <p>Venn diagrams use specific marks to represent information. Two types of marks are used: <b>shading an area</b> and <b>placing an X in an area</b>.</p>
+        <ul>
+            <li><b>Shading an area</b> indicates that the shaded region is devoid of any elements (it's empty).</li>
+            <li><b>Placing an X in an area</b> signifies the existence of at least one element within that region.</li>
+        </ul>
+        <p>If no mark is present in an area, it indicates that no information is known about that region; it may contain members or it may be empty.</p>
+        <p>Shading is exclusively used to represent the content of <b>universal (A and E)</b> propositions, while placing an X in an area is exclusively used to represent the content of <b>particular (I and O)</b> propositions.</p>
+    </section>
+
+    <!-- Slide 23 -->
+    <section class="slide">
+        <h1>Venn Diagrams for A, E, I, O Propositions</h1>
+        <img src="cat2.png" alt="Venn diagrams for A, E, I, and O propositions showing shading and X marks.">
+    </section>
+
+    <!-- Slide 24 -->
+    <section class="slide">
+        <h1>The Boolean (Modern) Square of Opposition</h1>
+        <img src="cat3.png" alt="The Boolean Square of Opposition diagram.">
+    </section>
+
+    <!-- Slide 25 -->
+    <section class="slide">
+        <h1>The Contradictory Relation</h1>
+        <p>If two propositions are related by the <b>contradictory relation</b>, they necessarily have opposite truth value. Thus, if a certain A proposition is given as true, the corresponding O proposition must be false. Similarly, if a certain I proposition is given as false, the corresponding E proposition must be true.</p>
+        <p>But no other inferences are possible. In particular, given the truth value of an A or O proposition, nothing can be determined about the truth value of the corresponding E or I propositions. These propositions are said to have <b>logically undetermined truth value</b>. Similarly, given the truth value of an E or I proposition, nothing can be determined about the truth value of the corresponding A or O propositions.</p>
+    </section>
+
+    <!-- Slide 26 -->
+    <section class="slide">
+        <h1>Testing Immediate Inferences</h1>
+        <p>Since the modern square of opposition provides logically necessary results, we can use it to test certain arguments for validity. We begin by assuming the premise is true, and we enter the pertinent truth value in the square. We then use the square to compute the truth value of the conclusion. If the square indicates that the conclusion is true, the argument is valid; if not, the argument is invalid.</p>
+        <p>Here is an example:</p>
+        <blockquote>Some trade spies are not masters at bribery.<br>Therefore, it is false that all trade spies are masters at bribery.</blockquote>
+    </section>
+
+    <!-- Slide 27 -->
+    <section class="slide">
+        <h1>Immediate Inferences</h1>
+        <p>Arguments of this sort are called <b>immediate inferences</b> because they have only one premise. Instead of reasoning from one premise to the next, we proceed immediately from the single premise to the conclusion.</p>
+        <p>To test the previous example for validity, we begin by assuming that the premise, which is an O proposition, is true. We then use the square to compute the truth value of the corresponding A proposition. By the contradictory relation, the A proposition is false. Since the conclusion claims that the A proposition is false, the conclusion is true, and therefore the argument is valid.</p>
+        <p>Arguments that are valid from the Boolean standpoint are said to be <b>unconditionally valid</b> because they are valid regardless of whether their terms refer to existing things.</p>
+    </section>
+
+    <!-- Slide 28 -->
+    <section class="slide">
+        <h1>Existential Fallacy</h1>
+        <p>From the Boolean standpoint, the <b>existential fallacy</b> is a formal fallacy that occurs whenever an argument is invalid merely because the premise lacks existential import. Such arguments always have a universal premise and a particular conclusion. The fallacy consists in attempting to derive a conclusion having existential import from a premise that lacks it.</p>
+        <p>Examples:</p>
+        <blockquote>All A are B.<br>Therefore, some A are B.</blockquote>
+        <blockquote>No A are B.<br>Therefore, it is false that all A are B.</blockquote>
+    </section>
+
+    <!-- Slide 29 -->
+    <section class="slide">
+        <h1>Note on Existential Fallacy</h1>
+        <p><b>Note:</b> while all of these forms proceed from a universal premise to a particular conclusion, it is important to see that not every inference having a universal premise and a particular conclusion commits the existential fallacy.</p>
+        <p>For example, the inference "All A are B; therefore, some A are not B" does not commit this fallacy. This inference is invalid because the conclusion contradicts the premise. Thus, to detect the existential fallacy, one must ensure that the invalidity results merely from the fact that the premise lacks existential import.</p>
+    </section>
+
+    <!-- Slide 30 -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <h2>Draw Venn diagrams for the following propositions:</h2>
+        <img src="cat4.png" alt="Basic Venn Diagram with regions 1, 2, 3 labeled." style="max-width: 200px; float: right;">
+        <ol>
+            <li>Some political campaigns are mere attempts to discredit opponents.</li>
+            <li>All novels are works of fiction.</li>
+            <li>No tax audits are pleasant experiences for cheaters.</li>
+            <li>Some birds are not creatures that can fly.</li>
+            <li>All bicycles are vehicles that rely on pedal power.</li>
+        </ol>
+        <h2 style="clear: both;">Use the modern square of opposition to determine whether the following immediate inferences are valid or invalid from the Boolean standpoint.</h2>
+        <ol>
+            <li>It is false that some computers are devices that process information electronically. Therefore, no computers are devices that process information electronically.</li>
+            <li>No fertility drugs are solutions to every problem. Therefore, it is false that all fertility drugs are solutions to every problem.</li>
+            <li>It is false that no credit cards are things that contain holograms. Therefore, some credit cards are things that contain holograms.</li>
+        </ol>
+    </section>
+    
+    <!-- Slide 31 -->
+    <section class="slide">
+        <h1>Conversion, Obversion, and Contraposition</h1>
+        <p>Conversion, obversion, and contraposition are operations that can be performed on a categorical proposition, resulting in a new statement that may or may not have the same meaning and truth value as the original statement. Venn diagrams are used to determine how the two statements relate to each other.</p>
+        <h2>Conversion</h2>
+        <p>The simplest of the three operations is conversion, and it consists of switching the subject term with the predicate term. For example, if the statement "No foxes are hedgehogs" is converted, the resulting statement is "No hedgehogs are foxes." This new statement is called the converse of the given statement. To see how the four types of categorical propositions relate to their converse, compare the following sets of Venn diagrams:</p>
+    </section>
+
+    <!-- Slide 32 -->
+    <section class="slide">
+        <h1>Conversion Diagrams</h1>
+        <img src="cat5.png" alt="Venn diagrams comparing standard form propositions with their converse.">
+    </section>
+
+    <!-- Slide 33 -->
+    <section class="slide">
+        <h1>Obversion</h1>
+        <p>More complicated than conversion, obversion requires two steps: (1) changing the quality (without changing the quantity), and (2) replacing the predicate with its term complement. It consists in changing "No S are P" to "All S are non-P" and vice versa, and changing "Some S are P" to "Some S are not non-P" and vice versa.</p>
+        <p>The second step requires understanding the concept of class complement. The complement of a class is the group consisting of everything outside the class. For example, the complement of the class of dogs is the group that includes everything that is not a dog (cats, fish, trees, and so on). The term complement is the word or group of words that denotes the class complement. For terms consisting of a single word, the term complement is usually formed by simply attaching the prefix "non" to the term.</p>
+    </section>
+
+    <!-- Slide 34 -->
+    <section class="slide">
+        <h1>Obversion Diagrams</h1>
+        <img src="cat6.png" alt="Venn diagrams comparing standard form propositions with their obverse.">
+    </section>
+
+    <!-- Slide 35 -->
+    <section class="slide">
+        <h1>Valid Obversion Inferences</h1>
+        <p>As is the case with conversion, obversion can be used to supply the link between the premise and the conclusion of immediate inferences. The following inference forms are valid:</p>
+        <blockquote>All A are B<br>Therefore, no A are non-B.</blockquote>
+        <blockquote>No A are B<br>Therefore, all A are non-B.</blockquote>
+        <blockquote>Some A are B<br>Therefore, some A are not non-B.</blockquote>
+        <blockquote>Some A are not B.<br>Therefore, some A are non-B.</blockquote>
+    </section>
+    
+     <!-- Slide 36 -->
+    <section class="slide">
+        <h1>Contraposition</h1>
+        <p>Like obversion, contraposition requires two steps: (1) switching the subject and predicate terms and (2) replacing the subject and predicate terms with their term complements. For example, if the statement “All goats are animals” is contraposed, the resulting statement is “All non-animals are nongoats.” This new statement is called the contrapositive of the given statement. To see how all four types of categorical propositions relate to their contrapositive, compare the following sets of diagrams:</p>
+    </section>
+
+    <!-- Slide 37 -->
+    <section class="slide">
+        <h1>Contraposition Diagrams</h1>
+        <img src="cat7.png" alt="Venn diagrams comparing standard form propositions with their contrapositive.">
+    </section>
+
+    <!-- Slide 38 -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <p>The question below provides a statement, its truth value in parentheses, and an operation. Determine the new statement and supply its truth value.</p>
+        <img src="cat8.png" alt="Exercise table for logical operations.">
+    </section>
+
+    <!-- Slide 39 -->
+    <section class="slide">
+        <h1>The Traditional (Aristotelian) Square of Opposition</h1>
+        <p>Up until now, we have been utilizing the Boolean standpoint. In this section, we will now adopt the Aristotelian standpoint, which acknowledges that universal propositions concerning existing entities carry existential implications. For such propositions, the traditional square of opposition becomes applicable. Similar to the modern square, the traditional square of opposition is a configuration of lines that demonstrates logically necessary relationships among the four types of categorical propositions. However, due to the Aristotelian standpoint's recognition of the additional factor of existential import, the traditional square enables more inferences than the modern square.</p>
+    </section>
+
+    <!-- Slide 40 -->
+    <section class="slide">
+        <h1>The Traditional Square of Opposition</h1>
+        <img src="cat9.png" alt="Diagram of the Traditional Aristotelian Square of Opposition.">
+        <p>The four relations in the traditional square of opposition may be characterized as follows:</p>
+        <ul>
+            <li><b>Contradictory</b> = opposite truth value</li>
+            <li><b>Contrary</b> = at least one is false (not both true)</li>
+            <li><b>Subcontrary</b> = at least one is true (not both false)</li>
+            <li><b>Subalternation</b> = truth flows downward, falsity flows upward</li>
+        </ul>
+    </section>
+
+    <!-- Slide 41 -->
+    <section class="slide">
+        <h1>Testing Immediate Inferences</h1>
+        <p>Next, let us see how we can use the traditional square of opposition to test immediate inferences for validity. Here is an example:</p>
+        <blockquote>All Rolex watches are works of art. Therefore, it is false that no Rolex watches are works of art.</blockquote>
+        <p>We begin by assuming the premise is true. Since the premise is an A proposition, by the contrary relation the corresponding E proposition is false. This is exactly what the conclusion says, so the argument is valid.</p>
+        <p>Here is another example:</p>
+        <blockquote>Some viruses are structures that attack T cells. Therefore, some viruses are not structures that attack T cells.</blockquote>
+        <p>Here the premise and conclusion are linked by the subcontrary relation. According to that relation, if the premise is assumed true, the conclusion has logically undetermined truth value, and so the inference is invalid. It commits the formal fallacy of <b>illicit subcontrary</b>.</p>
+    </section>
+
+    <!-- Slide 42 -->
+    <section class="slide">
+        <h1>Existential Fallacy (Aristotelian)</h1>
+        <p>The existential fallacy is committed from the Aristotelian standpoint when and only when contrary, subcontrary, and subalternation are used (in an otherwise correct way) to draw a conclusion from a premise about things that do not exist. All such inferences begin with a universal proposition, which has no existential import, and they conclude with a particular proposition, which has existential import. The existential fallacy is never committed in connection with the contradictory relation, nor is it committed in connection with conversion, obversion, or contraposition, all of which hold regardless of existence.</p>
+    </section>
+
+    <!-- Slide 43 -->
+    <section class="slide">
+        <h1>Existential Fallacy Examples</h1>
+        <blockquote>All witches who fly on broomsticks are fearless women. Therefore, some witches who fly on broomsticks are fearless women.</blockquote>
+        <blockquote>No wizards with magical powers are malevolent beings. Therefore, it is false that all wizards with magical powers are malevolent beings.</blockquote>
+        <p>The first depends on an otherwise correct use of the subalternation relation, and the second on an otherwise correct use of the contrary relation. If flying witches and magical wizards actually existed, both arguments would be valid. But since they do not exist, both arguments are invalid and commit the existential fallacy.</p>
+    </section>
+    
+    <!-- Slide 44 -->
+    <section class="slide">
+        <h1>Conditionally Valid</h1>
+        <p><b>Conditionally valid</b> applies to an inference after the Aristotelian standpoint has been adopted and we are not certain if the subject term of the premise denotes actually existing things. For example, the following inference is conditionally valid:</p>
+        <blockquote>All students who failed the exam are students on probation. Therefore, some students who failed the exam are students on probation.</blockquote>
+        <p>The validity of this inference rests on whether there were in fact any students who failed the exam. The inference is either valid or invalid, but we lack sufficient information. Once it becomes known that there are indeed some students who failed the exam, we can assert that the inference is valid from the Aristotelian standpoint. But if there are no students who failed the exam, the inference is invalid because it commits the existential fallacy.</p>
+    </section>
+
+    <!-- Slide 45 -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <p>Use the traditional square of opposition to find the answers to these problems.</p>
+        <h2>If "All cats are products of genetic engineering” is true, what is the truth value of the following statements?</h2>
+        <ul>
+            <li>a. No cats are products of genetic engineering.</li>
+            <li>b. Some cats are products of genetic engineering.</li>
+            <li>c. Some cats are not products of genetic engineering.</li>
+        </ul>
+        <h2>If "All cars are powered by solar energy" is false, what is the truth value of the following statements?</h2>
+        <ul>
+            <li>a. No cars are powered by solar energy.</li>
+            <li>b. Some cars are powered by solar energy.</li>
+            <li>c. Some cars are not powered by solar energy.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 46 -->
+    <section class="slide">
+        <h1>Venn Diagrams and the Aristotelian Standpoint</h1>
+        <p>The difference between the Boolean standpoint and the Aristotelian standpoint concerns only universal (A and E) propositions. From the Boolean standpoint, universal propositions have no existential import, but from the Aristotelian standpoint they do have existential import when their subject terms refer to actually existing things.</p>
+        <p>Thus, if we are to construct a Venn diagram to represent such a statement from the Aristotelian standpoint, we need to use some symbol that represents this implication of existence.</p>
+        <p>The symbol that we will use for this purpose is an <b>X surrounded by a circle</b>. Like the uncircled X, this circled X signifies that something exists in the area in which it is placed. However, the uncircled X represents the positive claim of existence made by particular (I and O) propositions, whereas the circled X represents an implication of existence made by universal propositions about actually existing things.</p>
+    </section>
+
+    <!-- Slide 47 -->
+    <section class="slide">
+        <h1>Aristotelian Venn Diagrams</h1>
+        <img src="cat10.png" alt="Venn diagrams from the Aristotelian standpoint.">
+    </section>
+    
+    <!-- Slide 48 -->
+    <section class="slide">
+        <h1>Testing Immediate Inferences using Aristotelian Standpoint</h1>
+        <p>Since any inference that is valid from the Boolean standpoint is also valid from the Aristotelian standpoint, testing the inference from the Boolean standpoint is often simpler. If the inference is valid, then it is valid from both standpoints. But if the inference is invalid from the Boolean standpoint and has a particular conclusion, then it may be useful to test it from the Aristotelian standpoint.</p>
+        <p>Let us test the inference form: <b>All A are B. Therefore, some A are B.</b></p>
+        <p>First, we draw Venn diagrams from the Boolean standpoint for the premise and conclusion:</p>
+        <img src="cat11.png" alt="Boolean Venn diagrams for All A are B and Some A are B.">
+    </section>
+
+    <!-- Slide 49 -->
+    <section class="slide">
+        <h1>Testing from the Aristotelian Standpoint</h1>
+        <p>The information of the conclusion diagram is not represented in the premise diagram, so the inference form is not valid from the Boolean standpoint. Thus, noting that the conclusion is particular, we adopt the Aristotelian standpoint and assume that the subject (A) denotes at least one existing thing. This is represented by placing a circled X in the open area of that circle:</p>
+        <img src="cat12.png" alt="Aristotelian Venn diagrams showing conditional validity.">
+        <p>Now the information of the conclusion diagram is represented in the premise diagram. Thus, the inference form is <b>conditionally valid</b> from the Aristotelian standpoint. It is valid on condition that the circled X represents at least one existing thing.</p>
+    </section>
+
+    <!-- Slide 50 -->
+    <section class="slide">
+        <h1>Summary of Testing Steps (Aristotelian)</h1>
+        <ol>
+            <li>Reduce the inference to its form and test it from the Boolean standpoint. If the form is valid, proceed no further. The inference is valid from both standpoints.</li>
+            <li>If the inference form is invalid from the Boolean standpoint and has a particular conclusion, then adopt the Aristotelian standpoint and look to see if the left-hand premise circle is partly shaded. If it is, enter a circled X in the unshaded part and retest the form.</li>
+            <li>If the inference form is conditionally valid, determine if the circled X represents something that exists. If it does, the condition is fulfilled, and the inference is valid. If it does not, the inference is invalid, and it commits the existential fallacy.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 51 -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <img src="cat13.png" alt="Venn diagram with regions 1, 2, 3 labeled" style="max-width: 200px; float: right;">
+        <p>Use the modified Venn diagram technique to determine if the following immediate inference forms are valid from the Boolean standpoint, conditionally valid from the Aristotelian standpoint, or invalid.</p>
+        <ol>
+            <li>Some A are not B. Therefore, no A are B.</li>
+            <li>It is false that some A are B. Therefore, it is false that all A are B.</li>
+            <li>It is false that no A are B. Therefore, some A are B.</li>
+            <li>All A are B. Therefore, it is false that no A are B.</li>
+        </ol>
+    </section>
+    
+    <!-- Slide 52 -->
+    <section class="slide">
+        <h1>Translating Ordinary Language Statements into Categorical Form</h1>
+        <ul>
+            <li>The process of translating ordinary language statements into categorical form does not have a fixed set of rules. However, there is one general rule that always applies: you need to understand the meaning of the given statement and then re-express it in a new statement that includes a quantifier, subject term, copula, and predicate term.</li>
+            <li>During this translation process, you may encounter various forms of phraseology such as terms without nouns, nonstandard verbs, singular propositions, adverbs and pronouns, unexpressed and nonstandard quantifiers, conditional statements, exclusive propositions, "the only," and exceptive propositions.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 53 -->
+    <section class="slide">
+        <h2>1. Terms Without Nouns</h2>
+        <p>When translating, it is vital to ensure that both the subject and predicate terms consist of either a plural noun or a pronoun. In cases where a term consists solely of an adjective, it is necessary to introduce a plural noun or pronoun.</p>
+        <p>Here are a couple of examples:</p>
+        <ol>
+            <li><b>Some roses are red.</b> ---> Some roses are red flowers.
+                <p>In this proposition, the predicate term "red" is an adjective. We introduce the plural noun "flowers" to properly represent the class of objects being referred to.</p>
+            </li>
+            <li><b>All tigers are carnivorous.</b> ---> All tigers are carnivorous animals.
+                <p>To emphasize that tigers belong to the class of carnivorous entities, we add the noun "animals" to the predicate term.</p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Slide 54 -->
+    <section class="slide">
+        <h2>2. Nonstandard Verbs</h2>
+        <p>In standard form, the only allowed copulas are "are" and "are not." Statements with other verbs can be translated by explicitly stating the relationship between the subject and predicate.</p>
+        <ol>
+            <li><b>Some college students will become educated.</b>
+                <p>To translate this, we can rephrase it as "Some college students are people who will become educated."</p>
+            </li>
+            <li><b>Some dogs would rather bark than bite.</b>
+                <p>To express this in standard form, we can say "Some dogs are animals that would rather bark than bite."</p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Slide 55 -->
+    <section class="slide">
+        <h2>3. Singular Propositions</h2>
+        <p>A singular proposition makes an assertion about a particular person, place, or thing. When we translate singular propositions into universals, we often introduce a parameter.</p>
+        <p>Consider the statement "Socrates is mortal." To translate this into a universal proposition, we use the parameter "people identical to." The translation would be "All people identical to Socrates are people who are mortal." Since only Socrates is identical to Socrates, the phrase "people identical to Socrates" represents the class with only one member.</p>
+    </section>
+
+    <!-- Slide 56 -->
+    <section class="slide">
+        <h2>4. Adverbs and Pronouns</h2>
+        <p>When a statement includes a spatial adverb (e.g., "wherever," "everywhere") or a temporal adverb (e.g., "always," "never"), it can be translated in terms of "places" or "times." Similarly, statements with pronouns (e.g., "whoever," "anything") can be translated in terms of "people" or "things."</p>
+        <ol>
+            <li><b>Statement:</b> He always wears a suit to work.<br>
+                <b>Translation:</b> All times he goes to work are times he wears a suit.</li>
+            <li><b>Statement:</b> He is always clean-shaven.<br>
+                <b>Translation:</b> All times are times he is clean-shaven.</li>
+        </ol>
+    </section>
+    
+     <!-- Slide 57 -->
+    <section class="slide">
+        <h2>5. Unexpressed Quantifiers</h2>
+        <p>In ordinary language, many statements contain implied quantifiers. One must rely on the most likely or probable meaning of the statement.</p>
+        <blockquote><b>Emeralds are green gems.</b> ----> All emeralds are green gems.
+        <br><i>The implied quantifier is "all."</i></blockquote>
+        <blockquote><b>There are lions in the zoo.</b> ----> Some lions are animals in the zoo.
+        <br><i>The implied quantifier here is "some."</i></blockquote>
+        <blockquote><b>A tiger is a mammal.</b> ----> All tigers are mammals.
+        <br><i>The implied quantifier is "all."</i></blockquote>
+        <blockquote><b>A fish is not a mammal.</b> ----> No fish are mammals.
+        <br><i>The implied quantifier is "no."</i></blockquote>
+    </section>
+
+    <!-- Slide 58 -->
+    <section class="slide">
+        <h2>6. Non-Standard Quantifiers</h2>
+        <p>The quantity of an assertion can be indicated by words other than "all," "some," and "no." These can include "few," "a few," "not every," and "anyone."</p>
+        <blockquote><b>A few soldiers are heroes.</b> ----> Some soldiers are heroes.</blockquote>
+        <blockquote><b>Anyone who votes is a citizen.</b> ----> All voters are citizens.</blockquote>
+        <blockquote><b>Not everyone who votes is a Democrat.</b> ----> Some voters are not Democrats.</blockquote>
+        <p>Additionally, statements like "All S are not P" should be translated as either "No S are P" or "Some S are not P" depending on the intended meaning.</p>
+    </section>
+
+    <!-- Slide 59 -->
+    <section class="slide">
+        <h2>7. Conditional Statements</h2>
+        <p>When a conditional statement has the antecedent and consequent referring to the same class, it can be translated into categorical form, always as a universal. The language following "if" is placed in the subject term.</p>
+        <blockquote><b>If it's a mouse, then it's a mammal.</b> ----> All mice are mammals.</blockquote>
+        <p>Conditional statements with a negated consequent are typically translated as E propositions.</p>
+        <blockquote><b>If it's a turkey, then it's not a mammal.</b> ----> No turkeys are mammals.</blockquote>
+        <p>The word "unless" is equivalent to "if not."</p>
+        <blockquote><b>Tomatoes are edible unless they are spoiled.</b> ----> All unspoiled tomatoes are edible tomatoes.</blockquote>
+    </section>
+
+    <!-- Slide 60 -->
+    <section class="slide">
+        <h2>8. Exclusive Propositions</h2>
+        <p>Propositions with words like "only," "none but," and "none except" are exclusive. The language following these words should be placed in the <b>predicate term</b>.</p>
+        <blockquote><b>Only executives can use the silver elevator.</b><br>
+        Correct Translation: "All people who can use the silver elevator are executives."</blockquote>
+        <ol>
+            <li><b>Only elected officials will attend the convention.</b> ----> All people who will attend the convention are elected officials.</li>
+            <li><b>None but the brave deserve the fair.</b> ----> All people who deserve the fair are brave people.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 61 -->
+    <section class="slide">
+        <h2>9. "The Only"</h2>
+        <p>Statements that begin with "the only" are translated differently. The language following "the only" is placed in the <b>subject term</b> of the categorical proposition.</p>
+        <blockquote><b>The only cars that are available are Chevrolets.</b><br>
+        This is translated as "All cars that are available are Chevrolets."</blockquote>
+        <ol>
+            <li><b>The only animals that live in this canyon are skunks.</b> ----> All animals that live in this canyon are skunks.</li>
+            <li><b>Accountants are the only ones who will be hired.</b> ----> All those who will be hired are accountants.</li>
+        </ol>
+    </section>
+    
+    <!-- Slide 62 -->
+    <section class="slide">
+        <h2>10. Exceptive Propositions</h2>
+        <p>Propositions in the form of "All except S are P" and "All but S are P" are classified as exceptive. These require pairs of conjoined categorical propositions to accurately represent their meaning.</p>
+        <ol>
+            <li><b>All except students are invited.</b> ----> No students are invited people, and all non-students are invited people.</li>
+            <li><b>All but managers must report to the president.</b> ----> No managers are people who must report to the president, and all non-managers are people who must report to the president.</li>
+        </ol>
+        <p>It is important to note that many of the simple inferences and operations applicable to single categorical propositions cannot be applied to exceptive propositions.</p>
+    </section>
+
+    <!-- Slide 63 -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <p>Translate the following into standard form categorical propositions.</p>
+        <ol>
+            <li>Any bank that makes too many risky loans will fail.</li>
+            <li>Bromine is extractable from seawater.</li>
+            <li>Terrorist attacks succeed whenever security measures are lax.</li>
+            <li>If it's a halogen, then it isn't chemically inert.</li>
+            <li>None but pirate ships fly the Jolly Roger.</li>
+            <li>A few organic silicones are used as lubricants.</li>
+            <li>Comets are the only heavenly bodies with tails.</li>
+            <li>No shellfish except oysters make pearls.</li>
+            <li>All passengers must have a valid ticket, except for children under the age of 5.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 64 -->
+    <section class="slide">
+        <h1>References</h1>
+        <ul>
+            <li><b>Logic Matters by P. D. Magnus and Gordon Schorn:</b> A friendly and engaging text with chapters dedicated to categorical propositions and their properties.</li>
+            <li><b>Introduction to Logic by Irving Copi and Carl Cohen:</b> A classic textbook with detailed explanations of categorical propositions, Venn diagrams, and syllogisms.</li>
+            <li><b>Symbolic Logic, 12th Edition by Irving Copi and Carl Cohen:</b> An updated edition delving deeper into topics like Boolean Algebra and the Square of Oppositions.</li>
+            <li><b>The Art of Reasoning by David Kelley:</b> Combines theory and practice, offering clear explanations alongside puzzles and exercises.</li>
+            <li><b>Stanford Encyclopedia of Philosophy:</b> A comprehensive online entry on categorical propositions, providing in-depth analysis and historical context. (https://plato.stanford.edu/entries/aristotle-logic/)</li>
+        </ul>
+        <div class="button-container">
+            <a href="chapter_6phil1009.pdf" download class="download-btn">Download Chapter PDF</a>
+        </div>
+    </section>
+
+
+</div>
+
+<script>
+    // --- JavaScript for Keyboard Navigation and Setup ---
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    function setupSlides() {
+        slides.forEach((slide, index) => {
+            const slideNumberEl = document.createElement('div');
+            slideNumberEl.className = 'slide-number';
+            slideNumberEl.textContent = `${index + 1} / ${totalSlides}`;
+            slide.appendChild(slideNumberEl);
+            slide.setAttribute('tabindex', '-1');
+            if (index === 0) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.add('next');
+            }
+        });
+        if (slides.length > 0) {
+            slides[0].focus();
+        }
+    }
+
+    function navigateToSlide(newIndex) {
+        if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentSlide) return;
+        const oldIndex = currentSlide;
+        const direction = newIndex > oldIndex ? 'right' : 'left';
+        
+        slides[newIndex].classList.remove('next', 'previous');
+        slides[newIndex].classList.add('active');
+
+        slides[oldIndex].classList.remove('active');
+        slides[oldIndex].classList.add(direction === 'right' ? 'previous' : 'next');
+        
+        currentSlide = newIndex;
+        slides[newIndex].focus({ preventScroll: true });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigateToSlide(currentSlide + 1);
+        } else if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            navigateToSlide(currentSlide - 1);
+        }
+    });
+
+    setupSlides();
+</script>
+
+</body>
+</html>

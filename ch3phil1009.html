@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Logic and Language</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+        /* --- Basic Reset & Body Setup --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* --- Presentation Container --- */
+        .presentation-container {
+            width: 100vw;
+            height: 100dvh; /* Use dynamic height to account for toolbars */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Slide Container Styling --- */
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 5% 8%; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start;
+            overflow-y: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.6s ease-in-out;
+            font-size: 1.1em; /* Base font size */
+        }
+        
+        .slide:focus {
+            outline: none;
+        }
+
+        /* --- Slide Animation States --- */
+        .slide.active { transform: translateX(0); z-index: 1; }
+        .slide.previous { transform: translateX(-100%); z-index: 0; }
+        .slide.next { transform: translateX(100%); z-index: 0; }
+
+        /* --- Typography and Content Styling --- */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #003366;
+            font-size: 2.8em;
+            margin: 0 0 1em 0;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #003366;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: 1.8em;
+            margin-top: 1.2em;
+            margin-bottom: 0.8em;
+        }
+        
+        /* Specific styling for the main title slide */
+        .title-slide {
+            align-items: center;
+            justify-content: center; /* Center the main title slide */
+            background-color: #4B0082; /* Purple background */
+        }
+        .title-slide h1 {
+            font-size: 4em;
+            text-align: center;
+            border-bottom: none;
+            color: #FF6347; /* Reddish text color */
+            text-shadow: 1px 1px 2px #000;
+        }
+        .title-slide .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 10px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        
+        p, li {
+            line-height: 1.6;
+            max-width: 950px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 1em;
+        }
+        
+        b, strong {
+            font-weight: 700;
+            color: #003366;
+        }
+
+        ul { 
+            padding-left: 30px; 
+            list-style-type: square;
+            width: 100%;
+        }
+        ul ul {
+            list-style-type: disc;
+            margin-top: 10px;
+        }
+        ol {
+            width: 100%;
+            max-width: 950px;
+        }
+        ol li {
+            margin-bottom: 0.5em;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: #333;
+            border-left: 3px solid #0055A4;
+            padding-left: 20px;
+            margin: 20px 0;
+            max-width: 900px;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #555;
+            z-index: 2;
+        }
+        
+        .matching-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+        .matching-column {
+            width: 45%;
+        }
+
+        @media (max-width: 768px) {
+            .slide { font-size: 1em; padding: 6% 7%; }
+            h1, .title-slide h1 { font-size: 2.2em; }
+            h2 { font-size: 1.5em; }
+            .slide-number { bottom: 15px; right: 25px; }
+            .matching-container { flex-direction: column; }
+            .matching-column { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+
+    <!-- Slide 1: Title -->
+    <section class="slide title-slide">
+        <div>
+            <h1>LOGIC AND LANGUAGE</h1>
+            <p class="subtitle">chapter three</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Wittgenstein Quote -->
+    <section class="slide">
+        <blockquote>
+            “To construct, analyze, and evaluate arguments well, one must pay close attention to language. Many errors of logic stem from a careless or imprecise use of language, and many misunderstandings about logic stem from misunderstandings about the nature of language.”
+            <cite>– L. Wittgenstein</cite>
+        </blockquote>
+        <p style="text-align:center; width: 100%; margin-top: 2em;"><b>Chapter Three: Logic and Language</b></p>
+    </section>
+
+    <!-- Slide 3: Outline -->
+    <section class="slide">
+        <h1>OUTLINE</h1>
+        <ul>
+            <li><b>Logic and Meaning</b>
+                <ul>
+                    <li>Cognitive and Emotive Meaning of Words</li>
+                    <li>Intensional and Extensional Meaning of Terms</li>
+                </ul>
+            </li>
+            <li><b>Logic and Definition</b>
+                <ul>
+                    <li>Types and Purposes of Definition</li>
+                    <li>Techniques of Definition
+                        <ul>
+                            <li>Extensional Techniques of Definition</li>
+                            <li>Intensional Techniques of Definition</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><b>Criteria for Lexical Definitions</b></li>
+        </ul>
+    </section>
+
+    <!-- Slide 4: Objectives -->
+    <section class="slide">
+        <h1>Objectives</h1>
+        <ol>
+            <li>Define the basic concepts of logic and meaning.</li>
+            <li>Explain the relationship between logic and language.</li>
+            <li>Differentiate between the cognitive and emotive meanings of words.</li>
+            <li>Identify the different types of cognitive meaning (denotation, connotation).</li>
+            <li>Analyze the emotive impact of words and phrases.</li>
+            <li>Distinguish between intensional and extensional meaning of terms.</li>
+            <li>Explain how intensional meaning relates to the concept of a word.</li>
+            <li>Describe how extensional meaning relates to the referents of a term.</li>
+            <li>Explain the different types of definitions.</li>
+            <li>Analyze the strengths and weaknesses of different types of definitions.</li>
+            <li>Identify and apply various techniques for defining terms.</li>
+            <li>Utilize extensional techniques of definition.</li>
+            <li>Employ intensional techniques of definition.</li>
+            <li>Evaluate the quality of lexical definitions based on established criteria.</li>
+            <li>Assess the accuracy, clarity, and conciseness of definitions.</li>
+            <li>Identify and avoid common pitfalls in definition writing.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 5: Defining the basics: Logic and Meaning -->
+    <section class="slide">
+        <h1>Defining the basics: Logic and Meaning</h1>
+        <h2>Logic:</h2>
+        <ul>
+            <li>Refers to the study of correct reasoning. It aims to create a framework for evaluating arguments, ensuring their conclusions follow logically from their premises.</li>
+            <li>Think of it as <b>the toolbox for clear and precise thinking</b>. It provides rules and tools for avoiding common fallacies and biases, enabling us to draw sound conclusions from available information.</li>
+            <li>Key concepts in logic include propositions, arguments, premises, conclusions, fallacies, and validity.</li>
+        </ul>
+        <h2>Meaning:</h2>
+        <ul>
+            <li>Refers to the understanding associated with a word or phrase. It's the way we interpret and comprehend the information conveyed by language.</li>
+            <li>Think of it as <b>the bridge between words and the world</b>. We use meaning to understand what others are saying, express our own thoughts, and interact meaningfully with the world around us.</li>
+        </ul>
+        <h2>The relationship:</h2>
+        <ul>
+            <li>Logic and meaning are closely intertwined. Both are essential for effective communication and clear thinking.</li>
+            <li>Logic provides the structure and rules for constructing meaning. By using logical principles, we can ensure our thoughts and arguments are clear, consistent, and well-founded. <b>Without logic, our meanings are blind.</b></li>
+            <li>Meaning, on the other hand, gives substance to logic. It provides the content and context for applying logical reasoning. <b>Without meaning, our thoughts and arguments become empty abstractions.</b></li>
+            <li>In essence, logic helps us think straight, while meaning helps us express and understand what we're thinking.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 6: Functions of language -->
+    <section class="slide">
+        <h1>Functions of language</h1>
+        <h2>Through language we:</h2>
+        <ul>
+            <li><b>Orchestrate our days:</b> From grocery lists to meeting schedules, language blueprints our actions, guiding us through the daily work of life.</li>
+            <li><b>Express a spectrum of emotions:</b> Whether it's a joyful "Eureka!" or a mournful sigh, language grants us the vocabulary to paint our inner landscapes with vibrant hues.</li>
+            <li><b>Leave indelible marks:</b> From heartfelt diary entries to fleeting notes on scraps of paper, language carves memories into the canvas of time, preserving precious moments for future reflection.</li>
+            <li><b>Explore the maze of memory:</b> Language serves as a compass, guiding us through the complex corridors of past experiences, allowing us to relive conversations, revisit cherished moments, and learn from bygone encounters.</li>
+            <li><b>Converse with ourselves:</b> In moments of solitude, language becomes our confidante, allowing us to whisper anxieties, formulate plans, and seek solace in the quiet murmur of introspection.</li>
+            <li><b>Connect with the divine:</b> Through whispered prayers and soaring hymns, language bridges the gap between the earthly and the ethereal, allowing us to express our deepest yearnings and seek solace in the embrace of faith.</li>
+        </ul>
+        <p>But the true essence of language lies in its power to shape the world itself. The words we choose, the stories we tell, the ideas we propagate - all become bricks in the edifice of reality. To manage this responsibility with wisdom, we must cultivate a mindful awareness of the words we wield.</p>
+    </section>
+
+    <!-- Slide 7: Principal Functions of language – in logic -->
+    <section class="slide">
+        <h1>Principal Functions of language – in logic</h1>
+        <p>Language serves us in ways both practical and profound. It's like a double-edged sword, wielding both the power of information and the potency of emotion:</p>
+        <h2>1. The Architect of Knowledge (cognitive function):</h2>
+        <p>Imagine language as a map, guiding us through the labyrinth of facts and figures. This is the cognitive function, where words become building blocks of understanding. We use them to:</p>
+        <ul>
+            <li><b>Explore the world:</b> From grocery lists to scientific papers, language equips us to plan, organize, and make sense of our surroundings.</li>
+            <li><b>Share knowledge:</b> Through clear explanations and precise descriptions, we can transfer information and ideas from one mind to another, building bridges of understanding.</li>
+            <li><b>Preserve history:</b> Language acts as a time capsule, storing memories, events, and discoveries for future generations to learn from.</li>
+        </ul>
+        <h2>2. The Painter of Emotions (emotive function):</h2>
+        <p>But language isn't just about cold facts; it's also a brush that paints vivid landscapes of feeling. This is the emotive function, where words ignite our hearts and minds. We use them to:</p>
+        <ul>
+            <li><b>Express ourselves:</b> From joyful shouts to whispered prayers, language allows us to share our inner world, connecting with others on a deeper level.</li>
+            <li><b>Evoke empathy:</b> Words can transport us into the shoes of another, fostering understanding and compassion. A well-crafted story can make us laugh, cry, or rage alongside the characters.</li>
+            <li><b>Shape perspectives:</b> Language can frame narratives, influencing how we perceive events and the world around us.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 8: Other Functions of Language -->
+    <section class="slide">
+        <h1>Other Language Functions</h1>
+        <p><b>Note that:</b> There are other principal functions of languages which are not common in logic. Namely: directive, performative and phatic.</p>
+        <h2>Directive Function</h2>
+        <p>Aims to influence or guide the behavior, actions, or thoughts of others. It's about using words to get things done or to make things happen.</p>
+        <ul>
+            <li><b>Key characteristics:</b> Focuses on the listener, has an intent to influence, and often takes the form of commands, requests, instructions, or advice.</li>
+            <li><b>Examples:</b> "Please pass the salt." (Request), "Stop at the red light!" (Command), "Don't touch the stove, it's hot." (Warning).</li>
+            <li><b>Context matters:</b> "Can you open the door?" could be a request for information (checking ability) or a directive (asking for action).</li>
+            <li><b>Importance:</b> Essential for effective communication, coordination, teaching, parenting, and leadership.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 9: Performative function -->
+    <section class="slide">
+        <h1>Performative Function</h1>
+        <p>The performative function doesn't just describe actions or states of being; it creates them. It's language that, when uttered in the right context, does something, making a change in the world.</p>
+        <h2>Key Features:</h2>
+        <ul>
+            <li><b>Action through words:</b> The utterance itself performs an action or brings about a change in reality.</li>
+            <li><b>Context-dependent:</b> The performative force relies on the social conventions, expectations, and authority of the speaker.</li>
+            <li><b>Often ritualistic:</b> Many performative utterances are part of established ceremonies or rituals (e.g., weddings, court proceedings).</li>
+        </ul>
+        <h2>Examples:</h2>
+        <ul>
+            <li>"I now pronounce you husband and wife." (Marriage officiant)</li>
+            <li>"I promise to return this book by Friday." (Library patron)</li>
+            <li>"I object!" (Lawyer in court)</li>
+            <li>"I declare this meeting open." (Chairperson)</li>
+        </ul>
+        <h2>Importance:</h2>
+        <ul>
+            <li><b>Transformative power:</b> Performative language can create new realities, relationships, and obligations.</li>
+            <li><b>Social cohesion:</b> It reinforces social norms, establishes commitments, and facilitates cooperation.</li>
+            <li><b>Legal and institutional significance:</b> Fundamental to legal systems, contracts, and official ceremonies.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 10: Phatic function of language -->
+    <section class="slide">
+        <h1>Phatic Function of Language</h1>
+        <p>The phatic function focuses on building and maintaining social relationships rather than conveying factual information. It's like the social lubricant that keeps the wheels of communication spinning smoothly.</p>
+        <h2>Purpose:</h2>
+        <ul>
+            <li>Establishing and maintaining social bonds and fostering a sense of connection.</li>
+            <li>Building rapport and creating a positive atmosphere; it helps break the ice and build trust.</li>
+        </ul>
+        <h2>Characteristics:</h2>
+        <ul>
+            <li>Focus is on maintaining the communication channel, not the content.</li>
+            <li>Often uses formulaic expressions like "Hi," "How are you?", "Good weather, isn't it?".</li>
+            <li>The actual meaning of the words may not be important; the focus is on social interaction.</li>
+        </ul>
+        <h2>Examples:</h2>
+        <ul>
+            <li>Small talk at the elevator or grocery store.</li>
+            <li>Asking generic questions about someone's day.</li>
+            <li>Sharing inconsequential observations like the weather.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 11: Cognitive function -->
+    <section class="slide">
+        <h1>Cognitive Function</h1>
+        <p>Terminology that conveys information is said to have cognitive meaning.</p>
+        <blockquote>
+            <b>Example:</b> The population of China, at over 1.44 billion, is the largest in the world, followed by India with approximately 1.38 billion. While China's birth rate has been declining in recent years, India's remains relatively high, leading to projections that India may surpass China in total population by mid-century.
+        </blockquote>
+        <ul>
+            <li>This sentence uses <b>specific numbers and factual data</b> to convey information.</li>
+            <li>It <b>compares and contrasts</b> the two countries, highlighting current and future trends.</li>
+            <li>The language is <b>neutral and objective</b>, avoiding emotional appeals or opinions.</li>
+            <li>The focus is on <b>providing knowledge and understanding</b> about the topic.</li>
+        </ul>
+        <p>This example illustrates how words can effectively:</p>
+        <ul>
+            <li><b>Quantify information:</b> Using numbers like "1.44 billion" adds precision.</li>
+            <li><b>Establish relationships:</b> Words like "largest" and "followed by" help readers understand relative positions.</li>
+            <li><b>Explain trends:</b> Phrases like "declining birth rate" and "projections" offer context.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 12: Emotive function -->
+    <section class="slide">
+        <h1>Emotive Function</h1>
+        <p>Terminology that expresses or evokes feelings is said to have emotive meaning.</p>
+        <blockquote>
+            <b>Example:</b> "Using animals for scientific experiments is a barbaric practice that inflicts unimaginable suffering on innocent creatures, subjecting them to relentless pain and torment in the name of human progress."
+        </blockquote>
+        <ul>
+            <li>In this example, the terminology is designed to elicit an emotional response and convey a negative perspective. Words like <b>"barbaric," "suffering," "relentless pain,"</b> and <b>"torment"</b> evoke strong feelings of outrage, compassion, and sympathy.</li>
+            <li>The purpose of employing emotive language this way is to sway the audience's opinion or provoke a desired emotional reaction.</li>
+            <li>This type of language is commonly used in persuasive speeches, political rhetoric, and advocacy campaigns where the goal is to mobilize support or generate empathy.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 13: Argument Against Animal Testing -->
+    <section class="slide">
+        <h1>Argument Against Animal Testing</h1>
+        <p><b>Argument:</b> The use of animals in scientific experiments should be abolished due to the inherent cruelty and suffering inflicted upon innocent creatures in the pursuit of human progress.</p>
+        <ol>
+            <li><b>Premise:</b> Animals used in scientific experiments endure immense suffering and cruelty.
+                <ul>
+                    <li><b>Supporting evidence:</b> Animals are subjected to pain, distress, and physical harm. For example, invasive surgeries, force-feeding, or confinement in unnatural environments.</li>
+                    <li><b>Explanation:</b> This suffering is morally objectionable as animals are sentient beings.</li>
+                </ul>
+            </li>
+            <li><b>Premise:</b> The suffering endured by animals in scientific experiments is unnecessary.
+                <ul>
+                    <li><b>Supporting evidence:</b> Alternative methods like in vitro testing and computer simulations can replace animal use.</li>
+                    <li><b>Explanation:</b> Using these alternatives can reduce or eliminate the need for animal experimentation.</li>
+                </ul>
+            </li>
+            <li><b>Premise:</b> The pursuit of human progress should not come at the expense of animal welfare.
+                <ul>
+                    <li><b>Supporting evidence:</b> A society's moral progress is reflected in how it treats its most vulnerable members, including animals.</li>
+                    <li><b>Explanation:</b> Abolishing this practice aligns our ethical principles with the recognition that all sentient beings deserve compassion.</li>
+                </ul>
+            </li>
+            <li><b>Conclusion:</b> Therefore, the use of animals in scientific experiments should be abolished.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 14: Notes on Emotive Meaning -->
+    <section class="slide">
+        <h1>Two things must be noted with regards to emotive meaning</h1>
+        <p>Emotions can be powerful currents in the ocean of language, pulling us away from clear thinking and objective logic. When it comes to statements laden with emotive meaning, especially those relating to values, it's crucial to develop our navigational skills.</p>
+        <h2>1. Separating Fact from Feeling:</h2>
+        <p>Logic thrives on facts, while emotions ebb and flow with the tide. In statements filled with emotive meaning, particularly those concerning values like "bad" or "better," it's essential to disentangle the factual core from the swirling emotional undercurrent. Ask yourself:</p>
+        <ul>
+            <li>What are the underlying facts being presented?</li>
+            <li>Are these facts verifiable and unbiased?</li>
+            <li>How are the words shaping my emotional response?</li>
+        </ul>
+        <h2>2. Anchoring Values in Reason:</h2>
+        <p>While emotions paint our world with vibrant tones, it's reason that provides the support in the storm. Value claims, declaring something "good" or "better," aren't simply pronouncements based on feeling. They need to be supported by sound reasoning and evidence. Ask yourself:</p>
+        <ul>
+            <li>What are the arguments backing up this claim?</li>
+            <li>Are these arguments based on logic, facts, and evidence?</li>
+            <li>Are there alternative perspectives or counter-arguments worth considering?</li>
+        </ul>
+    </section>
+
+    <!-- Slide 15: Vague and ambiguous expressions -->
+    <section class="slide">
+        <h1>Vague and Ambiguous Expressions</h1>
+        <ul>
+            <li><b>Imprecise language hampers critical thinking:</b> The presence of vague and ambiguous expressions throws a wrench in our cognitive gears. These expressions lack clarity and can have multiple interpretations.</li>
+            <li><b>Spotting the smokescreens:</b> Effective arguments hinge on the ability to identify and dismantle imprecise language. Recognizing these tactics is crucial for critical thinking.
+                <ul>
+                    <li><b>Ambiguity: A fork in the road.</b> A word is considered ambiguous if it possesses multiple meanings. Take the example of "lie" in the sentence "He lies in this grave." Does it mean he's resting or did he deceive someone?</li>
+                    <li><b>Vagueness: A blurry picture.</b> A word is considered vague when there are instances where it is impossible to determine whether the word applies. Vagueness paints a blurry picture with words like "rich." There's no clear boundary, making it hard to discern if something falls under the category.</li>
+                </ul>
+            </li>
+            <li><b>Beyond single words:</b> The impact of vague and ambiguous language extends beyond individual words. Grammatical structures and sentence construction can also contribute to confusion.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 16: Exercise: Vague or Ambiguous -->
+    <section class="slide">
+        <h1>Classify the following words as vague or ambiguous</h1>
+        <ul>
+            <li>Rich</li>
+            <li>happy</li>
+            <li>Bank</li>
+            <li>Light</li>
+            <li>Normal</li>
+            <li>Excess</li>
+            <li>Right</li>
+            <li>Sure</li>
+            <li>Mode</li>
+            <li>bald</li>
+        </ul>
+    </section>
+
+    <!-- Slide 17: Exercise Answers -->
+    <section class="slide">
+        <h1>Classification Answers</h1>
+        <ul>
+            <li><b>Rich</b> - Vague (borderline cases where it is unclear what level of material possessions qualifies as "rich").</li>
+            <li><b>Happy</b> - Vague (subjective and can vary from person to person).</li>
+            <li><b>Bank</b> - Ambiguous (can refer to a financial institution or the land alongside a river).</li>
+            <li><b>Light</b> - Ambiguous (can refer to illumination or something that has little weight).</li>
+            <li><b>Normal</b> - Vague (lacks a clear definition and can vary depending on context or individual norms).</li>
+            <li><b>Excess</b> - Vague (no clear threshold or definition of what constitutes "excess").</li>
+            <li><b>Right</b> - Ambiguous (can refer to correctness, direction, or a legal entitlement).</li>
+            <li><b>Sure</b> - Vague (can indicate varying degrees of certainty).</li>
+            <li><b>Mode</b> - Ambiguous (can refer to a statistical term or a way of operating).</li>
+            <li><b>Bald</b> - Vague (lacks a precise definition, as there is no universally agreed-upon amount of hair loss that qualifies as "bald").</li>
+        </ul>
+    </section>
+
+    <!-- Slide 18: Exercise: Identify Ambiguity -->
+    <section class="slide">
+        <h1>Identify the ambiguous word or phrase</h1>
+        <p>Identify the ambiguous word or phrase in each argument, and succinctly describe the double meaning involved.</p>
+        <ol>
+            <li>People nowadays say they can't believe in religion. They say they can't believe in miracles... they believe in the miracles of modern science... They can believe in miracles, all right. They just don't want to believe in religious miracles.</li>
+            <li>We are in the dark because the light bulb burned out. But if we are in the dark, then we are ignorant. Therefore, we are ignorant.</li>
+            <li>If a tree falls in the forest and no one is there to hear it fall, does it make a sound? Modern science says, "Yes..." But this is easily refuted. Sound is something heard. So, if no one was there to hear the sound, there was no sound.</li>
+            <li>Sacred texts say you need faith... The fact that you go out to your car in the morning shows you have faith it's going to start... Everybody needs faith.</li>
+            <li>I have a duty to do what is right. And I have a right to run for office. Hence, I have a duty to run for office.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 19: Verbal and factual disputes -->
+    <section class="slide">
+        <h1>Verbal and Factual Disputes</h1>
+        <h2>Verbal Disputes</h2>
+        <p>Also known as linguistic disputes, are disagreements that arise from misunderstandings or clashes in the interpretation of language. This can happen due to:</p>
+        <ul>
+            <li><b>Ambiguity:</b> When an expression has multiple possible meanings. For instance, "Time flies like an arrow."</li>
+            <li><b>Vagueness:</b> When a word or phrase is not specific enough. For example, "a significant amount."</li>
+            <li><b>Presuppositions:</b> When people make implicit assumptions about what the other person knows or believes.</li>
+            <li><b>Cultural differences:</b> Different cultures have different ways of using language.</li>
+        </ul>
+        <h2>Solving Verbal Disputes:</h2>
+        <p>When faced with a verbal dispute, it's important to approach the situation calmly and constructively. <b>Listen actively, clarify your own meaning, ask clarifying questions</b>, be respectful, and focus on finding common ground.</p>
+    </section>
+
+    <!-- Slide 20: Factual disputes -->
+    <section class="slide">
+        <h1>Factual Disputes</h1>
+        <p>Factual disputes are disagreements about the truth or accuracy of information concerning facts, events, or evidence in the real world.</p>
+        <h2>Key characteristics of factual disputes:</h2>
+        <ul>
+            <li><b>Focus on evidence:</b> They center on questions of evidence and objective reality, rather than personal opinions or beliefs.</li>
+            <li><b>Resolvable through verification:</b> They can often be resolved by gathering evidence, conducting research, or consulting experts.</li>
+        </ul>
+        <h2>Examples of factual disputes:</h2>
+        <ul>
+            <li><b>Historical events:</b> The exact date of the Battle of Adwa.</li>
+            <li><b>Scientific findings:</b> The causes of climate change.</li>
+            <li><b>Legal cases:</b> Whether a defendant was at the scene of a crime.</li>
+            <li><b>Everyday disagreements:</b> The score of a sports game.</li>
+        </ul>
+        <h2>Resolving factual disputes often involves:</h2>
+        <p>Gathering credible evidence, consulting experts, conducting research, and evaluating sources of information for reliability and bias.</p>
+    </section>
+
+    <!-- Slide 21: Terms: The Building Blocks of Arguments -->
+    <section class="slide">
+        <h1>Terms: The Building Blocks of Arguments</h1>
+        <p>Imagine an argument as a sturdy brick wall. Each brick, carefully chosen and placed, contributes to the wall's overall structure and meaning. These bricks, in the world of arguments, are terms.</p>
+        <h2>The Bricks:</h2>
+        <ul>
+            <li><b>What are they?</b> Terms are the basic units of an argument, essentially words or groups of words that represent something specific.</li>
+            <li><b>What do they look like?</b> Terms can be single nouns like "dog" or descriptive phrases like "intelligent creature with four legs."</li>
+            <li><b>Double-sided Meaning:</b> Every term has two faces:
+                <ul>
+                    <li><b>Inside Look (Intensional - connotative Meaning):</b> This is the essence of the term, the qualities or features it conjures up in your mind.</li>
+                    <li><b>Outside Look (Extensional - denotative Meaning):</b> This is the "real-world" application of the term, the specific things it actually points to.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>Example:</h2>
+        <p>Let's say you argue that "all firefighters are heroes." The term "firefighter" has an intensional meaning (brave, selfless, risk-taking) and an extensional meaning (individuals trained to fight fires). Similarly, "hero" also has both inner and outer meanings. The argument hinges on how well these meanings align.</p>
+    </section>
+
+    <!-- Slide 22: Understanding Terms -->
+    <section class="slide">
+        <h1>Understanding Terms</h1>
+        <h2>Terms Can Change Through Time:</h2>
+        <ul>
+            <li>The real-world things a term refers to (its extension) and its intension can shift as time marches on.</li>
+            <li><b>Example:</b> "Planet" once included Pluto, but now it doesn't. The concept (intension) remains, but what it includes (extension) has evolved.</li>
+        </ul>
+        <h2>Empty Extensions, Full Intentions:</h2>
+        <ul>
+            <li>Some terms don't point to anything in the real world (empty extension), but they still carry meaning (intension).</li>
+            <li><b>Example:</b> "Unicorn" has no living examples, but you still have a mental image of a magical horse with a single horn.</li>
+        </ul>
+        <h2>Intensions Set the Rules:</h2>
+        <ul>
+            <li>The essence of a term (intension) determines what it includes in the real world (extension). It's like a blueprint for a house—the plan comes first.</li>
+        </ul>
+        <h2>Term Ladders:</h2>
+        <ul>
+            <li>Terms can be arranged in ascending or descending order based on their intension or extension:
+                <ul>
+                    <li><b>Increasing Intension:</b> Each term adds more specific details. (e.g., Vehicle -> Car -> Sedan)</li>
+                    <li><b>Decreasing Extension:</b> Each term covers a smaller group. (e.g., Fruit -> Citrus Fruit -> Orange)</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 23: Definitions -->
+    <section class="slide">
+        <h1>Definitions</h1>
+        <p>A definition is a statement that explains the meaning of a word, phrase, concept, or symbol. It serves to establish a clear and shared understanding of what something means or represents.</p>
+        <h2>Each definition has two component parts:</h2>
+        <ul>
+            <li><b>The Definiendum:</b> This is the word or phrase being defined.</li>
+            <li><b>The Definiens:</b> This is the part that does the defining, providing the meaning and details.</li>
+        </ul>
+        <p><b>Example 1:</b><br>Definiendum: Audacious<br>Definiens: Bold, daring, adventurous, unrestrained by fear or convention.</p>
+        <p><b>Example 2:</b><br>Definiendum: Photosynthesis<br>Definiens: The process by which green plants use sunlight to synthesize foods from carbon dioxide and water.</p>
+        <h2>Purposes of Definitions:</h2>
+        <ul>
+            <li><b>Clarity, Precision, New Concepts, Resolving Ambiguity, Persuasion.</b></li>
+        </ul>
+    </section>
+
+    <!-- Slide 24: Types of Definition -->
+    <section class="slide">
+        <h1>Types of Definition</h1>
+        <ol>
+            <li>Stipulative definition</li>
+            <li>Lexical definition</li>
+            <li>Precising definition</li>
+            <li>Theoretical definition</li>
+            <li>Persuasive definition</li>
+        </ol>
+    </section>
+
+    <!-- Slide 25: Stipulative Definitions -->
+    <section class="slide">
+        <h1>Stipulative Definitions</h1>
+        <p>Imagine you're making up a board game. You need to come up with new terms to explain the different pieces. These new terms, like "zorg," are stipulative definitions. You're basically saying, "Hey, I'm making up this word, and here's what it means in the context of this game."</p>
+        <p>Stipulative definitions are like special agreements about meaning. They aren't "right" or "wrong" like dictionary definitions.</p>
+        <h2>Examples of stipulative definitions:</h2>
+        <ul>
+            <li><b>Invented words:</b> "Quark" in physics, "flooz" in 1920s slang.</li>
+            <li><b>Coined terms for new ideas:</b> "meme" in internet culture, "selfie" for self-portraits.</li>
+            <li><b>Redefining old words:</b> "literally" now often used for emphasis, not just factuality.</li>
+        </ul>
+        <h2>Stipulative definitions can be helpful when:</h2>
+        <ul>
+            <li>Explaining new concepts.</li>
+            <li>Creating specialized fields (jargon).</li>
+            <li>Adding flair to language.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 26: Persuasive Definitions -->
+    <section class="slide">
+        <h1>Persuasive Definitions</h1>
+        <p>Imagine you're in a heated debate. One way to sway the other side is by twisting the meaning of terms. These are persuasive definitions, where the definition itself becomes a weapon in the argument.</p>
+        <p>Instead of objectively explaining something, these definitions are loaded with emotions and biased language.</p>
+        <p><b>Example 1:</b> "Climate change is a <b>hoax</b> perpetuated by <b>radical</b> environmentalists to <b>control</b> our lives and tax us into oblivion."</p>
+        <p><b>Example 2:</b> "Climate change is a <b>natural cycle</b> of the Earth, a <b>wake-up call</b> for responsible stewardship, and an opportunity for green innovation."</p>
+        <h2>Key features of persuasive definitions:</h2>
+        <ul>
+            <li><b>Emotional appeals (Charged terms):</b> Loaded words like "hoax," "radical," and "control" tap into fear, anger, or distrust.</li>
+            <li><b>Slanted-biased-language:</b> "Natural cycle" downplays human influence, while "wake-up call" emphasizes urgency.</li>
+        </ul>
+        <p><b>Remember:</b> Persuasive definitions are not neutral! They're tools for persuasion. Be critical and analyze the language.</p>
+    </section>
+
+    <!-- Slide 27: Lexical definitions -->
+    <section class="slide">
+        <h1>Lexical Definitions</h1>
+        <p>Imagine trying to explain a word to someone who's never heard it before. You wouldn't use your own personal feelings or biases. That's where lexical definitions come in. They're like the official dictionary entries for words, focusing on their common, understood meaning in the language.</p>
+        <p>Think of them as the neutral ground language plays on. Lexical definitions don't have an agenda.</p>
+        <h2>Key features of lexical definitions:</h2>
+        <ul>
+            <li><b>Standard usage:</b> They reflect how the word is generally understood and used by most people.</li>
+            <li><b>Conventional meaning:</b> No personal opinions or interpretations, just the "dictionary definition."</li>
+            <li><b>No room for ambiguity:</b> They strive to be clear, leaving no room for confusion.</li>
+        </ul>
+        <h2>Examples:</h2>
+        <ul>
+            <li><b>Gallop:</b> "To move at a fast, rhythmic pace like a horse, with all four legs off the ground at the same time."</li>
+            <li><b>Symphony:</b> "A large-scale orchestral composition typically in several movements."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 28: Precising Definition -->
+    <section class="slide">
+        <h1>Precising Definition</h1>
+        <p>Imagine you're playing a board game, but the rules are vague. "Move your piece quickly" doesn't cut it. That's where precising definitions come in. They're like tightening the screws on a word's meaning, clarifying its boundaries and removing ambiguity.</p>
+        <p>A precising definition sets specific limits, making a word more precise for a particular context.</p>
+        <h2>Key features of precising definitions:</h2>
+        <ul>
+            <li><b>Refine, not re-invent:</b> They build upon the conventional meaning, not create a new one.</li>
+            <li><b>Draw the lines:</b> They limit the scope of a word, excluding certain interpretations.</li>
+            <li><b>More specific, less fuzzy:</b> They add criteria or conditions to reduce ambiguity.</li>
+        </ul>
+        <h2>Example:</h2>
+        <ul>
+            <li><b>Conventional word:</b> "Tall"</li>
+            <li><b>Precising definition for a basketball team:</b> "A player taller than 6 feet 5 inches."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 29: Theoretical Definitions -->
+    <section class="slide">
+        <h1>Theoretical Definitions</h1>
+        <p>Theoretical definitions are specialized definitions that go beyond everyday meanings to explain concepts within a particular theoretical framework. They aim to:</p>
+        <ul>
+            <li>Reveal underlying relationships and principles.</li>
+            <li>Connect terms to other concepts within the same theory.</li>
+            <li>Provide explanatory power; they explain the "why" behind things.</li>
+        </ul>
+        <h2>Key characteristics of theoretical definitions:</h2>
+        <ul>
+            <li><b>Context-specific:</b> They have meaning only within a particular theory or model.</li>
+            <li><b>Often complex:</b> They may involve specialized terminology.</li>
+            <li><b>Subject to change:</b> As theories evolve, definitions may be revised.</li>
+            <li><b>Not universally accepted:</b> Different theories may offer competing definitions.</li>
+        </ul>
+        <h2>Examples of theoretical definitions:</h2>
+        <ul>
+            <li><b>Gravity in General Relativity:</b> "Gravity is the curvature of space-time caused by the presence of mass and energy."</li>
+            <li><b>Evolution in evolutionary theory:</b> "Evolution is the change in the heritable characteristics of biological populations over successive generations."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 30: Theoretical Definitions Compared -->
+    <section class="slide">
+        <h1>Theoretical Definitions Compared to others</h1>
+        <ul>
+            <li><b>Deeper than Lexical:</b> They delve beyond conventional dictionary meanings, offering more intricate explanations.</li>
+            <li><b>Different from Stipulative:</b> They don't invent new meanings, but connect existing terms within a theoretical framework.</li>
+            <li><b>More than Precising:</b> They not only reduce ambiguity but also provide a deeper understanding of the concept's structure and function.</li>
+        </ul>
+        <h2>Remember:</h2>
+        <ul>
+            <li><b>Specific to a theory:</b> These definitions only make sense within the context of a specific theoretical framework.</li>
+            <li><b>Subject to change:</b> As theories evolve, so might their definitions to reflect new understanding.</li>
+            <li><b>Not universally accepted:</b> Different theories offer different interpretations.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 31: Definitional strategies/techniques -->
+    <section class="slide">
+        <h1>Definitional Strategies/Techniques</h1>
+        <p>There are two types of techniques: <b>intensional and extensional.</b></p>
+        <h2>Extensional (Denotative) techniques</h2>
+        <p>An extensional definition is one that assigns a meaning to a term by indicating the members of the class that the Definiendum denotes. It includes:</p>
+        <ul>
+            <li>Ostensive Definitions</li>
+            <li>Enumerative definition</li>
+            <li>Definition by subclass</li>
+        </ul>
+    </section>
+
+    <!-- Slide 32: Ostensive Definitions -->
+    <section class="slide">
+        <h1>Ostensive Definitions</h1>
+        <p>Imagine trying to explain something to someone who's never seen it before. Words can fall short. That's where ostensive definitions come in – they <b>show instead of tell</b>.</p>
+        <p>They are like pointing to a map and saying, "This is where you are!"</p>
+        <h2>Key features:</h2>
+        <ul>
+            <li><b>Point and explain:</b> An ostensive definition uses gestures (often pointing) to directly show examples of what a term refers to.</li>
+            <li><b>Perfect for:</b> Concrete objects, physical sensations, or directly observable actions.</li>
+            <li><b>Useful when:</b> Words wouldn't work (explaining colors to a child) or language barriers exist.</li>
+        </ul>
+        <h2>Examples:</h2>
+        <ul>
+            <li>"This pointy thing in the park is an obelisk." (As you point to the Washington Monument.)</li>
+            <li>"Ouch! This scratchy feeling is what we call 'itchy'."</li>
+        </ul>
+        <h2>Limitations:</h2>
+        <ul>
+            <li>Not for abstract concepts like "justice" or "love".</li>
+            <li>Context-dependent: "This lamp" needs more explanation in a house full of lamps.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 33: Enumerative Definitions -->
+    <section class="slide">
+        <h1>Enumerative Definitions</h1>
+        <p>Imagine you're trying to explain "fruit" to someone. That's when enumerative definitions come in handy - they show, not tell, by <b>directly listing examples</b> of the term.</p>
+        <h2>Key features:</h2>
+        <ul>
+            <li><b>What it is:</b> Enumerative definitions name the members of a class individually, one by one.</li>
+            <li><b>How it works:</b> For example, saying "A philosopher is someone like Socrates, Plato, Aristotle, Descartes, Kant, or Hegel" provides concrete examples.</li>
+            <li><b>Benefits:</b> It's easy to understand, especially for categories with distinct members.</li>
+        </ul>
+        <h2>Limitations:</h2>
+        <ul>
+            <li><b>Limited scope:</b> Listing every member is rarely possible, so the definition can be incomplete.</li>
+            <li><b>Lack of explanation:</b> It simply shows examples, not the underlying characteristics that define the term.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 34: Definitions by Subclass -->
+    <section class="slide">
+        <h1>Definitions by Subclass</h1>
+        <p>A definition by subclass assigns meaning to a word by listing subclasses or categories within a broader class to which the word belongs.</p>
+        <ul>
+            <li>It takes a broader category and then zooms in, naming smaller groups within it.</li>
+            <li>Instead of listing individual members, it shows different subcategories.</li>
+        </ul>
+        <h2>Examples:</h2>
+        <ul>
+            <li>"A <b>mammal</b> is a warm-blooded, vertebrate animal, and <b>humans</b> are a type of mammal."</li>
+            <li>"A <b>vehicle</b> is a machine that transports people, and a <b>bicycle</b> is a type of vehicle."</li>
+            <li>"A <b>fruit</b> is a mature ripened ovary of a flowering plant, and an <b>apple</b> is a type of fruit."</li>
+        </ul>
+        <h2>Limitations:</h2>
+        <ul>
+            <li><b>Incomplete picture:</b> Not all subclasses might be listed.</li>
+            <li><b>Prior knowledge required:</b> You need some familiarity with the broader class.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 35: Intensional (Connotative) techniques -->
+    <section class="slide">
+        <h1>Intensional (Connotative) techniques</h1>
+        <p>An intensional definition is one that assigns a meaning to a word by indicating the <b>qualities or attributes</b> that the word connotes.</p>
+        <p>There are four kinds of intensional definitions:</p>
+        <ul>
+            <li>Synonymous definition</li>
+            <li>Etymological definition</li>
+            <li>Operational definition</li>
+            <li>Definition by genus and difference</li>
+        </ul>
+    </section>
+
+    <!-- Slide 36: Synonymous Definitions -->
+    <section class="slide">
+        <h1>Synonymous Definitions</h1>
+        <p>A synonymous definition uses another word with the same meaning to explain the word being defined. This is helpful when the word is unfamiliar or technical.</p>
+        <h2>Examples:</h2>
+        <ul>
+            <li>Loquacious means talkative.</li>
+            <li>Deleterious means harmful.</li>
+            <li>Assessment (in education) means test.</li>
+        </ul>
+        <h2>Importance:</h2>
+        <ul>
+            <li><b>Clarify unfamiliar words:</b> If you see "loquacious means talkative," you immediately understand.</li>
+            <li><b>Make technical jargon more understandable:</b> E.g. Bug (jargon) = error or flaw in a program.</li>
+            <li><b>Improve communication:</b> Ensures everyone is on the same page.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 37: Etymological definition -->
+    <section class="slide">
+        <h1>Etymological Definition</h1>
+        <p>A good dictionary doesn't just tell you what a word means, but also whispers its secret history. Etymology traces the word's origin and journey through time.</p>
+        <h2>Importance:</h2>
+        <ul>
+            <li><b>Clarity through Roots:</b> Knowing where a word comes from can provide a deeper understanding of its essence.
+                <ul>
+                    <li><b>Example:</b> "Ambivalent" comes from Latin "ambi-" (both) and "valentia" (strength). It doesn't mean "uncaring," but to hold strong, conflicting emotions simultaneously.</li>
+                </ul>
+            </li>
+            <li><b>Unlocking Word Families:</b> Understanding a root opens the door to related words.
+                <ul>
+                    <li><b>Example:</b> The Greek root "pathos" (feeling) helps you understand "sympathy" (sharing feeling), "empathy" (feeling in another), and "apathetic" (lacking feeling).</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 38: Significance of Etymological definition -->
+    <section class="slide">
+        <h1>The Significance of Etymological Definition</h1>
+        <ul>
+            <li>
+                <h2>Precision in Language:</h2>
+                <p>By unearthing the "word-roots," etymology helps us use words accurately and avoid confusion. It can be the compass that guides us through the jungle of synonyms and homophones.</p>
+            </li>
+            <li>
+                <h2>Enriched Vocabulary:</h2>
+                <p>Learning etymology is like taking a linguistic archaeology tour, unearthing the layers of meaning buried within words. This can expand your vocabulary and enrich your understanding of language as a living, evolving entity.</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 39: Operational Definition -->
+    <section class="slide">
+        <h1>Operational Definition</h1>
+        <p>In science and research, how do we define concepts that aren't directly observable? This is where operational definitions step in.</p>
+        <h2>What Are Operational Definitions?</h2>
+        <p>Operational definitions ground abstract concepts in concrete, measurable actions. They outline <b>specific procedures or tests</b> to determine whether a term applies to a particular situation.</p>
+        <h2>Examples:</h2>
+        <ul>
+            <li><b>Hardness:</b> "Material A is harder than material B if and only if A scratches B when rubbed together."</li>
+            <li><b>Brain Activity:</b> "A person exhibits brain activity if and only if an electroencephalograph (EEG) shows oscillations when connected to their head."</li>
+            <li><b>Acidity:</b> "A solution is an acid if and only if litmus paper turns red when dipped into it."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 40: Significance of operational definitions -->
+    <section class="slide">
+        <h1>Significance of Operational Definitions</h1>
+        <ul>
+            <li>
+                <h2>Empirical Grounding:</h2>
+                <p>Operational definitions bridge the gap between theory and reality, enabling us to investigate and quantify abstract concepts through observation and experimentation.</p>
+            </li>
+            <li>
+                <h2>Shared Understanding:</h2>
+                <p>They establish a common language within scientific communities, ensuring everyone is measuring and interpreting concepts in a consistent manner.</p>
+            </li>
+        </ul>
+        <h2>Limitations:</h2>
+        <ul>
+            <li><b>Partial Picture:</b> They capture only a facet of a concept's full meaning. "Brain activity" is more than just EEG readings.</li>
+            <li><b>Scientific Bounds:</b> They often struggle outside scientific contexts. Concepts like "love," "respect," or "freedom" resist clear-cut operational definitions.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 41: Definition by Genus and Difference -->
+    <section class="slide">
+        <h1>Definition by Genus and Difference</h1>
+        <p>This is a method of defining terms by identifying a general class (<b>genus</b>) to which the term belongs and specifying a distinguishing quality (<b>difference</b>) that sets it apart.</p>
+        <h2>Examples:</h2>
+        <ul>
+            <li><b>Buck:</b> A buck is defined as a <b>male</b> (difference) <b>deer</b> (genus).</li>
+            <li><b>Calf:</b> A calf is defined as a <b>young</b> (difference) <b>cow</b> (genus).</li>
+        </ul>
+        <p>It's important to note that the specific difference is the attribute(s) that differentiate various species within a genus.</p>
+        <p>Definition by genus and difference is considered the <b>most effective approach</b> among intensional definitions for producing different types of definitions.</p>
+    </section>
+
+    <!-- Slide 42: Criteria for Lexical Definitions -->
+    <section class="slide">
+        <h1>Criteria for Lexical Definitions</h1>
+        <ol>
+            <li>A Lexical Definition Should Conform to the Standards of Proper Grammar.</li>
+            <li>A Lexical Definition Should Convey the Essential Meaning of the Word Being Defined.</li>
+            <li>A Lexical Definition Should Be neither Too Broad nor Too Narrow.</li>
+            <li>A Lexical Definition Should Avoid Circularity.</li>
+            <li>A Lexical Definition Should Not Be Negative When It Can Be Affirmative.</li>
+            <li>A Lexical Definition Should Avoid Figurative, Obscure, Vague, or Ambiguous Language.</li>
+            <li>A Lexical Definition Should Avoid Affective/slanted/loaded Terminology.</li>
+            <li>A Lexical Definition Should Indicate the Context to Which the Definiens Pertains.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 43: Rule 1: Proper Grammar -->
+    <section class="slide">
+        <h1>Rule 1: Conform to Proper Grammar</h1>
+        <h2>Importance:</h2>
+        <ul>
+            <li><b>Clarity and Consistency:</b> Proper grammar helps ensure clarity and consistency in your definition. A grammatically sound definition avoids ambiguity and misinterpretations.</li>
+            <li><b>Professionalism and Credibility:</b> In formal contexts, adhering to grammatical norms lends professionalism and credibility to your writing.</li>
+            <li><b>Universal Understanding:</b> Grammatical conventions provide a common language understood by a wider audience.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 44:  Grammatical Considerations -->
+    <section class="slide">
+        <h1>Essential Grammatical Considerations</h1>
+        <ul>
+            <li><b>Quotation Marks or Italics:</b> The definiendum (the word being defined) should be set off using quotation marks or italics.
+                <ul>
+                    <li>Example: <i>"Vacancy"</i> refers to an unoccupied position or space.</li>
+                </ul>
+            </li>
+            <li><b>Clear Genus and Differentia:</b> Both elements should be clearly stated and grammatically well-integrated.
+                <ul>
+                    <li>Example: A <i>"hurricane"</i> is a tropical cyclone (genus) characterized by sustained winds exceeding 74 miles per hour (differentia).</li>
+                </ul>
+            </li>
+            <li><b>Complete Sentence Structure:</b> The definition itself should be a complete sentence.
+                <ul>
+                    <li>Correct: <i>"Serendipity"</i> means the occurrence and development of events by chance in a happy or beneficial way.</li>
+                    <li>Incorrect: Serendipity is when good things happen to you by accident. (Missing genus, incomplete sentence)</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 45: Rule 2: Not Too Broad or Too Narrow -->
+    <section class="slide">
+        <h1>Rule 3: Avoid Being Too Broad or Too Narrow</h1>
+        <p>An ideal definition should be applicable to all and only the things being defined.</p>
+        <h2>Example of a definition that is too broad:</h2>
+        <ul>
+            <li><b>Definition:</b> An automobile is a vehicle with four wheels.</li>
+            <li>This definition is too broad because it includes vehicles such as golf carts and lawn mowers, which are not typically considered automobiles.</li>
+        </ul>
+        <h2>Example of a definition that is too narrow:</h2>
+        <ul>
+            <li><b>Definition:</b> A sibling is a brother.</li>
+            <li>This definition is too narrow because it fails to include sisters. Siblings encompass both brothers and sisters, so limiting the definition to only brothers excludes a significant portion of the category.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 46: Rule 3: Affirmative, Not Negative -->
+    <section class="slide">
+        <h1>Rule 5: Be Affirmative, Not Negative</h1>
+        <p>It is generally preferable to use an affirmative statement rather than a negative one.</p>
+        <p><b>Correct affirmative definition:</b> "Concord" means harmony.</p>
+        <p><b>Incorrect negative definition:</b> "Concord" means the absence of discord.</p>
+        <p>This negative definition is problematic because instead of directly stating what "concord" is, it defines it in terms of what it is not.</p>
+        <hr>
+        <h2>However, there are cases where negative definitions are appropriate:</h2>
+        <p>This is especially true for words that inherently convey a negative concept.</p>
+        <ul>
+            <li><b>Example:</b> "Bald" means lacking hair.</li>
+            <li><b>Example:</b> "Darkness" means the absence of light.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 47: Rule 4: Convey Essential Meaning -->
+    <section class="slide">
+        <h1>Rule 2: Convey the Essential Meaning</h1>
+        <h2>Why Essential Meaning Matters:</h2>
+        <ul>
+            <li>A definition that merely identifies a unique property might be technically correct but miss the bigger picture. It fails to convey the fundamental qualities that make something distinct and recognizable.</li>
+            <li>Grasping the essential meaning allows us to categorize, understand, and use words effectively.</li>
+        </ul>
+        <h2>How to Convey Essential Meaning:</h2>
+        <ul>
+            <li>Focus on the <b>core characteristics</b> that apply to <b>all members</b> of the category.</li>
+            <li><b>Poor example:</b> Defining a horse as “the animal ridden by Napoleon during the battle of Waterloo."</li>
+            <li><b>Better example:</b> Defining a "horse" as "a large, herbivorous mammal with four hooves, a mane and tail, and typically used for riding or pulling carts."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 48: Rule 5: Provide Context for Ambiguous Words -->
+    <section class="slide">
+        <h1>Rule 8: Provide a Context for Ambiguous Words</h1>
+        <p>To avoid confusion, a good definition needs to be specific. It should tell you exactly which meaning of the word applies in a particular situation.</p>
+        <h2>Examples:</h2>
+        <ul>
+            <li><b>"Order":</b>
+                <ul>
+                    <li>In a restaurant: "I'll have the chicken sandwich..."</li>
+                    <li>In a courtroom: "The judge called for order..."</li>
+                    <li>In a mathematical sense: "...arranged in ascending order."</li>
+                </ul>
+            </li>
+            <li><b>"Bank":</b>
+                <ul>
+                    <li>A financial institution: "I deposited my paycheck..."</li>
+                    <li>The edge of a river: "We sat on the bank of the river..."</li>
+                    <li>To rely on: "I'm banking on you to help..."</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 49: Rule 6: Avoid Slanted (Affective) Definitions -->
+    <section class="slide">
+        <h1>Rule 7: Avoid Slanted (Affective) Definitions</h1>
+        <p>Good definitions should be neutral and objective. They shouldn't be influenced by your personal opinions or feelings about the word being defined.</p>
+        <h2>How to avoid slanted definitions:</h2>
+        <ul>
+            <li>Stick to the facts.</li>
+            <li>Avoid loaded language like "terrible," "amazing," or "dangerous."</li>
+            <li>Present different perspectives if the word is controversial.</li>
+            <li>Focus on objective qualities: features, characteristics, or functions.</li>
+        </ul>
+        <h2>Examples:</h2>
+        <ul>
+            <li><b>Original:</b> "Patriotism is blind loyalty to your country, no matter what."</li>
+            <li><b>Rewritten:</b> "Patriotism is a strong feeling of love and devotion to one's country, often accompanied by a sense of national identity and shared values."</li>
+            <li><b>Original:</b> "Bureaucracy is a maze of endless paperwork and frustrating delays."</li>
+            <li><b>Rewritten:</b> "Bureaucracy is a system of administrative procedures used to manage the affairs of a government or organization..."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 50: Rule 7: Avoid Figurative Language -->
+    <section class="slide">
+        <h1>Rule 6: Avoid Figurative Definitions</h1>
+        <p>When explaining what a word means, prioritize <b>clarity and accuracy</b> over figurative language. While metaphors and similes can be creative, they can also introduce ambiguity.</p>
+        <h2>Instead of:</h2>
+        <ul>
+            <li>Politics is a dirty game. (Metaphorical and subjective)</li>
+            <li>Life is a roller coaster. (Clichéd and lacking specificity)</li>
+            <li>Love is a battlefield. (Figurative and open to interpretation)</li>
+        </ul>
+        <h2>Try:</h2>
+        <ul>
+            <li>Politics is the process by which groups of people make decisions.</li>
+            <li>Life is a series of experiences that includes both challenges and joys.</li>
+            <li>Love is a strong feeling of affection and care for another person.</li>
+        </ul>
+        <p><b>Remember:</b> Simple and accurate definitions are more likely to be understood and remembered.</p>
+    </section>
+
+    <!-- Slide 51: Rule 8: Avoid Obscure Language -->
+    <section class="slide">
+        <h1>Rule 6: Avoid Needlessly Obscure Definitions</h1>
+        <p>A good definition should <b>illuminate, not obfuscate</b>. Avoid overwhelming your definition with jargon or overly academic language.</p>
+        <h2>Instead of:</h2>
+        <p>Mouse means a quadrupedal mammalian of any of the more diminutive species of the genus Mus of the order Rodentia. (Technical jargon, overwhelming for most)</p>
+        <h2>Try:</h2>
+        <p>A mouse is a small, furry animal with four legs and a long tail. (Simple, concise, and conveys the essence)</p>
+        <hr>
+        <h2>Other examples:</h2>
+        <ul>
+            <li>Instead of a complex definition of "photosynthesis," try "Plants use sunlight to make their own food from water and air."</li>
+            <li>Instead of a complex definition of "gravity," try "Gravity is what makes things fall down and planets stay in orbit."</li>
+        </ul>
+    </section>
+    
+    <!-- Slide 52: Rule 8: Avoid Circular Definitions -->
+    <section class="slide">
+        <h1>Rule 4: Avoid Circular Definitions</h1>
+        <p><b>Don't define a word using itself: it's like chasing your tail!</b></p>
+        <p>Circular definitions are like mirrors facing each other - you keep seeing the same reflection without any explanation. They use the term you're trying to define within the definition itself.</p>
+        <h2>Instead of:</h2>
+        <ul>
+            <li><b>Astrophysicist:</b> Someone who studies astrophysics.</li>
+            <li><b>Chemist:</b> A person who studies chemistry.</li>
+            <li><b>Artist:</b> Someone who creates art.</li>
+        </ul>
+        <h2>Try:</h2>
+        <ul>
+            <li><b>Astrophysicist:</b> A scientist who uses physics and mathematics to understand the universe, stars, and other celestial objects.</li>
+            <li><b>Chemist:</b> A professional who studies the composition, properties, and reactions of matter.</li>
+            <li><b>Artist:</b> A creative individual who uses various mediums to express ideas, emotions, and experiences.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 53: Matching Exercise -->
+    <section class="slide">
+        <h1>Match column A with column B</h1>
+        <div class="matching-container">
+            <div class="matching-column">
+                <h2>COLUMN A</h2>
+                <ol>
+                    <li>"Democracy" means a glorious system of government where the power of the people reigns supreme, ensuring liberty and justice for all.</li>
+                    <li>"Quantum mechanics" means a realm where reality pirouettes on the precipice of the indeterminate...</li>
+                    <li>"Time" is a relentless river that carries us through the currents of life...</li>
+                    <li>"Truth" means conformity with fact or reality.</li>
+                    <li>"Power" means having control or influence.</li>
+                    <li>Serendipity is when good things happen to you by accident.</li>
+                </ol>
+            </div>
+            <div class="matching-column">
+                <h2>COLUMN B</h2>
+                <ul style="list-style-type: upper-alpha;">
+                    <li>Too broad</li>
+                    <li>Failed to indicate the context</li>
+                    <li>Too narrow</li>
+                    <li>Vague</li>
+                    <li>Ambiguous</li>
+                    <li>Affective</li>
+                    <li>Figurative</li>
+                    <li>Bad grammar</li>
+                    <li>Circular</li>
+                    <li>Obscure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 54: References -->
+<section class="slide">
+    <h1>References</h1>
+    <h2>Books</h2>
+    <ol>
+        <li>"Introduction to Logic" by Irving M. Copi and Carl Cohen</li>
+        <li>"Philosophy of Language: A Contemporary Introduction" by William G. Lycan</li>
+        <li>"Meaning and Argument: An Introduction to Logic Through Language" by Ernest Lepore and Sam Cumming</li>
+    </ol>
+    <h2>Websites</h2>
+    <ol>
+        <li><b>Stanford Encyclopedia of Philosophy - Logic:</b> This online encyclopedia provides in-depth articles on logic and meaning. (<a href="https://plato.stanford.edu" target="_blank">plato.stanford.edu</a>)</li>
+        <li><b>Internet Encyclopedia of Philosophy - Philosophy of Language:</b> Offers articles specifically focused on the philosophy of language. (<a href="https://iep.utm.edu" target="_blank">iep.utm.edu</a>)</li>
+        <li><b>Merriam-Webster Dictionary - Definition Techniques:</b> Provides insights into various techniques of definition. (<a href="https://merriam-webster.com" target="_blank">merriam-webster.com</a>)</li>
+    </ol>
+    <div class="button-container">
+        <a href="chapter_3phil1009.pdf" download class="download-btn">Download Chapter PDF</a>
+    </div>
+</section>
+
+</div>
+
+<script>
+    // --- JavaScript for Keyboard Navigation and Setup ---
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    function setupSlides() {
+        slides.forEach((slide, index) => {
+            const slideNumberEl = document.createElement('div');
+            slideNumberEl.className = 'slide-number';
+            slideNumberEl.textContent = `${index + 1} / ${totalSlides}`;
+            slide.appendChild(slideNumberEl);
+            slide.setAttribute('tabindex', '-1');
+            if (index === 0) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.add('next');
+            }
+        });
+        if (slides.length > 0) {
+            slides[0].focus();
+        }
+    }
+
+    function navigateToSlide(newIndex) {
+        if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentSlide) return;
+        const oldIndex = currentSlide;
+        const direction = newIndex > oldIndex ? 'right' : 'left';
+        
+        slides[newIndex].classList.remove('next', 'previous');
+        slides[newIndex].classList.add('active');
+
+        slides[oldIndex].classList.remove('active');
+        slides[oldIndex].classList.add(direction === 'right' ? 'previous' : 'next');
+        
+        currentSlide = newIndex;
+        slides[newIndex].focus({ preventScroll: true });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigateToSlide(currentSlide + 1);
+        } else if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            navigateToSlide(currentSlide - 1);
+        }
+    });
+
+    setupSlides();
+</script>
+
+</body>
+</html>

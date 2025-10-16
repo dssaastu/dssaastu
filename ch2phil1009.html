@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Two: Basic Concepts in Argument</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+        /* --- Basic Reset & Body Setup --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* --- Presentation Container --- */
+        .presentation-container {
+            width: 100vw;
+            height: 100dvh; /* Use dynamic height to account for toolbars */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Slide Container Styling --- */
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 5% 8%; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start;
+            overflow-y: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.6s ease-in-out;
+            font-size: 1.1em; /* Base font size */
+        }
+        
+        .slide:focus {
+            outline: none;
+        }
+
+        /* --- Slide Animation States --- */
+        .slide.active { transform: translateX(0); z-index: 1; }
+        .slide.previous { transform: translateX(-100%); z-index: 0; }
+        .slide.next { transform: translateX(100%); z-index: 0; }
+
+        /* --- Typography and Content Styling --- */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #003366;
+            font-size: 2.8em;
+            margin: 0 0 1em 0;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #003366;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: 1.8em;
+            margin-top: 1.2em;
+            margin-bottom: 0.8em;
+        }
+        
+        /* Specific styling for the main title slide */
+        .title-slide {
+            align-items: center;
+            justify-content: center; /* Center the main title slide */
+        }
+        .title-slide h1 {
+            font-size: 4em;
+            text-align: center;
+            border-bottom: none;
+            color: #4B0082; /* Purple color from image */
+        }
+        .title-slide .author {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+            font-size: 1.2em;
+        }
+        
+        p, li {
+            line-height: 1.6;
+            max-width: 950px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 1em;
+        }
+        
+        b, strong {
+            font-weight: 700;
+        }
+
+        ul { 
+            padding-left: 30px; 
+            list-style-type: square;
+            width: 100%;
+        }
+        ul ul {
+            list-style-type: disc;
+            margin-top: 10px;
+        }
+        ol {
+            width: 100%;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: #333;
+            border-left: 3px solid #003366;
+            padding-left: 20px;
+            margin: 20px 40px;
+        }
+        
+        /* --- NEW: Table Styling --- */
+        .data-table {
+            width: 80%;
+            margin: 2em auto;
+            border-collapse: collapse;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .data-table th, .data-table td {
+            border: 2px solid #333;
+            padding: 12px;
+        }
+        .data-table th {
+            background-color: #f2f2f2;
+            font-weight: 700;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #555;
+            z-index: 2;
+        }
+        
+        .button-container {
+          display: flex;
+          justify-content: flex-start;
+          margin-top: 2em;
+        }
+        .download-btn {
+          background-color: #003366;
+          color: white;
+          padding: 12px 24px;
+          text-decoration: none;
+          font-size: 0.8em;
+          font-weight: bold;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+          border: none;
+          cursor: pointer;
+        }
+        .download-btn:hover { background-color: #0055A4; }
+
+        @media (max-width: 768px) {
+            .slide { font-size: 1em; padding: 6% 7%; }
+            h1, .title-slide h1 { font-size: 2.2em; }
+            h2 { font-size: 1.5em; }
+            .slide-number { bottom: 15px; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+
+    <!-- Slide 1 -->
+    <section class="slide title-slide">
+        <div>
+            <h1>BASIC CONCEPTS IN ARGUMENT</h1>
+            <p class="author">chapter two</p>
+        </div>
+    </section>
+    
+    <!-- Slide 2 (MODIFIED) -->
+    <section class="slide">
+        <h1 style="color: #4CAF50; border-color: #4CAF50;">CONTENTS</h1>
+        <ul style="font-size: 0.8em; list-style-type: none; padding-left: 5%;">
+            <li style="margin-bottom: 0.2em;"><h2>DEFINING ARGUMENT</h2></li>
+            <li style="margin-bottom: 0.2em;"><h2>NONARGUMENTATIVE PASSAGES</h2></li>
+            <li style="margin-bottom: 0.2em;"><h2>INDUCTION AND DEDUCTION</h2></li>
+            <li><h2>EVALUATION OF ARGUMENT</h2></li>
+        </ul>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide">
+        <h1>Introduction</h1>
+        <ul>
+            <li><p>Everyone thinks. Everyone reasons. Everyone argues. And everyone is subjected to the reasoning and arguing of others. We are bombarded daily with reasoning from many sources: books, speeches, radio, TV, newspapers, employers, friends, and family.</p></li>
+            <li><p>Some people think well, reason well, and argue well. Some do not. The ability to think, reason, and argue well is partly a matter of natural gifts. But whatever our natural gifts, they can be refined and sharpened. And <b>the study of logic is one of the best ways to refine one's natural ability to reason and argue.</b></p></li>
+            <li><p>Through the study of logic, one learns strategies for thinking well, common errors in reasoning to avoid, and effective techniques for evaluating arguments.</p></li>
+        </ul>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide">
+        <h1>What is Logic?</h1>
+        <ul>
+            <li><p>But what is logic? Roughly speaking, logic is the study of methods for evaluating arguments. More precisely, logic is the study of methods for evaluating whether the premises of an argument adequately support (or provide good evidence for) its conclusion.</p></li>
+            <li><p>To better grasp what logic is, we need to understand the key concepts involved in this definition: <b>argument</b>, <b>conclusion</b>, <b>premise</b>, and <b>support</b>.</p></li>
+        </ul>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide">
+        <h1>WHAT IS AN ARGUMENT?</h1>
+        <ul>
+            <li><p>Arguments are composed of one or more premises and a conclusion.</p>
+                <ul>
+                    <li><b>Premises</b> are statements in an argument offered as evidence or reasons why we should accept another statement, the conclusion.</li>
+                    <li><b>Conclusion</b> is the statement in an argument that the premises are intended to prove or support.</li>
+                </ul>
+            </li>
+            <li><p>So, an argument is a group of statements, one or more of which (called the premises) are intended to prove or support another statement (called the conclusion).</p>
+                <ul>
+                    <li>A <b>statement</b> is a sentence that can be viewed as either true or false.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Slide 6 -->
+    <section class="slide">
+        <h1>Five things should be noted about statements:</h1>
+        <p><b>First,</b> a sentence may be used to express more than one statement. For example, the grammatical sentence <i>Roses are red and violets are blue</i></p>
+        <p><b>Second,</b> a statement can sometimes be expressed as a phrase or an incomplete clause, rather than as a complete declarative sentence. Consider the sentence:</p>
+        <blockquote>"With mortgage interest rates at thirty-year lows, you owe it to yourself to consider refinancing your home." (radio ad)</blockquote>
+        <ul>
+            <li>This sentence, despite lacking a complete declarative structure, conveys a statement urging the listener to consider refinancing their home. It begins with a subordinate clause, "With mortgage interest rates at thirty-year lows," which sets the context or condition for the statement that follows.</li>
+            <li>The main statement is expressed in the form of an imperative phrase, "you owe it to yourself to consider refinancing your home." Although it uses an imperative construction, it functions as a statement by presenting the speaker's viewpoint or advice.</li>
+            <li>This example demonstrates how statements can be expressed in various forms, including phrases or incomplete clauses, while still conveying a clear message or proposition.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 7 -->
+    <section class="slide">
+        <h1>Notes About Statements (Cont.)</h1>
+        <p><b>Third,</b> not all sentences are statements. For example, questions, proposals, exclamations, and suggestions are not statements.</p>
+        <p><b>Fourth,</b> statements can be subjective matters of personal experience and objectively verifiable matters of fact:</p>
+        <ul>
+            <li><b>Subjective Statement:</b> "I believe that chocolate ice cream is the most delicious flavor."
+                <ul><li>This statement expresses a subjective opinion about personal taste preferences. It is based on the individual's personal experience and perception.</li></ul>
+            </li>
+            <li><b>Objective Statement:</b> "The Earth revolves around the Sun."
+                <ul><li>This statement represents an objectively verifiable matter of fact. It is based on scientific observations, evidence, and the heliocentric model of the solar system.</li></ul>
+            </li>
+        </ul>
+        <p>It is important to recognize the distinction between subjective statements that are influenced by personal perspectives and objective statements that can be supported or refuted through evidence.</p>
+    </section>
+
+    <!-- Slide 8 -->
+    <section class="slide">
+        <h1>Notes About Statements (Cont.)</h1>
+        <p><b>Fifth,</b> Some sentences that look like nonstatements are actually statements and can be used in arguments.</p>
+        <ul>
+            <li><b>Example:</b> "Alyssa, you should quit smoking. Don't you realize how bad that is for your health?"</li>
+            <li>Although this sentence appears to be a suggestion or command, it can be understood as a statement when used in an argument. The speaker is presenting a premise or claim, asserting that Alyssa should quit smoking because it is detrimental to her health.</li>
+            <li>The sentence functions as an argument by presenting a reason and appealing to the consequences of smoking on Alyssa's health. It implies that quitting smoking aligns with what is considered beneficial or morally right.</li>
+            <li>In general, sentences that resemble commands or suggestions can often be transformed into statements by adding a premise or claim and providing reasoning or evidence to support the intended argument.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 9 -->
+    <section class="slide">
+        <h1>IDENTIFYING PREMISES AND CONCLUSIONS</h1>
+        <ul>
+            <li><p>In identifying premises and conclusions, we are often helped by <b>indicator words</b>.</p></li>
+            <li><p><b>Indicator words</b> are words or phrases that provide clues that premises or conclusions are being put forward.</p></li>
+            <li><p><b>Premise indicators</b> indicate that premises are being offered.</p></li>
+            <li><p><b>Conclusion indicators</b> indicate that conclusions are being offered.</p></li>
+        </ul>
+    </section>
+
+    <!-- Slide 10 -->
+    <section class="slide">
+        <h1 style="color: #FF5722; border-color: #FF5722;">Premise Indicators</h1>
+        <div style="display: flex; width: 100%; justify-content: space-around;">
+            <ul>
+                <li>Since</li>
+                <li>because</li>
+                <li>for</li>
+                <li>given that</li>
+                <li>seeing that</li>
+                <li>considering that</li>
+                <li>inasmuch as</li>
+                <li>as</li>
+            </ul>
+            <ul>
+                <li>in view of the fact that</li>
+                <li>as indicated by</li>
+                <li>judging from</li>
+                <li>on account of</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 11 -->
+    <section class="slide">
+        <h1 style="color: #FF5722; border-color: #FF5722;">Conclusion Indicators</h1>
+        <div style="display: flex; width: 100%; justify-content: space-around;">
+            <ul>
+                <li>Therefore</li>
+                <li>thus</li>
+                <li>Hence</li>
+                <li>consequently</li>
+                <li>So</li>
+                <li>accordingly</li>
+                <li>it follows that</li>
+                <li>for this reason</li>
+                <li>that is why</li>
+            </ul>
+            <ul>
+                <li>which shows that</li>
+                <li>wherefore</li>
+                <li>this implies that</li>
+                <li>as a result</li>
+                <li>this suggests that</li>
+                <li>this being so</li>
+                <li>we may infer that</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 12 -->
+    <section class="slide">
+        <h1>A Note on Indicators</h1>
+        <p><b>Note:</b> the existence of indicators can never be a guarantee for a sentence to be premise or conclusion of an argument. Consider the following examples:</p>
+        <ul>
+            <li>I haven't seen you <b>since</b> high school.</li>
+            <li>You've had that jacket <b>for</b> as long as I've known you.</li>
+            <li><b>Thus</b> far everything has been great.</li>
+            <li>It was <b>so</b> cold that even the ski resorts shut down.</li>
+            <li>I wouldn't mind <b>seeing that</b> movie again.</li>
+            <li>There is water on the floor <b>because</b> the sink overflowed.</li>
+        </ul>
+        <p>It's so important to consider the context when determining the meaning of an expression.</p>
+    </section>
+
+    <!-- Slide 13 -->
+    <section class="slide">
+        <h1>Arguments Without Indicators</h1>
+        <p>Sometimes arguments may contain no indicator words. Consider the example below:</p>
+        <blockquote>"Achieving financial success is not solely determined by individual effort. There are systemic inequalities, economic downturns, and unpredictable market forces that can hinder one's ability to succeed. Additionally, personal circumstances such as family background, access to education, and social networks also play a significant role."</blockquote>
+        <ul>
+            <li>In this example, the speaker is making an argument that highlights external factors and systemic influences that can impact an individual's ability to achieve financial success.</li>
+            <li>It's important to note that arguments without explicit indicator words can still convey a perspective that diminishes or questions individual responsibility by emphasizing the influence of external and systemic factors.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 14 -->
+    <section class="slide">
+        <h1>How can we find the conclusion when there are no indicator words?</h1>
+        <ul>
+            <li>Find the main issue and ask yourself what position the writer or speaker is taking on that issue.</li>
+            <li>Look at the beginning or end of the passage; the conclusion is often (but not always) found in one of those places.</li>
+            <li>Ask yourself, "What is the writer or speaker trying to prove?" That will be the conclusion.</li>
+            <li>Try putting the word <b>therefore</b> before one of the statements. If it fits, that statement is probably the conclusion.</li>
+            <li>Try the "because" trick.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 15 -->
+    <section class="slide">
+        <h1 style="color: #FF5722; border-color: #FF5722;">WHAT IS NOT AN ARGUMENT?</h1>
+        <ul>
+            <li>To understand arguments thoroughly, it is crucial to understand what an argument is not.</li>
+            <li>Five types of non-argumentative discourse that are sometimes confused with arguments:
+                <ul>
+                    <li>Reports</li>
+                    <li>Unsupported assertions</li>
+                    <li>Loosely associated statements</li>
+                    <li>Expository passages</li>
+                    <li>Conditional statements</li>
+                    <li>Illustrations</li>
+                    <li>Explanations</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 16 -->
+    <section class="slide">
+        <h1>Non-Arguments: Reports</h1>
+        <p>A report is a set of statements intended to provide information about a situation, topic, or event. A report may contain many informational statements without containing any arguments. For instance:</p>
+        <blockquote><b>Example:</b> A wildlife conservation report states that the population of endangered tigers has declined by 95% over the past century due to habitat loss and illegal poaching. Furthermore, it emphasizes the importance of implementing strict conservation measures and raising awareness to protect the remaining tiger population.</blockquote>
+        <p>This passage is a report as it presents informational statements about the decline in tiger populations. While it contains recommendations, it does not feature explicit arguments with premises and conclusions. Instead, it primarily aims to inform the reader.</p>
+    </section>
+    
+    <!-- Slide 17 -->
+    <section class="slide">
+        <h1>Non-Arguments: Unsupported Assertions</h1>
+        <p>Unsupported assertions are statements about what a speaker or writer happens to believe. Such statements can be true or false, but they are parts of arguments only if the writer claims that they follow from, or support, other claims.</p>
+        <blockquote><b>Example:</b> I believe that it is not dying that people are afraid of. Something else, something more unsettling and more tragic than dying frightens us. We are afraid of never having lived, of coming to the end of our days with the sense that we were never really alive, that we never figured out what life was for.</blockquote>
+        <p>While these assertions convey the speaker's perspective, they do not present logical reasoning, premises, or evidence to support the claims. Therefore, they remain unsupported assertions.</p>
+    </section>
+
+    <!-- Slide 18 -->
+    <section class="slide">
+        <h1>Non-Arguments: Loosely Associated Statements</h1>
+        <ul>
+            <li>Loosely associated statements refer to a collection of statements that are loosely connected in terms of their topic or subject matter. These statements may share a common theme, but they <b>lack a clear logical or argumentative structure.</b></li>
+            <li>They often involve expressing personal opinions, sharing unrelated experiences, or presenting ideas without a coherent line of reasoning.</li>
+            <li>These statements may be used in casual conversations or storytelling. However, they do not form a cohesive argument or provide a structured line of reasoning to persuade others.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 19 -->
+    <section class="slide">
+        <h1>Example: Loosely Associated Statements</h1>
+        <ul>
+            <li><b>Statement 1:</b> I enjoy hiking in the mountains. The fresh air and beautiful views are invigorating.</li>
+            <li><b>Statement 2:</b> My favorite color is blue. It reminds me of the ocean and brings a sense of calm.</li>
+            <li><b>Statement 3:</b> Yesterday, I tried a new recipe. It was a spicy curry dish that had a unique blend of flavors.</li>
+        </ul>
+        <p>In this example, the statements are loosely associated as they touch upon different topics without forming a coherent argument. While they may share a general theme of personal preferences, they do not present a logical progression or provide premises to support a conclusion.</p>
+    </section>
+    
+    <!-- Slide 20 -->
+    <section class="slide">
+        <h1>Non-Arguments: Expository Passage</h1>
+        <p>Consider the example:</p>
+        <blockquote>"The Industrial Revolution, which took place from the late 18th to the early 19th century, brought about significant changes in society. It marked a shift from agrarian and manual labor-based economies to industrialized and machine-driven production... The Industrial Revolution had profound social, economic, and environmental impacts, transforming the way people lived and worked."</blockquote>
+        <ul>
+            <li>This passage provides an exposition of the Industrial Revolution, presenting factual information about its defining features and consequences. It aims to <b>add upon and expand the topic sentence.</b></li>
+            <li>The passage does not present a specific claim that needs to be supported by evidence. Instead, it focuses on presenting information and providing an objective account.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 21 -->
+    <section class="slide">
+        <h1>Non-Arguments: Conditional Statements</h1>
+        <ul>
+            <li>A conditional statement is an <b>if-then</b> statement. Here are examples:
+                <ul>
+                    <li>If it rains, then the picnic will be canceled.</li>
+                    <li>You must speak French if you grew up in Quebec.</li>
+                    <li>If at first you don't succeed, don't try skydiving.</li>
+                </ul>
+            </li>
+            <li>Conditional statements are made up of two basic parts. The part following the word <b>if</b> is called the <b>antecedent</b>. The part following the word <b>then</b> is called the <b>consequent</b>.</li>
+            <li>Conditional statements need not be explicitly in if-then form. For example:
+                <ul>
+                    <li>Should it rain, the picnic will be canceled.</li>
+                    <li>Peter will graduate, provided he passes Critical Thinking.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Slide 22 -->
+    <section class="slide">
+        <h1>Conditional Statements and Arguments</h1>
+        <p>The relation between conditional statements and arguments may now be summarized as follows:</p>
+        <ul>
+            <li>A single conditional statement is <b>not</b> an argument.</li>
+            <li>A conditional statement may serve as either the <b>premise</b> or the <b>conclusion</b> (or both) of an argument.</li>
+            <li>The inferential content of a conditional statement may be <b>re-expressed</b> to form an argument.</li>
+        </ul>
+        <p><small><b>Note:</b> a conditional statement can be re-expressed to form an argument if and only if the antecedent of the conditional is only a necessary condition for its consequent.</small></p>
+    </section>
+
+    <!-- Slide 23 -->
+    <section class="slide">
+        <h1>Conditional Statements: Examples</h1>
+        <ol>
+            <li><b>A single conditional statement is not an argument:</b>
+                <p><i>Example: "If it rains, I will bring an umbrella."</i> This expresses a hypothetical situation and its consequence, but lacks additional premises or conclusions to form a complete argument.</p>
+            </li>
+            <li><b>A conditional statement may serve as a premise or conclusion:</b>
+                <p><i>Example: Premise: "If you study consistently, you will perform well on the exam." Conclusion: "Therefore, you should study consistently."</i> Here, the conditional statement serves as the premise.</p>
+            </li>
+            <li><b>The inferential content may be re-expressed to form an argument:</b>
+                <p><i>Example: Conditional Statement: "If you exercise regularly, you will improve your fitness." Re-expressed Argument: "Since regular exercise leads to improved fitness, it is advisable to incorporate exercise into your routine."</i></p>
+            </li>
+        </ol>
+    </section>
+    
+    <!-- Slide 24 -->
+    <section class="slide">
+        <h1>Necessary and Sufficient Conditions</h1>
+        <ul>
+            <li>A condition <b>A</b> is said to be <b>necessary</b> for a condition <b>B</b>, if (and only if) the falsity of <b>A</b> guarantees the falsity of <b>B</b>.</li>
+            <li>A condition <b>A</b> is said to be <b>sufficient</b> for a condition <b>B</b>, if (and only if) the truth of <b>A</b> guarantees the truth of <b>B</b>.</li>
+            <li>The relationship between the two conditions must be exactly one of the following four possibilities:
+                <ol>
+                    <li>The first is a necessary, but not a sufficient, condition for the second; or</li>
+                    <li>The first is a sufficient, but not a necessary, condition for the second; or</li>
+                    <li>The first is both a necessary and a sufficient condition for the second; or</li>
+                    <li>The first is neither a necessary nor a sufficient condition for the second.</li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 25 -->
+    <section class="slide">
+        <h1>Examples: Necessary and Sufficient Conditions</h1>
+        <ul>
+            <li><b>a) Necessary, but not sufficient:</b>
+                <p><i>Example: "Having a driver's license is necessary, but not sufficient, for operating a commercial vehicle."</i> (You need it, but you also need other qualifications).</p>
+            </li>
+            <li><b>b) Sufficient, but not necessary:</b>
+                <p><i>Example: "Owning a smartphone is sufficient, but not necessary, for accessing the internet."</i> (It works, but other devices like computers also work).</p>
+            </li>
+            <li><b>c) Both necessary and sufficient:</b>
+                <p><i>Example: "Today's being neither Saturday nor Sunday is both a necessary and a sufficient condition for today's being a weekday."</i></p>
+            </li>
+            <li><b>d) Neither necessary nor sufficient:</b>
+                <p><i>Example: "Wearing sunglasses is neither a necessary nor a sufficient condition for rain."</i></li>
+        </ul>
+    </section>
+    
+    <!-- Slide 26 -->
+    <section class="slide">
+        <h1>Exercise</h1>
+        <h2>Identify which conditions best fits in the following relations:</h2>
+        <ol style="font-size: 1.2em;">
+            <li>Being over 18 years old is a ________ condition to vote in an election.</li>
+            <li>Having a valid driver's license is a ________ condition for legally driving a car.</li>
+            <li>Wearing a hat is ________ condition for it to rain.</li>
+            <li>Passing all required courses is a ________ condition for graduation.</li>
+            <li>Having a valid passport is a ________ condition for traveling internationally.</li>
+            <li>Owning a guitar is ________ condition for being a musician.</li>
+            <li>Eating a balanced diet is ________ condition for maintaining good health.</li>
+        </ol>
+    </section>
+    
+    <!-- Slide 27 -->
+    <section class="slide">
+        <h1>Non-Arguments: Illustrations</h1>
+        <p>Illustration is the use of examples to make ideas more concrete and to make generalizations more specific and detailed.</p>
+        <p><b>Claim:</b> Regular exercise contributes to overall physical well-being.</p>
+        <p><b>Illustration:</b> For instance, engaging in aerobic exercises such as jogging, cycling, or swimming can improve cardiovascular health... Furthermore, incorporating strength training exercises, such as weightlifting... helps build muscle strength and bone density...</p>
+        <p>In this example, the illustration provides tangible instances that support the claim and make it more relatable and understandable to the reader.</p>
+    </section>
+
+    <!-- Slide 28 -->
+    <section class="slide">
+        <h1>Non-Arguments: Explanations</h1>
+        <p>Consider the following two statements:</p>
+        <ul>
+            <li>Capital punishment should be abolished <b>because</b> innocent people may be mistakenly executed.</li>
+            <li>Titanic sank <b>because</b> it struck an iceberg.</li>
+        </ul>
+        <p>In the first example, the clause that precedes "because" is what the author is trying to <b>convince</b> us of (an argument). In the second, the clause that precedes "because" is what the author wants to <b>explain</b>. One indicator of the difference is that "Capital punishment should be abolished" is a controversial claim, whereas "Titanic sank" is an accepted fact that no one would need to argue for.</p>
+    </section>
+
+    <!-- Slide 29 -->
+    <section class="slide">
+        <h1>Explanations vs. Arguments</h1>
+        <ul>
+            <li>Sometimes we will have different explanations for why something is the case. If we are engaging in opting for which explanation outweighs the other, we are making an argument.</li>
+            <li><b>Example:</b>
+                <ul>
+                    <li><b>Statement:</b> The car won't start.</li>
+                    <li><b>Explanation 1:</b> The car won't start because the battery is dead.</li>
+                    <li><b>Explanation 2:</b> The car won't start because there is a problem with the ignition system.</li>
+                    <li><b>Argument:</b> The car won't start, and the explanation that outweighs the other is that the battery is dead.</li>
+                </ul>
+            </li>
+            <li>To support the argument, additional evidence or reason may be presented (e.g., checking the battery).</li>
+        </ul>
+    </section>
+    
+    <!-- Slide 30 -->
+    <section class="slide">
+        <h1>Explanation as Conclusion</h1>
+        <ul>
+            <li>Sometimes an explanation can itself be the conclusion of an argument.</li>
+            <li><b>Consider the example:</b>
+                <ul>
+                    <li><b>Premise 1:</b> The ground is wet.</li>
+                    <li><b>Premise 2:</b> It has been raining heavily.</li>
+                    <li><b>Conclusion (Explanation):</b> Therefore, the wet ground is a result of the heavy rainfall.</li>
+                </ul>
+            </li>
+            <li>In this example, the conclusion itself serves as an explanation. The explanation is derived from the premises and serves as the conclusion of the argument.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 31 -->
+    <section class="slide">
+        <h1>Distinguishing Arguments from Explanations</h1>
+        <ul>
+            <li>An <b>explanation</b> tries to show <b>why</b> something is the case, not to prove <b>that</b> it is the case.</li>
+            <li>Explanations have two parts. The statement that is explained is the <b>explanandum</b>. The statement that does the explaining is the <b>explanans</b>.</li>
+            <li>In everyday speech, we often use "argument" and "explanation" almost interchangeably. How then does one distinguish arguments from explanations? There are <b>four basic tests</b>.</li>
+        </ul>
+    </section>
+    
+    <!-- Slide 32 -->
+    <section class="slide">
+        <h1>Four Tests to Distinguish</h1>
+        <h2>The Common-Knowledge Test</h2>
+        <p>Is the statement that the passage seeks to prove or explain a matter of common knowledge? If it is, the passage is probably an explanation rather than an argument. (There's usually little point in trying to prove something that is already a well-known fact.)</p>
+        
+        <h2>The Past-Event Test</h2>
+        <p>Is the statement that the passage is seeking to prove or explain an event that occurred in the past? If so, the passage is probably an explanation rather than an argument because it is much more common to try to explain <b>why</b> past events have occurred rather than to prove <b>that</b> they occurred.</p>
+    </section>
+    
+    <!-- Slide 33 -->
+    <section class="slide">
+        <h1>Four Tests to Distinguish (Cont.)</h1>
+        <h2>The Author's Intent Test</h2>
+        <p>Is it the speaker's or writer's intent to prove or establish that something is the case—that is, to provide reasons or evidence for accepting a claim as true? Or is it his intent to explain why something is the case? If the former, the passage is an argument; if the latter, the passage is an explanation.</p>
+        
+        <h2>The Principle of Charity Test</h2>
+        <p>The principle of charity requires that we always interpret unclear passages generously. We never interpret a passage as a bad argument when the evidence reasonably permits us to interpret it as not an argument at all. This test often proves helpful when the other tests yield no clear answer.</p>
+    </section>
+    
+    <!-- Slide 34 -->
+    <section class="slide">
+        <h1 style="color: #FF5722; border-color: #FF5722;">DEDUCTION AND INDUCTION</h1>
+        <ul>
+            <li>Before we can effectively evaluate an argument, we need to understand what kind of argument is being offered. Traditionally, arguments have been divided into two types: <b>deductive arguments</b> and <b>inductive arguments</b>.</li>
+            <li>It is often said that the difference between deduction and induction is that deduction moves from general premises to particular conclusions, whereas induction moves from particular premises to general conclusions. That, however, is a <b>misconception</b>.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 35 -->
+    <section class="slide">
+        <h1>Misconception Example 1</h1>
+        <h2>Deductive argument from particular to general:</h2>
+        <ul>
+            <li><b>Particular Premise 1:</b> Every time I eat peanuts, I have an allergic reaction.</li>
+            <li><b>Particular Premise 2:</b> Every time my friend eats peanuts, they have an allergic reaction.</li>
+            <li><b>Particular Premise 3:</b> Every time my cousin eats peanuts, they have an allergic reaction.</li>
+            <li><b>Conclusion:</b> Therefore, it can be concluded that people who are allergic to peanuts will have an allergic reaction when they consume peanuts.</li>
+        </ul>
+        <p>This is presented as an example of deduction, but relies on generalizing from specific instances, which is characteristic of induction.</p>
+    </section>
+
+    <!-- Slide 36 -->
+    <section class="slide">
+        <h1>Deductive Argument Forms</h1>
+        <h2>General premises to a general conclusion:</h2>
+        <ul>
+            <li><b>General Premise 1:</b> The majority of people who exercise regularly have better physical health.</li>
+            <li><b>General Premise 2:</b> The majority of people who eat a balanced diet have better physical health.</li>
+            <li><b>General Conclusion:</b> Therefore, the majority of people who exercise regularly and eat a balanced diet have better physical health.</li>
+        </ul>
+        <p>The deductive argument combines these general premises to draw a general conclusion derived from the trend observed in both premises.</p>
+    </section>
+    
+    <!-- Slide 37 -->
+    <section class="slide">
+        <h1>Deductive Argument Forms</h1>
+        <h2>Particular to particular:</h2>
+        <h3>Example 1</h3>
+        <ul>
+            <li><b>Particular Premise 1:</b> Every time I press the power button on my computer, it turns on.</li>
+            <li><b>Particular Premise 2:</b> I just pressed the power button on my computer.</li>
+            <li><b>Particular Conclusion:</b> Therefore, my computer has turned on.</li>
+        </ul>
+        <h3>Example 2</h3>
+        <ul>
+            <li><b>Specific Premise 1:</b> All roses are flowers.</li>
+            <li><b>Specific Premise 2:</b> This object is a rose.</li>
+            <li><b>Specific Conclusion:</b> Therefore, it can be concluded that this object is a flower.</li>
+        </ul>
+        <p>In these deductive arguments, the conclusion necessarily follows from the premises.</p>
+    </section>
+
+    <!-- Slide 38 -->
+    <section class="slide">
+        <h1>Inductive Argument Forms</h1>
+        <h2>General premises to a particular conclusion:</h2>
+        <ul>
+            <li><b>General Premise 1:</b> Studies have shown that regular exercise improves cardiovascular health.</li>
+            <li><b>General Premise 2:</b> John engages in regular exercise.</li>
+            <li><b>General Premise 3:</b> Mary engages in regular exercise.</li>
+            <li><b>Conclusion:</b> Therefore, it is likely that both John and Mary have improved cardiovascular health.</li>
+        </ul>
+        <p>The conclusion applies a general pattern to a particular situation, suggesting a probable or likely inference, not a certain one.</p>
+    </section>
+
+    <!-- Slide 39 -->
+    <section class="slide">
+        <h1>Inductive Argument Forms</h1>
+        <h2>Particular premises to a particular conclusion:</h2>
+        <ul>
+            <li><b>Particular Premise 1:</b> John ate a large portion of spicy food.</li>
+            <li><b>Particular Premise 2:</b> John experienced heartburn after eating the spicy food.</li>
+            <li><b>Particular Conclusion:</b> Therefore, it is likely that John's heartburn was caused by the spicy food he ate.</li>
+        </ul>
+        <p>The inductive argument draws a particular conclusion, suggesting the heartburn was likely caused by the spicy food, based on the observed connection.</p>
+    </section>
+
+    <!-- Slide 40 -->
+    <section class="slide">
+        <h1>Inductive Argument Forms</h1>
+        <h2>General premises to a general conclusion:</h2>
+        <ul>
+            <li><b>General Premise 1:</b> Studies have shown that regular exercise improves cardiovascular health.</li>
+            <li><b>General Premise 2:</b> Studies have shown that a balanced diet contributes to overall well-being.</li>
+            <li><b>General Conclusion:</b> Therefore, engaging in regular exercise and maintaining a balanced diet likely promotes good overall health.</li>
+        </ul>
+        <p>The conclusion is based on the observed patterns and evidence from multiple studies.</p>
+    </section>
+
+    <!-- Slide 41 -->
+    <section class="slide">
+        <h1>Key Differences: Deductive vs. Inductive</h1>
+        <div style="display: flex; width: 100%; justify-content: space-between;">
+            <div style="width: 48%;">
+                <h2>Deductive Arguments</h2>
+                <ul>
+                    <li>Conclusion follows <b>necessarily</b> from the premises.</li>
+                    <li>Aims for <b>certainty</b> and establishes truths. If premises are true and argument is valid, conclusion must be true.</li>
+                    <li>Strength lies in its <b>validity</b>.</li>
+                    <li>Commonly used in mathematics, logic, and formal systems.</li>
+                </ul>
+            </div>
+            <div style="width: 48%;">
+                <h2>Inductive Arguments</h2>
+                <ul>
+                    <li>Conclusion is based on <b>observed patterns</b> or evidence.</li>
+                    <li>Aims for <b>probability</b>. The conclusion may be true, but there is always a chance for it to be false.</li>
+                    <li>Strength lies in the <b>quality and quantity</b> of evidence.</li>
+                    <li>Commonly used in scientific inquiries, research, and everyday reasoning.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 42 -->
+    <section class="slide">
+        <h1>Three Tests for Deductive vs. Inductive</h1>
+        <ul>
+            <li><b>Indicator Word Test:</b> Look for words that provide clues.
+                <ul>
+                    <li><i>Deductive:</i> "all," "necessarily," "conclusively," "therefore."</li>
+                    <li><i>Inductive:</i> "probably," "likely," "generally," "suggests."</li>
+                </ul>
+            </li>
+            <li><b>Strict Necessity Test:</b> Does the truth of the premises guarantee the truth of the conclusion?
+                <ul>
+                    <li>If yes, it's deductive.</li>
+                    <li>If it's only probable or likely, it's inductive.</li>
+                </ul>
+            </li>
+            <li><b>Common Pattern Test:</b> Look for common structures.
+                <ul>
+                    <li><i>Deductive:</i> modus ponens, modus tollens, syllogisms.</li>
+                    <li><i>Inductive:</i> generalizations, analogies, statistical reasoning.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Slide 43 -->
+    <section class="slide">
+        <h1>The Indicator Word Test</h1>
+        <div style="display: flex; width: 100%; justify-content: space-around;">
+            <div>
+                <h2>Deduction indicator words:</h2>
+                <ul>
+                    <li>certainly</li>
+                    <li>it logically follows that</li>
+                    <li>definitely</li>
+                    <li>it is logical to conclude that</li>
+                    <li>absolutely</li>
+                    <li>this logically implies that</li>
+                    <li>conclusively</li>
+                    <li>this entails that</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Induction indicator words:</h2>
+                <ul>
+                    <li>Probably</li>
+                    <li>one would expect that</li>
+                    <li>Likely</li>
+                    <li>it is a good bet that</li>
+                    <li>it is plausible to suppose that</li>
+                    <li>chances are that</li>
+                    <li>it is reasonable to assume that</li>
+                    <li>odds are that</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 44 -->
+    <section class="slide">
+        <h1>The Strict Necessity Test</h1>
+        <ul>
+            <li>All deductive arguments claim that their conclusions follow <b>necessarily</b> from their premises.</li>
+            <li><b>The test:</b> An argument's conclusion either follows with strict logical necessity from its premises or it does not.
+                <ul>
+                    <li>If it <b>does</b> follow with strict necessity, the argument should be treated as <b>deductive</b>.</li>
+                    <li>If it does <b>not</b> follow with strict necessity, the argument should normally be treated as <b>inductive</b>.</li>
+                </ul>
+            </li>
+            <li><b>Consider:</b>
+                <ul>
+                    <li>"Alan is a father. Therefore, Alan is a male." (Deductive, by definition)</li>
+                    <li>"Jill is a six-year-old girl. Therefore, Jill cannot run a mile in one minute flat." (Inductive, it's highly probable but not logically impossible)</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Slide 45 -->
+    <section class="slide">
+        <h1>The Common Pattern Test</h1>
+        <div style="display: flex; width: 100%; justify-content: space-around;">
+            <div>
+                <h2>Typically Inductive Arguments:</h2>
+                <ul>
+                    <li>Argument based on <b>prediction</b></li>
+                    <li>Argument based on <b>analogy</b></li>
+                    <li>An inductive <b>generalization</b></li>
+                    <li>An argument from <b>authority</b></li>
+                    <li>An argument based on <b>signs</b></li>
+                    <li>A <b>causal</b> inference</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Typically Deductive Arguments:</h2>
+                <ul>
+                    <li>Argument based on <b>definition</b></li>
+                    <li>Argument based on <b>mathematics</b></li>
+                    <li><b>Syllogism</b></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 46 -->
+    <section class="slide">
+        <h1>COMMON PATTERNS OF DEDUCTIVE REASONING</h1>
+        <h2>Five common patterns of deductive reasoning:</h2>
+        <ul style="font-size: 1.2em;">
+            <li>Hypothetical syllogism</li>
+            <li>Categorical syllogism</li>
+            <li>Argument by elimination / Disjunctive syllogism</li>
+            <li>Argument based on mathematics</li>
+            <li>Argument from definition</li>
+        </ul>
+    </section>
+
+    <!-- Slide 47 -->
+    <section class="slide">
+        <h1>Deductive Pattern: Hypothetical Syllogism</h1>
+        <p>A syllogism is a three-line argument that contains at least one hypothetical or conditional (i.e., if-then) premise.</p>
+        <p><b>Example:</b></p>
+        <ul>
+            <li><b>Premise 1:</b> If people have access to quality education, then they are more likely to secure higher-paying jobs.</li>
+            <li><b>Premise 2:</b> The government has invested in improving access to quality education.</li>
+            <li><b>Conclusion:</b> Therefore, people are more likely to secure higher-paying jobs.</li>
+        </ul>
+        <p>This argument is deductive because it follows a hypothetical syllogism structure. If the premises are true, the conclusion logically follows.</p>
+    </section>
+
+    <!-- Slide 48 -->
+    <section class="slide">
+        <h1>Deductive Pattern: Categorical Syllogism</h1>
+        <p>Categorical syllogism is defined as a three-line argument in which each statement begins with the word <b>All, Some, or No.</b></p>
+        <p><b>Example 1:</b></p>
+        <ul>
+            <li>Premise 1: All oaks are trees.</li>
+            <li>Premise 2: All trees are plants.</li>
+            <li>Conclusion: Therefore, all oaks are plants.</li>
+        </ul>
+        <p><b>Example 2:</b></p>
+        <ul>
+            <li>Premise 1: Some Democrats are elected officials.</li>
+            <li>Premise 2: All elected officials are politicians.</li>
+            <li>Conclusion: Therefore, some Democrats are politicians.</li>
+        </ul>
+        <p>Because they adhere to specific rules and logical patterns, categorical syllogisms are treated as deductive arguments.</p>
+    </section>
+
+    <!-- Slide 49 -->
+    <section class="slide">
+        <h1>Deductive Pattern: Disjunctive Syllogism / Argument by Elimination</h1>
+        <p>An argument by elimination seeks to logically rule out (eliminate) various possibilities until only a single possibility remains.</p>
+        <p><b>Example:</b></p>
+        <ul>
+            <li><b>Premise 1:</b> The thief who stole the jewelry must be either Anna, Ben, or Carla.</li>
+            <li><b>Premise 2:</b> Anna has an airtight alibi and was out of town during the time of the theft.</li>
+            <li><b>Premise 3:</b> Ben was caught on TV footage at a different location during the time of the theft.</li>
+            <li><b>Conclusion:</b> Therefore, the thief who stole the jewelry must be Carla.</li>
+        </ul>
+        <p>This argument is deductive because the conclusion necessarily follows from the premises through the process of elimination.</p>
+    </section>
+
+    <!-- Slide 50 -->
+    <section class="slide">
+        <h1>Deductive Pattern: Argument Based on Mathematics</h1>
+        <p>Mathematics is a model of logical, step-by-step reasoning. Mathematicians claim to prove their conclusions on the basis of precise mathematical concepts.</p>
+        <p><b>Example:</b></p>
+        <ul>
+            <li><b>Premise 1:</b> Light travels at a rate of 186,000 miles per second.</li>
+            <li><b>Premise 2:</b> The sun is more than 93 million miles distant from the earth.</li>
+            <li><b>Conclusion:</b> Therefore, it takes more than eight minutes for the sun's light to reach the earth.</li>
+        </ul>
+        <p>The argument is deductive because it depends entirely on the mathematical calculation to reach the conclusion. If the premises are true and the calculation is accurate, the conclusion must also be true.</p>
+    </section>
+
+    <!-- Slide 51 -->
+    <section class="slide">
+        <h1>Deductive Pattern: Argument from Definition</h1>
+        <p>In an argument from the definition, the conclusion is presented as being "true by definition," following simply from some keyword or phrase used in the argument.</p>
+        <ol>
+            <li><b>Janelle is a cardiologist. Therefore, Janelle is a doctor.</b>
+                <ul><li>Since the definition of "cardiologist" falls under the broader definition of "doctor," it is deductively true that Janelle is a doctor.</li></ul>
+            </li>
+            <li><b>Bertha is an aunt. It follows that she is a woman.</b>
+                <ul><li>Since the definition of "aunt" specifies a familial relationship exclusive to females, it can be deduced that Bertha is a woman.</li></ul>
+            </li>
+        </ol>
+        <p>Arguments from definition are always deductive because if the relevant definition is true, the conclusion derived from it will also be necessarily true.</p>
+    </section>
+
+    <!-- Slide 52 -->
+    <section class="slide">
+        <h1>COMMON PATTERNS OF INDUCTIVE REASONING</h1>
+        <h2>Six common patterns of inductive reasoning:</h2>
+        <ul style="font-size: 1.2em;">
+            <li>Inductive generalization</li>
+            <li>Predictive argument</li>
+            <li>Argument from authority</li>
+            <li>Causal argument</li>
+            <li>Statistical argument</li>
+            <li>Argument from analogy</li>
+        </ul>
+    </section>
+    
+    <!-- Slide 53 -->
+    <section class="slide">
+        <h1>Inductive Pattern: An Inductive Generalization</h1>
+        <p>An argument in which a generalization is claimed to be probably true based on information about some members of a particular class.</p>
+        <p><b>Example 1:</b> Premise: All dinosaur bones so far discovered have been more than sixty-five million years old. Conclusion: Therefore, probably all dinosaur bones are more than sixty-five million years old.</p>
+        <p><b>Example 2:</b> Premise 1: Six months ago I met a farmer from Iowa, and he was friendly... Premise 3: Two months ago I met a dentist from Iowa, and she was friendly. Conclusion: I guess most people from Iowa are friendly.</p>
+        <p>The strength of these generalizations depends on the representativeness and reliability of the available sample.</p>
+    </section>
+    
+    <!-- Slide 54 -->
+    <section class="slide">
+        <h1>Inductive Pattern: Predictive Argument</h1>
+        <p>A prediction argument attempts to make claims about future effects based on past or present phenomena.</p>
+        <p><b>Examples:</b></p>
+        <blockquote>It has rained in Addis Ababa every April since weather records have been kept. Therefore, it will probably rain in Addis Ababa next April.</blockquote>
+        <blockquote>Most U.S. presidents have been tall. Therefore, probably the next U.S. president will be tall.</blockquote>
+        <p>Because nothing in the future is absolutely certain, arguments containing predictions are usually inductive.</p>
+    </section>
+    
+    <!-- Slide 55 -->
+    <section class="slide">
+        <h1>Note: Deductive Predictions</h1>
+        <p>Predictions can sometimes be argued for deductively:</p>
+        <ul>
+            <li><b>Premise 1:</b> All mammals give birth to live young.</li>
+            <li><b>Premise 2:</b> A platypus is a mammal.</li>
+            <li><b>Conclusion:</b> Therefore, the platypus will give birth to live young.</li>
+        </ul>
+        <p>This argument is deductive because it follows a logical structure where the conclusion necessarily follows. It is a deduction based on an established category, not a prediction in the usual sense. Deductive predictive arguments are relatively rare.</p>
+    </section>
+
+    <!-- Slide 56 -->
+    <section class="slide">
+        <h1>Inductive Pattern: Argument from Analogy</h1>
+        <p>A type of inductive argument, whereby perceived similarities are used as a basis to infer some further similarity that has yet to be observed.</p>
+        <h2>Structure:</h2>
+        <ul>
+            <li>P and Q are similar with respect to properties a, b, and c.</li>
+            <li>P has been observed to have further property x.</li>
+            <li>Therefore, Q probably has property x also.</li>
+        </ul>
+        <h2>Strength of argument based on:</h2>
+        <ul>
+            <li>The relevance of the known similarities.</li>
+            <li>The degree of relevant similarity (or dissimilarity).</li>
+            <li>The amount and variety of instances that form the basis of the analogy.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 57 -->
+    <section class="slide">
+        <h1>Argument from Analogy: Example</h1>
+        <ul>
+            <li><b>Premise 1:</b> Humans and chimpanzees share a high degree of genetic similarity and have similar anatomical structures.</li>
+            <li><b>Premise 2:</b> Humans have the ability to use language for communication.</li>
+            <li><b>Conclusion:</b> Therefore, it is probable that chimpanzees also have the ability to use language for communication.</li>
+        </ul>
+        <p>The strength depends on factors like the relevance of genetic similarity to language usage. While it can provide insights, it does not guarantee the truth of the conclusion.</p>
+    </section>
+
+    <!-- Slide 58 -->
+    <section class="slide">
+        <h1>Inductive Pattern: Causal Argument</h1>
+        <ul>
+            <li><b>Premise:</b> Every time I eat ice cream, I get a headache.</li>
+            <li><b>Conclusion:</b> Therefore, eating ice cream causes me to get a headache.</li>
+        </ul>
+        <p>This is an inductive causal argument because it draws a general conclusion about a cause-and-effect relationship based on specific observations.</p>
+        <p>The argument does not provide a deductively certain conclusion because it is based on observed patterns rather than a guaranteed logical relationship. Other factors could be involved.</p>
+    </section>
+
+    <!-- Slide 59 -->
+    <section class="slide">
+        <h1>Note: Deductive Causal Arguments</h1>
+        <p>It cannot be assumed that causal arguments are always inductive. The following is clearly deductive:</p>
+        <blockquote>Whenever iron is exposed to oxygen, it rusts. <br> This iron pipe has been exposed to oxygen. <br> Therefore, it will rust.</blockquote>
+        <p>This argument is deductive because the premises establish a general principle, and the conclusion logically follows from applying that principle to a specific instance.</p>
+    </section>
+    
+    <!-- Slide 60 -->
+    <section class="slide">
+        <h1>Inductive Pattern: Statistical Argument</h1>
+        <p>A statistical argument rests on statistical evidence—that is, evidence that some percentage of some group or class has some particular characteristic.</p>
+        <p><b>Example:</b></p>
+        <ul>
+            <li><b>Premise:</b> Studies show that 80% of people who exercise for at least 30 minutes a day have lower risks of heart disease.</li>
+            <li><b>Conclusion:</b> Therefore, engaging in regular exercise for at least 30 minutes a day is likely to reduce the risk of heart disease.</li>
+        </ul>
+        <p>Statistical arguments are typically inductive because they involve drawing general conclusions based on probabilities and likelihoods, not certainties.</p>
+    </section>
+
+    <!-- Slide 61 -->
+    <section class="slide">
+        <h1>Inductive Pattern: Argument from Authority</h1>
+        <p>An argument from authority, also called an appeal to authority, is a form of argument in which the opinion of an authority on a topic is used as evidence to support an argument.</p>
+        <h2>Structure:</h2>
+        <ul>
+            <li>Person A claims that X is true.</li>
+            <li>Person A is an expert in the field concerning X.</li>
+            <li>Therefore, X should be believed.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 62 -->
+    <section class="slide">
+        <h1>Argument from Authority: Example</h1>
+        <ul>
+            <li><b>Premise 1:</b> Dr. Smith, a renowned scientist, claims that climate change is primarily caused by human activities.</li>
+            <li><b>Premise 2:</b> Dr. Smith is an expert in the field of climate science with multiple peer-reviewed publications.</li>
+            <li><b>Conclusion:</b> Therefore, we should believe that climate change is primarily caused by human activities.</li>
+        </ul>
+        <p>The given argument is inductive because it is based on the generalization that if a person is an expert, their claims are likely to be true. However, it does not provide certainty.</p>
+    </section>
+
+    <!-- Slide 63 -->
+    <section class="slide">
+        <h1 style="color: #FFC107; border-color: #FFC107;">EVALUATION OF ARGUMENTS</h1>
+        <p>In the proper sense of the term, an argument cannot be evaluated as simply good/bad or right/wrong. Instead, we employ unique terminologies:</p>
+        <h2>For deductive arguments:</h2>
+        <p style="font-size: 1.3em; text-align:center;"><b>valid, invalid, sound, and unsound.</b></p>
+        <h2>For inductive arguments:</h2>
+        <p style="font-size: 1.3em; text-align:center;"><b>strong, weak, cogent, and uncogent.</b></p>
+    </section>
+
+    <!-- Slide 64 -->
+    <section class="slide">
+        <h1>Valid Deductive Argument</h1>
+        <ul>
+            <li>A valid deductive argument is a type of reasoning where the logical structure of the argument <b>guarantees</b> that if the premises are true, the conclusion must also be true.</li>
+            <li><b>Validity is determined by the form or structure of the argument</b>, regardless of whether the premises or conclusion are actually true or false. Even if the premises are false, as long as the structure is valid, the conclusion must be true <i>if the premises were true</i>.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 65 -->
+    <section class="slide">
+        <h1>Note: Truth value is not important for identifying validity.</h1>
+        <p>Consider the form:</p>
+        <blockquote>All adlers are bobkins.<br>All bobkins are crockers.<br>Therefore, all adlers are crockers.</blockquote>
+        <div style="display: flex; width: 100%; justify-content: space-around; font-family: monospace; font-size: 1.2em;">
+            <p>All A are B.<br>All B are C.<br>So, All A are C.<br><b>(VALID)</b></p>
+            <p>If P then Q.<br>P.<br>So, Q.<br><b>(VALID)</b></p>
+            <p>All A are B.<br>All C are B.<br>So, All A are C.<br><b>(INVALID)</b></p>
+            <p>If P then Q.<br>Q.<br>So, P.<br><b>(INVALID)</b></p>
+        </div>
+    </section>
+
+    <!-- Slide 66 (MODIFIED) -->
+    <section class="slide">
+        <h1>VALIDITY DOESN'T REQUIRE TRUTH VALUE!</h1>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Premises</th>
+                    <th>Conclusion</th>
+                    <th>Validity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>True</td>
+                    <td>True</td>
+                    <td>(can be valid or invalid)</td>
+                </tr>
+                <tr>
+                    <td>True</td>
+                    <td>False</td>
+                    <td style="font-weight: 700;">ALWAYS INVALID</td>
+                </tr>
+                <tr>
+                    <td>False</td>
+                    <td>True</td>
+                    <td>(can be valid or invalid)</td>
+                </tr>
+                <tr>
+                    <td>False</td>
+                    <td>False</td>
+                    <td>(can be valid or invalid)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- Slide 67 -->
+    <section class="slide">
+        <h1>Validity Examples</h1>
+        <h2>Valid argument with false premises and a false conclusion:</h2>
+        <ul>
+            <li>Premise 1: If dragons breathe fire, then they have wings. (False)</li>
+            <li>Premise 2: Dragons do not have wings. (False)</li>
+            <li>Conclusion: Therefore, dragons do not breathe fire. (False)</li>
+        </ul>
+        <p>This argument is valid because the form "If P then Q, and not Q, then not P" is always valid, regardless of the truth of P or Q.</p>
+        <h2>Valid argument with false premises and a true conclusion:</h2>
+        <ul>
+            <li>Premise 1: All cats have wings. (False)</li>
+            <li>Premise 2: Fluffy is a cat. (True)</li>
+            <li>Conclusion: Therefore, Fluffy has wings. (False) -- <em>Note: The original slide incorrectly states this conclusion is true, it is false. Let's find a better example for the slide's claim.</em></li>
+            <li>Corrected Example: Premise 1: All fish are mammals. (False). Premise 2: All mammals are animals. (True). Conclusion: All fish are animals. (True).</li>
+        </ul>
+        <p>The validity of an argument is determined by its logical structure, regardless of the truth of the premises.</p>
+    </section>
+
+    <!-- Slide 68 -->
+    <section class="slide">
+        <h1>Validity and Truth</h1>
+        <h2>Valid argument with true premises and a true conclusion:</h2>
+        <ul>
+            <li><b>Premise 1:</b> All mammals are warm-blooded.</li>
+            <li><b>Premise 2:</b> Dogs are mammals.</li>
+            <li><b>Conclusion:</b> Therefore, dogs are warm-blooded.</li>
+        </ul>
+        <p>In this example, both premises are true, and the conclusion logically follows. The argument is considered valid.</p>
+        <p>There is, however, one combination of truth or falsity that no valid argument can have: <b>No valid argument can have all true premises and a false conclusion.</b></p>
+    </section>
+    
+    <!-- Slide 69 -->
+    <section class="slide">
+        <h1>Invalid Deductive Argument</h1>
+        <p>A deductive argument in which the conclusion does not follow necessarily from the premises is said to be an <b>invalid deductive argument</b>. Here are four examples:</p>
+        <ul>
+            <li><b>True premise, true conclusion:</b> All dogs are animals. Lassie is an animal. Therefore, Lassie is a dog.</li>
+            <li><b>True premise, false conclusion:</b> If I'm a monkey's uncle, then I'm a primate. I'm not a monkey's uncle. So, I'm not a primate.</li>
+            <li><b>False premise, true conclusion:</b> All pears are vegetables. All fruits are vegetables. Therefore, all pears are fruits.</li>
+            <li><b>False premise, false conclusion:</b> All dogs are cats. All cats are whales. Therefore, all whales are dogs.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 70 -->
+    <section class="slide">
+        <h1>Soundness</h1>
+        <p style="text-align: center; font-size: 2em; margin-top: 2em;"><b>Sound argument</b> = valid + all true premises</p>
+        <p style="text-align: center; font-size: 2em; margin-top: 1em;"><b>Unsound argument</b> = if at least one of the above conditions is missed.</p>
+    </section>
+
+    <!-- Slide 71 -->
+    <section class="slide">
+        <h1>Strong Inductive Argument</h1>
+        <ul>
+            <li>A strong inductive argument is a type of reasoning where the premises provide significant support for the conclusion, making it <b>probable or likely</b> to be true.</li>
+            <li>In a strong inductive argument, if the premises are true, then it is highly probable that the conclusion is also true. The strength is based on the <b>quality and quantity of evidence</b>.</li>
+            <li>It's important to note that unlike deductive arguments, inductive arguments do not aim to establish <b>certainty</b>. Instead, they aim to provide substantial evidence.</li>
+        </ul>
+    </section>
+    
+    <!-- Slide 72 (MODIFIED) -->
+    <section class="slide">
+        <h1>NOTE THAT: LIKE VALIDITY, STRENGTH DOESN'T REQUIRE TRUTH VALUE.</h1>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Premises</th>
+                    <th>Conclusion</th>
+                    <th>Strength</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>True</td>
+                    <td>prob. True</td>
+                    <td>(can be strong or weak)</td>
+                </tr>
+                <tr>
+                    <td>True</td>
+                    <td>prob. False</td>
+                    <td style="font-weight: 700;">ALWAYS WEAK</td>
+                </tr>
+                <tr>
+                    <td>False</td>
+                    <td>prob. True</td>
+                    <td>(can be strong or weak)</td>
+                </tr>
+                <tr>
+                    <td>False</td>
+                    <td>prob. False</td>
+                    <td>(can be strong or weak)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Slide 73 -->
+    <section class="slide">
+        <h1>Strength Examples</h1>
+        <h2>Strong arguments with false premises and a probably false conclusion:</h2>
+        <p><b>Premise 1:</b> Every time I use a specific brand of antivirus software, my computer is protected from all types of malware. <b>Premise 2:</b> I am using that specific brand... <b>Conclusion:</b> Therefore, my computer is fully protected from all types of malware.</p>
+        <p>(The premises are false, but the argument is strong because the conclusion follows probably from them).</p>
+        <h2>Strong arguments with false premises and a probably true conclusion:</h2>
+        <p><b>Premise 1:</b> Every time I study for at least 10 hours, I perform exceptionally well on exams. <b>Premise 2:</b> I studied for at least 10 hours for today's exam. <b>Conclusion:</b> Therefore, I will likely perform exceptionally well on today's exam.</p>
+    </section>
+
+    <!-- Slide 74 -->
+    <section class="slide">
+        <h1>Strength and Truth</h1>
+        <h2>A strong inductive argument with true premises and a probably true conclusion:</h2>
+        <ul>
+            <li><b>Premise 1:</b> Every time I have taken my car to the mechanic for regular maintenance, it has run smoothly afterward.</li>
+            <li><b>Premise 2:</b> I took my car to the mechanic for regular maintenance.</li>
+            <li><b>Conclusion:</b> Therefore, my car will probably run smoothly afterward.</li>
+        </ul>
+        <p>The argument is considered strong because the conclusion is based on a pattern of past experiences, and the premises provide support for the conclusion.</p>
+        <p><b>Note:</b> As with valid deductive arguments, <b>no strong inductive argument can have true premises and a probably false conclusion.</b></p>
+    </section>
+
+    <!-- Slide 75 -->
+    <section class="slide">
+        <h1>Weak Inductive Arguments</h1>
+        <p>Weak inductive arguments, like invalid deductive arguments, can have any combination of truth or falsity in the premises and conclusion. Here are some examples:</p>
+        <ul>
+            <li><b>True premise, prob. true conclusion:</b> Most U.S. presidents have been married. Therefore, probably the next U.S. president will be a man.</li>
+            <li><b>True premise, prob. false conclusion:</b> Most U.S. presidents have been over fifty years old. Therefore, probably the next U.S. president will be single.</li>
+            <li><b>False premise, prob. true conclusion:</b> Most U.S. presidents have been women. Therefore, probably the next U.S. president will be married.</li>
+            <li><b>False premise, prob. false conclusion:</b> Most U.S. presidents have been less than 5 feet tall. Therefore, probably the next U.S. president will be single.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 76 -->
+    <section class="slide">
+        <h1>Cogency</h1>
+        <p style="text-align: center; font-size: 2em; margin-top: 2em;"><b>Cogent argument:</b> an argument both inductively <b>strong</b> and has all <b>true premises</b>.</p>
+        <p style="text-align: center; font-size: 2em; margin-top: 1em;"><b>An uncogent argument:</b> an inductive argument that is either <b>weak</b> or has at least <b>one false premise</b>.</p>
+    </section>
+    
+    <!-- Slide 77 -->
+    <section class="slide">
+        <h1>References – Books</h1>
+        <ol>
+            <li><b>"A Rulebook for Arguments"</b> by Anthony Weston: A concise and accessible guide to understanding and constructing arguments.</li>
+            <li><b>"Critical Thinking: A Student's Introduction"</b> by Gregory Bassham, et al.: A comprehensive textbook offering an in-depth exploration of critical thinking skills.</li>
+            <li><b>"Understanding Arguments: An Introduction to Informal Logic"</b> by Walter Sinnott-Armstrong and Robert Fogelin: Introduces students to the basic principles of argumentation.</li>
+            <li><b>"The Elements of Reasoning"</b> by Ronald Munson and Andrew Black: Focuses on the elements of reasoning, providing practical tools for analyzing arguments.</li>
+            <li><b>"Logic: A Very Short Introduction"</b> by Graham Priest: A concise introduction covering both formal and informal aspects of reasoning.</li>
+        </ol>
+    </section>
+    
+    <!-- Slide 78 -->
+    <section class="slide">
+        <h1>References – Websites</h1>
+        <ol>
+            <li><b>Purdue Online Writing Lab (OWL) - Argument:</b> A comprehensive guide on argumentation. (Website: owl.purdue.edu)</li>
+            <li><b>Stanford Encyclopedia of Philosophy - Deductive and Inductive Arguments:</b> In-depth articles on deductive and inductive reasoning. (Website: plato.stanford.edu)</li>
+            <li><b>Critical Thinking Web - Argument Basics:</b> Interactive tutorials and exercises on argument basics. (Website: www.criticalthinkingweb.com)</li>
+            <li><b>Internet Encyclopedia of Philosophy - Informal Logic:</b> Articles on informal logic, including argumentation and evaluation. (Website: www.iep.utm.edu)</li>
+            <li><b>Philosophy Terms - Argument:</b> A concise definition and explanation of arguments. (Website: philosophyterms.com)</li>
+            <li><b>Georgetown University Writing Center - Evaluating Arguments:</b> A guide on evaluating arguments. (Website: writingcenter.georgetown.edu)</li>
+            <li><b>Philosophy Now - Argument Evaluation:</b> Articles and resources on argument evaluation. (Website: philosophynow.org)</li>
+            <li><b>TED-Ed - Lessons on Critical Thinking:</b> A collection of animated lessons on critical thinking. (Website: ed.ted.com)</li>
+        </ol>
+        <div class="button-container">
+            <a href="chapter_two.pdf" download class="download-btn">Download Chapter PDF</a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // --- JavaScript for Keyboard Navigation and Setup ---
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    function setupSlides() {
+        slides.forEach((slide, index) => {
+            const slideNumberEl = document.createElement('div');
+            slideNumberEl.className = 'slide-number';
+            slideNumberEl.textContent = `${index + 1} / ${totalSlides}`;
+            slide.appendChild(slideNumberEl);
+            slide.setAttribute('tabindex', '-1');
+            if (index === 0) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.add('next');
+            }
+        });
+        if (slides.length > 0) {
+            slides[0].focus();
+        }
+    }
+
+    function navigateToSlide(newIndex) {
+        if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentSlide) return;
+        const oldIndex = currentSlide;
+        const direction = newIndex > oldIndex ? 'right' : 'left';
+        
+        slides[newIndex].classList.remove('next', 'previous');
+        slides[newIndex].classList.add('active');
+
+        slides[oldIndex].classList.remove('active');
+        slides[oldIndex].classList.add(direction === 'right' ? 'previous' : 'next');
+        
+        currentSlide = newIndex;
+        slides[newIndex].focus({ preventScroll: true });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigateToSlide(currentSlide + 1);
+        } else if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            navigateToSlide(currentSlide - 1);
+        }
+    });
+
+    setupSlides();
+</script>
+
+</body>
+</html>

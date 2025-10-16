@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Informal Fallacies</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+        /* --- Basic Reset & Body Setup --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        /* --- Presentation Container --- */
+        .presentation-container {
+            width: 100vw;
+            height: 100dvh; /* Use dynamic height to account for toolbars */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Slide Container Styling --- */
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 5% 8%; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start;
+            overflow-y: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.6s ease-in-out;
+            font-size: 1.1em; /* Base font size */
+        }
+        
+        .slide:focus {
+            outline: none;
+        }
+
+        /* --- Slide Animation States --- */
+        .slide.active { transform: translateX(0); z-index: 1; }
+        .slide.previous { transform: translateX(-100%); z-index: 0; }
+        .slide.next { transform: translateX(100%); z-index: 0; }
+
+        /* --- Typography and Content Styling --- */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #003366;
+            font-size: 2.8em;
+            margin: 0 0 1em 0;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #003366;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: 1.8em;
+            margin-top: 1.2em;
+            margin-bottom: 0.8em;
+        }
+        
+        /* Specific styling for the main title slide */
+        .title-slide {
+            align-items: center;
+            justify-content: center; /* Center the main title slide */
+        }
+        .title-slide h1 {
+            font-size: 4em;
+            text-align: center;
+            border-bottom: none;
+        }
+        .title-slide .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        p, li {
+            line-height: 1.6;
+            max-width: 950px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 1em;
+        }
+        
+        b, strong {
+            font-weight: 700;
+            color: #003366;
+        }
+
+        ul { 
+            padding-left: 30px; 
+            list-style-type: square;
+            width: 100%;
+            max-width: 950px;
+        }
+        ul ul {
+            list-style-type: disc;
+            margin-top: 10px;
+        }
+        ol {
+            width: 100%;
+            max-width: 950px;
+        }
+        ol li {
+            margin-bottom: 0.5em;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: #333;
+            border-left: 3px solid #0055A4;
+            padding-left: 20px;
+            margin: 20px 0;
+            max-width: 900px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            max-width: 950px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 700;
+            color: #003366;
+        }
+
+        .image-placeholder {
+            width: 80%;
+            max-width: 500px;
+            height: 250px;
+            background-color: #e9ecef;
+            border: 2px dashed #adb5bd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #555;
+            z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .slide { font-size: 1em; padding: 6% 7%; }
+            h1, .title-slide h1 { font-size: 2.2em; }
+            h2 { font-size: 1.5em; }
+            .slide-number { bottom: 15px; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+    <!-- Slide 1: Title -->
+    <section class="slide title-slide">
+        <div>
+            <h1>INFORMAL FALLACIES</h1>
+            <p class="subtitle">Chapter five</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Contents -->
+    <section class="slide">
+        <h1>CONTENTS</h1>
+        <ul>
+            <li>Fallacies of Relevance</li>
+            <li>Fallacies of Weak Induction</li>
+            <li>Fallacies of Presumption</li>
+            <li>Fallacies of Ambiguity</li>
+            <li>Fallacies of Grammatical Analogy</li>
+        </ul>
+    </section>
+
+    <!-- Slide 3: Objectives -->
+    <section class="slide">
+        <h1>Objectives</h1>
+        <p>By the end of this chapter, you will be able to:</p>
+        <ul>
+            <li><b>Knowledge:</b>
+                <ul>
+                    <li>Define what a fallacy is and how it weakens an argument.</li>
+                    <li>Differentiate between formal and informal fallacies.</li>
+                    <li>Categorize informal fallacies into relevance, weak induction, presumption, ambiguity, and grammatical analogy.</li>
+                </ul>
+            </li>
+            <li><b>Comprehension:</b>
+                <ul>
+                    <li>Explain the specific reasoning errors in each category of informal fallacies.</li>
+                    <li>Analyze the impact of fallacies on the strength and validity of arguments.</li>
+                </ul>
+            </li>
+            <li><b>Application:</b>
+                <ul>
+                    <li>Identify and label fallacies in your own communication and in the arguments of others.</li>
+                    <li>Develop strategies to avoid using fallacies in your own arguments.</li>
+                </ul>
+            </li>
+            <li><b>Evaluation:</b>
+                <ul>
+                    <li>Assess the effectiveness of techniques for identifying and correcting fallacies.</li>
+                    <li>Articulate the importance of recognizing and avoiding fallacies in effective communication.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 4: Defining Fallacy -->
+    <section class="slide">
+        <h1>Defining Fallacy</h1>
+        <ul>
+            <li>Fallacies are <b>errors</b> or <b>tricks</b> of reasoning.</li>
+            <li>We call a fallacy an <b>error</b> of reasoning if it occurs accidentally; we call it a <b>trick</b> of reasoning if a speaker or writer uses it to deceive or manipulate their audience.</li>
+            <li>Fallacies can be either formal or informal.</li>
+            <li>Whether a fallacy is an error or a trick, its use undercuts the validity and strength of any argument.</li>
+            <li>Fallacious reasoning can damage the credibility of the speaker and improperly manipulate the emotions of the audience.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 5: Formal Fallacies -->
+    <section class="slide">
+        <h1>Formal Fallacies</h1>
+        <ul>
+            <li>Validity is a structural property, not a content-based one.</li>
+            <li>Formal fallacies are arguments with inherently flawed forms, destined to fail regardless of their content.</li>
+            <li><b>Common formal fallacies:</b>
+                <ul>
+                    <li><b>Denying the antecedent:</b>
+                        <ul>
+                            <li>Invalid form: If A, then B. Not A. Therefore, not B.</li>
+                            <li>Example: "If it's raining, the streets are wet. It's not raining. Therefore, the streets are not wet." (Invalid because other causes could make the streets wet).</li>
+                        </ul>
+                    </li>
+                    <li><b>Affirming the consequent:</b>
+                        <ul>
+                            <li>Invalid form: If A, then B. B. Therefore, A.</li>
+                            <li>Example: "If it's raining, the streets are wet. The streets are wet. Therefore, it's raining." (Invalid because something else could have made the streets wet).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 6: Informal Fallacies -->
+    <section class="slide">
+        <h1>Informal Fallacies</h1>
+        <ul>
+            <li>Informal fallacies are everywhere in everyday conversations and debates.</li>
+            <li>They rely on diverting attention from the actual logic of the argument.</li>
+            <li>Informal fallacies are more dependent on the misuse of language and evidence; they can be detected only through analysis of the content.</li>
+        </ul>
+        <blockquote>
+            <b>Example:</b><br>
+            P1: All factories are plants.<br>
+            P2: All plants are things that contain chlorophyll.<br>
+            C: Therefore, all factories are things that contain chlorophyll.
+        </blockquote>
+        <p>While the form (All A are B; All B are C; Therefore, All A are C) is formally valid, the argument fails due to a shift in the meaning of the word "plants," which is an informal fallacy.</p>
+    </section>
+
+    <!-- Slide 7: Main Groups of Informal Fallacies -->
+    <section class="slide">
+        <h1>Five Main Groups of Informal Fallacies</h1>
+        <p>The presentation that follows divides twenty-two informal fallacies into five main groups:</p>
+        <ul>
+            <li>Fallacies of relevance</li>
+            <li>Fallacies of weak induction</li>
+            <li>Fallacies of presumption</li>
+            <li>Fallacies of ambiguity</li>
+            <li>Fallacies of grammatical analogy</li>
+        </ul>
+    </section>
+
+    <!-- Slide 8: Table of Fallacies -->
+    <section class="slide">
+        <h1>Overview of Informal Fallacies</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fallacies Of Relevance</th>
+                    <th>Fallacies Of Weak Induction</th>
+                    <th>Fallacies Of Presumption</th>
+                    <th>Fallacies Of Ambiguity</th>
+                    <th>Fallacies Of Grammatical Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. Appeal To Force</td>
+                    <td>1. Unqualified Authority</td>
+                    <td>1. Begging The Question</td>
+                    <td>1. Equivocation</td>
+                    <td>1. Division</td>
+                </tr>
+                <tr>
+                    <td>2. Appeal To Pity</td>
+                    <td>2. Appeal To Ignorance</td>
+                    <td>2. Complex Question</td>
+                    <td>2. Amphiboly</td>
+                    <td>2. Composition</td>
+                </tr>
+                <tr>
+                    <td>3. Appeal To People</td>
+                    <td>3. False-cause</td>
+                    <td>3. False Dichotomy</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4. Straw Man</td>
+                    <td>4. Hasty Generalization</td>
+                    <td>4. Suppressed Evidence</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5. Accident</td>
+                    <td>5. Slippery Slope</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6. Red Herring</td>
+                    <td>6. Weak Analogy</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>7. Missing the point</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8. Argument against the person</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Slide 9: Fallacies of Relevance -->
+    <section class="slide">
+        <h1>Fallacies of Relevance</h1>
+        <p>The fallacies of relevance share a common characteristic: the premises may be <b>psychologically persuasive or emotionally appealing, but they are logically irrelevant to the conclusion</b>. They create a psychological illusion of validity, even though there is no logical connection.</p>
+        <p>Fallacies of relevance include:</p>
+        <ul>
+            <li>Appeal to force (ad baculum)</li>
+            <li>Appeal to pity (ad misericordiam)</li>
+            <li>Appeal to people (ad populum)</li>
+            <li>Argument against the person</li>
+            <li>Straw man</li>
+            <li>Accident</li>
+            <li>Missing the point (ignoratio elenchi)</li>
+            <li>Red herring</li>
+        </ul>
+    </section>
+
+    <!-- Slide 10: Appeal to Force -->
+    <section class="slide">
+        <h1>Appeal to Force (Argumentum Ad Baculum)</h1>
+        <p>Argumentum ad baculum, Latin for "argument to the cudgel" or "appeal to the stick," is the fallacy where someone tries to win an argument by wielding the <b>threat</b> of negative consequences for disagreeing.</p>
+        <ul>
+            <li>The threat can be <b>physical</b> or <b>psychological</b>.</li>
+            <li>It can be <b>direct</b> or <b>veiled</b> (a subtle hint of a future "downside").</li>
+            <li>It bypasses truth and logic, aiming to silence through <b>fear, not reason</b>.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 11: Examples: Appeal to Force Fallacy -->
+    <section class="slide">
+        <h1>Examples: Appeal to Force</h1>
+        <ol>
+            <li>"You should agree with my political views, or else I'll make sure you lose your job and ruin your reputation."</li>
+            <li>"If you don't support my proposal, I'll spread damaging rumors about you."</li>
+            <li>"If you don't comply, I'll physically harm you."</li>
+            <li>"If you don't accept my argument, I'll ensure that you never work in this industry again."</li>
+            <li>"If you don't follow my orders, you'll face severe legal consequences."</li>
+        </ol>
+    </section>
+
+    <!-- Slide 12: Exceptions to Appeal to Force -->
+    <section class="slide">
+        <h1>Exceptions to Appeal to Force</h1>
+        <ul>
+            <li><b>Facts and Consequences:</b> When a threat isn't used to persuade, but simply to inform about negative consequences tied to an action, it ceases to be a fallacy. It becomes a neutral statement of cause and effect (e.g., "If you smoke, you increase your risk of cancer").</li>
+            <li><b>Legality and Boundaries:</b> Informing someone of potential legal consequences (like being arrested for trespassing) isn't manipulation but a statement of reality. The threat of force (calling the police) isn't meant to stifle debate, but to enforce legitimate limits.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 13: Appeal to People -->
+    <section class="slide">
+        <h1>Appeal to People (Argumentum ad populum)</h1>
+        <p>The fallacy of appeal to the people takes advantage of desires for love, respect, admiration, and acceptance. It uses emotional tactics to stir up crowd emotions and gain acceptance for a conclusion.</p>
+        <blockquote>
+            <b>Example:</b> "Join us in protesting against this policy! We are the voice of the people, and together, we can make a difference. Let's show the government that we won't stand for this injustice!"
+        </blockquote>
+        <p>This arguer tries to rally people by appealing to their shared identity as "the voice of the people," creating a sense of unity and strength to sway individuals to accept the conclusion and participate.</p>
+    </section>
+    
+    <!-- Slide 14: Indirect Appeal to People -->
+    <section class="slide">
+        <h1>Indirect Appeal to People</h1>
+        <p>The indirect approach targets individuals within a crowd, focusing on their relationship with the larger group. This includes:</p>
+        <ul>
+            <li><b>A. Bandwagon Argument:</b> Convinces individuals to join the majority by suggesting that since everyone else is doing it, they should too.
+                <blockquote>"Don't miss out on the latest fashion trend! Everyone is wearing these sneakers."</blockquote>
+            </li>
+            <li><b>B. Appeal to Snobbery:</b> Appeals to the desire for exclusivity or superiority by suggesting acceptance will place them in an elite group.
+                <blockquote>"This limited-edition watch is reserved for discerning connoisseurs who truly appreciate luxury."</blockquote>
+            </li>
+            <li><b>C. Appeal to Vanity:</b> Plays on ego by emphasizing that acceptance will increase status, attractiveness, or self-worth.
+                <blockquote>"Use this skincare product to achieve flawless skin and become the envy of your friends."</blockquote>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Slide 15: Appeal to Pity -->
+    <section class="slide">
+        <h1>Appeal to Pity (Argumentum Ad Misericordiam)</h1>
+        <p>An appeal to pity is an attempt to support a conclusion by merely evoking pity in one's audience.</p>
+        <blockquote>
+            <b>Structure:</b><br>
+            X is true.<br>
+            It would be terrible if X was not true.<br>
+            Therefore, X must be true.
+        </blockquote>
+        <p>This vulnerability to empathy leaves us susceptible to manipulating emotions to sway our judgment.</p>
+        <h2>Methods to avoid falling for Appeal to Pity:</h2>
+        <ul>
+            <li>Separate the plea from the facts: Analyze the evidence, not just the emotional story.</li>
+            <li>Question the logic: Does the conclusion logically follow from the suffering described?</li>
+        </ul>
+    </section>
+
+    <!-- Slide 16: Examples of Appeal to Pity -->
+    <section class="slide">
+        <h1>Examples: Appeal to Pity</h1>
+        <ol>
+            <li>"But professor, I'm already on probation! If I don't pass this course, my student status here will be in jeopardy!"</li>
+            <li>"Sir, I need this job badly, I have a wife and three kids to feed."</li>
+            <li>"You really think he would be capable of such an act? Look at him, that poor thing!"</li>
+            <li>"Your honor, before you reach a verdict, consider that my client is the sole provider for his elderly parents, one of whom has a terminal illness."</li>
+        </ol>
+        <p>In each case, the personal hardship is irrelevant to the objective criteria required (academic merit, job qualifications, evidence of guilt, justice for the crime).</p>
+    </section>
+
+    <!-- Slide 17: Exception to Appeal to Pity -->
+    <section class="slide">
+        <h1>Exception to Appeal to Pity</h1>
+        <p>Not every appeal to compassion is a fallacy. Genuine calls for empathy can be powerful and ethically sound.</p>
+        <ul>
+            <li><b>Fallacy:</b> Exploits emotions without substantial evidence. It uses pity as a shortcut, bypassing logic.</li>
+            <li><b>Genuine Appeal:</b> Presents compelling evidence of suffering and proposes a reasonable response based on empathy and sound reasoning.</li>
+        </ul>
+        <blockquote>
+            <b>Example:</b> "As a result of war and famine, thousands of children in country X are malnourished. You can help by sending money to Relief Agency Y. So, please send what you can."
+        </blockquote>
+        <p>This is a genuine appeal if there is credible evidence of malnutrition and the proposed response is a reasonable way to help.</p>
+    </section>
+
+    <!-- Slide 18: Arguments against the Person -->
+    <section class="slide">
+        <h1>Arguments against the Person (Ad Hominem)</h1>
+        <p>The Ad Hominem fallacy attempts to discredit an argument by discrediting the arguer.</p>
+        <p>Ad hominem has three types:</p>
+        <ol>
+            <li><b>Abusive:</b> The respondent verbally abuses the arguer and ignores the argument.</li>
+            <li><b>Circumstantial:</b> The respondent calls attention to special circumstances (interest) of the arguer and ignores the argument.</li>
+            <li><b>Tu quoque:</b> The respondent attempts to make the arguer look hypocritical.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 19: Ad Hominem (Abusive) -->
+    <section class="slide">
+        <h1>Ad Hominem (Abusive)</h1>
+        <p>This fallacy involves attacking the person making an argument instead of addressing the argument itself, especially when the attack is completely irrelevant.</p>
+        <blockquote>
+            <b>Example:</b> "Tony claims that the origin of life was an 'accident,' but how can we trust him? He's a godless person who has spent more time in jail than in church."
+        </blockquote>
+        <p>The personal characteristics of Tony (religious beliefs, criminal history) are entirely irrelevant to his argument about the origin of life.</p>
+        <p><b>Note:</b> When others resort to personal attacks, it can be a sign of their desperation rather than a valid rebuttal of your position.</p>
+    </section>
+
+    <!-- Slide 20: Exception to Abusive Ad Hominem -->
+    <section class="slide">
+        <h1>Exception to Abusive Ad Hominem</h1>
+        <p>There are situations where questioning someone's character can be relevant to the discussion. The key lies in the connection between the attack and the argument's topic.</p>
+        <h2>Examples of Permissible Ad Hominem:</h2>
+        <ul>
+            <li><b>Job Interviews and Credibility:</b> Questioning a candidate's past ethical lapses on financial matters is relevant for a position requiring financial integrity.</li>
+            <li><b>Elections and Leadership:</b> Scrutinizing a candidate's intellectual ability, moral compass, and charisma is appropriate, as these qualities directly impact their competence.</li>
+            <li><b>Expertise and Trust:</b> When evaluating a scientific claim, considering the source's past record of providing accurate information is valid.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 21: Circumstantial Ad Hominem -->
+    <section class="slide">
+        <h1>Circumstantial Ad Hominem</h1>
+        <p>A circumstantial ad hominem fallacy is committed when someone attempts to refute an argument by attacking the <b>motives or circumstances</b> of the person making it, rather than addressing the argument itself.</p>
+        <p>This fallacy assumes that someone's vested interests or life experiences automatically render their opinions unreliable, which is not necessarily true.</p>
+    </section>
+
+    <!-- Slide 22: Examples of Circumstantial Ad Hominem -->
+    <section class="slide">
+        <h1>Examples of Circumstantial Ad Hominem</h1>
+        <ol>
+            <li>A politician claims expanding oil production is in the country's best interest. Her opponent says she is only saying that because her state benefits from oil production.</li>
+            <li>Paula argues that more girls should serve on the student council. Nate says she only believes that because she is a girl.</li>
+            <li>Taylor tells the teacher a quiz should not be counted. John says Taylor only feels that way because he didn't do well on the quiz.</li>
+        </ol>
+        <p>In each case, the argument is dismissed based on the speaker's perceived motive or circumstance, ignoring the potential merit of the reasoning itself.</p>
+    </section>
+    
+    <!-- Slide 23: You too (tu quoque) -->
+    <section class="slide">
+        <h1>You too (tu quoque)</h1>
+        <p>Dismissing an argument based solely on the speaker's past actions or inconsistencies is known as the "tu quoque" fallacy. This assumes that hypocrisy automatically invalidates an argument.</p>
+        <p><b>Examples:</b></p>
+        <ul>
+            <li><b>Diet advice:</b> "You never eat vegetables yourself, so why should I listen to you?"</li>
+            <li><b>Animal rights:</b> "You still wear leather shoes, though. Aren't you being inconsistent?"</li>
+        </ul>
+        <p>In these cases, the fallacy is committed by focusing on perceived hypocrisy rather than the merit of the argument. It's important to remember that inconsistency doesn't always equal wrongness.</p>
+    </section>
+
+    <!-- Slide 24: Straw man fallacy -->
+    <section class="slide">
+        <h1>Straw man fallacy</h1>
+        <p>The straw man fallacy is committed when someone attempts to refute an argument by attacking a <b>distorted, exaggerated, or simplified version</b> of it, rather than engaging with the actual claims presented.</p>
+        <p>Instead of addressing the true argument, the straw man fallacy attacks a weaker or easily refuted version, giving the impression of victory without addressing the key points.</p>
+        <img src="strawman.png" alt="Illustration of the Straw Man Fallacy" style="max-width: 80%; max-height: 350px; display: block; margin: 20px auto;">
+    </section>
+
+    <!-- Slide 25: Examples of straw-man -->
+    <section class="slide">
+        <h1>Examples of Straw Man</h1>
+        <ol>
+            <li>"Pro-choice is absurd. How could anyone support killing an innocent human being?" (This portrays the pro-choice position as solely focused on ending a life, ignoring arguments about bodily autonomy.)</li>
+            <li>"Egalitarianism is wrong because it is the same as communism." (This falsely equates two different concepts.)</li>
+            <li>"Opponents of the death penalty believe the lives of murderers are more important than victims." (This oversimplifies a complex debate.)</li>
+            <li>"Smith: 'Killing animals for food is unjustified.' Joe: 'Look, if you want to eat grass like a cow, go ahead!'" (This dismisses the ethical argument with a sarcastic jab.)</li>
+        </ol>
+    </section>
+
+    <!-- Slide 26: Accident Fallacy -->
+    <section class="slide">
+        <h1>Accident Fallacy</h1>
+        <p>The accident fallacy occurs when a general principle is misapplied to an exceptional case that it was not designed to address, leading to an erroneous conclusion.</p>
+        <blockquote>
+            <b>EXAMPLE:</b> "Driving above the speed limit is illegal. Therefore, it should be illegal to drive faster than the speed limit even in emergencies."
+        </blockquote>
+        <p>This commits the fallacy by applying the general rule to all situations, including emergencies where exceeding the limit may be necessary for public safety. It fails to consider the unique context.</p>
+    </section>
+
+    <!-- Slide 27: Examples: Accident Fallacy -->
+    <section class="slide">
+        <h1>Examples: Accident Fallacy</h1>
+        <ol>
+            <li>"Taking a life is morally wrong; therefore, termite control is morally wrong." (Ignores the crucial difference between harming humans and pest control.)</li>
+            <li>"Birds can fly; therefore, an ostrich must be able to fly too." (Ignores exceptions like ostriches.)</li>
+            <li>"Whoever thrusts a knife into another person should be arrested. Surgeons do this when operating. Therefore, surgeons should be arrested." (Ignores the specific context and intent of surgery.)</li>
+        </ol>
+    </section>
+
+    <!-- Slide 28: Missing the point (Ignoratio elenchi) -->
+    <section class="slide">
+        <h1>Missing the point (Ignoratio elenchi)</h1>
+        <p>The fallacy of "missing the point" occurs when someone ignores the actual issue at hand and instead presents a conclusion that is not logically connected to the premises.</p>
+        <blockquote>
+            "Crimes of theft and robbery have been increasing at an alarming rate lately. The conclusion is obvious: we must reinstate the death penalty immediately."
+        </blockquote>
+        <p>In this case, the conclusion of reinstating the death penalty is not directly supported by the premises about an increase in theft and robbery. The argument "misses the point" by failing to address an appropriate solution that logically follows from the premises.</p>
+    </section>
+
+    <!-- Slide 29: Red Herring -->
+    <section class="slide">
+        <h1>Red Herring</h1>
+        <p>The red herring fallacy occurs when the person making an argument intentionally redirects the attention of the audience by introducing a different topic, which may be subtly related but is not directly relevant to the original issue at hand.</p>
+        <p>This fallacy is also known as the "off-the-track" fallacy. Its purpose is to divert attention and steer the discussion away from the main point.</p>
+        <img src="redherring.png" alt="Diagram of the Red Herring Fallacy" style="max-width: 80%; max-height: 350px; display: block; margin: 20px auto;">
+    </section>
+
+    <!-- Slide 30: EXAMPLES: RED HERRING -->
+    <section class="slide">
+        <h1>Examples: Red Herring</h1>
+        <ol>
+            <li><b>Arguing against raises:</b> "Sure, we haven't given raises in over five years. But you know, we work really hard to make a good product and ensure the best customer service." (Red herring: Company's efforts. The argument should address the merits of raises.)</li>
+            <li><b>Defending public safety policies:</b> "I have worked hard to help eliminate criminal activity. What we need is economic growth." (Red herring: Economic growth. The discussion should stay on specific crime prevention policies.)</li>
+            <li><b>Announcing job losses:</b> "We will be moving our business to Mexico, and some jobs will be lost. But Mexico has incredible weather and beautiful beaches." (Red herring: Pleasant weather. The manager should address the impact of job losses.)</li>
+        </ol>
+    </section>
+
+    <!-- Slide 31: Exercise - 1 -->
+    <section class="slide">
+        <h1>Exercise 1: Fallacies of Relevance</h1>
+        <p>Identify the fallacies of relevance committed by the following arguments, giving a brief explanation for your answer.</p>
+        <ol>
+            <li><b>Taxpayer to judge:</b> "Your Honor, I admit I declared thirteen children, though I have only two. But if you find me guilty, my reputation will be ruined, I'll lose my job, my wife can't have her operation, and my kids will starve. Surely I am not guilty."</li>
+            <li>"No one should ever go to war. After all, everyone knows that one should not kill another person."</li>
+            <li>"You should read Daniel's latest book right away. It's sold over a million copies, and everyone is talking about it."</li>
+            <li>"Surely you welcome the opportunity to join our protective organization. Think of all the money you will lose from broken windows and damaged merchandise if you don't join."</li>
+            <li>"University education is failing. Scores are low and graduates can't read or write. The obvious conclusion is that we should close the universities."</li>
+            <li>"Professor Ballard's argument for restructuring our courses isn't worth a hoot. What would you expect from someone who publishes in mediocre journals?"</li>
+        </ol>
+    </section>
+
+    <!-- Slide 32: Fallacies of weak induction -->
+    <section class="slide">
+        <h1>Fallacies of Weak Induction</h1>
+        <p>The fallacies of weak induction differ from fallacies of relevance. Their flaw lies not in having logically irrelevant premises, but in the <b>insufficiency of the connection</b> between the premises and the conclusion. The connection is not strong enough to adequately support the conclusion.</p>
+        <p>This category includes:</p>
+        <ul>
+            <li>Appeal to unqualified authority</li>
+            <li>Appeal to ignorance</li>
+            <li>Hasty generalization</li>
+            <li>False cause</li>
+            <li>Slippery slope</li>
+            <li>Weak analogy</li>
+        </ul>
+    </section>
+
+    <!-- Slide 33: Appeal to Unqualified Authority -->
+    <section class="slide">
+        <h1>Appeal to Unqualified Authority</h1>
+        <p>This fallacy occurs when the authority or witness being cited is not reliable or trustworthy. Reasons for this may include:</p>
+        <ul>
+            <li><b>Lack of ability:</b> The person may not possess the necessary expertise, knowledge, or qualifications in the relevant field.</li>
+            <li><b>Lack of trustworthiness/credibility:</b> The individual may have a history of being dishonest or unreliable.</li>
+            <li><b>Motive to deceive:</b> The person may have a hidden agenda, personal bias, or vested interest that could influence their testimony.</li>
+        </ul>
+    </section>
+
+    <!-- Slide 34: Example: Unqualified Authority -->
+    <section class="slide">
+        <h1>Example: Unqualified Authority</h1>
+        <p>Imagine a popular actor named Alex promoting a new diet plan. Alex claims to have achieved remarkable weight loss and encourages followers to try it.</p>
+        <p>While Alex is admired for their acting, they do not possess expertise in nutrition. Their success in entertainment does not make them a reliable source of dietary advice.</p>
+        <p>The appeal to unqualified authority fallacy occurs when people are swayed by Alex's celebrity status and assume their endorsement is based on genuine expertise. Relying solely on the endorsement of a celebrity, despite their lack of qualifications, is fallacious.</p>
+    </section>
+
+    <!-- Slide 35: Example: Surgeon-General -->
+    <section class="slide">
+        <h1>Example: Unqualified Authority</h1>
+        <p>Sarah argues, "The surgeon-general has stated that babies should receive the MMR vaccine. So, it is unquestionable that they should."</p>
+        <p>Sarah is using the statement as an appeal to authority without critically assessing the evidence behind the recommendation. Instead of presenting a well-reasoned argument, she simply relies on the authority of the surgeon-general to make her case.</p>
+        <p>While the surgeon-general is a recognized authority, it is important to critically examine the evidence behind any recommendation rather than accepting it blindly based solely on the authority's position.</p>
+    </section>
+
+    <!-- Slide 36: Appeal to Ignorance -->
+    <section class="slide">
+        <h1>Appeal to Ignorance</h1>
+        <p>The appeal to ignorance fallacy occurs when an argument's premises state that something has not been proven, but the conclusion asserts a definite claim about it.</p>
+        <blockquote><b>Example:</b> "Throughout history, no scientific evidence has been presented to prove the existence of reincarnation. Therefore, it is reasonable to conclude that reincarnation does not occur."</blockquote>
+        <p>This is fallacious because a lack of evidence is not the same as evidence of absence. It's possible that evidence has not yet been discovered.</p>
+        <p><b>Exception:</b> In a court of law, the presumption of innocence until proven guilty is an exception. A defendant is considered innocent because of the absence of proof of guilt.</p>
+    </section>
+
+    <!-- Slide 37: Hasty Generalization -->
+    <section class="slide">
+        <h1>Hasty Generalization</h1>
+        <p>The fallacy of hasty generalization occurs when a general conclusion is made based on a sample that is <b>biased or too small</b> to accurately represent the entire population.</p>
+        <blockquote><b>Example 1:</b> A survey of ten thousand scientists finds that less than 40% believe in God. The conclusion is drawn that most Americans no longer believe in God. (This is a biased sample.)</blockquote>
+        <blockquote><b>Example 2:</b> "Over the past six months, I have hired three individuals from India, and all three have been lazy. Therefore, I conclude that Indians, as a group, are lazy." (This is too small a sample.)</blockquote>
+    </section>
+
+    <!-- Slide 38: False Cause -->
+    <section class="slide">
+        <h1>False Cause</h1>
+        <p>The fallacy of false cause occurs when a causal connection between premises and conclusion is assumed, even though there is no substantial evidence to support it.</p>
+        <p>One common form is the <b>"post hoc ergo propter hoc"</b> fallacy, where a temporal relationship is mistaken for a cause-and-effect relationship.</p>
+        <blockquote><b>Example:</b> "Every time I purchased a good seat at the basketball game, our team won. Therefore, my choice of seating caused our team's wins."</blockquote>
+        <p>This argument assumes that the temporal sequence implies a causal relationship. However, correlation does not necessarily imply causation.</p>
+    </section>
+
+    <!-- Slide 39: Post hoc: examples -->
+    <section class="slide">
+        <h1>Post Hoc Examples</h1>
+        <ol>
+            <li>"I sneezed at the same time the power went off. My sneeze made the power go off."</li>
+            <li>"The football team lost last week, and now this week's pep-rally is cancelled. The principal must have cancelled it to punish the team."</li>
+            <li>"Kevin's dog scratched his leg, and that night he had a fever. The dog must have infected him."</li>
+            <li>"Lois and Jan did a 'snow dance' one afternoon, and it snowed that night. They claimed to have brought the snow."</li>
+        </ol>
+    </section>
+
+    <!-- Slide 40: Non Causa Pro Causa -->
+    <section class="slide">
+        <h1>Non Causa Pro Causa ("not the cause for the cause")</h1>
+        <p>This fallacy occurs when an explanation mistakenly identifies a correlation as a causation. In this fallacy, one thing is presented as the cause of another, but the connection is misunderstood.</p>
+        <p>This can involve either attributing the effect as the cause or incorrectly assuming cause and effect between two phenomena that are actually both results of a <b>common cause</b>.</p>
+    </section>
+
+    <!-- Slide 41: Examples of Non Causa -->
+    <section class="slide">
+        <h1>Examples of Non Causa</h1>
+        <ol>
+            <li>"Putting more police on the streets causes crime to increase! When we increased the number of cops, the number of crimes witnessed by police went up." (Increased police presence may lead to more crimes being *reported*, not more crimes being committed.)</li>
+            <li>"People on Medicaid tend to be sicker than people with no insurance. This proves Medicaid is a bad idea. It causes them to get sick." (People who qualify for Medicaid may have pre-existing health conditions or lower incomes, which are the more likely causes of poorer health.)</li>
+        </ol>
+    </section>
+
+    <!-- Slide 42: The fallacy of oversimplification -->
+    <section class="slide">
+        <h1>The Fallacy of Oversimplification</h1>
+        <p>This fallacy occurs when an arguer intentionally selects a single factor and presents it as the sole cause or solution to a complex problem, disregarding other intricate details.</p>
+        <blockquote><b>Example:</b> "Standardized test scores have been dropping for decades. During this time, the average time a child spends watching TV has increased. The cause is obvious: Kids are watching too much TV."</blockquote>
+        <p>This oversimplifies the decline by ignoring other potential factors, such as changes in educational policies, socio-economic disparities, or teaching methodologies.</p>
+    </section>
+
+    <!-- Slide 43: Slippery Slope -->
+    <section class="slide">
+        <h1>Slippery Slope</h1>
+        <p>The Slippery Slope fallacy arises when an argument's conclusion is based on the assumption of a <b>chain reaction of events</b>, without adequate justification for believing that the chain reaction will truly occur.</p>
+        <p>The arguer asserts that if one event happens, it will trigger a series of subsequent events leading to an increasingly negative outcome, but there is insufficient evidence to support this unfolding chain.</p>
+        <img src="slippery.png" alt="Diagram of the Slippery Slope Fallacy" style="max-width: 80%; max-height: 350px; display: block; margin: 20px auto;">
+    </section>
+
+    <!-- Slide 44: Example: Slippery Slope -->
+    <section class="slide">
+        <h1>Example: Slippery Slope</h1>
+        <blockquote>
+            "If we allow students to use smartphones in the classroom for educational purposes, it will lead to complete chaos. They will become addicted, lose focus, and ultimately fail their exams. Therefore, we should ban smartphones altogether."
+        </blockquote>
+        <p>The arguer claims that allowing smartphones will lead to a chain reaction of negative consequences. However, there is no sufficient reason provided to support this assertion. The argument assumes that the mere presence of smartphones will automatically lead to academic failure without considering other factors, like proper guidelines.</p>
+    </section>
+
+    <!-- Slide 45: Weak Analogy -->
+    <section class="slide">
+        <h1>Weak Analogy</h1>
+        <p>The fallacy of weak analogy occurs when an argument relies on an <b>irrelevant or weak comparison</b>, or when a more appropriate dis-analogy is present. It's often likened to "comparing apples with oranges."</p>
+        <p>The basic structure of an argument from analogy is:</p>
+        <ul>
+            <li>Entity A has attributes a, b, c, and z.</li>
+            <li>Entity B has attributes a, b, c.</li>
+            <li>Therefore, it is likely that entity B also has attribute z.</li>
+        </ul>
+        <p>The fallacy occurs when the analogy between A and B is not strong enough to support the conclusion, due to relevant differences.</p>
+    </section>
+
+    <!-- Slide 46: Example: Weak Analogy -->
+    <section class="slide">
+        <h1>Example: Weak Analogy</h1>
+        <blockquote>
+            "Implementing stricter gun control laws is like banning kitchen knives because they can be used as weapons. Just as we restrict access to dangerous objects like knives, we should restrict access to firearms."
+        </blockquote>
+        <p>This analogy is weak because there are significant differences between firearms and kitchen knives in their purpose, potential for harm, and regulation. Firearms are designed for causing harm, while knives are primarily tools. The analogy fails to provide a relevant comparison and ignores the complexities of gun control.</p>
+    </section>
+
+    <!-- Slide 47: EXERCISE - 2 -->
+    <section class="slide">
+        <h1>Exercise 2: Fallacies of Weak Induction</h1>
+        <p>Identify the fallacies of weak induction committed by the following arguments, giving a brief explanation.</p>
+        <ol>
+            <li>"No one has ever been able to prove the existence of extrasensory perception. We must therefore conclude that it is a myth."</li>
+            <li>"Lester Brown, a universally respected geographer, has said that the destruction of tropical rainforests is one of the ten most serious worldwide problems. Thus, it must be a very serious problem."</li>
+            <li>"A few minutes after Governor Smith finished his speech, a devastating earthquake struck. For the safety of the people, it is imperative that Governor Smith make no more speeches."</li>
+            <li>"The prohibition of assault weapons must be opposed. Once they are outlawed, next they'll go after handguns. After that, shotguns. In the end, citizens will be left defenseless."</li>
+            <li>"The flow of electricity through a wire is similar to the flow of water through a pipe. When water runs downhill, pressure is greater at the bottom. Thus, when electricity flows downhill, voltage should be greater at the bottom."</li>
+        </ol>
+    </section>
+
+    <!-- Slide 48: Fallacies of presumption -->
+    <section class="slide">
+        <h1>Fallacies of Presumption</h1>
+        <p>Fallacies of presumption refer to arguments that rely on <b>assumptions that are usually not explicitly stated</b> or backed up with evidence.</p>
+        <p>These fallacies are like whispers in the dark, guiding the argument without ever appearing in the light. Bringing them out into the open exposes their lack of substance.</p>
+        <p>The fallacies of presumption include:</p>
+        <ul>
+            <li>Begging the question</li>
+            <li>Complex question</li>
+            <li>False dichotomy</li>
+            <li>Suppressed evidence</li>
+        </ul>
+    </section>
+
+    <!-- Slide 49: Begging The Question -->
+    <section class="slide">
+        <h1>Begging The Question</h1>
+        <p>This fallacy is committed whenever the arguer creates the illusion that inadequate premises provide adequate support for the conclusion by leaving out a possibly false key premise, or by restating a possibly false premise as the conclusion (reasoning in a circle).</p>
+        <ol>
+            <li><b>"Capital punishment is justified for murder because a state has a right to put someone to death for it."</b> (This assumes the conclusion by relying on a premise that says the same thing.)</li>
+            <li><b>"Women shouldn't fight bulls because a bullfighter is and should be a man."</b> (This assumes the conclusion by restating a biased premise as the reason.)</li>
+            <li><b>"Murder is morally wrong. This being the case, then abortion must also be morally wrong."</b> (This assumes the key premise that abortion is a form of murder.)</li>
+        </ol>
+    </section>
+
+    <!-- Slide 50: Complex Question / Loaded Question -->
+    <section class="slide">
+        <h1>Complex Question / Loaded Question</h1>
+        <p>This fallacy occurs when an arguer asks a question that includes an <b>unfair or unwarranted presupposition</b>. It is often intended to trap the respondent into acknowledging something they may not want to admit.</p>
+        <blockquote>
+            <b>Example:</b> "Have you stopped beating your spouse?"
+        </blockquote>
+        <p>This question is loaded because it assumes the person being asked has been beating their spouse. By phrasing it this way, the arguer tries to trap the respondent into admitting guilt, as either a "yes" or "no" answer implies past wrongdoing.</p>
+    </section>
+
+    <!-- Slide 51: False Dichotomy -->
+    <section class="slide">
+        <h1>False Dichotomy</h1>
+        <p>The fallacy of false dichotomy occurs when an argument attempts to manipulate by creating the impression that there are <b>only two choices available</b>, when in reality, there could be a broader range of options.</p>
+        <p>This is also known as false binary or black-and-white thinking.</p>
+        <blockquote>
+            <b>General Structure:</b><br>
+            Either claim X is true or claim Y is true.<br>
+            Claim Y is false.<br>
+            Therefore, claim X must be true.
+        </blockquote>
+        <p>This is fallacious when the "Either/Or" premise wrongly excludes other possibilities.</p>
+    </section>
+
+    <!-- Slide 52: Everyday Language False Dichotomies -->
+    <section class="slide">
+        <h1>Subtle False Dichotomies in Everyday Language</h1>
+        <ol>
+            <li><b>"Do the ends justify the means?"</b> This creates a black-and-white picture where a good goal can only be achieved through bad means, ignoring less harmful options.</li>
+            <li><b>"I had no choice."</b> This statement often shuts down discussions about responsibility and alternatives, claiming complete helplessness.</li>
+            <li><b>"Nature or nurture?"</b> This classic debate creates a false divide between genetics and environment, simplifying the complex interplay between them.</li>
+            <li><b>"You get what you pay for."</b> This saying oversimplifies markets, disregarding factors like quality variations, hidden costs, and changing values.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 53: Suppressed Evidence -->
+    <section class="slide">
+        <h1>Suppressed Evidence</h1>
+        <p>This fallacy occurs when someone presents evidence in support of their position but intentionally <b>omits or suppresses relevant evidence that could weaken or contradict their conclusion</b>.</p>
+        <p>The arguer selectively presents information that supports their viewpoint while disregarding or concealing evidence that might challenge it. By withholding crucial evidence, they create a skewed or incomplete picture of the issue at hand.</p>
+        <p>This is particularly misleading with statistical data, where selectively presenting statistics can create a false impression.</p>
+    </section>
+    
+    <!-- Slide 54: Examples of Suppressed Evidence -->
+    <section class="slide">
+        <h1>Examples of Suppressed Evidence</h1>
+        <ul>
+            <li><b>Advertising:</b> A car company claims its model is the safest, but only cites crash test results for specific scenarios while ignoring others where it performed poorly.</li>
+            <li><b>Politics:</b> A politician touts job growth statistics during their term but omits data on wage stagnation.</li>
+            <li><b>Science:</b> A researcher publishes a study supporting a controversial theory but fails to disclose funding from a biased organization.</li>
+            <li><b>Everyday Life:</b> A friend argues a restaurant is terrible based on one bad experience but ignores numerous positive reviews.</li>
+        </ul>
+        <p><b>Note:</b> Suppressed evidence often involves cherry-picking data to create a misleading impression.</p>
+    </section>
+
+    <!-- Slide 55: Fallacies of Ambiguity -->
+    <section class="slide">
+        <h1>Fallacies of Ambiguity</h1>
+        <p>These fallacies arise from the occurrence of some form of <b>ambiguity</b> in either the premises or the conclusion (or both). An expression is ambiguous if it is susceptible to different interpretations in a given context.</p>
+        <p>This category includes:</p>
+        <ul>
+            <li>Equivocation</li>
+            <li>Amphiboly</li>
+        </ul>
+    </section>
+
+    <!-- Slide 56: Equivocation -->
+    <section class="slide">
+        <h1>Equivocation</h1>
+        <p>Equivocation is a logical fallacy that arises when an argument relies on the ambiguity of a word or phrase, using it in two different senses to reach a faulty conclusion.</p>
+        <blockquote><b>Example 1:</b><br>Premise 1: Some triangles are obtuse.<br>Premise 2: Whatever is obtuse is ignorant.<br>Conclusion: Therefore, some triangles are ignorant.</blockquote>
+        <p>Here, "obtuse" shifts from a geometric meaning to a metaphorical one for ignorance.</p>
+        <blockquote><b>Example 2:</b><br>Premise 1: Any law can be repealed by the legislative authority.<br>Premise 2: But the law of gravity is a law.<br>Conclusion: Therefore, the law of gravity can be repealed.</blockquote>
+        <p>Here, "law" shifts from a legal rule to a natural principle.</p>
+    </section>
+
+    <!-- Slide 57: Amphiboly -->
+    <section class="slide">
+        <h1>Amphiboly</h1>
+        <p>The fallacy of amphiboly occurs when an arguer misinterprets an <b>ambiguous statement</b> and draws a conclusion based on this faulty interpretation. The ambiguity often arises from a dangling modifier, an ambiguous pronoun, or a careless arrangement of words.</p>
+        <blockquote>
+            <b>Example 1:</b><br>
+            Statement: The tour guide said that standing in Greenwich Village, the Empire State Building could easily be seen.<br>
+            Faulty Conclusion: It follows that the Empire State Building is in Greenwich Village.
+        </blockquote>
+        <p>The statement is ambiguous due to the placement of the modifier "standing in Greenwich Village." The faulty conclusion misinterprets the statement to mean the building is located there.</p>
+    </section>
+    
+    <!-- Slide 58: More Amphiboly Examples -->
+    <section class="slide">
+        <h1>More Amphiboly Examples</h1>
+        <blockquote>
+            <b>Example 2:</b><br>
+            Statement: John told Henry that he had made a mistake.<br>
+            Faulty Conclusion: It follows that John has the courage to admit his own mistakes.
+        </blockquote>
+        <p>The ambiguity arises from the pronoun "he." It could be interpreted as John admitting his own mistake or informing Henry that Henry made a mistake. The conclusion assumes the former.</p>
+        <blockquote>
+            <b>Example 3:</b><br>
+            Statement: Professor Johnson will give a lecture about heart failure in the biology lecture hall.<br>
+            Faulty Conclusion: It must be that a number of heart failures have occurred there recently.
+        </blockquote>
+        <p>The faulty conclusion assumes the topic of the lecture implies a recent occurrence at that location.</p>
+    </section>
+
+    <!-- Slide 59: Dangling Modifier -->
+    <section class="slide">
+        <h1>Grammar Note: Dangling Modifier</h1>
+        <p>A dangling modifier is a grammatical error where a modifier does not clearly and logically modify the intended word. As a result, it "dangles" without a clear connection, leading to ambiguity.</p>
+        <blockquote>
+            <b>Dangling:</b> Walking down the street, the trees appeared beautiful.<br>
+            <b>Corrected:</b> Walking down the street, I saw the beautiful trees.
+        </blockquote>
+        <p>In the dangling version, it appears as if the trees themselves are walking down the street. To avoid this, ensure the modifier is placed next to the word it is intended to modify.</p>
+    </section>
+    
+    <!-- Slide 60: Ambiguous Antecedent -->
+    <section class="slide">
+        <h1>Grammar Note: Ambiguous Antecedent</h1>
+        <p>An ambiguous antecedent occurs when it is unclear which noun a pronoun is referring to, especially when there are multiple possibilities.</p>
+        <blockquote>
+            <b>Ambiguous:</b> Sarah told Emily that she should bring a gift.<br>
+            <b>Unclear Referent:</b> It is unclear who should bring a gift.
+        </blockquote>
+        <p>To avoid this, rephrase the sentence to provide clarity.</p>
+        <blockquote>
+            <b>Revised:</b> Sarah told Emily that Emily should bring a gift.
+        </blockquote>
+        <p>By clarifying the antecedent, we eliminate the ambiguity.</p>
+    </section>
+
+    <!-- Slide 61: Fallacies of Grammatical Analogy -->
+    <section class="slide">
+        <h1>Fallacies of Grammatical Analogy</h1>
+        <p>Arguments that commit these fallacies are <b>grammatically analogous</b> to other arguments that are good in every respect. Because of this similarity in linguistic structure, such fallacious arguments may appear good yet be bad.</p>
+        <p>This category includes:</p>
+        <ul>
+            <li>Composition</li>
+            <li>Division</li>
+        </ul>
+    </section>
+    
+    <!-- Slide 62: Composition -->
+    <section class="slide">
+        <h1>Composition</h1>
+        <p>The fallacy of composition is committed when the conclusion of an argument depends on the <b>erroneous transference of an attribute from the parts of something onto the whole</b>.</p>
+        <p>In other words, the fallacy occurs when it is argued that because the parts have a certain attribute, it follows that the whole must have that attribute too.</p>
+    </section>
+
+    <!-- Slide 63: Types of Composition -->
+    <section class="slide">
+        <h1>Types of Composition</h1>
+        <p>The first type is an invalid inference from the nature of the parts to the nature of the whole.</p>
+        <blockquote><b>EXAMPLE:</b> Each player on the football team is outstanding. Hence, the team itself is outstanding.</blockquote>
+        <p>The second type is an invalid inference from attributes of members of a group to attributes of the group itself.</p>
+        <blockquote><b>EXAMPLE:</b> Elephants eat more than humans. So, elephants taken as a group eat more than humans taken as a group.</blockquote>
+        <p>Note that not all part-to-whole inferences are invalid (e.g., if each part of a machine has weight, the machine itself has weight).</p>
+    </section>
+    
+    <!-- Slide 64: Composition vs. Hasty Generalization -->
+    <section class="slide">
+        <h1>Composition vs. Hasty Generalization</h1>
+        <ul>
+            <li><b>Composition</b> is about making assumptions about the <b>whole</b> based on its <b>parts</b>. (e.g., "Every ingredient is healthy, so the entire smoothie must be healthy.")</li>
+            <li><b>Hasty generalization</b> is about making assumptions about <b>all members of a group</b> based on a <b>limited sample</b>. (e.g., "My friend lost weight on this diet, so it must work for everyone.")</li>
+        </ul>
+        <h2>Key differences:</h2>
+        <ul>
+            <li><b>Focus:</b> Composition focuses on the whole, while hasty generalization focuses on individual members.</li>
+            <li><b>Conclusion:</b> Composition leads to a class statement (about the whole), while hasty generalization leads to a general statement (about all members).</li>
+        </ul>
+    </section>
+
+    <!-- Slide 65: General vs. Class Statements -->
+    <section class="slide">
+        <h1>General Statements vs. Class Statements</h1>
+        <h2>General Statements</h2>
+        <ul>
+            <li>Apply to every individual member of a class (distributive).</li>
+            <li>Example: "All humans are mortal." (Every single human is mortal.)</li>
+        </ul>
+        <h2>Class Statements</h2>
+        <ul>
+            <li>Apply to a group or class as a whole, not necessarily every member (collective).</li>
+            <li>Example: "The human race is diverse." (The group is diverse, even if some individuals share traits.)</li>
+        </ul>
+        <p><b>Example of the Difference:</b><br>General statement: "Every student in this class is over 18."<br>Class statement: "This class is composed of adult learners." (The group is adult learners, but an individual might be younger.)</p>
+    </section>
+    
+    <!-- Slide 66: Division -->
+    <section class="slide">
+        <h1>Division</h1>
+        <p>The fallacy of division assumes that just because something is true for a <b>whole group</b>, it must be true for <b>every individual member</b> of that group.</p>
+        <p>Here are examples:</p>
+        <ul>
+            <li>"The university has a high graduation rate, so every student must be academically successful." (This ignores individual differences.)</li>
+            <li>"This book is long and complex, so each sentence must be difficult to understand."</li>
+        </ul>
+    </section>
+
+    <!-- Slide 67: EXERCISE - 3 -->
+    <section class="slide">
+        <h1>Exercise 3</h1>
+        <p>Identify the fallacies of presumption, ambiguity, and grammatical analogy in the following arguments. If no fallacy is committed, write "no fallacy."</p>
+        <ol>
+            <li>"The sign said 'Fine for parking here,' so I thought it was okay to park. But when I returned, I had a parking ticket. They tricked me!"</li>
+            <li>"You're either for unrestricted free speech or against freedom altogether. If you support any limitations on speech, you're undermining democracy."</li>
+            <li>"Using a smartphone to communicate is similar to sending letters by mail. Both involve written messages. Therefore, smartphones are just a modern version of traditional mail."</li>
+            <li>"I met two rude tourists from that country, so everyone from that country must be rude."</li>
+            <li>"This team has star players in every position, so they'll definitely win the championship."</li>
+        </ol>
+    </section>
+
+    <!-- Slide 68: References - Books -->
+    <section class="slide">
+        <h1>References - Books</h1>
+        <ol>
+            <li><b>"A Rulebook for Arguments"</b> by Anthony Weston: A concise guide to understanding and constructing arguments, covering a wide range of fallacies.</li>
+            <li><b>"Understanding Arguments: An Introduction to Informal Logic"</b> by Walter Sinnott-Armstrong and Robert J. Fogelin: A comprehensive introduction to informal logic and fallacies.</li>
+            <li><b>"Critical Thinking: A Student's Introduction"</b> by Gregory Bassham, et al.: Focuses on critical thinking skills and includes a section on fallacies with practical guidance.</li>
+            <li><b>"Logic and Contemporary Rhetoric"</b> by Howard Kahane and Nancy Cavender: Explores the relationship between logic and rhetoric with a thorough examination of fallacies.</li>
+            <li><b>"Informal Logic: A Pragmatic Approach"</b> by Douglas Walton: A pragmatic approach to informal logic that covers a wide range of fallacies.</li>
+        </ol>
+    </section>
+
+    <!-- Slide 69: References - Websites -->
+    <section class="slide">
+        <h1>References - Websites</h1>
+        <ol>
+            <li><b>Logical Fallacies:</b> <a href="http://logicalfallacies.org" target="_blank">logicalfallacies.org</a> - Provides a comprehensive list of fallacies with explanations and examples.</li>
+            <li><b>Your Logical Fallacy Is:</b> <a href="http://yourlogicalfallacyis.com" target="_blank">yourlogicalfallacyis.com</a> - Offers a visual and interactive approach to understanding fallacies.</li>
+            <li><b>Fallacy Files:</b> <a href="http://fallacyfiles.org" target="_blank">fallacyfiles.org</a> - An extensive collection of both formal and informal fallacies with detailed explanations.</li>
+            <li><b>Internet Encyclopedia of Philosophy:</b> <a href="http://iep.utm.edu" target="_blank">iep.utm.edu</a> - A reliable online resource with articles on a wide range of philosophical topics, including fallacies.</li>
+            <li><b>Stanford Encyclopedia of Philosophy:</b> <a href="http://plato.stanford.edu" target="_blank">plato.stanford.edu</a> - A reputable online resource offering high-quality, scholarly articles on philosophical topics, including fallacies.</li>
+        </ol>
+<div class="button-container">
+        <a href="chapter_5phil1009.pdf" download class="download-btn">Download Chapter PDF</a>
+    </div>
+    </section>
+
+</div>
+
+<script>
+    // --- JavaScript for Keyboard Navigation and Setup ---
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    function setupSlides() {
+        slides.forEach((slide, index) => {
+            const slideNumberEl = document.createElement('div');
+            slideNumberEl.className = 'slide-number';
+            slideNumberEl.textContent = `${index + 1} / ${totalSlides}`;
+            slide.appendChild(slideNumberEl);
+            slide.setAttribute('tabindex', '-1');
+            if (index === 0) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.add('next');
+            }
+        });
+        if (slides.length > 0) {
+            slides[0].focus();
+        }
+    }
+
+    function navigateToSlide(newIndex) {
+        if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentSlide) return;
+        const oldIndex = currentSlide;
+        const direction = newIndex > oldIndex ? 'right' : 'left';
+        
+        slides[newIndex].classList.remove('next', 'previous');
+        slides[newIndex].classList.add('active');
+
+        slides[oldIndex].classList.remove('active');
+        slides[oldIndex].classList.add(direction === 'right' ? 'previous' : 'next');
+        
+        currentSlide = newIndex;
+        slides[newIndex].focus({ preventScroll: true });
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigateToSlide(currentSlide + 1);
+        } else if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            navigateToSlide(currentSlide - 1);
+        }
+    });
+
+    setupSlides();
+</script>
+
+</body>
+</html>
