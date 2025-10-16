@@ -415,20 +415,21 @@
 <script>
     // --- JavaScript for Navigation and Setup ---
     const slides = document.querySelectorAll('.slide');
-    const presentationContainer = document.querySelector('.presentation-container'); // Get the container
+    const presentationContainer = document.querySelector('.presentation-container'); // Get the main container
     const totalSlides = slides.length;
     let currentSlide = 0;
 
-    // --- Slide Initialization ---
+    // --- Touch navigation variables ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // Minimum swipe distance in pixels to trigger navigation
+
     function setupSlides() {
         slides.forEach((slide, index) => {
-            // Add slide numbers
             const slideNumberEl = document.createElement('div');
             slideNumberEl.className = 'slide-number';
             slideNumberEl.textContent = `${index + 1} / ${totalSlides}`;
             slide.appendChild(slideNumberEl);
-            
-            // Set initial slide classes and accessibility attribute
             slide.setAttribute('tabindex', '-1');
             if (index === 0) {
                 slide.classList.add('active');
@@ -436,33 +437,27 @@
                 slide.classList.add('next');
             }
         });
-        // Focus the first slide on load
         if (slides.length > 0) {
             slides[0].focus();
         }
     }
 
-    // --- Core Navigation Function ---
     function navigateToSlide(newIndex) {
         if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentSlide) return;
-        
         const oldIndex = currentSlide;
         const direction = newIndex > oldIndex ? 'right' : 'left';
         
-        // Update classes for the new active slide
         slides[newIndex].classList.remove('next', 'previous');
         slides[newIndex].classList.add('active');
 
-        // Update classes for the old slide to animate it out
         slides[oldIndex].classList.remove('active');
         slides[oldIndex].classList.add(direction === 'right' ? 'previous' : 'next');
         
-        // Update the current slide index and focus
         currentSlide = newIndex;
         slides[newIndex].focus({ preventScroll: true });
     }
 
-    // --- Keyboard Navigation ---
+    // --- Keyboard Event Listeners (Existing) ---
     document.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowRight') {
             event.preventDefault();
@@ -473,40 +468,31 @@
         }
     });
 
-    // --- [NEW] Touch Screen Swipe Navigation ---
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    // Listen for the start of a touch event
+    // --- Touch Event Listeners (Newly Added) ---
     presentationContainer.addEventListener('touchstart', (event) => {
-        // Record the initial horizontal position of the touch
-        touchStartX = event.changedTouches[0].screenX;
+        // Record the starting X position of the touch
+        touchStartX = event.touches[0].clientX;
     }, { passive: true });
 
-    // Listen for the end of a touch event
     presentationContainer.addEventListener('touchend', (event) => {
-        // Record the final horizontal position
-        touchEndX = event.changedTouches[0].screenX;
+        // Record the ending X position of the touch
+        touchEndX = event.changedTouches[0].clientX;
         handleSwipe();
-    });
+    }, { passive: true });
 
     function handleSwipe() {
-        // Calculate the distance swiped
+        // Calculate the horizontal distance swiped
         const swipeDistance = touchEndX - touchStartX;
-        const swipeThreshold = 50; // Minimum distance in pixels for a swipe to be registered
 
-        // Swipe Left (to see the next slide)
+        // If swiped left (more than the threshold)
         if (swipeDistance < -swipeThreshold) {
             navigateToSlide(currentSlide + 1);
         }
-        
-        // Swipe Right (to see the previous slide)
-        if (swipeDistance > swipeThreshold) {
+        // If swiped right (more than the threshold)
+        else if (swipeDistance > swipeThreshold) {
             navigateToSlide(currentSlide - 1);
         }
     }
-    // --- End of Touch Navigation Logic ---
 
-    // Initialize the presentation
     setupSlides();
 </script>
