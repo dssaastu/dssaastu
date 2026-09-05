@@ -150,23 +150,42 @@
             .policy-content { padding: 25px; }
         }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">Courses</a>
+                <a href="contact.html" class="header-action-btn">Contact</a>
+            </div>
+        </div>
     </header>
     
     <nav class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a> <!-- BLOG LINK ADDED FOR CONSISTENCY -->
-            <a href="gallery.html">Gallery</a>
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About Us</a>
+                <a href="staff.html">Staff</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+                <a href="gallery.html">Gallery</a>
+            </div>
         </div>
     </nav>
 
@@ -235,8 +254,17 @@
         </main>
     </div>
     
-    <footer class="footer">
-        <p>© 2024 Social Science Department | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    <footer class="modern-footer">
+        <div class="footer-bottom" style="border: none; background: transparent;">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="map.html">Campus Map</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>

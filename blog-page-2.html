@@ -3,179 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Page 2 - Social Science Department</title>
+    <title>Academic Essays - Page 2 | Social Science Department - AASTU</title>
+    <meta name="description" content="Department essays on creativity in education, historiography of Ethiopia, and Eguale Gebre Yohannes philosophy.">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* --- CORE STYLES (Copied from your blog.html) --- */
-        body { font-family: 'Segoe UI', 'Nyala', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
-        .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
-        .header h1 { margin: 0; font-size: 2rem; }
-        .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
-        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-        .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
-        .footer p { margin-top: 15px; font-size: 0.9rem; }
-        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
-        .content-wrapper { width: 80%; max-width: 900px; margin: 40px auto; }
-        .content-wrapper h2 { text-align: center; margin-bottom: 30px; font-size: 2.2rem; color: #2C3E50; }
-
-        /* --- POST PREVIEW STYLES --- */
-        .post-preview {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            overflow: hidden; 
+        .blog-feed {
             display: flex;
             flex-direction: column;
+            gap: 32px;
+            max-width: 920px;
+            margin: 40px auto 0;
         }
-        .post-preview-image img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
+        .post-card-modern {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+        .post-card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+        .post-img-link {
             display: block;
+            position: relative;
+            overflow: hidden;
+            background: #0f172a;
         }
-        .post-preview-content {
-            padding: 25px 30px;
+        .post-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
-        .post-preview h3 { margin: 0 0 10px 0; }
-        .post-preview h3 a { text-decoration: none; color: #2C3E50; font-size: 1.8rem; line-height: 1.3; }
-        .post-preview h3 a:hover { text-decoration: underline; }
-        .post-meta { font-size: 0.9em; color: #777; margin-bottom: 15px; }
-        .post-excerpt { line-height: 1.7; color: #555; font-size: 1.1rem; }
-        .read-more { display: inline-block; margin-top: 15px; background-color: #2C3E50; color: white; padding: 10px 18px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .read-more:hover { background-color: #1A252F; }
-
-        /* --- Pagination Styles --- */
-        .pagination {
-            text-align: center;
-            margin-top: 40px;
+        .post-card-modern:hover .post-img {
+            transform: scale(1.05);
         }
-        .pagination a {
-            color: #2C3E50;
-            padding: 10px 15px;
+        .post-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .post-category-tag {
+            display: inline-block;
+            background: rgba(194, 136, 41, 0.12);
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+        .post-title {
+            font-size: 1.35rem;
+            line-height: 1.35;
+            margin: 0 0 10px;
+            font-weight: 700;
+        }
+        .post-title a {
+            color: var(--primary-navy);
             text-decoration: none;
-            border: 1px solid #ddd;
-            margin: 0 5px;
-            border-radius: 5px;
+            transition: color 0.2s;
         }
-        .pagination a.active, .pagination a:hover {
-            background-color: #2C3E50;
-            color: white;
-            border: 1px solid #2C3E50;
+        .post-title a:hover {
+            color: var(--accent-blue);
         }
-        
-        /* --- Responsive Styles --- */
-        @media (max-width: 768px) { .navbar { flex-direction: column; align-items: flex-start; } .navbar-toggler { display: block; } .navbar-menu { display: none; flex-direction: column; width: 100%; } .navbar-menu.show { display: flex; } .content-wrapper { width: 95%; } }
+        .post-meta-line {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .post-snippet {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .post-read-btn {
+            align-self: flex-start;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+        .post-read-btn:hover {
+            color: var(--accent-blue-hover);
+            transform: translateX(4px);
+        }
+        .pagination-modern {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 50px 0 20px;
+        }
+        .page-link-modern {
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            background: #ffffff;
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .page-link-modern:hover, .page-link-modern.active {
+            background: var(--primary-navy);
+            color: #ffffff;
+            border-color: var(--primary-navy);
+        }
+        @media (max-width: 768px) {
+            .post-card-modern {
+                grid-template-columns: 1fr;
+            }
+            .post-img-link {
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
-    
-    <div class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a>
-            <a href="gallery.html">Gallery</a>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
         </div>
     </div>
-    
-    <div class="content-wrapper">
-        <h2>Recent Posts</h2>
 
-        <main class="posts-list">
-            
-            <!-- Post 1 on this page -->
-            <article class="post-preview">
-                <a href="creativity-limit.html" class="post-preview-image">
-                    <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Abstract image representing the intersection of technology, creativity, and education.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="creativity-limit.html">The Limits of Creativity in Education: Challenges and Dilemmas</a></h3>
-                    <p class="post-meta">Posted on October 5, 2025 by Mohammed Zeinu Hassen</p>
-                    <p class="post-excerpt">
-                        While creativity is increasingly recognized as a vital skill for the 21st century, its integration into education faces numerous challenges. This article explores the systemic, pedagogical, and conceptual barriers...
-                    </p>
-                    <a href="creativity-limit.html" class="read-more">Read More &rarr;</a>
+    <!-- Main Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
                 </div>
-            </article>
-
-            <!-- Post 2 on this page -->
-            <article class="post-preview">
-                <a href="grand-narrative.html" class="post-preview-image">
-                    <img src="https://images.pexels.com/photos/10464933/pexels-photo-10464933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="An ancient Ethiopian religious book with historical script.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="grand-narrative.html">The predicaments of the “Grand narrative” of Ethiopian history: The challenges of post modernism</a></h3>
-                    <p class="post-meta">Posted on October 6, 2025 by Dagmawie Tesfaye</p>
-                    <p class="post-excerpt">
-                        This article analyzes the postmodernist critique of the "grand narrative" of Ethiopian history, particularly focusing on Samir Yusuf's critique of Bahiru Zewdie's work. It argues that applying such critiques is detrimental...
-                    </p>
-                    <a href="grand-narrative.html" class="read-more">Read More &rarr;</a>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
                 </div>
-            </article>
-
-            <!-- Post 3 on this page -->
-            <article class="post-preview">
-                <a href="defining-ai.html" class="post-preview-image">
-                    <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Stylized image of a brain with half being circuit board and half being organic">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="defining-ai.html">The Philosopher, the Psychologist, and the Machine: Defining AI Intelligence</a></h3>
-                    <p class="post-meta">Posted on November 12, 2023 by Mohammed Zeinu Hassen</p>
-                    <p class="post-excerpt">
-                        This article examines the foundational conflict between philosophy and psychology in establishing criteria for machine intelligence, exploring how these two disciplines apply fundamentally different standards to AI systems...
-                    </p>
-                    <a href="defining-ai.html" class="read-more">Read More &rarr;</a>
-                </div>
-            </article>
-            
-            <!-- Post 4 on this page -->
-            <article class="post-preview">
-                <a href="eguale.html" class="post-preview-image">
-                    <img src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="An ancient, gnarled tree with deep roots, symbolizing heritage and the synthesis of old and new knowledge.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="eguale.html">The Root and the Branch: Eguale Gebre Yohannes's Philosophy of 'Synthesis'</a></h3>
-                    <p class="post-meta">Posted on October 5, 2023 by Mohammed Zeinu Hassen</p>
-                    <p class="post-excerpt">
-                        This article examines the seminal work of the 20th-century Ethiopian philosopher Eguale Gebre Yohannes, addressing the cultural crisis stemming from the encounter between indigenous Ethiopian civilization and modern Western thought...
-                    </p>
-                    <a href="eguale.html" class="read-more">Read More &rarr;</a>
-                </div>
-            </article>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="blog.html">&laquo;</a>
-                <a href="blog.html">1</a>
-                <a href="blog-page-2.html" class="active">2</a>
-                <a href="blog-page-3.html">3</a>
-                <a href="blog-page-4.html">4</a>
-                <a href="blog-page-5.html">5</a>
-                <a href="blog-page-3.html">&raquo;</a>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">Academic Courses</a>
+                <a href="staff.html" class="header-action-btn">Faculty Directory</a>
             </div>
+        </div>
+    </header>
 
-        </main>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="courses.html">Courses</a>
+                <a href="staff.html">Faculty & Staff</a>
+                <a href="logic.html">Logic & Critical Thinking</a>
+                <a href="mcie1012mainpage.html">Civics & Ethics</a>
+                <a href="blog.html" class="active">Academic Essays & Blog</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Banner -->
+    <div style="background: linear-gradient(135deg, #0f1f38, #1a2f50); color: white; padding: 48px 24px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <span class="section-badge" style="background: rgba(255,255,255,0.15); color: var(--accent-gold-light);">Archive &bull; Page 2</span>
+            <h2 style="font-size: 2.4rem; margin: 10px 0 14px; font-weight: 800;">Academic Essays & Thought Pieces</h2>
+            <p style="color: #cbd5e1; font-size: 1.05rem; margin: 0;">Explorations into Ethiopian historiography, educational philosophy, and cognitive definitions of artificial mind.</p>
+        </div>
     </div>
-    
-    <div class="footer">
-        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
-    </div>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="blog-feed">
+
+            <!-- Post 1 -->
+            <article class="post-card-modern">
+                <a href="creativity-limit.html" class="post-img-link" aria-label="Read about Creativity in Education">
+                    <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Creativity and Education" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Pedagogy & Higher Ed</span>
+                        <h3 class="post-title"><a href="creativity-limit.html">The Limits of Creativity in Education: Challenges and Dilemmas</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Mohammed Zeinu Hassen</span>
+                            <span>&bull;</span>
+                            <span>Educational Philosophy</span>
+                        </div>
+                        <p class="post-snippet">
+                            While creativity is increasingly recognized as an essential skill for the 21st century, its integration into traditional curricula faces systemic, pedagogical, and evaluation barriers.
+                        </p>
+                    </div>
+                    <a href="creativity-limit.html" class="post-read-btn">
+                        <span>Read Full Article</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="post-card-modern">
+                <a href="grand-narrative.html" class="post-img-link" aria-label="Read about Grand Narrative">
+                    <img src="https://images.pexels.com/photos/10464933/pexels-photo-10464933.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ancient Ethiopian history" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Historiography & Theory</span>
+                        <h3 class="post-title"><a href="grand-narrative.html">The Predicaments of the “Grand Narrative” of Ethiopian History: Challenges of Postmodernism</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Dagmawie Tesfaye</span>
+                            <span>&bull;</span>
+                            <span>Historical Analysis</span>
+                        </div>
+                        <p class="post-snippet">
+                            Analyzing postmodern critiques of overarching Ethiopian historical narratives, evaluating scholarly discourses around national coherence, fragmented memory, and institutional historiography.
+                        </p>
+                    </div>
+                    <a href="grand-narrative.html" class="post-read-btn">
+                        <span>Read Scholarly Paper</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="post-card-modern">
+                <a href="defining-ai.html" class="post-img-link" aria-label="Read about Defining AI">
+                    <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI and philosophy" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Cognitive Science & Philosophy</span>
+                        <h3 class="post-title"><a href="defining-ai.html">The Philosopher, the Psychologist, and the Machine: Defining AI Intelligence</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Mohammed Zeinu Hassen</span>
+                            <span>&bull;</span>
+                            <span>Philosophy of Mind</span>
+                        </div>
+                        <p class="post-snippet">
+                            Examines the epistemological dispute between functional psychology and philosophy of mind in defining synthetic consciousness, intentionality, and machine cognition.
+                        </p>
+                    </div>
+                    <a href="defining-ai.html" class="post-read-btn">
+                        <span>Read Analysis</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="post-card-modern">
+                <a href="eguale.html" class="post-img-link" aria-label="Read about Eguale Gebre Yohannes">
+                    <img src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Roots and Wisdom" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Ethiopian Philosophy</span>
+                        <h3 class="post-title"><a href="eguale.html">The Root and the Branch: Eguale Gebre Yohannes's Philosophy of 'Synthesis'</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Mohammed Zeinu Hassen</span>
+                            <span>&bull;</span>
+                            <span>Indigenous Thought</span>
+                        </div>
+                        <p class="post-snippet">
+                            A study into the seminal philosophical works of 20th-century thinker Eguale Gebre Yohannes on harmonizing traditional Ethiopian wisdom with modernity.
+                        </p>
+                    </div>
+                    <a href="eguale.html" class="post-read-btn">
+                        <span>Read Essay</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Modern Pagination -->
+        <div class="pagination-modern">
+            <a href="blog.html" class="page-link-modern">&larr;</a>
+            <a href="blog.html" class="page-link-modern">1</a>
+            <a href="blog-page-2.html" class="page-link-modern active">2</a>
+            <a href="blog-page-3.html" class="page-link-modern">3</a>
+            <a href="blog-page-4.html" class="page-link-modern">4</a>
+            <a href="blog-page-5.html" class="page-link-modern">5</a>
+            <a href="blog-page-3.html" class="page-link-modern">&rarr;</a>
+        </div>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Nurturing human values, critical thinking, and civic awareness.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="staff.html">Faculty</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="mcie1012mainpage.html">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-            document.getElementById('navbar-menu').classList.toggle('show');
-        });
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>
 </body>
 </html>

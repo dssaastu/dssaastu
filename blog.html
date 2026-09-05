@@ -3,209 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Social Science Department</title>
+    <title>Academic Essays & Articles | Social Science Department - AASTU</title>
+    <meta name="description" content="Read peer-reviewed essays, academic commentaries, and philosophical analyses published by AASTU Social Science Department scholars.">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* --- CORE STYLES (Updated for Amharic Font) --- */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&display=swap');
-        body { font-family: 'Segoe UI', 'Noto Sans Ethiopic', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
-        .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
-        .header h1 { margin: 0; font-size: 2rem; }
-        .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
-        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-        .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
-        .footer p { margin-top: 15px; font-size: 0.9rem; }
-        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
-        .content-wrapper { width: 80%; max-width: 900px; margin: 40px auto; }
-        .content-wrapper h2 { text-align: center; margin-bottom: 30px; font-size: 2.2rem; color: #2C3E50; }
-
-        /* --- POST PREVIEW STYLES --- */
-        .post-preview {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            overflow: hidden; 
+        .blog-feed {
             display: flex;
             flex-direction: column;
+            gap: 32px;
+            max-width: 920px;
+            margin: 40px auto 0;
         }
-        .post-preview-image img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
+        .post-card-modern {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+        .post-card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+        .post-img-link {
             display: block;
+            position: relative;
+            overflow: hidden;
+            background: #0f172a;
         }
-        .post-preview-content {
-            padding: 25px 30px;
+        .post-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
-        .post-preview h3 { margin: 0 0 10px 0; }
-        .post-preview h3 a { text-decoration: none; color: #2C3E50; font-size: 1.8rem; line-height: 1.3; }
-        .post-preview h3 a:hover { text-decoration: underline; }
-        .post-meta { font-size: 0.9em; color: #777; margin-bottom: 15px; }
-        .post-excerpt { line-height: 1.7; color: #555; font-size: 1.1rem; }
-        .read-more { display: inline-block; margin-top: 15px; background-color: #2C3E50; color: white; padding: 10px 18px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .read-more:hover { background-color: #1A252F; }
-
-        /* --- Pagination Styles --- */
-        .pagination {
-            text-align: center;
-            margin-top: 40px;
+        .post-card-modern:hover .post-img {
+            transform: scale(1.05);
         }
-        .pagination a {
-            color: #2C3E50;
-            padding: 10px 15px;
+        .post-body {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .post-category-tag {
+            display: inline-block;
+            background: rgba(194, 136, 41, 0.12);
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+        .post-title {
+            font-size: 1.35rem;
+            line-height: 1.35;
+            margin: 0 0 10px;
+            font-weight: 700;
+        }
+        .post-title a {
+            color: var(--primary-navy);
             text-decoration: none;
-            border: 1px solid #ddd;
-            margin: 0 5px;
-            border-radius: 5px;
+            transition: color 0.2s;
         }
-        .pagination a.active, .pagination a:hover {
-            background-color: #2C3E50;
-            color: white;
-            border: 1px solid #2C3E50;
+        .post-title a:hover {
+            color: var(--accent-blue);
         }
-        
-        /* --- Responsive Styles --- */
-        @media (max-width: 768px) { .navbar { flex-direction: column; align-items: flex-start; } .navbar-toggler { display: block; } .navbar-menu { display: none; flex-direction: column; width: 100%; } .navbar-menu.show { display: flex; } .content-wrapper { width: 95%; } }
+        .post-meta-line {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .post-snippet {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .post-read-btn {
+            align-self: flex-start;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+        .post-read-btn:hover {
+            color: var(--accent-blue-hover);
+            transform: translateX(4px);
+        }
+        .pagination-modern {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 50px 0 20px;
+        }
+        .page-link-modern {
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            background: #ffffff;
+            color: var(--primary-navy);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .page-link-modern:hover, .page-link-modern.active {
+            background: var(--primary-navy);
+            color: #ffffff;
+            border-color: var(--primary-navy);
+        }
+        @media (max-width: 768px) {
+            .post-card-modern {
+                grid-template-columns: 1fr;
+            }
+            .post-img-link {
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
-    
-    <div class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a>
-            <a href="gallery.html">Gallery</a>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
         </div>
     </div>
-    
-    <div class="content-wrapper">
-        <h2>Recent Posts</h2>
 
-        <main class="posts-list">
-
-            <!-- NEW POST: Nile Politics -->
-            <article class="post-preview">
-                <a href="nilepol.html" class="post-preview-image">
-                    <img src="GERD.png" alt="The Grand Ethiopian Renaissance Dam, a central topic in Nile water negotiations.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="nilepol.html">The Rights of Riparians and the Paradox of Negotiations in the Nile Waters</a></h3>
-                    <p class="post-meta">Posted on June 15, 2023 by Manaye Zegeye Meshesha</p>
-                    <p class="post-excerpt">
-                        This article examines the paradox of tripartite negotiations over the Nile waters following the construction of the GERD, arguing that this approach violates international law and undermines basin-wide cooperation.
-                    </p>
-                    <a href="nilepol.html" class="read-more">Read More &rarr;</a>
+    <!-- Main Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
                 </div>
-            </article>
-
-            <!-- Post: Urban Governance -->
-            <article class="post-preview">
-                <a href="urban-gov.html" class="post-preview-image">
-                    <img src="urban-gov.png" alt="A cityscape representing urban governance in Ethiopia.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="urban-gov.html">Exploring Urban Governance in Ethiopia: Institutional Principles of Non-state Actors' Engagement</a></h3>
-                    <p class="post-meta">Posted on May 19, 2022 by Mengistu Gutema Kebede & Solomon Negussie</p>
-                    <p class="post-excerpt">
-                        This paper examines the institutional principles that guide non-state actors' participation in urban infrastructure and services in Ethiopia, exploring the disconnect between legal policy and practical execution.
-                    </p>
-                    <a href="urban-gov.html" class="read-more">Read More &rarr;</a>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
                 </div>
-            </article>
-
-            <!-- Post: AI: The Future of Humanity -->
-            <article class="post-preview">
-                <a href="future-of-ai.html" class="post-preview-image">
-                    <img src="future-of-ai.png" alt="A futuristic image symbolizing the collaboration between humans and AI.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="future-of-ai.html">ሰው ሰራሽ አስተውሎት (AI)፡ የሰው ልጅ የወደፊት ዕጣ ፈንታ</a></h3>
-                    <p class="post-meta">Posted on March 26, 2024 by Mohammed Zeinu Hassen (Editor)</p>
-                    <p class="post-excerpt">
-                        ሰው ሰራሽ አስተውሎት (AI) የሰው ልጅን የወደፊት ዕጣ ፈንታ እንደገና እየቀረጸ ነው፤ ይህ ጽሑፍም አንድምታዎቹን፣ አተገባበሮቹን፣ ተግዳሮቶቹን እና ዕድሎቹን አጠቃላይ የሆነ ዳሰሳ ያቀርባል።
-                    </p>
-                    <a href="future-of-ai.html" class="read-more">ተጨማሪ ያንብቡ &rarr;</a>
-                </div>
-            </article>
-
-            <!-- Post: GERD -->
-            <article class="post-preview">
-                <a href="egypt-ethiopia.html" class="post-preview-image">
-                    <img src="nile.png" alt="The Nile River flowing through a lush landscape, symbolizing the central resource in the Ethiopia-Egypt dispute.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="egypt-ethiopia.html">The GERD and Ethiopia-Egypt Relations: Somalia as the Epicenter of Conflict</a></h3>
-                    <p class="post-meta">Posted on October 10, 2025 by Teshome Abera Tessema</p>
-                    <p class="post-excerpt">
-                        This paper examines the recent developments surrounding the Grand Ethiopian Renaissance Dam (GERD) and its implications for Ethiopia-Egypt relations, with Somalia emerging as a new focal point of the conflict zone.
-                    </p>
-                    <a href="egypt-ethiopia.html" class="read-more">Read More &rarr;</a>
-                </div>
-            </article>
-
-            <!-- Post: Post-Truth -->
-            <article class="post-preview">
-                <a href="post-truth.html" class="post-preview-image">
-                    <img src="https://images.pexels.com/photos/392025/pexels-photo-392025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="A crossroads with multiple signs pointing in different directions, symbolizing the confusion of the post-truth era.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="post-truth.html">Philosophy in the Age of Post-Truth: Reassessing Knowledge and Belief</a></h3>
-                    <p class="post-meta">Posted on March 5, 2024 by Mohammed Zeinu Hassen</p>
-                    <p class="post-excerpt">
-                        This article investigates the challenges of the "post-truth" phenomenon, re-evaluating epistemological inquiries and arguing that philosophy offers a crucial framework for understanding knowledge and belief in our current era.
-                    </p>
-                    <a href="post-truth.html" class="read-more">Read More &rarr;</a>
-                </div>
-            </article>
-            
-            <!-- Post 1 -->
-            <article class="post-preview">
-                <a href="presocratics.html" class="post-preview-image">
-                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ancient Greek ruins, representing the foundations of Western philosophy.">
-                </a>
-                <div class="post-preview-content">
-                    <h3><a href="presocratics.html">ከአፈ-ታሪክ ወደ አመክንዮ፡ የፕሪሶክራቲክ ፈላስፎች የአእምሮ አብዮት</a></h3>
-                    <p class="post-meta">Posted on February 10, 2024 by መሀመድ ዘይኑ ሀሰን</p>
-                    <p class="post-excerpt">
-                        ይህ ጽሑፍ ከሶቅራጥስ በፊት የነበሩ ፈላስፎች እንዴት አስተሳሰብን ከአፈ-ታሪክ ወደ አመክንዮ እንደቀየሩ ይዳስሳል። የአጽናፈ ሰማይን መሰረታዊ ምንነት ለመረዳት ያደረጉትን ጉዞ እና ለምዕራባዊ ፍልስፍና የጣሉትን መሰረት ያገኙበታል።
-                    </p>
-                    <a href="presocratics.html" class="read-more">ተጨማሪ ያንብቡ &rarr;</a>
-                </div>
-            </article>
-            
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="blog.html" class="active">1</a>
-                <a href="blog-page-2.html">2</a>
-                <a href="blog-page-3.html">3</a>
-                <a href="blog-page-4.html">4</a>
-                <a href="blog-page-5.html">5</a>
-                <a href="blog-page-2.html">&raquo;</a>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">Academic Courses</a>
+                <a href="staff.html" class="header-action-btn">Faculty Directory</a>
             </div>
+        </div>
+    </header>
 
-        </main>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="courses.html">Courses</a>
+                <a href="staff.html">Faculty & Staff</a>
+                <a href="logic.html">Logic & Critical Thinking</a>
+                <a href="mcie1012mainpage.html">Civics & Ethics</a>
+                <a href="blog.html" class="active">Academic Essays & Blog</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Banner -->
+    <div style="background: linear-gradient(135deg, #0f1f38, #1a2f50); color: white; padding: 48px 24px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <span class="section-badge" style="background: rgba(255,255,255,0.15); color: var(--accent-gold-light);">Scholarly Discourse</span>
+            <h2 style="font-size: 2.4rem; margin: 10px 0 14px; font-weight: 800;">Academic Essays & Thought Pieces</h2>
+            <p style="color: #cbd5e1; font-size: 1.05rem; margin: 0;">Faculty and departmental publications addressing philosophy, geopolitics, artificial intelligence ethics, and public policy.</p>
+        </div>
     </div>
-    
-    <div class="footer">
-        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
-    </div>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="blog-feed">
+
+            <!-- Post 1: Nile Politics -->
+            <article class="post-card-modern">
+                <a href="nilepol.html" class="post-img-link" aria-label="Read about Rights of Riparians">
+                    <img src="GERD.png" alt="Grand Ethiopian Renaissance Dam" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Geopolitics & Water Rights</span>
+                        <h3 class="post-title"><a href="nilepol.html">The Rights of Riparians and the Paradox of Negotiations in the Nile Waters</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Manaye Zegeye Meshesha</span>
+                            <span>&bull;</span>
+                            <span>Horn of Africa Affairs</span>
+                        </div>
+                        <p class="post-snippet">
+                            An examination of the paradox of tripartite negotiations over the Nile basin following the construction of the Grand Ethiopian Renaissance Dam (GERD), addressing international riparian law and basin-wide cooperation.
+                        </p>
+                    </div>
+                    <a href="nilepol.html" class="post-read-btn">
+                        <span>Read Scholarly Essay</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 2: Urban Governance -->
+            <article class="post-card-modern">
+                <a href="urban-gov.html" class="post-img-link" aria-label="Read about Urban Governance">
+                    <img src="urban-gov.png" alt="Urban governance in Ethiopia" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Public Policy & Cities</span>
+                        <h3 class="post-title"><a href="urban-gov.html">Exploring Urban Governance in Ethiopia: Institutional Principles of Non-state Actors' Engagement</a></h3>
+                        <div class="post-meta-line">
+                            <span>Authors: Mengistu Gutema Kebede & Solomon Negussie</span>
+                            <span>&bull;</span>
+                            <span>Policy Review</span>
+                        </div>
+                        <p class="post-snippet">
+                            An analysis of institutional principles governing non-state actors' participation in urban infrastructure and municipal services in Ethiopia, exploring statutory provisions versus practical ground implementation.
+                        </p>
+                    </div>
+                    <a href="urban-gov.html" class="post-read-btn">
+                        <span>Read Full Paper</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 3: AI & The Future of Humanity -->
+            <article class="post-card-modern">
+                <a href="future-of-ai.html" class="post-img-link" aria-label="Read about Artificial Intelligence in Amharic">
+                    <img src="future-of-ai.png" alt="AI and Human Future" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">AI Ethics & Philosophy</span>
+                        <h3 class="post-title"><a href="future-of-ai.html">ሰው ሰራሽ አስተውሎት (AI)፡ የሰው ልጅ የወደፊት ዕጣ ፈንታ</a></h3>
+                        <div class="post-meta-line">
+                            <span>ደራሲ፡ መሀመድ ዘይኑ ሀሰን (Editor)</span>
+                            <span>&bull;</span>
+                            <span>Technology Ethics</span>
+                        </div>
+                        <p class="post-snippet">
+                            ሰው ሰራሽ አስተውሎት (AI) የሰው ልጅን የወደፊት ዕጣ ፈንታ እንደገና እየቀረጸ ነው፤ ይህ ጽሑፍም አንድምታዎቹን፣ አተገባበሮቹን፣ ሥነ-ምግባራዊ ተግዳሮቶቹን እና ለኢትዮጵያ የሚፈጥረውን ዕድል አጠቃላይ በሆነ መልኩ ይዳስሳል።
+                        </p>
+                    </div>
+                    <a href="future-of-ai.html" class="post-read-btn">
+                        <span>ሙሉውን ጽሑፍ ያንብቡ</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 4: GERD and Egypt Relations -->
+            <article class="post-card-modern">
+                <a href="egypt-ethiopia.html" class="post-img-link" aria-label="Read about GERD and Egypt Relations">
+                    <img src="nile.png" alt="River Nile landscape" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Regional Geopolitics</span>
+                        <h3 class="post-title"><a href="egypt-ethiopia.html">The GERD and Ethiopia-Egypt Relations: Somalia as the Epicenter of Conflict</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Teshome Abera Tessema</span>
+                            <span>&bull;</span>
+                            <span>International Relations</span>
+                        </div>
+                        <p class="post-snippet">
+                            Examines contemporary diplomatic shifts surrounding the Grand Ethiopian Renaissance Dam and ripple effects across the Red Sea and Horn of Africa security architecture.
+                        </p>
+                    </div>
+                    <a href="egypt-ethiopia.html" class="post-read-btn">
+                        <span>Read Commentary</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 5: Epistemology & Post-Truth -->
+            <article class="post-card-modern">
+                <a href="post-truth.html" class="post-img-link" aria-label="Read about Philosophy in the Age of Post-Truth">
+                    <img src="https://images.pexels.com/photos/392025/pexels-photo-392025.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Post-truth roads" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">Epistemology & Logic</span>
+                        <h3 class="post-title"><a href="post-truth.html">Philosophy in the Age of Post-Truth: Reassessing Knowledge and Belief</a></h3>
+                        <div class="post-meta-line">
+                            <span>Author: Mohammed Zeinu Hassen</span>
+                            <span>&bull;</span>
+                            <span>Epistemological Studies</span>
+                        </div>
+                        <p class="post-snippet">
+                            Investigating the epistemic challenges posed by algorithmic echo chambers and disinformation, highlighting critical reasoning tools necessary to navigate modern information ecosystems.
+                        </p>
+                    </div>
+                    <a href="post-truth.html" class="post-read-btn">
+                        <span>Read Philosophical Essay</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Post 6: Presocratics in Amharic -->
+            <article class="post-card-modern">
+                <a href="presocratics.html" class="post-img-link" aria-label="Read about Presocratics in Amharic">
+                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Philosophy books" class="post-img">
+                </a>
+                <div class="post-body">
+                    <div>
+                        <span class="post-category-tag">የፍልስፍና ታሪክ (History of Philosophy)</span>
+                        <h3 class="post-title"><a href="presocratics.html">ከአፈ-ታሪክ ወደ አመክንዮ፡ የፕሪሶክራቲክ ፈላስፎች የአእምሮ አብዮት</a></h3>
+                        <div class="post-meta-line">
+                            <span>ደራሲ፡ መሀመድ ዘይኑ ሀሰን</span>
+                            <span>&bull;</span>
+                            <span>Ancient Thought</span>
+                        </div>
+                        <p class="post-snippet">
+                            ይህ ጽሑፍ ከሶቅራጥስ በፊት የነበሩ ፈላስፎች እንዴት አስተሳሰብን ከአፈ-ታሪክ ወደ አመክንዮ እንደቀየሩ ይዳስሳል። የአጽናፈ ሰማይን መሰረታዊ ምንነት ለመረዳት ያደረጉትን ጉዞ እና ለምዕራባዊ ፍልስፍና የጣሉትን መሰረት ያገኙበታል።
+                        </p>
+                    </div>
+                    <a href="presocratics.html" class="post-read-btn">
+                        <span>ተጨማሪ ያንብቡ</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Modern Pagination -->
+        <div class="pagination-modern">
+            <a href="blog.html" class="page-link-modern active">1</a>
+            <a href="blog-page-2.html" class="page-link-modern">2</a>
+            <a href="blog-page-3.html" class="page-link-modern">3</a>
+            <a href="blog-page-4.html" class="page-link-modern">4</a>
+            <a href="blog-page-5.html" class="page-link-modern">5</a>
+            <a href="blog-page-2.html" class="page-link-modern">&rarr;</a>
+        </div>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Nurturing human values, critical thinking, and civic awareness.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="staff.html">Faculty</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="mcie1012mainpage.html">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-            document.getElementById('navbar-menu').classList.toggle('show');
-        });
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>
 </body>
 </html>

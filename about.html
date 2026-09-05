@@ -3,291 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Social Science Department</title>
+    <title>About Us | Social Science Department - AASTU</title>
+    <meta name="description" content="Discover the mission, history, vision, and core values of the Social Science Department at Addis Ababa Science and Technology University (AASTU).">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa; /* Simpler background for content focus */
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-        }
-        .header, .footer {
-            background-color: #2C3E50;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .header h1 { margin: 0; font-size: 1.5rem; }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #1A252F;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.2s ease;
-        }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
-        .navbar-toggler { display: none; background-color: transparent; border: none; color: #fff; padding: 8px 12px; font-size: 1.5rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-
-        /* --- CUSTOMIZED HERO SECTION --- */
-        .hero {
-            background-image: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('campus.jpg');
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            text-align: center;
-            padding: 80px 20px;
-        }
-        .hero h2 {
-            font-size: 3rem;
-            margin: 0 0 10px 0;
-            font-weight: 600;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-        .container h3 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #2C3E50;
-        }
-
-        /* --- CUSTOMIZED CORE VALUES SECTION --- */
-        .core-values-grid {
+        .values-grid-enhanced {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .value-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(194, 136, 41, 0.12);
+            color: var(--accent-gold);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .value-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+        .value-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary-navy);
+            margin: 0 0 12px;
+            font-weight: 700;
+        }
+        .value-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .about-stats {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0a1424 100%);
+            color: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 50px 30px;
+            margin: 60px 0;
             text-align: center;
         }
-        .value-item {
-            padding: 20px;
-        }
-        .value-item svg {
-            width: 50px;
-            height: 50px;
-            color: #2C3E50;
-            margin-bottom: 20px;
-        }
-        .value-item h4 {
-            font-size: 1.5rem;
-            margin: 0 0 10px 0;
-            color: #1A252F;
-        }
-        .value-item p {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        /* --- CUSTOMIZED STATS SECTION --- */
-        .stats-section {
-            background-color: #1A252F;
-            color: #fff;
-            padding: 60px 20px;
-            text-align: center;
-            margin: 50px 0;
-        }
-        .stats-grid {
+        .about-stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             max-width: 900px;
             margin: 0 auto;
         }
-        .stat-item .stat-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #3498db;
+        .about-stat-num {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--accent-gold-light);
+            line-height: 1;
+            margin-bottom: 8px;
         }
-        .stat-item .stat-label {
-            font-size: 1.1rem;
+        .about-stat-lbl {
+            font-size: 0.9rem;
+            color: #cbd5e1;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
+            letter-spacing: 0.05em;
+            font-weight: 600;
         }
-        
-        /* --- CUSTOMIZED CTA SECTION --- */
-        .cta-section {
+        .cta-box {
+            background: #ffffff;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 44px;
             text-align: center;
-            padding: 40px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
         }
-        .cta-button {
-            background-color: #2C3E50;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            text-transform: uppercase;
+        .cta-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary-navy);
+            margin: 0 0 14px;
+        }
+        .cta-box p {
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 24px;
             font-size: 1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background-color: #1A252F;
-            transform: translateY(-3px);
-        }
-
-        .footer { margin-top: 0; }
-        .footer p { margin: 5px 0; font-size: 0.9rem; }
-        .footer a { color: #ecf0f1; text-decoration: none; margin: 0 8px; }
-
-        @media (max-width: 992px) {
-            .core-values-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .hero h2 { font-size: 2.5rem; }
         }
         @media (max-width: 768px) {
-            .navbar { justify-content: space-between; }
-            .navbar-toggler { display: block; }
-            .navbar-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background-color: #1A252F; }
-            .navbar-menu.show { display: flex; }
-            .navbar-menu a { padding: 12px 20px; border-bottom: 1px solid #333; text-align: center; }
+            .about-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <header class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">Browse Courses</a>
+                <a href="staff.html" class="header-action-btn">Faculty Directory</a>
+            </div>
+        </div>
     </header>
 
+    <!-- Navigation -->
     <nav class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">☰</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a> <!-- BLOG LINK ADDED FOR CONSISTENCY -->
-            <a href="gallery.html">Gallery</a>
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About Us</a>
+                <a href="courses.html">Courses</a>
+                <a href="staff.html">Faculty & Staff</a>
+                <a href="logic.html">Logic & Critical Thinking</a>
+                <a href="mcie1012mainpage.html">Civics & Ethics</a>
+                <a href="blog.html">Academic Essays & Blog</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <h2>Our Story and Commitment</h2>
-        <p>Discover the values, history, and vision that drive the Social Science Department at AASTU to academic excellence and social impact.</p>
+    <!-- Page Hero -->
+    <section class="modern-hero" style="padding: 60px 24px;">
+        <div class="hero-content">
+            <div class="hero-pill">Institutional Profile</div>
+            <h2>Our Heritage, Mission & Commitment</h2>
+            <p class="hero-lead">
+                Discover the foundational values, academic trajectory, and forward-looking vision driving the Social Science Department at AASTU toward intellectual leadership and transformative social impact.
+            </p>
+        </div>
     </section>
 
-    <main class="container">
-        <h3>Our Core Values</h3>
-        <div class="core-values-grid">
-            <div class="value-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="section-header">
+            <span class="section-badge">Core Foundations</span>
+            <h2 class="section-title">Values & Vision</h2>
+            <p class="section-subtitle">Guiding principles cultivating ethical leadership and analytical rigor across Ethiopia's leading technological university.</p>
+        </div>
+
+        <div class="values-grid-enhanced">
+            <div class="value-card">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>
+                </div>
                 <h4>Our History</h4>
-                <p>Rooted in a tradition of academic excellence, our department has been a cornerstone of AASTU, fostering critical thinking and global citizenship for years.</p>
+                <p>Rooted in academic excellence since the establishment of AASTU, our department serves as the intellectual crucible where science, technology, human ethics, and civic responsibility intersect.</p>
             </div>
-            <div class="value-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" /></svg>
+
+            <div class="value-card">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5"></path></svg>
+                </div>
                 <h4>Our Mission</h4>
-                <p>To deliver high-quality education that equips students with the knowledge, skills, and ethical perspectives to understand and address complex social issues.</p>
+                <p>To deliver high-impact humanistic and social education equipping engineers and scientists with critical reasoning, constitutional awareness, and ethical perspectives required to solve complex societal problems.</p>
             </div>
-            <div class="value-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639l7.5-10.5a1.012 1.012 0 011.634.639V21a1.012 1.012 0 01-1.634.639l-7.5-10.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12.036 12.322a1.012 1.012 0 010-.639l7.5-10.5a1.012 1.012 0 011.634.639V21a1.012 1.012 0 01-1.634.639l-7.5-10.5z" /></svg>
+
+            <div class="value-card">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
                 <h4>Our Vision</h4>
-                <p>To be a leading institution recognized for our innovative teaching, impactful research, and significant contributions to social science education and practice.</p>
+                <p>To be an African center of excellence recognized for integrating social sciences with STEM education, advancing interdisciplinary research, and nurturing patriotic, globally competitive innovators.</p>
+            </div>
+        </div>
+
+        <!-- Quantitative Milestones -->
+        <div class="about-stats">
+            <div class="about-stats-grid">
+                <div>
+                    <div class="about-stat-num" data-target="15">0</div>
+                    <div class="about-stat-lbl">Academic Staff & Researchers</div>
+                </div>
+                <div>
+                    <div class="about-stat-num" data-target="15000">0</div>
+                    <div class="about-stat-lbl">Alumni & Students Taught</div>
+                </div>
+                <div>
+                    <div class="about-stat-num" data-target="6">0</div>
+                    <div class="about-stat-lbl">Core Accredited Disciplines</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+            <h3>Explore Opportunities & Curriculum</h3>
+            <p>Join us in shaping ethical minds, advancing scholarship, and engaging with our interactive lecture notes, quizzes, and faculty research.</p>
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                <a href="courses.html" class="btn-primary">Browse Academic Courses</a>
+                <a href="staff.html" class="btn-secondary" style="color: var(--primary-navy); border-color: var(--border-subtle); background: var(--bg-subtle);">Meet Our Faculty</a>
             </div>
         </div>
     </main>
 
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number" data-target="11">0</div>
-                <div class="stat-label">Faculty Members</div>
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Fostering humanistic inquiry, ethics, and critical reasoning across scientific fields.</p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="15000">0</div>
-                <div class="stat-label">Students Enrolled</div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="staff.html">Faculty Directory</a></li>
+                    <li><a href="blog.html">Essays & Blog</a></li>
+                </ul>
             </div>
-            <div class="stat-item">
-                <div class="stat-number" data-target="6">0</div>
-                <div class="stat-label">Core Courses</div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="mcie1012mainpage.html">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="gallery.html">Campus Life Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <div class="container cta-section">
-         <h3>Join Us on Our Journey</h3>
-         <p>We believe in the power of education to transform lives and societies. We invite you to explore what our department has to offer.</p>
-         <br>
-         <a href="courses.html" class="cta-button">Explore Our Courses</a>
-    </div>
-
-    <footer class="footer">
-         <p>© 2024 Social Science Department, AASTU</p>
-        <p>Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Navbar toggle
         const toggler = document.getElementById('navbar-toggler');
         const menu = document.getElementById('navbar-menu');
-        toggler.addEventListener('click', function() {
-            menu.classList.toggle('show');
-        });
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
 
-        // Animated number counter
-        function animateNumbers() {
-            const counters = document.querySelectorAll('.stat-number');
-            const speed = 200; // Lower number = faster animation
-
+        // Animated number counters
+        const counters = document.querySelectorAll('.about-stat-num');
+        const speed = 120;
+        const animate = () => {
             counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
+                const target = +counter.getAttribute('data-target');
+                const update = () => {
                     const count = +counter.innerText;
-
                     const increment = Math.ceil(target / speed);
-
                     if (count < target) {
                         counter.innerText = Math.min(count + increment, target);
-                        setTimeout(updateCount, 10);
+                        setTimeout(update, 12);
                     } else {
                         counter.innerText = target;
                     }
                 };
-                updateCount();
+                update();
             });
-        }
-
-        // Use Intersection Observer to trigger animation when section is visible
-        const statsSection = document.querySelector('.stats-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateNumbers();
-                    observer.unobserve(entry.target); // Animate only once
+        };
+        const statsSection = document.querySelector('.about-stats');
+        if (statsSection && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animate();
+                    observer.disconnect();
                 }
-            });
-        }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
-
-        observer.observe(statsSection);
+            }, { threshold: 0.3 });
+            observer.observe(statsSection);
+        } else {
+            animate();
+        }
     </script>
 </body>
 </html>

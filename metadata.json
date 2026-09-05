@@ -1,0 +1,8 @@
+{
+  "name": "Social Science Department - AASTU",
+  "description": "Educational platform and course materials for the Social Science Department at Addis Ababa Science and Technology University (AASTU).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

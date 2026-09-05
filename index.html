@@ -3,264 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Science Department - AASTU</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: auto; /* Prevent scrollbars */
-        }
-        .header {
-            background-color: #2C3E50;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #1A252F;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .navbar a:hover {
-            background-color: #333;
-            border-radius: 5px;
-        }
-        .navbar-toggler {
-            display: none;
-            background-color: #1A252F;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: auto;
-        }
-        .navbar-menu {
-            display: flex;
-            flex-direction: row;
-        }
-        .navbar-menu.collapsed {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-        }
-        .navbar-menu.show {
-            display: flex;
-        }
-        .navbar-menu a {
-            padding: 15px;
-            border-bottom: 1px solid #333;
-        }
-        .banner {
-            background: url('banner.jpg') no-repeat center center/cover;
-            height: 400px;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .banner h2 {
-            font-size: 2.5rem;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .fade-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Behind other content */
-            overflow: hidden;
-            pointer-events: none; /* Prevent interaction */
-        }
-        .fade-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            animation: fadeInOut 20s infinite;
-        }
-        .fade-image:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .fade-image:nth-child(2) {
-            animation-delay: 4s;
-        }
-        .fade-image:nth-child(3) {
-            animation-delay: 8s;
-        }
-        .fade-image:nth-child(4) {
-            animation-delay: 12s;
-        }
-        .fade-image:nth-child(5) {
-            animation-delay: 16s;
-        }
-        @keyframes fadeInOut {
-            0%, 20%, 100% { opacity: 0; }
-            10%, 15% { opacity: 1; }
-        }
-        .content {
-            width: 80%;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 1; /* Above background */
-        }
-        .content h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-        .content p {
-            line-height: 1.6;
-            color: #555;
-            font-size: 1rem;
-            text-align: justify;
-        }
-        .cta-button {
-            display: block;
-            text-align: center;
-            margin-top: 30px;
-        }
-        .cta-button a {
-            background-color: #2C3E50;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            text-transform: uppercase;
-        }
-        .cta-button a:hover {
-            background-color: #1A252F;
-        }
-        .footer {
-            background-color: #2C3E50;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
-            z-index: 1000;
-        }
-        .footer p {
-            margin-top: 15px;
-            font-size: 0.9rem;
-        }
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .navbar-toggler {
-                display: block;
-            }
-            .navbar-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            .navbar-menu.show {
-                display: flex;
-            }
-        }
-    </style>
+    <title>Social Science Department | Addis Ababa Science and Technology University (AASTU)</title>
+    <meta name="description" content="Official academic portal of the Department of Social Sciences at Addis Ababa Science and Technology University (AASTU). Courses, faculty, research, and learning modules.">
+    <meta property="og:title" content="Social Science Department | AASTU">
+    <meta property="og:description" content="Advancing Knowledge, Shaping Critical Thinkers & Ethical Leaders at AASTU.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
-    
-    <div class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a> <!-- THIS LINK WAS ADDED -->
-            <a href="gallery.html">Gallery</a>
+    <!-- Institutional Top Utility Bar -->
+    <div class="top-bar" id="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">Email: social@aastu.edu.et</a>
+                <a href="map.html">Campus Map</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
         </div>
     </div>
-    
-    <div class="banner">
-        <h2>Welcome to the Social Science Department</h2>
-    </div>
 
-    <div class="fade-container">
-        <img src="fade1.jpg" alt="Fading Image 1" class="fade-image">
-        <img src="fade2.jpg" alt="Fading Image 2" class="fade-image">
-        <img src="fade3.jpg" alt="Fading Image 3" class="fade-image">
-        <img src="fade4.jpg" alt="Fading Image 4" class="fade-image">
-        <img src="fade5.jpg" alt="Fading Image 5" class="fade-image">
-    </div>
-    
-    <div class="content">
-        <h2>Empowering Minds for the Future</h2>
-        <p>
-            Welcome to the Social Science Department at AASTU. Our department is dedicated to providing a comprehensive education that fosters critical thinking, cultural understanding, and the development of skills essential for success in today's global society. We offer a range of courses that cater to diverse interests, from philosophy and psychology to sociology and political science.
-        </p>
-        <p>
-            Our faculty members are committed to excellence in teaching and research, ensuring that our students are well-equipped to meet the challenges of the modern world. Whether you're a prospective student, current student, or alumni, we're here to support you in your academic journey.
-        </p>
-        <p>
-            Explore our courses, learn about our faculty, and discover the opportunities that await you in the Social Science Department. Join us in advancing knowledge and shaping the future.
-        </p>
-        <div class="cta-button">
-            <a href="courses.html">Explore Our Courses</a>
+    <!-- Main Institutional Header -->
+    <header class="header" id="main-header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand" id="brand-link">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        <line x1="9" y1="7" x2="15" y2="7"></line>
+                        <line x1="9" y1="11" x2="13" y2="11"></line>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
+                </div>
+            </a>
+            
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn" id="btn-browse-courses">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Courses & Syllabi
+                </a>
+                <a href="staff.html" class="header-action-btn" id="btn-meet-staff">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Faculty Profiles
+                </a>
+            </div>
         </div>
-    </div>
-    
-    <div class="footer">
-        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
-        <p>
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a> | 
-            <a href="map.html">Sitemap</a>
-        </p>
-    </div>
+    </header>
 
+    <!-- Main Sticky Navigation Bar -->
+    <nav class="navbar" id="site-nav">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html" class="active" id="nav-home">Home</a>
+                <a href="about.html" id="nav-about">About Us</a>
+                <a href="courses.html" id="nav-courses">Courses</a>
+                <a href="staff.html" id="nav-staff">Faculty & Staff</a>
+                <a href="logic.html" id="nav-logic">Logic & Critical Thinking</a>
+                <a href="mcie1012mainpage.html" id="nav-mcie">Civics & Ethics</a>
+                <a href="blog.html" id="nav-blog">Academic Essays & Blog</a>
+                <a href="gallery.html" id="nav-gallery">Gallery</a>
+                <a href="contact.html" id="nav-contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="modern-hero" id="hero-section">
+        <div class="hero-content">
+            <div class="hero-pill">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                Fostering Rigor, Ethics & Inquisitive Minds
+            </div>
+            <h2>Empowering Minds, Shaping the Future of Society</h2>
+            <p class="hero-lead">
+                Welcome to the Social Science Department at Addis Ababa Science and Technology University. 
+                We bridge humanistic inquiry with technological innovation, cultivating critical thinkers, 
+                ethical leaders, and forward-looking researchers equipped for contemporary global challenges.
+            </p>
+            <div class="hero-buttons">
+                <a href="courses.html" class="btn-primary" id="hero-btn-explore">
+                    <span>Explore Department Courses</span>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+                <a href="about.html" class="btn-secondary" id="hero-btn-about">
+                    <span>Our Mission & Vision</span>
+                </a>
+                <a href="blog.html" class="btn-secondary" id="hero-btn-blog">
+                    <span>Faculty Research & Essays</span>
+                </a>
+            </div>
+
+            <!-- Quantitative / Key Metric Bar -->
+            <div class="hero-stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Core Disciplines</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Academic Faculty</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Students Taught</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Curriculum Accredited</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-wrapper">
+        
+        <!-- Department Overview Spotlight Panel -->
+        <section class="overview-panel" id="overview-section">
+            <div class="overview-text">
+                <span class="section-badge">Academic Excellence</span>
+                <h3>Transformative Education at AASTU</h3>
+                <p>
+                    The Department of Social Sciences serves as an intellectual cornerstone for students across all engineering, applied sciences, and technology programs at AASTU. We provide rigorous instruction in critical reasoning, ethical decision-making, intercultural comprehension, and civic responsibility.
+                </p>
+                <div class="overview-highlights">
+                    <div class="highlight-row">
+                        <div class="highlight-dot">&#10003;</div>
+                        <div class="highlight-content">
+                            <h5>Critical Thinking & Analytical Logic</h5>
+                            <p>Mastering categorical propositions, deductive validation, Venn diagram analysis, and identifying informal fallacies.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-dot">&#10003;</div>
+                        <div class="highlight-content">
+                            <h5>Ethics, Law & Responsible Innovation</h5>
+                            <p>Preparing future engineers and technologists to navigate constitutional principles, human rights, and technological ethics.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-dot">&#10003;</div>
+                        <div class="highlight-content">
+                            <h5>Interdisciplinary Social Sciences</h5>
+                            <p>Encompassing Social Anthropology, General Psychology, Sociology, and Global Geopolitics tailored to Ethiopia and Africa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overview-media">
+                <img src="faculty.jpg" alt="AASTU Social Science Department Faculty" loading="lazy">
+                <div class="media-badge">Dedicated Faculty & Academic Staff</div>
+            </div>
+        </section>
+
+        <!-- Core Academic Courses Section -->
+        <section class="courses-section" id="courses-preview">
+            <div class="section-header">
+                <span class="section-badge">Curriculum & Syllabi</span>
+                <h2 class="section-title">Core Academic Courses</h2>
+                <p class="section-subtitle">
+                    Our department delivers essential foundational programs designed to foster analytical precision, moral reasoning, and holistic social understanding.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Course 1: Logic -->
+                <div class="modern-card" id="card-logic">
+                    <div class="card-icon-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <div class="card-code">Phil.1009</div>
+                    <h4 class="card-title">Logic & Critical Thinking</h4>
+                    <p class="card-desc">
+                        Explore deductive & inductive arguments, Aristotlean categorical syllogisms, Venn diagrams, truth tables, and fallacies in informal logic.
+                    </p>
+                    <a href="logic.html" class="card-link" id="link-logic-modules">
+                        <span>Access Course Modules & Notes</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Course 2: Moral & Civic Education -->
+                <div class="modern-card" id="card-mcie">
+                    <div class="card-icon-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    </div>
+                    <div class="card-code">MCIE.1012</div>
+                    <h4 class="card-title">Moral & Civic Education</h4>
+                    <p class="card-desc">
+                        A rigorous exploration of ethical theories, constitutional democracy, citizenship rights, statecraft, and human rights frameworks.
+                    </p>
+                    <a href="mcie1012mainpage.html" class="card-link" id="link-mcie-modules">
+                        <span>Access Modules & Quizzes</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Course 3: Social Anthropology -->
+                <div class="modern-card" id="card-anthro">
+                    <div class="card-icon-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <div class="card-code">Soc.1001</div>
+                    <h4 class="card-title">Social Anthropology</h4>
+                    <p class="card-desc">
+                        Understanding cultural diversity, human kinship systems, indigenous knowledge systems, and social institutions in Ethiopia and the Horn.
+                    </p>
+                    <a href="courses.html" class="card-link">
+                        <span>View Syllabus Details</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Course 4: General Psychology -->
+                <div class="modern-card" id="card-psyc">
+                    <div class="card-icon-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="card-code">Psyc.1011</div>
+                    <h4 class="card-title">General Psychology</h4>
+                    <p class="card-desc">
+                        Introduction to cognitive processes, learning theories, perception, emotional intelligence, mental wellness, and human behavioral science.
+                    </p>
+                    <a href="courses.html" class="card-link">
+                        <span>View Syllabus Details</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Course 5: Sociology -->
+                <div class="modern-card" id="card-soci">
+                    <div class="card-icon-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <div class="card-code">Soci.1012</div>
+                    <h4 class="card-title">Sociology & Urban Governance</h4>
+                    <p class="card-desc">
+                        Examining social structures, urbanization processes, community development, governance mechanisms, and contemporary societal shifts.
+                    </p>
+                    <a href="courses.html" class="card-link">
+                        <span>View Syllabus Details</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Course 6: Global Trends -->
+                <div class="modern-card" id="card-gltr">
+                    <div class="card-icon-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="card-code">GlTr.1001</div>
+                    <h4 class="card-title">Global Trends & Geopolitics</h4>
+                    <p class="card-desc">
+                        Analyzing regional integration, international diplomacy, globalization, geopolitical developments in the Horn of Africa, and world politics.
+                    </p>
+                    <a href="courses.html" class="card-link">
+                        <span>View Syllabus Details</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Learning Hub -->
+        <section class="quick-hub" id="learning-hub">
+            <div class="quick-hub-title">
+                <h3>Direct Learning & Study Resources</h3>
+                <p>Interactive study materials, self-assessment quizzes, and downloadable lecture notes</p>
+            </div>
+            <div class="quick-links-grid">
+                <a href="chapter1.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Logic Chapter 1</strong>
+                        <span>Introduction to Philosophy</span>
+                    </div>
+                </a>
+
+                <a href="chapter2.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Logic Chapter 2</strong>
+                        <span>Basic Concepts of Arguments</span>
+                    </div>
+                </a>
+
+                <a href="chapter3.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Logic Chapter 3</strong>
+                        <span>Logic & Language</span>
+                    </div>
+                </a>
+
+                <a href="chapter4.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Logic Chapter 4</strong>
+                        <span>Informal Fallacies</span>
+                    </div>
+                </a>
+
+                <a href="chapter5.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Logic Chapter 5</strong>
+                        <span>Categorical Propositions</span>
+                    </div>
+                </a>
+
+                <a href="mcie1012ch1q.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>MCIE Chapter 1 Quiz</strong>
+                        <span>Moral & Civic Interactive Test</span>
+                    </div>
+                </a>
+
+                <a href="chapter_one.pdf" class="quick-link-card" target="_blank">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Logic PDF Syllabus</strong>
+                        <span>Download Chapter 1 Handout</span>
+                    </div>
+                </a>
+
+                <a href="staff.html" class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <div class="quick-link-text">
+                        <strong>Faculty Directory</strong>
+                        <span>Office Hours & Contacts</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Featured Faculty Research & Thought Pieces -->
+        <section class="research-section" id="research-essays">
+            <div class="section-header">
+                <span class="section-badge">Faculty Scholarship</span>
+                <h2 class="section-title">Department Essays & Research</h2>
+                <p class="section-subtitle">
+                    Insightful academic articles, geopolitical analyses, and philosophical commentaries authored by our faculty members and visiting scholars.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Article 1: Nile Politics -->
+                <div class="modern-card">
+                    <div class="card-code">Geopolitical Analysis</div>
+                    <h4 class="card-title">Nile River Politics & The Grand Ethiopian Renaissance Dam</h4>
+                    <p class="card-desc">
+                        An exhaustive review of hydro-diplomacy, regional cooperation, legal frameworks under international watercourses conventions, and Ethiopia's sovereign development rights.
+                    </p>
+                    <a href="nilepol.html" class="card-link">
+                        <span>Read Full Essay</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Article 2: Future of AI -->
+                <div class="modern-card">
+                    <div class="card-code">Philosophy of Technology</div>
+                    <h4 class="card-title">Defining Artificial Intelligence & The Limits of Creativity</h4>
+                    <p class="card-desc">
+                        Philosophical inquiries into Turing's test, Searle's Chinese Room argument, cognitive computational limits, and ethical considerations for automated reasoning.
+                    </p>
+                    <a href="future-of-ai.html" class="card-link">
+                        <span>Read Full Essay</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Article 3: Classical Thought -->
+                <div class="modern-card">
+                    <div class="card-code">Classical Philosophy</div>
+                    <h4 class="card-title">The Pre-Socratics: Cosmos, Reason & Early Thought</h4>
+                    <p class="card-desc">
+                        Tracing the historical shift from mythos to logos through Thales, Anaximander, Heraclitus, and Parmenides, and their relevance to modern rational inquiry.
+                    </p>
+                    <a href="presocratics.html" class="card-link">
+                        <span>Read Full Essay</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 10px;">
+                <a href="blog.html" class="btn-primary" id="btn-view-all-posts">
+                    <span>View All Blog Posts & Essays</span>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Comprehensive Modern Academic Footer -->
+    <footer class="modern-footer" id="main-footer">
+        <div class="footer-top">
+            <!-- Col 1: About Department -->
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>
+                    Addis Ababa Science and Technology University (AASTU). Fostering critical thinking, civic responsibility, cultural analysis, and ethical reasoning across scientific and engineering disciplines.
+                </p>
+                <p style="color: #94a3b8; font-size: 0.85rem;">
+                    College of Applied Sciences & Humanities<br>
+                    Addis Ababa, Ethiopia
+                </p>
+            </div>
+
+            <!-- Col 2: Navigation Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Department</a></li>
+                    <li><a href="courses.html">Academic Courses</a></li>
+                    <li><a href="staff.html">Faculty & Staff</a></li>
+                    <li><a href="blog.html">Academic Essays & Blog</a></li>
+                    <li><a href="gallery.html">Campus Photo Gallery</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Academic Programs -->
+            <div class="footer-col">
+                <h4>Programs & Modules</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">Logic & Critical Thinking</a></li>
+                    <li><a href="mcie1012mainpage.html">Moral & Civic Education</a></li>
+                    <li><a href="courses.html">Social Anthropology</a></li>
+                    <li><a href="courses.html">General Psychology</a></li>
+                    <li><a href="courses.html">Global Trends & Horn Politics</a></li>
+                    <li><a href="map.html">Interactive Site Map</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Contact Information -->
+            <div class="footer-col">
+                <h4>Department Contact</h4>
+                <ul class="contact-list-footer">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Kilinto Campus, Akaki-Kality Sub-City, Addis Ababa, Ethiopia</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        <span>Block 54, Social Sciences Complex</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>
+                    &copy; <span class="current-year">2026</span> Social Science Department, Addis Ababa Science and Technology University (AASTU). All rights reserved.
+                </div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation and Dynamic Year Script -->
     <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-            var menu = document.getElementById('navbar-menu');
-            menu.classList.toggle('show');
+        // Toggle mobile menu
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', function() {
+                const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
+                menu.classList.toggle('show');
+                toggler.setAttribute('aria-expanded', !isExpanded);
+            });
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!menu.contains(e.target) && !toggler.contains(e.target)) {
+                        menu.classList.remove('show');
+                        toggler.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        }
+
+        // Ensure dynamic current year
+        document.querySelectorAll('.current-year').forEach(el => {
+            el.textContent = new Date().getFullYear();
         });
     </script>
 </body>

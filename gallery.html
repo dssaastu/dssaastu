@@ -3,334 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Social Science Department</title>
+    <title>Campus Life Gallery | Social Science Department - AASTU</title>
+    <meta name="description" content="Photographic journey through academic symposiums, campus development, digital libraries, and student events at AASTU.">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-        }
-        .header, .footer {
-            background-color: #2C3E50;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .header h1, .footer p {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .header p {
-            font-size: 1rem;
-            margin-top: 5px;
-        }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #1A252F;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.2s ease;
-        }
-        .navbar a:hover {
-            background-color: #333;
-            border-radius: 5px;
-        }
-        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-        .container h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #1A252F;
-            font-weight: 600;
-        }
-        
-        /* --- CUSTOMIZED GALLERY STYLES --- */
-        .gallery {
+        .gallery-grid-modern {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 36px;
         }
-        .gallery-item {
-            position: relative;
-            cursor: pointer;
+        .gallery-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
         }
-        .gallery-item img {
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: #cbd5e1;
+        }
+        .gallery-card-img-wrapper {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #0f172a;
+        }
+        .gallery-card-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures images fill the container without distortion */
-            display: block;
+            object-fit: cover;
             transition: transform 0.4s ease;
         }
-        .gallery-item:hover img {
-            transform: scale(1.1);
+        .gallery-card:hover .gallery-card-img {
+            transform: scale(1.06);
         }
-        .gallery-item-overlay {
+        .gallery-zoom-badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(44, 62, 80, 0.6);
-            color: white;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.75);
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transform: scale(0.8);
+            transition: var(--transition);
         }
-        .gallery-item:hover .gallery-item-overlay {
+        .gallery-card:hover .gallery-zoom-badge {
             opacity: 1;
+            transform: scale(1);
         }
-        .gallery-item-overlay svg {
-            width: 50px;
-            height: 50px;
+        .gallery-card-caption {
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.45;
+            background: #ffffff;
+            border-top: 1px solid var(--border-subtle);
         }
 
-        /* --- CUSTOMIZED LIGHTBOX / OVERLAY STYLES --- */
-        .overlay {
-            display: none; /* Hidden by default */
+        /* Lightbox Overlay */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(8px);
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-        .overlay-content {
-            position: relative;
-            text-align: center;
-            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 90vw;
-            max-height: 90vh;
+            box-sizing: border-box;
+        }
+        .modal-overlay.active {
             display: flex;
-            flex-direction: column;
         }
-        .overlay-content img {
-            max-width: 100%;
-            max-height: calc(90vh - 100px); /* Adjust height to leave space for description */
-            object-fit: contain;
-            border-radius: 4px;
+        .modal-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: fadeInModal 0.25s ease-out;
         }
-        #overlay-description {
-            margin: 15px 0 0 0;
-            color: #333;
-            font-size: 1.1rem;
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
-        .close-button, .arrow-button {
-            position: absolute;
-            background-color: rgba(44, 62, 80, 0.8);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            width: 44px;
-            height: 44px;
+        .modal-img-wrapper {
+            background: #0f172a;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background-color 0.2s ease;
-            line-height: 1; /* Helps vertical alignment */
+            max-height: 70vh;
         }
-        .close-button:hover, .arrow-button:hover {
-            background-color: #1A252F;
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
         }
-        .close-button {
-            top: -15px;
-            right: -15px;
+        .modal-footer {
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border-top: 1px solid var(--border-subtle);
         }
-        .arrow-button.left { left: -60px; top: 50%; transform: translateY(-50%); }
-        .arrow-button.right { right: -60px; top: 50%; transform: translateY(-50%); }
-
-        .footer { margin-top: 50px; }
-        .footer p { margin-top: 15px; font-size: 0.9rem; }
-        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
-
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; align-items: flex-start; }
-            .navbar-toggler { display: block; align-self: flex-end; }
-            .navbar-menu { display: none; flex-direction: column; width: 100%; }
-            .navbar-menu.show { display: flex; }
-            .navbar-menu a { width: 100%; box-sizing: border-box; }
-            .arrow-button.left { left: 10px; }
-            .arrow-button.right { right: 10px; }
+        .modal-caption {
+            font-size: 1rem;
+            color: var(--primary-navy);
+            font-weight: 600;
+            margin: 0;
         }
+        .modal-close-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .modal-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.7);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .nav-btn:hover {
+            background: var(--accent-gold);
+            color: #0f172a;
+        }
+        .nav-prev { left: 16px; }
+        .nav-next { right: 16px; }
     </style>
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <header class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">Academic Courses</a>
+                <a href="staff.html" class="header-action-btn">Faculty Directory</a>
+            </div>
+        </div>
     </header>
-    
+
+    <!-- Navigation -->
     <nav class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a> <!-- BLOG LINK ADDED FOR CONSISTENCY -->
-            <a href="gallery.html">Gallery</a>
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="courses.html">Courses</a>
+                <a href="staff.html">Faculty & Staff</a>
+                <a href="logic.html">Logic & Critical Thinking</a>
+                <a href="mcie1012mainpage.html">Civics & Ethics</a>
+                <a href="blog.html">Academic Essays & Blog</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
         </div>
     </nav>
-    
-    <main class="container">
-        <h2>Our Gallery</h2>
-        <div class="gallery">
-            <div class="gallery-item" data-description="Research and innovation center under construction">
-                <img src="gallery1.jpg" alt="Construction site of a new building">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+    <!-- Page Banner -->
+    <div style="background: linear-gradient(135deg, #0f1f38, #1a2f50); color: white; padding: 48px 24px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <span class="section-badge" style="background: rgba(255,255,255,0.15); color: var(--accent-gold-light);">Visual Archive</span>
+            <h2 style="font-size: 2.4rem; margin: 10px 0 14px; font-weight: 800;">Campus Life & Facilities</h2>
+            <p style="color: #cbd5e1; font-size: 1.05rem; margin: 0;">Scenes of university life, student workshops, modern lecture halls, green grounds, and institutional achievements.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="gallery-grid-modern">
+
+            <div class="gallery-card" data-index="0" data-src="gallery1.jpg" data-desc="Research and Innovation Center construction and academic facilities">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery1.jpg" alt="Research Center Construction" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Research & Innovation Center under development</div>
             </div>
-            <div class="gallery-item" data-description="Students attending a seminar, reading brochures during a tea break">
-                <img src="gallery2.jpg" alt="Students mingling during a conference break">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="1" data-src="gallery2.jpg" data-desc="Students and faculty participating in an academic seminar and break session">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery2.jpg" alt="Students at Seminar" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Students and scholars at an academic symposium</div>
             </div>
-            <div class="gallery-item" data-description="The AASTU meeting hall with its red carpet">
-                <img src="gallery3.jpg" alt="Large modern auditorium with red carpet aisle">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="2" data-src="gallery3.jpg" data-desc="AASTU Central Auditorium and Conference Center hall">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery3.jpg" alt="AASTU Meeting Hall" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">AASTU Grand Auditorium & Ceremonial Hall</div>
             </div>
-            <div class="gallery-item" data-description="Students taking training in the digital library">
-                <img src="gallery4.jpg" alt="Students at computers in a digital library">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="3" data-src="gallery4.jpg" data-desc="Students engaged in learning inside the high-tech digital library">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery4.jpg" alt="Digital Library" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Modern digital library computer laboratories</div>
             </div>
-            <div class="gallery-item" data-description="A green area on the AASTU campus">
-                <img src="gallery5.jpg" alt="Lush green park area on a university campus">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="4" data-src="gallery5.jpg" data-desc="Scenic green parks and eco-friendly landscaping across the Kilinto campus">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery5.jpg" alt="Green Campus Grounds" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Eco-friendly landscape & student recreation parks</div>
             </div>
-            <div class="gallery-item" data-description="Staff members planting a tree on campus">
-                <img src="gallery6.jpg" alt="Group of people planting a small tree">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="5" data-src="gallery6.jpg" data-desc="Staff and faculty members taking part in the Green Legacy tree planting initiative">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery6.jpg" alt="Tree Planting Activity" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Faculty tree planting & environmental stewardship</div>
             </div>
-	        <div class="gallery-item" data-description="Corridors inside an AASTU building">
-                <img src="gallery7.jpg" alt="Modern, clean hallway inside a university building">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="6" data-src="gallery7.jpg" data-desc="Modern academic corridors and smart lecture halls inside university buildings">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery7.jpg" alt="Academic Corridor" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">State-of-the-art building corridors & classrooms</div>
             </div>
-	        <div class="gallery-item" data-description="Postgraduate students during their graduation ceremony">
-                <img src="gallery8.jpg" alt="Graduating students in caps and gowns">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="7" data-src="gallery8.jpg" data-desc="Postgraduate and undergraduate students during their graduation ceremony">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery8.jpg" alt="Graduation Ceremony" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Graduation commencement & degree awards</div>
             </div>
-	        <div class="gallery-item" data-description="New research and innovation center under construction">
-                <img src="gallery9.jpg" alt="Another view of the research center construction site">
-                <div class="gallery-item-overlay"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg></div>
+
+            <div class="gallery-card" data-index="8" data-src="gallery9.jpg" data-desc="Expanded panorama of scientific labs and research infrastructure">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery9.jpg" alt="Campus Facilities" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Infrastructure expansion & academic facilities</div>
             </div>
+
         </div>
     </main>
 
-    <div class="overlay" id="overlay">
-        <div class="overlay-content">
-            <button class="close-button" id="close-button" aria-label="Close image viewer">&times;</button>
-            <img id="overlay-image" src="" alt="Enlarged gallery image">
-            <p id="overlay-description"></p>
+    <!-- Lightbox Modal -->
+    <div class="modal-overlay" id="gallery-modal" role="dialog" aria-modal="true">
+        <button class="nav-btn nav-prev" id="modal-prev" aria-label="Previous image">&larr;</button>
+        <button class="nav-btn nav-next" id="modal-next" aria-label="Next image">&rarr;</button>
+        <div class="modal-container">
+            <div class="modal-img-wrapper">
+                <img src="" alt="" id="modal-image" class="modal-img">
+            </div>
+            <div class="modal-footer">
+                <p id="modal-caption" class="modal-caption"></p>
+                <button class="modal-close-btn" id="modal-close" aria-label="Close dialog">&times;</button>
+            </div>
         </div>
-        <button class="arrow-button left" id="prev-button" aria-label="Previous image">&#10094;</button>
-        <button class="arrow-button right" id="next-button" aria-label="Next image">&#10095;</button>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Nurturing human values, critical thinking, and civic awareness.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="staff.html">Faculty</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="mcie1012mainpage.html">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-            document.getElementById('navbar-menu').classList.toggle('show');
-        });
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
 
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const overlay = document.getElementById('overlay');
-        const overlayImage = document.getElementById('overlay-image');
-        const overlayDescription = document.getElementById('overlay-description');
-        const closeButton = document.getElementById('close-button');
-        const nextButton = document.getElementById('next-button');
-        const prevButton = document.getElementById('prev-button');
+        // Lightbox logic
+        const cards = Array.from(document.querySelectorAll('.gallery-card'));
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-image');
+        const modalCaption = document.getElementById('modal-caption');
+        const closeBtn = document.getElementById('modal-close');
+        const prevBtn = document.getElementById('modal-prev');
+        const nextBtn = document.getElementById('modal-next');
         let currentIndex = 0;
 
-        function showOverlay(index) {
+        function openModal(index) {
             currentIndex = index;
-            const item = galleryItems[currentIndex];
-            overlayImage.src = item.querySelector('img').src;
-            overlayDescription.textContent = item.dataset.description;
-            overlay.classList.add('show');
+            const card = cards[currentIndex];
+            modalImg.src = card.dataset.src;
+            modalImg.alt = card.dataset.desc;
+            modalCaption.textContent = card.dataset.desc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function hideOverlay() {
-            overlay.classList.remove('show');
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        function changeImage(direction) {
-            currentIndex += direction;
-            if (currentIndex < 0) {
-                currentIndex = galleryItems.length - 1;
-            } else if (currentIndex >= galleryItems.length) {
-                currentIndex = 0;
-            }
-            showOverlay(currentIndex);
-        }
-
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => showOverlay(index));
-        });
-        
-        closeButton.addEventListener('click', hideOverlay);
-        nextButton.addEventListener('click', () => changeImage(1));
-        prevButton.addEventListener('click', () => changeImage(-1));
-
-        // Close when clicking the dark background
-        overlay.addEventListener('click', (event) => {
-            if (event.target === overlay) {
-                hideOverlay();
-            }
+        cards.forEach((card, i) => {
+            card.addEventListener('click', () => openModal(i));
         });
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (event) => {
-            if (overlay.classList.contains('show')) {
-                if (event.key === 'ArrowRight') {
-                    changeImage(1);
-                } else if (event.key === 'ArrowLeft') {
-                    changeImage(-1);
-                } else if (event.key === 'Escape') {
-                    hideOverlay();
-                }
-            }
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            openModal(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % cards.length;
+            openModal(currentIndex);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
         });
     </script>
 </body>

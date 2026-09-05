@@ -3,110 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NORAL AND CIVIC EDUCATION - MCIE1012</title>
+    <title>MCIE 1012: Moral and Civic Education | Social Science Department - AASTU</title>
+    <meta name="description" content="Course syllabus, lecture notes, constitutional principles, and ethics modules for MCIE 1012 at Addis Ababa Science and Technology University.">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #e3f2f9;
-            padding-bottom: 60px; /* Adjusted for reduced footer height */
+        .course-portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 36px;
         }
-        header {
-            background: linear-gradient(135deg, #009688, #004d40);
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .chapter-card-modern {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-sm);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
         }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
+        .chapter-card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-gold);
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+        .chapter-number-badge {
+            display: inline-block;
+            background: rgba(194, 136, 41, 0.12);
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
         }
-        section {
-            margin: 20px 0;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .chapter-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin: 0 0 10px;
+            line-height: 1.35;
         }
-        footer {
-            background: #009688; /* Match this color to the gradient color in header */
-            color: #fff;
-            text-align: center;
-            padding: 2px 0; /* Reduced height of the footer */
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            left: 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-            font-size: 14px; /* Optional: adjust font size if needed */
+        .chapter-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
-        .chapter-link {
-            display: block;
-            margin: 15px 0;
-            font-weight: bold;
+        .chapter-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .chapter-btn-primary {
+            background: var(--primary-navy);
+            color: #ffffff;
+            padding: 9px 18px;
+            border-radius: var(--radius-md);
             text-decoration: none;
-            color: #004d40;
-            background: #b2dfdb;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
         }
-        .chapter-link:hover {
-            color: #fff;
-            background: #00796b;
+        .chapter-btn-primary:hover {
+            background: var(--accent-blue);
+            color: #ffffff;
         }
-        .chapter-link:active {
-            background: #004d40;
+        .chapter-btn-secondary {
+            background: var(--bg-subtle);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
         }
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-            }
-            header h1 {
-                font-size: 24px;
-            }
+        .chapter-btn-secondary:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>MORAL AND CIVIC EDUCATION - MCIE1012</h1>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Course Portal &bull; MCIE 1012</span>
+                <span>Addis Ababa Science and Technology University</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="courses.html">&larr; Return to Courses</a>
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Applied Sciences & Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">All Courses</a>
+                <a href="staff.html" class="header-action-btn">Faculty Directory</a>
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <section id="chapter1">
-            <a href="chapteronemcie.html" class="chapter-link" target="_blank">Chapter 1: Civics and Ethics</a>
-        </section>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="courses.html">Courses</a>
+                <a href="staff.html">Faculty & Staff</a>
+                <a href="logic.html">Logic & Critical Thinking</a>
+                <a href="mcie1012mainpage.html" class="active">Civics & Ethics</a>
+                <a href="blog.html">Academic Essays</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-        <section id="chapter2">
-            <a href="chapter2mcie.html" class="chapter-link" target="_blank">Chapter 2: Ethics</a>
-        </section>
+    <!-- Page Banner -->
+    <div style="background: linear-gradient(135deg, #0f1f38, #1a2f50); color: white; padding: 48px 24px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <span class="section-badge" style="background: rgba(255,255,255,0.15); color: var(--accent-gold-light);">Course Code: MCIE 1012</span>
+            <h2 style="font-size: 2.4rem; margin: 10px 0 14px; font-weight: 800;">Moral and Civic Education</h2>
+            <p style="color: #cbd5e1; font-size: 1.05rem; margin: 0;">Foundations of ethical civic action, professional integrity, constitutional democracy, and human rights education at AASTU.</p>
+        </div>
+    </div>
 
-        <section id="chapter3">
-            <a href="chapter3mcie.html" class="chapter-link" target="_blank">Chapter 3: Ethical Decision Making and Moral Judgments</a>
-        </section>
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="course-portal-grid">
 
-        <section id="chapter4">
-            <a href="chapter4mcie.html" class="chapter-link" target="_blank">Chapter 4: State , Government and Citizenship</a>
-        </section>
+            <!-- Chapter 1 -->
+            <div class="chapter-card-modern">
+                <div>
+                    <span class="chapter-number-badge">Module 01</span>
+                    <h3 class="chapter-title">Chapter 1: Civics and Ethics</h3>
+                    <p class="chapter-desc">Defining civic education, ethics, morality, society, the significance of civic awareness, and the responsibilities of citizenship.</p>
+                </div>
+                <div class="chapter-actions">
+                    <a href="chapteronemcie.html" class="chapter-btn-primary">View Lecture &rarr;</a>
+                </div>
+            </div>
 
-        <section id="chapter5">
-            <a href="chapter5mcie.html" class="chapter-link" target="_blank">Chapter 5: Constitution, Democracy and Human Rights</a>
-        </section>
+            <!-- Chapter 2 -->
+            <div class="chapter-card-modern">
+                <div>
+                    <span class="chapter-number-badge">Module 02</span>
+                    <h3 class="chapter-title">Chapter 2: Ethics and Morality</h3>
+                    <p class="chapter-desc">Theories of ethics, normative vs non-normative ethics, utilitarianism, deontological ethics, virtue ethics, and moral relativism.</p>
+                </div>
+                <div class="chapter-actions">
+                    <a href="chapter2mcie.html" class="chapter-btn-primary">View Lecture &rarr;</a>
+                </div>
+            </div>
 
-        
-    <footer>
-        <p>© Mozhassen 2024</p>
+            <!-- Chapter 3 -->
+            <div class="chapter-card-modern">
+                <div>
+                    <span class="chapter-number-badge">Module 03</span>
+                    <h3 class="chapter-title">Chapter 3: Ethical Decision Making & Moral Judgments</h3>
+                    <p class="chapter-desc">Frameworks for ethical decision making, moral reasoning in complex real-world dilemmas, professional codes of ethics, and engineering accountability.</p>
+                </div>
+                <div class="chapter-actions">
+                    <a href="chapter3mcie.html" class="chapter-btn-primary">View Lecture &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="chapter-card-modern">
+                <div>
+                    <span class="chapter-number-badge">Module 04</span>
+                    <h3 class="chapter-title">Chapter 4: State, Government, & Citizenship</h3>
+                    <p class="chapter-desc">Theories of state origins, organs of government, forms of government, rights and duties of citizens, and modes of acquiring nationality.</p>
+                </div>
+                <div class="chapter-actions">
+                    <a href="chapter4mcie.html" class="chapter-btn-primary">View Lecture &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="chapter-card-modern">
+                <div>
+                    <span class="chapter-number-badge">Module 05</span>
+                    <h3 class="chapter-title">Chapter 5: Constitution, Democracy & Human Rights</h3>
+                    <p class="chapter-desc">Constitutionalism, principles of constitutional democracy, generations of human rights, the FDRE constitution, and democratic institutions in Ethiopia.</p>
+                </div>
+                <div class="chapter-actions">
+                    <a href="chapter5mcie.html" class="chapter-btn-primary">View Lecture &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Academic resource hub for MCIE 1012.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">All Courses</a></li>
+                    <li><a href="logic.html">PHIL 1009 Logic</a></li>
+                    <li><a href="staff.html">Faculty Directory</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Course Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="chapteronemcie.html">Chapter 1 Lecture</a></li>
+                    <li><a href="chapter2mcie.html">Chapter 2 Lecture</a></li>
+                    <li><a href="chapter5mcie.html">Chapter 5 Constitution</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Faculty</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Block 53</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Map</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
 </body>
 </html>
