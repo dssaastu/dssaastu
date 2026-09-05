@@ -133,18 +133,18 @@
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="navbar">
+    <!-- Main Sticky Navigation Bar -->
+    <nav class="navbar" id="site-nav">
         <div class="navbar-inner">
-            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
             <div class="navbar-menu" id="navbar-menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="courses.html">Courses</a>
-                <a href="staff.html">Faculty & Staff</a>
-                <a href="blog.html">Academic Essays & Blog</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" id="nav-home">Home</a>
+                <a href="about.html" id="nav-about">About Us</a>
+                <a href="courses.html" id="nav-courses">Courses</a>
+                <a href="staff.html" id="nav-staff">Faculty & Staff</a>
+                <a href="blog.html" id="nav-blog">Academic Essays & Blog</a>
+                <a href="gallery.html" id="nav-gallery">Gallery</a>
+                <a href="contact.html" id="nav-contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -291,7 +291,10 @@
         const toggler = document.getElementById('navbar-toggler');
         const menu = document.getElementById('navbar-menu');
         if (toggler && menu) {
-            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+            toggler.addEventListener('click', () => {
+                const isExpanded = menu.classList.toggle('show');
+                toggler.setAttribute('aria-expanded', isExpanded);
+            });
         }
         document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>

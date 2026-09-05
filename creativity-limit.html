@@ -4,149 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Limits of Creativity in Education: Challenges and Dilemmas - Blog</title>
-    <style>
-        /* --- CORE STYLES --- */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
-        .header { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; }
-        .header h1 { margin: 0; font-size: 2rem; }
-        .navbar { display: flex; justify-content: center; background-color: #1A252F; padding: 10px; position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-        .navbar a { color: #fff; padding: 10px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
-        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-        .footer { background-color: #2C3E50; color: #fff; padding: 20px 0; text-align: center; position: relative; z-index: 1000; }
-        .footer p { margin-top: 15px; font-size: 0.9rem; }
-        .footer a { color: #fff; text-decoration: none; margin: 0 10px; }
-
-        /* --- NEW: Main Page Layout for Content + Sidebar --- */
-        .page-layout {
-            display: flex;
-            gap: 30px;
-            width: 90%;
-            max-width: 1200px; /* Increased width to accommodate sidebar */
-            margin: 40px auto;
-            align-items: flex-start; /* Align items to the top */
-        }
-        .main-content {
-            flex: 1;
-            min-width: 0; /* Prevents flexbox overflow issues */
-        }
-        
-        /* --- NEW: Sticky Sidebar Navigation --- */
-        .sidebar-nav {
-            flex-basis: 280px; /* Sidebar width */
-            flex-shrink: 0;
-            position: sticky;
-            top: 80px; /* Position below the main navbar */
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            padding: 15px;
-            max-height: calc(100vh - 120px); /* Control height and enable scrolling */
-            overflow-y: auto;
-        }
-        .sidebar-nav h3 {
-            margin: 0 0 15px 0;
-            padding-bottom: 10px;
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #212529;
-            border-bottom: 1px solid #ced4da;
-        }
-        .sidebar-nav h3::before {
-            content: '\2630'; /* Hamburger menu icon */
-            margin-right: 8px;
-            font-weight: bold;
-        }
-        .sidebar-nav ol {
-            list-style: none;
-            counter-reset: item;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar-nav li {
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .sidebar-nav li::before {
-            counter-increment: item;
-            content: counter(item) ". ";
-            font-weight: 600;
-            color: #212529;
-        }
-        .sidebar-nav a {
-            text-decoration: none;
-            color: #0056b3;
-            font-size: 0.95em;
-        }
-        .sidebar-nav a:hover {
-            text-decoration: underline;
-        }
-        /* Custom scrollbar for sidebar */
-        .sidebar-nav::-webkit-scrollbar { width: 8px; }
-        .sidebar-nav::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        .sidebar-nav::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
-        .sidebar-nav::-webkit-scrollbar-thumb:hover { background: #aaa; }
-
-        /* --- SINGLE POST STYLES --- */
-        .full-post {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            padding: 30px 40px;
-        }
-        .full-post-header img { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
-        .full-post h1 { font-size: 2.5rem; color: #2C3E50; margin-bottom: 10px; line-height: 1.2; }
-        .post-meta { font-size: 0.9em; color: #777; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .post-body h2 { font-size: 1.8rem; color: #1A252F; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid #2C3E50; padding-bottom: 10px; }
-        .post-body h3 { font-size: 1.5rem; color: #1A252F; margin-top: 30px; margin-bottom: 15px; }
-        .post-body p { line-height: 1.7; margin-bottom: 1.2em; }
-        .post-body blockquote { border-left: 4px solid #2C3E50; padding-left: 20px; margin: 25px 0; font-style: italic; color: #555; background-color: #f9f9f9; padding-top: 10px; padding-bottom: 10px; border-radius: 0 5px 5px 0; }
-        .post-body ol, .post-body ul { padding-left: 20px; }
-        .post-body ol li, .post-body ul li { margin-bottom: 10px; line-height: 1.6; }
-
-        /* --- Responsive Styles --- */
-        @media (max-width: 1100px) {
-            .page-layout { flex-direction: column; }
-            .sidebar-nav {
-                position: static; /* Un-stick the sidebar */
-                order: -1; /* Move it to the top */
-                width: auto; /* Let it fill the container */
-                margin-bottom: 30px;
-                max-height: 300px; /* Give a reasonable max-height when stacked */
-            }
-        }
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; align-items: flex-start; }
-            .navbar-toggler { display: block; }
-            .navbar-menu { display: none; flex-direction: column; width: 100%; }
-            .navbar-menu.show { display: flex; }
-            .full-post { padding: 20px; }
-            .full-post h1 { font-size: 2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <h1>Social Science Department</h1>
-        <p>AASTU - Advancing Knowledge, Shaping Futures</p>
-    </div>
-    
-    <div class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a>
-            <a href="gallery.html">Gallery</a>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
         </div>
     </div>
-    
+
+    <!-- Main Institutional Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Social Sciences and Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn" id="btn-browse-courses">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Courses & Syllabi
+                </a>
+                <a href="staff.html" class="header-action-btn" id="btn-meet-staff">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Faculty Profiles
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Sticky Navigation Bar -->
+    <nav class="navbar" id="site-nav">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html" id="nav-home">Home</a>
+                <a href="about.html" id="nav-about">About Us</a>
+                <a href="courses.html" id="nav-courses">Courses</a>
+                <a href="staff.html" id="nav-staff">Faculty & Staff</a>
+                <a href="blog.html" class="active" id="nav-blog">Academic Essays & Blog</a>
+                <a href="gallery.html" id="nav-gallery">Gallery</a>
+                <a href="contact.html" id="nav-contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page / Article Header Banner -->
+    <div class="article-banner">
+        <div class="article-banner-inner">
+            <span class="article-banner-badge">Academic Essays &bull; Scholarly Discourse</span>
+            <h2 class="article-banner-title">Department Academic Series</h2>
+            <p class="article-banner-subtitle">AASTU Social Science Department &bull; College of Social Sciences and Humanities</p>
+        </div>
+    </div>
+
+    <!-- Main Content & Table of Contents -->
     <div class="page-layout">
-        <!-- Main Column for the Full Blog Post -->
         <main class="main-content">
             <article class="full-post">
                 <header class="full-post-header">
@@ -254,8 +186,8 @@
             </article>
         </main>
 
-        <!-- NEW: Sticky Sidebar Navigation -->
         <nav class="sidebar-nav">
+            <a href="blog.html" class="sidebar-back-btn">&larr; Back to All Essays</a>
             <h3>Sections</h3>
             <ol>
                 <li><a href="#introduction">Introduction</a></li>
@@ -270,17 +202,64 @@
                 <li><a href="#references">References</a></li>
             </ol>
         </nav>
-        
-    </div>
-    
-    <div class="footer">
-        <p>&copy; 2024 Social Science Department | Contact: <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
     </div>
 
+    <!-- Modern Institutional Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Nurturing human values, critical thinking, and civic awareness.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="staff.html">Faculty</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="mcie1012mainpage.html">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        document.getElementById('navbar-toggler').addEventListener('click', function() {
-            document.getElementById('navbar-menu').classList.toggle('show');
-        });
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => {
+                const isExpanded = menu.classList.toggle('show');
+                toggler.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>
 </body>
 </html>
