@@ -237,17 +237,63 @@
     <!-- Page Banner -->
     <div style="background: linear-gradient(135deg, #0f1f38, #1a2f50); color: white; padding: 48px 24px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
         <div style="max-width: 800px; margin: 0 auto;">
-            <span class="section-badge" style="background: rgba(255,255,255,0.15); color: var(--accent-gold-light);">Visual Archive</span>
+            <span class="section-badge" style="background: rgba(255,255,255,0.15); color: var(--accent-gold-light);">Visual Archive & Photo Gallery</span>
             <h2 style="font-size: 2.4rem; margin: 10px 0 14px; font-weight: 800;">Campus Life & Facilities</h2>
-            <p style="color: #cbd5e1; font-size: 1.05rem; margin: 0;">Scenes of university life, student workshops, modern lecture halls, green grounds, and institutional achievements.</p>
+            <p style="color: #cbd5e1; font-size: 1.05rem; margin: 0;">Scenes of university life, student symposiums, modern research laboratories, green grounds, and institutional milestones.</p>
         </div>
     </div>
 
     <!-- Main Content -->
     <main class="main-wrapper">
-        <div class="gallery-grid-modern">
+        
+        <!-- Filter Bar & Display Controls -->
+        <div class="gallery-filter-bar" id="gallery-filters" role="tablist" aria-label="Photo categories">
+            <button class="filter-btn active" data-filter="all" id="filter-all" role="tab" aria-selected="true">
+                <svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                All Photos (<span id="count-all">13</span>)
+            </button>
+            <button class="filter-btn" data-filter="campus" id="filter-campus" role="tab" aria-selected="false">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Campus Grounds
+            </button>
+            <button class="filter-btn" data-filter="facilities" id="filter-facilities" role="tab" aria-selected="false">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                Facilities & Labs
+            </button>
+            <button class="filter-btn" data-filter="academic" id="filter-academic" role="tab" aria-selected="false">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                Academic Life
+            </button>
+            <button class="filter-btn" data-filter="events" id="filter-events" role="tab" aria-selected="false">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Conferences & Events
+            </button>
+        </div>
 
-            <div class="gallery-card" data-index="0" data-src="gallery1.jpg" data-desc="Research and Innovation Center construction and academic facilities">
+        <!-- Section Header for Grid View -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
+            <div>
+                <span class="section-badge" style="margin-bottom: 6px;">Campus Photography</span>
+                <h2 style="font-size: 1.8rem; color: var(--primary-navy); margin: 0; font-weight: 700;">Campus Life & Facilities</h2>
+            </div>
+            <div style="color: var(--text-secondary); font-size: 0.95rem;">
+                Click any image to view in full-screen lightbox
+            </div>
+        </div>
+
+        <div class="gallery-grid-modern" id="gallery-grid">
+
+            <div class="gallery-card" data-index="0" data-src="campus.jpg" data-category="campus" data-title="AASTU Kilinto Campus Panorama" data-desc="Scenic aerial and landscape view of the Addis Ababa Science and Technology University campus nestled in Kilinto.">
+                <div class="gallery-card-img-wrapper">
+                    <img src="campus.jpg" alt="AASTU Kilinto Campus Panorama" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">AASTU Kilinto Campus Panorama</div>
+            </div>
+
+            <div class="gallery-card" data-index="1" data-src="gallery1.jpg" data-category="facilities" data-title="Research & Innovation Center" data-desc="State-of-the-art research laboratories and academic incubation centers supporting cutting-edge science and technology.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery1.jpg" alt="Research Center Construction" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -257,7 +303,7 @@
                 <div class="gallery-card-caption">Research & Innovation Center under development</div>
             </div>
 
-            <div class="gallery-card" data-index="1" data-src="gallery2.jpg" data-desc="Students and faculty participating in an academic seminar and break session">
+            <div class="gallery-card" data-index="2" data-src="gallery2.jpg" data-category="events" data-title="Academic Symposium & Scholarly Workshop" data-desc="Scholars, faculty, and students participating in interdisciplinary academic discussions and keynote presentations.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery2.jpg" alt="Students at Seminar" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -267,7 +313,7 @@
                 <div class="gallery-card-caption">Students and scholars at an academic symposium</div>
             </div>
 
-            <div class="gallery-card" data-index="2" data-src="gallery3.jpg" data-desc="AASTU Central Auditorium and Conference Center hall">
+            <div class="gallery-card" data-index="3" data-src="gallery3.jpg" data-category="facilities" data-title="AASTU Grand Auditorium & Meeting Hall" data-desc="Main institutional conference center hosting national forums, symposia, and university assemblies.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery3.jpg" alt="AASTU Meeting Hall" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -277,7 +323,7 @@
                 <div class="gallery-card-caption">AASTU Grand Auditorium & Ceremonial Hall</div>
             </div>
 
-            <div class="gallery-card" data-index="3" data-src="gallery4.jpg" data-desc="Students engaged in learning inside the high-tech digital library">
+            <div class="gallery-card" data-index="4" data-src="gallery4.jpg" data-category="academic" data-title="Digital Library & Computer Labs" data-desc="Equipped with high-speed digital research terminals and vast electronic academic databases for students.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery4.jpg" alt="Digital Library" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -287,7 +333,7 @@
                 <div class="gallery-card-caption">Modern digital library computer laboratories</div>
             </div>
 
-            <div class="gallery-card" data-index="4" data-src="gallery5.jpg" data-desc="Scenic green parks and eco-friendly landscaping across the Kilinto campus">
+            <div class="gallery-card" data-index="5" data-src="gallery5.jpg" data-category="campus" data-title="Eco-Friendly Green Grounds & Student Parks" data-desc="Peaceful outdoor study gazebos, botanical walkways, and recreational areas designed for student wellbeing.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery5.jpg" alt="Green Campus Grounds" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -297,7 +343,7 @@
                 <div class="gallery-card-caption">Eco-friendly landscape & student recreation parks</div>
             </div>
 
-            <div class="gallery-card" data-index="5" data-src="gallery6.jpg" data-desc="Staff and faculty members taking part in the Green Legacy tree planting initiative">
+            <div class="gallery-card" data-index="6" data-src="gallery6.jpg" data-category="campus" data-title="Green Legacy Environmental Initiative" data-desc="Faculty and student participation in Ethiopia's national tree planting and sustainable development programs.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery6.jpg" alt="Tree Planting Activity" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -307,7 +353,7 @@
                 <div class="gallery-card-caption">Faculty tree planting & environmental stewardship</div>
             </div>
 
-            <div class="gallery-card" data-index="6" data-src="gallery7.jpg" data-desc="Modern academic corridors and smart lecture halls inside university buildings">
+            <div class="gallery-card" data-index="7" data-src="gallery7.jpg" data-category="academic" data-title="Modern Academic Lecture Halls & Corridors" data-desc="Spacious, multimedia-equipped lecture halls designed for interactive teaching and social science seminars.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery7.jpg" alt="Academic Corridor" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -317,7 +363,7 @@
                 <div class="gallery-card-caption">State-of-the-art building corridors & classrooms</div>
             </div>
 
-            <div class="gallery-card" data-index="7" data-src="gallery8.jpg" data-desc="Postgraduate and undergraduate students during their graduation ceremony">
+            <div class="gallery-card" data-index="8" data-src="gallery8.jpg" data-category="events" data-title="Graduation Commencement Ceremony" data-desc="Celebrating the academic accomplishments and degree conferrals of undergraduate and postgraduate scholars.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery8.jpg" alt="Graduation Ceremony" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -327,7 +373,7 @@
                 <div class="gallery-card-caption">Graduation commencement & degree awards</div>
             </div>
 
-            <div class="gallery-card" data-index="8" data-src="gallery9.jpg" data-desc="Expanded panorama of scientific labs and research infrastructure">
+            <div class="gallery-card" data-index="9" data-src="gallery9.jpg" data-category="facilities" data-title="Infrastructure & Research Complexes" data-desc="Modern architectural facilities expanding university capacity for engineering, technology, and social sciences.">
                 <div class="gallery-card-img-wrapper">
                     <img src="gallery9.jpg" alt="Campus Facilities" class="gallery-card-img" loading="lazy">
                     <div class="gallery-zoom-badge">
@@ -335,6 +381,36 @@
                     </div>
                 </div>
                 <div class="gallery-card-caption">Infrastructure expansion & academic facilities</div>
+            </div>
+
+            <div class="gallery-card" data-index="10" data-src="gallery10.jpg" data-category="facilities" data-title="Campus Technology & Development Complex" data-desc="Institutional growth and technology park facilities fostering scientific collaboration and innovation.">
+                <div class="gallery-card-img-wrapper">
+                    <img src="gallery10.jpg" alt="Campus Technology Complex" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Campus Technology & Innovation Complex</div>
+            </div>
+
+            <div class="gallery-card" data-index="11" data-src="faculty.jpg" data-category="academic" data-title="Department Faculty & Academic Staff" data-desc="The distinguished educators and researchers of the Department of Social Sciences at AASTU.">
+                <div class="gallery-card-img-wrapper">
+                    <img src="faculty.jpg" alt="AASTU Social Science Department Faculty" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Department Faculty & Academic Staff</div>
+            </div>
+
+            <div class="gallery-card" data-index="12" data-src="students.jpg" data-category="academic" data-title="Active Learning & Student Engagement" data-desc="Students engaged in critical dialogue, logic exercises, and collaborative group discussions.">
+                <div class="gallery-card-img-wrapper">
+                    <img src="students.jpg" alt="AASTU Students in Lecture Hall" class="gallery-card-img" loading="lazy">
+                    <div class="gallery-zoom-badge">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+                    </div>
+                </div>
+                <div class="gallery-card-caption">Active Learning & Student Engagement</div>
             </div>
 
         </div>
@@ -411,22 +487,38 @@
         }
         document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
 
-        // Lightbox logic
-        const cards = Array.from(document.querySelectorAll('.gallery-card'));
+        // Active filtered dataset
+        let currentFilter = 'all';
+        const filterBtns = document.querySelectorAll('.gallery-filter-bar .filter-btn');
+        const gridCards = Array.from(document.querySelectorAll('.gallery-grid-modern .gallery-card'));
+
+        // Modal Lightbox Elements
         const modal = document.getElementById('gallery-modal');
         const modalImg = document.getElementById('modal-image');
         const modalCaption = document.getElementById('modal-caption');
-        const closeBtn = document.getElementById('modal-close');
-        const prevBtn = document.getElementById('modal-prev');
-        const nextBtn = document.getElementById('modal-next');
-        let currentIndex = 0;
+        const modalClose = document.getElementById('modal-close');
+        const modalPrev = document.getElementById('modal-prev');
+        const modalNext = document.getElementById('modal-next');
+        let currentModalIndex = 0;
 
+        function getVisibleCards() {
+            return gridCards.filter(card => card.style.display !== 'none');
+        }
+
+        // Lightbox Modal logic
         function openModal(index) {
-            currentIndex = index;
-            const card = cards[currentIndex];
-            modalImg.src = card.dataset.src;
-            modalImg.alt = card.dataset.desc;
-            modalCaption.textContent = card.dataset.desc;
+            const visibleCards = getVisibleCards();
+            if (!visibleCards.length) return;
+
+            currentModalIndex = (index + visibleCards.length) % visibleCards.length;
+            const card = visibleCards[currentModalIndex];
+            const src = card.dataset.src;
+            const title = card.dataset.title || '';
+            const desc = card.dataset.desc || '';
+
+            modalImg.src = src;
+            modalImg.alt = title;
+            modalCaption.textContent = title ? `${title} — ${desc}` : desc;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -436,32 +528,62 @@
             document.body.style.overflow = '';
         }
 
-        cards.forEach((card, i) => {
-            card.addEventListener('click', () => openModal(i));
-        });
-
-        closeBtn.addEventListener('click', closeModal);
+        modalClose.addEventListener('click', closeModal);
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
 
-        prevBtn.addEventListener('click', (e) => {
+        modalPrev.addEventListener('click', (e) => {
             e.stopPropagation();
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            openModal(currentIndex);
+            openModal(currentModalIndex - 1);
         });
 
-        nextBtn.addEventListener('click', (e) => {
+        modalNext.addEventListener('click', (e) => {
             e.stopPropagation();
-            currentIndex = (currentIndex + 1) % cards.length;
-            openModal(currentIndex);
+            openModal(currentModalIndex + 1);
         });
 
+        // Category Filter Handling
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+
+                const filter = btn.dataset.filter;
+                currentFilter = filter;
+
+                // Filter grid cards
+                gridCards.forEach(card => {
+                    const cardCat = card.dataset.category;
+                    if (filter === 'all' || cardCat === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Grid cards click interaction -> Open in Lightbox
+        gridCards.forEach((card) => {
+            card.addEventListener('click', () => {
+                const visibleCards = getVisibleCards();
+                const idx = visibleCards.indexOf(card);
+                openModal(idx >= 0 ? idx : 0);
+            });
+        });
+
+        // Global Keyboard Navigation for Lightbox
         document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('active')) return;
-            if (e.key === 'Escape') closeModal();
-            if (e.key === 'ArrowLeft') prevBtn.click();
-            if (e.key === 'ArrowRight') nextBtn.click();
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') modalPrev.click();
+                if (e.key === 'ArrowRight') modalNext.click();
+            }
         });
     </script>
 </body>
