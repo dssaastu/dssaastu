@@ -2365,3 +2365,218 @@ div[style*="background: linear-gradient(135deg, #0f1f38"] p {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   Chapter Slides Viewer & Institutional Framing System
+   ========================================================================== */
+.slide-page-body {
+  background-color: var(--bg-surface-subtle);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-page-main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+  box-sizing: border-box;
+}
+
+.slide-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-xs);
+}
+
+.slide-top-title h1 {
+  margin: 4px 0 0;
+  font-size: 1.35rem;
+  color: var(--primary-navy);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.slide-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.slide-back-link:hover {
+  color: var(--accent-blue-hover);
+  text-decoration: underline;
+}
+
+.slide-hints {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.kbd-key {
+  display: inline-block;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: 0.02em;
+}
+
+.presentation-stage {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.presentation-stage .presentation-container {
+  width: 100%;
+  height: 640px;
+  max-height: 74vh;
+  min-height: 480px;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation-stage .side-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  line-height: 1;
+}
+
+.presentation-stage .side-nav-button:hover:not(:disabled) {
+  background-color: var(--primary-navy);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.presentation-stage .side-nav-button:disabled {
+  background-color: rgba(15, 23, 42, 0.15);
+  color: #94a3b8;
+  cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.presentation-stage #prevBtn {
+  left: -22px;
+}
+
+.presentation-stage #nextBtn {
+  right: -22px;
+}
+
+@media (max-width: 1060px) {
+  .presentation-stage #prevBtn {
+    left: 12px;
+  }
+  .presentation-stage #nextBtn {
+    right: 12px;
+  }
+}
+
+.presentation-stage .slide-counter-container {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(15, 23, 42, 0.82);
+  padding: 5px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.presentation-stage .slide-counter-text {
+  font-size: 0.82rem;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.chapter-nav-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-xs);
+}
+
+.chapter-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--bg-surface-subtle);
+  color: var(--primary-navy);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.chapter-nav-btn:hover {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  border-color: var(--primary-navy);
+}
+
+.chapter-nav-btn.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.chapter-nav-current {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
