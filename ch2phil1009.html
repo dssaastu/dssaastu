@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHIL1009 - Chapter 2: Basic Concepts in Argument (Study Notes)</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
@@ -175,9 +176,30 @@
             .slide-number { padding: 10px 7%; font-size: 0.8em; }
             .data-table { font-size: 0.9em; width: 95%; }
         }
+    
+        .slide { display: none; }
+        .slide.active { display: block; }
+        .slide-content { padding: 10px 0; width: 100%; }
+        /* Basic styling for tables */
+        table, th, td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        th {
+            background-color: #f7fafc;
+            font-weight: bold;
+        }
+
     </style>
 </head>
-<body class="slide-page-body">
+<body class="slide-page-body font-sans">
 
     <!-- Institutional Top Utility Bar -->
     <div class="top-bar" id="top-bar">
@@ -252,18 +274,17 @@
                 <h1>PHIL 1009 - Chapter 2: Basic Concepts in Argument</h1>
             </div>
             <div class="slide-hints">
-                <span>Keyboard Controls:</span>
+                <span>Controls:</span>
                 <span class="kbd-key">&larr; Prev</span>
                 <span class="kbd-key">Next &rarr;</span>
             </div>
         </div>
 
-        <div class="presentation-stage">
-            <button class="nav-button prev" onclick="navigateToSlide(currentSlide - 1, 'horizontal')" aria-label="Previous slide">&#10094;</button>
-            <div class="presentation-container">
-
+        <div class="w-full max-w-4xl mx-auto my-2">
+            <!-- Slides Container -->
+            <div id="slides" class="relative bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8 min-h-[450px]">
     <!-- Slide 1: Title Slide -->
-    <section class="slide title-slide">
+    <section class="slide title-slide active">
         <div>
             <h1>BASIC CONCEPTS IN ARGUMENT</h1>
             <p class="author">chapter two</p>
@@ -374,11 +395,17 @@
     <section class="slide"><div class="slide-content"><h1>References – Books</h1><ol><li><b>"A Rulebook for Arguments"</b> by Anthony Weston: A concise and accessible guide to understanding and constructing arguments.</li><li><b>"Critical Thinking: A Student's Introduction"</b> by Gregory Bassham, et al.: A comprehensive textbook offering an in-depth exploration of critical thinking skills.</li><li><b>"Understanding Arguments: An Introduction to Informal Logic"</b> by Walter Sinnott-Armstrong and Robert Fogelin: Introduces students to the basic principles of argumentation.</li><li><b>"The Elements of Reasoning"</b> by Ronald Munson and Andrew Black: Focuses on the elements of reasoning, providing practical tools for analyzing arguments.</li><li><b>"Logic: A Very Short Introduction"</b> by Graham Priest: A concise introduction covering both formal and informal aspects of reasoning.</li></ol></div></section>
     <section class="slide"><div class="slide-content"><h1>References – Websites</h1><ol><li><b>Purdue Online Writing Lab (OWL) - Argument:</b> A comprehensive guide on argumentation. (Website: owl.purdue.edu)</li><li><b>Stanford Encyclopedia of Philosophy - Deductive and Inductive Arguments:</b> In-depth articles on deductive and inductive reasoning. (Website: plato.stanford.edu)</li><li><b>Critical Thinking Web - Argument Basics:</b> Interactive tutorials and exercises on argument basics. (Website: www.criticalthinkingweb.com)</li><li><b>Internet Encyclopedia of Philosophy - Informal Logic:</b> Articles on informal logic, including argumentation and evaluation. (Website: www.iep.utm.edu)</li><li><b>Philosophy Terms - Argument:</b> A concise definition and explanation of arguments. (Website: philosophyterms.com)</li><li><b>Georgetown University Writing Center - Evaluating Arguments:</b> A guide on evaluating arguments. (Website: writingcenter.georgetown.edu)</li><li><b>Philosophy Now - Argument Evaluation:</b> Articles and resources on argument evaluation. (Website: philosophynow.org)</li><li><b>TED-Ed - Lessons on Critical Thinking:</b> A collection of animated lessons on critical thinking. (Website: ed.ted.com)</li></ol><div class="button-container"><a href="chapter_two.pdf" download class="download-btn">Download Chapter PDF</a></div></div></section>
 
-</div><!-- /.presentation-container -->
-            <button class="nav-button next" onclick="navigateToSlide(currentSlide + 1, 'horizontal')" aria-label="Next slide">&#10095;</button>
-        </div><!-- /.presentation-stage -->
+            </div><!-- /#slides -->
 
-        <div class="chapter-nav-strip">
+            <!-- Navigation Arrows -->
+            <div class="flex justify-between items-center mt-4 px-2">
+              <button id="prevSlide" class="bg-slate-200 text-slate-800 px-5 py-2 rounded-lg font-medium hover:bg-slate-300 transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed" disabled>&larr; Previous Slide</button>
+              <span id="slideCounter" class="text-slate-600 font-semibold text-sm">1 / 78</span>
+              <button id="nextSlide" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50">Next Slide &rarr;</button>
+            </div>
+        </div><!-- /.w-full -->
+
+        <div class="chapter-nav-strip mt-6">
             <a href="ch1phil1009.html" class="chapter-nav-btn">&larr; Chapter 1: Logic &amp; Philosophy</a>
             <span class="chapter-nav-current">Study Notes &bull; Chapter 2 of 6</span>
             <a href="ch3phil1009.html" class="chapter-nav-btn">Chapter 3: Logic &amp; Language &rarr;</a>
@@ -455,124 +482,76 @@
         }
         document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>
-    <script>
-    // --- JavaScript for Navigation and Setup ---
-    const slides = document.querySelectorAll('.slide');
-    const presentationContainer = document.querySelector('.presentation-container');
-    const totalSlides = slides.length;
-    let currentSlide = 0;
+        <script>
+        const slides = document.querySelectorAll('#slides .slide');
+        const prevButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+        const slideCounter = document.getElementById('slideCounter');
+        let currentSlide = 0;
 
-    // --- Touch navigation variables ---
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-    const swipeThreshold = 50; 
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            if (prevButton) prevButton.disabled = currentSlide === 0;
+            if (nextButton) nextButton.disabled = currentSlide === slides.length - 1;
+            if (slideCounter) slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+        }
 
-    function setupSlides() {
-        slides.forEach((slide, index) => {
-            if (!slide.classList.contains('title-slide')) {
-                const slideNumberEl = document.createElement('div');
-                slideNumberEl.className = 'slide-number';
-                slideNumberEl.textContent = `${index + 1} / ${totalSlides}`;
-                slide.appendChild(slideNumberEl);
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                return;
             }
-            
-            slide.setAttribute('tabindex', '-1');
-            if (index === 0) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.add('next');
+            if ((event.key === 'ArrowLeft' || event.key === 'PageUp') && currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            } else if ((event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') && currentSlide < slides.length - 1) {
+                if (event.key === ' ') event.preventDefault();
+                currentSlide++;
+                updateSlide();
             }
         });
-        if (slides.length > 0) {
-            slides[0].focus();
-        }
-    }
 
-    function navigateToSlide(newIndex, direction = 'horizontal') {
-        if (newIndex < 0 || newIndex >= totalSlides || newIndex === currentSlide) return;
-        
-        const oldIndex = currentSlide;
-        const oldSlide = slides[oldIndex];
-        const newSlide = slides[newIndex];
-        const isForward = newIndex > oldIndex;
-
-        newSlide.classList.remove('previous', 'next', 'up', 'down');
-        newSlide.classList.add('active');
-
-        oldSlide.classList.remove('active');
-        if (direction === 'horizontal') {
-            oldSlide.classList.add(isForward ? 'previous' : 'next');
-        } else { // Vertical
-            oldSlide.classList.add(isForward ? 'up' : 'down');
-        }
-        
-        currentSlide = newIndex;
-        newSlide.focus({ preventScroll: true });
-    }
-
-    // --- Keyboard Event Listener ---
-    document.addEventListener('keydown', (event) => {
-        const activeContent = slides[currentSlide].querySelector('.slide-content');
-        const scrollAmount = 100;
-
-        switch (event.key) {
-            case 'ArrowRight':
-                event.preventDefault();
-                navigateToSlide(currentSlide + 1, 'horizontal');
-                break;
-            case 'ArrowLeft':
-                event.preventDefault();
-                navigateToSlide(currentSlide - 1, 'horizontal');
-                break;
-            case 'ArrowDown':
-                event.preventDefault();
-                if (activeContent) {
-                    activeContent.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const slidesContainer = document.getElementById('slides');
+        if (slidesContainer) {
+            slidesContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            slidesContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50 && currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                } else if (touchEndX > touchStartX + 50 && currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
                 }
-                break;
-            case 'ArrowUp':
-                event.preventDefault();
-                if (activeContent) {
-                    activeContent.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
-                }
-                break;
+            }, { passive: true });
         }
-    });
 
-    // --- Touch Event Listeners ---
-    presentationContainer.addEventListener('touchstart', (event) => {
-        touchStartX = event.touches[0].clientX;
-        touchStartY = event.touches[0].clientY;
-    }, { passive: true });
-
-    presentationContainer.addEventListener('touchend', (event) => {
-        touchEndX = event.changedTouches[0].clientX;
-        touchEndY = event.changedTouches[0].clientY;
-        handleSwipe();
-    }, { passive: true });
-    
-    // --- CORRECTED SWIPE HANDLER FOR MOBILE ---
-    function handleSwipe() {
-        const swipeDistanceX = touchEndX - touchStartX;
-        const swipeDistanceY = touchEndY - touchStartY;
-
-        // Only handle swipes that are PRIMARILY horizontal.
-        // Ignore vertical swipes to allow for natural content scrolling.
-        if (Math.abs(swipeDistanceX) > Math.abs(swipeDistanceY)) {
-            // Horizontal Swipe
-            if (swipeDistanceX < -swipeThreshold) {
-                navigateToSlide(currentSlide + 1, 'horizontal');
-            } else if (swipeDistanceX > swipeThreshold) {
-                navigateToSlide(currentSlide - 1, 'horizontal');
-            }
-        }
-        // No 'else' block needed. If the swipe is vertical, do nothing and let the browser scroll.
-    }
-
-    setupSlides();
-</script>
+        updateSlide();
+    </script>
 
 </body>
 </html>

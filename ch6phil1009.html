@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHIL1009 - Chapter 6: Categorical Propositions (Study Notes)</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
@@ -166,9 +167,30 @@
             h2 { font-size: 1.5em; }
             .slide-number { padding: 10px 7%; font-size: 0.8em; }
         }
+    
+        .slide { display: none; }
+        .slide.active { display: block; }
+        .slide-content { padding: 10px 0; width: 100%; }
+        /* Basic styling for tables */
+        table, th, td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        th {
+            background-color: #f7fafc;
+            font-weight: bold;
+        }
+
     </style>
 </head>
-<body class="slide-page-body">
+<body class="slide-page-body font-sans">
 
     <!-- Institutional Top Utility Bar -->
     <div class="top-bar" id="top-bar">
@@ -243,18 +265,17 @@
                 <h1>PHIL 1009 - Chapter 6: Categorical Propositions</h1>
             </div>
             <div class="slide-hints">
-                <span>Keyboard Controls:</span>
+                <span>Controls:</span>
                 <span class="kbd-key">&larr; Prev</span>
                 <span class="kbd-key">Next &rarr;</span>
             </div>
         </div>
 
-        <div class="presentation-stage">
-            <button class="nav-button prev" onclick="navigateToSlide(currentSlide - 1, 'horizontal')" aria-label="Previous slide">&#10094;</button>
-            <div class="presentation-container">
-
+        <div class="w-full max-w-4xl mx-auto my-2">
+            <!-- Slides Container -->
+            <div id="slides" class="relative bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8 min-h-[450px]">
     <!-- Slide 1: Title Slide (Content as is) -->
-    <section class="slide title-slide">
+    <section class="slide title-slide active">
         <div>
             <h1>CATEGORICAL PROPOSITIONS</h1>
             <p class="subtitle">Chapter six</p>
@@ -399,11 +420,17 @@
     <section class="slide"><div class="slide-content"><h1>Exercise</h1><p>Translate the following into standard form categorical propositions.</p><ol><li>Any bank that makes too many risky loans will fail.</li><li>Bromine is extractable from seawater.</li><li>Terrorist attacks succeed whenever security measures are lax.</li><li>If it's a halogen, then it isn't chemically inert.</li><li>None but pirate ships fly the Jolly Roger.</li><li>A few organic silicones are used as lubricants.</li><li>Comets are the only heavenly bodies with tails.</li><li>No shellfish except oysters make pearls.</li><li>All passengers must have a valid ticket, except for children under the age of 5.</li></ol></div></section>
     <section class="slide"><div class="slide-content"><h1>References</h1><ul><li><b>Logic Matters by P. D. Magnus and Gordon Schorn:</b> A friendly and engaging text with chapters dedicated to categorical propositions and their properties.</li><li><b>Introduction to Logic by Irving Copi and Carl Cohen:</b> A classic textbook with detailed explanations of categorical propositions, Venn diagrams, and syllogisms.</li><li><b>Symbolic Logic, 12th Edition by Irving Copi and Carl Cohen:</b> An updated edition delving deeper into topics like Boolean Algebra and the Square of Oppositions.</li><li><b>The Art of Reasoning by David Kelley:</b> Combines theory and practice, offering clear explanations alongside puzzles and exercises.</li><li><b>Stanford Encyclopedia of Philosophy:</b> A comprehensive online entry on categorical propositions, providing in-depth analysis and historical context. (https://plato.stanford.edu/entries/aristotle-logic/)</li></ul><div class="button-container"><a href="chapter_6phil1009.pdf" download="" class="download-btn">Download Chapter PDF</a></div></div></section>
 
-</div><!-- /.presentation-container -->
-            <button class="nav-button next" onclick="navigateToSlide(currentSlide + 1, 'horizontal')" aria-label="Next slide">&#10095;</button>
-        </div><!-- /.presentation-stage -->
+            </div><!-- /#slides -->
 
-        <div class="chapter-nav-strip">
+            <!-- Navigation Arrows -->
+            <div class="flex justify-between items-center mt-4 px-2">
+              <button id="prevSlide" class="bg-slate-200 text-slate-800 px-5 py-2 rounded-lg font-medium hover:bg-slate-300 transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed" disabled>&larr; Previous Slide</button>
+              <span id="slideCounter" class="text-slate-600 font-semibold text-sm">1 / 64</span>
+              <button id="nextSlide" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50">Next Slide &rarr;</button>
+            </div>
+        </div><!-- /.w-full -->
+
+        <div class="chapter-nav-strip mt-6">
             <a href="ch5phil1009.html" class="chapter-nav-btn">&larr; Chapter 5: Informal Fallacies</a>
             <span class="chapter-nav-current">Study Notes &bull; Chapter 6 of 6</span>
             <a href="logic.html" class="chapter-nav-btn">Complete Logic Overview &rarr;</a>
@@ -595,6 +622,77 @@
 
     setupSlides();
 </script>
+
+    <script>
+        const slides = document.querySelectorAll('#slides .slide');
+        const prevButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+        const slideCounter = document.getElementById('slideCounter');
+        let currentSlide = 0;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            if (prevButton) prevButton.disabled = currentSlide === 0;
+            if (nextButton) nextButton.disabled = currentSlide === slides.length - 1;
+            if (slideCounter) slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                return;
+            }
+            if ((event.key === 'ArrowLeft' || event.key === 'PageUp') && currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            } else if ((event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') && currentSlide < slides.length - 1) {
+                if (event.key === ' ') event.preventDefault();
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const slidesContainer = document.getElementById('slides');
+        if (slidesContainer) {
+            slidesContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            slidesContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50 && currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                } else if (touchEndX > touchStartX + 50 && currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }, { passive: true });
+        }
+
+        updateSlide();
+    </script>
 
 </body>
 </html>

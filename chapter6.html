@@ -5,35 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHIL1009 - Chapter 6: Categorical Propositions</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .slide { display: none; }
+        .slide.active { display: block; }
+        /* Basic styling for tables */
+        table, th, td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+        }
+        table {
             width: 100%;
-            height: 100%;
-            padding: 30px 40px 50px;
-            box-sizing: border-box;
-            background-color: #fff;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(100%);
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            overflow-x: hidden;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
-
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-            z-index: 1;
+        th {
+            background-color: #f7fafc;
+            font-weight: bold;
         }
-
-        .slide.exiting-left { transform: translateX(-100%); opacity: 0; z-index: 0; }
-        .slide.exiting-right { transform: translateX(100%); opacity: 0; z-index: 0; }
 
         .slide::-webkit-scrollbar { width: 8px; }
         .slide::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
@@ -277,7 +268,7 @@
 
     </style>
 </head>
-<body class="slide-page-body">
+<body class="slide-page-body font-sans">
 
     <!-- Institutional Top Utility Bar -->
     <div class="top-bar" id="top-bar">
@@ -352,17 +343,17 @@
                 <h1>Chapter 6: Categorical Propositions</h1>
             </div>
             <div class="slide-hints">
-                <span>Slide Controls:</span>
+                <span>Controls:</span>
                 <span class="kbd-key">&larr; Prev</span>
                 <span class="kbd-key">Next &rarr;</span>
-                <span class="kbd-key">PgUp / PgDn</span>
             </div>
         </div>
 
-        <div class="presentation-stage">
-            <div class="presentation-container">
+        <div class="w-full max-w-4xl mx-auto my-2">
+            <!-- Slides Container -->
+            <div id="slides" class="relative bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8 min-h-[450px]">
         <!-- Slide 1: Title and Overview -->
-        <div class="slide title-slide">
+        <div class="slide title-slide active">
             <h1>PHIL1009 - Chapter Six<br>Categorical Propositions</h1>
             <div class="presenter-info" style="font-size: 1.1em;">
                 <p></p>
@@ -2181,17 +2172,17 @@
             </ul>
         </div>
 
-        </div><!-- /.presentation-container -->
+                    </div><!-- /#slides -->
 
-            <div class="slide-counter-container">
-                <span id="slideCounter" class="slide-counter-text"></span>
+            <!-- Navigation Arrows -->
+            <div class="flex justify-between items-center mt-4 px-2">
+              <button id="prevSlide" class="bg-slate-200 text-slate-800 px-5 py-2 rounded-lg font-medium hover:bg-slate-300 transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed" disabled>&larr; Previous Slide</button>
+              <span id="slideCounter" class="text-slate-600 font-semibold text-sm">1 / 64</span>
+              <button id="nextSlide" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50">Next Slide &rarr;</button>
             </div>
+        </div><!-- /.w-full -->
 
-            <button id="prevBtn" class="side-nav-button" onclick="showPrevSlide()" aria-label="Previous Slide">‹</button>
-            <button id="nextBtn" class="side-nav-button" onclick="showNextSlide()" aria-label="Next Slide">›</button>
-        </div><!-- /.presentation-stage -->
-
-        <div class="chapter-nav-strip">
+        <div class="chapter-nav-strip mt-6">
             <a href="chapter5.html" class="chapter-nav-btn">&larr; Chapter 5: Logical Reasoning &amp; Fallacies</a>
             <span class="chapter-nav-current">Module 6 of 6</span>
             <a href="logic.html" class="chapter-nav-btn">Complete Logic Portal &rarr;</a>
@@ -2268,188 +2259,75 @@
         }
         document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const slideCounterElem = document.getElementById('slideCounter');
+        <script>
+        const slides = document.querySelectorAll('#slides .slide');
+        const prevButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+        const slideCounter = document.getElementById('slideCounter');
         let currentSlide = 0;
-        const animationDuration = 600;
 
-        function updateSlideCounter() {
-            if (slides.length > 0) {
-                slideCounterElem.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
-            } else {
-                slideCounterElem.textContent = `No slides`;
-            }
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            if (prevButton) prevButton.disabled = currentSlide === 0;
+            if (nextButton) nextButton.disabled = currentSlide === slides.length - 1;
+            if (slideCounter) slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
         }
 
-        function updateNavButtons() {
-             if (slides.length <= 1) {
-                 prevBtn.disabled = true;
-                 nextBtn.disabled = true;
-                 prevBtn.style.display = 'none';
-                 nextBtn.style.display = 'none';
-             } else {
-                 prevBtn.disabled = currentSlide === 0;
-                 nextBtn.disabled = currentSlide === slides.length - 1;
-                 prevBtn.style.display = 'block';
-                 nextBtn.style.display = 'block';
-             }
-        }
-
-        function showSlide(newIndex, direction) {
-            if (slides.length === 0) return;
-            if (newIndex < 0 || newIndex >= slides.length) {
-                return;
-            }
-
-            const oldSlide = slides[currentSlide];
-            const newSlide = slides[newIndex];
-
-            if (!newSlide) {
-                 console.error(`Slide at index ${newIndex} not found.`);
-                 return;
-            }
-
-            if (newIndex === currentSlide && oldSlide.classList.contains('active') && direction !== 'init') {
-                newSlide.scrollTop = 0;
-                return;
-            }
-
-            newSlide.scrollTop = 0;
-
-            if (oldSlide && oldSlide !== newSlide) {
-                oldSlide.classList.remove('active');
-                if (direction === 'next') {
-                    oldSlide.classList.add('exiting-left');
-                } else if (direction === 'prev') {
-                    oldSlide.classList.add('exiting-right');
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
                 }
-                oldSlide.style.zIndex = '0';
-            }
+            });
+        }
 
-            newSlide.classList.remove('active', 'exiting-left', 'exiting-right');
-
-            if (direction === 'init') {
-                newSlide.style.transform = 'translateX(0)';
-                newSlide.style.opacity = '1';
-            } else {
-                newSlide.style.opacity = '0';
-                if (direction === 'prev') {
-                    newSlide.style.transform = 'translateX(-100%)';
-                } else {
-                    newSlide.style.transform = 'translateX(100%)';
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
                 }
-            }
-            newSlide.style.visibility = 'visible';
-            newSlide.style.zIndex = '1';
-
-            newSlide.offsetHeight; 
-
-            newSlide.classList.add('active'); 
-
-            currentSlide = newIndex;
-
-            setTimeout(() => {
-                slides.forEach((s, i) => {
-                    if (i === currentSlide) {
-                        s.style.transform = ''; 
-                        s.style.opacity = '';   
-                    } else {
-                        s.classList.remove('active', 'exiting-left', 'exiting-right');
-                        s.style.visibility = 'hidden';
-                        s.style.opacity = '0';
-                        s.style.transform = 'translateX(100%)'; 
-                        s.style.zIndex = '0';
-                    }
-                });
-            }, animationDuration);
-
-            updateNavButtons();
-            updateSlideCounter();
+            });
         }
-
-        function showNextSlide() {
-            if (currentSlide < slides.length - 1) {
-                showSlide(currentSlide + 1, 'next');
-            }
-        }
-
-        function showPrevSlide() {
-            if (currentSlide > 0) {
-                showSlide(currentSlide - 1, 'prev');
-            }
-        }
-
-        function initializeSlides() {
-            if (slides.length > 0) {
-                slides.forEach((slide) => { 
-                    slide.classList.remove('active', 'exiting-left', 'exiting-right');
-                    slide.style.transform = 'translateX(100%)';
-                    slide.style.opacity = '0';
-                    slide.style.visibility = 'hidden';
-                    slide.style.zIndex = '0';
-                    slide.scrollTop = 0;
-                });
-                currentSlide = 0;
-                showSlide(0, 'init');
-            } else {
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-            }
-            updateNavButtons();
-            updateSlideCounter();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-             initializeSlides();
-        });
 
         document.addEventListener('keydown', (event) => {
-            const activeElement = document.activeElement;
-            const activeSlide = slides[currentSlide];
-
-            if (activeElement) {
-                const tagName = activeElement.tagName.toLowerCase();
-                if (tagName === 'input' || tagName === 'textarea' || tagName === 'select' || activeElement.isContentEditable) {
-                     return;
-                }
+            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                return;
             }
-
-            const epsilon = 1.5;
-
-            switch (event.key) {
-                case 'ArrowRight': case 'PageDown':
-                    event.preventDefault(); showNextSlide(); break;
-                case 'ArrowLeft': case 'PageUp':
-                    event.preventDefault(); showPrevSlide(); break;
-                case 'ArrowDown':
-                    event.preventDefault();
-                    if (activeSlide) {
-                        const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
-                        const isNotAtBottom = activeSlide.scrollTop < (activeSlide.scrollHeight - activeSlide.clientHeight - epsilon);
-                        if (isScrollable && isNotAtBottom) activeSlide.scrollTop += activeSlide.clientHeight * 0.15;
-                    }
-                    break;
-                case 'ArrowUp':
-                    event.preventDefault();
-                    if (activeSlide) {
-                        const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight;
-                        const isNotAtTop = activeSlide.scrollTop > epsilon;
-                        if (isScrollable && isNotAtTop) activeSlide.scrollTop -= activeSlide.clientHeight * 0.15;
-                    }
-                    break;
-                case 'Home':
-                    event.preventDefault();
-                    if (activeSlide) currentSlide !== 0 ? showSlide(0, 'prev') : activeSlide.scrollTop = 0;
-                    break;
-                case 'End':
-                    event.preventDefault();
-                     if (activeSlide) currentSlide !== slides.length - 1 ? showSlide(slides.length - 1, 'next') : activeSlide.scrollTop = activeSlide.scrollHeight;
-                    break;
+            if ((event.key === 'ArrowLeft' || event.key === 'PageUp') && currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            } else if ((event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') && currentSlide < slides.length - 1) {
+                if (event.key === ' ') event.preventDefault();
+                currentSlide++;
+                updateSlide();
             }
         });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const slidesContainer = document.getElementById('slides');
+        if (slidesContainer) {
+            slidesContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            slidesContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50 && currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                } else if (touchEndX > touchStartX + 50 && currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }, { passive: true });
+        }
+
+        updateSlide();
     </script>
 
 </body>
