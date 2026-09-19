@@ -230,6 +230,29 @@
             border: 1px solid #ddd;
             margin-top: 5px;
         }
+        .slide .venn-svg {
+            max-width: 260px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 6px;
+            display: block;
+        }
+        .slide .square-svg {
+            max-width: 480px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+            margin: 10px auto;
+            display: block;
+        }
+        .slide .venn-comparison .venn-svg {
+            max-width: 230px;
+            width: 100%;
+            height: auto;
+        }
         .slide .venn-comparison {
             display: flex;
             justify-content: space-around;
@@ -768,14 +791,50 @@
             <p><strong>1. A Proposition: All S are P</strong></p>
             <p style="font-size: 0.9em;">Meaning: Every member of S is in P. Thus, the part of S *outside* P must be empty.</p>
             <div class="venn-diagram">
-                <img src="venn_A.png" alt="Venn Diagram for A Proposition (All S are P)" class="venn-image">
+                <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram for A Proposition (All S are P)">
+  <defs>
+    <pattern id="s26_a_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s26_a_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s26_a_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s26_a_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s26_a_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s26_a_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s26_a_ml)" fill="url(#s26_a_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
             </div>
             <p style="text-align: center; font-size: 0.9em;">Shade the area of S that is outside P.</p>
 
             <p style="margin-top: 20px;"><strong>2. E Proposition: No S are P</strong></p>
             <p style="font-size: 0.9em;">Meaning: No member of S is in P. Thus, the area where S and P *overlap* must be empty.</p>
             <div class="venn-diagram">
-                <img src="venn_E.png" alt="Venn Diagram for E Proposition (No S are P)" class="venn-image">
+                <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram for E Proposition (No S are P)">
+  <defs>
+    <pattern id="s26_e_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s26_e_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s26_e_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s26_e_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s26_e_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="165" cy="82" r="50" mask="url(#s26_e_mo)" fill="#64748b" fill-opacity="0.25" />
+  <circle cx="165" cy="82" r="50" mask="url(#s26_e_mo)" fill="url(#s26_e_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
             </div>
             <p style="text-align: center; font-size: 0.9em;">Shade the area of overlap between S and P.</p>
         </div>
@@ -786,14 +845,48 @@
             <p><strong>3. I Proposition: Some S are P</strong></p>
             <p style="font-size: 0.9em;">Meaning: At least one member of S is also a member of P. Thus, the overlap area is *not* empty.</p>
             <div class="venn-diagram">
-                <img src="venn_I.png" alt="Venn Diagram for I Proposition (Some S are P)" class="venn-image">
+                <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram for I Proposition (Some S are P)">
+  <defs>
+    <pattern id="s27_i_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s27_i_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s27_i_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s27_i_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s27_i_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
             </div>
             <p style="text-align: center; font-size: 0.9em;">Place an X in the area of overlap between S and P.</p>
 
             <p style="margin-top: 20px;"><strong>4. O Proposition: Some S are not P</strong></p>
             <p style="font-size: 0.9em;">Meaning: At least one member of S is *not* a member of P. Thus, the part of S *outside* P is *not* empty.</p>
             <div class="venn-diagram">
-                <img src="venn_O.png" alt="Venn Diagram for O Proposition (Some S are not P)" class="venn-image">
+                <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram for O Proposition (Some S are not P)">
+  <defs>
+    <pattern id="s27_o_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s27_o_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s27_o_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s27_o_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s27_o_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
             </div>
             <p style="text-align: center; font-size: 0.9em;">Place an X in the area of S that is outside P.</p>
         </div>
@@ -815,7 +908,45 @@
             <h2>The Modern Square of Opposition Diagram</h2>
             <p>The diagram visually represents the relationship between corresponding A, E, I, and O propositions with the same subject and predicate terms:</p>
             <div class="venn-diagram">
-                <img src="modern_square.png" alt="Modern Square of Opposition Diagram" class="venn-image" style="max-width: 400px; max-height: 300px;">
+                <svg class="square-svg" viewBox="0 0 460 320" width="460" height="320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modern Square of Opposition Diagram">
+  <defs>
+    <marker id="mod-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#dc2626" />
+    </marker>
+    <marker id="mod-arrow-start" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
+      <path d="M 8 0 L 0 4 L 8 8 Z" fill="#dc2626" />
+    </marker>
+  </defs>
+  <rect x="5" y="5" width="450" height="310" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+  <line x1="120" y1="55" x2="340" y2="55" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+  <rect x="180" y="44" width="100" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="230" y="59" font-size="11" font-family="'Lato', sans-serif" fill="#64748b" text-anchor="middle" font-style="italic">No relationship</text>
+  <line x1="120" y1="260" x2="340" y2="260" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+  <rect x="180" y="249" width="100" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="230" y="264" font-size="11" font-family="'Lato', sans-serif" fill="#64748b" text-anchor="middle" font-style="italic">No relationship</text>
+  <line x1="75" y1="90" x2="75" y2="225" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+  <text x="25" y="162" font-size="10" font-family="'Lato', sans-serif" fill="#64748b" text-anchor="middle" transform="rotate(-90 25 162)" font-style="italic">No relationship</text>
+  <line x1="385" y1="90" x2="385" y2="225" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+  <text x="435" y="162" font-size="10" font-family="'Lato', sans-serif" fill="#64748b" text-anchor="middle" transform="rotate(90 435 162)" font-style="italic">No relationship</text>
+  <line x1="110" y1="80" x2="350" y2="235" stroke="#dc2626" stroke-width="2.5" marker-start="url(#mod-arrow-start)" marker-end="url(#mod-arrow)" />
+  <line x1="350" y1="80" x2="110" y2="235" stroke="#dc2626" stroke-width="2.5" marker-start="url(#mod-arrow-start)" marker-end="url(#mod-arrow)" />
+  <rect x="155" y="142" width="150" height="32" rx="16" fill="#dc2626" />
+  <text x="230" y="163" font-size="13" font-weight="bold" font-family="'Lato', sans-serif" fill="#ffffff" text-anchor="middle">CONTRADICTORY</text>
+  <rect x="150" y="180" width="160" height="20" rx="4" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+  <text x="230" y="194" font-size="10.5" font-weight="bold" font-family="'Lato', sans-serif" fill="#991b1b" text-anchor="middle">Opposite Truth Values</text>
+  <rect x="35" y="25" width="80" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="75" y="52" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">A</text>
+  <text x="75" y="73" font-size="11" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">All S are P</text>
+  <rect x="345" y="25" width="80" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="385" y="52" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">E</text>
+  <text x="385" y="73" font-size="11" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">No S are P</text>
+  <rect x="35" y="230" width="80" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="75" y="257" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">I</text>
+  <text x="75" y="278" font-size="11" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">Some S are P</text>
+  <rect x="345" y="230" width="80" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="385" y="257" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">O</text>
+  <text x="385" y="278" font-size="10.5" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">Some S not P</text>
+</svg>
             </div>
             <p style="margin-top: 15px;">The diagonal lines indicate the <strong>contradictory</strong> relationship:</p>
             <ul>
@@ -866,7 +997,77 @@
             <h2>The Traditional Square of Opposition Diagram</h2>
             <p>Assuming existential import for universal propositions, the traditional square illustrates four relationships:</p>
             <div class="venn-diagram">
-                <img src="traditional_square.png" alt="Traditional Square of Opposition Diagram" class="venn-image" style="max-width: 450px; max-height: 350px;">
+                <svg class="square-svg" viewBox="0 0 520 370" width="520" height="370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Traditional Square of Opposition Diagram">
+  <defs>
+    <marker id="trad-blue-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#0284c7" />
+    </marker>
+    <marker id="trad-blue-start" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
+      <path d="M 8 0 L 0 4 L 8 8 Z" fill="#0284c7" />
+    </marker>
+    <marker id="trad-teal-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#0d9488" />
+    </marker>
+    <marker id="trad-teal-start" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
+      <path d="M 8 0 L 0 4 L 8 8 Z" fill="#0d9488" />
+    </marker>
+    <marker id="trad-red-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#dc2626" />
+    </marker>
+    <marker id="trad-red-start" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
+      <path d="M 8 0 L 0 4 L 8 8 Z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-down-green" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#16a34a" />
+    </marker>
+    <marker id="arrow-up-red" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#dc2626" />
+    </marker>
+  </defs>
+  <rect x="5" y="5" width="510" height="360" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+  <line x1="140" y1="55" x2="380" y2="55" stroke="#0284c7" stroke-width="2.5" marker-start="url(#trad-blue-start)" marker-end="url(#trad-blue-arrow)" />
+  <rect x="200" y="32" width="120" height="26" rx="13" fill="#0284c7" />
+  <text x="260" y="49" font-size="12" font-weight="bold" font-family="'Lato', sans-serif" fill="#ffffff" text-anchor="middle">CONTRARY</text>
+  <rect x="175" y="62" width="170" height="18" rx="4" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+  <text x="260" y="75" font-size="9.5" font-weight="bold" font-family="'Lato', sans-serif" fill="#0369a1" text-anchor="middle">Cannot both be True (At least 1 False)</text>
+  <line x1="140" y1="290" x2="380" y2="290" stroke="#0d9488" stroke-width="2.5" marker-start="url(#trad-teal-start)" marker-end="url(#trad-teal-arrow)" />
+  <rect x="195" y="270" width="130" height="26" rx="13" fill="#0d9488" />
+  <text x="260" y="287" font-size="12" font-weight="bold" font-family="'Lato', sans-serif" fill="#ffffff" text-anchor="middle">SUBCONTRARY</text>
+  <rect x="175" y="300" width="170" height="18" rx="4" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1"/>
+  <text x="260" y="313" font-size="9.5" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f766e" text-anchor="middle">Cannot both be False (At least 1 True)</text>
+  <line x1="75" y1="85" x2="75" y2="255" stroke="#6366f1" stroke-width="2" />
+  <line x1="52" y1="116" x2="52" y2="228" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-down-green)" />
+  <text x="52" y="108" font-size="9" font-weight="bold" font-family="'Lato', sans-serif" fill="#16a34a" text-anchor="middle">Truth &#8595;</text>
+  <line x1="98" y1="228" x2="98" y2="116" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-up-red)" />
+  <text x="98" y="246" font-size="9" font-weight="bold" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">Falsity &#8593;</text>
+  <rect x="63" y="122" width="24" height="96" rx="5" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="75" y="170" dy="3" font-size="8.5" font-weight="bold" font-family="'Lato', sans-serif" fill="#4338ca" text-anchor="middle" transform="rotate(-90 75 170)">SUBALTERNATION</text>
+  <line x1="445" y1="85" x2="445" y2="255" stroke="#6366f1" stroke-width="2" />
+  <line x1="422" y1="116" x2="422" y2="228" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-down-green)" />
+  <text x="422" y="108" font-size="9" font-weight="bold" font-family="'Lato', sans-serif" fill="#16a34a" text-anchor="middle">Truth &#8595;</text>
+  <line x1="468" y1="228" x2="468" y2="116" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-up-red)" />
+  <text x="468" y="246" font-size="9" font-weight="bold" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">Falsity &#8593;</text>
+  <rect x="433" y="122" width="24" height="96" rx="5" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="445" y="170" dy="3" font-size="8.5" font-weight="bold" font-family="'Lato', sans-serif" fill="#4338ca" text-anchor="middle" transform="rotate(90 445 170)">SUBALTERNATION</text>
+  <line x1="125" y1="85" x2="395" y2="255" stroke="#dc2626" stroke-width="2.5" marker-start="url(#trad-red-start)" marker-end="url(#trad-red-arrow)" />
+  <line x1="395" y1="85" x2="125" y2="255" stroke="#dc2626" stroke-width="2.5" marker-start="url(#trad-red-start)" marker-end="url(#trad-red-arrow)" />
+  <rect x="185" y="155" width="150" height="30" rx="15" fill="#dc2626" />
+  <text x="260" y="175" font-size="12" font-weight="bold" font-family="'Lato', sans-serif" fill="#ffffff" text-anchor="middle">CONTRADICTORY</text>
+  <rect x="180" y="190" width="160" height="18" rx="4" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+  <text x="260" y="203" font-size="9.5" font-weight="bold" font-family="'Lato', sans-serif" fill="#991b1b" text-anchor="middle">Opposite Truth Values</text>
+  <rect x="30" y="25" width="90" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="75" y="52" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">A</text>
+  <text x="75" y="73" font-size="11" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">All S are P</text>
+  <rect x="400" y="25" width="90" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="445" y="52" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">E</text>
+  <text x="445" y="73" font-size="11" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">No S are P</text>
+  <rect x="30" y="255" width="90" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="75" y="282" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">I</text>
+  <text x="75" y="303" font-size="11" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">Some S are P</text>
+  <rect x="400" y="255" width="90" height="60" rx="8" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+  <text x="445" y="282" font-size="22" font-weight="900" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">O</text>
+  <text x="445" y="303" font-size="10.5" font-weight="600" font-family="'Lato', sans-serif" fill="#475569" text-anchor="middle">Some S not P</text>
+</svg>
             </div>
             <p style="margin-top: 15px;">The relationships are Contradictory (diagonals), Contrary (top), Subcontrary (bottom), and Subalternation (sides).</p>
         </div>
@@ -1002,11 +1203,45 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Premise: Some T are not M (O)</p>
-                    <img src="venn_O.png" alt="Venn Diagram Some T are not M" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram Premise Some T are not M">
+  <defs>
+    <pattern id="s41_premise_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s41_premise_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s41_premise_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s41_premise_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s41_premise_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">T</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">M</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Conclusion: False(All T are M) => Some T are not M (O)</p>
-                    <img src="venn_O.png" alt="Venn Diagram It is false that all T are M" class="venn-image"> <!-- Using O diagram as it's equivalent -->
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram Conclusion It is false that all T are M">
+  <defs>
+    <pattern id="s41_conclusion_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s41_conclusion_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s41_conclusion_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s41_conclusion_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s41_conclusion_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">T</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">M</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <p style="margin-top: 15px;">Both premise and conclusion are represented by placing an X in the part of the T circle outside the M circle. Since the information in the conclusion diagram (an X in that region) is identical to the information in the premise diagram, the inference is <strong>valid</strong>.</p>
@@ -1024,11 +1259,46 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Premise: All C are H (A)</p>
-                    <img src="venn_A.png" alt="Venn Diagram for A Proposition" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram Premise All C are H">
+  <defs>
+    <pattern id="s42_premise_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s42_premise_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s42_premise_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s42_premise_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s42_premise_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s42_premise_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s42_premise_ml)" fill="url(#s42_premise_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">C</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">H</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Conclusion: Some C are H (I)</p>
-                    <img src="venn_I.png" alt="Venn Diagram for I Proposition" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn Diagram Conclusion Some C are H">
+  <defs>
+    <pattern id="s42_conclusion_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s42_conclusion_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s42_conclusion_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s42_conclusion_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s42_conclusion_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">C</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">H</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <p style="margin-top: 15px;">The premise diagram (shaded left part of C) does *not* contain the information in the conclusion diagram (an X in the overlap). The premise makes no claim about existence, while the conclusion does. Therefore, from the Boolean standpoint, this inference is <strong>invalid</strong>.</p>
@@ -1091,22 +1361,94 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given A: All S are P</p>
-                    <img src="venn_A.png" alt="Given A" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given A (All S are P)">
+  <defs>
+    <pattern id="s46_a_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s46_a_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_a_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_a_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s46_a_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s46_a_given_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s46_a_given_ml)" fill="url(#s46_a_given_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Converse: All P are S</p>
-                    <img src="venn_A_conv.png" alt="Converse A (All P are S)" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Converse A (All P are S)">
+  <defs>
+    <pattern id="s46_a_conv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s46_a_conv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_a_conv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_a_conv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s46_a_conv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s46_a_conv_mr)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s46_a_conv_mr)" fill="url(#s46_a_conv_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are different. A and its converse are *not* logically equivalent.</p>
             <div class="venn-comparison" style="margin-top: 20px;">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given E: No S are P</p>
-                    <img src="venn_E.png" alt="Given E" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given E (No S are P)">
+  <defs>
+    <pattern id="s46_e_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s46_e_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_e_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_e_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s46_e_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="165" cy="82" r="50" mask="url(#s46_e_given_mo)" fill="#64748b" fill-opacity="0.25" />
+  <circle cx="165" cy="82" r="50" mask="url(#s46_e_given_mo)" fill="url(#s46_e_given_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Converse: No P are S</p>
-                    <img src="venn_E_conv.png" alt="Converse E (No P are S)" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Converse E (No P are S)">
+  <defs>
+    <pattern id="s46_e_conv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s46_e_conv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_e_conv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s46_e_conv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s46_e_conv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="165" cy="82" r="50" mask="url(#s46_e_conv_mo)" fill="#64748b" fill-opacity="0.25" />
+  <circle cx="165" cy="82" r="50" mask="url(#s46_e_conv_mo)" fill="url(#s46_e_conv_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are identical. E and its converse *are* logically equivalent.</p>
@@ -1118,22 +1460,90 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given I: Some S are P</p>
-                    <img src="venn_I.png" alt="Given I" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given I (Some S are P)">
+  <defs>
+    <pattern id="s47_i_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s47_i_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_i_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_i_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s47_i_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Converse: Some P are S</p>
-                    <img src="venn_I_conv.png" alt="Converse I (Some P are S)" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Converse I (Some P are S)">
+  <defs>
+    <pattern id="s47_i_conv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s47_i_conv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_i_conv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_i_conv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s47_i_conv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are identical. I and its converse *are* logically equivalent.</p>
             <div class="venn-comparison" style="margin-top: 20px;">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given O: Some S are not P</p>
-                    <img src="venn_O.png" alt="Given O" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given O (Some S are not P)">
+  <defs>
+    <pattern id="s47_o_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s47_o_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_o_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_o_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s47_o_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Converse: Some P are not S</p>
-                    <img src="venn_O_conv.png" alt="Converse O (Some P are not S)" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Converse O (Some P are not S)">
+  <defs>
+    <pattern id="s47_o_conv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s47_o_conv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_o_conv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s47_o_conv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s47_o_conv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="185" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are different. O and its converse are *not* logically equivalent.</p>
@@ -1220,21 +1630,93 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given A: All S are P</p>
-                    <img src="venn_A.png" alt="Given A" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given A (All S are P)">
+  <defs>
+    <pattern id="s52_a_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s52_a_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_a_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_a_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s52_a_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s52_a_given_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s52_a_given_ml)" fill="url(#s52_a_given_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Obverse: No S are non-P</p>
-                    <img src="venn_A_obverse.png" alt="Obverse A" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obverse A (No S are non-P)">
+  <defs>
+    <pattern id="s52_a_obv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s52_a_obv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_a_obv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_a_obv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s52_a_obv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s52_a_obv_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s52_a_obv_ml)" fill="url(#s52_a_obv_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
             </div>
             <div class="venn-comparison" style="margin-top: 20px;">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given E: No S are P</p>
-                    <img src="venn_E.png" alt="Given E" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given E (No S are P)">
+  <defs>
+    <pattern id="s52_e_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s52_e_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_e_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_e_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s52_e_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="165" cy="82" r="50" mask="url(#s52_e_given_mo)" fill="#64748b" fill-opacity="0.25" />
+  <circle cx="165" cy="82" r="50" mask="url(#s52_e_given_mo)" fill="url(#s52_e_given_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Obverse: All S are non-P</p>
-                    <img src="venn_E_obverse.png" alt="Obverse E" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obverse E (All S are non-P)">
+  <defs>
+    <pattern id="s52_e_obv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s52_e_obv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_e_obv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s52_e_obv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s52_e_obv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="165" cy="82" r="50" mask="url(#s52_e_obv_mo)" fill="#64748b" fill-opacity="0.25" />
+  <circle cx="165" cy="82" r="50" mask="url(#s52_e_obv_mo)" fill="url(#s52_e_obv_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
             </div>
         </div>
@@ -1245,21 +1727,89 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given I: Some S are P</p>
-                    <img src="venn_I.png" alt="Given I" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given I (Some S are P)">
+  <defs>
+    <pattern id="s53_i_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s53_i_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_i_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_i_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s53_i_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Obverse: Some S are not non-P</p>
-                    <img src="venn_I_obverse.png" alt="Obverse I" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obverse I (Some S are not non-P)">
+  <defs>
+    <pattern id="s53_i_obv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s53_i_obv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_i_obv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_i_obv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s53_i_obv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <div class="venn-comparison" style="margin-top: 20px;">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given O: Some S are not P</p>
-                    <img src="venn_O.png" alt="Given O" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given O (Some S are not P)">
+  <defs>
+    <pattern id="s53_o_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s53_o_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_o_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_o_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s53_o_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Obverse: Some S are non-P</p>
-                    <img src="venn_O_obverse.png" alt="Obverse O" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obverse O (Some S are non-P)">
+  <defs>
+    <pattern id="s53_o_obv_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s53_o_obv_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_o_obv_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s53_o_obv_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s53_o_obv_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
         </div>
@@ -1313,22 +1863,94 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given A: All S are P</p>
-                    <img src="venn_A.png" alt="Given A" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given A (All S are P)">
+  <defs>
+    <pattern id="s56_a_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s56_a_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_a_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_a_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s56_a_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s56_a_given_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s56_a_given_ml)" fill="url(#s56_a_given_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Contrapositive: All non-P are non-S</p>
-                    <img src="venn_A_contra.png" alt="Contrapositive A" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrapositive A (All non-P are non-S)">
+  <defs>
+    <pattern id="s56_a_contra_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s56_a_contra_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_a_contra_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_a_contra_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s56_a_contra_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s56_a_contra_ml)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s56_a_contra_ml)" fill="url(#s56_a_contra_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are identical. A and its contrapositive *are* logically equivalent.</p>
             <div class="venn-comparison" style="margin-top: 20px;">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given E: No S are P</p>
-                    <img src="venn_E.png" alt="Given E" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given E (No S are P)">
+  <defs>
+    <pattern id="s56_e_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s56_e_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_e_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_e_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s56_e_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="165" cy="82" r="50" mask="url(#s56_e_given_mo)" fill="#64748b" fill-opacity="0.25" />
+  <circle cx="165" cy="82" r="50" mask="url(#s56_e_given_mo)" fill="url(#s56_e_given_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Contrapositive: No non-P are non-S</p>
-                    <img src="venn_E_contra.png" alt="Contrapositive E" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrapositive E (No non-P are non-S)">
+  <defs>
+    <pattern id="s56_e_contra_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s56_e_contra_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_e_contra_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s56_e_contra_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s56_e_contra_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect width="260" height="155" mask="url(#s56_e_contra_mout)" fill="#64748b" fill-opacity="0.25" />
+  <rect width="260" height="155" mask="url(#s56_e_contra_mout)" fill="url(#s56_e_contra_hatch)" />
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are different. E and its contrapositive are *not* logically equivalent (Booleanly).</p>
@@ -1340,22 +1962,90 @@
             <div class="venn-comparison">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given I: Some S are P</p>
-                    <img src="venn_I.png" alt="Given I" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given I (Some S are P)">
+  <defs>
+    <pattern id="s57_i_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s57_i_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_i_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_i_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s57_i_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="130" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Contrapositive: Some non-P are non-S</p>
-                    <img src="venn_I_contra.png" alt="Contrapositive I" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrapositive I (Some non-P are non-S)">
+  <defs>
+    <pattern id="s57_i_contra_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s57_i_contra_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_i_contra_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_i_contra_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s57_i_contra_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="35" y="45" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are different. I and its contrapositive are *not* logically equivalent.</p>
             <div class="venn-comparison" style="margin-top: 20px;">
                 <div class="venn-diagram">
                     <p class="font-semibold">Given O: Some S are not P</p>
-                    <img src="venn_O.png" alt="Given O" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Given O (Some S are not P)">
+  <defs>
+    <pattern id="s57_o_given_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s57_o_given_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_o_given_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_o_given_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s57_o_given_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
                 <div class="venn-diagram">
                     <p class="font-semibold">Contrapositive: Some non-P are not non-S</p>
-                    <img src="venn_O_contra.png" alt="Contrapositive O" class="venn-image">
+                    <svg class="venn-svg" viewBox="0 0 260 155" width="260" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrapositive O (Some non-P are not non-S)">
+  <defs>
+    <pattern id="s57_o_contra_hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.8" />
+    </pattern>
+    <mask id="s57_o_contra_ml"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_o_contra_mr"><rect width="260" height="155" fill="#000" /><circle cx="165" cy="82" r="50" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /></mask>
+    <mask id="s57_o_contra_mo"><rect width="260" height="155" fill="#000" /><circle cx="95" cy="82" r="50" fill="#fff" /></mask>
+    <mask id="s57_o_contra_mout"><rect width="260" height="155" fill="#fff" /><circle cx="95" cy="82" r="50" fill="#000" /><circle cx="165" cy="82" r="50" fill="#000" /></mask>
+  </defs>
+  <rect x="5" y="5" width="250" height="145" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+  <circle cx="95" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <circle cx="165" cy="82" r="50" fill="none" stroke="#1e293b" stroke-width="2" />
+  <text x="80" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">S</text>
+  <text x="180" y="27" font-size="16" font-weight="bold" font-family="'Lato', sans-serif" fill="#0f172a" text-anchor="middle">P</text>
+  <text x="75" y="89" font-size="24" font-weight="900" font-family="'Lato', sans-serif" fill="#dc2626" text-anchor="middle">✕</text>
+</svg>
                 </div>
             </div>
             <p style="margin-top: 10px; text-align: center; font-size: 0.9em;">Diagrams are identical. O and its contrapositive *are* logically equivalent.</p>
