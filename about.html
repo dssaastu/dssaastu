@@ -220,7 +220,7 @@
                     <div class="about-stat-lbl">Academic Staff & Researchers</div>
                 </div>
                 <div>
-                    <div class="about-stat-num" data-target="15000">0</div>
+                    <div class="about-stat-num" data-target="17000">0</div>
                     <div class="about-stat-lbl">Alumni & Students Taught</div>
                 </div>
                 <div>
@@ -300,14 +300,16 @@
         const animate = () => {
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
+                const suffix = target >= 15 ? '+' : '';
                 const update = () => {
-                    const count = +counter.innerText;
+                    const count = +counter.innerText.replace(/[^0-9]/g, '');
                     const increment = Math.ceil(target / speed);
                     if (count < target) {
-                        counter.innerText = Math.min(count + increment, target);
+                        const nextVal = Math.min(count + increment, target);
+                        counter.innerText = (nextVal >= 1000 ? nextVal.toLocaleString() : nextVal) + suffix;
                         setTimeout(update, 12);
                     } else {
-                        counter.innerText = target;
+                        counter.innerText = (target >= 1000 ? target.toLocaleString() : target) + suffix;
                     }
                 };
                 update();
