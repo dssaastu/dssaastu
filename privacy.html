@@ -19,28 +19,6 @@
             text-align: center;
         }
         .header h1 { margin: 0; font-size: 1.5rem; }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #1A252F;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.2s ease;
-        }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
-        .navbar-toggler { display: none; background-color: transparent; border: none; color: #fff; padding: 8px 12px; font-size: 1.5rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-
         /* --- CUSTOMIZED HERO & CONTAINER --- */
         .policy-hero {
             background-color: #2C3E50;
@@ -142,11 +120,6 @@
             }
         }
         @media (max-width: 768px) {
-            .navbar { justify-content: space-between; }
-            .navbar-toggler { display: block; }
-            .navbar-menu { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background-color: #1A252F; }
-            .navbar-menu.show { display: flex; }
-            .navbar-menu a { padding: 12px 20px; border-bottom: 1px solid #333; text-align: center; }
             .policy-content { padding: 25px; }
         }
     </style>

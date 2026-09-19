@@ -21,83 +21,6 @@
             margin: 0;
             font-size: 2rem;
         }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #1A252F;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .navbar a:hover, .navbar a.active { /* Added active class for styling */
-            background-color: #333;
-            border-radius: 5px;
-        }
-        .navbar-toggler {
-            display: none;
-            background-color: #1A252F;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: auto;
-        }
-        .navbar-menu {
-            display: flex;
-            flex-direction: row;
-        }
-        .navbar-menu.collapsed {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-        }
-        .navbar-menu.show {
-            display: flex;
-        }
-        .navbar-menu a {
-            padding: 15px;
-            border-bottom: 1px solid #333;
-        }
-        .content {
-            width: 80%;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 1;
-            text-align: center; /* Center align the content */
-        }
-        .content h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-        .content p {
-            line-height: 1.6;
-            color: #555;
-            font-size: 1rem;
-            text-align: center; /* Justify text for readability */
-            max-width: 800px; /* Set max-width for better reading on wide screens */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-button {
-            display: block;
-            text-align: center;
-            margin-top: 30px;
-        }
         .cta-button a {
             background-color: #2C3E50;
             color: white;
@@ -131,26 +54,8 @@
         .footer a:hover {
             text-decoration: underline;
         }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .navbar-toggler {
-                display: block;
-            }
-            .navbar-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            .navbar-menu.show {
-                display: flex;
-            }
-        }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
@@ -158,19 +63,21 @@
         <p>AASTU - Advancing Knowledge, Shaping Futures</p>
     </div>
     
-    <div class="navbar">
-        <button class="navbar-toggler" id="navbar-toggler">&#9776;</button>
-        <div class="navbar-menu" id="navbar-menu">
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About Us</a>
-            <a href="staff.html">Staff</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="portfolio.html" class="active">Portfolio</a> <!-- Added Portfolio Link -->
+    <nav class="navbar" id="site-nav">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About Us</a>
+                <a href="staff.html">Staff</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="portfolio.html" class="active">Portfolio</a>
+            </div>
         </div>
-    </div>
+    </nav>
     
     <div class="content">
         <h2>Department Portfolio</h2>

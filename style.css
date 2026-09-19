@@ -263,6 +263,7 @@ body {
 .navbar {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -278,16 +279,18 @@ body {
   max-width: 1280px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .navbar-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   flex-wrap: wrap;
   gap: 4px;
@@ -304,6 +307,7 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   border-radius: var(--radius-sm);
 }
@@ -2290,13 +2294,18 @@ div[style*="background: linear-gradient(135deg, #0f1f38"] p {
   }
   .navbar-inner {
     padding: 10px 0;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .navbar-toggler {
     display: block;
+    margin: 0 auto;
   }
   .navbar-menu {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: #ffffff;
     padding: 12px 0;
@@ -2307,6 +2316,8 @@ div[style*="background: linear-gradient(135deg, #0f1f38"] p {
   }
   .navbar a {
     width: 100%;
+    justify-content: center;
+    text-align: center;
     padding: 12px 20px;
     border-bottom: 1px solid var(--border-light);
   }

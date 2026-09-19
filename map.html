@@ -19,28 +19,6 @@
             text-align: center;
         }
         .header h1 { margin: 0; font-size: 1.5rem; }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #1A252F;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-        }
-        .navbar a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.2s ease;
-        }
-        .navbar a:hover { background-color: #333; border-radius: 5px; }
-        .navbar-toggler { display: none; background-color: #1A252F; border: none; color: #fff; padding: 10px 20px; font-size: 1.2rem; cursor: pointer; margin-left: auto; }
-        .navbar-menu { display: flex; flex-direction: row; }
-
         /* --- CUSTOMIZED LOCATION LAYOUT --- */
         .location-container {
             display: grid;
@@ -136,13 +114,6 @@
                 height: 400px;
                 order: -1; /* Puts map on top on smaller screens */
             }
-        }
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; align-items: flex-start; }
-            .navbar-toggler { display: block; align-self: flex-end; }
-            .navbar-menu { display: none; flex-direction: column; width: 100%; }
-            .navbar-menu.show { display: flex; }
-            .navbar-menu a { width: 100%; box-sizing: border-box; text-align: center; border-bottom: 1px solid #333;}
         }
     </style>
     <link rel="stylesheet" href="style.css">
