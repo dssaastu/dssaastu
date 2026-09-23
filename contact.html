@@ -238,7 +238,10 @@
                 <h3>Direct Inquiry Form</h3>
                 
                 <div id="form-container">
-                    <form id="contact-form" action="https://formspree.io/f/myyrankg" method="POST">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="068e1369-1014-4460-8cf3-53e96e7718a8">
+                        <input type="checkbox" name="botcheck" style="display:none">
+
                         <div class="modern-form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" class="modern-form-input" placeholder="e.g. Abebe Bekele" required>
