@@ -1,0 +1,626 @@
+/* ==========================================================================
+   AASTU Social Science Department - Free FAQ Chatbot Widget
+   File: chatbot.css
+   Style rules for the floating launcher, chat window, messages, and quick replies.
+   Completely self-contained with no external library dependencies.
+   ========================================================================== */
+
+/* Root Chatbot Container & Resets */
+#aastu-chatbot-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Ethiopic', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+#aastu-chatbot-container * {
+    box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Floating Launcher Button
+   -------------------------------------------------------------------------- */
+#aastu-chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%);
+    border: none;
+    box-shadow: 0 8px 24px rgba(29, 78, 216, 0.35), 0 2px 8px rgba(15, 23, 42, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    outline: none;
+    position: relative;
+    user-select: none;
+}
+
+#aastu-chat-toggle-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 28px rgba(29, 78, 216, 0.45), 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+#aastu-chat-toggle-btn:active {
+    transform: scale(0.96);
+}
+
+/* Pulsing Notification Badge */
+.aastu-chat-pulse-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #10b981;
+    border: 2.5px solid #ffffff;
+    border-radius: 50%;
+    animation: aastuPulse 2s infinite;
+}
+
+@keyframes aastuPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Launcher Icon Switching */
+.aastu-icon-open,
+.aastu-icon-close {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aastu-icon-close {
+    display: none;
+}
+
+#aastu-chatbot-container.active .aastu-icon-open {
+    display: none;
+}
+
+#aastu-chatbot-container.active .aastu-icon-close {
+    display: flex;
+}
+
+/* Floating Greeting Pill */
+#aastu-chat-greeting-pill {
+    position: absolute;
+    bottom: 72px;
+    right: 0;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 9px 14px;
+    border-radius: 20px 20px 4px 20px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+#aastu-chat-greeting-pill:hover {
+    background: #f8fafc;
+}
+
+#aastu-chat-greeting-pill.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+}
+
+/* --------------------------------------------------------------------------
+   2. Chat Window Box
+   -------------------------------------------------------------------------- */
+#aastu-chat-window {
+    position: absolute;
+    bottom: 76px;
+    right: 0;
+    width: 380px;
+    max-width: calc(100vw - 32px);
+    height: 560px;
+    max-height: calc(100vh - 110px);
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 16px 40px -6px rgba(15, 23, 42, 0.22), 0 2px 10px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95) translateY(12px);
+    transform-origin: bottom right;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.25s;
+}
+
+#aastu-chatbot-container.active #aastu-chat-window {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   3. Chat Header
+   -------------------------------------------------------------------------- */
+.aastu-chat-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 256, 0.08);
+    flex-shrink: 0;
+}
+
+.aastu-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.aastu-header-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1d4ed8;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+}
+
+.aastu-header-text h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.aastu-header-text p {
+    margin: 2px 0 0;
+    font-size: 11px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.aastu-online-indicator {
+    width: 7px;
+    height: 7px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.aastu-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Language Switcher Button */
+.aastu-lang-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.aastu-lang-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.aastu-close-btn {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.aastu-close-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   4. Chat Body & Messages Area
+   -------------------------------------------------------------------------- */
+.aastu-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #f8fafc;
+    scroll-behavior: smooth;
+}
+
+.aastu-chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.aastu-chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* Message Rows */
+.aastu-msg-row {
+    display: flex;
+    flex-direction: column;
+    max-width: 86%;
+    animation: aastuMsgFadeIn 0.25s ease-out;
+}
+
+@keyframes aastuMsgFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.aastu-msg-bot {
+    align-self: flex-start;
+}
+
+.aastu-msg-user {
+    align-self: flex-end;
+}
+
+/* Message Bubbles */
+.aastu-bubble {
+    padding: 11px 15px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.aastu-msg-bot .aastu-bubble {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px 16px 16px 4px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.aastu-msg-user .aastu-bubble {
+    background: #1d4ed8;
+    color: #ffffff;
+    border-radius: 16px 16px 4px 16px;
+    box-shadow: 0 2px 6px rgba(29, 78, 216, 0.2);
+}
+
+/* Bubble Content Elements */
+.aastu-bubble p {
+    margin: 0 0 6px;
+}
+
+.aastu-bubble p:last-child {
+    margin-bottom: 0;
+}
+
+.aastu-bubble strong {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.aastu-msg-user .aastu-bubble strong {
+    color: #ffffff;
+}
+
+.aastu-bubble ul {
+    margin: 6px 0;
+    padding-left: 18px;
+}
+
+.aastu-bubble li {
+    margin-bottom: 4px;
+}
+
+.aastu-bubble a {
+    color: #1d4ed8;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s ease;
+}
+
+.aastu-bubble a:hover {
+    color: #0f172a;
+}
+
+.aastu-msg-user .aastu-bubble a {
+    color: #e0f2fe;
+}
+
+.aastu-msg-time {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 4px;
+    padding: 0 4px;
+}
+
+.aastu-msg-user .aastu-msg-time {
+    text-align: right;
+}
+
+/* Action Link Buttons inside Bot Replies */
+.aastu-bot-action-links {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.aastu-action-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background: #eff6ff;
+    color: #1d4ed8 !important;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.aastu-action-link-btn:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    transform: translateY(-1px);
+}
+
+/* Typing Indicator Animation */
+.aastu-typing-row {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    width: fit-content;
+}
+
+.aastu-dot {
+    width: 6px;
+    height: 6px;
+    background: #94a3b8;
+    border-radius: 50%;
+    animation: aastuBlink 1.4s infinite both;
+}
+
+.aastu-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.aastu-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes aastuBlink {
+    0%, 80%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. Quick Reply Suggestions Section
+   -------------------------------------------------------------------------- */
+.aastu-quick-replies-area {
+    background: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    padding: 10px 14px;
+    flex-shrink: 0;
+}
+
+.aastu-quick-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.aastu-quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+.aastu-quick-chip {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #1e293b;
+    padding: 5px 10px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.aastu-quick-chip:hover {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+    color: #0f172a;
+    transform: translateY(-1px);
+}
+
+.aastu-quick-chip:active {
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   6. Input Form Footer
+   -------------------------------------------------------------------------- */
+.aastu-chat-footer {
+    padding: 12px 14px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+.aastu-chat-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.aastu-chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 24px;
+    font-size: 13.5px;
+    font-family: inherit;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #f8fafc;
+}
+
+.aastu-chat-input:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.aastu-chat-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1d4ed8;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+.aastu-chat-send-btn:hover {
+    background: #1e40af;
+    transform: scale(1.04);
+}
+
+.aastu-chat-send-btn:active {
+    transform: scale(0.96);
+}
+
+.aastu-chat-send-btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Mobile Responsiveness (Small Screens <= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    #aastu-chatbot-container {
+        bottom: 16px;
+        right: 16px;
+    }
+
+    #aastu-chat-window {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: 100dvh;
+        max-height: 100dvh;
+        border-radius: 0;
+        border: none;
+        z-index: 100000;
+        transform: translateY(100%);
+    }
+
+    #aastu-chatbot-container.active #aastu-chat-window {
+        transform: translateY(0);
+    }
+
+    .aastu-chat-header {
+        padding: 16px;
+        border-radius: 0;
+    }
+
+    #aastu-chat-greeting-pill {
+        display: none; /* Hide floating preview pill on mobile to prevent clutter */
+    }
+}
