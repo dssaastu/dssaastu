@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty & Staff Directory | Social Science Department - AASTU</title>
+    <meta name="description" content="Meet the esteemed faculty members and researchers of the Department of Social Sciences at Addis Ababa Science and Technology University (AASTU).">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .staff-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .profile-card-modern {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .profile-card-modern:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: #cbd5e1;
+        }
+        .card-cover {
+            height: 90px;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+        }
+        .card-avatar-wrapper {
+            margin-top: -55px;
+            position: relative;
+            z-index: 2;
+        }
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            background: #e2e8f0;
+        }
+        .profile-info {
+            padding: 16px 20px 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin: 0 0 4px;
+        }
+        .profile-spec {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0 0 16px;
+        }
+        .profile-details {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 14px;
+            font-size: 0.875rem;
+            text-align: left;
+            margin-top: auto;
+        }
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        .detail-row svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-blue);
+            flex-shrink: 0;
+        }
+        .detail-row a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .detail-row a:hover {
+            text-decoration: underline;
+            color: var(--accent-blue-hover);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Social Sciences and Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn">Academic Courses</a>
+                <a href="contact.html" class="header-action-btn">Contact Department</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="courses.html">Courses</a>
+                <a href="staff.html" class="active">Faculty & Staff</a>
+                <a href="blog.html">Academic Essays & Blog</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Banner -->
+    <div class="article-banner">
+        <div class="article-banner-inner">
+            <span class="article-banner-badge">Academic Faculty</span>
+            <h2 class="article-banner-title">Department Instructors & Researchers</h2>
+            <p class="article-banner-subtitle">Dedicated educators advancing scholarship in Philosophy, Political Science, Sociology, History, and Anthropology.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="staff-grid-modern">
+            
+            <!-- Staff 1 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor1.jpg" alt="Mrs. Sophia Kifle" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Mrs. Sophia Kifle</h3>
+                    <div class="profile-spec">Federal Studies</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0911144142</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:sophia.kifle@aastu.edu.et">sophia.kifle@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 2 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor2.jpg" alt="Dr. Solomon Gebre" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Solomon Gebre</h3>
+                    <div class="profile-spec">Peace & Security Studies</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0911761359</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:solomon.gebre@aastu.edu.et">solomon.gebre@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 3 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor3.jpg" alt="Dr. Biruk Shewadeg" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Biruk Shewadeg</h3>
+                    <div class="profile-spec">African Studies</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0913714459</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:biruk.shewadeg@aastu.edu.et">biruk.shewadeg@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 4 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor4.jpg" alt="Dr. Manaye Zegeye" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Manaye Zegeye</h3>
+                    <div class="profile-spec">Federal Studies</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0912351728</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:manaye.zegeye@aastu.edu.et">manaye.zegeye@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 5 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor5.jpg" alt="Dr. Shumye Getu" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Shumye Getu</h3>
+                    <div class="profile-spec">Philosophy</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0913966539</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:shumye.getu@aastu.edu.et">shumye.getu@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 6 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor6.jpg" alt="Mr. Mohammed Zeinu" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Mr. Mohammed Zeinu</h3>
+                    <div class="profile-spec">Philosophy</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0910517214</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:mohammed.zeinu@aastu.edu.et">mohammed.zeinu@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 7 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="professor7.jpg" alt="Dr. Teshome Abera" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Teshome Abera</h3>
+                    <div class="profile-spec">Sociology</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>0911698564</span>
+                        </div>
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:teshome.abera@aastu.edu.et">teshome.abera@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 8 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="dag.png" alt="Dr. Dagmawi Tesfaye" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Dagmawi Tesfaye</h3>
+                    <div class="profile-spec">History</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:dagmawi.esfaye@aastu.edu.et">dagmawi.esfaye@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 9 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="tegegne.png" alt="Dr. Tegegne Sishaw" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Tegegne Sishaw</h3>
+                    <div class="profile-spec">Geography</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:tegegne.sishaw@aastu.edu.et">tegegne.sishaw@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 10 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="admasu.png" alt="Dr. Admasu Tsegaye" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Admasu Tsegaye</h3>
+                    <div class="profile-spec">Anthropology</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:admasu.abebe@aastu.edu.et">admasu.abebe@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 11 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="ephrem.png" alt="Dr. Ephrem Tegegne" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Ephrem Tegegne</h3>
+                    <div class="profile-spec">Geography</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:ephrem.tegegne@aastu.edu.et">ephrem.tegegne@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff 12 -->
+            <div class="profile-card-modern">
+                <div class="card-cover"></div>
+                <div class="card-avatar-wrapper">
+                    <img src="mengistu.png" alt="Dr. Mengistu Gutema" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Dr. Mengistu Gutema</h3>
+                    <div class="profile-spec">Urban Governance</div>
+                    <div class="profile-details">
+                        <div class="detail-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:menistu.gutema@aastu.edu.et">menistu.gutema@aastu.edu.et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Delivering high quality social sciences, humanities, and ethics education.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="staff.html">Faculty</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="logic.html">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="mcie1012mainpage.html">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="map.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
+
+    <!-- AASTU Social Science Department FAQ Chatbot Widget -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js" defer></script>
+</body>
+</html>

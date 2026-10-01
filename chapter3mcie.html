@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Standardized Course Code -->
+  <title>MCIE1012 - Chapter 3: Ethical Decision Making</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .slide { display: none; }
+    .slide.active { display: block; }
+    /* Basic styling for tables */
+    table, th, td {
+      border: 1px solid #e2e8f0; /* gray-300 */
+      padding: 6px; /* p-1.5 */
+      font-size: 0.875rem; /* text-sm */
+      text-align: left; /* Default alignment */
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem; /* mt-4 */
+      margin-bottom: 1rem; /* mb-4 */
+    }
+    th {
+        background-color: #f7fafc; /* gray-100 */
+        font-weight: bold;
+        text-align: center; /* Center align headers */
+    }
+    td {
+        vertical-align: top; /* Align content to top */
+    }
+    /* Styling for activity boxes */
+    .activity-box {
+        background-color: #eff6ff; /* blue-50 */
+        padding: 0.75rem; /* p-3 */
+        border-radius: 0.375rem; /* rounded */
+        border: 1px solid #bfdbfe; /* blue-200 */
+        margin-bottom: 1rem; /* mb-4 */
+        margin-top: 1rem; /* mt-4 */
+    }
+     /* Specific styling for bullet points */
+     .arrow-list li::before, .star-list li::before, .list-disc li::before, .list-decimal li::before, .list-\[circle\] li::before {
+         margin-right: 0.5em;
+     }
+     .list-disc, .list-decimal, .list-\[circle\] {
+        padding-left: 1.5rem; /* Standard indentation */
+     }
+     .arrow-list li::before {
+         content: '➢ ';
+     }
+     .star-list li::before {
+        content: '❖ ';
+     }
+     .arrow-list, .star-list {
+         list-style-type: none;
+         padding-left: 1rem;
+     }
+    /* Ensure long reference lines wrap */
+    .ref-item { word-break: break-word; margin-bottom: 0.5rem; }
+     /* Simple diagram styling */
+    .diagram {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 15px 0;
+      text-align: center;
+      font-family: monospace;
+      background-color: #f9f9f9; /* Light background for diagram */
+    }
+  </style>
+</head>
+<body class="slide-page-body font-sans">
+
+    <!-- Institutional Top Utility Bar -->
+    <div class="top-bar" id="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Portal &bull; Course Slides</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">Email: social@aastu.edu.et</a>
+                <a href="map.html">Campus Map</a>
+                <a href="contact.html">Kilinto Campus, Addis Ababa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Institutional Header -->
+    <header class="header" id="main-header">
+        <div class="header-inner">
+            <a href="index.html" class="header-brand" id="brand-link">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        <line x1="9" y1="7" x2="15" y2="7"></line>
+                        <line x1="9" y1="11" x2="13" y2="11"></line>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Social Sciences and Humanities</span></p>
+                </div>
+            </a>
+            
+            <div class="header-quick-links">
+                <a href="courses.html" class="header-action-btn" id="btn-browse-courses">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Courses &amp; Syllabi
+                </a>
+                <a href="staff.html" class="header-action-btn" id="btn-meet-staff">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Faculty Profiles
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Sticky Navigation Bar -->
+    <nav class="navbar" id="site-nav">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html" id="nav-home">Home</a>
+                <a href="about.html" id="nav-about">About Us</a>
+                <a href="courses.html" class="active" id="nav-courses">Courses</a>
+                <a href="staff.html" id="nav-staff">Faculty &amp; Staff</a>
+                <a href="blog.html" id="nav-blog">Academic Essays &amp; Blog</a>
+                <a href="gallery.html" id="nav-gallery">Gallery</a>
+                <a href="contact.html" id="nav-contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chapter Slide Main Section -->
+    <main class="slide-page-main">
+        <div class="slide-top-header">
+            <div class="slide-top-title">
+                <a href="mcie1012mainpage.html" class="slide-back-link">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to MCIE 1012 Civics Portal
+                </a>
+                <h1>Chapter 3: Ethical Decision Making &amp; Moral Judgments</h1>
+            </div>
+            <div class="slide-hints">
+                <span>Controls:</span>
+                <span class="kbd-key">&larr; Prev</span>
+                <span class="kbd-key">Next &rarr;</span>
+            </div>
+        </div>
+
+        <div class="w-full max-w-4xl mx-auto my-2">
+            <!-- Slides Container -->
+            <div id="slides" class="relative bg-white rounded-xl shadow-md border border-slate-200 p-6 md:p-8 min-h-[450px]">
+
+      <!-- Slide 1: Title and Introduction -->
+      <div class="slide active">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Chapter Three: Ethical Decision Making and Moral Judgments</h2>
+        <h3 class="text-xl font-semibold mb-2 text-gray-700">3.1 Chapter Introduction</h3>
+        <p class="text-gray-600 mb-4">
+          Individuals constantly face choices, needing to decide which desires to satisfy and which to postpone or forgo. Determining the right or correct decision, and the standards by which one decision is judged right and another wrong, presents an ongoing challenge. One function of morality is to offer guidance in navigating these complex choices.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Furthermore, conflicts inevitably arise between people. Maintaining social order and resolving these conflicts reasonably is a persistent societal problem. Morality serves another vital function by providing principles and rules, ideally acceptable to all, that encourage peaceful and cooperative coexistence.
+        </p>
+        <p class="text-gray-600">
+          When facing personal or societal problems, reflecting on ethical theories—understanding the meaning and purpose of morality and identifying guiding principles for action and judgment—becomes essential. It is also important to consider the fundamental question: why should one strive to be moral? This chapter introduces the ethical decision-making process and explores the rationale for moral behavior.
+        </p>
+      </div>
+
+      <!-- Slide 2: Chapter Objectives -->
+      <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.2 Chapter Objectives</h2>
+        <p class="text-gray-600 mb-2">Upon successful completion of this chapter, students will be able to:</p>
+        <ul class="list-disc pl-6 text-gray-600 space-y-1"> <!-- Changed list style -->
+          <li>Identify the foundations upon which ethical standards are based.</li>
+          <li>Understand how ethical standards apply to specific situations.</li>
+          <li>Identify the elements contributing to sound ethical decision-making.</li>
+          <li>Understand the reasons why individuals and societies need morality.</li>
+        </ul>
+      </div>
+
+      <!-- Slide 3: Ethical Decision Making & Instrumental vs. Intrinsic Good -->
+      <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3 Ethical Decision Making and Actions</h2>
+        <p class="text-gray-600 mb-4">
+          In practical life, consistently doing the 'right thing' can be difficult. Actions perceived as right might lead to social friction or conflict. Individuals often provide justifications for their decisions and actions, asserting their correctness.
+        </p>
+        <p class="text-gray-600 mb-4">
+          We frequently claim our decisions and actions are right, experiencing regret when they are wrong. However, the ethical assessment depends heavily on our understanding of 'Good' vs. 'Bad' and 'Right' vs. 'Wrong'. Before examining how moral judgments are made, let's consider: What constitutes 'good' or 'bad'?
+        </p>
+        <p class="text-gray-600 mb-4">
+          Philosophically, 'good' can be categorized:
+          <ul class="list-disc pl-6 space-y-1">
+            <li><strong>Instrumental Good:</strong> Things valued for their results or what they lead to (e.g., money as a means to security). Their goodness is instrumental.</li>
+            <li><strong>Intrinsic Good:</strong> Things valued for their own sake, desirable in themselves, not merely as means to other ends (e.g., happiness, knowledge). Their goodness lies in their intrinsic nature.</li>
+          </ul>
+        </p>
+         <p class="text-gray-600 mt-4">Similarly, things can be instrumentally bad (leading to bad outcomes) or intrinsically bad (bad in themselves).</p>
+      </div>
+
+      <!-- Slide 4: Instrumental vs. Intrinsic Bad & Activity -->
+      <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Instrumental vs. Intrinsic Bad & Activity</h2>
+        <p class="text-gray-600 mb-4">
+          Just as there are instrumental and intrinsic goods, there are things considered instrumentally bad (leading to negative outcomes) and intrinsically bad (wrong or evil in themselves). Some actions or states might possess both instrumental and intrinsic qualities (e.g., a painful medical procedure might be intrinsically bad but instrumentally good if it leads to health). In Ethiopian contexts, practices like Female Genital Mutilation, early marriage, abduction, corruption, and murder are widely considered unethical, bad, or evil practices targeted for eradication.
+        </p>
+        <div class="activity-box">
+            <p class="font-semibold text-gray-700">Activity:</p>
+            <p class="italic text-gray-600">Provide examples of things generally considered instrumentally good, intrinsically good, instrumentally bad, and intrinsically bad within your own community or cultural context.</p>
+        </div>
+        <p class="text-gray-600 mb-4">
+          Ethical reasoning involves critically analyzing the values we hold and the claims we make regarding our obligations to others. In contexts like end-of-life care, key ethical values such as the sanctity of life, quality of life, and autonomy often come into play and require careful consideration and balancing.
+        </p>
+        <p class="text-gray-600">
+          A second crucial task of ethics is evaluating the adequacy of reasons given for actions. This involves assessing whether arguments are based on sound evidence and logical reasoning (e.g., evaluating arguments for or against medical interventions based on their justifications).
+        </p>
+      </div>
+
+       <!-- Slide 5: Challenges in Ethical Reasoning -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Challenges in Ethical Reasoning</h2>
+        <p class="text-gray-600 mb-4">
+          Weighing ethical values and evaluating moral arguments presents unique challenges compared to other tasks. Ethical values (like courage or justice) are often less tangible or easily measured than practical values (like fuel efficiency). Determining if someone is virtuous is typically harder than measuring their blood pressure.
+        </p>
+         <p class="text-gray-600 mb-4">
+          Ethical problems themselves are frequently complex, ambiguous, and may lack definitive resolutions acceptable to everyone. The goal of applied ethics isn't necessarily to dictate answers or occupy a superior moral position, but rather to provide frameworks and tools for thoughtful deliberation about difficult issues, acknowledging the nuances of diverse roles, situations, and human circumstances.
+         </p>
+          <p class="text-gray-600">
+            Despite this complexity, individuals facing ethical challenges have an obligation to seek resolutions sincerely, reasonably, and collaboratively. This entails being open to reviewing and revising one's position through reflection, dialogue, and adaptation to changing circumstances.
+          </p>
+          <div class="activity-box">
+            <p class="font-semibold text-gray-700">Activity:</p>
+            <p class="italic text-gray-600">In groups, list behaviors you consider <em>always</em> right and <em>always</em> wrong. Also, list behaviors nominated but rejected by the group, noting the reasons for rejection. Share your lists and discuss what conclusions can be drawn about ethical consensus and disagreement.</p>
+          </div>
+       </div>
+
+      <!-- Slide 6: Ethical Principles vs. Rules of Thumb -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.1 Ethical Principles and Values in Moral Judgments</h2>
+        <p class="text-gray-600 mb-4">
+          Philosophical ethics involves developing coherent sets of principles or 'rules' guiding how people ought to live. However, most people don't rely on formal ethical theories for everyday moral guidance.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Instead, we typically use practical 'rules of thumb' derived from experience, culture, or intuition, such as 'stealing is wrong' or 'helping those in need is right'.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Life's complexities, however, often challenge these simple rules. Consider "killing is wrong." Does this apply universally to capital punishment, animal slaughter, self-defense, abortion, or euthanasia? Straightforward answers are often elusive, revealing the limitations of simple rules.
+        </p>
+        <p class="text-gray-600">
+          Addressing such complex questions requires deeper examination, often employing theoretical frameworks to analyze the nuances and strive for rational, coherent solutions. While individuals engage in this reflection, moral philosophy attempts to develop general principles applicable across society.
+        </p>
+        <div class="activity-box">
+          <p class="font-semibold text-gray-700">Reflection:</p>
+          <p class="italic text-gray-600">Recall a significant decision you made that affected others. How did you justify your choice? Was it explicitly framed in terms of right/wrong? Identify the underlying principles or rules you employed (e.g., 'prioritize career advancement', 'avoid causing emotional pain', 'always offer help').</p>
+        </div>
+       </div>
+
+       <!-- Slide 7: Moral Intuitions and Critical Reasoning -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.2 Moral Intuitions and Critical Reasoning</h2>
+        <p class="text-gray-600 mb-4">
+          Ethical study involves reasoning about our moral feelings and intuitions—making sense of them and subjecting them to rational scrutiny. Humans possess empathy, allowing us to sense others' feelings and identify with their experiences.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Empathy gives rise to <strong>moral sentiments</strong> (feelings about right and wrong). Applying ethical reasoning to these sentiments helps formulate <strong>moral principles</strong>. The integration of moral sentiments and reasoned principles forms our <strong>conscience</strong>. While based partly on emotion, our moral conscience should ideally be supported and refined by reason.
+        </p>
+        <p class="text-gray-600">
+          All societies possess ethical ideas and customs, sometimes formalized into laws. These external influences shape individual consciences. Philosophical ethics encourages critical reflection upon these ingrained sentiments, attitudes, and customs, questioning their validity and justification.
+        </p>
+       </div>
+
+       <!-- Slide 8: Rationalisation -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.2.1 Avoiding Rationalization</h2>
+        <p class="text-gray-600 mb-4">
+          Ethical study emphasizes finding valid reasons for moral positions. While most people hold initial intuitions about right/wrong, a philosophical approach demands critical thinking: supporting or refuting these intuitions with convincing arguments and clearly articulating the underlying reasons and assumptions.
+        </p>
+        <p class="text-gray-600 mb-4">
+          In moral philosophy, an argument's value lies not in 'winning' but in providing considered reasons and fostering rational understanding. This involves careful listening, analysis, and learning from diverse perspectives.
+        </p>
+        <p class="text-gray-600">
+          A common pitfall to avoid is <strong>rationalization</strong>: presenting seemingly rational justifications to mask one's true (perhaps unconscious or less noble) motives. For example, claiming a business decision is solely for job creation when the primary driver is profit constitutes rationalization. Stating both profit and job creation as motivations, if true, is simply giving multiple reasons, not necessarily rationalizing. Distinguishing genuine reasons from rationalizations requires honest self-reflection and critical analysis.
+        </p>
+       </div>
+
+        <!-- Slide 9: Types of Reasoning -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.2.2 Types of Ethical Reasoning</h2>
+        <p class="text-gray-600 mb-4">
+          Critical reasoning helps uncover errors in justification. Three common forms of reasoning used in ethical arguments:
+        </p>
+        <ul class="list-disc pl-6 text-gray-600 space-y-3">
+          <li>
+            <strong>Reasoning by Analogy:</strong> Explaining or justifying a position by comparing the current situation to a similar but distinct one. A strong analogy highlights relevant similarities that outweigh dissimilarities, effectively clarifying or supporting the point. Example: Debating animal rights often involves analogies between animal and human capacities. The strength depends on whether the cited similarities are morally relevant to the right being claimed.
+          </li>
+          <li>
+            <strong>Deductive Reasoning:</strong> Applying a general moral principle or rule to a specific situation to derive a conclusion. Example: Principle: Every person has human rights. Premise: You are a person. Conclusion: Therefore, you have human rights. Validity depends on the truth of the premises and the logical structure.
+          </li>
+          <li>
+            <strong>Inductive Reasoning:</strong> Using specific observations or evidence to support a general moral hypothesis or conclusion. The strength depends on the quality and quantity of evidence. Example: Evidence of climate change caused by fossil fuels inductively supports the argument for a moral duty to reduce emissions.
+          </li>
+        </ul>
+       </div>
+
+       <!-- Slide 10: Ethics and Religious Faith -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.2.3 Ethics and Religious Faith</h2>
+        <p class="text-gray-600 mb-4">
+          Religious faith provides another significant basis for moral arguments for many people, who see morality and faith as intertwined. Actions are often judged right or wrong based on perceived divine commands.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Some moral philosophers argue that faith-based arguments lack rational defensibility accessible to all, believing morality can be determined through reason alone. They might point to the Euthyphro dilemma (is something right <em>because</em> God commands it, or does God command it <em>because</em> it's right?). If the latter, reason can discern rightness independently.
+        </p>
+        <p class="text-gray-600">
+          However, faith-based arguments remain relevant in ethical discourse because:
+          <ul class="list-disc pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+             <li>Reason alone doesn't always lead to consensus on moral issues.</li>
+             <li>Religion provides moral guidance for vast numbers of people and can motivate adherence to high moral standards.</li>
+             <li>Understanding diverse ethical perspectives requires engaging with religious viewpoints, even if one doesn't personally accept faith as a basis for justification.</li>
+          </ul>
+          Whether one accepts faith-based arguments as valid ultimately requires careful consideration.
+        </p>
+       </div>
+
+       <!-- Slide 11: Testing Moral Arguments -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.2.4 Testing Moral Arguments</h2>
+        <p class="text-gray-600 mb-4">
+          Critical reasoning involves scrutinizing moral arguments: assessing the type of reasoning used (analogy, deduction, induction), identifying potential biases or rationalizations, and evaluating the logical connection between reasons and conclusions.
+        </p>
+        <p class="text-gray-600 mb-4">
+          While rigorous analysis is important, most people engage in some form of critical reasoning naturally, using experience, intuitions, and reasons. Developing the ability to systematically test arguments (both one's own and others') is crucial for navigating ethical dilemmas.
+        </p>
+        <p class="font-semibold text-gray-700 mb-2">Three key tests for a moral argument:</p>
+         <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+            <li>
+              <strong>Factual Accuracy:</strong> While ethics deals with 'ought' not just 'is' (Hume's distinction), moral arguments rely on accurate factual premises. If the facts underpinning an argument are wrong, the argument is weakened. Example: An argument against foreign aid based on incorrect facts about fund allocation loses its force if the facts are corrected.
+            </li>
+            <li>
+              <strong>Consistency:</strong> Arguments and the principles they employ must be consistent. Applying a moral judgment differently in similar situations requires identifying a morally relevant difference. Example: Arguing for debt cancellation for poor nations but not poor individuals requires justifying the distinction based on morally relevant factors.
+            </li>
+            <li>
+               <strong>Good Will (Intent):</strong> This assesses the underlying motivation and spirit of the argument. Does it reflect genuine concern for ethical values and constructive dialogue? While harder to quantify, arguments lacking good will (e.g., those driven by malice or aimed solely at deception) are ethically suspect.
+            </li>
+         </ol>
+       </div>
+
+       <!-- Slide 12: Framework for Moral Decision Making -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.3.3 A Framework for Ethical Decision Making</h2>
+        <p class="text-gray-600 mb-4">
+          Making ethical decisions requires more than just intuition. A structured approach can help navigate complex situations.
+        </p>
+        <p class="text-gray-600 mb-4">
+          <strong>Step 1: Gather the Facts.</strong> This seems obvious but is often overlooked. Many disagreements arise from misunderstanding or ignoring relevant facts. Ensure you have accurate, comprehensive information about the situation. Remember, facts describe <em>what is</em>, not <em>what ought to be</em>.
+        </p>
+        <p class="text-gray-600">
+          <strong>Step 2: Identify and Appeal to Ethical Values and Principles.</strong> Resolving ethical issues requires considering relevant values. Philosophers have developed various approaches to ethical analysis that highlight different core values:
+          <ul class="list-disc pl-6 mt-1 space-y-1">
+              <li>The Utilitarian Approach</li>
+              <li>The Rights Approach</li>
+              <li>The Fairness or Justice Approach</li>
+              <li>The Common Good Approach</li>
+              <li>The Virtue Approach</li>
+          </ul>
+          Considering an issue through these different lenses can provide a more comprehensive ethical perspective.
+        </p>
+       </div>
+
+        <!-- Slide 13: Fairness and Justice Approach -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethical Approach 1: The Fairness or Justice Approach</h2>
+        <p class="text-gray-600 mb-4">
+          Rooted in Aristotle's idea that “equals should be treated equally and unequal's unequally,” this approach focuses on fairness and consistency. Key questions:
+        </p>
+        <ul class="list-disc pl-8 mb-4 text-gray-700">
+           <li>How fair is the action?</li>
+           <li>Does it treat everyone the same way, or does it show favoritism or discrimination?</li>
+        </ul>
+         <p class="text-gray-600 mb-4">
+          Favoritism (granting benefits without justification) and discrimination (imposing burdens unfairly) are considered unjust. The core principle is: <strong>“Treat people the same unless there are morally relevant differences between them."</strong>
+         </p>
+       </div>
+
+       <!-- Slide 14: Common Good Approach -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethical Approach 2: The Common Good Approach</h2>
+        <p class="text-gray-600 mb-4">
+          Originating with Greek philosophers, this approach views life in community as inherently valuable and emphasizes actions contributing to that community. Ethical reasoning stems from societal relationships, highlighting respect, compassion (especially for the vulnerable), and the importance of shared conditions essential for everyone's welfare (e.g., laws, public safety, healthcare, education, environment).
+        </p>
+        <p class="text-gray-600 mb-4">
+          It envisions society as individuals joined in pursuing common values and goals. Philosophers like John Rawls defined the common good in terms of "certain general conditions that are... equally to everyone's advantage." The focus is on ensuring social systems and policies benefit all members.
+        </p>
+        <p class="text-gray-600">
+          While respecting individual freedom, this approach challenges us to consider and advance shared goals. The guiding principle: <strong>“What is ethical is what advances the common good."</strong>
+        </p>
+       </div>
+
+       <!-- Slide 15: Rights Approach -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Ethical Approach 3: The Rights Approach</h2>
+        <p class="text-gray-600 mb-4">
+          Rooted in 18th-century philosophy (Kant, Locke), this approach focuses on protecting and respecting the moral rights of individuals. It holds that humans have inherent dignity based on their capacity for free choice, giving rise to a fundamental right to have their choices respected. People should not be treated merely as objects or means to an end.
+        </p>
+        <p class="text-gray-600 mb-4">
+          From the basic right to free choice stem other rights, such as:
+          <ul class="list-[circle] pl-6 space-y-1 text-sm"> <!-- Smaller font -->
+             <li><strong>Right to Truth:</strong> Entitlement to truthful information affecting choices.</li>
+             <li><strong>Right to Privacy:</strong> Freedom in personal life, as long as others' rights aren't violated.</li>
+             <li><strong>Right Not to Be Injured:</strong> Protection from harm unless freely chosen or deserved.</li>
+             <li><strong>Right to What Is Agreed:</strong> Entitlement based on free contracts/agreements.</li>
+          </ul>
+        </p>
+         <p class="text-gray-600">
+           The central question for evaluating actions: <strong>Does the action respect the moral rights of everyone involved?</strong> Actions violating rights are considered wrong; the severity of the violation correlates with the wrongfulness.
+         </p>
+         <div class="activity-box">
+           <p class="font-semibold text-gray-700">Activity:</p>
+           <p class="italic text-gray-600 text-sm">Reflect on an ethical decision you made. Which of the ethical approaches (Utilitarian, Rights, Fairness, Common Good, Virtue) did you implicitly or explicitly use? Evaluate the effectiveness of the approach(es) and the quality of your final choice. What did you learn from this reflection?</p>
+           <!-- Consolidated previous activity -->
+         </div>
+       </div>
+
+        <!-- Slide 16: Applying the Framework -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Applying the Ethical Decision-Making Framework</h2>
+         <p class="text-gray-600 mb-4">
+           No single approach provides all answers. Using multiple approaches offers a more comprehensive perspective. After gathering facts, ask these questions to analyze an ethical issue:
+         </p>
+          <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+             <li><strong>Utilitarian Perspective:</strong> What are the potential benefits and harms of each course of action? Which option leads to the best overall consequences for everyone affected?</li>
+             <li><strong>Rights Perspective:</strong> What moral rights (e.g., truth, privacy, non-injury, agreement) do the affected parties possess? Which option best respects and protects those rights?</li>
+             <li><strong>Fairness/Justice Perspective:</strong> Which option treats everyone equally or proportionally? Does it avoid favoritism and discrimination based on irrelevant factors?</li>
+             <li><strong>Common Good Perspective:</strong> Which course of action best serves the community as a whole, not just some members? Does it advance shared beneficial conditions?</li>
+             <li><strong>Virtue Perspective:</strong> Which option allows me to act according to the kind of person I want to be (e.g., honest, compassionate, courageous)? Which action aligns with admirable virtues?</li>
+          </ol>
+         <p class="text-gray-600 mt-4">Considering these different angles helps ensure a more thorough and well-reasoned ethical decision.</p>
+       </div>
+
+       <!-- Slide 17: Scope of Morality: Religious, Nature, Individual, Social -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.4 To Whom or What Does Morality Apply?</h2>
+        <p class="text-gray-600 mb-4">
+          Morality is typically applied in several contexts:
+        </p>
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">3.4.1 Religious Morality</h3>
+        <p class="text-gray-600 mb-4">
+          Concerns the relationship between humans and supernatural being(s). Often involves duties specifically owed to the divine (e.g., worship, adherence to divine commands), distinct from duties owed to other humans. Example: The first three of the Ten Commandments in Judeo-Christian tradition focus on duties towards God.
+        </p>
+         <h3 class="text-lg font-semibold mb-2 text-gray-700">3.4.2 Morality and Nature</h3>
+          <p class="text-gray-600 mb-4">
+             Concerns the human relationship with the natural environment. Some traditions (e.g., indigenous cultures) ascribe moral status to nature itself. Modern environmental ethics explores whether nature has intrinsic value or only instrumental value for humans, raising questions about moral obligations towards ecosystems or animals independent of human benefit.
+          </p>
+       </div>
+
+       <!-- Slide 18: Scope of Morality (Cont.): Individual & Social -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Scope of Morality (Continued)</h2>
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">3.4.3 Individual Morality</h3>
+        <p class="text-gray-600 mb-4">
+          Refers to an individual's relationship to themselves and their personal code of conduct, which might differ from societal or religious norms. This allows for the concept of individual conscience guiding actions based on personal values, potentially leading to acting according to a "higher morality" than prevailing standards.
+        </p>
+        <h3 class="text-lg font-semibold mb-2 text-gray-700">3.4.4 Social Morality</h3>
+         <p class="text-gray-600">
+           Concerns relationships between human beings. This is arguably the most central aspect of morality, cutting across other categories and present in nearly all ethical systems. Many actions considered morally significant involve impacts on others. Isolated individuals (like Robinson Crusoe before Friday) have limited scope for significant moral action towards others. Many ethical frameworks prioritize actions affecting others, sometimes viewing purely self-regarding actions as outside the scope of morality unless they indirectly harm others.
+         </p>
+       </div>
+
+       <!-- Slide 19: Who is Morally Responsible? -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.5 Who is Morally Responsible?</h2>
+        <p class="text-gray-600 mb-4">
+          Generally, morality applies primarily to human beings, who are considered capable of rational thought, free choice, and understanding moral principles. Attributing morality to supernatural beings requires faith.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Animals and plants are typically considered non-moral or amoral (outside the sphere of morality). Their actions are guided by instinct, not reasoned moral choice. While research explores animal cognition, current understanding suggests they lack the capacity for moral responsibility in the human sense.
+        </p>
+        <p class="text-gray-600">
+          Therefore, when discussing moral action and responsibility, the focus is almost exclusively on human agents. We hold humans accountable for their actions because they possess the capacity for moral deliberation and choice. Actions like a wolf killing a sheep are natural events, not immoral acts; we might intervene for practical reasons (protecting livestock), not because the wolf is morally blameworthy.
+        </p>
+       </div>
+
+       <!-- Slide 20: Moral Judgments -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.5.1 Understanding Moral Judgments</h2>
+        <p class="text-gray-600 mb-4">
+          <strong>Moral judgments</strong> involve assessing the rightness or wrongness, goodness or badness, of actions, intentions, or character traits, particularly concerning human conduct and relationships. We constantly make such judgments about our own behavior and that of others.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Moral judgments typically apply to <strong>voluntary actions</strong>—those performed with intention and choice. We generally don't hold people morally responsible for involuntary actions over which they had no control (though negligence leading to harm can be culpable).
+        </p>
+        <p class="text-gray-600 mb-4">
+           These judgments are inherently <strong>evaluative</strong> (assigning moral value) and <strong>normative</strong> (assessing against moral standards or norms).
+         </p>
+         <p class="text-gray-600">
+           Making sound moral judgments is often complex. There's no simple algorithm. Applying rules requires interpretation and sensitivity to context. As philosopher Onora O'Neill suggests, principles aren't auto-pilots; judgment, informed by sensitivity, experience, intelligence, and goodwill, is always needed, yet doubt may remain. Factors typically considered include motives, means, consequences, and the situation itself.
+         </p>
+       </div>
+
+      <!-- Slide 21: Factors in Moral Judgment: Motives & Means -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Factors in Moral Judgment (1)</h2>
+         <p class="font-semibold text-gray-700 mb-2">1. Motives (Intentions):</p>
+         <p class="text-gray-600 mb-4">
+            The reason <em>why</em> an action is performed is often considered fundamental to its moral worth (central in Kantian ethics). A good motive is often seen as a prerequisite for full moral approval. If an action from a good motive accidentally causes harm, we might disapprove less ("He meant well"). Kant argued that only actions done <em>from</em> a sense of duty (out of respect for the moral law) possess true moral worth.
+         </p>
+         <p class="font-semibold text-gray-700 mb-2">2. Means:</p>
+          <p class="text-gray-600">
+            The methods or actions used to achieve an end are also morally relevant. We generally expect ethical actions to employ the best available, morally permissible means. Using unjust, cruel, or immoral means is typically condemned, even if the intended end is good. The idea that "the end justifies the means" is ethically controversial because the means chosen become part of the action's overall moral character and consequences.
+          </p>
+       </div>
+
+      <!-- Slide 22: Factors (2) & What Makes an Action Moral? -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Key Factors (2) & Defining Moral Actions</h2>
+         <p class="font-semibold text-gray-700 mb-2">3. Consequences:</p>
+         <p class="text-gray-600 mb-4">
+            The results or effects of an action are central, especially for consequentialist theories like utilitarianism. We often judge an act's rightness based on whether its consequences are good or bad. Ideally, a morally right action, stemming from good motives and using proper means, should lead to good consequences. If all conditions are met, the act receives approval; if not, approval might be qualified or withheld. Actions leading to clearly evil results are rarely approved, regardless of motive.
+         </p>
+         <p class="font-semibold text-gray-700 mb-2">4. The Moral Situation:</p>
+          <p class="text-gray-600 mb-4">
+            Refers to the context involving moral agents (humans making choices), their obligations and rights, the available alternatives, and the relevant factors influencing the decision.
+          </p>
+
+          <h3 class="text-xl font-semibold mb-2 mt-6 text-gray-700">3.5.2 What Makes an Action Moral (vs. Non-Moral)?</h3>
+          <p class="text-gray-600 mb-4">
+             Philosophically, "moral" can mean "morally good," but often it simply means "pertaining to the sphere of morality" (i.e., morally significant, whether good or bad), as opposed to non-moral or morally neutral actions (like choosing what color shirt to wear).
+          </p>
+          <p class="text-gray-600">What brings an action into the moral sphere? Key features:</p>
+       </div>
+
+       <!-- Slide 23: Features of a Morally Significant Action -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Features of a Morally Significant Action</h2>
+        <p class="text-gray-600 mb-4">
+            <strong>A. Involves a Moral Agent:</strong> Performed by beings capable of free choice and understanding moral concepts (typically humans). Natural events or instinctual animal actions are generally considered non-moral.
+        </p>
+        <p class="text-gray-600 mb-4">
+           <strong>B. Involves Intention:</strong> Actions must generally be intentional to be morally assessed. Accidental happenings usually lack moral dimension, although <em>negligence</em> (failure to exercise due care) can be morally blameworthy.
+        </p>
+         <p class="text-gray-600 mb-4">
+           <strong>C. Affects Others (Typically):</strong> Actions usually enter the moral sphere when they have significant consequences (harmful or beneficial) for others (moral patients).
+         </p>
+          <p class="text-gray-600 text-sm italic">
+             Note: Whether purely self-regarding actions (e.g., substance abuse, not developing talents) fall under morality is debated. Some views tie this to religious concepts (violating duties to God) or broader notions of self-harm or potential harm to society. Distinguishing purely moral assessment from religious or prudential assessment is important here.
+          </p>
+          <p class="font-semibold text-gray-700 mb-2 mt-4">In summary, a morally significant action typically involves:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+             <li>A moral agent (with choice).</li>
+             <li>Intention (or culpable negligence).</li>
+             <li>Significant consequences for self or others.</li>
+          </ul>
+       </div>
+
+      <!-- Slide 24: Why Be Moral? Introduction -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">3.6 Why Should We Be Moral?</h2>
+        <p class="text-gray-600 mb-4">
+          This fundamental question asks for justification: Why choose good/right over bad/wrong, especially when immorality might seem advantageous? Setting aside purely supernatural justifications, what secular reasons support being moral?
+        </p>
+        <p class="text-gray-600 mb-4">
+          The necessity of moral regulation for societal existence seems clear; humans are inherently social. As John Hospers suggests, morality involves rules designed to override self-interest when doing so benefits everyone collectively.
+        </p>
+       </div>
+
+       <!-- Slide 25: Arguments for Being Moral (Self-Interest & Tradition) -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Arguments for Being Moral (1)</h2>
+         <p class="font-semibold text-gray-700 mb-2">A. Argument from Enlightened Self-Interest:</p>
+         <p class="text-gray-600 mb-4">
+           It is generally in one's own long-term interest to live in a good, stable, cooperative society rather than a bad, chaotic one. If <em>everyone</em> follows moral rules (not stealing, lying, killing), each individual benefits from the resulting security and predictability. While distinct from ethical egoism (which solely prioritizes self), this argument appeals to the self-interested benefits derived from a generally moral environment (including avoiding punishment).
+         </p>
+          <p class="font-semibold text-gray-700 mb-2">B. Argument from Tradition and Law:</p>
+           <p class="text-gray-600">
+             Societies develop moral traditions and laws over long periods, embodying collective wisdom and effort aimed at regulating behavior for stability and well-being. Respect for this accumulated human experience provides a reason to adhere to established moral norms, alongside self-interest. However, relying solely on tradition can stifle critical questioning, which is essential for moral progress.
+           </p>
+       </div>
+
+       <!-- Slide 26: Argument for Being Moral (Common Needs) -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Arguments for Being Moral (2)</h2>
+         <p class="font-semibold text-gray-700 mb-2">C. Argument from Common Human Needs:</p>
+         <p class="text-gray-600 mb-4">
+           Humans share fundamental needs and desires for things like security, freedom, happiness, love, friendship, peace, and stability. Fulfilling these needs effectively requires social cooperation and adherence to moral principles that foster trust and prevent harm (e.g., prohibitions against killing, stealing, lying; principles promoting fairness and cooperation).
+         </p>
+          <p class="text-gray-600 mb-4 italic">
+             As John Hospers notes, morality is not identical to self-interest; conflicts can arise. Morality involves rules that sometimes require overriding immediate self-interest for the sake of a system beneficial to all.
+          </p>
+          <p class="text-gray-600">
+            Morality arises partly from recognizing our shared needs and the importance of cooperation for a fulfilling life. While these arguments might not convince everyone in every situation (especially when immorality seems personally advantageous and risk-free), they provide strong general justifications. Adhering to moral principles generally enables a more peaceful, stable, meaningful, and ultimately more satisfying life within a community.
+          </p>
+          <div class="activity-box">
+            <p class="font-semibold text-gray-700">Activity:</p>
+            <p class="italic text-gray-600 text-sm">Choose a specific ethical dilemma (personal or societal). Apply <em>all</em> the major ethical approaches discussed in Chapter 2 (Utilitarianism, Kantianism, Rights Theory, Virtue Ethics, Ross's Duties, etc.) to analyze it. Do the different approaches lead to the same or different conclusions? Which perspective(s) seem most helpful or illuminating for this particular dilemma? Did considering multiple perspectives increase your confidence in a potential resolution? Summarize your findings.</p>
+             <!-- Consolidated previous activity -->
+          </div>
+       </div>
+
+       <!-- Slide 27: Answering "Why Be Moral?" -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Answering "Why Be Moral?"</h2>
+         <p class="text-gray-600 mb-4">
+            Given societal decline and the allure of self-interest, why follow moral rules? Common motivations include self-respect, seeking social approval, avoiding punishment, divine command (for believers), and setting parental examples. While powerful for some, these don't universally compel moral behavior.
+         </p>
+         <p class="text-gray-600 font-semibold mb-2">The question has two parts:</p>
+            <ol class="list-decimal pl-6 text-gray-600 space-y-1 mb-4">
+               <li>Why does <em>society</em> need moral rules?</li>
+               <li>Why should <em>I</em> personally be moral?</li>
+            </ol>
+             <p class="text-gray-600 mb-4">
+               Hobbes argued society needs morality to avoid a "war of all against all." Moral rules, though restricting freedom, ultimately promote greater freedom and well-being for nearly everyone. They fulfill essential social functions:
+             </p>
+              <ol class="list-[lower-alpha] pl-6 text-gray-600 space-y-1 text-sm"> <!-- Smaller font -->
+                 <li>Prevent social collapse.</li>
+                 <li>Alleviate suffering.</li>
+                 <li>Promote human flourishing.</li>
+                 <li>Resolve conflicts justly.</li>
+                 <li>Enable assignment of responsibility (praise, blame, reward, punishment).</li>
+              </ol>
+       </div>
+
+      <!-- Slide 28: Conclusion: The Value of Morality -->
+       <div class="slide">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Conclusion: The Value of Morality</h2>
+         <p class="text-gray-600 mb-4">
+            Morality is fundamentally social. For the individual ("Why should <em>I</em> be moral?"), the answer often lies in recognizing that participating in a generally moral system, even if occasionally disadvantageous personally, yields greater long-term benefits and a more desirable form of life overall than the alternatives.
+         </p>
+         <p class="text-gray-600 mb-4">
+           Ethical reasoning provides the rationale for adopting and maintaining moral structures. Theories and principles offer foundational viewpoints for ethical analysis and guidance. Sound ethical decision-making requires rational procedures, respect for others, consideration of relevant factors, and a commitment to fairness.
+         </p>
+          <p class="text-gray-600">
+             As Aristotle emphasized, moral character isn't innate but developed through consistent practice. Understanding <em>why</em> morality is valuable provides motivation, much like understanding why medicine promotes health motivates taking it. Engaging with ethical theory clarifies the significance and benefits of striving for a moral life.
+          </p>
+       </div>
+
+      <!-- Slide 29: References -->
+        <div class="slide">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">References</h2>
+            <!-- Standardized reference format -->
+            <div class="text-xs text-gray-600 space-y-1 overflow-y-auto max-h-96">
+                <p class="ref-item">Barry, V. E. (1983). <em>Philosophy: A Text with Readings</em> (2nd ed.). Wadsworth Publishing.</p>
+                <p class="ref-item">Bonevac, D. (Ed.). (1999). <em>Today's Moral Issues: Classic and Contemporary Perspectives</em> (3rd ed.). Mayfield Publishing Company.</p>
+                <p class="ref-item">Boss, J. A. (1999). <em>Analyzing Moral Issues</em>. Mayfield Publishing Company.</p>
+                <p class="ref-item">Markkula Center for Applied Ethics. (1988). A Framework for Thinking Ethically. <em>Issues in Ethics</em>, <em>1</em>(2).</p> <!-- Corrected reference -->
+                <p class="ref-item">Thiroux, J. P. (1995). <em>Ethics: Theory and Practice</em> (5th ed.). Prentice Hall.</p>
+                <p class="ref-item">Titus, H. H. (1947). <em>Ethics for Today</em> (2nd ed.). American Book Company.</p>
+                <p class="ref-item">[Additional relevant references from Chapter 2 could also be included here if desired, e.g., Frankena, Guy, Madden].</p>
+             </div>
+        </div>
+
+    </div><!-- /#slides -->
+
+    <!-- Navigation Arrows -->
+    <div class="flex justify-between items-center mt-4 px-2">
+      <button id="prevSlide" class="bg-slate-200 text-slate-800 px-5 py-2 rounded-lg font-medium hover:bg-slate-300 transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed" disabled>&larr; Previous Slide</button>
+      <span id="slideCounter" class="text-slate-600 font-semibold text-sm">1 / 29</span>
+      <button id="nextSlide" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50">Next Slide &rarr;</button>
+    </div>
+  </div><!-- /.w-full -->
+
+  <div class="chapter-nav-strip mt-6">
+      <a href="chapter2mcie.html" class="chapter-nav-btn">&larr; Chapter 2: Approaches to Ethics</a>
+      <span class="chapter-nav-current">Chapter 3 of 5</span>
+      <a href="chapter4mcie.html" class="chapter-nav-btn">Chapter 4: State, Government &amp; Citizenship &rarr;</a>
+  </div>
+</main>
+
+<!-- Comprehensive Modern Academic Footer -->
+<footer class="modern-footer" id="main-footer">
+    <div class="footer-top">
+        <div class="footer-col">
+            <h4>Social Science Department</h4>
+            <p>
+                Addis Ababa Science and Technology University (AASTU). Fostering critical thinking, civic responsibility, cultural analysis, and ethical reasoning across scientific and engineering disciplines.
+            </p>
+            <p style="color: #94a3b8; font-size: 0.85rem;">
+                College of Social Sciences and Humanities<br>
+                Addis Ababa, Ethiopia
+            </p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Department</a></li>
+                <li><a href="courses.html">Academic Courses</a></li>
+                <li><a href="staff.html">Faculty &amp; Staff</a></li>
+                <li><a href="blog.html">Academic Essays &amp; Blog</a></li>
+                <li><a href="gallery.html">Campus Photo Gallery</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Programs &amp; Modules</h4>
+            <ul class="footer-links">
+                <li><a href="mcie1012mainpage.html">Moral &amp; Civic Education (MCIE 1012)</a></li>
+                <li><a href="logic.html">Logic &amp; Critical Thinking (PHIL 1009)</a></li>
+                <li><a href="courses.html">All Department Courses</a></li>
+                <li><a href="map.html">Interactive Site Map</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Department Contact</h4>
+            <ul class="contact-list-footer">
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span>Kilinto Campus, Akaki-Kality Sub-City, Addis Ababa, Ethiopia</span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <div>
+                &copy; <span class="current-year">2026</span> Social Science Department, Addis Ababa Science and Technology University (AASTU). All rights reserved.
+            </div>
+            <div class="footer-legal-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="map.html">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const navToggler = document.getElementById('navbar-toggler');
+    const navMenu = document.getElementById('navbar-menu');
+    if (navToggler && navMenu) {
+        navToggler.addEventListener('click', () => navMenu.classList.toggle('show'));
+    }
+    document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+</script>
+
+  <script>
+    // Script remains unchanged, starting at index 0 (slide 1)
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+    const slideCounter = document.getElementById('slideCounter');
+    let currentSlide = 0;
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      prevButton.disabled = currentSlide === 0;
+      nextButton.disabled = currentSlide === slides.length - 1;
+      slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+       if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+            return;
+        }
+      if (event.key === 'ArrowLeft' && currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      } else if (event.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    });
+
+    updateSlide(); // Initialize the first slide and counter
+  </script>
+</body>
+</html>
