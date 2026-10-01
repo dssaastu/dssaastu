@@ -33,16 +33,16 @@
                 <p><strong>Department of Social Sciences at AASTU:</strong></p>
                 <p>We are an integral department within Addis Ababa Science and Technology University (AASTU), delivering foundational humanities, ethics, critical reasoning, and social inquiry across all science and engineering disciplines.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="about.html" class="aastu-action-link-btn">Read About Us &rarr;</a>
-                    <a href="courses.html" class="aastu-action-link-btn">Explore Courses &rarr;</a>
+                    <a href="/about/" class="aastu-action-link-btn">Read About Us &rarr;</a>
+                    <a href="/courses/" class="aastu-action-link-btn">Explore Courses &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>የአ.አ.ሳ.ቴ.ዩ ማህበራዊ ሳይንስ ትምህርት ክፍል፡</strong></p>
                 <p>በትምህርት ክፍላችን በኢንጂነሪንግ እና ሳይንስ ተማሪዎች ዘንድ ሂሳዊ አስተሳሰብን፣ ስነ-ምግባርን፣ እና ማህበራዊ እውቀቶችን ለማዳበር የተቋቋመ የዩኒቨርሲቲው ወሳኝ ክፍል ነው።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="about.html" class="aastu-action-link-btn">ስለ እኛ ሙሉ መረጃ &rarr;</a>
-                    <a href="courses.html" class="aastu-action-link-btn">ኮርሶችን ይመልከቱ &rarr;</a>
+                    <a href="/about/" class="aastu-action-link-btn">ስለ እኛ ሙሉ መረጃ &rarr;</a>
+                    <a href="/courses/" class="aastu-action-link-btn">ኮርሶችን ይመልከቱ &rarr;</a>
                 </div>
             `
         },
@@ -57,7 +57,7 @@
                 <p><strong>🎯 Mission:</strong> To deliver high-impact humanistic and social education equipping engineers and scientists with critical reasoning, constitutional awareness, and ethical perspectives.</p>
                 <p><strong>🌟 Vision:</strong> To be an African center of excellence recognized for integrating social sciences with STEM education, advancing interdisciplinary research, and nurturing globally competitive innovators.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="about.html" class="aastu-action-link-btn">Full Mission & Heritage &rarr;</a>
+                    <a href="/about/" class="aastu-action-link-btn">Full Mission & Heritage &rarr;</a>
                 </div>
             `,
             answer_am: `
@@ -65,7 +65,7 @@
                 <p><strong>🎯 ተልዕኮ፡</strong> በኢንጂነሪንግ እና ቴክኖሎጂ ተማሪዎች ዘንድ ሂሳዊ አስተሳሰብን፣ ሕገ-መንግስታዊ ንቃተ-ህሊናን እና ስነ-ምግባራዊ አመራርን ማዳበር።</p>
                 <p><strong>🌟 ራዕይ፡</strong> ማህበራዊ ሳይንስን ከቴክኖሎጂ ትምህርት ጋር በማቀናጀት በአፍሪካ ግንባር ቀደም የልህቀት ማዕከል መሆን።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="about.html" class="aastu-action-link-btn">ሙሉ ዝርዝር ይመልከቱ &rarr;</a>
+                    <a href="/about/" class="aastu-action-link-btn">ሙሉ ዝርዝር ይመልከቱ &rarr;</a>
                 </div>
             `
         },
@@ -80,15 +80,15 @@
                 <p>Covers basic concepts of logic, deductive vs. inductive arguments, categorical propositions, standard Venn diagrams, traditional square of opposition, and formal/informal fallacies.</p>
                 <p>Lecture slides, interactive chapter tests, and comprehensive reading materials are available on the portal.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="logic.html" class="aastu-action-link-btn">Open Logic Portal &rarr;</a>
-                    <a href="ch1phil1009.html" class="aastu-action-link-btn">Chapter 1 Slides &rarr;</a>
+                    <a href="/logic/" class="aastu-action-link-btn">Open Logic Portal &rarr;</a>
+                    <a href="/ch1phil1009/" class="aastu-action-link-btn">Chapter 1 Slides &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>PHIL 1009: ሎጂክ እና ሂሳዊ አስተሳሰብ፡</strong></p>
                 <p>ይህ ኮርስ ስለ መሰረታዊ የሎጂክ ጽንሰ-ሀሳቦች፣ የአመክንዮ አወቃቀር፣ ምድባዊ አረፍተ-ነገሮች (Categorical Propositions) እና የክርክር ስህተቶች (Fallacies) ያስተምራል።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="logic.html" class="aastu-action-link-btn">የሎጂክ ፖርታል ይክፈቱ &rarr;</a>
+                    <a href="/logic/" class="aastu-action-link-btn">የሎጂክ ፖርታል ይክፈቱ &rarr;</a>
                 </div>
             `
         },
@@ -103,16 +103,16 @@
                 <p>Explores applied ethics, normative moral theories, constitutional law, human rights frameworks, civic duties, and democratic state-building in Ethiopia.</p>
                 <p>Interactive self-test quizzes and chapter study materials are available.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="mcie1012mainpage.html" class="aastu-action-link-btn">Open Civics Portal &rarr;</a>
-                    <a href="mcie1012ch1q.html" class="aastu-action-link-btn">Take Civics Quiz &rarr;</a>
+                    <a href="/mcie1012mainpage/" class="aastu-action-link-btn">Open Civics Portal &rarr;</a>
+                    <a href="/mcie1012ch1q/" class="aastu-action-link-btn">Take Civics Quiz &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>MCIE 1012: ስነ-ምግባር እና የዜግነት ትምህርት፡</strong></p>
                 <p>የስነ-ምግባር ፅንሰ-ሀሳቦችን፣ የሕገ-መንግስት መሰረቶችን፣ ሰብአዊ መብቶችን እና በኢትዮጵያ ያለውን የዴሞክራሲ ስርዓት ግንባታ ያብራራል።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="mcie1012mainpage.html" class="aastu-action-link-btn">የስነ-ዜጋ ፖርታል &rarr;</a>
-                    <a href="mcie1012ch1q.html" class="aastu-action-link-btn">የልምምድ ፈተና &rarr;</a>
+                    <a href="/mcie1012mainpage/" class="aastu-action-link-btn">የስነ-ዜጋ ፖርታል &rarr;</a>
+                    <a href="/mcie1012ch1q/" class="aastu-action-link-btn">የልምምድ ፈተና &rarr;</a>
                 </div>
             `
         },
@@ -134,7 +134,7 @@
                     <li><strong>GLTR 1001:</strong> Global Trends & Geopolitics</li>
                 </ul>
                 <div class="aastu-bot-action-links">
-                    <a href="courses.html" class="aastu-action-link-btn">Browse Full Syllabi &rarr;</a>
+                    <a href="/courses/" class="aastu-action-link-btn">Browse Full Syllabi &rarr;</a>
                 </div>
             `,
             answer_am: `
@@ -149,7 +149,7 @@
                     <li><strong>GLTR 1001:</strong> ዓለም አቀፍ አዝማሚያዎች (Global Trends)</li>
                 </ul>
                 <div class="aastu-bot-action-links">
-                    <a href="courses.html" class="aastu-action-link-btn">ሁሉንም ኮርሶች ይመልከቱ &rarr;</a>
+                    <a href="/courses/" class="aastu-action-link-btn">ሁሉንም ኮርሶች ይመልከቱ &rarr;</a>
                 </div>
             `
         },
@@ -171,14 +171,14 @@
                     <li><strong>Dr. Teshome Abera:</strong> Sociology (0911698564)</li>
                 </ul>
                 <div class="aastu-bot-action-links">
-                    <a href="staff.html" class="aastu-action-link-btn">Open Faculty Profiles &rarr;</a>
+                    <a href="/staff/" class="aastu-action-link-btn">Open Faculty Profiles &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>የትምህርት ክፍሉ መምህራን፡</strong></p>
                 <p>በፍልስፍና፣ ፌዴራል ጥናት፣ ሰላምና ጸጥታ፣ አፍሪካ ጥናት እና ሶሲዮሎጂ ዘርፍ ከፍተኛ ልምድ ያላቸው ምሁራን ያስተምራሉ።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="staff.html" class="aastu-action-link-btn">ሙሉ የመምህራን ዝርዝር &rarr;</a>
+                    <a href="/staff/" class="aastu-action-link-btn">ሙሉ የመምህራን ዝርዝር &rarr;</a>
                 </div>
             `
         },
@@ -194,7 +194,7 @@
                 <p>✉️ <strong>Official Email:</strong> <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
                 <p>You can also submit an official direct inquiry via our web contact form.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="contact.html" class="aastu-action-link-btn">Go to Contact Form &rarr;</a>
+                    <a href="/contact/" class="aastu-action-link-btn">Go to Contact Form &rarr;</a>
                 </div>
             `,
             answer_am: `
@@ -202,7 +202,7 @@
                 <p>📍 <strong>አድራሻ፡</strong> አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ (AASTU)፣ ኪሊንጦ ካምፓስ፣ አዲስ አበባ።</p>
                 <p>✉️ <strong>ኢሜይል፡</strong> <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
                 <div class="aastu-bot-action-links">
-                    <a href="contact.html" class="aastu-action-link-btn">የመገናኛ ቅጽ ይክፈቱ &rarr;</a>
+                    <a href="/contact/" class="aastu-action-link-btn">የመገናኛ ቅጽ ይክፈቱ &rarr;</a>
                 </div>
             `
         },
@@ -216,14 +216,14 @@
                 <p><strong>Academic Blog & Faculty Essays:</strong></p>
                 <p>Explore scholarly thought pieces published by our faculty, covering topics like AI & Philosophy, Nile Geopolitics, The Post-Truth Age, Modernity, and Ethics in Technology.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="blog.html" class="aastu-action-link-btn">Read Department Blog &rarr;</a>
+                    <a href="/blog/" class="aastu-action-link-btn">Read Department Blog &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>አካዳሚክ ብሎግ እና የጥናት ፅሁፎች፡</strong></p>
                 <p>በመምህራኖቻችን የተጻፉ የፍልስፍና፣ የቴክኖሎጂ ስነ-ምግባር፣ ዓባይ እና ጂኦፖለቲክስን የተመለከቱ ምርምሮችና ፅሁፎችን ያንብቡ።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="blog.html" class="aastu-action-link-btn">ብሎጉን ያንብቡ &rarr;</a>
+                    <a href="/blog/" class="aastu-action-link-btn">ብሎጉን ያንብቡ &rarr;</a>
                 </div>
             `
         },
@@ -237,14 +237,14 @@
                 <p><strong>Campus Life & Media Gallery:</strong></p>
                 <p>View high-resolution photo highlights of AASTU lecture halls, academic symposia, university library, graduation ceremonies, and student activities.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="gallery.html" class="aastu-action-link-btn">View Gallery &rarr;</a>
+                    <a href="/gallery/" class="aastu-action-link-btn">View Gallery &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>የፎቶ ጋለሪ፡</strong></p>
                 <p>የአ.አ.ሳ.ቴ.ዩ ካምፓስ ህይወት፣ የቤተ-መጽሐፍት፣ የሴሚናር እና የተማሪዎችን ፎቶዎች በጋለሪ ገጻችን ይመልከቱ።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="gallery.html" class="aastu-action-link-btn">ጋለሪውን ይጎብኙ &rarr;</a>
+                    <a href="/gallery/" class="aastu-action-link-btn">ጋለሪውን ይጎብኙ &rarr;</a>
                 </div>
             `
         },
@@ -258,16 +258,16 @@
                 <p><strong>Interactive Tests & Quizzes:</strong></p>
                 <p>We provide instant self-grading interactive chapter quizzes with immediate score calculation and answer explanations for both <strong>PHIL 1009 Logic</strong> and <strong>MCIE 1012 Civics</strong>.</p>
                 <div class="aastu-bot-action-links">
-                    <a href="mcie1012ch1q.html" class="aastu-action-link-btn">Civics Ch 1 Quiz &rarr;</a>
-                    <a href="logic.html" class="aastu-action-link-btn">Logic Chapter Tests &rarr;</a>
+                    <a href="/mcie1012ch1q/" class="aastu-action-link-btn">Civics Ch 1 Quiz &rarr;</a>
+                    <a href="/logic/" class="aastu-action-link-btn">Logic Chapter Tests &rarr;</a>
                 </div>
             `,
             answer_am: `
                 <p><strong>የልምምድ ፈተናዎች፡</strong></p>
                 <p>ለሎጂክ (PHIL 1009) እና ለስነ-ዜጋ (MCIE 1012) ራስን መመዘኛ በይነ-መረባዊ ጥያቄዎችና መልሶች ተዘጋጅተዋል።</p>
                 <div class="aastu-bot-action-links">
-                    <a href="mcie1012ch1q.html" class="aastu-action-link-btn">የስነ-ዜጋ ጥያቄዎች &rarr;</a>
-                    <a href="logic.html" class="aastu-action-link-btn">የሎጂክ ፖርታል &rarr;</a>
+                    <a href="/mcie1012ch1q/" class="aastu-action-link-btn">የስነ-ዜጋ ጥያቄዎች &rarr;</a>
+                    <a href="/logic/" class="aastu-action-link-btn">የሎጂክ ፖርታል &rarr;</a>
                 </div>
             `
         }
@@ -300,8 +300,8 @@
                 <p>For detailed inquiries, grade issues, or academic advising, please contact the department directly:</p>
                 <p>✉️ <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
                 <div class="aastu-bot-action-links">
-                    <a href="contact.html" class="aastu-action-link-btn">Open Inquiry Form &rarr;</a>
-                    <a href="courses.html" class="aastu-action-link-btn">View All Courses &rarr;</a>
+                    <a href="/contact/" class="aastu-action-link-btn">Open Inquiry Form &rarr;</a>
+                    <a href="/courses/" class="aastu-action-link-btn">View All Courses &rarr;</a>
                 </div>
             `
         },
@@ -321,8 +321,8 @@
                 <p>ለተጨማሪ አካዳሚክ መረጃ ወይም አስተያየት እባክዎን በቀጥታ በኢሜይል ያነጋግሩን፡</p>
                 <p>✉️ <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></p>
                 <div class="aastu-bot-action-links">
-                    <a href="contact.html" class="aastu-action-link-btn">የመገናኛ ቅጽ &rarr;</a>
-                    <a href="courses.html" class="aastu-action-link-btn">ኮርሶችን ይመልከቱ &rarr;</a>
+                    <a href="/contact/" class="aastu-action-link-btn">የመገናኛ ቅጽ &rarr;</a>
+                    <a href="/courses/" class="aastu-action-link-btn">ኮርሶችን ይመልከቱ &rarr;</a>
                 </div>
             `
         }

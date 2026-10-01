@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCIE 1012 Chapter 1 Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        h2 {
+            text-align: center;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: left;
+        }
+        .options button:hover {
+            background: #ccc;
+        }
+        .options button.answered {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .options button.correct-choice {
+            background-color: #90ee90;
+            color: black;
+        }
+        .options button.wrong-choice {
+            background-color: #ffcccb;
+            color: black;
+        }
+        .feedback {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .feedback.correct {
+            color: green;
+        }
+        .feedback.wrong {
+            color: red;
+        }
+        .short-answer-section {
+            margin-top: 40px;
+        }
+        .short-answer {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .submit-btn, .close-btn, .toggle-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover, .close-btn:hover, .toggle-btn:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
+        }
+        .answer {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>Moral and Citizenship Education (MCIE 1012) - Chapter 1 Practice Questions</h2>
+    <form id="quizForm">
+        <div id="quiz"></div>
+
+        <div class="short-answer-section">
+            <h2>Short Answer Questions</h2>
+            <div id="short-answers"></div>
+        </div>
+        <button type="submit" class="submit-btn">Grade My Answers</button>
+    </form>
+    <div id="results" class="results"></div>
+    
+</div>
+
+<script>
+    const questions = [
+        { 
+            question: "What is the primary focus of civic education?", 
+            choices: [
+                "Studying the rights and responsibilities of citizens",
+                "Teaching professional skills for the job market",
+                "Promoting cultural diversity in schools",
+                "Encouraging economic development"
+            ], 
+            answer: "Studying the rights and responsibilities of citizens"
+        },
+        { 
+            question: "Who argued that citizens should be educated to suit the constitution of a state?", 
+            choices: [
+                "John Stuart Mill",
+                "Socrates",
+                "Aristotle",
+                "Patrick"
+            ], 
+            answer: "Aristotle"
+        },
+        { 
+            question: "How does John Stuart Mill describe the relationship between a society and its citizens?", 
+            choices: [
+                "A society progresses when it isolates its citizens",
+                "Citizens should focus only on personal gain",
+                "Society thrives without moral education",
+                "A peaceful society depends on developing good citizens"
+            ], 
+            answer: "A peaceful society depends on developing good citizens"
+        },
+        { 
+            question: "Which of the following is NOT a term used to describe civic education across different countries?", 
+            choices: [
+                "Right Education (South Africa)",
+                "Citizenship Education (USA and Germany)",
+                "Ethics and Law (Ethiopia)",
+                "Citizenship and Character Education (Singapore)"
+            ], 
+            answer: "Ethics and Law (Ethiopia)"
+        },
+        { 
+            question: "What does Patrick (1986) define civic education as?", 
+            choices: [
+                "Knowledge of constitutions, principles, values, and their application",
+                "Knowledge of economic systems",
+                "Training in ethical decision-making",
+                "Development of interpersonal skills"
+            ], 
+            answer: "Knowledge of constitutions, principles, values, and their application"
+        },
+        { 
+            question: "What is civic education primarily a way of learning for, per UNDP (2004)?", 
+            choices: [
+                "Effective participation in democratic and development processes",
+                "Acquiring technical skills for employment",
+                "Understanding cultural traditions",
+                "Promoting religious values"
+            ], 
+            answer: "Effective participation in democratic and development processes"
+        },
+        { 
+            question: "What distinguishes a maximal concept of civic education from a minimal one?", 
+            choices: [
+                "It includes knowledge, values, and skills for active participation",
+                "It focuses only on classroom teaching",
+                "It avoids interactive teaching methods",
+                "It emphasizes teacher-led instruction"
+            ], 
+            answer: "It includes knowledge, values, and skills for active participation"
+        },
+        { 
+            question: "What is ethics described as?", 
+            choices: [
+                "A set of laws enforced by the state",
+                "A practical guide to citizenship",
+                "A study of political systems",
+                "A branch of philosophy understanding moral beliefs and actions"
+            ], 
+            answer: "A branch of philosophy understanding moral beliefs and actions"
+        },
+        { 
+            question: "How is ethics differentiated from morality?", 
+            choices: [
+                "Ethics is the study of moral conduct, while morality is the conduct itself",
+                "Ethics is about personal beliefs, while morality is about laws",
+                "Ethics applies to individuals, while morality applies to groups",
+                "Ethics is less important than morality in education"
+            ], 
+            answer: "Ethics is the study of moral conduct, while morality is the conduct itself"
+        },
+        { 
+            question: "What type of questions does ethics primarily address?", 
+            choices: [
+                "What people would do in a situation",
+                "How people feel about laws",
+                "Why people break rules",
+                "What people ought to do in a situation"
+            ], 
+            answer: "What people ought to do in a situation"
+        },
+        { 
+            question: "What is the significance of discussing morality, per Socrates?", 
+            choices: [
+                "It is a small matter of personal choice",
+                "It is irrelevant to daily life",
+                "It only applies to legal systems",
+                "It determines how we ought to live"
+            ], 
+            answer: "It determines how we ought to live"
+        },
+        { 
+            question: "What is morality defined as?", 
+            choices: [
+                "A set of laws enforced by the government",
+                "A code of conduct guiding human actions as right or wrong",
+                "A philosophical theory about ethics",
+                "A professional code for businesses"
+            ], 
+            answer: "A code of conduct guiding human actions as right or wrong"
+        },
+        { 
+            question: "Why might morality be ambiguous in a multicultural society like Ethiopia?", 
+            choices: [
+                "Because of diverse ethnic groups defining it differently",
+                "Due to uniform cultural values",
+                "Due to a lack of education",
+                "Because it is enforced by a single law"
+            ], 
+            answer: "Because of diverse ethnic groups defining it differently"
+        },
+        { 
+            question: "What is one key difference between ethics and law?", 
+            choices: [
+                "Ethics is always illegal, while law is ethical",
+                "Some illegal actions may not be unethical, and vice versa",
+                "Laws are broader than ethics",
+                "Ethics is enforced by the government, unlike law"
+            ], 
+            answer: "Some illegal actions may not be unethical, and vice versa"
+        },
+        { 
+            question: "Which of the following is an example of an unethical but legal action?", 
+            choices: [
+                "Speeding to save a life",
+                "Lying under oath",
+                "Lying in a casual conversation",
+                "Stealing to feed a family"
+            ], 
+            answer: "Lying in a casual conversation"
+        },
+        { 
+            question: "What is the main goal of moral and civic education in Ethiopian higher education?", 
+            choices: [
+                "To teach students technical skills",
+                "To enforce religious principles",
+                "To promote economic competition",
+                "To educate students about democratic culture and ethical values"
+            ], 
+            answer: "To educate students about democratic culture and ethical values"
+        },
+        { 
+            question: "Why is a balanced understanding of rights and duties important?", 
+            choices: [
+                "It ensures citizens focus only on their rights",
+                "It helps create a society where rights and responsibilities coexist",
+                "It eliminates the need for laws",
+                "It prioritizes duties over rights"
+            ], 
+            answer: "It helps create a society where rights and responsibilities coexist"
+        },
+        { 
+            question: "What does 'one’s right implies the other’s duty' mean, per Sastry et al. (2011)?", 
+            choices: [
+                "Rights exist without corresponding duties",
+                "Duties are more important than rights",
+                "Every right imposes a duty on others to respect it",
+                "Rights only apply to the state"
+            ], 
+            answer: "Every right imposes a duty on others to respect it"
+        },
+        { 
+            question: "What is a participant political culture, as defined by Almond and Verba (1963)?", 
+            choices: [
+                "Citizens are passive and detached from the political system",
+                "Citizens focus only on family advantages",
+                "Citizens reject democratic principles",
+                "Citizens are highly engaged and active in the political process"
+            ], 
+            answer: "Citizens are highly engaged and active in the political process"
+        },
+        { 
+            question: "Which political culture is most compatible with democratic structures?", 
+            choices: [
+                "Parochial culture",
+                "Subject culture",
+                "Participant culture",
+                "Authoritarian culture"
+            ], 
+            answer: "Participant culture"
+        },
+        { 
+            question: "What is a key challenge to democratization?", 
+            choices: [
+                "Lack of technological advancement",
+                "Citizens prioritizing individual interests over social norms",
+                "Excessive government control",
+                "Over-participation in voting"
+            ], 
+            answer: "Citizens prioritizing individual interests over social norms"
+        },
+        { 
+            question: "What does active citizenship include beyond political participation?", 
+            choices: [
+                "Economic investments",
+                "Socio-cultural and environmental activities",
+                "Religious practices",
+                "Legal reforms"
+            ], 
+            answer: "Socio-cultural and environmental activities"
+        },
+        { 
+            question: "Why is relevant knowledge alone insufficient for citizens?", 
+            choices: [
+                "It must be paired with skills and positive attitudes",
+                "It is outdated in modern society",
+                "It conflicts with ethical principles",
+                "It only benefits the state"
+            ], 
+            answer: "It must be paired with skills and positive attitudes"
+        },
+        { 
+            question: "What social ill does civic education aim to address among youth?", 
+            choices: [
+                "Economic inequality",
+                "Political apathy and anti-social behavior",
+                "Lack of technical skills",
+                "Cultural assimilation"
+            ], 
+            answer: "Political apathy and anti-social behavior"
+        },
+        { 
+            question: "How does civics and ethics foster intercultural societies?", 
+            choices: [
+                "By enforcing uniform cultural practices",
+                "By ignoring cultural diversity",
+                "By promoting dialogue and interdependence among cultures",
+                "By prioritizing one culture over others"
+            ], 
+            answer: "By promoting dialogue and interdependence among cultures"
+        },
+        { 
+            question: "What is a key focus of civics and ethics in promoting inclusiveness?", 
+            choices: [
+                "Empowering only women in politics",
+                "Recognizing gender differences while ensuring equity",
+                "Focusing solely on public policy",
+                "Excluding private sphere concerns"
+            ], 
+            answer: "Recognizing gender differences while ensuring equity"
+        },
+        { 
+            question: "How can civics and ethics contribute to peace-building?", 
+            choices: [
+                "By encouraging militarization",
+                "By developing competencies for conflict resolution and dialogue",
+                "By ignoring global conflicts",
+                "By promoting isolationism"
+            ], 
+            answer: "By developing competencies for conflict resolution and dialogue"
+        },
+        { 
+            question: "Which core value does moral and civic education seek to promote in students?", 
+            choices: [
+                "Competition",
+                "Respect for diversity",
+                "Individualism",
+                "Obedience to authority"
+            ], 
+            answer: "Respect for diversity"
+        },
+        { 
+            question: "What does Aristotle mean by 'Educating the mind without educating the heart is no education at all'?", 
+            choices: [
+                "Education should focus only on intellectual growth",
+                "Emotions are irrelevant to learning",
+                "Moral education is essential alongside intellectual development",
+                "Technical skills outweigh ethical values"
+            ], 
+            answer: "Moral education is essential alongside intellectual development"
+        },
+        { 
+            question: "What is the ultimate aim of teaching civics and ethics?", 
+            choices: [
+                "Producing economically successful citizens",
+                "Creating competent, responsible citizens with high moral standards",
+                "Enforcing strict legal compliance",
+                "Promoting uniform cultural values"
+            ], 
+            answer: "Creating competent, responsible citizens with high moral standards"
+        }
+    ];
+
+    const shortAnswerQuestions = [
+        { 
+            question: "Define civic education in your own words.", 
+            keywords: ['rights', 'responsibilities', 'citizens', 'democratic', 'participation', 'values'],
+            modelAnswer: "Civic education is the process of teaching individuals about their rights and responsibilities as citizens, aiming to prepare them for active participation in a democratic society while fostering values like tolerance and respect."
+        },
+        { 
+            question: "Explain one key difference between ethics and law.", 
+            keywords: ['ethics', 'moral', 'law', 'legal', 'enforced', 'ought'],
+            modelAnswer: "One key difference is that ethics focuses on what one ought to do based on moral principles, while law is a formal system enforced by the state; an action can be legal but unethical (e.g., lying casually) or illegal but ethical (e.g., speeding to save a life)."
+        },
+        { 
+            question: "Why is moral and civic education important in a multicultural society like Ethiopia?", 
+            keywords: ['moral', 'civic', 'multicultural', 'Ethiopia', 'harmony', 'diversity'],
+            modelAnswer: "It promotes shared moral values and democratic principles, fostering harmony and integrity among diverse ethnic groups with differing cultural perspectives on morality."
+        },
+        { 
+            question: "What is the significance of a participant political culture for democracy?", 
+            keywords: ['participant', 'political', 'culture', 'democracy', 'engagement', 'active'],
+            modelAnswer: "A participant political culture encourages active citizen engagement in the political process, strengthening democracy by ensuring accountability and informed participation beyond just voting."
+        },
+        { 
+            question: "How does civics and ethics education address youth social ills?", 
+            keywords: ['civics', 'ethics', 'youth', 'social', 'apathy', 'responsibility'],
+            modelAnswer: "It addresses youth social ills like political apathy and anti-social behavior by instilling relevant knowledge, skills, and positive attitudes, encouraging active citizenship and responsibility."
+        }
+    ];
+
+    let mcqScores = {}; // Store MCQ scores as they're answered
+
+    function loadQuiz() {
+        const quizDiv = document.getElementById("quiz");
+        quizDiv.innerHTML = "";
+
+        questions.forEach((q, index) => {
+            const questionBlock = document.createElement("div");
+            questionBlock.style.marginBottom = "20px";
+
+            const questionElement = document.createElement("div");
+            questionElement.classList.add("question");
+            questionElement.innerText = `${index + 1}. ${q.question}`;
+            questionBlock.appendChild(questionElement);
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            // Initialize score to 0 for this question
+            mcqScores[index] = 0;
+
+            q.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.type = "button"; // Prevent form submission
+                button.innerText = choice;
+                button.dataset.index = index;
+                button.dataset.choice = choice;
+                button.onclick = function() {
+                    // Remove previous feedback
+                    this.querySelectorAll('.feedback').forEach(span => span.remove());
+
+                    // Disable all buttons in the group and remove previous styling
+                    const allButtonsInGroup = optionsDiv.querySelectorAll('button');
+                    allButtonsInGroup.forEach(btn => {
+                        btn.classList.add('answered');
+                        btn.classList.remove('correct-choice', 'wrong-choice');
+                        btn.style.color = '';
+                        btn.style.fontWeight = '';
+                    });
+
+                    const feedbackSpan = document.createElement('span');
+                    feedbackSpan.classList.add('feedback');
+
+                    if (choice === q.answer) {
+                        this.classList.add('correct-choice');
+                        feedbackSpan.classList.add('correct');
+                        feedbackSpan.innerText = 'Correct';
+                        mcqScores[index] = 1; // Award score immediately when correct
+                    } else {
+                        this.classList.add('wrong-choice');
+                        feedbackSpan.classList.add('wrong');
+                        feedbackSpan.innerText = 'Wrong';
+                        mcqScores[index] = 0; // Ensure score is 0 if wrong
+                        // Highlight the correct answer
+                        allButtonsInGroup.forEach(btn => {
+                            if (btn.innerText === q.answer) {
+                                btn.classList.add('correct-choice');
+                            }
+                        });
+                    }
+                    this.appendChild(feedbackSpan);
+                };
+                optionsDiv.appendChild(button);
+            });
+
+            questionBlock.appendChild(optionsDiv);
+            quizDiv.appendChild(questionBlock);
+        });
+    }
+
+    function loadShortAnswers() {
+        const shortAnswerDiv = document.getElementById("short-answers");
+        shortAnswerDiv.innerHTML = "";
+
+        shortAnswerQuestions.forEach((sa, index) => {
+            const saElement = document.createElement("div");
+            saElement.classList.add("short-answer");
+
+            const questionP = document.createElement("p");
+            questionP.innerText = `${index + 1}. ${sa.question}`;
+            saElement.appendChild(questionP);
+
+            const answerTextarea = document.createElement("textarea");
+            answerTextarea.id = `answer${index}`;
+            answerTextarea.rows = 4;
+            answerTextarea.placeholder = "Type your answer here...";
+            saElement.appendChild(answerTextarea);
+
+            const toggleButton = document.createElement("button");
+            toggleButton.classList.add("toggle-btn");
+            toggleButton.id = `toggle${index}`;
+            toggleButton.innerText = "View Answer";
+            toggleButton.style.display = "none"; // Hidden until graded
+            toggleButton.onclick = function() {
+                const answerDiv = saElement.querySelector(".answer");
+                if (answerDiv.style.display === "block") {
+                    answerDiv.style.display = "none";
+                    toggleButton.innerText = "View Answer";
+                } else {
+                    answerDiv.style.display = "block";
+                    toggleButton.innerText = "Hide Answer";
+                }
+            };
+            saElement.appendChild(toggleButton);
+
+            const answerDiv = document.createElement("div");
+            answerDiv.classList.add("answer");
+            answerDiv.id = `modelAnswer${index}`;
+            answerDiv.innerText = sa.modelAnswer;
+            saElement.appendChild(answerDiv);
+
+            shortAnswerDiv.appendChild(saElement);
+        });
+    }
+
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let totalScore = 0;
+        const maxScorePerQuestion = 1;
+        const totalQuestions = questions.length + shortAnswerQuestions.length;
+        const resultsDiv = document.getElementById('results');
+        let resultsHTML = "<h3>Your Results</h3>";
+
+        // Grade MCQs
+        questions.forEach((q, index) => {
+            totalScore += mcqScores[index]; // Add the pre-calculated score
+            resultsHTML += `<p>MCQ ${index + 1} Score: ${mcqScores[index]}/1</p>`;
+        });
+
+        // Grade Short Answers
+        shortAnswerQuestions.forEach((sa, index) => {
+            const answer = document.getElementById(`answer${index}`).value.toLowerCase();
+            let score = 0;
+            const pointsPerKeyword = maxScorePerQuestion / sa.keywords.length;
+
+            sa.keywords.forEach(keyword => {
+                if (answer.includes(keyword)) {
+                    score += pointsPerKeyword;
+                }
+            });
+
+            score = Math.min(score, maxScorePerQuestion); // Cap at 1
+            totalScore += score;
+            resultsHTML += `<p>Short Answer ${index + 1} Score: ${score.toFixed(2)}/1</p>`;
+
+            // Show "View Answer" button after grading
+            const toggleButton = document.getElementById(`toggle${index}`);
+            toggleButton.style.display = "inline-block";
+        });
+
+        // Calculate average as a percentage out of 100
+        const averageScore = ((totalScore / totalQuestions) * 100).toFixed(2);
+        resultsHTML += `<p><strong>Total Score: ${totalScore.toFixed(2)}/${totalQuestions}</strong></p>`;
+        resultsHTML += `<p><strong>Average Score: ${averageScore}/100</strong></p>`;
+        resultsHTML += `<p>Feedback: ${getFeedback(totalScore / totalQuestions)}</p>`;
+
+        resultsDiv.innerHTML = resultsHTML;
+        resultsDiv.style.display = "block";
+    });
+
+    function getFeedback(score) {
+        if (score >= 0.8) return "Excellent! You’ve demonstrated a strong understanding.";
+        if (score >= 0.6) return "Good effort! Include more key concepts for a higher score.";
+        if (score >= 0.4) return "Fair attempt. Review the material and try again.";
+        return "Needs improvement. Focus on including key terms and ideas.";
+    }
+
+    loadQuiz();
+    loadShortAnswers();
+</script>
+
+</body>
+</html>

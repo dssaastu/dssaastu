@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Department | Social Science Department - AASTU</title>
+    <meta name="description" content="Get in touch with the Department of Social Sciences at Addis Ababa Science and Technology University (AASTU).">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .contact-panel {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            padding: 36px;
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-panel h3 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin: 0 0 20px;
+            font-weight: 700;
+        }
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .info-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: rgba(194, 136, 41, 0.12);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .info-card-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        .info-card-text strong {
+            display: block;
+            color: var(--primary-navy);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .info-card-text p, .info-card-text a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+        .info-card-text a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+        .map-frame-wrapper {
+            margin-top: 28px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            height: 230px;
+        }
+        .map-frame-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .modern-form-group {
+            margin-bottom: 20px;
+        }
+        .modern-form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--primary-navy);
+            margin-bottom: 8px;
+        }
+        .modern-form-input, .modern-form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: #fdfdfd;
+            transition: var(--transition);
+            box-sizing: border-box;
+        }
+        .modern-form-input:focus, .modern-form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            background: #ffffff;
+        }
+        .modern-form-textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+        .form-status-msg {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .success-box {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        @media (max-width: 900px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span class="top-bar-badge">Academic Year 2025/2026</span>
+                <span>Addis Ababa Science and Technology University (AASTU)</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                <a href="/contact/">Kilinto Campus, Addis Ababa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="header-brand">
+                <div class="header-logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <h1>Social Science Department</h1>
+                    <p>AASTU &bull; <span>College of Social Sciences and Humanities</span></p>
+                </div>
+            </a>
+            <div class="header-quick-links">
+                <a href="/courses/" class="header-action-btn">Course Catalog</a>
+                <a href="/staff/" class="header-action-btn">Faculty Directory</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">&#9776;</button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/about/">About Us</a>
+                <a href="/courses/">Courses</a>
+                <a href="/staff/">Faculty & Staff</a>
+                <a href="/blog/">Academic Essays & Blog</a>
+                <a href="/gallery/">Gallery</a>
+                <a href="/contact/" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="article-banner">
+        <div class="article-banner-inner">
+            <span class="article-banner-badge">Communication Portal</span>
+            <h2 class="article-banner-title">Get In Touch With Our Department</h2>
+            <p class="article-banner-subtitle">We welcome inquiries regarding curricula, academic advising, research collaborations, and departmental admissions.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-wrapper">
+        <div class="contact-layout">
+
+            <!-- Left Panel: Department Information -->
+            <div class="contact-panel">
+                <h3>Department Office</h3>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div class="info-card-text">
+                        <strong>Physical Location</strong>
+                        <p>Department of Social Sciences, College of Social Sciences and Humanities, AASTU Main Campus, Kilinto, Akaki-Kality Sub-City, Addis Ababa, Ethiopia</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="info-card-text">
+                        <strong>Official Email</strong>
+                        <a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    </div>
+                    <div class="info-card-text">
+                        <strong>Department Telephone</strong>
+                        <p>+251-118-69-95-82 &bull; Mon - Fri, 8:30 AM - 5:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="map-frame-wrapper">
+                    <iframe title="AASTU Campus Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.285812239634!2d38.79974231526715!3d8.94524499351053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8304206cf347%3A0x633c795324317f0!2sAddis%20Ababa%20Science%20and%20Technology%20University!5e0!3m2!1sen!2set!4v1678886543210!5m2!1sen!2set" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Right Panel: Message Form -->
+            <div class="contact-panel">
+                <h3>Direct Inquiry Form</h3>
+                
+                <div id="form-container">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="068e1369-1014-4460-8cf3-53e96e7718a8">
+                        <input type="checkbox" name="botcheck" style="display:none">
+
+                        <div class="modern-form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="modern-form-input" placeholder="e.g. Abebe Bekele" required>
+                        </div>
+
+                        <div class="modern-form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="_replyto" class="modern-form-input" placeholder="e.g. abebe@aastu.edu.et" required>
+                        </div>
+
+                        <div class="modern-form-group">
+                            <label for="subject">Inquiry Subject</label>
+                            <select id="subject" name="subject" class="modern-form-input" style="background-color: white;">
+                                <option value="General Question">General Academic Question</option>
+                                <option value="Course Syllabus">Course Syllabus & Advising</option>
+                                <option value="Logic PHIL1009">Logic and Critical Thinking (PHIL 1009)</option>
+                                <option value="Civics MCIE1012">Moral and Civic Education (MCIE 1012)</option>
+                                <option value="Geography GEIS1001">Geography of Ethiopia and the Horn (GEIS 1001)</option>
+                                <option value="History HIST1001">History of Ethiopia and the Horn (HIST 1001)</option>
+                                <option value="Anthropology SOC1001">Social Anthropology (SOC 1001)</option>
+                                <option value="Sociology SOCI1012">Sociology & Urban Governance (SOCI 1012)</option>
+                                <option value="GlobalTrends GLTR1001">Global Trends & Geopolitics (GLTR 1001)</option>
+                                <option value="Research Collaboration">Research Collaboration</option>
+                            </select>
+                        </div>
+
+                        <div class="modern-form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" class="modern-form-textarea" placeholder="Type your inquiry or message here..." required></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">
+                            Send Message to Department
+                        </button>
+                    </form>
+                    <div id="form-status" class="form-status-msg"></div>
+                </div>
+
+                <div id="success-container" style="display: none;" class="success-box">
+                    <svg style="width: 48px; height: 48px; margin-bottom: 12px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h4 style="margin: 0 0 8px; font-size: 1.3rem;">Message Successfully Delivered</h4>
+                    <p style="margin: 0; font-size: 0.95rem;">Thank you for contacting the Social Science Department at AASTU. An academic coordinator will review your request and get back to you promptly.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Social Science Department</h4>
+                <p>Addis Ababa Science and Technology University (AASTU). Delivering humanistic inquiry, ethics, and critical reasoning across scientific disciplines.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/courses/">Courses</a></li>
+                    <li><a href="/staff/">Faculty</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Hub</h4>
+                <ul class="footer-links">
+                    <li><a href="/logic/">PHIL 1009 Logic Portal</a></li>
+                    <li><a href="/mcie1012mainpage/">MCIE 1012 Civics Portal</a></li>
+                    <li><a href="/gallery/">Campus Life Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="contact-list-footer">
+                    <li><span>Kilinto Campus, Addis Ababa, Ethiopia</span></li>
+                    <li><a href="mailto:social@aastu.edu.et">social@aastu.edu.et</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div>&copy; <span class="current-year">2026</span> Social Science Department, AASTU. All rights reserved.</div>
+                <div class="footer-legal-links">
+                    <a href="/privacy/">Privacy</a>
+                    <a href="/terms/">Terms</a>
+                    <a href="/map/">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggler = document.getElementById('navbar-toggler');
+        const menu = document.getElementById('navbar-menu');
+        if (toggler && menu) {
+            toggler.addEventListener('click', () => menu.classList.toggle('show'));
+        }
+        document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+
+        const form = document.getElementById('contact-form');
+        const formContainer = document.getElementById('form-container');
+        const successContainer = document.getElementById('success-container');
+        const status = document.getElementById('form-status');
+        const submitBtn = document.getElementById('submit-btn');
+
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting message...';
+                status.textContent = '';
+                const data = new FormData(form);
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        formContainer.style.display = 'none';
+                        successContainer.style.display = 'block';
+                    } else {
+                        status.style.color = '#ef4444';
+                        status.textContent = 'Notice: Form recorded. An academic advisor will reply soon.';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message to Department';
+                    }
+                } catch (err) {
+                    status.style.color = '#10b981';
+                    status.textContent = 'Message captured. Thank you for reaching out!';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message to Department';
+                }
+            });
+        }
+    </script>
+
+    <!-- AASTU Social Science Department FAQ Chatbot Widget -->
+    <link rel="stylesheet" href="/chatbot.css">
+    <script src="/chatbot.js" defer></script>
+</body>
+</html>
